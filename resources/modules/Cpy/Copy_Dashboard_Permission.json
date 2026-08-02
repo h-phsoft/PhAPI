@@ -1,0 +1,139 @@
+{
+  "package": "Cpy",
+  "module": "Cpy",
+  "tableName": "Copy_Dashboard_Permission",
+  "synonym": "Cpy_Dash_Perm",
+  "primaryKey": "id",
+  "hasChilds": false,
+  "children": [],
+  "auditFields": {
+    "createdBy": "insUser",
+    "createdAt": "insDate",
+    "updatedBy": "updUser",
+    "updatedAt": "updDate"
+  },
+  "fields": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "10",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Id",
+        "Synonym": "Cpy_Dash_Perm",
+        "Sequence": "Cpy_Dash_Perm_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": false,
+      "relation": null
+    },
+    {
+      "Name": "Pgrp_Id",
+      "Field": "pgrpId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Pgrp_Id",
+        "Synonym": "Cpy_Dash_Perm",
+        "Sequence": "Cpy_Dash_Perm_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Copy_Permission_Groups",
+        "refSynonym": "Cpy_Pgrp",
+        "primaryKey": "Id",
+        "foreignKey": "Pgrp_Id",
+        "displayField": "Name",
+        "apiDisplayField": "pgrpName"
+      }
+    },
+    {
+      "Name": "Dashboard_Id",
+      "Field": "dashboardId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Dashboard_Id",
+        "Synonym": "Cpy_Dash_Perm",
+        "Sequence": "Cpy_Dash_Perm_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": false,
+      "relation": {
+        "refTable": "Phs_Dashboard_Blocks",
+        "refSynonym": "Phs_Dash_Blocks",
+        "primaryKey": "Id",
+        "foreignKey": "Dashboard_Id",
+        "displayField": "Name",
+        "apiDisplayField": "dashboardName"
+      }
+    },
+    {
+      "Name": "Ok",
+      "Field": "ok",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Ok",
+        "Synonym": "Cpy_Dash_Perm",
+        "Sequence": "Cpy_Dash_Perm_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": null
+    }
+  ]
+}

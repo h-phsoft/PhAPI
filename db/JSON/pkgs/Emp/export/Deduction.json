@@ -1,0 +1,39 @@
+{
+  "Name": "Emp_Deduction_View",
+  "Synonym": "Emp_Vded",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Ded_Num",
+      "Field": "dedNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ded_Name",
+      "Field": "dedName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Amttype_Name",
+      "Field": "amttypeName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Taxbrkt_Name",
+      "Field": "taxbrktName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Taxpay_Name",
+      "Field": "taxpayName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ded_Amt",
+      "Field": "dedAmt",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "Name": "Prd_Expenses",
+  "Synonym": "Prd_Expense",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Lname",
+      "Field": "lname",
+      "isSelected": false
+    }
+    , {
+      "Name": "Iname",
+      "Field": "iname",
+      "isSelected": false
+    }
+    , {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

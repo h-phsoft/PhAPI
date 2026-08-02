@@ -1,0 +1,9 @@
+{
+  "Synonym": "Cpy_Asec",
+  "Select": "SELECT Id, Num||' - '||Name AS Name FROM Cpy_Asec",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' - '||Name) LIKE '%{term}%'"
+  },
+  "OrderBy": "Num"
+}

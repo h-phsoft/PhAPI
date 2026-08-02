@@ -1,0 +1,118 @@
+{
+  "Name": "Cash_Transfer_Order",
+  "Synonym": "Cash_Tord",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Cbox_Fid",
+      "Field": "cboxFid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cbox_Tid",
+      "Field": "cboxTid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cash_Fid",
+      "Field": "cashFid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cash_Tid",
+      "Field": "cashTid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Vhr_Did",
+      "Field": "vhrDid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Edate",
+      "Field": "edate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Execdate",
+      "Field": "execdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Rate",
+      "Field": "curnRate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Camt",
+      "Field": "camt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Amt",
+      "Field": "amt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Excamt",
+      "Field": "excamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Examt",
+      "Field": "examt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Fid",
+      "Field": "statusFid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Fdate",
+      "Field": "statusFdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Fdescr",
+      "Field": "statusFdescr",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Tid",
+      "Field": "statusTid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Tdate",
+      "Field": "statusTdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Tdescr",
+      "Field": "statusTdescr",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Reason",
+      "Field": "reason",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

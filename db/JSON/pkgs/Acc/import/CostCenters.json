@@ -1,0 +1,60 @@
+{
+  "Name": "Acc_Cost_Centers",
+  "Synonym": "Acc_Cost",
+  "Sequence": "Acc_Cost_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Default": "2",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Type",
+        "SynonymName": "Phs_Cod_Type",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "typeName"
+      }
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Status",
+        "SynonymName": "Phs_Cod_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }, {
+      "Name": "Pid",
+      "Field": "pid",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

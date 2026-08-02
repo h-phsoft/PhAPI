@@ -1,0 +1,9 @@
+{
+  "Synonym": "Fre_Truk",
+  "Select": "SELECT Id, Num||' - '||Brand AS Name FROM Fre_Truk",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

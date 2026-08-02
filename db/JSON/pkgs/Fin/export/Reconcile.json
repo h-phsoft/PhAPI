@@ -1,0 +1,128 @@
+{
+  "Name": "Fin_Reconcile",
+  "Synonym": "Fin_Mrec",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Dept_Rid",
+      "Field": "deptRid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Unit_Rid",
+      "Field": "unitRid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Oper_Rid",
+      "Field": "operRid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trt_Rid",
+      "Field": "trtRid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cont_Rid",
+      "Field": "contRid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Refnum",
+      "Field": "refnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Keynum",
+      "Field": "keynum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Keydate",
+      "Field": "keydate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Duedate",
+      "Field": "duedate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Note",
+      "Field": "note",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Rate",
+      "Field": "curnRate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Camt",
+      "Field": "camt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Amt",
+      "Field": "amt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Rid",
+      "Field": "curnRid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Rrate",
+      "Field": "curnRrate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rcamt",
+      "Field": "rcamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ramt",
+      "Field": "ramt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acamt",
+      "Field": "acamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Aamt",
+      "Field": "aamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Apcamt",
+      "Field": "apcamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Apamt",
+      "Field": "apamt",
+      "isSelected": false
+    }
+  ]
+}

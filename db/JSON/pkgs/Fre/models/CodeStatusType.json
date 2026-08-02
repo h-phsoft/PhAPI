@@ -1,0 +1,85 @@
+{
+  "Name": "Fre_Code_Status_Type",
+  "Synonym": "Fre_Cod_Status_Type",
+  "Sequence": "Fre_Cod_Status_Type_Seq",
+  "Order": "Id",
+  "InsUser": false,
+  "UpdUser": false,
+  "AutoIncrement": true,
+  "AutoNumber": {
+    "Status": true,
+    "Field": "num",
+    "Aggregate": "",
+    "Condition": ""
+  },
+  "Select": "SELECT Id, Status_Id, Name, Rem FROM Fre_Cod_Status_Type",
+  "Insert": "INSERT INTO Fre_Cod_Status_Type (Id, Status_Id, Name, Rem) VALUES (?, ?, ?, ?)",
+  "Update": "UPDATE Fre_Cod_Status_Type SET Status_Id=?, Name=?, Rem=? WHERE Id=?",
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": false
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Status",
+        "SynonymName": "Phs_Cod_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      },
+      "isNull": true
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": true
+    }
+  ]
+}

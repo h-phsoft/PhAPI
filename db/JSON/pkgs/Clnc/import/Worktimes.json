@@ -1,0 +1,22 @@
+{
+  "Name": "Clnc_Worktimes",
+  "Synonym": "Clnc_Worktime",
+  "Sequence": "Clnc_Worktime_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Nhour",
+      "Field": "nhour",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Nminute",
+      "Field": "nminute",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }
+  ]
+}

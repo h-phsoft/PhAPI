@@ -1,0 +1,119 @@
+{
+  "Name": "Str_Items",
+  "Synonym": "Str_Item",
+  "Sequence": "Str_Item_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Status",
+        "SynonymName": "Phs_Cod_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }, {
+      "Name": "Unit_Id",
+      "Field": "unitId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Code_Unit",
+        "SynonymName": "Cpy_Cod_Unit",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "unitName"
+      }
+    }, {
+      "Name": "Spc1_Id",
+      "Field": "spc1Id",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Code_Specification1",
+        "SynonymName": "Str_Cod_Spec1",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "spc1Name"
+      }
+    }, {
+      "Name": "Spc2_Id",
+      "Field": "spc2Id",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Code_Specification2",
+        "SynonymName": "Str_Cod_Spec2",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "spc2Name"
+      }
+    }, {
+      "Name": "Spc3_Id",
+      "Field": "spc3Id",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Code_Specification3",
+        "SynonymName": "Str_Cod_Spec3",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "spc3Name"
+      }
+    }, {
+      "Name": "Spc4_Id",
+      "Field": "spc4Id",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Code_Specification4",
+        "SynonymName": "Str_Cod_Spec4",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "spc4Name"
+      }
+    }, {
+      "Name": "Spc5_Id",
+      "Field": "spc5Id",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Code_Specification5",
+        "SynonymName": "Str_Cod_Spec5",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "spc5Name"
+      }
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

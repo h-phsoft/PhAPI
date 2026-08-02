@@ -1,0 +1,54 @@
+{
+  "Name": "Emp_Application_Education",
+  "Synonym": "Emp_Appeduc",
+  "Sequence": "Emp_Appeduc_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Mapp_Id",
+      "Field": "mappId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Application",
+        "SynonymName": "Emp_Appl",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "mappName"
+      }
+    }, {
+      "Name": "University",
+      "Field": "university",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Edu_Id",
+      "Field": "eduId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Education",
+        "SynonymName": "Emp_Cod_Edu",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "eduName"
+      }
+    }, {
+      "Name": "Nyear",
+      "Field": "nyear",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

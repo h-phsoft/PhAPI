@@ -1,0 +1,13 @@
+{
+  "Name": "Trn_Balance_User",
+  "Synonym": "Trn_Bln_User",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

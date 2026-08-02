@@ -1,0 +1,9 @@
+{
+  "Synonym": "Fre_Voffer",
+  "Select": "SELECT Offer_Id Id, Offer_Num||' - '||Dept_Name||' - '||Unit_Name||' - '||Oper_Name ||' - '||TO_CHAR(Offer_Date,'DD-MM-YYYY') AS Name FROM Fre_Voffer",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Offer_Num||' - '||Dept_Name||' - '||Unit_Name||' - '||Oper_Name ||' - '||TO_CHAR(Offer_Date,'DD-MM-YYYY')) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Offer_Num"
+}

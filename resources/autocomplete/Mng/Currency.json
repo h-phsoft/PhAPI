@@ -1,0 +1,9 @@
+{
+  "Synonym": "Mng_Curn",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Mng_Curn",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE '%{term}%'"
+  },
+  "OrderBy": "Num"
+}

@@ -1,0 +1,113 @@
+{
+  "Name": "Stor_Outbound_Order_Trans",
+  "Synonym": "Stor_Ouordtrn",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Ord",
+      "Field": "ord",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Qnt",
+      "Field": "qnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cqnt",
+      "Field": "cqnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sqnt",
+      "Field": "sqnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Wqnt",
+      "Field": "wqnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cwqnt",
+      "Field": "cwqnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Swqnt",
+      "Field": "swqnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Price",
+      "Field": "price",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Camt",
+      "Field": "camt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Amt",
+      "Field": "amt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cst",
+      "Field": "cst",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Bamt",
+      "Field": "bamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Bcst",
+      "Field": "bcst",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nlength",
+      "Field": "nlength",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nwidth",
+      "Field": "nwidth",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nheight",
+      "Field": "nheight",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Barcode",
+      "Field": "barcode",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Lotser",
+      "Field": "lotser",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sdate",
+      "Field": "sdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Edate",
+      "Field": "edate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

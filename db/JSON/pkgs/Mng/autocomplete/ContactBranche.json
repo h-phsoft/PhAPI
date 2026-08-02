@@ -1,0 +1,9 @@
+{
+  "Synonym": "Mng_Cont_Bran",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Mng_Cont_Bran",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name||' '||Name) LIKE '%{term}%'"
+  },
+  "OrderBy": "Num"
+}

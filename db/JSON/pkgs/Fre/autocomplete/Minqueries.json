@@ -1,0 +1,9 @@
+{
+  "Synonym": "Fre_Minqry",
+  "Select": "SELECT Id, Num||' - '||Ddate AS Name FROM Fre_Minqry",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

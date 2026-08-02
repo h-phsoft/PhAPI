@@ -1,0 +1,67 @@
+{
+  "Name": "Clnc_Payment",
+  "Synonym": "Clnc_Pay",
+  "Sequence": "Clnc_Pay_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Clinic_Id",
+      "Field": "clinicId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Clinics",
+        "SynonymName": "Clnc_Clinic",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "clinicName"
+      }
+    }, {
+      "Name": "Patient_Id",
+      "Field": "patientId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Patients",
+        "SynonymName": "Clnc_Patient",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "patientName"
+      }
+    }, {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Payment_Type",
+        "SynonymName": "Clnc_Pay_Type",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "typeName"
+      }
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Amt",
+      "Field": "amt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Descr",
+      "Field": "descr",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

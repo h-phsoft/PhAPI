@@ -1,0 +1,59 @@
+{
+  "Name": "Fix_Location_Trn_View",
+  "Synonym": "Fix_Vloctrn",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Ord",
+      "Field": "ord",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Num",
+      "Field": "fixdNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Name",
+      "Field": "fixdName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Oloc1_Name",
+      "Field": "oloc1Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Oloc2_Name",
+      "Field": "oloc2Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Oloc3_Name",
+      "Field": "oloc3Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loc1_Name",
+      "Field": "loc1Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loc2_Name",
+      "Field": "loc2Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loc3_Name",
+      "Field": "loc3Name",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "Name": "Acc_Grant_Account_View",
+  "Synonym": "Acc_Vgrant",
+  "Sequence": "Acc_Vgrant_Seq",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Order": "System_Name, Acc_Num",
+  "InsUser": true,
+  "UpdUser": true,
+  "Select": "SELECT Id, Acc_Id, Acc_Num, Acc_Name, System_Id, System_Name, Rem FROM Acc_Vgrant",
+  "Insert": "",
+  "Update": "",
+  "hasChilds": false,
+  "Children": [
+  ],
+  "Columns": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Acc_Id",
+      "Field": "accId",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Acc_Num",
+      "Field": "accNum",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Acc_Name",
+      "Field": "accName",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "System_Id",
+      "Field": "systemId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "System_Name",
+      "Field": "systemName",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+  ]
+}

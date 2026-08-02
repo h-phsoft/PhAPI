@@ -1,0 +1,139 @@
+{
+  "Name": "Stor_Change_Location_Trans",
+  "Synonym": "Stor_Chloctrn",
+  "Sequence": "Stor_Chloctrn_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Mst_Id",
+      "Field": "mstId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Stor_Change_Location_Master",
+        "SynonymName": "Stor_Chlocmst",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "mstName"
+      }
+    }, {
+      "Name": "Item_Id",
+      "Field": "itemId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Stor_Items",
+        "SynonymName": "Stor_Item",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "itemName"
+      }
+    }, {
+      "Name": "Sics_Id",
+      "Field": "sicsId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Stor_Stor_Item_Classification",
+        "SynonymName": "Stor_Sics",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "sicsName"
+      }
+    }, {
+      "Name": "Ord",
+      "Field": "ord",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Oloc1_Id",
+      "Field": "oloc1Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Stor_Code_Location1",
+        "SynonymName": "Stor_Cod_Loc1",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "oloc1Name"
+      }
+    }, {
+      "Name": "Oloc2_Id",
+      "Field": "oloc2Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Stor_Code_Location2",
+        "SynonymName": "Stor_Cod_Loc2",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "oloc2Name"
+      }
+    }, {
+      "Name": "Oloc3_Id",
+      "Field": "oloc3Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Stor_Code_Location3",
+        "SynonymName": "Stor_Cod_Loc3",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "oloc3Name"
+      }
+    }, {
+      "Name": "Nloc1_Id",
+      "Field": "nloc1Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Stor_Code_Location1",
+        "SynonymName": "Stor_Cod_Loc1",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "nloc1Name"
+      }
+    }, {
+      "Name": "Nloc2_Id",
+      "Field": "nloc2Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Stor_Code_Location2",
+        "SynonymName": "Stor_Cod_Loc2",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "nloc2Name"
+      }
+    }, {
+      "Name": "Nloc3_Id",
+      "Field": "nloc3Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Stor_Code_Location3",
+        "SynonymName": "Stor_Cod_Loc3",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "nloc3Name"
+      }
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

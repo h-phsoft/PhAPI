@@ -1,0 +1,438 @@
+{
+  "Name": "Phs_Dashboard_Blocks_View",
+  "Synonym": "Phs_Vdash_Block",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Order": "Id",
+  "Actions": [
+  ],
+  "Options": {
+  },
+  "Fields": [
+    {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Type_Name",
+      "Field": "typeName",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Type_Status_Id",
+      "Field": "typeStatusId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Type_Rem",
+      "Field": "typeRem",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Stype_Id",
+      "Field": "stypeId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Stype_Name",
+      "Field": "stypeName",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Stype_Status_Id",
+      "Field": "stypeStatusId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Stype_Rem",
+      "Field": "stypeRem",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Block_Id",
+      "Field": "blockId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Block_Name",
+      "Field": "blockName",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Block_Ord",
+      "Field": "blockOrd",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Block_Title",
+      "Field": "blockTitle",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Block_Method",
+      "Field": "blockMethod",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Block_Url",
+      "Field": "blockUrl",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Block_Duration",
+      "Field": "blockDuration",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Block_Col",
+      "Field": "blockCol",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Block_Rem",
+      "Field": "blockRem",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+  ]
+}

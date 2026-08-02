@@ -1,0 +1,58 @@
+{
+  "Name": "Phs_Logs",
+  "Synonym": "Phs_Log",
+  "Sequence": "Phs_Log_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Vtype",
+      "Field": "vtype",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Vtext",
+      "Field": "vtext",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Vuser",
+      "Field": "vuser",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Vip",
+      "Field": "vip",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Vhost",
+      "Field": "vhost",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Vport",
+      "Field": "vport",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Vrem",
+      "Field": "vrem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "sysdate",
+      "hasRelation": false
+    }
+  ]
+}

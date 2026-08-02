@@ -1,0 +1,41 @@
+{
+  "Name": "Emp_Salcalc_Addon",
+  "Synonym": "Emp_Salcalcaosal",
+  "Sequence": "Emp_Salcalcaosal_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Tsal_Id",
+      "Field": "tsalId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Salary_Calculated",
+        "SynonymName": "Emp_Salcalc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "tsalName"
+      }
+    }, {
+      "Name": "Addto_Id",
+      "Field": "addtoId",
+      "DBType": "NUMBER",
+      "Default": "2",
+      "hasRelation": false
+    }, {
+      "Name": "Amt",
+      "Field": "amt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

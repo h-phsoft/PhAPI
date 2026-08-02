@@ -1,0 +1,104 @@
+{
+  "Name": "Proj_Project_Expense",
+  "Synonym": "Proj_Proj_Expense",
+  "Sequence": "Proj_Proj_Expense_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Proj_Id",
+      "Field": "projId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Proj_Project",
+        "SynonymName": "Proj_Proj",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "projName"
+      }
+    }, {
+      "Name": "Cont_Id",
+      "Field": "contId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Mng_Contact",
+        "SynonymName": "Mng_Cont",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "contName"
+      }
+    }, {
+      "Name": "Serv_Id",
+      "Field": "servId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Mng_Services",
+        "SynonymName": "Mng_Serv",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "servName"
+      }
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Qnt",
+      "Field": "qnt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Price",
+      "Field": "price",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Camt",
+      "Field": "camt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Amt",
+      "Field": "amt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Curn_Id",
+      "Field": "curnId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Mng_Currency",
+        "SynonymName": "Mng_Curn",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "curnName"
+      }
+    }, {
+      "Name": "Rate",
+      "Field": "rate",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

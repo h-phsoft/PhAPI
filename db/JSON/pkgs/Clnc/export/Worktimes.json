@@ -1,0 +1,18 @@
+{
+  "Name": "Clnc_Worktimes",
+  "Synonym": "Clnc_Worktime",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Nhour",
+      "Field": "nhour",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nminute",
+      "Field": "nminute",
+      "isSelected": false
+    }
+  ]
+}

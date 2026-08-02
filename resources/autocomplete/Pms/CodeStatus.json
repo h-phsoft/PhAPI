@@ -1,0 +1,9 @@
+{
+  "Synonym": "Pms_Cod_Status",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Pms_Cod_Status",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

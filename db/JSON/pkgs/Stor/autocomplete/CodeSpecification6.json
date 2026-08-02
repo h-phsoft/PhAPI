@@ -1,0 +1,9 @@
+{
+  "Synonym": "Stor_Cod_Spec6",
+  "Select": "SELECT Id ,Name AS Name FROM Stor_Cod_Spec6",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Name"
+}

@@ -1,33 +1,40 @@
-const JWebToken = require('../utils/jwtToken');
-const ResultManager = require('../utils/responseManager');
+const jwt = require('jsonwebtoken');
 
-const authMiddleware = async (req, res, next) => {
-  try {
-    const authorization = req.headers.authorization;
-    if (!authorization) {
-      return res.status(401).json(ResultManager.invalid('Authorization header is required'));
-    }
+const JWT_SECRET = process.env.JWT_SECRET || 'phs_api_secret_key_2026';
 
-    try {
-      const token = JWebToken.getInstanceByAuthorization(authorization);
-      const payload = token.getPayload();
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
 
-      req.userId = payload.jui || payload.userId || payload.id;
-      req.vCopy = payload.Copy || payload.vCopy || '';
-      req.userData = payload;
-
-      // Extract additional headers
-      req.mPrgId = req.headers.mprgid || req.headers.mprgid;
-      req.periodId = req.headers.periodid || req.headers.periodid || 1;
-      req.vLang = req.headers.vlang || req.headers.vlang || 'en';
-
-      next();
-    } catch (error) {
-      return res.status(401).json(ResultManager.invalid(error.message || 'Invalid token'));
-    }
-  } catch (error) {
-    return res.status(401).json(ResultManager.invalid('Authentication failed'));
+  if (!token) {
+    return res.status(401).json({
+      success: false,
+      status: 401,
+      messageKey: 'UNAUTHORIZED',
+      message: 'Access token is required'
+    });
   }
-};
 
-module.exports = authMiddleware;
+  jwt.verify(token, JWT_SECRET, (err, user) => {
+    if (err) {
+      return res.status(403).json({
+        success: false,
+        status: 403,
+        messageKey: 'FORBIDDEN',
+        message: 'Invalid or expired token'
+      });
+    }
+
+    // Attach decoded user info to request context
+    req.user = {
+      userId: user.userId || user.sub,
+      tenantId: user.tenantId || 'default',
+      periodId: user.periodId || null,
+      ...user
+    };
+
+    next();
+  });
+}
+
+module.exports = authenticateToken;

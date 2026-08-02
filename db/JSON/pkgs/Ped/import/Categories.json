@@ -1,0 +1,41 @@
+{
+  "Name": "Ped_Categories",
+  "Synonym": "Ped_Cats",
+  "Sequence": "Ped_Cats_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Status",
+        "SynonymName": "Phs_Cod_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Symbol",
+      "Field": "symbol",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

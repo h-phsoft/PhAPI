@@ -1,0 +1,13 @@
+{
+  "Name": "Proj_Project_Ratingtrn",
+  "Synonym": "Proj_Proj_Ratetrn",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

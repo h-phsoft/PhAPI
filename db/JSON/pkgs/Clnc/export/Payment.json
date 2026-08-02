@@ -1,0 +1,23 @@
+{
+  "Name": "Clnc_Payment",
+  "Synonym": "Clnc_Pay",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Amt",
+      "Field": "amt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Descr",
+      "Field": "descr",
+      "isSelected": false
+    }
+  ]
+}

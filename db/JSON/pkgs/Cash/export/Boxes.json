@@ -1,0 +1,33 @@
+{
+  "Name": "Cash_Boxes",
+  "Synonym": "Cash_Box",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Cid",
+      "Field": "accCid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Oid",
+      "Field": "accOid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

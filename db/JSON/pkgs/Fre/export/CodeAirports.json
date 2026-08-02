@@ -1,0 +1,28 @@
+{
+  "Name": "Fre_Code_Airports",
+  "Synonym": "Fre_Cod_Airport",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Code",
+      "Field": "code",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rcode",
+      "Field": "rcode",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

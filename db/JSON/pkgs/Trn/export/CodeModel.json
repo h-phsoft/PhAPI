@@ -1,0 +1,33 @@
+{
+  "Name": "Trn_Code_Model",
+  "Synonym": "Trn_Cod_Model",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Axes",
+      "Field": "axes",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Weight",
+      "Field": "weight",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

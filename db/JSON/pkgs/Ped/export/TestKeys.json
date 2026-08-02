@@ -1,0 +1,168 @@
+{
+  "Name": "Ped_Test_Keys",
+  "Synonym": "Ped_Test_Key",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Age_From",
+      "Field": "ageFrom",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Age_To",
+      "Field": "ageTo",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Degree",
+      "Field": "degree",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acat_Perc_From",
+      "Field": "acatPercFrom",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acat_Perc_To",
+      "Field": "acatPercTo",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Bcat_Perc_From",
+      "Field": "bcatPercFrom",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Bcat_Perc_To",
+      "Field": "bcatPercTo",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ccat_Perc_From",
+      "Field": "ccatPercFrom",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ccat_Perc_To",
+      "Field": "ccatPercTo",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dcat_Perc_From",
+      "Field": "dcatPercFrom",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dcat_Perc_To",
+      "Field": "dcatPercTo",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ecat_Perc_From",
+      "Field": "ecatPercFrom",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ecat_Perc_To",
+      "Field": "ecatPercTo",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fcat_Perc_From",
+      "Field": "fcatPercFrom",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fcat_Perc_To",
+      "Field": "fcatPercTo",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Gcat_Perc_From",
+      "Field": "gcatPercFrom",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Gcat_Perc_To",
+      "Field": "gcatPercTo",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Hcat_Perc_From",
+      "Field": "hcatPercFrom",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Hcat_Perc_To",
+      "Field": "hcatPercTo",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Icat_Perc_From",
+      "Field": "icatPercFrom",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Icat_Perc_To",
+      "Field": "icatPercTo",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Jcat_Perc_From",
+      "Field": "jcatPercFrom",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Jcat_Perc_To",
+      "Field": "jcatPercTo",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Kcat_Perc_From",
+      "Field": "kcatPercFrom",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Kcat_Perc_To",
+      "Field": "kcatPercTo",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Lcat_Perc_From",
+      "Field": "lcatPercFrom",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Lcat_Perc_To",
+      "Field": "lcatPercTo",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mcat_Perc_From",
+      "Field": "mcatPercFrom",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mcat_Perc_To",
+      "Field": "mcatPercTo",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ncat_Perc_From",
+      "Field": "ncatPercFrom",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ncat_Perc_To",
+      "Field": "ncatPercTo",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

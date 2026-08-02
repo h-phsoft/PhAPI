@@ -1,0 +1,83 @@
+{
+  "Name": "Fre_Contract_Distance",
+  "Synonym": "Fre_Dcntrct",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Nfrom",
+      "Field": "nfrom",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nto",
+      "Field": "nto",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Overload",
+      "Field": "overload",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cooling",
+      "Field": "cooling",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mt5",
+      "Field": "mt5",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mt10",
+      "Field": "mt10",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mt15",
+      "Field": "mt15",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mt20",
+      "Field": "mt20",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mt25",
+      "Field": "mt25",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mt30",
+      "Field": "mt30",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mt35",
+      "Field": "mt35",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mt40",
+      "Field": "mt40",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mt45",
+      "Field": "mt45",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mt50",
+      "Field": "mt50",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

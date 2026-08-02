@@ -1,0 +1,28 @@
+{
+  "Name": "Phs_Code_Approve_Status",
+  "Synonym": "Phs_Cod_Approve",
+  "Sequence": "Phs_Cod_Approve_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

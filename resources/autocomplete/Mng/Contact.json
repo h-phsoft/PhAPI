@@ -1,0 +1,9 @@
+{
+  "Synonym": "Mng_Cont",
+  "Select": "SELECT Id, Num||' - '||Name||' | '||LName AS Name FROM Mng_Cont",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' - '||Name||' | '||LName) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

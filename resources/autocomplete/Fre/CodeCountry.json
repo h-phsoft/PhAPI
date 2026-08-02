@@ -1,0 +1,9 @@
+{
+  "Synonym": "Fre_Cod_Cntry",
+  "Select": "SELECT Id, Name AS Name FROM Fre_Cod_Cntry",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(' '||Name) LIKE '%{term}%'"
+  },
+  "OrderBy": "Id"
+}

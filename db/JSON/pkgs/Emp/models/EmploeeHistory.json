@@ -1,0 +1,236 @@
+{
+  "Name": "Emp_Emploee_History",
+  "Synonym": "Emp_Emphist",
+  "Sequence": "Emp_Emphist_Seq",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Order": "Id Desc",
+  "InsUser": true,
+  "UpdUser": true,
+  "Select": "SELECT Id, Num, To_Char(Ddate, 'DD-MM-YYYY') AS Ddate, Emp_Id, Type_Id, Note, Rem, Ins_User, To_Char(Ins_Date, 'DD-MM-YYYY') AS Ins_Date, Upd_User, To_Char(Upd_Date, 'DD-MM-YYYY') AS Upd_Date FROM Emp_Emphist",
+  "Insert": "INSERT INTO Emp_Emphist (Id, Num, Ddate, Emp_Id, Type_Id, Note, Rem, Ins_User, Ins_Date) VALUES (?, ?, To_Date(?, 'DD-MM-YYYY'), ?, ?, ?, ?, ?, Sysdate)",
+  "Update": "UPDATE Emp_Emphist SET Num=?, Ddate=To_Date(?, 'DD-MM-YYYY'), Emp_Id=?, Type_Id=?, Note=?, Rem=?, Upd_User=?, Upd_Date=Sysdate WHERE Id=?",
+  "hasChilds": false,
+  "Children": [
+  ],
+  "Columns": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "20",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "20",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": true,
+      "Autonumber": {
+        "Mode": "11",
+        "Aggr": "Max",
+        "Column": "Num",
+        "Synonym": "Emp_Emphist",
+        "Sequence": "Emp_Emphist_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Emp_Id",
+      "Field": "empId",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "20",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Employee",
+        "SynonymName": "Emp_Emp",
+        "CurId": "Emp_Id",
+        "RelId": "Id",
+        "RelName": "' '||Name",
+        "RelField": "empName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_History",
+        "SynonymName": "Emp_Cod_Hist",
+        "CurId": "Type_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "typeName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Note",
+      "Field": "note",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ins_User",
+      "Field": "insUser",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ins_Date",
+      "Field": "insDate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Upd_User",
+      "Field": "updUser",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Upd_Date",
+      "Field": "updDate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+  ]
+}

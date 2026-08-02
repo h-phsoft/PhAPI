@@ -1,0 +1,9 @@
+{
+  "Synonym": "Cpy_Pgrp",
+  "Select": "SELECT Id, Num||' - '||Name AS Name FROM Cpy_Pgrp",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' - '||Name) LIKE '%{term}%'"
+  },
+  "OrderBy": "Num"
+}

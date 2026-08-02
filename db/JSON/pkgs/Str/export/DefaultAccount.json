@@ -1,0 +1,64 @@
+{
+  "Name": "Str_Default_Account_View",
+  "Synonym": "Str_Vdefacc",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Stor_Name",
+      "Field": "storName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Stor_Rem",
+      "Field": "storRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Stor_Status",
+      "Field": "storStatus",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trntyp_Name",
+      "Field": "trntypName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cost_Num",
+      "Field": "costNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cost_Name",
+      "Field": "costName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cstacc_Num",
+      "Field": "cstaccNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cstacc_Name",
+      "Field": "cstaccName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Revacc_Num",
+      "Field": "revaccNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Revacc_Name",
+      "Field": "revaccName",
+      "isSelected": false
+    }
+  ]
+}

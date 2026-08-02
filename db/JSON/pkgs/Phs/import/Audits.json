@@ -1,0 +1,46 @@
+{
+  "Name": "Phs_Audits",
+  "Synonym": "Phs_Audit",
+  "Sequence": "Phs_Audit_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Ntype",
+      "Field": "ntype",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Vtable",
+      "Field": "vtable",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "User_Id",
+      "Field": "userId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "sysdate",
+      "hasRelation": false
+    }, {
+      "Name": "Vnew",
+      "Field": "vnew",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Vold",
+      "Field": "vold",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

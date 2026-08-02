@@ -1,0 +1,38 @@
+{
+  "Name": "Clnc_Appointment_Type",
+  "Synonym": "Clnc_App_Type",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Capacity",
+      "Field": "capacity",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Minutes",
+      "Field": "minutes",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Title_Bg",
+      "Field": "titleBg",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Title_Fg",
+      "Field": "titleFg",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Patient_Fg",
+      "Field": "patientFg",
+      "isSelected": false
+    }
+  ]
+}

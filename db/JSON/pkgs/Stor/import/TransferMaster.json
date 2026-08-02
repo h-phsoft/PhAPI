@@ -1,0 +1,135 @@
+{
+  "Name": "Stor_Transfer_Master",
+  "Synonym": "Stor_Trmst",
+  "Sequence": "Stor_Trmst_Seq",
+  "InsUser": false,
+  "hasChilds": true,
+  "Children": [
+    {
+      "Pkg": "Stor",
+      "Key": "TransferTrans",
+      "Table": "Stor_Transfer_Trans",
+      "Synonym": "Stor_Trtrn",
+      "cascadeDelete": true,
+      "Column": "MST_ID",
+      "ColKey": "mstId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Src_Id",
+      "Field": "srcId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Source",
+        "SynonymName": "Phs_Cod_Src",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "srcName"
+      }
+    }, {
+      "Name": "Period_Id",
+      "Field": "periodId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Periods",
+        "SynonymName": "Cpy_Period",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "periodName"
+      }
+    }, {
+      "Name": "Storf_Id",
+      "Field": "storfId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Stor_Stores",
+        "SynonymName": "Stor_Store",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "storfName"
+      }
+    }, {
+      "Name": "Stort_Id",
+      "Field": "stortId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Stor_Stores",
+        "SynonymName": "Stor_Store",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "stortName"
+      }
+    }, {
+      "Name": "Rel_Id",
+      "Field": "relId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Fin_Id",
+      "Field": "finId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fin_Debit_Mst",
+        "SynonymName": "Fin_Mdbt",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "finName"
+      }
+    }, {
+      "Name": "Doc_Id",
+      "Field": "docId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Code_Document",
+        "SynonymName": "Cpy_Cod_Doc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "docName"
+      }
+    }, {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Docn",
+      "Field": "docn",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Docd",
+      "Field": "docd",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

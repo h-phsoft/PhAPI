@@ -1,0 +1,59 @@
+{
+  "Name": "Emp_Grade_Templates_View",
+  "Synonym": "Emp_Vgradtmplt",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Grd_Num",
+      "Field": "grdNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grd_Name",
+      "Field": "grdName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grd_Rem",
+      "Field": "grdRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Isdefault_Name",
+      "Field": "isdefaultName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grp_Name",
+      "Field": "grpName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Degree_Name",
+      "Field": "degreeName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grd_Days",
+      "Field": "grdDays",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grd_Maxsal",
+      "Field": "grdMaxsal",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grd_Minsal",
+      "Field": "grdMinsal",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grd_Trem",
+      "Field": "grdTrem",
+      "isSelected": false
+    }
+  ]
+}

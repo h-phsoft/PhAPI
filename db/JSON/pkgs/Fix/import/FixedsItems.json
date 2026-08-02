@@ -1,0 +1,164 @@
+{
+  "Name": "Fix_Fixeds_Items",
+  "Synonym": "Fix_Fixed",
+  "Sequence": "Fix_Fixed_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Spc1_Id",
+      "Field": "spc1Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Specification1",
+        "SynonymName": "Fix_Cod_Spec1",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "spc1Name"
+      }
+    }, {
+      "Name": "Spc2_Id",
+      "Field": "spc2Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Specification2",
+        "SynonymName": "Fix_Cod_Spec2",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "spc2Name"
+      }
+    }, {
+      "Name": "Spc3_Id",
+      "Field": "spc3Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Specification3",
+        "SynonymName": "Fix_Cod_Spec3",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "spc3Name"
+      }
+    }, {
+      "Name": "Spc4_Id",
+      "Field": "spc4Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Specification4",
+        "SynonymName": "Fix_Cod_Spec4",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "spc4Name"
+      }
+    }, {
+      "Name": "Spc5_Id",
+      "Field": "spc5Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Specification5",
+        "SynonymName": "Fix_Cod_Spec5",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "spc5Name"
+      }
+    }, {
+      "Name": "Perc",
+      "Field": "perc",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Unit_Id",
+      "Field": "unitId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Code_Unit",
+        "SynonymName": "Cpy_Cod_Unit",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "unitName"
+      }
+    }, {
+      "Name": "Acc_Id",
+      "Field": "accId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Account",
+        "SynonymName": "Acc_Acc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "accName"
+      }
+    }, {
+      "Name": "Acc_Did",
+      "Field": "accDid",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Account",
+        "SynonymName": "Acc_Acc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "accName"
+      }
+    }, {
+      "Name": "Acc_Rid",
+      "Field": "accRid",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Account",
+        "SynonymName": "Acc_Acc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "accName"
+      }
+    }, {
+      "Name": "Acc_Fid",
+      "Field": "accFid",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Account",
+        "SynonymName": "Acc_Acc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "accName"
+      }
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

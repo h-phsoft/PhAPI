@@ -1,0 +1,305 @@
+{
+  "Name": "Str_Stores",
+  "Synonym": "Str_Store",
+  "Sequence": "Str_Store_Seq",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Order": "Name",
+  "InsUser": true,
+  "UpdUser": true,
+  "Select": "SELECT Id, Name, Rem, Status_Id, Cost_Id, Acc_Id, CstAcc_Id, RevAcc_Id, Emp_Id, Ins_User, To_Char(Ins_Date, 'DD-MM-YYYY') AS Ins_Date, Upd_User, To_Char(Upd_Date, 'DD-MM-YYYY') AS Upd_Date FROM Str_Store",
+  "Insert": "INSERT INTO Str_Store (Id, Name, Rem, Status_Id, Cost_Id, Acc_Id, CstAcc_Id, RevAcc_Id, Emp_Id, Ins_User, Ins_Date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, Sysdate)",
+  "Update": "UPDATE Str_Store SET Name=?, Rem=?, Status_Id=?, Cost_Id=?, Acc_Id=?, CstAcc_Id=?, RevAcc_Id=?, Emp_Id=?, Upd_User=?, Upd_Date=Sysdate WHERE Id=?",
+  "hasChilds": false,
+  "Children": [
+  ],
+  "Columns": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Status",
+        "SynonymName": "Phs_Cod_Status",
+        "CurId": "Status_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Cost_Id",
+      "Field": "costId",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Cost_Centers",
+        "SynonymName": "Acc_Cost",
+        "CurId": "Cost_Id",
+        "RelId": "Id",
+        "RelName": "Num||' - '||Name",
+        "RelField": "costName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "CstAcc_Id",
+      "Field": "cstAccId",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Account",
+        "SynonymName": "Acc_Acc",
+        "CurId": "CstAcc_Id",
+        "RelId": "Id",
+        "RelName": "Num||' - '||Name",
+        "RelField": "cstAccName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "RevAcc_Id",
+      "Field": "revAccId",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Account",
+        "SynonymName": "Acc_Acc",
+        "CurId": "RevAcc_Id",
+        "RelId": "Id",
+        "RelName": "Num||' - '||Name",
+        "RelField": "revAccName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Acc_Id",
+      "Field": "accId",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Account",
+        "SynonymName": "Acc_Acc",
+        "CurId": "Acc_Id",
+        "RelId": "Id",
+        "RelName": "Num||' - '||Name",
+        "RelField": "accName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Emp_Id",
+      "Field": "empId",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Employee",
+        "SynonymName": "Emp_Emp",
+        "CurId": "Emp_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "empName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ins_User",
+      "Field": "insUser",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ins_Date",
+      "Field": "insDate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Upd_User",
+      "Field": "updUser",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Upd_Date",
+      "Field": "updDate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+  ]
+}

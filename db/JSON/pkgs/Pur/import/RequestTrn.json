@@ -1,0 +1,54 @@
+{
+  "Name": "Pur_Request_Trn",
+  "Synonym": "Pur_Treq",
+  "Sequence": "Pur_Treq_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Mst_Id",
+      "Field": "mstId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Pur_Request_Mst",
+        "SynonymName": "Pur_Mreq",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "mstName"
+      }
+    }, {
+      "Name": "Item_Id",
+      "Field": "itemId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Items",
+        "SynonymName": "Str_Item",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "itemName"
+      }
+    }, {
+      "Name": "Qnt",
+      "Field": "qnt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Price",
+      "Field": "price",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "Name": "Mng_Streets",
+  "Synonym": "Mng_Street",
+  "Sequence": "Mng_Street_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "City_Id",
+      "Field": "cityId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Mng_Cities",
+        "SynonymName": "Mng_City",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "cityName"
+      }
+    }, {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

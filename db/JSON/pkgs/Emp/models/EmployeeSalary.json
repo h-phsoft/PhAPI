@@ -1,0 +1,306 @@
+{
+  "Name": "Emp_Employee",
+  "Synonym": "Emp_Emp",
+  "Sequence": "Emp_Emp_Seq",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Order": "Id Desc",
+  "InsUser": true,
+  "UpdUser": true,
+  "Select": "SELECT Id, Num, Name,Inum, To_Char(Idate, 'DD-MM-YYYY') AS Idate,  Bankacc, Bankname, Bankstatus_Id, Acr_Id, Sgrp_Id,  Basesal, Financesal, Insursal, Ins_User, To_Char(Ins_Date, 'DD-MM-YYYY') AS Ins_Date, Upd_User, To_Char(Upd_Date, 'DD-MM-YYYY') AS Upd_Date FROM Emp_Emp",
+  "Insert": "null",
+  "Update": "UPDATE Emp_Emp SET  Inum=?, Idate=To_Date(?, 'DD-MM-YYYY'), Bankacc=?, Bankname=?, Bankstatus_Id=?, Acr_Id=?, Sgrp_Id=?, Basesal=?,Financesal=?,Insursal=?, Upd_User=?, Upd_Date=Sysdate WHERE Id=?",
+  "hasChilds": false,
+  "Children": [
+  ],
+  "Columns": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "",
+      "query": true,
+      "insert": false,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": false,
+      "update": false,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": false,
+      "update": false,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Inum",
+      "Field": "inum",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": false,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Idate",
+      "Field": "idate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": false,
+      "insert": false,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Bankacc",
+      "Field": "bankacc",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": false,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Bankname",
+      "Field": "bankname",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": false,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Bankstatus_Id",
+      "Field": "bankstatusId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "2",
+      "query": true,
+      "insert": false,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Yesno",
+        "SynonymName": "Phs_Cod_Yesno",
+        "CurId": "Bankstatus_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "bankstatusName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Acr_Id",
+      "Field": "acrId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "3",
+      "Default": "",
+      "query": false,
+      "insert": false,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Accredited",
+        "SynonymName": "Emp_Acr",
+        "CurId": "Acr_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "acrName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Sgrp_Id",
+      "Field": "sgrpId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": false,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Salary_Groups",
+        "SynonymName": "Emp_Salgrp",
+        "CurId": "Sgrp_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "sgrpName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Basesal",
+      "Field": "basesal",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "3",
+      "Precision": "17",
+      "Default": "0",
+      "query": false,
+      "insert": false,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Financesal",
+      "Field": "financesal",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "3",
+      "Precision": "17",
+      "Default": "0",
+      "query": true,
+      "insert": false,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Insursal",
+      "Field": "insursal",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "3",
+      "Precision": "17",
+      "Default": "0",
+      "query": false,
+      "insert": false,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Upd_User",
+      "Field": "updUser",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": false,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Upd_Date",
+      "Field": "updDate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": false,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+  ]
+}

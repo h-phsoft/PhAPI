@@ -1,0 +1,139 @@
+{
+  "Name": "Fix_Fixeds_Items_View",
+  "Synonym": "Fix_Vfixed",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Perc",
+      "Field": "perc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fname",
+      "Field": "fname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc1_Name",
+      "Field": "spc1Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc2_Name",
+      "Field": "spc2Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc3_Name",
+      "Field": "spc3Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc4_Name",
+      "Field": "spc4Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc5_Name",
+      "Field": "spc5Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Unit_Name",
+      "Field": "unitName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Num",
+      "Field": "accNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Name",
+      "Field": "accName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Fullname",
+      "Field": "accFullname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Did",
+      "Field": "accDid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Dnum",
+      "Field": "accDnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Dname",
+      "Field": "accDname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Dfname",
+      "Field": "accDfname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Rid",
+      "Field": "accRid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Rnum",
+      "Field": "accRnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Rname",
+      "Field": "accRname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Rfname",
+      "Field": "accRfname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Fid",
+      "Field": "accFid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Fnum",
+      "Field": "accFnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Fname",
+      "Field": "accFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Ffname",
+      "Field": "accFfname",
+      "isSelected": false
+    }
+  ]
+}

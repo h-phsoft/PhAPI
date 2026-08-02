@@ -1,0 +1,67 @@
+{
+  "Name": "Copy_Permision",
+  "Synonym": "Cpy_Perm",
+  "Sequence": "Cpy_Perm_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Pgrp_Id",
+      "Field": "pgrpId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Permission_Groups",
+        "SynonymName": "Cpy_Pgrp",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "pgrpName"
+      }
+    }, {
+      "Name": "Mprg_Id",
+      "Field": "mprgId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Menu_Programs",
+        "SynonymName": "Phs_Mprg",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "mprgName"
+      }
+    }, {
+      "Name": "Vperiod",
+      "Field": "vperiod",
+      "DBType": "NUMBER",
+      "Default": "9999",
+      "hasRelation": false
+    }, {
+      "Name": "Iperiod",
+      "Field": "iperiod",
+      "DBType": "NUMBER",
+      "Default": "9999",
+      "hasRelation": false
+    }, {
+      "Name": "Range_Id",
+      "Field": "rangeId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Permission_Range",
+        "SynonymName": "Phs_Cod_Perm_Range",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "rangeName"
+      }
+    }, {
+      "Name": "Ok",
+      "Field": "ok",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }
+  ]
+}

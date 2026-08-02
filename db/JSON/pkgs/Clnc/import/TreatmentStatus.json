@@ -1,0 +1,28 @@
+{
+  "Name": "Clnc_Treatment_Status",
+  "Synonym": "Clnc_Treat_Status",
+  "Sequence": "Clnc_Treat_Status_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Bg",
+      "Field": "bg",
+      "DBType": "VARCHAR2",
+      "Default": "'#CCC'",
+      "hasRelation": false
+    }, {
+      "Name": "Fg",
+      "Field": "fg",
+      "DBType": "VARCHAR2",
+      "Default": "'#000'",
+      "hasRelation": false
+    }
+  ]
+}

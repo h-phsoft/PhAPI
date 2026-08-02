@@ -1,0 +1,9 @@
+{
+  "Synonym": "Pur_Mpurord",
+  "Select": "SELECT R.Id, R.dDate||' N0.'|| R.Num||' '|| U.Name AS Name FROM Pur_Mpurord R,Cpy_User U",
+  "Condition": "User_Id = U.id AND R.Id NOT IN (select POrd_Id from Pur_MDeliv)",
+  "Conds": {
+    "term": "Lower(R.dDate||' N0.'|| R.Num||' '|| U.Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

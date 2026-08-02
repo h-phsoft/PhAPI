@@ -1,0 +1,78 @@
+{
+  "Name": "Fre_Department_Trn_Budgets",
+  "Synonym": "Fre_Depttbud",
+  "Sequence": "Fre_Depttbud_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Bud_Id",
+      "Field": "budId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fre_Department_Mst_Budgets",
+        "SynonymName": "Fre_Deptmbud",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "budName"
+      }
+    }, {
+      "Name": "Dept_Id",
+      "Field": "deptId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Departments",
+        "SynonymName": "Cpy_Dept",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "deptName"
+      }
+    }, {
+      "Name": "Njf",
+      "Field": "njf",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Ncust",
+      "Field": "ncust",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Nteus",
+      "Field": "nteus",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Nweight",
+      "Field": "nweight",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Ngp",
+      "Field": "ngp",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Nrevenue",
+      "Field": "nrevenue",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

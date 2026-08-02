@@ -1,0 +1,23 @@
+{
+  "Name": "Notif_Table_Event_Description",
+  "Synonym": "Notif_Table_Event_Descr",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Norder",
+      "Field": "norder",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Value",
+      "Field": "value",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

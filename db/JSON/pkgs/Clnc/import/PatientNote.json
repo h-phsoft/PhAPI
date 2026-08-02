@@ -1,0 +1,48 @@
+{
+  "Name": "Clnc_Patient_Note",
+  "Synonym": "Clnc_Pat_Note",
+  "Sequence": "Clnc_Pat_Note_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Patient_Id",
+      "Field": "patientId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Patients",
+        "SynonymName": "Clnc_Patient",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "patientName"
+      }
+    }, {
+      "Name": "Doctor_Id",
+      "Field": "doctorId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Doctors",
+        "SynonymName": "Clnc_Doctor",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "doctorName"
+      }
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "SYSDATE",
+      "hasRelation": false
+    }, {
+      "Name": "Note",
+      "Field": "note",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

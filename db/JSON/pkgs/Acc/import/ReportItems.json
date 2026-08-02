@@ -1,0 +1,125 @@
+{
+  "Name": "Acc_Report_Items",
+  "Synonym": "Acc_Repitm",
+  "Sequence": "Acc_Repitm_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Rep_Id",
+      "Field": "repId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Report",
+        "SynonymName": "Acc_Rep",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "repName"
+      }
+    }, {
+      "Name": "Ord",
+      "Field": "ord",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Linetype_Id",
+      "Field": "linetypeId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Code_Line_Type",
+        "SynonymName": "Acc_Cod_Linetype",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "linetypeName"
+      }
+    }, {
+      "Name": "Amtside_Id",
+      "Field": "amtsideId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Code_Amount_Side",
+        "SynonymName": "Acc_Cod_Amtside",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "amtsideName"
+      }
+    }, {
+      "Name": "Amttyp_Id",
+      "Field": "amttypId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Code_Report_Amount",
+        "SynonymName": "Acc_Cod_Repamt",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "amttypName"
+      }
+    }, {
+      "Name": "Perc",
+      "Field": "perc",
+      "DBType": "NUMBER",
+      "Default": "100",
+      "hasRelation": false
+    }, {
+      "Name": "Acc_Id",
+      "Field": "accId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Account",
+        "SynonymName": "Acc_Acc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "accName"
+      }
+    }, {
+      "Name": "Tot_Id",
+      "Field": "totId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Total",
+        "SynonymName": "Acc_Tot",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "totName"
+      }
+    }, {
+      "Name": "Cost_Id",
+      "Field": "costId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Cost_Centers",
+        "SynonymName": "Acc_Cost",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "costName"
+      }
+    }, {
+      "Name": "Label",
+      "Field": "label",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

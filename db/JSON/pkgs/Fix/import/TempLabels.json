@@ -1,0 +1,52 @@
+{
+  "Name": "Fix_Temp_Labels",
+  "Synonym": "Fix_Tmplbl",
+  "Sequence": "Fix_Tmplbl_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Barcode",
+      "Field": "barcode",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Fixd_Id",
+      "Field": "fixdId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Serial",
+      "Field": "serial",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Qnt",
+      "Field": "qnt",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Dummy",
+      "Field": "dummy",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }
+  ]
+}

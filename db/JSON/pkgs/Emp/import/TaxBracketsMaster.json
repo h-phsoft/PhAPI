@@ -1,0 +1,46 @@
+{
+  "Name": "Emp_Tax_Brackets_Master",
+  "Synonym": "Emp_Taxbrkt",
+  "Sequence": "Emp_Taxbrkt_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "SysDate",
+      "hasRelation": false
+    }, {
+      "Name": "Gnum",
+      "Field": "gnum",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Gdate",
+      "Field": "gdate",
+      "DBType": "DATE",
+      "Default": "SysDate",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

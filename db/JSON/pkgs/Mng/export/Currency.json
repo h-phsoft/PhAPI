@@ -1,0 +1,38 @@
+{
+  "Name": "Mng_Currency",
+  "Synonym": "Mng_Curn",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Code",
+      "Field": "code",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rate",
+      "Field": "rate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Hdate",
+      "Field": "hdate",
+      "isSelected": false
+    }
+  ]
+}

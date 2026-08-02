@@ -1,0 +1,19 @@
+{
+  "Name": "Copy_Menu_View",
+  "Synonym": "Cpy_Vmenu",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Menu_Name",
+      "Field": "menuName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Name",
+      "Field": "statusName",
+      "isSelected": false
+    }
+  ]
+}

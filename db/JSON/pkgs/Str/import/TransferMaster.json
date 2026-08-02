@@ -1,0 +1,116 @@
+{
+  "Name": "Str_Transfer_Master",
+  "Synonym": "Str_Trmst",
+  "Sequence": "Str_Trmst_Seq",
+  "InsUser": false,
+  "hasChilds": true,
+  "Children": [
+    {
+      "Pkg": "Str",
+      "Key": "TransferTrans",
+      "Table": "Str_Transfer_Trans",
+      "Synonym": "Str_Trtrn",
+      "cascadeDelete": true,
+      "Column": "MST_ID",
+      "ColKey": "mstId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Period_Id",
+      "Field": "periodId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Periods",
+        "SynonymName": "Cpy_Period",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "periodName"
+      }
+    }, {
+      "Name": "Storf_Id",
+      "Field": "storfId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Stores",
+        "SynonymName": "Str_Store",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "storfName"
+      }
+    }, {
+      "Name": "Stort_Id",
+      "Field": "stortId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Stores",
+        "SynonymName": "Str_Store",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "stortName"
+      }
+    }, {
+      "Name": "Vhr_Id",
+      "Field": "vhrId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Master",
+        "SynonymName": "Acc_Mst",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "vhrName"
+      }
+    }, {
+      "Name": "Doc_Id",
+      "Field": "docId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Code_Document",
+        "SynonymName": "Acc_Cod_Doc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "docName"
+      }
+    }, {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Docn",
+      "Field": "docn",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Docd",
+      "Field": "docd",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

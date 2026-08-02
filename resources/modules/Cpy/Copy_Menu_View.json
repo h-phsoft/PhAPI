@@ -1,0 +1,132 @@
+{
+  "package": "Cpy",
+  "module": "Cpy",
+  "tableName": "Copy_Menu_View",
+  "synonym": "Cpy_Vmenu",
+  "primaryKey": "id",
+  "hasChilds": false,
+  "children": [],
+  "auditFields": {
+    "createdBy": "insUser",
+    "createdAt": "insDate",
+    "updatedBy": "updUser",
+    "updatedAt": "updDate"
+  },
+  "fields": [
+    {
+      "Name": "Menu_Id",
+      "Field": "menuId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Menu_Id",
+        "Synonym": "Cpy_Vmenu",
+        "Sequence": "Cpy_Vmenu_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": false,
+      "relation": null
+    },
+    {
+      "Name": "Menu_Name",
+      "Field": "menuName",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Menu_Name",
+        "Synonym": "Cpy_Vmenu",
+        "Sequence": "Cpy_Vmenu_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": false,
+      "relation": null
+    },
+    {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Status_Id",
+        "Synonym": "Cpy_Vmenu",
+        "Sequence": "Cpy_Vmenu_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": false,
+      "relation": {
+        "refTable": "Phs_Code_Status",
+        "refSynonym": "Phs_Cod_Status",
+        "primaryKey": "Id",
+        "foreignKey": "Status_Id",
+        "displayField": "Name",
+        "apiDisplayField": "statusName"
+      }
+    },
+    {
+      "Name": "Status_Name",
+      "Field": "statusName",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Status_Name",
+        "Synonym": "Cpy_Vmenu",
+        "Sequence": "Cpy_Vmenu_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": false,
+      "relation": null
+    }
+  ]
+}

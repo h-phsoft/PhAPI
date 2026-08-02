@@ -1,0 +1,49 @@
+{
+  "Name": "Proj_Task_Team_Member",
+  "Synonym": "Proj_Task_Team",
+  "Sequence": "Proj_Task_Team_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Task_Id",
+      "Field": "taskId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Task",
+        "SynonymName": "Cpy_Task",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "taskName"
+      }
+    }, {
+      "Name": "Team_Id",
+      "Field": "teamId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Proj_Team_Members",
+        "SynonymName": "Proj_Team",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "teamName"
+      }
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Status",
+        "SynonymName": "Phs_Cod_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }
+  ]
+}

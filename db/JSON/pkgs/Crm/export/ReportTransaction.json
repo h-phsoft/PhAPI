@@ -1,0 +1,68 @@
+{
+  "Name": "Crm_Report_Transaction",
+  "Synonym": "Crm_Trep",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Offer",
+      "Field": "offer",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nlength",
+      "Field": "nlength",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nwidth",
+      "Field": "nwidth",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nheight",
+      "Field": "nheight",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nweight",
+      "Field": "nweight",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trep_Qnt",
+      "Field": "trepQnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trep_Camt",
+      "Field": "trepCamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trep_Ncomd",
+      "Field": "trepNcomd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Compet",
+      "Field": "compet",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Comdodity",
+      "Field": "comdodity",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Report",
+      "Field": "report",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trep_Rem",
+      "Field": "trepRem",
+      "isSelected": false
+    }
+  ]
+}

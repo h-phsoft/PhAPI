@@ -1,0 +1,73 @@
+{
+  "Name": "Pur_Purchase_Mst",
+  "Synonym": "Pur_Mpur",
+  "Sequence": "Pur_Mpur_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Cont_Id",
+      "Field": "contId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Mng_Contact",
+        "SynonymName": "Mng_Cont",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "contName"
+      }
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Pur_Code_Status",
+        "SynonymName": "Pur_Cod_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }, {
+      "Name": "Curn_Id",
+      "Field": "curnId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Mng_Currency",
+        "SynonymName": "Mng_Curn",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "curnName"
+      }
+    }, {
+      "Name": "Rate",
+      "Field": "rate",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

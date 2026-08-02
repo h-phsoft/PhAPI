@@ -1,0 +1,48 @@
+{
+  "Name": "Trn_Balance_Fees",
+  "Synonym": "Trn_Bln_Fee",
+  "Sequence": "Trn_Bln_Fee_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Mst_Id",
+      "Field": "mstId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Trn_Balance_Master",
+        "SynonymName": "Trn_Bln_Mst",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "mstName"
+      }
+    }, {
+      "Name": "Fee_Id",
+      "Field": "feeId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Trn_Fees",
+        "SynonymName": "Trn_Fee",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "feeName"
+      }
+    }, {
+      "Name": "Amt",
+      "Field": "amt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

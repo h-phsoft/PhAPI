@@ -1,0 +1,52 @@
+{
+  "Name": "Emp_Admin_Punishment_Mst",
+  "Synonym": "Emp_Madmpun",
+  "Sequence": "Emp_Madmpun_Seq",
+  "InsUser": false,
+  "hasChilds": true,
+  "Children": [
+    {
+      "Pkg": "Emp",
+      "Key": "AdminPunishmentTrn",
+      "Table": "Emp_Admin_Punishment_Trn",
+      "Synonym": "Emp_Tadmpun",
+      "cascadeDelete": true,
+      "Column": "MAPUN_ID",
+      "ColKey": "mapunId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Punishment",
+        "SynonymName": "Emp_Cod_Pun",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "typeName"
+      }
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "Sysdate",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

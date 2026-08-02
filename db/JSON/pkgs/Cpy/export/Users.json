@@ -1,0 +1,64 @@
+{
+  "Name": "Copy_Users_View",
+  "Synonym": "Cpy_Vuser",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "User_Name",
+      "Field": "userName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grp_Name",
+      "Field": "grpName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grp_Wper",
+      "Field": "grpWper",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grp_Rem",
+      "Field": "grpRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "User_Logon",
+      "Field": "userLogon",
+      "isSelected": false
+    }
+    ,{
+      "Name": "User_Pass",
+      "Field": "userPass",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ugrp_Name",
+      "Field": "ugrpName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Gender_Name",
+      "Field": "genderName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Name",
+      "Field": "statusName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "User_Rem",
+      "Field": "userRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "User_Picture",
+      "Field": "userPicture",
+      "isSelected": false
+    }
+  ]
+}

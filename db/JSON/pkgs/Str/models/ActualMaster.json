@@ -1,0 +1,308 @@
+{
+  "Name": "Str_Actual_Master",
+  "Synonym": "Str_Actmst",
+  "Sequence": "Str_Actmst_Seq",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Order": "Id DESC",
+  "InsUser": true,
+  "UpdUser": true,
+  "Select": "SELECT Id, Period_Id, Stor_Id, Num, Doc_Id, DocN, DocD, To_Char(Ddate, 'DD-MM-YYYY') AS Ddate, Responsible, Rem, Ins_User, To_Char(Ins_Date, 'DD-MM-YYYY') AS Ins_Date, Upd_User, To_Char(Upd_Date, 'DD-MM-YYYY') AS Upd_Date FROM Str_Actmst",
+  "Insert": "INSERT INTO Str_Actmst (Id, Period_Id, Stor_Id, Num, Ddate, Responsible, Rem, Doc_Id, DocN, DocD, Ins_User, Ins_Date) VALUES (?, ?, ?, ?, To_Date(?, 'DD-MM-YYYY'), ?, ?, ?, ?, To_Date(?, 'DD-MM-YYYY'), ?, Sysdate)",
+  "Update": "UPDATE Str_Actmst SET Period_Id=?, Stor_Id=?, Num=?, Ddate=To_Date(?, 'DD-MM-YYYY'), Responsible=?, Rem=?,Doc_Id=?, DocN=?, DocD=To_Date(?, 'DD-MM-YYYY'), Upd_User=?, Upd_Date=Sysdate WHERE Id=?",
+  "hasChilds": true,
+  "Children": [
+    {
+      "ChildKey": "child",
+      "Pkg": "Str",
+      "Key": "ActualTrans",
+      "Table": "Str_Actual_Trans",
+      "Synonym": "Str_Acttrn",
+      "cascadeDelete": true,
+      "Column": "MST_ID",
+      "ColKey": "mstId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "10",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Period_Id",
+      "Field": "periodId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "4",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Periods",
+        "SynonymName": "Cpy_Period",
+        "CurId": "Period_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "periodName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Stor_Id",
+      "Field": "storId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Stores",
+        "SynonymName": "Str_Store",
+        "CurId": "Stor_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "storName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": true,
+      "Autonumber": {
+        "Mode": "11",
+        "Aggr": "Max",
+        "Column": "Num",
+        "Synonym": "Str_Actmst",
+        "Sequence": "Str_Actmst_Seq",
+        "Condition": "",
+        "PeriodCondition": "Period_Id={periodId}"
+      },
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Responsible",
+      "Field": "responsible",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Doc_Id",
+      "Field": "docId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Code_Document",
+        "SynonymName": "Str_Cod_Doc",
+        "CurId": "Doc_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "docName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Docn",
+      "Field": "docn",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Docd",
+      "Field": "docd",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ins_User",
+      "Field": "insUser",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ins_Date",
+      "Field": "insDate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Upd_User",
+      "Field": "updUser",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Upd_Date",
+      "Field": "updDate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+  ]
+}

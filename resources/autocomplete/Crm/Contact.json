@@ -1,0 +1,9 @@
+{
+  "Synonym": "Crm_Cont",
+  "Select": "SELECT Id, Num||' - '||LName||' '||IName AS Name FROM Crm_Cont",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' - '||LName||' '||IName) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num, LName"
+}

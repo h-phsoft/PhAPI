@@ -1,0 +1,88 @@
+{
+  "Name": "Ped_Test_Question_Summary_View",
+  "Synonym": "Ped_Vtest_Question_Summary",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Test_Name",
+      "Field": "testName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Count_Cata",
+      "Field": "countCata",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Count_Catb",
+      "Field": "countCatb",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Count_Catc",
+      "Field": "countCatc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Count_Catd",
+      "Field": "countCatd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Count_Cate",
+      "Field": "countCate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Count_Catf",
+      "Field": "countCatf",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Count_Catg",
+      "Field": "countCatg",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Count_Cath",
+      "Field": "countCath",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Count_Cati",
+      "Field": "countCati",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Count_Catj",
+      "Field": "countCatj",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Count_Catk",
+      "Field": "countCatk",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Count_Catl",
+      "Field": "countCatl",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Count_Catm",
+      "Field": "countCatm",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Count_Catn",
+      "Field": "countCatn",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Total_Questions",
+      "Field": "totalQuestions",
+      "isSelected": false
+    }
+  ]
+}

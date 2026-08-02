@@ -1,0 +1,10 @@
+{
+  "Synonym": "Fre_Cod_Airport",
+  "Select": "SELECT Id,Name AS Name FROM Fre_Cod_Airport",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(' '||Name) LIKE Lower('%{term}%')",
+    "cntryId": "cntry_Id={cntryId}"
+  },
+  "OrderBy": "Id"
+}

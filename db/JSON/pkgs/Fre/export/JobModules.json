@@ -1,0 +1,58 @@
+{
+  "Name": "Fre_Job_Modules",
+  "Synonym": "Fre_Job_Module",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Nord",
+      "Field": "nord",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Otaddress",
+      "Field": "otaddress",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dtaddress",
+      "Field": "dtaddress",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Bolno",
+      "Field": "bolno",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Boldate",
+      "Field": "boldate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tpnm",
+      "Field": "tpnm",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tpnt",
+      "Field": "tpnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Driver",
+      "Field": "driver",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Vtrip",
+      "Field": "vtrip",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dtrip",
+      "Field": "dtrip",
+      "isSelected": false
+    }
+  ]
+}

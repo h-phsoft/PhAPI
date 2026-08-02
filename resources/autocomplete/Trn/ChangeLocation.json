@@ -1,0 +1,9 @@
+{
+  "Synonym": "Trn_Chloc",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Trn_Chloc",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

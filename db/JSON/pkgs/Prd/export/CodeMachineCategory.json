@@ -1,0 +1,18 @@
+{
+  "Name": "Prd_Code_Machine_Category",
+  "Synonym": "Prd_Cod_Mchine_Cat",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

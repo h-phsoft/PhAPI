@@ -1,0 +1,53 @@
+{
+  "Name": "Proj_Project",
+  "Synonym": "Proj_Proj",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Customer",
+      "Field": "customer",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sdate",
+      "Field": "sdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Edate",
+      "Field": "edate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Asdate",
+      "Field": "asdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Aedate",
+      "Field": "aedate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Progress",
+      "Field": "progress",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Descr",
+      "Field": "descr",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "Name": "Trn_Balance_Penalties",
+  "Synonym": "Trn_Bln_Penalty",
+  "Sequence": "Trn_Bln_Penalty_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Mst_Id",
+      "Field": "mstId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Trn_Balance_Master",
+        "SynonymName": "Trn_Bln_Mst",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "mstName"
+      }
+    }, {
+      "Name": "Fee_Id",
+      "Field": "feeId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Trn_Fees",
+        "SynonymName": "Trn_Fee",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "feeName"
+      }
+    }, {
+      "Name": "Penalty_Id",
+      "Field": "penaltyId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Trn_Penalties",
+        "SynonymName": "Trn_Penalty",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "penaltyName"
+      }
+    }, {
+      "Name": "Ptype_Id",
+      "Field": "ptypeId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Trn_Code_Paytype",
+        "SynonymName": "Trn_Cod_Ptype",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "ptypeName"
+      }
+    }, {
+      "Name": "For_Id",
+      "Field": "forId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Trn_Code_For",
+        "SynonymName": "Trn_Cod_For",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "forName"
+      }
+    }, {
+      "Name": "Amt",
+      "Field": "amt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

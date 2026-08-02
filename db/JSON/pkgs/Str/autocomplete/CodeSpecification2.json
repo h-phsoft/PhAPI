@@ -1,0 +1,9 @@
+{
+  "Synonym": "Str_Cod_Spec2",
+  "Select": "SELECT Id,Name AS Name FROM Str_Cod_Spec2",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Name"
+}

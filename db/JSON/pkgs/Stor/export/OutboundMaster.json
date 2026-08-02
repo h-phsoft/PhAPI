@@ -1,0 +1,43 @@
+{
+  "Name": "Stor_Outbound_Master",
+  "Synonym": "Stor_Oumst",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Curn_Rate",
+      "Field": "curnRate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Bcurn_Rate",
+      "Field": "bcurnRate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Docn",
+      "Field": "docn",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Docd",
+      "Field": "docd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

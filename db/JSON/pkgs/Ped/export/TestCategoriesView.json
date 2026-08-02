@@ -1,0 +1,28 @@
+{
+  "Name": "Ped_Test_Categories_View",
+  "Synonym": "Ped_Vtest_Cats",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Test_Name",
+      "Field": "testName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Category_Name",
+      "Field": "categoryName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Category_Symbol",
+      "Field": "categorySymbol",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Link_Remark",
+      "Field": "linkRemark",
+      "isSelected": false
+    }
+  ]
+}

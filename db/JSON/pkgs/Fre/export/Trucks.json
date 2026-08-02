@@ -1,0 +1,43 @@
+{
+  "Name": "Fre_Trucks",
+  "Synonym": "Fre_Truk",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "City",
+      "Field": "city",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Color",
+      "Field": "color",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Brand",
+      "Field": "brand",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Year",
+      "Field": "year",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status",
+      "Field": "status",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

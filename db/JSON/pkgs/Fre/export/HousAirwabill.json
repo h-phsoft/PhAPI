@@ -1,0 +1,108 @@
+{
+  "Name": "Fre_Hous_Airwabill",
+  "Synonym": "Fre_Hawb",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Type_Code",
+      "Field": "typeCode",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dexec",
+      "Field": "dexec",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dhlno",
+      "Field": "dhlno",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dhlgno",
+      "Field": "dhlgno",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Oname",
+      "Field": "oname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dname",
+      "Field": "dname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Vcomd",
+      "Field": "vcomd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Shipacc",
+      "Field": "shipacc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Shipno",
+      "Field": "shipno",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Shipnad",
+      "Field": "shipnad",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Consacc",
+      "Field": "consacc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Consno",
+      "Field": "consno",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Consnad",
+      "Field": "consnad",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Consnote",
+      "Field": "consnote",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Soio",
+      "Field": "soio",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Execon",
+      "Field": "execon",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Att",
+      "Field": "att",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Qdesc",
+      "Field": "qdesc",
+      "isSelected": false
+    }
+  ]
+}

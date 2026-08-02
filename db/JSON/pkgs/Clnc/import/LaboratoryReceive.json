@@ -1,0 +1,93 @@
+{
+  "Name": "Clnc_Laboratory_Receive",
+  "Synonym": "Clnc_Labor_Receive",
+  "Sequence": "Clnc_Labor_Receive_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Clinic_Id",
+      "Field": "clinicId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Clinics",
+        "SynonymName": "Clnc_Clinic",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "clinicName"
+      }
+    }, {
+      "Name": "Doctor_Id",
+      "Field": "doctorId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Doctors",
+        "SynonymName": "Clnc_Doctor",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "doctorName"
+      }
+    }, {
+      "Name": "Patient_Id",
+      "Field": "patientId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Patients",
+        "SynonymName": "Clnc_Patient",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "patientName"
+      }
+    }, {
+      "Name": "Labor_Id",
+      "Field": "laborId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Laboratory",
+        "SynonymName": "Clnc_Labor",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "laborName"
+      }
+    }, {
+      "Name": "Send_Id",
+      "Field": "sendId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Laboratory_Send",
+        "SynonymName": "Clnc_Labor_Send",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "sendName"
+      }
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "SYSDATE",
+      "hasRelation": false
+    }, {
+      "Name": "Qnt",
+      "Field": "qnt",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Descr",
+      "Field": "descr",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

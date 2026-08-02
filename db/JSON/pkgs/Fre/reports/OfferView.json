@@ -1,0 +1,2756 @@
+{
+  "Name": "Fre_Offer_View",
+  "Synonym": "Fre_Voffer",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Order": "Offer_Id",
+  "Actions": [
+  ],
+  "Options": {
+  },
+  "Fields": [
+    {
+      "Name": "Offer_Id",
+      "Field": "offerId",
+      "Label": "Fre.Id",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Period_Id",
+      "Field": "periodId",
+      "Label": "Fre.periodId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Period_Num",
+      "Field": "periodNum",
+      "Label": "Fre.periodNum",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Period_Sdate",
+      "Field": "periodSdate",
+      "Label": "Fre.periodSdate",
+      "Expression": "To_Char(Period_Sdate, 'DD-MM-YYYY')",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Period_Edate",
+      "Field": "periodEdate",
+      "Label": "Fre.periodEdate",
+      "Expression": "To_Char(Period_Edate, 'DD-MM-YYYY')",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Period_Name",
+      "Field": "periodName",
+      "Label": "work.period",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Dept_Id",
+      "Field": "deptId",
+      "Label": "Fre.deptId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Dept_Name",
+      "Field": "deptName",
+      "Label": "Fre.deptId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Unit_Id",
+      "Field": "unitId",
+      "Label": "Fre.unitId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Unit_Name",
+      "Field": "unitName",
+      "Label": "Fre.unitId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Oper_Id",
+      "Field": "operId",
+      "Label": "Fre.operId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Oper_Name",
+      "Field": "operName",
+      "Label": "Fre.operId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Inqry_Id",
+      "Field": "inqryId",
+      "Label": "Agg.Count",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "dataType": "0",
+      "defaultAggregate": "1",
+      "isAggregate": "true",
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Inqry_Num",
+      "Field": "inqryNum",
+      "Label": "Fre.Num",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Inqry_Date",
+      "Field": "inqryDdate",
+      "Label": "Fre.dDate",
+      "Expression": "To_Char(Inqry_Date, 'DD-MM-YYYY')",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Inqry_Cont_Id",
+      "Field": "inqryContId",
+      "Label": "Fre.ContId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Inqry_Cust",
+      "Field": "inqryCust",
+      "Label": "Fre.Cust",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Inqry_Note",
+      "Field": "inqryNote",
+      "Label": "Fre.Note",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Inqry_Rem",
+      "Field": "inqryRem",
+      "Label": "Fre.Rem",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "User_Id",
+      "Field": "userId",
+      "Label": "Fre.userId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "User_Ugrp_Id",
+      "Field": "userUgrpId",
+      "Label": "Fre.userUgrpId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "User_Pgrp_Id",
+      "Field": "userPgrpId",
+      "Label": "Fre.userPgrpId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "User_Gender_Id",
+      "Field": "userGenderId",
+      "Label": "Fre.userGenderId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "User_Status_Id",
+      "Field": "userStatusId",
+      "Label": "Fre.userStatusId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "User_Logon",
+      "Field": "userLogon",
+      "Label": "Fre.userLogon",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "User_Name",
+      "Field": "userName",
+      "Label": "Fre.userId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cont_Id",
+      "Field": "contId",
+      "Label": "Fre.contId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cont_Num",
+      "Field": "contNum",
+      "Label": "Fre.contNum",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cont_Title",
+      "Field": "contTitle",
+      "Label": "Fre.contTitle",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cont_Name",
+      "Field": "contName",
+      "Label": "Fre.contId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cont_Lname",
+      "Field": "contLname",
+      "Label": "Fre.contLname",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cont_Owner",
+      "Field": "contOwner",
+      "Label": "Fre.contOwner",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cont_Contact",
+      "Field": "contContact",
+      "Label": "Fre.contContact",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cont_Dlmt",
+      "Field": "contDlmt",
+      "Label": "Fre.contDlmt",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cont_Nlmt",
+      "Field": "contNlmt",
+      "Label": "Fre.contNlmt",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cont_Repr_Id",
+      "Field": "contReprId",
+      "Label": "Fre.contReprId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cont_Cost_Id",
+      "Field": "contCostId",
+      "Label": "Fre.contCostId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cont_Accdbt_Id",
+      "Field": "contAccdbtId",
+      "Label": "Fre.contAccdbtId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cont_Acccrd_Id",
+      "Field": "contAcccrdId",
+      "Label": "Fre.contAcccrdId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cont_Rem",
+      "Field": "contRem",
+      "Label": "Fre.contRem",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Clearance_Id",
+      "Field": "clearanceId",
+      "Label": "Fre.clearanceId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Clearance_Name",
+      "Field": "clearanceName",
+      "Label": "Fre.clearance",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Clearance_Rem",
+      "Field": "clearanceRem",
+      "Label": "Fre.clearanceRem",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Num",
+      "Field": "offerNum",
+      "Label": "Fre.Num",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Date",
+      "Field": "offerDate",
+      "Label": "Fre.dDate",
+      "Expression": "To_Char(Offer_Date, 'DD-MM-YYYY')",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Vdate",
+      "Field": "offerVdate",
+      "Label": "Fre.Vdate",
+      "Expression": "To_Char(Offer_Vdate, 'DD-MM-YYYY')",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Folowdate",
+      "Field": "offerFolowdate",
+      "Label": "Fre.Folowdate",
+      "Expression": "To_Char(Offer_Folowdate, 'DD-MM-YYYY')",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Contr_Id",
+      "Field": "contrId",
+      "Label": "Fre.contrId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "D_Year",
+      "Field": "dYear",
+      "Label": "Fre.dYear",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "D_Month",
+      "Field": "dMonth",
+      "Label": "Fre.dMonth",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "D_Dayofmonth",
+      "Field": "dDayofmonth",
+      "Label": "Fre.dDayofmonth",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "D_Dayofyear",
+      "Field": "dDayofyear",
+      "Label": "Fre.dDayofyear",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "D_Dayofweek",
+      "Field": "dDayofweek",
+      "Label": "Fre.dDayofweek",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "D_Yearmonth",
+      "Field": "dYearmonth",
+      "Label": "Fre.dYearmonth",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Iterm_Id",
+      "Field": "itermId",
+      "Label": "Fre.itermId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Iterm_Name",
+      "Field": "itermName",
+      "Label": "Fre.itermId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Pterm_Id",
+      "Field": "ptermId",
+      "Label": "Fre.ptermId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Pterm_Name",
+      "Field": "ptermName",
+      "Label": "Fre.ptermId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Ocntry_Id",
+      "Field": "ocntryId",
+      "Label": "Fre.ocntryId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Ocntry_Name",
+      "Field": "ocntryName",
+      "Label": "Fre.ocntryId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Ocity_Id",
+      "Field": "ocityId",
+      "Label": "Fre.ocityId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Ocity_Name",
+      "Field": "ocityName",
+      "Label": "Fre.ocityId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Oport_Id",
+      "Field": "oportId",
+      "Label": "Fre.oportId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Oport_Name",
+      "Field": "oportName",
+      "Label": "Fre.oportId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Osport_Id",
+      "Field": "osportId",
+      "Label": "Fre.osportId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Osport_Name",
+      "Field": "osportName",
+      "Label": "Fre.osportId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Oaport_Id",
+      "Field": "oaportId",
+      "Label": "Fre.oaportId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Oaport_Name",
+      "Field": "oaportName",
+      "Label": "Fre.oaportId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Oaddress",
+      "Field": "offerOaddress",
+      "Label": "Fre.Oaddress",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Dcntry_Id",
+      "Field": "dcntryId",
+      "Label": "Fre.dcntryId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Dcntry_Name",
+      "Field": "dcntryName",
+      "Label": "Fre.dcntryId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Dcity_Id",
+      "Field": "dcityId",
+      "Label": "Fre.dcityId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Dcity_Name",
+      "Field": "dcityName",
+      "Label": "Fre.dcityId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Dport_Id",
+      "Field": "dportId",
+      "Label": "Fre.dportId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Dport_Name",
+      "Field": "dportName",
+      "Label": "Fre.dportId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Dsport_Id",
+      "Field": "dsportId",
+      "Label": "Fre.dsportId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Dsport_Name",
+      "Field": "dsportName",
+      "Label": "Fre.dsportId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Daport_Id",
+      "Field": "daportId",
+      "Label": "Fre.daportId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Daport_Name",
+      "Field": "daportName",
+      "Label": "Fre.daportId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Daddress",
+      "Field": "offerDaddress",
+      "Label": "Fre.Daddress",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Qnt",
+      "Field": "offerQnt",
+      "Label": "Fre.Qnt",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Wnet",
+      "Field": "offerWnet",
+      "Label": "Fre.Wnet",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Wgros",
+      "Field": "offerWgros",
+      "Label": "Fre.Wgros",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Wchrg",
+      "Field": "offerWchrg",
+      "Label": "Fre.Wchrg",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Ldm",
+      "Field": "offerLdm",
+      "Label": "Fre.Ldm",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Cbm",
+      "Field": "offerCbm",
+      "Label": "Fre.Cbm",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Etd",
+      "Field": "offerEtd",
+      "Label": "Fre.Etd",
+      "Expression": "To_Char(Offer_Etd, 'DD-MM-YYYY')",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Eta",
+      "Field": "offerEta",
+      "Label": "Fre.Eta",
+      "Expression": "To_Char(Offer_Eta, 'DD-MM-YYYY')",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Vcomod",
+      "Field": "offerVcomod",
+      "Label": "Fre.Vcomod",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Ship",
+      "Field": "offerShip",
+      "Label": "Fre.Ship",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Cons",
+      "Field": "offerCons",
+      "Label": "Fre.Cons",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Offer",
+      "Field": "offerOffer",
+      "Label": "Fre.Offer",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "Label": "Fre.statusId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Status_Name",
+      "Field": "statusName",
+      "Label": "Fre.statusId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Statustype_Id",
+      "Field": "statustypeId",
+      "Label": "Fre.statustypeId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Statustype_Name",
+      "Field": "statustypeName",
+      "Label": "Fre.statustypeId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Statusrem",
+      "Field": "offerStatusrem",
+      "Label": "Fre.Statusrem",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Terms",
+      "Field": "offerTerms",
+      "Label": "Fre.Terms",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Cust",
+      "Field": "offerCust",
+      "Label": "Fre.Cust",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Cperson",
+      "Field": "offerCperson",
+      "Label": "Fre.Cperson",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Rem",
+      "Field": "offerRem",
+      "Label": "Fre.Rem",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Ins_User",
+      "Field": "offerInsUser",
+      "Label": "Fre.InsUser",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Ins_Date",
+      "Field": "offerInsDate",
+      "Label": "Fre.InsDate",
+      "Expression": "To_Char(Offer_Ins_Date, 'DD-MM-YYYY')",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Upd_User",
+      "Field": "offerUpdUser",
+      "Label": "Fre.UpdUser",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Offer_Upd_Date",
+      "Field": "offerUpdDate",
+      "Label": "Fre.UpdDate",
+      "Expression": "To_Char(Offer_Upd_Date, 'DD-MM-YYYY')",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+  ]
+}

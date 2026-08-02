@@ -1,0 +1,314 @@
+{
+  "Name": "Trn_Balancing_Master_View",
+  "Synonym": "Trn_Vblncing_Mst",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Order": "Mst_BDate, Bln_Name, Mst_Num",
+  "Actions": [
+  ],
+  "Options": {
+  },
+  "Fields": [
+    {
+      "Name": "Bln_Name",
+      "Field": "Trn.blnName",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Bln_Type_Name",
+      "Field": "Trn.blnTypeName",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Bln_Loc_Name",
+      "Field": "Trn.blnLocName",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Model_Name",
+      "Field": "Trn.modelName",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Mst_Bdate",
+      "Field": "Trn.mstBdate",
+      "Expression": "To_Char(Mst_Bdate, 'DD-MM-YYYY')",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Mst_Num",
+      "Field": "Trn.mstNum",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Mst_Pnum",
+      "Field": "Trn.mstPnum",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Mst_Driver",
+      "Field": "Trn.mstDriver",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Mst_Src",
+      "Field": "Trn.mstSrc",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Mst_Dest",
+      "Field": "Trn.mstDest",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Mst_Commodity",
+      "Field": "Trn.mstCommodity",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Mst_Rem",
+      "Field": "Trn.mstRem",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+  ]
+}

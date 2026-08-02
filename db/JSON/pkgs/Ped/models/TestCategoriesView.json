@@ -1,0 +1,78 @@
+{
+  "Name": "Ped_Test_Categories_View",
+  "Synonym": "Ped_Vtest_Cats",
+  "Sequence": "Ped_Vtest_Cats_Seq",
+  "Order": "Id",
+  "InsUser": true,
+  "UpdUser": true,
+  "AutoIncrement": true,
+  "AutoNumber": {
+    "Status": false,
+    "Field": "num",
+    "Aggregate": "",
+    "Condition": ""
+  },
+  "Select": "SELECT Test_Name, Category_Name, Category_Symbol, Link_Remark FROM Ped_Vtest_Cats",
+  "Insert": "",
+  "Update": "",
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Test_Name",
+      "Field": "testName",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": false
+    }, {
+      "Name": "Category_Name",
+      "Field": "categoryName",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": false
+    }, {
+      "Name": "Category_Symbol",
+      "Field": "categorySymbol",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": true
+    }, {
+      "Name": "Link_Remark",
+      "Field": "linkRemark",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": true
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "Name": "Emp_Appraisal_Evaluation",
+  "Synonym": "Emp_Appreval",
+  "Sequence": "Emp_Appreval_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Appr_Id",
+      "Field": "apprId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Appraisal_Templates_Mst",
+        "SynonymName": "Emp_Apprmst",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "apprName"
+      }
+    }, {
+      "Name": "Eval",
+      "Field": "eval",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Spoints",
+      "Field": "spoints",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Epoints",
+      "Field": "epoints",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Salinc",
+      "Field": "salinc",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

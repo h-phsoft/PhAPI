@@ -1,0 +1,9 @@
+{
+  "Synonym": "Prd_Prod_Stage_Emp_Job",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Prd_Prod_Stage_Emp_Job",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

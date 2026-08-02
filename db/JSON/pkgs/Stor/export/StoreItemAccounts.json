@@ -1,0 +1,13 @@
+{
+  "Name": "Stor_Store_Item_Accounts",
+  "Synonym": "Stor_Stritemacc",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

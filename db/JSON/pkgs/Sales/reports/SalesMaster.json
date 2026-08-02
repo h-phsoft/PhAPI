@@ -1,0 +1,817 @@
+{
+  "Name": "Sal_Sales_Master",
+  "Synonym": "Sal_Outmst",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Order": "Id",
+  "Actions": [
+  ],
+  "Options": {
+  },
+  "Fields": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "Label": "Sal.id",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Period_Id",
+      "Field": "periodId",
+      "Label": "Sal.periodId",
+      "Default": "",
+      "Autocomplete": {
+         "Pkg": "Copy_Periods",
+         "Name": "Cpy_Period",
+         "Condition": {}
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "Label": "Sal.statusId",
+      "Default": "0",
+      "Autocomplete": {
+         "Pkg": "Sal_Code_Status",
+         "Name": "Sal_Cod_Status",
+         "Condition": {}
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Rel_Id",
+      "Field": "relId",
+      "Label": "Sal.relId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Fin_Id",
+      "Field": "finId",
+      "Label": "Sal.finId",
+      "Default": "",
+      "Autocomplete": {
+         "Pkg": "Fin_Credit_Mst",
+         "Name": "Fin_Mcrd",
+         "Condition": {}
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cont_Id",
+      "Field": "contId",
+      "Label": "Sal.contId",
+      "Default": "",
+      "Autocomplete": {
+         "Pkg": "Mng_Contact",
+         "Name": "Mng_Cont",
+         "Condition": {}
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Curn_Id",
+      "Field": "curnId",
+      "Label": "Sal.curnId",
+      "Default": "",
+      "Autocomplete": {
+         "Pkg": "Mng_Currency",
+         "Name": "Mng_Curn",
+         "Condition": {}
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Acc_Id",
+      "Field": "accId",
+      "Label": "Sal.accId",
+      "Default": "",
+      "Autocomplete": {
+         "Pkg": "Acc_Account",
+         "Name": "Acc_Acc",
+         "Condition": {}
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Doc_Id",
+      "Field": "docId",
+      "Label": "Sal.docId",
+      "Default": "0",
+      "Autocomplete": {
+         "Pkg": "Copy_Code_Document",
+         "Name": "Cpy_Cod_Doc",
+         "Condition": {}
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Bcurn_Id",
+      "Field": "bcurnId",
+      "Label": "Sal.bcurnId",
+      "Default": "1",
+      "Autocomplete": {
+         "Pkg": "Mng_Currency",
+         "Name": "Mng_Curn",
+         "Condition": {}
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Bcurn_Rate",
+      "Field": "bcurnRate",
+      "Label": "Sal.bcurnRate",
+      "Default": "1",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Regn_Id",
+      "Field": "regnId",
+      "Label": "Sal.regnId",
+      "Default": "",
+      "Autocomplete": {
+         "Pkg": "Mng_Regions",
+         "Name": "Mng_Regn",
+         "Condition": {}
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Repr_Id",
+      "Field": "reprId",
+      "Label": "Sal.reprId",
+      "Default": "",
+      "Autocomplete": {
+         "Pkg": "Crm_Representatives",
+         "Name": "Crm_Repr",
+         "Condition": {}
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cmt_Id",
+      "Field": "cmtId",
+      "Label": "Sal.cmtId",
+      "Default": "1",
+      "Autocomplete": {
+         "Pkg": "Sal_Commission_Code",
+         "Name": "Sal_Comm_Cod",
+         "Condition": {}
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cmv",
+      "Field": "cmv",
+      "Label": "Sal.cmv",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Com_Id",
+      "Field": "comId",
+      "Label": "Sal.comId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Ccom",
+      "Field": "ccom",
+      "Label": "Sal.ccom",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Bcom",
+      "Field": "bcom",
+      "Label": "Sal.bcom",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Rate",
+      "Field": "rate",
+      "Label": "Sal.rate",
+      "Default": "0",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Num",
+      "Field": "num",
+      "Label": "Sal.num",
+      "Default": "0",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "Label": "Sal.ddate",
+      "Expression": "To_Char(Ddate, 'DD-MM-YYYY')",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Docn",
+      "Field": "docn",
+      "Label": "Sal.docn",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Docd",
+      "Field": "docd",
+      "Label": "Sal.docd",
+      "Expression": "To_Char(Docd, 'DD-MM-YYYY')",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Rem",
+      "Field": "rem",
+      "Label": "Sal.rem",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Ins_User",
+      "Field": "insUser",
+      "Label": "Sal.insUser",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Ins_Date",
+      "Field": "insDate",
+      "Label": "Sal.insDate",
+      "Expression": "To_Char(Ins_Date, 'DD-MM-YYYY')",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Upd_User",
+      "Field": "updUser",
+      "Label": "Sal.updUser",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Upd_Date",
+      "Field": "updDate",
+      "Label": "Sal.updDate",
+      "Expression": "To_Char(Upd_Date, 'DD-MM-YYYY')",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+  ]
+}

@@ -1,0 +1,694 @@
+{
+  "Name": "Crm_Contact_Classification_View",
+  "Synonym": "CRM_VCont_Classes",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Order": "Id",
+  "Actions": [
+  ],
+  "Options": {
+  },
+  "Fields": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "Label": "Aggr.Count",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Num",
+      "Field": "num",
+      "Label": "Crm.num",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Title",
+      "Field": "title",
+      "Label": "Crm.title",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Lname",
+      "Field": "lname",
+      "Label": "Crm.lname",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Iname",
+      "Field": "iname",
+      "Label": "Crm.iname",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Legal_Name",
+      "Field": "legalName",
+      "Label": "Crm.legalName",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Owner",
+      "Field": "owner",
+      "Label": "Crm.ownerId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Contact",
+      "Field": "contact",
+      "Label": "Crm.contacts",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Sdate",
+      "Field": "sdate",
+      "Label": "Crm.sdate",
+      "Expression": "To_Char(Sdate, 'DD-MM-YYYY')",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Edate",
+      "Field": "edate",
+      "Label": "Crm.edate",
+      "Expression": "To_Char(Edate, 'DD-MM-YYYY')",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Phone",
+      "Field": "phone",
+      "Label": "Crm.phone",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Mobile",
+      "Field": "mobile",
+      "Label": "Crm.mobile",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Fax",
+      "Field": "fax",
+      "Label": "Crm.fax",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Email",
+      "Field": "email",
+      "Label": "Crm.email",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Website",
+      "Field": "website",
+      "Label": "Crm.website",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Address",
+      "Field": "address",
+      "Label": "Crm.address",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Rem",
+      "Field": "rem",
+      "Label": "Crm.rem",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Status_Name",
+      "Field": "statusName",
+      "Label": "Crm.statusId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Repr_Name",
+      "Field": "reprName",
+      "Label": "Crm.reprId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Grp_Name",
+      "Field": "grpName",
+      "Label": "Crm.grpName",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Grp_Fcolor",
+      "Field": "grpFcolor",
+      "Label": "Crm.fcolor",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Grp_Bcolor",
+      "Field": "grpBcolor",
+      "Label": "Crm.bcolor",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Grp_Rem",
+      "Field": "grpRem",
+      "Label": "Crm.grpRem",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Itm_Name",
+      "Field": "itmName",
+      "Label": "Crm.itmId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Itm_Rem",
+      "Field": "itmRem",
+      "Label": "Crm.itmRem",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cont_Class_Rem",
+      "Field": "contClassRem",
+      "Label": "Crm.contClassRem",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+  ]
+}

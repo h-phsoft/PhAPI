@@ -1,0 +1,10 @@
+{
+  "Synonym": "Str_Vsitem",
+  "Select": "SELECT Item_Id AS Id, Item_Num||' '||Item_Name AS Name FROM Str_Vsitem",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Item_Num||' '||Item_Name) LIKE Lower('%{term}%')",
+    "storId": "Stor_Id={storId}"
+  },
+  "OrderBy": "Item_Num"
+}

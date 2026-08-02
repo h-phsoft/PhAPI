@@ -1,0 +1,61 @@
+{
+  "Name": "Emp_Salaries_Calculation",
+  "Synonym": "Emp_Sal",
+  "Sequence": "Emp_Sal_Seq",
+  "InsUser": false,
+  "hasChilds": true,
+  "Children": [
+    {
+      "Pkg": "Emp",
+      "Key": "SalaryCalculated",
+      "Table": "Emp_Salary_Calculated",
+      "Synonym": "Emp_Salcalc",
+      "cascadeDelete": true,
+      "Column": "SAL_ID",
+      "ColKey": "salId"
+    }
+   , {
+      "Pkg": "Emp",
+      "Key": "SalaryAttendance",
+      "Table": "Emp_Salary_Attendance",
+      "Synonym": "Emp_Salatt",
+      "cascadeDelete": true,
+      "Column": "SAL_ID",
+      "ColKey": "salId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Nyear",
+      "Field": "nyear",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Nmonth",
+      "Field": "nmonth",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Calcsalary",
+        "SynonymName": "Emp_Cod_Calcsal",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

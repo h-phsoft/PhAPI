@@ -1,0 +1,78 @@
+{
+  "Name": "Emp_Employee_Deo_Merge",
+  "Synonym": "Emp_Edeom",
+  "Sequence": "Emp_Edeom_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Edeo_Id",
+      "Field": "edeoId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Employee_Daily_Entout",
+        "SynonymName": "Emp_Edeo",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "edeoName"
+      }
+    }, {
+      "Name": "Audit_Id",
+      "Field": "auditId",
+      "DBType": "NUMBER",
+      "Default": "2",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Yesno",
+        "SynonymName": "Phs_Cod_Yesno",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "auditName"
+      }
+    }, {
+      "Name": "Excuse_Id",
+      "Field": "excuseId",
+      "DBType": "NUMBER",
+      "Default": "2",
+      "hasRelation": false
+    }, {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Eh",
+      "Field": "eh",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Em",
+      "Field": "em",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Oh",
+      "Field": "oh",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Om",
+      "Field": "om",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

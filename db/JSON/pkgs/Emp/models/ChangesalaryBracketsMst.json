@@ -1,0 +1,164 @@
+{
+  "Name": "Emp_Changesalary_Brackets_Mst",
+  "Synonym": "Emp_Mchsalbrkt",
+  "Sequence": "Emp_Mchsalbrkt_Seq",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Order": "Id Desc",
+  "InsUser": true,
+  "UpdUser": true,
+  "Select": "SELECT Id, Name, To_Char(Ddate, 'DD-MM-YYYY') AS Ddate, Rem, Ins_User, To_Char(Ins_Date, 'DD-MM-YYYY') AS Ins_Date, Upd_User, To_Char(Upd_Date, 'DD-MM-YYYY') AS Upd_Date FROM Emp_Mchsalbrkt",
+  "Insert": "INSERT INTO Emp_Mchsalbrkt (Id, Name, Ddate, Rem, Ins_User, Ins_Date) VALUES (?, ?, To_Date(?, 'DD-MM-YYYY'), ?, ?, Sysdate)",
+  "Update": "UPDATE Emp_Mchsalbrkt SET Name=?, Ddate=To_Date(?, 'DD-MM-YYYY'), Rem=?, Upd_User=?, Upd_Date=Sysdate WHERE Id=?",
+  "hasChilds": true,
+  "Children": [
+    {
+      "ChildKey": "child",
+      "Pkg": "Emp",
+      "Key": "ChangesalaryBracketsTrn",
+      "Table": "Emp_Changesalary_Brackets_Trn",
+      "Synonym": "Emp_Tchsalbrkt",
+      "cascadeDelete": true,
+      "Column": "Brkt_Id",
+      "ColKey": "brktId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "SysDate",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ins_User",
+      "Field": "insUser",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ins_Date",
+      "Field": "insDate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Upd_User",
+      "Field": "updUser",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Upd_Date",
+      "Field": "updDate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+  ]
+}

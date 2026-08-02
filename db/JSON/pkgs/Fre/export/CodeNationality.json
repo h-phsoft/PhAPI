@@ -1,0 +1,33 @@
+{
+  "Name": "Fre_Code_Nationality",
+  "Synonym": "Fre_Cod_Nat",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Code",
+      "Field": "code",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Code3",
+      "Field": "code3",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cntry_Name",
+      "Field": "cntryName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

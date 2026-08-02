@@ -1,0 +1,9 @@
+{
+  "Synonym": "Acc_Close",
+  "Select": "SELECT Id, Name AS Name FROM Acc_Close",
+  "Condition": "",
+  "Conds": {
+    "term": "Name LIKE '%{term}%'"
+  },
+  "OrderBy": "Ord"
+}

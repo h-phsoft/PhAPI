@@ -1,0 +1,9 @@
+{
+  "Synonym": "Cpy_Task",
+  "Select": "SELECT Id, Dept_Id||' - '||Unit_Id||' - '||Name AS Name FROM Cpy_Task",
+  "Condition": "Id>0",
+  "Conds": {
+    "term": "Lower(' '||Name) LIKE '%{term}%'"
+  },
+  "OrderBy": "Id"
+}

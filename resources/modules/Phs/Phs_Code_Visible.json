@@ -1,0 +1,132 @@
+{
+  "package": "Phs",
+  "module": "Phs",
+  "tableName": "Phs_Code_Visible",
+  "synonym": "Phs_Cod_Visible",
+  "primaryKey": "id",
+  "hasChilds": false,
+  "children": [],
+  "auditFields": {
+    "createdBy": "insUser",
+    "createdAt": "insDate",
+    "updatedBy": "updUser",
+    "updatedAt": "updDate"
+  },
+  "fields": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Id",
+        "Synonym": "Phs_Cod_Visible",
+        "Sequence": "Phs_Cod_Visible_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": false,
+      "relation": null
+    },
+    {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Status_Id",
+        "Synonym": "Phs_Cod_Visible",
+        "Sequence": "Phs_Cod_Visible_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Phs_Code_Status",
+        "refSynonym": "Phs_Cod_Status",
+        "primaryKey": "Id",
+        "foreignKey": "Status_Id",
+        "displayField": "Name",
+        "apiDisplayField": "statusName"
+      }
+    },
+    {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Name",
+        "Synonym": "Phs_Cod_Visible",
+        "Sequence": "Phs_Cod_Visible_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": false,
+      "relation": null
+    },
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Rem",
+        "Synonym": "Phs_Cod_Visible",
+        "Sequence": "Phs_Cod_Visible_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": null
+    }
+  ]
+}

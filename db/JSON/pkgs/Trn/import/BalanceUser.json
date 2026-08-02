@@ -1,0 +1,55 @@
+{
+  "Name": "Trn_Balance_User",
+  "Synonym": "Trn_Bln_User",
+  "Sequence": "Trn_Bln_User_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Mst_Id",
+      "Field": "mstId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Trn_Balance",
+        "SynonymName": "Trn_Bln",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "mstName"
+      }
+    }, {
+      "Name": "User_Id",
+      "Field": "userId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Users",
+        "SynonymName": "Cpy_User",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "userName"
+      }
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Status",
+        "SynonymName": "Phs_Cod_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

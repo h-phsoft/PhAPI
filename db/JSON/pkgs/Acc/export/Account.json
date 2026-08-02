@@ -1,0 +1,49 @@
+{
+  "Name": "Acc_Account_View",
+  "Synonym": "Acc_Vacc",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fname",
+      "Field": "fname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Type_Name",
+      "Field": "typeName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Name",
+      "Field": "statusName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dbcr_Name",
+      "Field": "dbcrName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Close_Name",
+      "Field": "closeName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

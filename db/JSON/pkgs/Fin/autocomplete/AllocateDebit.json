@@ -1,0 +1,9 @@
+{
+  "Synonym": "Fin_Alcdbt",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Fin_Alcdbt",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

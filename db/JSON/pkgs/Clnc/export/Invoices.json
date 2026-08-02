@@ -1,0 +1,33 @@
+{
+  "Name": "Clnc_Invoices",
+  "Synonym": "Clnc_Invoice",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Disc_Val",
+      "Field": "discVal",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Disc_Amt",
+      "Field": "discAmt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Disc_Reason",
+      "Field": "discReason",
+      "isSelected": false
+    }
+  ]
+}

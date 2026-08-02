@@ -1,0 +1,10 @@
+{
+  "Synonym": "Str_Item",
+  "Select": "SELECT Id, Num||' - '||Name AS Name FROM Str_Item ",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' - '||Name) LIKE Lower('%{term}%')",
+    "storId": "id NOT IN (SELECT item_Id From STR_Stores_Materiales Where stor_Id={storId})"
+  },
+  "OrderBy": "Num"
+}

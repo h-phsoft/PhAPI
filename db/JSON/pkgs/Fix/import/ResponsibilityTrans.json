@@ -1,0 +1,67 @@
+{
+  "Name": "Fix_Responsibility_Trans",
+  "Synonym": "Fix_Restrn",
+  "Sequence": "Fix_Restrn_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Mst_Id",
+      "Field": "mstId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Responsibility_Master",
+        "SynonymName": "Fix_Resmst",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "mstName"
+      }
+    }, {
+      "Name": "Ord",
+      "Field": "ord",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Fixd_Id",
+      "Field": "fixdId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Fixeds_Items",
+        "SynonymName": "Fix_Fixed",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "fixdName"
+      }
+    }, {
+      "Name": "Ftrn_Id",
+      "Field": "ftrnId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Input_Trans",
+        "SynonymName": "Fix_Intrn",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "ftrnName"
+      }
+    }, {
+      "Name": "Qnt",
+      "Field": "qnt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

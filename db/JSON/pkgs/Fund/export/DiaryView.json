@@ -1,0 +1,118 @@
+{
+  "Name": "Fund_Diary_View",
+  "Synonym": "Fund_Vdiary",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Acc_Num",
+      "Field": "accNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Name",
+      "Field": "accName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Rem",
+      "Field": "accRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cost_Num",
+      "Field": "costNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cost_Name",
+      "Field": "costName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Name",
+      "Field": "curnName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Rate",
+      "Field": "curnRate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Code",
+      "Field": "curnCode",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Type_Name",
+      "Field": "typeName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Box_Name",
+      "Field": "boxName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Box_Rem",
+      "Field": "boxRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Prints",
+      "Field": "prints",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Camt",
+      "Field": "camt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rate",
+      "Field": "rate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Amt",
+      "Field": "amt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Attach",
+      "Field": "attach",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Crdc",
+      "Field": "crdc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Debc",
+      "Field": "debc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Crd",
+      "Field": "crd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Deb",
+      "Field": "deb",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "Name": "Emp_Compensation_View",
+  "Synonym": "Emp_Vcom",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Comp_Num",
+      "Field": "compNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Comp_Name",
+      "Field": "compName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Comtype_Name",
+      "Field": "comtypeName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Amttype_Name",
+      "Field": "amttypeName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Taxbrkt_Name",
+      "Field": "taxbrktName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Taxpay_Name",
+      "Field": "taxpayName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Comp_Pamt",
+      "Field": "compPamt",
+      "isSelected": false
+    }
+  ]
+}

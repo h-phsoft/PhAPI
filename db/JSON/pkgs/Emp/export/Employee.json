@@ -1,0 +1,399 @@
+{
+  "Name": "Emp_Employee_View",
+  "Synonym": "Emp_Vemp",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Emp_Num",
+      "Field": "empNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Nnum",
+      "Field": "empNnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Pnum",
+      "Field": "empPnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Inum",
+      "Field": "empInum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Attnum",
+      "Field": "empAttnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Pcard",
+      "Field": "empPcard",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Kied",
+      "Field": "empKied",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Name",
+      "Field": "empName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Aname",
+      "Field": "empAname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Ename",
+      "Field": "empEname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Father",
+      "Field": "empFather",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Mother",
+      "Field": "empMother",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Pbirth",
+      "Field": "empPbirth",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Dbirth",
+      "Field": "empDbirth",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Addr",
+      "Field": "empAddr",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Phone1",
+      "Field": "empPhone1",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Phone2",
+      "Field": "empPhone2",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Mobile1",
+      "Field": "empMobile1",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Mobile2",
+      "Field": "empMobile2",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Fax",
+      "Field": "empFax",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Ext",
+      "Field": "empExt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Email1",
+      "Field": "empEmail1",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Email2",
+      "Field": "empEmail2",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Eperson",
+      "Field": "empEperson",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Ephone",
+      "Field": "empEphone",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Computer",
+      "Field": "empComputer",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Username",
+      "Field": "empUsername",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Bankacc",
+      "Field": "empBankacc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Bankname",
+      "Field": "empBankname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Gradcons",
+      "Field": "gradcons",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Gradpuns",
+      "Field": "gradpuns",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Gradsdate",
+      "Field": "gradsdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Csdate",
+      "Field": "csdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cedate",
+      "Field": "cedate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Graddays",
+      "Field": "graddays",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sdate",
+      "Field": "sdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Idate",
+      "Field": "idate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Edate",
+      "Field": "edate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Basesal",
+      "Field": "basesal",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Financesal",
+      "Field": "financesal",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Insursal",
+      "Field": "insursal",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Years",
+      "Field": "years",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Vacdays",
+      "Field": "vacdays",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Vachours",
+      "Field": "vachours",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Vacbdays",
+      "Field": "vacbdays",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Vacbhours",
+      "Field": "vacbhours",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Child",
+      "Field": "empChild",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Bankstatus_Name",
+      "Field": "bankstatusName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Name",
+      "Field": "statusName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Wstatus_Name",
+      "Field": "wstatusName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Military_Name",
+      "Field": "militaryName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Isowner_Name",
+      "Field": "isownerName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Lang_Name",
+      "Field": "langName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Edu_Name",
+      "Field": "eduName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Job_Name",
+      "Field": "jobName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dept_Name",
+      "Field": "deptName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sec_Name",
+      "Field": "secName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Level_Name",
+      "Field": "levelName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loc_Name",
+      "Field": "locName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spec1_Name",
+      "Field": "spec1Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spec2_Name",
+      "Field": "spec2Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spec3_Name",
+      "Field": "spec3Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spec4_Name",
+      "Field": "spec4Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Gender_Name",
+      "Field": "genderName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nat_Name",
+      "Field": "natName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Marital_Name",
+      "Field": "maritalName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Director_Name",
+      "Field": "directorName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Manager_Name",
+      "Field": "managerName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Firstappraisal_Name",
+      "Field": "firstappraisalName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Secondappraisal_Name",
+      "Field": "secondappraisalName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "User_Name",
+      "Field": "userName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acr_Name",
+      "Field": "acrName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Workshift_Name",
+      "Field": "workshiftName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Salgrp_Name",
+      "Field": "salgrpName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Appr_Name",
+      "Field": "apprName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grad_Grp_Name",
+      "Field": "gradGrpName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grad_Degree_Name",
+      "Field": "gradDegreeName",
+      "isSelected": false
+    }
+  ]
+}

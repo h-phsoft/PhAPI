@@ -1,0 +1,13 @@
+{
+  "Name": "Ped_Test_Categories",
+  "Synonym": "Ped_Test_Cats",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,1000 @@
+{
+  "Name": "Emp_Admin_Consideration_View",
+  "Synonym": "Emp_Vadmcons",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Order": "Ddate,Num",
+  "Actions": [
+  ],
+  "Options": {
+
+  },
+  "Fields": [
+    {
+      "Name": "Mst_Id",
+      "Expression": "",
+      "Field": "mstId",
+      "Autocomplete": {
+      },
+      "isVisible": "false",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Num",
+      "Expression": "",
+      "Field": "num",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Ddate",
+      "Expression": "To_char(Ddate,'DD-MM-YYYY')",
+      "Field": "ddate",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><", "%", "!%"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Emp_Id",
+      "Expression": "",
+      "Field": "empId",
+      "Autocomplete": {
+      },
+      "isVisible": "false",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Emp_Num",
+      "Expression": "",
+      "Field": "empNum",
+      "Autocomplete": {
+      },
+      "isVisible": "false",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Emp_Name",
+      "Expression": "",
+      "Field": "empName",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Emp_Fname",
+      "Expression": "",
+      "Field": "empFname",
+      "Autocomplete": {
+      },
+      "isVisible": "false",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cons_Id",
+      "Expression": "",
+      "Field": "consId",
+      "Autocomplete": {
+      },
+      "isVisible": "false",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cons_Name",
+      "Expression": "",
+      "Field": "consName",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Trn_Id",
+      "Expression": "",
+      "Field": "trnId",
+      "Autocomplete": {
+      },
+      "isVisible": "false",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Grp_Id",
+      "Expression": "",
+      "Field": "grpId",
+      "Autocomplete": {
+      },
+      "isVisible": "false",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Grp_Name",
+      "Expression": "",
+      "Field": "grpName",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Itm_Id",
+      "Expression": "",
+      "Field": "itmId",
+      "Autocomplete": {
+      },
+      "isVisible": "false",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Itm_Name",
+      "Expression": "",
+      "Field": "itmName",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Trn_Points",
+      "Expression": "",
+      "Field": "trnPoints",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Trn_Days",
+      "Expression": "",
+      "Field": "trnDays",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Mst_Rem",
+      "Expression": "",
+      "Field": "mstRem",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Trn_Rem",
+      "Expression": "",
+      "Field": "trnRem",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Dept_Id",
+      "Expression": "",
+      "Field": "deptId",
+      "Autocomplete": {
+      },
+      "isVisible": "false",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Dept_Name",
+      "Expression": "",
+      "Field": "deptName",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Sect_Id",
+      "Expression": "",
+      "Field": "sectId",
+      "Autocomplete": {
+      },
+      "isVisible": "false",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Sect_Name",
+      "Expression": "",
+      "Field": "sectName",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Job_Id",
+      "Expression": "",
+      "Field": "jobId",
+      "Autocomplete": {
+      },
+      "isVisible": "false",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Job_Name",
+      "Expression": "",
+      "Field": "jobName",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Level_Id",
+      "Expression": "",
+      "Field": "levelId",
+      "Autocomplete": {
+      },
+      "isVisible": "false",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Level_Name",
+      "Expression": "",
+      "Field": "levelName",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Spc1_Id",
+      "Expression": "",
+      "Field": "spc1Id",
+      "Autocomplete": {
+      },
+      "isVisible": "false",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Spc1_Name",
+      "Expression": "",
+      "Field": "spc1Name",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Spc2_Id",
+      "Expression": "",
+      "Field": "spc2Id",
+      "Autocomplete": {
+      },
+      "isVisible": "false",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Spc2_Name",
+      "Expression": "",
+      "Field": "spc2Name",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Spc3_Id",
+      "Expression": "",
+      "Field": "spc3Id",
+      "Autocomplete": {
+      },
+      "isVisible": "false",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Spc3_Name",
+      "Expression": "",
+      "Field": "spc3Name",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Spc4_Id",
+      "Expression": "",
+      "Field": "spc4Id",
+      "Autocomplete": {
+      },
+      "isVisible": "false",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Spc4_Name",
+      "Expression": "",
+      "Field": "spc4Name",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+  ]
+}

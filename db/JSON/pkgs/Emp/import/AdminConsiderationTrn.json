@@ -1,0 +1,80 @@
+{
+  "Name": "Emp_Admin_Consideration_Trn",
+  "Synonym": "Emp_Tadmcon",
+  "Sequence": "Emp_Tadmcon_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Macon_Id",
+      "Field": "maconId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Admin_Consideration_Mst",
+        "SynonymName": "Emp_Madmcon",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "maconName"
+      }
+    }, {
+      "Name": "Emp_Id",
+      "Field": "empId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Employee",
+        "SynonymName": "Emp_Emp",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "empName"
+      }
+    }, {
+      "Name": "Apprgrp_Id",
+      "Field": "apprgrpId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Appraisal_Grp",
+        "SynonymName": "Emp_Cod_Appraisal_Grp",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "apprgrpName"
+      }
+    }, {
+      "Name": "Appritm_Id",
+      "Field": "appritmId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Appraisal_Item",
+        "SynonymName": "Emp_Cod_Appraisal_Item",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "appritmName"
+      }
+    }, {
+      "Name": "Points",
+      "Field": "points",
+      "DBType": "NUMBER",
+      "Default": "100",
+      "hasRelation": false
+    }, {
+      "Name": "Days",
+      "Field": "days",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

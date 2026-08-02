@@ -1,0 +1,10 @@
+{
+  "Synonym": "Clnc_VProc",
+  "Select": "SELECT Proc_Id Id,Cat_Name||' - '|| Proc_Code||' - '||Proc_Name AS Name FROM Clnc_VProc",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(' ') LIKE '%{term}%'",
+    "specialId": "Cat_Special_Id={specialId}"
+  },
+  "OrderBy": "Proc_Code"
+}

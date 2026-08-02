@@ -1,0 +1,42 @@
+{
+  "Name": "Copy_Dashboard_Permission",
+  "Synonym": "Cpy_Dash_Perm",
+  "Sequence": "Cpy_Dash_Perm_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Pgrp_Id",
+      "Field": "pgrpId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Permission_Groups",
+        "SynonymName": "Cpy_Pgrp",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "pgrpName"
+      }
+    }, {
+      "Name": "Dashboard_Id",
+      "Field": "dashboardId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Dashboard_Blocks",
+        "SynonymName": "Phs_Dash_Blocks",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "dashboardName"
+      }
+    }, {
+      "Name": "Ok",
+      "Field": "ok",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }
+  ]
+}

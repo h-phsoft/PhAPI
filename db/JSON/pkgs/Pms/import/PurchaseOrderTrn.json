@@ -1,0 +1,73 @@
+{
+  "Name": "Pms_Purchase_Order_Trn",
+  "Synonym": "Pms_Tpurord",
+  "Sequence": "Pms_Tpurord_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Mst_Id",
+      "Field": "mstId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Pms_Purchase_Order_Mst",
+        "SynonymName": "Pms_Mpurord",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "mstName"
+      }
+    }, {
+      "Name": "Treq_Id",
+      "Field": "treqId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Pms_Request_Trn",
+        "SynonymName": "Pms_Treq",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "treqName"
+      }
+    }, {
+      "Name": "Item_Id",
+      "Field": "itemId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Items",
+        "SynonymName": "Str_Item",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "itemName"
+      }
+    }, {
+      "Name": "Qnt",
+      "Field": "qnt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Cqnt",
+      "Field": "cqnt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Price",
+      "Field": "price",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

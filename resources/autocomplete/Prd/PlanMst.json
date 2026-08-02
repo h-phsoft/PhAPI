@@ -1,0 +1,9 @@
+{
+  "Synonym": "Prd_Mplan",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Prd_Mplan",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

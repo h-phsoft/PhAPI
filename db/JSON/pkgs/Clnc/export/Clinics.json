@@ -1,0 +1,38 @@
+{
+  "Name": "Clnc_Clinics",
+  "Synonym": "Clnc_Clinic",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Email",
+      "Field": "email",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Phone1",
+      "Field": "phone1",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Phone2",
+      "Field": "phone2",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Phone3",
+      "Field": "phone3",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Address",
+      "Field": "address",
+      "isSelected": false
+    }
+  ]
+}

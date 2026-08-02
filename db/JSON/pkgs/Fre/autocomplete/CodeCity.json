@@ -1,0 +1,10 @@
+{
+  "Synonym": "Fre_Cod_City",
+  "Select": "SELECT Id, Name AS Name FROM Fre_Cod_City",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(' '||Name) LIKE Lower('%{term}%')",
+    "cntryId": "cntry_Id={cntryId}"
+  },
+  "OrderBy": "Id"
+}

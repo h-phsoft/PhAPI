@@ -1,0 +1,48 @@
+{
+  "Name": "Fre_Contact_Comodity",
+  "Synonym": "Fre_Cont_Comod",
+  "Sequence": "Fre_Cont_Comod_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Cont_Id",
+      "Field": "contId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Mng_Contact",
+        "SynonymName": "Mng_Cont",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "contName"
+      }
+    }, {
+      "Name": "Comod_Id",
+      "Field": "comodId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fre_Code_Commodity",
+        "SynonymName": "Fre_Cod_Comod",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "comodName"
+      }
+    }, {
+      "Name": "Descr",
+      "Field": "descr",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

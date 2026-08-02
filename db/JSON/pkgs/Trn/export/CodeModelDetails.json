@@ -1,0 +1,28 @@
+{
+  "Name": "Trn_Code_Model_Details",
+  "Synonym": "Trn_Cod_Model_Detail",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Axe",
+      "Field": "axe",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Wheel1weight",
+      "Field": "wheel1weight",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Wheel2weight",
+      "Field": "wheel2weight",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

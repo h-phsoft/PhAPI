@@ -1,0 +1,18 @@
+{
+  "Name": "Fre_Contact_Comodity",
+  "Synonym": "Fre_Cont_Comod",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Descr",
+      "Field": "descr",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

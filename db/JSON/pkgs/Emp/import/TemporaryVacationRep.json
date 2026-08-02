@@ -1,0 +1,59 @@
+{
+  "Name": "Emp_Temporary_Vacation_Rep",
+  "Synonym": "Emp_Tmpvacrep",
+  "Sequence": "Emp_Tmpvacrep_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Emp_Id",
+      "Field": "empId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Employee",
+        "SynonymName": "Emp_Emp",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "empName"
+      }
+    }, {
+      "Name": "Sdate",
+      "Field": "sdate",
+      "DBType": "DATE",
+      "Default": "Sysdate",
+      "hasRelation": false
+    }, {
+      "Name": "Base",
+      "Field": "base",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Done",
+      "Field": "done",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Blnc",
+      "Field": "blnc",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Amt",
+      "Field": "amt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

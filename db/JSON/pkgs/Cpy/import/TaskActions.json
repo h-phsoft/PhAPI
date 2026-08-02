@@ -1,0 +1,61 @@
+{
+  "Name": "Copy_Task_Actions",
+  "Synonym": "Cpy_Task_Action",
+  "Sequence": "Cpy_Task_Action_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Task_Id",
+      "Field": "taskId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Task",
+        "SynonymName": "Cpy_Task",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "taskName"
+      }
+    }, {
+      "Name": "Action_Id",
+      "Field": "actionId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Code_Task_Action",
+        "SynonymName": "Cpy_Cod_Task_Action",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "actionName"
+      }
+    }, {
+      "Name": "User_Id",
+      "Field": "userId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Users",
+        "SynonymName": "Cpy_User",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "userName"
+      }
+    }, {
+      "Name": "Describtion",
+      "Field": "describtion",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

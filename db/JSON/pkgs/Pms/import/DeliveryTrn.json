@@ -1,0 +1,79 @@
+{
+  "Name": "Pms_Delivery_Trn",
+  "Synonym": "Pms_Tdeliv",
+  "Sequence": "Pms_Tdeliv_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Mst_Id",
+      "Field": "mstId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Pms_Delivery_Mst",
+        "SynonymName": "Pms_Mdeliv",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "mstName"
+      }
+    }, {
+      "Name": "Tord_Id",
+      "Field": "tordId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Pms_Purchase_Order_Trn",
+        "SynonymName": "Pms_Tpurord",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "tordName"
+      }
+    }, {
+      "Name": "Item_Id",
+      "Field": "itemId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Items",
+        "SynonymName": "Str_Item",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "itemName"
+      }
+    }, {
+      "Name": "Qnt",
+      "Field": "qnt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Price",
+      "Field": "price",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Camt",
+      "Field": "camt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Amt",
+      "Field": "amt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

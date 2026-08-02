@@ -1,0 +1,9 @@
+{
+  "Synonym": "Prd_Cod_Exec_Time",
+  "Select": "SELECT Id,Name AS Name FROM Prd_Cod_Exec_Time",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Name"
+}

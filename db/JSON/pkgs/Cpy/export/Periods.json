@@ -1,0 +1,39 @@
+{
+  "Name": "Copy_Periods_View",
+  "Synonym": "Cpy_Vperiod",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Period_Num",
+      "Field": "periodNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Period_Name",
+      "Field": "periodName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Period_Rem",
+      "Field": "periodRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Name",
+      "Field": "statusName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Period_Sdate",
+      "Field": "periodSdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Period_Edate",
+      "Field": "periodEdate",
+      "isSelected": false
+    }
+  ]
+}

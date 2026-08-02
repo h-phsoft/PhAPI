@@ -1,0 +1,9 @@
+{
+  "Synonym": "Fre_Driv",
+  "Select": "SELECT Id, FName||' '||LName AS Name FROM Fre_Driv",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(' '||FName) LIKE '%{term}%'"
+  },
+  "OrderBy": "Id"
+}

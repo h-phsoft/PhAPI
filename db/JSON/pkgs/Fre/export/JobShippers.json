@@ -1,0 +1,13 @@
+{
+  "Name": "Fre_Job_Shippers",
+  "Synonym": "Fre_Ship",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+  ]
+}

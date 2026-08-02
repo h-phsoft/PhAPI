@@ -1,0 +1,9 @@
+{
+  "Synonym": "ACC_VBANK_TRN",
+  "Select": "SELECT MST_ID Id, ACC_Num||' - '||ACC_NAME||' - '||MST_DATE||' - '||MST_NUM AS Name FROM ACC_VBANK_TRN",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(ACC_Num||' - '||ACC_NAME||' - '||MST_DATE||' - '||MST_NUM) LIKE '%{term}%'"
+  },
+  "OrderBy": "MST_DATE"
+}

@@ -1,0 +1,28 @@
+{
+  "Name": "Clnc_Laboratory_Send",
+  "Synonym": "Clnc_Labor_Send",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Qnt",
+      "Field": "qnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cqnt",
+      "Field": "cqnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Descr",
+      "Field": "descr",
+      "isSelected": false
+    }
+  ]
+}

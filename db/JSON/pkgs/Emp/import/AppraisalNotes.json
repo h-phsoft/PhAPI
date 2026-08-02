@@ -1,0 +1,86 @@
+{
+  "Name": "Emp_Appraisal_Notes",
+  "Synonym": "Emp_Apprnote",
+  "Sequence": "Emp_Apprnote_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Emp_Id",
+      "Field": "empId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Employee",
+        "SynonymName": "Emp_Emp",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "empName"
+      }
+    }, {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Sign",
+        "SynonymName": "Phs_Cod_Sign",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "typeName"
+      }
+    }, {
+      "Name": "Apprgrp_Id",
+      "Field": "apprgrpId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Appraisal_Grp",
+        "SynonymName": "Emp_Cod_Appraisal_Grp",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "apprgrpName"
+      }
+    }, {
+      "Name": "Appritm_Id",
+      "Field": "appritmId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Appraisal_Item",
+        "SynonymName": "Emp_Cod_Appraisal_Item",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "appritmName"
+      }
+    }, {
+      "Name": "Points",
+      "Field": "points",
+      "DBType": "NUMBER",
+      "Default": "100",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

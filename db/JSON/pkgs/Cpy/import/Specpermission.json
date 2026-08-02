@@ -1,0 +1,35 @@
+{
+  "Name": "Copy_Specpermission",
+  "Synonym": "Cpy_Specperm",
+  "Sequence": "Cpy_Specperm_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Perm_Id",
+      "Field": "permId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Permision",
+        "SynonymName": "Cpy_Perm",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "permName"
+      }
+    }, {
+      "Name": "Rel_Id",
+      "Field": "relId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

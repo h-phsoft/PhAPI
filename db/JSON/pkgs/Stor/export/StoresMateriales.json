@@ -1,0 +1,43 @@
+{
+  "Name": "Stor_Stores_Materiales",
+  "Synonym": "Stor_Smat",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Cqnt",
+      "Field": "cqnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Bqnt",
+      "Field": "bqnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cwqnt",
+      "Field": "cwqnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Camt",
+      "Field": "camt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Req_Limit",
+      "Field": "reqLimit",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Min_Limit",
+      "Field": "minLimit",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Max_Limit",
+      "Field": "maxLimit",
+      "isSelected": false
+    }
+  ]
+}

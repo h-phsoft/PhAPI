@@ -1,0 +1,48 @@
+{
+  "Name": "Phs_Programs_Specprivileges",
+  "Synonym": "Phs_Mprgspriv",
+  "Sequence": "Phs_Mprgspriv_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Mprg_Id",
+      "Field": "mprgId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Menu_Programs",
+        "SynonymName": "Phs_Mprg",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "mprgName"
+      }
+    }, {
+      "Name": "Sprv_Id",
+      "Field": "sprvId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Special_Privileges",
+        "SynonymName": "Phs_Specpriv",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "sprvName"
+      }
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Cond",
+      "Field": "cond",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

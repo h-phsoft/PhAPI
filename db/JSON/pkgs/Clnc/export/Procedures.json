@@ -1,0 +1,28 @@
+{
+  "Name": "Clnc_Procedures",
+  "Synonym": "Clnc_Proc",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Code",
+      "Field": "code",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Price",
+      "Field": "price",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Vat",
+      "Field": "vat",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "Name": "Emp_Change_Salary_Employees",
+  "Synonym": "Emp_Csalemp",
+  "Sequence": "Emp_Csalemp_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Csal_Id",
+      "Field": "csalId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Change_Salary",
+        "SynonymName": "Emp_Csal",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "csalName"
+      }
+    }, {
+      "Name": "Emp_Id",
+      "Field": "empId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Employee",
+        "SynonymName": "Emp_Emp",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "empName"
+      }
+    }, {
+      "Name": "Osal",
+      "Field": "osal",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Chnge",
+      "Field": "chnge",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Nsal",
+      "Field": "nsal",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

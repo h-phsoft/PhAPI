@@ -1,0 +1,35 @@
+{
+  "Name": "Emp_Application_Fitfor",
+  "Synonym": "Emp_Appfit",
+  "Sequence": "Emp_Appfit_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Mapp_Id",
+      "Field": "mappId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Application",
+        "SynonymName": "Emp_Appl",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "mappName"
+      }
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

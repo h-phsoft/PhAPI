@@ -1,0 +1,1522 @@
+{
+  "Name": "Acc_Voucher_View",
+  "Synonym": "Acc_Vvoucher",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Order": "Id",
+  "Actions": [
+  ],
+  "Options": {
+
+  },
+  "Fields": [
+    {
+      "Name": "Mst_Id",
+      "Expression": "",
+      "Field": "mstId",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Bran_Id",
+      "Expression": "",
+      "Field": "branId",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Bran_Name",
+      "Expression": "",
+      "Field": "branName",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Period_Id",
+      "Expression": "",
+      "Field": "periodId",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Period_Name",
+      "Expression": "",
+      "Field": "periodName",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Period_Sdate",
+      "Expression": "",
+      "Field": "periodSdate",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><", "%", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Period_Edate",
+      "Expression": "",
+      "Field": "periodEdate",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><", "%", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Src_Id",
+      "Expression": "",
+      "Field": "srcId",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Src_Name",
+      "Expression": "",
+      "Field": "srcName",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Commit_Id",
+      "Expression": "",
+      "Field": "commitId",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Status_Name",
+      "Expression": "",
+      "Field": "statusName",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Mst_Num",
+      "Expression": "",
+      "Field": "mstNum",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Mst_Pnum",
+      "Expression": "",
+      "Field": "mstPnum",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Mst_Date",
+      "Expression": "",
+      "Field": "mstDate",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><", "%", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Doc_Id",
+      "Expression": "",
+      "Field": "docId",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Doc_Name",
+      "Expression": "",
+      "Field": "docName",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Mst_Docn",
+      "Expression": "",
+      "Field": "mstDocn",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Mst_Docd",
+      "Expression": "",
+      "Field": "mstDocd",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><", "%", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Mst_Rem",
+      "Expression": "",
+      "Field": "mstRem",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Mins_User",
+      "Expression": "",
+      "Field": "minsUser",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Mins_Date",
+      "Expression": "",
+      "Field": "minsDate",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><", "%", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Mupd_User",
+      "Expression": "",
+      "Field": "mupdUser",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Mupd_Date",
+      "Expression": "",
+      "Field": "mupdDate",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><", "%", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Trn_Id",
+      "Expression": "",
+      "Field": "trnId",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cost_Id",
+      "Expression": "",
+      "Field": "costId",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cost_Num",
+      "Expression": "",
+      "Field": "costNum",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Cost_Name",
+      "Expression": "",
+      "Field": "costName",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Acc_Id",
+      "Expression": "",
+      "Field": "accId",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Acc_Num",
+      "Expression": "",
+      "Field": "accNum",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Acc_Name",
+      "Expression": "",
+      "Field": "accName",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Acc_Rid",
+      "Expression": "",
+      "Field": "accRid",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Racc_Num",
+      "Expression": "",
+      "Field": "raccNum",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Racc_Name",
+      "Expression": "",
+      "Field": "raccName",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Tdoc_Id",
+      "Expression": "",
+      "Field": "tdocId",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Tdoc_Name",
+      "Expression": "",
+      "Field": "tdocName",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Trn_Docn",
+      "Expression": "",
+      "Field": "trnDocn",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Trn_Docd",
+      "Expression": "",
+      "Field": "trnDocd",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><", "%", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Trn_Ord",
+      "Expression": "",
+      "Field": "trnOrd",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Trn_Deb",
+      "Expression": "",
+      "Field": "trnDeb",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Trn_Crd",
+      "Expression": "",
+      "Field": "trnCrd",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Curn_Id",
+      "Expression": "",
+      "Field": "curnId",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Curn_Name",
+      "Expression": "",
+      "Field": "curnName",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Curn_Code",
+      "Expression": "",
+      "Field": "curnCode",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Curn_Rate",
+      "Expression": "",
+      "Field": "curnRate",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Trn_Debc",
+      "Expression": "",
+      "Field": "trnDebc",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Trn_Crdc",
+      "Expression": "",
+      "Field": "trnCrdc",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Trn_Rem",
+      "Expression": "",
+      "Field": "trnRem",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Trn_Rid",
+      "Expression": "",
+      "Field": "trnRid",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Tins_User",
+      "Expression": "",
+      "Field": "tinsUser",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Tins_Date",
+      "Expression": "",
+      "Field": "tinsDate",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><", "%", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Tupd_User",
+      "Expression": "",
+      "Field": "tupdUser",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Tupd_Date",
+      "Expression": "",
+      "Field": "tupdDate",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><", "%", "!%"],
+      "isDisplay": "true",
+      "isGroup": "false",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": false,
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+  ]
+}

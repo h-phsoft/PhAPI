@@ -1,0 +1,148 @@
+{
+  "Name": "Bank_Payment_Order",
+  "Synonym": "Bank_Pord",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Vhr_Did",
+      "Field": "vhrDid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rnum",
+      "Field": "rnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rdate",
+      "Field": "rdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Edate",
+      "Field": "edate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Execdate",
+      "Field": "execdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Rate",
+      "Field": "curnRate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Excamt",
+      "Field": "excamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Examt",
+      "Field": "examt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ccom",
+      "Field": "ccom",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Com",
+      "Field": "com",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Exccom",
+      "Field": "exccom",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Excom",
+      "Field": "excom",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Date",
+      "Field": "statusDate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Descr",
+      "Field": "statusDescr",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dcamt",
+      "Field": "dcamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Damt",
+      "Field": "damt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mnum",
+      "Field": "mnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mdate",
+      "Field": "mdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Phnby",
+      "Field": "phnby",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Correspondent",
+      "Field": "correspondent",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Recipient",
+      "Field": "recipient",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tdate",
+      "Field": "tdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tnote",
+      "Field": "tnote",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dcust",
+      "Field": "dcust",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Reason",
+      "Field": "reason",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

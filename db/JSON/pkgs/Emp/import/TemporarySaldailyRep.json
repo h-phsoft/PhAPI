@@ -1,0 +1,34 @@
+{
+  "Name": "Emp_Temporary_Saldaily_Rep",
+  "Synonym": "Emp_Tmpsaldlyrep",
+  "Sequence": "Emp_Tmpsaldlyrep_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Ord",
+      "Field": "ord",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Dbt",
+      "Field": "dbt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Crd",
+      "Field": "crd",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Vdesc",
+      "Field": "vdesc",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

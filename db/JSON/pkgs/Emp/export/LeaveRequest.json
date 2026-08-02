@@ -1,0 +1,119 @@
+{
+  "Name": "Emp_Leave_Request_View",
+  "Synonym": "Emp_Vleavereq",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Emp_Num",
+      "Field": "empNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Name",
+      "Field": "empName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Fname",
+      "Field": "empFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dept_Name",
+      "Field": "deptName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sect_Name",
+      "Field": "sectName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Job_Name",
+      "Field": "jobName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Level_Name",
+      "Field": "levelName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc1_Name",
+      "Field": "spc1Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc2_Name",
+      "Field": "spc2Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc3_Name",
+      "Field": "spc3Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc4_Name",
+      "Field": "spc4Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Req_Num",
+      "Field": "reqNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Req_Ddate",
+      "Field": "reqDdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Type_Name",
+      "Field": "typeName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Approve_Name",
+      "Field": "approveName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Req_Sdate",
+      "Field": "reqSdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Req_Shour",
+      "Field": "reqShour",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Req_Sminute",
+      "Field": "reqSminute",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Req_Edate",
+      "Field": "reqEdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Req_Ehour",
+      "Field": "reqEhour",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Req_Eminute",
+      "Field": "reqEminute",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Req_Rem",
+      "Field": "reqRem",
+      "isSelected": false
+    }
+  ]
+}

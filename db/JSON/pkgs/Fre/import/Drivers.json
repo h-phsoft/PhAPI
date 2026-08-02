@@ -1,0 +1,84 @@
+{
+  "Name": "Fre_Drivers",
+  "Synonym": "Fre_Driv",
+  "Sequence": "Fre_Driv_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Natid",
+      "Field": "natid",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Fname",
+      "Field": "fname",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Lname",
+      "Field": "lname",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Father",
+      "Field": "father",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Mother",
+      "Field": "mother",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Phone",
+      "Field": "phone",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Mobile",
+      "Field": "mobile",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Kind_Id",
+      "Field": "kindId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fre_Code_Kind",
+        "SynonymName": "Fre_Cod_Kind",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "kindName"
+      }
+    }, {
+      "Name": "List_Id",
+      "Field": "listId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fre_Code_List",
+        "SynonymName": "Fre_Cod_List",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "listName"
+      }
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

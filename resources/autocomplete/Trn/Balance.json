@@ -1,0 +1,9 @@
+{
+  "Synonym": "Trn_Bln",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Trn_Bln",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

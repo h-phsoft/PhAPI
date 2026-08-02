@@ -1,0 +1,55 @@
+{
+  "Name": "Ped_Test_Categories",
+  "Synonym": "Ped_Test_Cats",
+  "Sequence": "Ped_Test_Cats_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Status",
+        "SynonymName": "Phs_Cod_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }, {
+      "Name": "Test_Id",
+      "Field": "testId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Ped_Tests",
+        "SynonymName": "Ped_Test",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "testName"
+      }
+    }, {
+      "Name": "Cat_Id",
+      "Field": "catId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Ped_Categories",
+        "SynonymName": "Ped_Cats",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "catName"
+      }
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

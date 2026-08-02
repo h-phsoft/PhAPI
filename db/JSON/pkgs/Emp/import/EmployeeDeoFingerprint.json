@@ -1,0 +1,47 @@
+{
+  "Name": "Emp_Employee_Deo_Fingerprint",
+  "Synonym": "Emp_Edeof",
+  "Sequence": "Emp_Edeof_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Edeo_Id",
+      "Field": "edeoId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Employee_Daily_Entout",
+        "SynonymName": "Emp_Edeo",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "edeoName"
+      }
+    }, {
+      "Name": "Nhour",
+      "Field": "nhour",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Nminute",
+      "Field": "nminute",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

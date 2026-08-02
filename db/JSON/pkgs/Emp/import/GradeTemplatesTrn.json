@@ -1,0 +1,73 @@
+{
+  "Name": "Emp_Grade_Templates_Trn",
+  "Synonym": "Emp_Gradtrn",
+  "Sequence": "Emp_Gradtrn_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Grad_Id",
+      "Field": "gradId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Grade_Templates_Mst",
+        "SynonymName": "Emp_Gradmst",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "gradName"
+      }
+    }, {
+      "Name": "Grp_Id",
+      "Field": "grpId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Gradgrp",
+        "SynonymName": "Emp_Cod_Gradgrp",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "grpName"
+      }
+    }, {
+      "Name": "Degree_Id",
+      "Field": "degreeId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Graddegree",
+        "SynonymName": "Emp_Cod_Graddegree",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "degreeName"
+      }
+    }, {
+      "Name": "Days",
+      "Field": "days",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Minsal",
+      "Field": "minsal",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Maxsal",
+      "Field": "maxsal",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Trem",
+      "Field": "trem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

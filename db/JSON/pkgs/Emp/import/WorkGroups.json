@@ -1,0 +1,35 @@
+{
+  "Name": "Emp_Work_Groups",
+  "Synonym": "Emp_Wrkgrp",
+  "Sequence": "Emp_Wrkgrp_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Wgrp_Type",
+        "SynonymName": "Emp_Cod_Wgrp_Type",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "typeName"
+      }
+    }
+  ]
+}

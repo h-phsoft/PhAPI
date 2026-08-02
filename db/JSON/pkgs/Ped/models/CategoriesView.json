@@ -1,0 +1,78 @@
+{
+  "Name": "Ped_Categories_View",
+  "Synonym": "Ped_Vcats",
+  "Sequence": "Ped_Vcats_Seq",
+  "Order": "Id",
+  "InsUser": true,
+  "UpdUser": true,
+  "AutoIncrement": true,
+  "AutoNumber": {
+    "Status": false,
+    "Field": "num",
+    "Aggregate": "",
+    "Condition": ""
+  },
+  "Select": "SELECT Id, Name, Symbol, Rem FROM Ped_Vcats",
+  "Insert": "",
+  "Update": "",
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": false
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": false
+    }, {
+      "Name": "Symbol",
+      "Field": "symbol",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": true
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": true
+    }
+  ]
+}

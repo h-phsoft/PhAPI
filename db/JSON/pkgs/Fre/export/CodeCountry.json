@@ -1,0 +1,58 @@
+{
+  "Name": "Fre_Code_Country",
+  "Synonym": "Fre_Cod_Cntry",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Code",
+      "Field": "code",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Phone",
+      "Field": "phone",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Symbol",
+      "Field": "symbol",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Capital",
+      "Field": "capital",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Currency",
+      "Field": "currency",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Continent",
+      "Field": "continent",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Continent_Code",
+      "Field": "continentCode",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Alpha_3",
+      "Field": "alpha3",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

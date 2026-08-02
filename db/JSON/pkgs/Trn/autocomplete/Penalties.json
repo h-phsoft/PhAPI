@@ -1,0 +1,9 @@
+{
+  "Synonym": "Trn_Penalty",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Trn_Penalty",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

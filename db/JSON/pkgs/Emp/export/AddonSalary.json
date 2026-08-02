@@ -1,0 +1,154 @@
+{
+  "Name": "Emp_Addon_Salary_View",
+  "Synonym": "Emp_Vaosal",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Aosal_Num",
+      "Field": "aosalNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Aosal_Ddate",
+      "Field": "aosalDdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Aosal_Docn",
+      "Field": "aosalDocn",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Aosal_Docd",
+      "Field": "aosalDocd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Aosalemp_Sal",
+      "Field": "aosalempSal",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Aosalemp_Amt",
+      "Field": "aosalempAmt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Aosalemp_Rem",
+      "Field": "aosalempRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Num",
+      "Field": "empNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Name",
+      "Field": "empName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Fname",
+      "Field": "empFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dept_Name",
+      "Field": "deptName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sect_Name",
+      "Field": "sectName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Job_Name",
+      "Field": "jobName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Level_Name",
+      "Field": "levelName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc1_Name",
+      "Field": "spc1Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc2_Name",
+      "Field": "spc2Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc3_Name",
+      "Field": "spc3Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc4_Name",
+      "Field": "spc4Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cod_Aff_Name",
+      "Field": "codAffName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cod_Affsal_Name",
+      "Field": "codAffsalName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cod_Chngtype_Name",
+      "Field": "codChngtypeName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Taxbrkt_Name",
+      "Field": "taxbrktName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Aosal_Nyear",
+      "Field": "aosalNyear",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Aosal_Nmonth",
+      "Field": "aosalNmonth",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Aosal_Perc",
+      "Field": "aosalPerc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Aosal_Amt",
+      "Field": "aosalAmt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Aosal_Nmin",
+      "Field": "aosalNmin",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Aosal_Nmax",
+      "Field": "aosalNmax",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Aosal_Rem",
+      "Field": "aosalRem",
+      "isSelected": false
+    }
+  ]
+}

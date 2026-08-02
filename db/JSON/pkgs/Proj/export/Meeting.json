@@ -1,0 +1,53 @@
+{
+  "Name": "Proj_Meeting",
+  "Synonym": "Proj_Meet",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Esdate",
+      "Field": "esdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Eedate",
+      "Field": "eedate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Asdate",
+      "Field": "asdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Aedate",
+      "Field": "aedate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Location",
+      "Field": "location",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Title",
+      "Field": "title",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Exter_Emp",
+      "Field": "exterEmp",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Result",
+      "Field": "result",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

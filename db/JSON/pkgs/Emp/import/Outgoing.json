@@ -1,0 +1,54 @@
+{
+  "Name": "Emp_Outgoing",
+  "Synonym": "Emp_Out",
+  "Sequence": "Emp_Out_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Day_Id",
+      "Field": "dayId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Daily",
+        "SynonymName": "Emp_Day",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "dayName"
+      }
+    }, {
+      "Name": "Emp_Id",
+      "Field": "empId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Employee",
+        "SynonymName": "Emp_Emp",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "empName"
+      }
+    }, {
+      "Name": "Nhour",
+      "Field": "nhour",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Nminute",
+      "Field": "nminute",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

@@ -1,0 +1,607 @@
+{
+  "Name": "Emp_Application",
+  "Synonym": "Emp_Appl",
+  "Sequence": "Emp_Appl_Seq",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Order": "Id Desc",
+  "InsUser": true,
+  "UpdUser": true,
+  "Select": "SELECT Id, Recr_Id, Num, To_Char(Ddate, 'DD-MM-YYYY') AS Ddate, Name, Father, Mother, Pbirth, To_Char(Dbirth, 'DD-MM-YYYY') AS Dbirth, Natnum, Kied, Phone, Mobile, Email, Address, Gender_Id, Military_Id, Martial_Id, Nat_Id, Status_Id, Result_Id, Reqsal, Language_Id, Computer_Id, Technical_Id, Interview_Id, Rem FROM Emp_Appl",
+  "Insert": "INSERT INTO Emp_Appl (Id, Recr_Id, Num, Ddate, Name, Mobile, Email, Gender_Id, Military_Id, Martial_Id, Nat_Id, Reqsal, Rem, Status_Id, Result_Id, Language_Id, Computer_Id, Technical_Id, Interview_Id, Ins_User, Ins_Date) VALUES (?, ?, ?, To_Date(?, 'DD-MM-YYYY'), ?, ?, ?, ?, ?, ?, ?, ?, ?, 0, 0, 0, 0, 0, 0, ?, Sysdate)",
+  "Update": "UPDATE Emp_Appl SET Recr_Id=?, Num=?, Ddate=To_Date(?, 'DD-MM-YYYY'), Name=?, Mobile=?, Email=?, Gender_Id=?, Military_Id=?, Martial_Id=?, Nat_Id=?, Reqsal=?, Rem=?, Status_Id=?, Result_Id=?,Language_Id=?, Computer_Id=?, Technical_Id=?, Interview_Id=?, Upd_User=?, Upd_Date=Sysdate WHERE Id=?",
+  "hasChilds": false,
+  "Children": [
+  ],
+  "Columns": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Recr_Id",
+      "Field": "recrId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Recruitment",
+        "SynonymName": "Emp_Recr",
+        "CurId": "Recr_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "recrName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": true,
+      "Autonumber": {
+        "Mode": "11",
+        "Aggr": "Max",
+        "Column": "Num",
+        "Synonym": "Emp_Appl",
+        "Sequence": "Emp_Appl_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "sysdate",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Father",
+      "Field": "father",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": false,
+      "update": false,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Mother",
+      "Field": "mother",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": false,
+      "update": false,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Pbirth",
+      "Field": "pbirth",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": false,
+      "update": false,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Dbirth",
+      "Field": "dbirth",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": false,
+      "update": false,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Natnum",
+      "Field": "natnum",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": false,
+      "update": false,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Kied",
+      "Field": "kied",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": false,
+      "update": false,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Phone",
+      "Field": "phone",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": false,
+      "update": false,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Mobile",
+      "Field": "mobile",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Email",
+      "Field": "email",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Address",
+      "Field": "address",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": false,
+      "update": false,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Gender_Id",
+      "Field": "genderId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Gender",
+        "SynonymName": "Phs_Cod_Gender",
+        "CurId": "Gender_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "genderName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Military_Id",
+      "Field": "militaryId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Military_Status",
+        "SynonymName": "Phs_Cod_Military",
+        "CurId": "Military_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "militaryName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Martial_Id",
+      "Field": "martialId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "2",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Marital",
+        "SynonymName": "Phs_Cod_Marital",
+        "CurId": "Martial_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "martialName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Nat_Id",
+      "Field": "natId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Nationality",
+        "SynonymName": "Emp_Cod_Nat",
+        "CurId": "Nat_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "natName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Reqsal",
+      "Field": "reqsal",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "3",
+      "Precision": "17",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "0",
+      "query": true,
+      "insert": false,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Approve_Status",
+        "SynonymName": "Phs_Cod_Approve",
+        "CurId": "Status_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Result_Id",
+      "Field": "resultId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "2",
+      "Default": "0",
+      "query": true,
+      "insert": false,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_App_Result",
+        "SynonymName": "Emp_Cod_App_Result",
+        "CurId": "Result_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "resultName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Language_Id",
+      "Field": "languageId",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "3",
+      "Precision": "10",
+      "Default": "0",
+      "query": true,
+      "insert": false,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Testmarks",
+        "SynonymName": "Emp_Cod_Testmark",
+        "CurId": "Language_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "languageName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Computer_Id",
+      "Field": "computerId",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "3",
+      "Precision": "10",
+      "Default": "0",
+      "query": true,
+      "insert": false,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Testmarks",
+        "SynonymName": "Emp_Cod_Testmark",
+        "CurId": "Computer_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "computerName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Technical_Id",
+      "Field": "technicalId",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "3",
+      "Precision": "10",
+      "Default": "0",
+      "query": true,
+      "insert": false,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Testmarks",
+        "SynonymName": "Emp_Cod_Testmark",
+        "CurId": "Technical_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "technicalName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Interview_Id",
+      "Field": "interviewId",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "3",
+      "Precision": "10",
+      "Default": "0",
+      "query": true,
+      "insert": false,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Testmarks",
+        "SynonymName": "Emp_Cod_Testmark",
+        "CurId": "Interview_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "interviewName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+  ]
+}

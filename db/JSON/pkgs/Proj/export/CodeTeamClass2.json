@@ -1,0 +1,18 @@
+{
+  "Name": "Proj_Code_Team_Class2",
+  "Synonym": "Proj_Cod_Team_Class2",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

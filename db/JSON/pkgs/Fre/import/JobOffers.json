@@ -1,0 +1,48 @@
+{
+  "Name": "Fre_Job_Offers",
+  "Synonym": "Fre_Jobofer",
+  "Sequence": "Fre_Jobofer_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Job_Id",
+      "Field": "jobId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Ofer_Id",
+      "Field": "oferId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fre_Moffers",
+        "SynonymName": "Fre_Moffer",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "oferName"
+      }
+    }, {
+      "Name": "Cont_Id",
+      "Field": "contId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Mng_Contact",
+        "SynonymName": "Mng_Cont",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "contName"
+      }
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

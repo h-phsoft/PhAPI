@@ -1,0 +1,18 @@
+{
+  "Name": "Stor_Code_Color",
+  "Synonym": "Stor_Cod_Color",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

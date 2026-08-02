@@ -1,0 +1,53 @@
+{
+  "Name": "Fund_Box_View",
+  "Synonym": "Fund_Vbox",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Box_Name",
+      "Field": "boxName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Box_Rem",
+      "Field": "boxRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Num",
+      "Field": "accNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Name",
+      "Field": "accName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Rem",
+      "Field": "accRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "User_Name",
+      "Field": "userName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "User_Logon",
+      "Field": "userLogon",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Name",
+      "Field": "statusName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Rem",
+      "Field": "statusRem",
+      "isSelected": false
+    }
+  ]
+}

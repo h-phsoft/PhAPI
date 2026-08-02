@@ -1,0 +1,66 @@
+{
+  "Name": "Notif_Table_Event_Actions",
+  "Synonym": "Notif_Table_Event_Action",
+  "Sequence": "Notif_Table_Event_Action_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Tevent_Id",
+      "Field": "teventId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Notif_Table_Events",
+        "SynonymName": "Notif_Table_Eevnt",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "teventName"
+      }
+    }, {
+      "Name": "Field_Id",
+      "Field": "fieldId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Notif_Tables_Fields",
+        "SynonymName": "Notif_Table_Fld",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "fieldName"
+      }
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Dname",
+      "Field": "dname",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Api",
+      "Field": "api",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Icon",
+      "Field": "icon",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

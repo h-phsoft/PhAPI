@@ -1,0 +1,67 @@
+{
+  "Name": "Emp_Deduction",
+  "Synonym": "Emp_Ded",
+  "Sequence": "Emp_Ded_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Amount_Type",
+        "SynonymName": "Phs_Cod_Amttype",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "typeName"
+      }
+    }, {
+      "Name": "Brkt_Id",
+      "Field": "brktId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Tax_Brackets_Master",
+        "SynonymName": "Emp_Taxbrkt",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "brktName"
+      }
+    }, {
+      "Name": "Taxpay_Id",
+      "Field": "taxpayId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Taxpay",
+        "SynonymName": "Emp_Cod_Taxpay",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "taxpayName"
+      }
+    }, {
+      "Name": "Amt",
+      "Field": "amt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }
+  ]
+}

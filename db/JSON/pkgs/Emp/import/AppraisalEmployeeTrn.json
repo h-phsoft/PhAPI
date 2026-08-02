@@ -1,0 +1,48 @@
+{
+  "Name": "Emp_Appraisal_Employee_Trn",
+  "Synonym": "Emp_Appremptrn",
+  "Sequence": "Emp_Appremptrn_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Aemp_Id",
+      "Field": "aempId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Appraisal_Employee_Mst",
+        "SynonymName": "Emp_Apprempmst",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "aempName"
+      }
+    }, {
+      "Name": "Tappr_Id",
+      "Field": "tapprId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Appraisal_Templates_Trn",
+        "SynonymName": "Emp_Apprtrn",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "tapprName"
+      }
+    }, {
+      "Name": "Points",
+      "Field": "points",
+      "DBType": "NUMBER",
+      "Default": "100",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "Name": "Emp_Application_Job",
+  "Synonym": "Emp_Appjob",
+  "Sequence": "Emp_Appjob_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Mapp_Id",
+      "Field": "mappId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Application",
+        "SynonymName": "Emp_Appl",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "mappName"
+      }
+    }, {
+      "Name": "Position",
+      "Field": "position",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Company",
+      "Field": "company",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Sdate",
+      "Field": "sdate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Edate",
+      "Field": "edate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Reqsal",
+      "Field": "reqsal",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Reason",
+      "Field": "reason",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

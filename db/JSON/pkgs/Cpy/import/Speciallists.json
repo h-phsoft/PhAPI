@@ -1,0 +1,35 @@
+{
+  "Name": "Copy_Speciallists",
+  "Synonym": "Cpy_Slist",
+  "Sequence": "Cpy_Slist_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Sprv_Id",
+      "Field": "sprvId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Special_Privileges",
+        "SynonymName": "Phs_Specpriv",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "sprvName"
+      }
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

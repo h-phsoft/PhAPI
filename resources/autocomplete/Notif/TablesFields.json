@@ -1,0 +1,9 @@
+{
+  "Synonym": "Notif_Table_Fld",
+  "Select": "SELECT Id, Name AS Name FROM Notif_Table_Fld",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Name"
+}

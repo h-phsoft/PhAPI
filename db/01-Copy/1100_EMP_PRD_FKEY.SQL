@@ -1,0 +1,1 @@
+Alter Table Prd_Productoin_Stage_Employee_Job Add CONSTRAINT Prd_Prod_Stage_Emp_Job_Job_FK Foreign Key (Job_Id) References Emp_Cod_Job(Id);

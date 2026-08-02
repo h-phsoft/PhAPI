@@ -1,0 +1,13 @@
+{
+  "Name": "Notif_Table_Event_Recipients",
+  "Synonym": "Notif_Table_Event_Recip",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "Name": "Copy_Permision",
+  "Synonym": "Cpy_Perm",
+  "Sequence": "Cpy_Perm_Seq",
+  "Condition": "Mprg_Id IN(SELECT MPrg_Id FROM Phs_Vmiprg WHERE Menu_Status_Id=1 AND MPrg_Status_Id=1 AND Menu_Id NOt IN (9909))",
+  "PeriodCondition": "",
+  "Order": "Mprg_Id",
+  "InsUser": true,
+  "UpdUser": true,
+  "Select": "SELECT Id, Pgrp_Id, Mprg_Id, Vperiod, Iperiod, Range_Id, Ok, Ins_User, To_Char(Ins_Date, 'DD-MM-YYYY') AS Ins_Date, Upd_User, To_Char(Upd_Date, 'DD-MM-YYYY') AS Upd_Date FROM Cpy_Perm",
+  "Insert": "INSERT INTO Cpy_Perm (Id, Pgrp_Id, Mprg_Id, Vperiod, Iperiod, Range_Id, Ok, Ins_User, Ins_Date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, Sysdate)",
+  "Update": "UPDATE Cpy_Perm SET Pgrp_Id=?, Mprg_Id=?, Vperiod=?, Iperiod=?, Range_Id=?, Ok=?, Upd_User=?, Upd_Date=Sysdate WHERE Id=?",
+  "hasChilds": true,
+  "Children": [
+    {
+      "ChildKey": "child",
+      "Pkg": "Cpy",
+      "Key": "PermisionPrivileges",
+      "Table": "Copy_Permision_Privileges",
+      "Synonym": "Cpy_Permpriv",
+      "cascadeDelete": true,
+      "Column": "Perm_Id",
+      "ColKey": "permId"
+    }
+    , {
+      "ChildKey": "child",
+      "Pkg": "Cpy",
+      "Key": "PermisionSpecprivileges",
+      "Table": "Copy_Permision_Specprivileges",
+      "Synonym": "Cpy_Permspriv",
+      "cascadeDelete": true,
+      "Column": "Perm_Id",
+      "ColKey": "permId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "10",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Pgrp_Id",
+      "Field": "pgrpId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Permission_Groups",
+        "SynonymName": "Cpy_Pgrp",
+        "CurId": "Pgrp_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "pgrpName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Mprg_Id",
+      "Field": "mprgId",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "20",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Miprograms_View",
+        "SynonymName": "Phs_Vmiprg",
+        "CurId": "Mprg_Id",
+        "RelId": "Mprg_Id",
+        "RelName": "MPrg_Name",
+        "RelField": "mprgName",
+        "aRelFields": [
+          {
+            "Column": "MPrg_Id",
+            "Field": "mprgId"
+          }, {
+            "Column": "Menu_Id",
+            "Field": "menuId"
+          }, {
+            "Column": "Menu_Name",
+            "Field": "menuName"
+          }, {
+            "Column": "Mprg_Name",
+            "Field": "mprgName"
+          }, {
+            "Column": "Mprg_Icon",
+            "Field": "mprgIcon"
+          }
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Vperiod",
+      "Field": "vperiod",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "4",
+      "Default": "9999",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Iperiod",
+      "Field": "iperiod",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "4",
+      "Default": "9999",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Range_Id",
+      "Field": "rangeId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Permission_Range",
+        "SynonymName": "Phs_Cod_Perm_Range",
+        "CurId": "Range_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "rangeName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ok",
+      "Field": "ok",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ins_User",
+      "Field": "insUser",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ins_Date",
+      "Field": "insDate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Upd_User",
+      "Field": "updUser",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Upd_Date",
+      "Field": "updDate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+  ]
+}

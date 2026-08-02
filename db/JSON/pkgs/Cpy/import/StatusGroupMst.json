@@ -1,0 +1,28 @@
+{
+  "Name": "Copy_Status_Group_Mst",
+  "Synonym": "Cpy_Mstatus_Grp",
+  "Sequence": "Cpy_Mstatus_Grp_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Describ",
+      "Field": "describ",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

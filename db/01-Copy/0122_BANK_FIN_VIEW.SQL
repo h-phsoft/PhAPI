@@ -1,0 +1,87 @@
+CREATE OR REPLACE VIEW Fin_Cahs_Bank_Transaction_View AS
+    SELECT 
+        CAST('FINANCIAL' AS VARCHAR2(50)) AS Source_Module,
+        CAST(Doc_Type AS VARCHAR2(50)) AS Doc_Type,
+        Id,
+        Vhr_Id     ,
+        ddate      ,
+        DueDate    ,
+        Dept_Id    , CAST(Dept_Name     AS VARCHAR2(200)) AS Dept_Name,
+        Unit_Id    , CAST(Unit_Name     AS VARCHAR2(200)) AS Unit_Name,
+        Oper_Id    , CAST(Oper_Name     AS VARCHAR2(200)) AS Oper_Name,
+        Period_Id  , CAST(Period_Name   AS VARCHAR2(200)) AS Period_Name,
+        Trt_Id     , CAST(Trt_Name      AS VARCHAR2(200)) AS Trt_Name,
+        Cont_Id    , CAST(Cont_Name     AS VARCHAR2(200)) AS Cont_Name,
+        Contract_Id, CAST(Contract_Name AS VARCHAR2(200)) AS Contract_Name,
+        CAST(RefNum AS VARCHAR2(100 ))  AS RefNum,
+        CAST(Rem    AS VARCHAR2(4000))  AS Rem   ,
+        CAST(Note   AS VARCHAR2(4000))  AS Note  ,
+        TRN_Curn_Id AS Curn_Id, CAST(TRN_Curn_Name AS VARCHAR2(200)) AS Curn_Name, Curn_Rate,
+        TRN_Amt ,
+        TRN_CAmt,
+        Decode(SIGN(20-Trt_Id), 1 , TRN_CAmt, 0) DbtC,
+        Decode(SIGN(20-Trt_Id), 1 , TRN_Amt , 0) Dbt ,
+        Decode(SIGN(Trt_Id-20), -1, 0, TRN_CAmt) CrdC,
+        Decode(SIGN(Trt_Id-20), -1, 0, TRN_Amt ) Crd ,
+        Decode(SIGN(20-Trt_Id), 1 , TRN_CAmt, 0)-Decode(SIGN(Trt_Id-20), -1, 0, TRN_CAmt) NetC,
+        Decode(SIGN(20-Trt_Id), 1 , TRN_Amt , 0)-Decode(SIGN(Trt_Id-20), -1, 0, TRN_Amt ) Net
+    FROM Fin_VAll_Sum
+
+    UNION ALL
+
+    SELECT 
+        CAST('CASH' AS VARCHAR2(50)) AS Source_Module,
+        CAST(Doc_Type AS VARCHAR2(50)) AS Doc_Type,
+        Ord_Id AS Id,
+        Vhr_Id   , Ord_Ddate AS ddate  , Ord_Edate AS DueDate,
+        Dept_Id  , CAST(Dept_Name   AS VARCHAR2(200)) AS Dept_Name,
+        Unit_Id  , CAST(Unit_Name   AS VARCHAR2(200)) AS Unit_Name,
+        Oper_Id  , CAST(Oper_Name   AS VARCHAR2(200)) AS Oper_Name,
+        Period_Id, CAST(Period_Name AS VARCHAR2(200)) AS Period_Name,
+        Trt_Id   , CAST(Trt_Name    AS VARCHAR2(200)) AS Trt_Name,
+        Cont_Id  , CAST(Cont_Name   AS VARCHAR2(200)) AS Cont_Name,
+        CAST(NULL AS NUMBER       ) AS Contract_Id  , CAST(NULL AS VARCHAR2(200)) AS Contract_Name,
+        CAST(Ord_Num    AS VARCHAR2(100)) AS RefNum,
+        CAST(Ord_Reason AS VARCHAR2(4000)) AS Rem  ,
+        CAST(Ord_Rem    AS VARCHAR2(4000)) AS Note ,
+        Curn_Id, CAST(Curn_Name AS VARCHAR2(200)) AS Curn_Name, Ord_Curn_Rate,
+        Ord_AMT   AS TRN_Amt ,
+        Ord_CAmt  AS TRN_CAmt,
+        Decode(SIGN(Trt_Id-20), -1, 0, Ord_CAmt) DbtC,
+        Decode(SIGN(Trt_Id-20), -1, 0, Ord_AMT ) Dbt ,
+        Decode(SIGN(20-Trt_Id), 1 , Ord_CAmt, 0) CrdC,
+        Decode(SIGN(20-Trt_Id), 1 , Ord_AMT , 0) Crd ,
+        Decode(SIGN(Trt_Id-20), -1, 0, Ord_CAmt)-Decode(SIGN(20-Trt_Id), 1, Ord_CAmt, 0) NetC,
+        Decode(SIGN(Trt_Id-20), -1, 0, Ord_AMT )-Decode(SIGN(20-Trt_Id), 1, Ord_AMT , 0) Net
+    FROM Cash_VOrd
+
+    UNION ALL
+
+    SELECT 
+        CAST('BANK' AS VARCHAR2(50)) AS Source_Module,
+        CAST(Doc_Type AS VARCHAR2(50)) AS Doc_Type,
+        Ord_Id AS Id,
+        Vhr_Id   , Ord_Ddate AS ddate  , Ord_Edate AS DueDate,
+        Dept_Id  , CAST(Dept_Name   AS VARCHAR2(200)) AS Dept_Name,
+        Unit_Id  , CAST(Unit_Name   AS VARCHAR2(200)) AS Unit_Name,
+        Oper_Id  , CAST(Oper_Name   AS VARCHAR2(200)) AS Oper_Name,
+        Period_Id, CAST(Period_Name AS VARCHAR2(200)) AS Period_Name,
+        Trt_Id   , CAST(Trt_Name    AS VARCHAR2(200)) AS Trt_Name,
+        Cont_Id  , CAST(Cont_Name   AS VARCHAR2(200)) AS Cont_Name,
+        CAST(NULL AS NUMBER       ) AS Contract_Id  , CAST(NULL AS VARCHAR2(200)) AS Contract_Name,
+        CAST(Ord_Num    AS VARCHAR2(100 )) AS RefNum,
+        CAST(Ord_Reason AS VARCHAR2(4000)) AS Rem   ,
+        CAST(Ord_Rem    AS VARCHAR2(4000)) AS Note  ,
+        Curn_Id, CAST(Curn_Name AS VARCHAR2(200)) AS Curn_Name, Ord_Curn_Rate,
+        Ord_AMT   AS TRN_Amt ,
+        Ord_CAmt  AS TRN_CAmt,
+        Decode(Trt_Id, 21,Ord_CAmt, 40,Ord_CAmt, 0) DbtC,
+        Decode(Trt_Id, 21,Ord_AMT , 40,Ord_AMT , 0) Dbt ,
+        Decode(Trt_Id, 11,Ord_CAmt, 30,Ord_CAmt, 0) CrdC,
+        Decode(Trt_Id, 11,Ord_AMT , 30,Ord_AMT , 0) Crd ,
+        Decode(Trt_Id, 21,Ord_CAmt, 40,Ord_CAmt, 0)-Decode(Trt_Id, 11,Ord_CAmt, 30,Ord_CAmt, 0) NetC,
+        Decode(Trt_Id, 21,Ord_AMT , 40,Ord_AMT , 0)-Decode(Trt_Id, 11,Ord_AMT , 30,Ord_AMT , 0) Net
+    FROM Bank_VOrd
+/
+CREATE SYNONYM Fin_VFCB_Trn FOR Fin_Cahs_Bank_Transaction_View
+/ 

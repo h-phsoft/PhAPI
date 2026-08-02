@@ -1,0 +1,38 @@
+{
+  "Name": "Mng_Services",
+  "Synonym": "Mng_Serv",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Code",
+      "Field": "code",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Rid",
+      "Field": "accRid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cst",
+      "Field": "cst",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grp",
+      "Field": "grp",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

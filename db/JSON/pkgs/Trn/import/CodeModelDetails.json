@@ -1,0 +1,47 @@
+{
+  "Name": "Trn_Code_Model_Details",
+  "Synonym": "Trn_Cod_Model_Detail",
+  "Sequence": "Trn_Cod_Model_Detail_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Model_Id",
+      "Field": "modelId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Trn_Code_Model",
+        "SynonymName": "Trn_Cod_Model",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "modelName"
+      }
+    }, {
+      "Name": "Axe",
+      "Field": "axe",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Wheel1weight",
+      "Field": "wheel1weight",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Wheel2weight",
+      "Field": "wheel2weight",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

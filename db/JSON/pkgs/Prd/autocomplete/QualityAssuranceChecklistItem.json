@@ -1,0 +1,9 @@
+{
+  "Synonym": "Prd_Qa_Item",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Prd_Qa_Item",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

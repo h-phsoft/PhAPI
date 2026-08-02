@@ -1,0 +1,35 @@
+{
+  "Name": "Copy_Specialliststrn",
+  "Synonym": "Cpy_Tlist",
+  "Sequence": "Cpy_Tlist_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Slist_Id",
+      "Field": "slistId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Speciallists",
+        "SynonymName": "Cpy_Slist",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "slistName"
+      }
+    }, {
+      "Name": "Rel_Id",
+      "Field": "relId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

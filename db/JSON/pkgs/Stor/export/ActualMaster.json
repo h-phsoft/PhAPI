@@ -1,0 +1,38 @@
+{
+  "Name": "Stor_Actual_Master",
+  "Synonym": "Stor_Actmst",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Docn",
+      "Field": "docn",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Docd",
+      "Field": "docd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Responsible",
+      "Field": "responsible",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

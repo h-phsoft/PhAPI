@@ -1,0 +1,60 @@
+{
+  "Name": "Emp_Changesalary_Brackets_Trn",
+  "Synonym": "Emp_Tchsalbrkt",
+  "Sequence": "Emp_Tchsalbrkt_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Brkt_Id",
+      "Field": "brktId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Changesalary_Brackets_Mst",
+        "SynonymName": "Emp_Mchsalbrkt",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "brktName"
+      }
+    }, {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Amount_Type",
+        "SynonymName": "Phs_Cod_Amttype",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "typeName"
+      }
+    }, {
+      "Name": "Samt",
+      "Field": "samt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Eamt",
+      "Field": "eamt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Amt",
+      "Field": "amt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

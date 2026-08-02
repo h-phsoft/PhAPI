@@ -1,0 +1,1281 @@
+Create OR Replace View Emp_Application_View AS
+Select ALL
+        AP.Id        MApp_Id       , AP.Num       MApp_Num      , AP.dDate    MApp_Date      , AP.Name      MApp_Name     ,
+        AP.Father    MApp_Father   , AP.Mother    MApp_Mother   , AP.PBirth   MApp_PBirth    , AP.DBirth    MApp_DBirth   ,
+        AP.Phone     MApp_Phone    , AP.Mobile    MApp_Mobile   , AP.EMail    MApp_EMail     , AP.Address   MApp_Address  ,
+        AP.ReqSal    MApp_ReqSal   , AP.Language  MApp_Language , AP.Computer MApp_Computer  , AP.Technical MApp_Technical,
+        AP.Interview MApp_Interview, AP.Rem       MApp_Rem      ,
+        SX.Id        Gender_Id     , SX.Name      Gender_Name   , MT.Id        Military_Id   , MT.Name      Military_Name ,
+        MR.Id        Mrd_Id        , MR.Name      Mrd_Name      , NT.Id        Nat_Id        , NT.Name      Nat_Name      ,
+        ST.Id        Status_Id     , ST.Name      Status_Name   , RS.Id        Result_Id     , RS.Name      Result_Name   ,
+        RE.Id        Recr_Id       , RE.Num       Recr_Num      , RE.dDate     Recr_Date     ,
+        RE.SDate     Recr_SDate    , RE.EDate     Recr_EDate    , RE.STime     Recr_STime    , RE.ETime     Recr_ETime    ,
+        RE.Code      Recr_Code     , RE.Name      Recr_Name     , RE.GenInfo   Recr_GenInfo  , RE.PosPurp   Recr_PosPurp  ,
+        RE.EssenFunc Recr_EssenFunc, RE.MinReq    Recr_MinReq   , RE.PrefQlfy  Recr_PrefQlfy
+  From Emp_Appl           AP,
+       Emp_Recr           RE,
+       Phs_Cod_Gender     SX,
+       Phs_Cod_Marital    MR,
+       Phs_Cod_Military   MT,
+       Emp_Cod_Nat        NT,
+       Emp_Cod_App_Status ST,
+       Emp_Cod_App_Result RS
+  Where AP.Recr_Id    =RE.Id
+    And AP.Nat_Id     =NT.Id
+    And AP.Status_Id  =ST.Id
+    And AP.Result_Id  =RS.Id
+    And AP.Gender_Id  =SX.Id
+    And AP.Martial_Id =MR.Id
+    And AP.Military_Id=MT.Id
+/
+Create Synonym Emp_VAppl For Emp_Application_View
+/
+
+Create OR Replace View Emp_Employee_History_View AS
+Select ALL
+       Hist_Id  , Hist_Num    , Hist_Date, Hist_Note   , Hist_Rem ,
+       Hist_Type, TT.CITM_Name  Type_Name, TT.CITM_Sign  Type_Code,
+       EE.Emp_Id, Emp_Num     , Emp_Name
+   From Emp_EmpHist AA,
+        Emp_Emp     EE,
+        Cpy_CodItm  TT
+   Where AA.Emp_Id=EE.Emp_Id
+     And NVL(AA.Hist_Type,0)=TT.CITM_Id
+/
+Create Synonym Emp_VEmpHist For Emp_Employee_History_View
+/
+
+Create OR Replace View Emp_GradeTemplates_View AS
+Select ALL
+        MM.Grad_Id     , MM.Grad_Num , MM.Grad_Name  , MM.Grad_Rem,
+        MM.Grad_Default, DF.CITM_Name  Grad_isDefault,  DF.Lang_Id,
+        MM.Ins_User    , MM.Ins_Date , MM.Upd_User   , MM.Upd_Date
+   From Emp_GradMst MM,
+        Phs_VCode   DF
+  Where (NVL(MM.Grad_Default,0)=DF.CITM_NUM And DF.CGrp_Id=8)
+/
+Create Synonym Emp_VMGrade For Emp_GradeTemplates_View
+/
+
+Create OR Replace View Emp_Grade_Templates_View AS
+Select ALL
+        MM.Grad_Id     , Grad_Num    , Grad_Name         , Grad_Rem    ,
+        MM.Grad_Default, DF.CITM_Name  Grad_isDefault    , DF.Lang_Id  ,
+        TGrad_Id       , Grad_Days   , Grad_MinSal       , Grad_MaxSal , Grad_TRem  ,
+        NVL(GP.CITM_Sign,'G')||'-'||NVL(DG.CITM_Sign,'D')  Grad_Code   ,
+        NVL(GP.CITM_Name,'G')||'-'||NVL(DG.CITM_Name,'D')  Grad_CName  ,
+        Grad_Grp       , GP.CITM_Name  Group_Name        , GP.CITM_Sign  Group_Code ,
+        Grad_Degree    , DG.CITM_Name  Degree_Name       , DG.CITM_Sign  Degree_Code,
+        MM.Ins_User      MIns_User   , MM.Ins_Date         MIns_Date   ,
+        MM.Upd_User      MUpd_User   , MM.Upd_Date         MUpd_Date   ,
+        TT.Ins_User      TIns_User   , TT.Ins_Date         TIns_Date   ,
+        TT.Upd_User      TUpd_User   , TT.Upd_Date         TUpd_Date
+   From Emp_GradMst MM,
+        Emp_GradTrn TT,
+        Phs_VCode   DF,
+        Cpy_CodItm  GP,
+        Cpy_CodItm  DG
+  Where TT.Grad_Id=MM.Grad_Id
+   And (NVL(MM.Grad_Default,0)=DF.CITM_NUM And DF.CGrp_Id=8)
+   And  NVL(TT.Grad_Grp   ,0)=GP.CItm_Id
+   And  NVL(TT.Grad_Degree,0)=DG.CItm_Id
+/
+Create Synonym Emp_VGradeTemp For Emp_Grade_Templates_View
+/
+
+Create OR Replace View Emp_Apprisal_Templates_View AS
+Select ALL
+        MM.Appr_Id , Appr_Num   , Appr_Name  , Appr_Rem   ,
+        TAppr_Id   , Appr_Points, Appr_TRem  ,
+        Appr_Grp   , CG.CITM_Name Grp_Name   , CG.CITM_Sign Grp_Code ,
+        Appr_Item  , CI.CITM_Name Item_Name  , CI.CITM_Sign Item_Code,
+        MM.Ins_User  MIns_User  , MM.Ins_Date  MIns_Date  ,
+        MM.Upd_User  MUpd_User  , MM.Upd_Date  MUpd_Date  ,
+        TT.Ins_User  TIns_User  , TT.Ins_Date  TIns_Date  ,
+        TT.Upd_User  TUpd_User  , TT.Upd_Date  TUpd_Date
+   From Emp_ApprMst MM,
+        Emp_ApprTrn TT,
+        Cpy_CodItm  CG,
+        Cpy_CodItm  CI
+  Where TT.Appr_Id=MM.Appr_Id
+   And NVL(TT.Appr_Grp ,0)=CG.CItm_Id
+   And NVL(TT.Appr_Item,0)=CI.CItm_Id
+/
+Create Synonym Emp_VApprTemp For Emp_Apprisal_Templates_View
+/
+
+Create OR Replace View Emp_Apprisal_Evaluation_View AS
+Select ALL
+        MM.Appr_Id , Appr_Num , Appr_Name , Appr_Rem ,
+        MM.Ins_User  MIns_User, MM.Ins_Date MIns_Date,
+        MM.Upd_User  MUpd_User, MM.Upd_Date MUpd_Date,
+        EAppr_Id   , Appr_Eval, Appr_From , Appr_To  ,
+        Appr_SalInc, Appr_ERem,
+        TT.Ins_User  TIns_User, TT.Ins_Date TIns_Date,
+        TT.Upd_User  TUpd_User, TT.Upd_Date TUpd_Date
+   From Emp_ApprMst MM, Emp_ApprEval TT
+  Where TT.Appr_Id=MM.Appr_Id
+/
+Create Synonym Emp_VApprEval For Emp_Apprisal_Evaluation_View
+/
+
+Create OR Replace View Emp_Apprisal_Note_View AS
+Select ALL
+       ANote_Id   , ANote_Num  , ANote_Points, ANote_Rem,
+       To_Date(To_Char(ANote_Date,'DD-MM-YYYY'),'DD-MM-YYYY') ANote_Date,
+       EE.Emp_Id  , EE.Emp_Num , EE.Emp_Name,
+       ANote_Type , TP.CITM_Name  Type_Name , TP.Lang_Id  ,
+       ANote_Grp  , CG.CItm_Name  Grp_Name  , CG.CItm_Sign  Grp_Sign ,
+       ANote_Item , CI.CItm_Name  Item_Name , CI.CItm_Sign  Item_Sign,
+       MM.Ins_User, MM.Ins_Date, MM.Upd_User, MM.Upd_Date
+  From Emp_ApprNote MM,
+       Emp_Emp      EE,
+       Phs_VCode    TP,
+       Cpy_CodItm   CG,
+       Cpy_CodItm   CI
+ Where EE.Emp_Id=MM.Emp_Id
+   And (NVL(MM.ANote_Type,1)=TP.CITM_NUM And TP.CGrp_Id=1110)
+   And  NVL(MM.ANote_Grp ,0)=CG.CItm_Id
+   And  NVL(MM.ANote_Item,0)=CI.CItm_Id
+/
+Create Synonym Emp_VApprNote For Emp_Apprisal_Note_View
+/
+
+Create OR Replace View Emp_ApprisalEmployee_Mst_View AS
+Select ALL
+        MM.AEmp_Id  , MM.AEmp_Num   , MM.AEmp_Date ,
+        MM.AEmp_Rem , MM.AEmp_FDate , MM.AEmp_TDate,
+        EE.Emp_Id   , EE.Emp_Num    , EE.Emp_Name  ,
+        MM.Ins_User   MIns_User     , MM.Ins_Date    MIns_Date  ,
+        MM.Upd_User   MUpd_User     , MM.Upd_Date    MUpd_Date
+  From Emp_ApprEmpMst MM,
+       Emp_Emp        EE
+ Where EE.Emp_Id=MM.Emp_Id
+/
+Create Synonym Emp_VApprEmpMst For Emp_ApprisalEmployee_Mst_View
+/
+
+Create OR Replace View Emp_Apprisal_Employee_View AS
+Select ALL
+        MM.AEmp_Id  , MM.AEmp_Num   , MM.AEmp_Date ,
+        MM.AEmp_Rem , MM.AEmp_FDate , MM.AEmp_TDate,
+        TT.TAEmp_Id , TT.AEmp_Points, TT.AEmp_TRem ,
+        AP.Appr_Id  , AP.Appr_Num   , AP.Appr_Name , AP.Appr_Rem,
+        AP.TAppr_Id , AP.Appr_Points, AP.Appr_TRem ,
+        AP.Appr_Grp , AP.Grp_Name   , AP.Grp_Code  ,
+        AP.Appr_Item, AP.Item_Name  , AP.Item_Code ,
+        EE.Emp_Id   , EE.Emp_Num    , EE.Emp_Name  ,
+        MM.Ins_User   MIns_User     , MM.Ins_Date    MIns_Date  ,
+        MM.Upd_User   MUpd_User     , MM.Upd_Date    MUpd_Date  ,
+        TT.Ins_User   TIns_User     , TT.Ins_Date    TIns_Date  ,
+        TT.Upd_User   TUpd_User     , TT.Upd_Date    TUpd_Date
+  From Emp_ApprEmpMst MM,
+       Emp_ApprEmpTrn TT,
+       Emp_Emp        EE,
+       Emp_VApprTemp  AP
+ Where EE.Emp_Id  =MM.Emp_Id
+   And TT.AEmp_Id =MM.AEmp_Id
+   And AP.Appr_Id =MM.Appr_Id
+   And AP.TAppr_Id=TT.TAppr_Id
+/
+Create Synonym Emp_VApprEmp For Emp_Apprisal_Employee_View
+/
+
+Create OR Replace View Emp_Work_Groups_View AS
+Select ALL
+       W.WGrp_Id  , W.WGrp_Num  , W.WGrp_Name,
+       W.WGrp_Type, TP.CITM_Name  Type_Name  , TP.Lang_Id,
+       W.Ins_User , W.Ins_Date  , W.Upd_User , W.Upd_Date
+  From Emp_WrkGrp W,
+       Phs_VCode  TP
+ Where (NVL(W.WGrp_Type,1)=TP.CITM_NUM And TP.CGrp_Id=1113)
+/
+Create Synonym Emp_VWrkGrp For Emp_Work_Groups_View
+/
+
+Create OR Replace View Emp_Work_Group_Days_View AS
+Select ALL
+       W.WGrp_Id       , W.WGrp_Num     , W.WGrp_Name    ,
+       W.WGrp_Type     , TP.CITM_Name     Type_Name      , TP.Lang_Id  ,
+       D.DWGrp_Id      , D.WGrp_Day     , D.WGrp_Shift   , D.WGrp_St1H , D.WGrp_St1M , D.WGrp_Ed1H , D.WGrp_Ed1M , D.WGrp_L1H     ,
+       D.WGrp_L1M      , D.WGrp_L1MRound, D.WGrp_E1H     , D.WGrp_E1M  , D.WGrp_St2H , D.WGrp_St2M , D.WGrp_Ed2H , D.WGrp_Ed2M    ,
+       D.WGrp_L2H      , D.WGrp_L2M     , D.WGrp_L2MRound, D.WGrp_E2H  , D.WGrp_E2M  , D.WGrp_FBH  , D.WGrp_FBM  , D.WGrp_AddH    ,
+       D.WGrp_AddM     , D.WGrp_ZeroH   , D.WGrp_ZeroM   , D.WGrp_REntH, D.WGrp_REntM, D.WGrp_ROutH, D.WGrp_ROutM, D.WGrp_ROMRound,
+       D.WGrp_MDays    , MD.CITM_Name     MDays_Name     ,
+       D.WGrp_AddStatus, AD.CITM_Name     AddStatus_Name ,
+       D.WGrp_Excuse   , EX.CITM_Name     Excuse_Name    ,
+       D.WGrp_ComBy    , CB.CITM_Name     ComBy_Name     ,
+       CM.Com_Id       , CM.Com_Num     , CM.Com_Name    ,
+       W.Ins_User   MIns_User    , W.Ins_Date     MIns_Date , W.Upd_User  MUpd_User , W.Upd_Date  MUpd_Date    ,
+       D.Ins_User   TIns_User    , D.Ins_Date     TIns_Date , D.Upd_User  TUpd_User , D.Upd_Date  TUpd_Date
+  From Emp_WrkGrp  W ,
+       Emp_DWrkGrp D ,
+       Emp_Com     CM,
+       Phs_VCode   EX,
+       Phs_VCode   CB,
+       Phs_VCode   TP,
+       Phs_VCode   AD,
+       Phs_VCode   MD
+ Where D.WGrp_Id=W.WGrp_Id
+   And D.Com_Id =CM.Com_Id
+   And (NVL(D.WGrp_Excuse   ,1)=EX.CITM_NUM And EX.CGrp_Id=8   )
+   And (NVL(D.WGrp_ComBy    ,1)=CB.CITM_NUM And CB.CGrp_Id=1105)
+   And (NVL(W.WGrp_Type     ,1)=TP.CITM_NUM And TP.CGrp_Id=1113)
+   And (NVL(D.WGrp_AddStatus,1)=AD.CITM_NUM And AD.CGrp_Id=1114)
+   And (NVL(D.WGrp_MDays    ,1)=MD.CITM_NUM And MD.CGrp_Id=1115)
+   And TP.Lang_Id=EX.Lang_Id
+   And TP.Lang_Id=CB.Lang_Id
+   And TP.Lang_Id=AD.Lang_Id
+   And TP.Lang_Id=MD.Lang_Id
+/
+Create Synonym Emp_VDWrkGrp For Emp_Work_Group_Days_View
+/
+
+Create OR Replace View Emp_Employee_View AS
+Select ALL
+       E.Emp_Id        , E.Emp_Num     , E.Emp_NNum     , E.Emp_PNum    , E.Emp_INum      , E.Emp_AttNum   , E.Emp_PCard   , E.Emp_Name      ,
+       E.Emp_aName     , E.Emp_eName   , E.Emp_Father   , E.Emp_Mather  , E.Emp_BankAcc   , E.Emp_BankName , E.Emp_PBirth    ,
+       E.Emp_DBirth    , E.Emp_Addr    , E.Emp_Phone1   , E.Emp_Phone2  , E.Emp_Mobile1   , E.Emp_Fax      , E.Emp_Ext     , E.Emp_EMail1    ,
+       E.Emp_Computer  , E.Emp_Username, E.User_Id      , E.Emp_EPerson , E.Emp_EPhone    , E.Emp_Owner    , E.Emp_Child   , E.Emp_Kied      ,
+       E.Emp_CSDate    , E.Emp_CEDate  , E.Emp_SDate    , E.Emp_IDate   , E.Emp_EDate     , E.Emp_BaseSal  , E.Emp_SalType , E.Emp_UnitSal   ,
+       E.Emp_FinanceSal, E.Emp_InsurSal, E.Emp_VacDays  , E.Emp_VacHours, E.Emp_VacBDays  , E.Emp_VacBHours, E.Emp_Rem     , E.Emp_Mobile2   ,
+       E.Emp_Email2    , E.Emp_Wife    ,
+       Acr.Acr_Id      , Acr.Acr_Num   , Acr.Acr_Name   ,
+       SG.SGrp_Id      , SG.SGrp_Num   , SG.SGrp_Name   , WG.WGrp_Id    , WG.WGrp_Num     , WG.WGrp_Name   ,
+       Mgr.Emp_Id        Emp_MId       , Mgr.Emp_Num      Mgr_Num       , Mgr.Emp_Name      Mgr_Name       ,
+       Dir.Emp_Id        Emp_DId       , Dir.Emp_Num      Dir_Num       , Dir.Emp_Name      Dir_Name       ,
+       Fap.Emp_Id        Emp_FAId      , Fap.Emp_Num      Fap_Num       , Fap.Emp_Name      Fap_Name       ,
+       Sap.Emp_Id        Emp_SAId      , Sap.Emp_Num      Sap_Num       , Sap.Emp_Name      Sap_Name       ,
+       App.Appr_Id     , App.Appr_Num  , App.Appr_Name  ,
+       E.Emp_BankStatus, BK.CITM_Name    BankStatus_Name, E.Emp_Mrd     , MR.CITM_Name      Mrd_Name       ,
+       E.Emp_WStatus   , SC.CITM_Name    WStatus_Name   , E.Emp_Status  , ST.CITM_Name      Status_Name    , ST.Lang_Id    ,
+       E.Emp_Military  , MT.CITM_Name    Military_Name  , E.Emp_Sex     , SX.CITM_Name      Sex_Name       ,
+       E.Emp_Loc       , LC.CITM_Name    Loc_Name       , E.Emp_Nat     , NT.CITM_Name      Nat_Name       ,
+       E.Emp_Educat    , Ed.CITM_Name    Educat_Name    , E.Emp_Job     , JB.CITM_Name      Job_Name       ,
+       E.Emp_Dept      , DP.CITM_Name    Dept_Name      , E.Emp_Sect    , SE.CITM_Name      Sect_Name      ,
+       E.Emp_Level     , LV.CITM_Name    Level_Name     ,
+       E.Emp_Spc1      , S1.CITM_Name    Spc1_Name      , E.Emp_Spc2    , S2.CITM_Name      Spc2_Name      ,
+       E.Emp_Spc3      , S3.CITM_Name    Spc3_Name      , E.Emp_Spc4    , S4.CITM_Name      Spc4_Name
+  From Emp_Emp     E  ,
+       Emp_Acr     Acr,
+       Emp_Emp     Mgr,
+       Emp_Emp     Dir,
+       Emp_Emp     Fap,
+       Emp_Emp     Sap,
+       Emp_WrkGrp  WG ,
+       Emp_SalGrp  SG ,
+       Emp_ApprMst App,
+       Phs_VCode   SX ,
+       Phs_VCode   ST ,
+       Phs_VCode   MR ,
+       Phs_VCode   MT ,
+       Phs_VCode   SC ,
+       Phs_VCode   BK ,
+       Cpy_VCode   LC ,
+       Cpy_VCode   NT ,
+       Cpy_VCode   ED ,
+       Cpy_VCode   JB ,
+       Cpy_VCode   DP ,
+       Cpy_VCode   SE ,
+       Cpy_VCode   LV ,
+       Cpy_VCode   S1 ,
+       Cpy_VCode   S2 ,
+       Cpy_VCode   S3 ,
+       Cpy_VCode   S4
+ Where  NVL(E.Acr_Id        ,0)=Acr.Acr_Id
+   And  NVL(E.Emp_MId       ,0)=Mgr.Emp_Id
+   And  NVL(E.Emp_DId       ,0)=Dir.Emp_Id
+   And  NVL(E.Emp_FAId      ,0)=Fap.Emp_Id
+   And  NVL(E.Emp_SAId      ,0)=Sap.Emp_Id
+   And  NVL(E.WGrp_Id       ,0)=WG.WGrp_Id
+   And  NVL(E.SGrp_Id       ,0)=SG.SGrp_Id
+   And  NVL(E.Appr_Id       ,0)=App.Appr_Id
+   And (NVL(E.Emp_Sex       ,1)=SX.CITM_NUM And SX.CGrp_Id=5   )
+   And (NVL(E.Emp_Status    ,1)=ST.CITM_NUM And ST.CGrp_Id=1100)
+   And (NVL(E.Emp_Mrd       ,1)=MR.CITM_NUM And MR.CGrp_Id=1101)
+   And (NVL(E.Emp_Military  ,1)=MT.CITM_NUM And MT.CGrp_Id=1103)
+   And (NVL(E.Emp_WStatus   ,1)=SC.CITM_NUM And SC.CGrp_Id=1104)
+   And (NVL(E.Emp_BankStatus,1)=BK.CITM_NUM And BK.CGrp_Id=1108)
+   And  NVL(E.Emp_Loc       ,0)=LC.CItm_Id
+   And  NVL(E.Emp_Nat       ,0)=NT.CItm_Id
+   And  NVL(E.Emp_Educat    ,0)=ED.CItm_Id
+   And  NVL(E.Emp_Job       ,0)=JB.CItm_Id
+   And  NVL(E.Emp_Dept      ,0)=DP.CItm_Id
+   And  NVL(E.Emp_Sect      ,0)=SE.CItm_Id
+   And  NVL(E.Emp_Level     ,0)=LV.CItm_Id
+   And  NVL(E.Emp_Spc1      ,0)=S1.CItm_Id
+   And  NVL(E.Emp_Spc2      ,0)=S2.CItm_Id
+   And  NVL(E.Emp_Spc3      ,0)=S3.CItm_Id
+   And  NVL(E.Emp_Spc4      ,0)=S4.CItm_Id
+   And  ST.Lang_Id=SX.Lang_Id
+   And  ST.Lang_Id=MR.Lang_Id
+   And  ST.Lang_Id=MT.Lang_Id
+   And  ST.Lang_Id=SC.Lang_Id
+   And  ST.Lang_Id=BK.Lang_Id
+/
+Create Synonym Emp_VEmp For Emp_Employee_View
+/
+
+Create OR Replace View Emp_Compensation_View AS
+Select ALL
+       CC.Com_Id    , Com_Num      , Com_Name    , Com_PAmt    ,
+       CC.Com_Type  , TP.CITM_Name   Type_Name   , ST.Lang_Id  ,
+       CC.Com_Status, ST.CITM_Name   Status_Name ,
+       CC.Com_Kind  , KD.CITM_Name   Kind_Name   ,
+       CC.Com_IsDed , DD.CITM_Name   IsDed_Name  ,
+       TS.MSlc_Id   , TS.MSlc_Num  , TS.MSlc_Name, TS.MSlc_Date,
+       TS.MSlc_GNum , TS.MSlc_GDate, TS.MSlc_Rem ,
+       CC.Ins_User  , CC.Ins_Date  , CC.Upd_User , CC.Upd_Date
+  From Emp_Com     CC,
+       Emp_MTaxSlc TS,
+       Phs_VCode   TP,
+       Phs_VCode   ST,
+       Phs_VCode   KD,
+       Phs_VCode   DD
+  Where CC.MSlc_Id=TS.MSlc_Id
+    And (NVL(CC.Com_Type  ,1)=TP.CItm_Num And TP.CGrp_Id=4)
+    And (NVL(CC.Com_Status,1)=ST.CItm_Num And ST.CGrp_Id=2)
+    And (NVL(CC.Com_Kind  ,0)=KD.CItm_Num And KD.CGrp_Id=1109)
+    And (NVL(CC.Com_IsDed ,0)=DD.CItm_Num And DD.CGrp_Id=8)
+    And TP.Lang_Id=ST.Lang_Id
+    And KD.Lang_Id=ST.Lang_Id
+    And DD.Lang_Id=ST.Lang_Id
+/
+Create Synonym Emp_VCom For Emp_Compensation_View
+/
+
+Create OR Replace View Emp_ECompensation_View AS
+Select ALL
+       EC.ECom_ID  , EC.ECom_PAmt , EC.ECom_Rem   , EC.Emp_Id   ,
+       CC.Com_ID   , CC.Com_Num   , CC.Com_Name   , CC.Com_Type , CC.Lang_Id  ,
+       CC.Type_Name, CC.Com_Status, CC.Status_Name, CC.Com_Kind , CC.Kind_Name,
+       CC.Com_IsDed, CC.IsDed_Name, CC.Com_PAmt   ,
+       CC.MSlc_Id  , CC.MSlc_Num  , CC.MSlc_Name  , CC.MSlc_Date,
+       CC.MSlc_GNum, CC.MSlc_GDate, CC.MSlc_Rem   ,
+       CC.Ins_User   CIns_User    , CC.Ins_Date     CIns_Date   ,
+       CC.Upd_User   CUpd_User    , CC.Upd_Date     CUpd_Date   ,
+       EC.Ins_User   ECIns_User   , EC.Ins_Date     ECIns_Date  ,
+       EC.Upd_User   ECUpd_User   , EC.Upd_Date     ECUpd_Date
+  From Emp_VCom CC, Emp_ECom EC
+ Where EC.Com_Id=CC.Com_Id
+/
+Create Synonym Emp_VECom For Emp_ECompensation_View
+/
+
+Create OR Replace View Emp_Employee_Compensation_View AS
+Select ALL
+       EE.Emp_Id     , EE.Emp_Num       , EE.Emp_NNum    , EE.Emp_PNum   , EE.Emp_INum  , EE.Emp_PCard   , EE.Emp_Name   , EE.Emp_Father ,
+       EE.Emp_Mather , EE.Emp_PBirth    , EE.Emp_DBirth  , EE.Emp_WStatus, EE.Emp_Status, EE.Emp_Military, EE.Emp_Addr   , EE.Emp_Phone1 ,
+       EE.Emp_Phone2 , EE.Emp_Mobile1   , EE.Emp_Fax     , EE.Emp_EPerson, EE.Emp_EPhone, EE.Emp_Sex     , EE.Emp_Nat    , EE.Emp_Mrd    ,
+       EE.Emp_Child  , EE.Emp_Wife      , EE.Emp_Kied    , EE.Emp_Lang   , EE.Emp_Educat, EE.Emp_Job     , EE.Emp_Dept   , EE.Emp_Sect   ,
+       EE.Emp_Level  , EE.Emp_Spc1      , EE.Emp_Spc2    , EE.Emp_Spc3   , EE.Emp_Spc4  , EE.Acr_Id      , EE.WGrp_Id    ,
+       EE.SGrp_Id    , EE.Emp_CSDate    , EE.Emp_CEDate  , EE.Emp_SDate  , EE.Emp_IDate , EE.Emp_EDate   , EE.Emp_BaseSal, EE.Emp_SalType,
+       EE.Emp_UnitSal, EE.Emp_FinanceSal, EE.Emp_InsurSal,
+       EE.Ins_User     EIns_User        , EE.Ins_Date      EIns_Date     , EE.Upd_User    EUpd_User      , EE.Upd_Date     EUpd_Date     ,
+       CC.ECom_ID    , CC.ECom_PAmt     , CC.ECom_Rem    , CC.Lang_Id    ,
+       CC.Com_ID     , CC.Com_Num       , CC.Com_Name    , CC.Com_Type   , CC.Type_Name , CC.Com_Status  , CC.Status_Name, CC.Com_Kind   ,
+       CC.Kind_Name  , CC.Com_IsDed     , CC.IsDed_Name  , CC.Com_PAmt   ,
+       CC.MSlc_Id    , CC.MSlc_Num      , CC.MSlc_Name   , CC.MSlc_Date  , CC.MSlc_GNum , CC.MSlc_GDate  , CC.MSlc_Rem   ,
+       CC.CIns_User  , CC.CIns_Date     , CC.CUpd_User   , CC.CUpd_Date  ,
+       CC.ECIns_User , CC.ECIns_Date    , CC.ECUpd_User  , CC.ECUpd_Date
+  From Emp_Emp EE, Emp_VECom CC
+ Where CC.Emp_Id(+)=EE.Emp_Id
+/
+Create Synonym Emp_VEmpCom For Emp_Employee_Compensation_View
+/
+
+Create OR Replace View Emp_Deduction_View AS
+Select ALL
+       DD.Ded_Id    , DD.Ded_Num   , DD.Ded_Name , DD.Ded_PAmt ,
+       TS.MSlc_Id   , TS.MSlc_Num  , TS.MSlc_Name, TS.MSlc_Date,
+       TS.MSlc_GNum , TS.MSlc_GDate, TS.MSlc_Rem ,
+       DD.Ded_Type  , TP.CITM_Name   Type_Name   , ST.Lang_Id  ,
+       DD.Ded_Status, ST.CITM_Name   Status_Name ,
+       DD.Ins_User  , DD.Ins_Date  , DD.Upd_User , DD.Upd_Date
+  From Emp_Ded     DD,
+       Emp_MTaxSlc TS,
+       Phs_VCode   TP,
+       Phs_VCode   ST
+  Where DD.MSlc_Id=TS.MSlc_Id
+    And (NVL(DD.Ded_Type  ,1)=TP.CItm_Num And TP.CGrp_Id=4)
+    And (NVL(DD.Ded_Status,1)=ST.CItm_Num And ST.CGrp_Id=2)
+    And TP.Lang_Id=ST.Lang_Id
+/
+Create Synonym Emp_VDed For Emp_Deduction_View
+/
+
+Create OR Replace View Emp_EDeduction_View AS
+Select ALL
+       DD.Ded_Id   , DD.Ded_Num   , DD.Ded_Name  , DD.Ded_PAmt   ,
+       DD.MSlc_Id  , DD.MSlc_Num  , DD.MSlc_Name , DD.MSlc_Date  ,
+       DD.MSlc_GNum, DD.MSlc_GDate, DD.MSlc_Rem  , DD.Lang_Id    ,
+       DD.Ded_Type , DD.Type_Name , DD.Ded_Status, DD.Status_Name,
+       ED.EDed_ID  , ED.Emp_Id    , ED.EDed_PAmt , ED.EDed_Rem   ,
+       DD.Ins_User   DIns_User    , DD.Ins_Date    DIns_Date     , DD.Upd_User  DUpd_User , DD.Upd_Date  DUpd_Date ,
+       ED.Ins_User   EDIns_User   , ED.Ins_Date    EDIns_Date    , ED.Upd_User  EDUpd_User, ED.Upd_Date  EDUpd_Date
+  From Emp_VDed DD, Emp_EDed ED
+  Where ED.Ded_Id=DD.Ded_Id
+/
+Create Synonym Emp_VEDed For Emp_EDeduction_View
+/
+
+Create OR Replace View Emp_Employee_Deduction_View AS
+Select ALL
+       EE.Emp_Id        , EE.Emp_Num       , EE.Emp_NNum    , EE.Emp_PNum   , EE.Emp_INum  , EE.Emp_PCard   , EE.Emp_Name   , EE.Emp_Father ,
+       EE.Emp_Mather    , EE.Emp_PBirth    , EE.Emp_DBirth  , EE.Emp_WStatus, EE.Emp_Status, EE.Emp_Military, EE.Emp_Addr   , EE.Emp_Phone1 ,
+       EE.Emp_Phone2    , EE.Emp_Mobile1   , EE.Emp_Fax     , EE.Emp_EPerson, EE.Emp_EPhone, EE.Emp_Sex     , EE.Emp_Nat    , EE.Emp_Mrd    ,
+       EE.Emp_Child     , EE.Emp_Wife      , EE.Emp_Kied    , EE.Emp_Lang   , EE.Emp_Educat, EE.Emp_Job     , EE.Emp_Dept   , EE.Emp_Sect   ,
+       EE.Emp_Level     , EE.Emp_Spc1      , EE.Emp_Spc2    , EE.Emp_Spc3   , EE.Emp_Spc4  , EE.Acr_Id      , EE.WGrp_Id    ,
+       EE.SGrp_Id       , EE.Emp_CSDate    , EE.Emp_CEDate  , EE.Emp_SDate  , EE.Emp_IDate , EE.Emp_EDate   , EE.Emp_BaseSal, EE.Emp_SalType,
+       EE.Emp_UnitSal   , EE.Emp_FinanceSal, EE.Emp_InsurSal,
+       DD.Ded_Id        , DD.Ded_Num       , DD.Ded_Name    , DD.Ded_PAmt   ,
+       DD.MSlc_Id       , DD.MSlc_Num      , DD.MSlc_Name   , DD.MSlc_Date  , DD.MSlc_GNum , DD.MSlc_GDate  , DD.MSlc_Rem   ,
+       DD.Ded_Type      , DD.Type_Name     , DD.Ded_Status  , DD.Status_Name, DD.EDed_ID   , DD.EDed_PAmt   , DD.EDed_Rem   , DD.Lang_Id    ,
+       EE.Ins_User        EIns_User        , EE.Ins_Date      EIns_Date     , EE.Upd_User    EUpd_User      , EE.Upd_Date     EUpd_Date     ,
+       DD.DIns_User     , DD.DIns_Date     , DD.DUpd_User   , DD.DUpd_Date  , DD.EDIns_User, DD.EDIns_Date  , DD.EDUpd_User , DD.EDUpd_Date
+  From Emp_Emp EE, Emp_VEDed DD
+ Where DD.Emp_Id(+)=EE.Emp_Id
+/
+Create Synonym Emp_VEmpDed For Emp_Employee_Deduction_View
+/
+
+Create OR Replace View Emp_Tax_Slices_View AS
+Select ALL
+       M.MSlc_Id  , M.MSlc_Num  , M.MSlc_Name, M.MSlc_Date, M.MSlc_GNum, M.MSlc_GDate, M.MSlc_Rem ,
+       T.TSlc_Id  , T.TSlc_SAmt , T.TSlc_EAmt, T.TSlc_Tax , T.TSlc_Rem ,
+       T.TSlc_Type, TP.CITM_Name  Type_Name  , TP.Lang_Id ,
+       M.Ins_User   MIns_User   , M.Ins_Date  MIns_Date   , M.Upd_User   MUpd_User   , M.Upd_Date MUpd_Date,
+       T.Ins_User   TIns_User   , T.Ins_Date  TIns_Date   , T.Upd_User   TUpd_User   , T.Upd_Date TUpd_Date
+  From Emp_MTaxSlc M ,
+       Emp_TTaxSlc T ,
+       Phs_VCode   TP
+ Where T.MSlc_Id=M.MSlc_Id
+   And (NVL(T.TSlc_Type,1)=TP.CItm_Num And TP.CGrp_Id=4)
+/
+Create Synonym Emp_VTaxSlc For Emp_Tax_Slices_View
+/
+
+Create OR Replace View Emp_Daily_View AS
+Select ALL
+       M.Day_ID   , Day_Date    , Day_Rem     ,
+       M.Day_Commit Day_nCommit , CM.CITM_Name  Day_Commit, CM.Lang_Id    ,
+       To_Number(To_Char(Day_Date,'YYYY'))      Day_Year  ,
+       To_Number(To_Char(Day_Date,'MM'  ))      Day_Month ,
+       M.Ins_User   MIns_User   , M.Ins_Date    MIns_Date ,
+       M.Upd_User   MUpd_User   , M.Upd_Date    MUpd_Date
+  From Emp_Day   M ,
+       Phs_VCode CM
+ Where (NVL(M.Day_Commit,1)=CM.CITM_NUM And CM.CGrp_Id=17)
+/
+Create Synonym Emp_VDay For Emp_Daily_View
+/
+
+Create OR Replace View Emp_Dayily_EntOut_View AS
+Select ALL
+       M.Day_ID   , Day_Date    , Day_Rem     ,
+       To_Number(To_Char(Day_Date,'YYYY'))      Day_Year ,
+       To_Number(To_Char(Day_Date,'MM'  ))      Day_Month,
+       M.Ins_User   MIns_User   , M.Ins_Date    MIns_Date,
+       M.Upd_User   MUpd_User   , M.Upd_Date    MUpd_Date,
+       DEO_ID     , Emp_Id      , WGrp_Id     ,
+       DEO_WeekEnd, DEO_HolyDay , DEO_Vacation, DEO_HVacation,
+       Deo_Mission, DEO_DayOff  , DEO_Sick    , DEO_Excuse   ,
+       DEO_Payed  , DEO_VHour   , DEO_VMinute , Deo_Audit    ,
+       DEO_EPun   , DEO_OPun    ,
+       DEO_E1Hour , DEO_E1Minute, DEO_O1Hour  , DEO_O1Minute ,
+       DEO_E2Hour , DEO_E2Minute, DEO_O2Hour  , DEO_O2Minute ,
+       DEO_LEHour , DEO_LEMinute, DEO_LOHour  , DEO_LOMinute ,
+       DEO_DAHour , DEO_DAMinute, DEO_NAHour  , DEO_NAMinute ,
+       DEO_AHour  , DEO_AMinute ,
+       DEO_THour  , DEO_TMinute , DEO_AddH    , DEO_AddM     ,
+       DEO_BEHour , DEO_BEMinute, DEO_AOHour  , DEO_AOMinute ,
+       DEO_E1H    , DEO_E1M     , DEO_O1H     , DEO_O1M      ,
+       DEO_E2H    , DEO_E2M     , DEO_O2H     , DEO_O2M      ,
+       DEO_Rem    ,
+       Deo_Add    , Deo_AddReq  , Deo_Abs     , Deo_Sik      , Deo_Del    ,
+       T.Ins_User   TIns_User   , T.Ins_Date TIns_Date,
+       T.Upd_User   TUpd_User   , T.Upd_Date TUpd_Date
+  From Emp_Day M, Emp_DEO T
+ Where T.Day_Id=M.Day_Id
+/
+Create Synonym Emp_VDEO For Emp_Dayily_EntOut_View
+/
+
+Create OR Replace View Emp_ChangeSalary_View AS
+Select ALL
+       M.CSal_ID    , M.CSal_Num  , M.CSal_Date, M.CSal_DocN , M.CSal_DocD,
+       M.CSal_Perc  , M.CSal_Amt  , M.CSal_Min , M.CSal_Max  , M.CSal_Rem ,
+       M.CSal_SalTyp, TS.CITM_Name  SalTyp_Name, TS.Lang_Id  ,
+       M.CSal_Type  , TP.CITM_Name  Type_Name  ,
+       M.Ins_User   , M.Ins_Date ,  M.Upd_User , M.Upd_Date
+  From Emp_CSal     M ,
+       Phs_VCode    TS,
+       Phs_VCode    TP
+ Where (NVL(M.CSal_SalTyp,1)=TS.CItm_Num And TS.CGrp_Id=1106)
+   And (NVL(M.CSal_Type  ,1)=TP.CItm_Num And TP.CGrp_Id=1107)
+   And TS.Lang_Id=TP.Lang_Id
+/
+Create Synonym Emp_VMChngeSal For Emp_ChangeSalary_View
+/
+
+Create OR Replace View Emp_Change_Salary_View AS
+Select ALL
+       M.CSal_ID    , M.CSal_Num  , M.CSal_Date, M.CSal_DocN , M.CSal_DocD,
+       M.CSal_Perc  , M.CSal_Amt  , M.CSal_Min , M.CSal_Max  , M.CSal_Rem ,
+       M.CSal_SalTyp, TS.CITM_Name  SalTyp_Name, TS.Lang_Id  ,
+       M.CSal_Type  , TP.CITM_Name  Type_Name  ,
+       M.Ins_User     MIns_User   , M.Ins_Date    MIns_Date  ,
+       M.Upd_User     MUpd_User   , M.Upd_Date    MUpd_Date  ,
+       T.CESal_ID   , T.CESal_Old, T.CESal_Chnge, T.CESal_New, T.CESal_Rem,
+       EE.Emp_Id    , EE.Emp_Num  , EE.Emp_Name ,
+       T.Ins_User     TIns_User   , T.Ins_Date   TIns_Date   ,
+       T.Upd_User     TUpd_User   , T.Upd_Date   TUpd_Date
+  From Emp_CSal     M ,
+       Emp_CSalEmp  T ,
+       Emp_Emp      EE,
+       Phs_VCode    TS,
+       Phs_VCode    TP
+ Where T.CSal_Id=M.CSal_Id
+   And T.Emp_Id=EE.Emp_Id
+   And (NVL(M.CSal_SalTyp,1)=TS.CItm_Num And TS.CGrp_Id=1106)
+   And (NVL(M.CSal_Type  ,1)=TP.CItm_Num And TP.CGrp_Id=1107)
+   And TS.Lang_Id=TP.Lang_Id
+/
+Create Synonym Emp_VChngeSal For Emp_Change_Salary_View
+/
+
+Create OR Replace View Emp_AddOnSalary_View AS
+Select ALL
+       M.ASal_ID    , M.ASal_Num  , M.ASal_Date, M.ASal_DocN , M.ASal_DocD,
+       M.ASal_AddTo , AD.CITM_Name  AddTo_Name , AD.Lang_Id  ,
+       M.ASal_SalTyp, ST.CITM_Name  SalTyp_Name,
+       M.ASal_Type  , TP.CITM_Name  Type_Name  ,
+       M.ASal_Perc  , M.ASal_Amt  , M.ASal_Year, M.ASal_Month, M.ASal_Min ,
+       M.ASal_Max   , M.ASal_Rem
+  From Emp_AOSal    M ,
+       Phs_VCode    AD,
+       Phs_VCode    ST,
+       Phs_VCode    TP
+  Where (NVL(M.ASal_AddTo ,1)=AD.CItm_Num And AD.CGrp_Id=1112)
+    And (NVL(M.ASal_SalTyp,1)=ST.CItm_Num And ST.CGrp_Id=1106)
+    And (NVL(M.ASal_Type  ,1)=TP.CItm_Num And TP.CGrp_Id=1107)
+    And AD.Lang_Id=ST.Lang_Id
+    And AD.Lang_Id=TP.Lang_Id
+/
+Create Synonym Emp_VMAddOnSalary For Emp_AddOnSalary_View
+/
+
+Create OR Replace View Emp_AddOn_Salary_View AS
+Select ALL
+       M.ASal_ID    , M.ASal_Num  , M.ASal_Date , M.ASal_DocN , M.ASal_DocD,
+       M.ASal_Perc  , M.ASal_Amt  , M.ASal_Year , M.ASal_Month, M.ASal_Min ,
+       M.ASal_Max   , M.ASal_Rem  ,
+       M.ASal_AddTo , AD.CITM_Name  AddTo_Name  , AD.Lang_Id  ,
+       M.ASal_SalTyp, ST.CITM_Name  SalTyp_Name ,
+       M.ASal_Type  , TP.CITM_Name  Type_Name   ,
+       M.Ins_User     MIns_User   , M.Ins_Date    MIns_Date  ,
+       M.Upd_User     MUpd_User   , M.Upd_Date    MUpd_Date  ,
+       T.AESal_ID   , T.AESal_Sal , T.AESal_Amt , T.AESal_Rem,
+       EE.Emp_Id    , EE.Emp_Num  , EE.Emp_Name ,
+       TX.MSlc_Id   , TX.MSlc_Num , TX.MSlc_Name, TX.MSlc_Date, TX.MSlc_GNum , TX.MSlc_GDate, TX.MSlc_Rem ,
+       T.Ins_User     TIns_User   , T.Ins_Date    TIns_Date  ,
+       T.Upd_User     TUpd_User   , T.Upd_Date    TUpd_Date
+  From Emp_AOSal    M ,
+       Emp_AOSalEmp T ,
+       Emp_Emp      EE,
+       Emp_MTaxSlc  TX,
+       Phs_VCode    AD,
+       Phs_VCode    ST,
+       Phs_VCode    TP
+  Where T.ASal_Id=M.ASal_Id
+    And T.Emp_Id =EE.Emp_Id
+    And M.MSlc_Id=TX.MSlc_Id
+    And (NVL(M.ASal_AddTo ,1)=AD.CItm_Num And AD.CGrp_Id=1112)
+    And (NVL(M.ASal_SalTyp,1)=ST.CItm_Num And ST.CGrp_Id=1106)
+    And (NVL(M.ASal_Type  ,1)=TP.CItm_Num And TP.CGrp_Id=1107)
+    And AD.Lang_Id=ST.Lang_Id
+    And AD.Lang_Id=TP.Lang_Id
+/
+Create Synonym Emp_VAddOnSalary For Emp_AddOn_Salary_View
+/
+
+Create OR Replace View Emp_SubFromSalary_View AS
+Select ALL
+       M.SSal_ID     , M.SSal_Num  , M.SSal_Date , M.SSal_DocN , M.SSal_DocD,
+       M.SSal_SubFrom, AD.CITM_Name  SubFrom_Name, AD.Lang_Id  ,
+       M.SSal_SalTyp , ST.CITM_Name  SalTyp_Name ,
+       M.SSal_Type   , TP.CITM_Name  Type_Name   ,
+       M.SSal_Perc   , M.SSal_Amt  , M.SSal_Year, M.SSal_Month, M.SSal_Min ,
+       M.SSal_Max    , M.SSal_Rem
+  From Emp_SFSal    M ,
+       Phs_VCode    AD,
+       Phs_VCode    ST,
+       Phs_VCode    TP
+  Where (NVL(M.SSal_SubFrom,1)=AD.CItm_Num And AD.CGrp_Id=1112)
+    And (NVL(M.SSal_SalTyp ,1)=ST.CItm_Num And ST.CGrp_Id=1106)
+    And (NVL(M.SSal_Type   ,1)=TP.CItm_Num And TP.CGrp_Id=1107)
+    And AD.Lang_Id=ST.Lang_Id
+    And AD.Lang_Id=TP.Lang_Id
+/
+Create Synonym Emp_VMSubFromSalary For Emp_SubFromSalary_View
+/
+
+Create OR Replace View Emp_SubFrom_Salary_View AS
+Select ALL
+       M.SSal_ID     , M.SSal_Num  , M.SSal_Date , M.SSal_DocN , M.SSal_DocD,
+       M.SSal_Perc   , M.SSal_Amt  , M.SSal_Year , M.SSal_Month, M.SSal_Min ,
+       M.SSal_Max    , M.SSal_Rem  ,
+       M.SSal_SubFrom, AD.CITM_Name  SubFrom_Name, AD.Lang_Id  ,
+       M.SSal_SalTyp , ST.CITM_Name  SalTyp_Name ,
+       M.SSal_Type   , TP.CITM_Name  Type_Name   ,
+       M.Ins_User      MIns_User   , M.Ins_Date   MIns_Date   ,
+       M.Upd_User      MUpd_User   , M.Upd_Date   MUpd_Date   ,
+       T.SESal_ID    , T.SESal_Sal , T.SESal_Amt, T.SESal_Rem ,
+       EE.Emp_Id     , EE.Emp_Num  , EE.Emp_Name,
+       T.Ins_User      TIns_User   , T.Ins_Date   TIns_Date   ,
+       T.Upd_User      TUpd_User   , T.Upd_Date   TUpd_Date
+  From Emp_SFSal    M ,
+       Emp_SFSalEmp T ,
+       Emp_Emp      EE,
+       Phs_VCode    AD,
+       Phs_VCode    ST,
+       Phs_VCode    TP
+  Where T.SSal_Id=M.SSal_Id
+    And T.Emp_Id =EE.Emp_Id
+    And (NVL(M.SSal_SubFrom,1)=AD.CItm_Num And AD.CGrp_Id=1112)
+    And (NVL(M.SSal_SalTyp ,1)=ST.CItm_Num And ST.CGrp_Id=1106)
+    And (NVL(M.SSal_Type   ,1)=TP.CItm_Num And TP.CGrp_Id=1107)
+    And AD.Lang_Id=ST.Lang_Id
+    And AD.Lang_Id=TP.Lang_Id
+/
+Create Synonym Emp_VSubFromSalary For Emp_SubFrom_Salary_View
+/
+
+Create OR Replace View Emp_Grade_Change_View AS
+Select ALL
+       M.MGrad_Id    , MGrad_Num    , MGrad_Date   , MGrad_Rem   ,
+       T.TGrad_Id    , TGrad_SDate  , TGrad_Days   , TGrad_Rem   ,
+       E.Emp_Id      , E.Emp_Num    , E.Emp_Name   ,
+       T.TGrad_OId     OTGrad_Id    ,
+       O.Grad_Id       OGrad_Id     , O.Grad_Num     OGrad_Num   ,
+       O.Grad_Name     OGrad_Name   , O.Grad_Rem     OGrad_Rem   ,
+       O.Grad_Default  OGrad_Default,
+       O.Grad_Days     OGrad_Days   , O.Grad_MinSal  OGrad_MinSal,
+       O.Grad_MaxSal   OGrad_MaxSal , O.Grad_TRem    OGrad_TRem  ,
+       O.Grad_Code     OGrad_Code   , O.Grad_CName   OGrad_CName ,
+       O.Grad_Grp      OGrad_Grp    , O.Group_Name   OGroup_Name , O.Group_Code  OGroup_Code ,
+       O.Grad_Degree   OGrad_Degree , O.Degree_Name  ODegree_Name, O.Degree_Code ODegree_Code,
+       T.TGrad_NId     NTGrad_Id    ,
+       N.Grad_Id       NGrad_Id     , N.Grad_Num     NGrad_Num   ,
+       N.Grad_Name     NGrad_Name   , N.Grad_Rem     NGrad_Rem   ,
+       N.Grad_Default  NGrad_Default, N.Lang_Id    ,
+       N.Grad_Days     NGrad_Days   , N.Grad_MinSal  NGrad_MinSal,
+       N.Grad_MaxSal   NGrad_MaxSal , N.Grad_TRem    NGrad_TRem  ,
+       N.Grad_Code     NGrad_Code   , N.Grad_CName   NGrad_CName ,
+       N.Grad_Grp      NGrad_Grp    , N.Group_Name   NGroup_Name , N.Group_Code  NGroup_Code ,
+       N.Grad_Degree   NGrad_Degree , N.Degree_Name  NDegree_Name, N.Degree_Code NDegree_Code
+  From Emp_MCGrad     M,
+       Emp_TCGrad     T,
+       Emp_Emp        E,
+       Emp_VGradeTemp O,
+       Emp_VGradeTemp N
+  Where T.MGrad_Id =M.MGrad_Id
+    And T.Emp_Id=E.Emp_Id
+    And T.TGrad_OId=O.TGrad_Id
+    And T.TGrad_NId=N.TGrad_Id
+    And N.Lang_Id=O.Lang_Id
+/
+Create Synonym Emp_VGradChange For Emp_Grade_Change_View
+/
+
+Create OR Replace View Emp_AdminConsideration_View AS
+Select ALL
+       M.MACon_ID, MACon_Auto , MACon_Num , MACon_Date, MACon_Rem ,
+       MACon_Type, C.CITM_Name  Type_Name , C.CITM_Sign  Type_Code
+  From Emp_MAdmCon M,
+       Cpy_CodItm  C
+  Where NVL(M.MACon_Type,0)=C.CItm_Id
+/
+Create Synonym Emp_VMAdmCon For Emp_AdminConsideration_View
+/
+
+Create OR Replace View Emp_Admin_Consideration_View AS
+Select ALL
+       M.MACon_ID, MACon_Auto , MACon_Num   , MACon_Date , MACon_Rem,
+       TACon_ID  , TACon_Days , TACon_Points, TACon_Rem  ,
+       E.Emp_Id  , E.Emp_Num  , E.Emp_Name  ,
+       MACon_Type, C.CITM_Name  Type_Name   , C.CITM_Sign  Type_Code,
+       TACon_Grp , CG.CITM_Name Grp_Name    , CG.CITM_Sign Grp_Code ,
+       TACon_Item, CI.CITM_Name Item_Name   , CI.CITM_Sign Item_Code
+  From Emp_MAdmCon M ,
+       Emp_TAdmCon T ,
+       Emp_Emp     E ,
+       Cpy_CodItm  CG,
+       Cpy_CodItm  CI,
+       Cpy_CodItm  C
+  Where T.MACon_ID=M.MACon_ID
+    And T.Emp_Id=E.Emp_Id
+    And NVL(T.TACon_Grp ,0)=CG.CItm_Id
+    And NVL(T.TACon_Item,0)=CI.CItm_Id
+    And NVL(M.MACon_Type,0)=C.CItm_Id
+/
+Create Synonym Emp_VAdmCon For Emp_Admin_Consideration_View
+/
+
+Create OR Replace View Emp_AdminPunishment_View AS
+Select ALL
+       M.MAPun_ID, MAPun_Auto , MAPun_Num , MAPun_Date , MAPun_Rem,
+       MAPun_Type, C.CITM_Name  Type_Name , C.CITM_Sign  Type_Code
+  From Emp_MAdmPun M,
+       Cpy_CodItm  C
+ Where NVL(M.MAPun_Type,0)=C.CItm_Id
+/
+Create Synonym Emp_VMAdmPun For Emp_AdminPunishment_View
+/
+
+Create OR Replace View Emp_Admin_Punishment_View AS
+Select ALL
+       M.MAPun_ID, MAPun_Auto , MAPun_Num   , MAPun_Date , MAPun_Rem,
+       TAPun_ID  , TAPun_Days , TAPun_Points, TAPun_Rem  ,
+       E.Emp_Id  , E.Emp_Num  , E.Emp_Name  ,
+       MAPun_Type, C.CITM_Name  Type_Name   , C.CITM_Sign  Type_Code,
+       TAPun_Grp , CG.CITM_Name Grp_Name    , CG.CITM_Sign Grp_Code ,
+       TAPun_Item, CI.CITM_Name Item_Name   , CI.CITM_Sign Item_Code
+  From Emp_MAdmPun M ,
+       Emp_TAdmPun T ,
+       Emp_Emp     E ,
+       Cpy_CodItm  CG,
+       Cpy_CodItm  CI,
+       Cpy_CodItm  C
+ Where T.MAPun_ID=M.MAPun_ID
+    And T.Emp_Id=E.Emp_Id
+    And NVL(T.TAPun_Grp ,0)=CG.CItm_Id
+    And NVL(T.TAPun_Item,0)=CI.CItm_Id
+    And NVL(M.MAPun_Type,0)=C.CItm_Id
+/
+Create Synonym Emp_VAdmPun For Emp_Admin_Punishment_View
+/
+
+Create OR Replace View Emp_Ask4Vacations_View AS
+Select ALL
+       EE.Emp_Id    , EE.Emp_Num  , EE.Emp_Name ,
+       MM.Vac_ID    , MM.Vac_Date , MM.Vac_SDate, MM.Vac_EDate, MM.Vac_Rem,
+       MM.Vac_Type  , CT.CITM_Name  Type_Name   ,
+       MM.Vac_Status, ST.CITM_Name  Status_Name , ST.Lang_Id  ,
+       MM.Ins_User  , MM.Ins_Date , MM.Upd_User , MM.Upd_Date
+  From Emp_Ask4Vac MM,
+       Emp_Emp     EE,
+       Phs_VCode   ST,
+       Phs_VCode   CT
+ Where MM.Emp_Id=EE.Emp_Id
+   And (NVL(MM.Vac_Type  ,0)=CT.CItm_NUM And CT.CGrp_Id=1102)
+   And (NVL(MM.Vac_Status,1)=ST.CItm_NUM And ST.CGrp_Id=11  )
+   And ST.Lang_Id=CT.Lang_Id
+/
+Create Synonym Emp_VAsk4Vac For Emp_Ask4Vacations_View
+/
+
+Create OR Replace View Emp_Ask4Overtime_View AS
+Select ALL
+       EE.Emp_Id     , EE.Emp_Num  , EE.Emp_Name  ,
+       MM.OTim_ID    , MM.OTim_Date, MM.OTim_SDate, MM.OTim_EDate, MM.OTim_Rem,
+       MM.OTim_Type  , CT.CITM_Name  Type_Name    , CT.CITM_Sign   Type_Code  ,
+       MM.OTim_Status, ST.CITM_Name  Status_Name  , ST.Lang_Id   ,
+       MM.Ins_User   , MM.Ins_Date , MM.Upd_User  , MM.Upd_Date
+  From Emp_Ask4OTime MM,
+       Emp_Emp       EE,
+       Phs_VCode     ST,
+       Cpy_CodItm    CT
+ Where MM.Emp_Id=EE.Emp_Id
+   And  NVL(MM.OTim_Type  ,0)=CT.CItm_Id
+   And (NVL(MM.OTim_Status,1)=ST.CItm_NUM And ST.CGrp_Id=11)
+/
+Create Synonym Emp_VAsk4OTime For Emp_Ask4Overtime_View
+/
+
+Create OR Replace View Emp_Ask4Missions_View AS
+Select ALL
+       EE.Emp_Id    , EE.Emp_Num  , EE.Emp_Name ,
+       MM.Msn_ID    , MM.Msn_Date , MM.Msn_SDate, MM.Msn_EDate, MM.Msn_Rem,
+       MM.Msn_Type  , CT.CITM_Name  Type_Name   , CT.CITM_Sign  Type_Code ,
+       MM.Msn_Status, ST.CITM_Name  Status_Name , ST.Lang_Id  ,
+       MM.Ins_User  , MM.Ins_Date, MM.Upd_User  , MM.Upd_Date
+  From Emp_Ask4Msn MM,
+       Emp_Emp     EE,
+       Phs_VCode   ST,
+       Cpy_CodItm  CT
+ Where MM.Emp_Id=EE.Emp_Id
+   And  NVL(MM.Msn_Type  ,0)=CT.CItm_Id
+   And (NVL(MM.Msn_Status,1)=ST.CITM_NUM And ST.CGrp_Id =11)
+/
+Create Synonym Emp_VAsk4Msn For Emp_Ask4Missions_View
+/
+
+Create OR Replace View Emp_Requests_View AS
+Select ALL
+       1 Req_Kind, K.CITM_Name  Kind_Name , R.Lang_Id  ,
+       Emp_Id    , Emp_Num    , Emp_Name  , Vac_ID       Req_Id    , Vac_Date     Req_Date,
+       Vac_SDate   Req_SDate  , Vac_EDate   Req_EDate  , Vac_Rem     Req_Rem    ,
+       Vac_Type    Req_Type   , Type_Name , Vac_Status   Req_Status, Status_Name,
+       Ins_User  , Ins_Date   , Upd_User  , Upd_Date
+  From Emp_VAsk4Vac R,
+       Phs_VCode    K
+ Where R.Lang_Id=K.Lang_Id
+   And (K.CGrp_Id=1116 And K.CITm_Num=1)
+UNION ALL
+Select ALL
+       3 Req_Kind, K.CITM_Name  Kind_Name , R.Lang_Id  ,
+       Emp_Id    , Emp_Num    , Emp_Name  , OTim_ID      Req_Id    , OTim_Date    Req_Date,
+       OTim_SDate  Req_SDate  , OTim_EDate  Req_EDate  , OTim_Rem    Req_Rem    ,
+       OTim_Type   Req_Type   , Type_Name , OTim_Status  Req_Status, Status_Name,
+       Ins_User  , Ins_Date   , Upd_User  , Upd_Date
+  From Emp_VAsk4OTime R,
+       Phs_VCode      K
+ Where R.Lang_Id=K.Lang_Id
+   And (K.CGrp_Id=1116 And K.CITm_Num=2)
+UNION ALL
+Select ALL
+       3 Req_Kind, K.CITM_Name  Kind_Name , R.Lang_Id  ,
+       Emp_Id    , Emp_Num    , Emp_Name  , Msn_ID       Req_Id    , Msn_Date     Req_Date,
+       Msn_SDate   Req_SDate  , Msn_EDate   Req_EDate  , Msn_Rem     Req_Rem    ,
+       Msn_Type    Req_Type   , Type_Name , Msn_Status   Req_Status, Status_Name,
+       Ins_User  , Ins_Date   , Upd_User  , Upd_Date
+  From Emp_VAsk4Msn R,
+       Phs_VCode    K
+ Where R.Lang_Id=K.Lang_Id
+   And (K.CGrp_Id=1116 And K.CITm_Num=3)
+/
+Create Synonym Emp_VReqs For Emp_Requests_View
+/
+
+Create OR Replace View Emp_Vacations_View AS
+Select ALL
+       EE.Emp_Id  , EE.Emp_Num  , EE.Emp_Name ,
+       MM.Vac_ID  , MM.Vac_Date , MM.Vac_SDate, MM.Vac_EDate, MM.Vac_Rem, Vac_RDate,
+       MM.Vac_Type, CT.CITM_Name  Type_Name   , CT.Lang_Id  ,
+       MM.Ins_User, MM.Ins_Date , MM.Upd_User , MM.Upd_Date
+  From Emp_Vac   MM,
+       Emp_Emp   EE,
+       Phs_VCode CT
+ Where MM.Emp_Id=EE.Emp_Id
+   And (NVL(MM.Vac_Type,0)=CT.CItm_NUM And CT.CGrp_Id=1102)
+/
+Create Synonym Emp_VVac For Emp_Vacations_View
+/
+
+Create OR Replace View Emp_Overtimes_View AS
+Select ALL
+       EE.Emp_Id   , EE.Emp_Num  , EE.Emp_Name  ,
+       MM.OTim_ID  , MM.OTim_Date, MM.OTim_SDate, MM.OTim_EDate, MM.OTim_Rem, OTim_RDate,
+       MM.OTim_Type, CT.CITM_Name  Type_Name    , CT.CITM_Sign   Type_Code  ,
+       MM.Ins_User , MM.Ins_Date , MM.Upd_User  , MM.Upd_Date
+  From Emp_OTime  MM,
+       Emp_Emp    EE,
+       Cpy_CodItm CT
+ Where MM.Emp_Id=EE.Emp_Id
+   And  NVL(MM.OTim_Type,0)=CT.CItm_Id
+/
+Create Synonym Emp_VOTime For Emp_Overtimes_View
+/
+
+Create OR Replace View Emp_Missions_View AS
+Select ALL
+       EE.Emp_Id  , EE.Emp_Num  , EE.Emp_Name ,
+       MM.Msn_ID  , MM.Msn_Date , MM.Msn_SDate, MM.Msn_EDate, MM.Msn_Rem, Msn_RDate,
+       MM.Msn_Type, CT.CITM_Name  Type_Name   , CT.CITM_Sign  Type_Code ,
+       MM.Ins_User, MM.Ins_Date, MM.Upd_User  , MM.Upd_Date
+  From Emp_Msn    MM,
+       Emp_Emp    EE,
+       Cpy_CodItm CT
+ Where MM.Emp_Id=EE.Emp_Id
+   And  NVL(MM.Msn_Type,0)=CT.CItm_Id
+/
+Create Synonym Emp_VMsn For Emp_Missions_View
+/
+
+Create OR Replace View Emp_EmpVac_Balances_View AS
+Select ALL
+       EE.Emp_Id       , EE.Emp_Name    , EE.Emp_Father , EE.Emp_Mather,
+       EE.Acr_Name     , EE.SGrp_Name   , EE.WGrp_Name  , EE.Mgr_Name  ,
+       EE.Dir_Name     , EE.Fap_Name    , EE.Sap_Name   , EE.Appr_Name ,
+       EE.Spc1_Name    , EE.Spc2_Name   , EE.Spc3_Name  , EE.Spc4_Name ,
+       EE.Mrd_Name     , EE.WStatus_Name, EE.Status_Name, EE.Lang_Id   ,
+       EE.Military_Name, EE.Sex_Name    , EE.Loc_Name   , EE.Nat_Name  ,
+       EE.Educat_Name  , EE.Job_Name    , EE.Dept_Name  , EE.Sect_Name ,
+       EE.Level_Name   , VV.nYear       ,
+       EE.Emp_VacDays  nDays  ,
+       EE.Emp_VacHours nHours ,
+       Sum(VV.nADays ) nADays ,
+       Sum(Decode(Sign(VV.nAHours),-1,0,0,0,trunc(VV.nAHours/60)+(VV.nAHours-(trunc(VV.nAHours/60)*60)))) nAHours,
+       EE.Emp_VacDays -Sum(nADays ) nBDays ,
+       Decode(Sign(Sum(VV.nAHours)),-1,0,0,0,trunc(((EE.Emp_VacHours*60)-Sum(VV.nAHours))/60)+(((EE.Emp_VacHours*60)-Sum(VV.nAHours))-(trunc(((EE.Emp_VacHours*60)-Sum(VV.nAHours))/60)*60))) nBHours
+  From Emp_VEmp EE,
+       (Select ALL
+               Emp_Id,
+               To_Number(To_Char(Vac_Date,'YYYY')) nYear,
+               Count(*) nADays,
+               0 nAHours
+          From Emp_Vac
+         Where Vac_Type IN (11,12,31,41,42,51)
+         Group By Emp_Id, To_Number(To_Char(Vac_Date,'YYYY'))
+        UNION ALL
+        Select ALL
+               Emp_Id,
+               To_Number(To_Char(Vac_Date,'YYYY')) nYear,
+               0 nADays,
+               Sum(((To_Number(To_Char(Vac_EDate,'HH24'))*60)+To_Number(To_Char(Vac_EDate,'MI')))
+                  -((To_Number(To_Char(Vac_SDate,'HH24'))*60)+To_Number(To_Char(Vac_SDate,'MI')))) nAHours
+          From Emp_Vac
+         Where Vac_Type IN (21,22,32)
+         Group By Emp_Id, To_Number(To_Char(Vac_Date,'YYYY'))
+       ) VV
+ Where VV.Emp_Id=EE.Emp_Id
+ Group By  EE.Emp_Id       , EE.Emp_Name    , EE.Emp_Father , EE.Emp_Mather,
+           EE.Acr_Name     , EE.SGrp_Name   , EE.WGrp_Name  , EE.Mgr_Name  ,
+           EE.Dir_Name     , EE.Fap_Name    , EE.Sap_Name   , EE.Appr_Name ,
+           EE.Spc1_Name    , EE.Spc2_Name   , EE.Spc3_Name  , EE.Spc4_Name ,
+           EE.Mrd_Name     , EE.WStatus_Name, EE.Status_Name, EE.Lang_Id   ,
+           EE.Military_Name, EE.Sex_Name    , EE.Loc_Name   , EE.Nat_Name  ,
+           EE.Educat_Name  , EE.Job_Name    , EE.Dept_Name  , EE.Sect_Name ,
+           EE.Level_Name   , VV.nYear       , EE.Emp_VacDays, EE.Emp_VacHours
+/
+Create Synonym Emp_VEmpVacBlnc For Emp_EmpVac_Balances_View
+/
+
+Create OR Replace View Emp_Debit_View AS
+Select ALL
+       EE.Emp_Id  , EE.Emp_Num  , EE.Emp_Name,
+       MM.Dbt_ID  , MM.Dbt_Num  , MM.Dbt_Date, MM.Dbt_Amt , MM.Dbt_Rem,
+       MM.Dbt_Type, CT.CITM_Name  Type_Name  ,
+       MM.Ins_User, MM.Ins_Date , MM.Upd_User, MM.Upd_Date
+  From Emp_Dbt    MM,
+       Emp_Emp    EE,
+       Cpy_CodItm CT
+ Where MM.Emp_Id=EE.Emp_Id
+   And NVL(MM.Dbt_Type,0)=CT.CItm_Id
+/
+Create Synonym Emp_VDbt For Emp_Debit_View
+/
+
+Create OR Replace View Emp_Loan_View AS
+Select ALL
+       EE.Emp_Id     , EE.Emp_Num  , EE.Emp_Name ,
+       MM.Loan_ID    , MM.Loan_Num , MM.Loan_Date, MM.Loan_SDate ,
+       MM.Loan_EDate , MM.Loan_TAmt, MM.Loan_MAmt, MM.Loan_BAmt  ,
+       MM.Loan_Rem   ,
+       EE.Emp_Name||' ['||To_Char(MM.Loan_SDate,'DD-MM-YYYY')||'-'||To_Char(MM.Loan_EDate,'DD-MM-YYYY')||'] {'||MM.Loan_TAmt||'-'||MM.Loan_MAmt||'}' Loan_Name,
+       MM.Loan_Status, ST.CITM_Name  Status_Name , ST.Lang_Id    ,
+       MM.Loan_PFlg  , FL.CITM_Name  Flag_Name   ,
+       MM.Ins_User   , MM.Ins_Date , MM.Upd_User , MM.Upd_Date
+  From Emp_Loan   MM,
+       Emp_Emp    EE,
+       Phs_VCode  ST,
+       Phs_VCode  FL
+ Where MM.Emp_Id=EE.Emp_Id
+   And ST.Lang_Id=FL.Lang_Id 
+   And (NVL(MM.Loan_Status,0)=ST.CItm_NUM And ST.CGrp_Id=1111)
+   And (NVL(MM.Loan_PFlg  ,0)=FL.CItm_NUM And FL.CGrp_Id=8   )
+/
+Create Synonym Emp_VLoan For Emp_Loan_View
+/
+
+Create OR Replace View Emp_Loan_Payments_View AS
+Select ALL
+       MM.PLoan_Id   , MM.TSal_Id    , MM.PLoan_Num  ,
+       MM.PLoan_Date , MM.PLoan_Amt  , MM.PLoan_Rem  ,
+       MM.PLoan_Owner, OW.CITM_Name    Owner_Name    , OW.Lang_Id   ,
+       MM.Ins_User   , MM.Ins_Date   , MM.Upd_User   , MM.Upd_Date  ,
+       LL.Emp_Id     , LL.Emp_Num    , LL.Emp_Name   ,
+       LL.Loan_ID    , LL.Loan_Num   , LL.Loan_Date  , LL.Loan_SDate,
+       LL.Loan_EDate , LL.Loan_TAmt  , LL.Loan_MAmt  , LL.Loan_BAmt ,
+       LL.Loan_Rem   , LL.Loan_Status, LL.Status_Name, LL.Loan_PFlg ,
+       LL.Flag_Name
+  From Emp_PLoan MM,
+       Emp_VLoan LL,
+       Phs_VCode OW
+ Where MM.Loan_ID=LL.Loan_ID
+   And OW.Lang_Id=LL.Lang_Id
+   And (NVL(MM.PLoan_Owner,0)=OW.CItm_NUM And OW.CGrp_Id=12)
+/
+Create Synonym Emp_VPLoan For Emp_Loan_Payments_View
+/
+
+Create OR Replace View Emp_Salary_Groups_View AS
+Select ALL
+       SG.SGrp_Id        , SG.SGrp_Num       , SG.SGrp_Name      ,
+       SG.SGrp_GTamEPerc , SG.SGrp_GTamOPerc1, SG.SGrp_GTamOPerc2, SG.SGrp_GTamOPerc3,
+       SG.SGrp_DPrice    , SG.SGrp_NPrice    , SG.SGrp_WPrice    , SG.SGrp_VPrice    ,
+       SG.SGrp_SalStatus , SL.CITM_Name        SalStatus_Name    , SL.Lang_Id        ,
+       SG.SGrp_AddStatus , AD.CITM_Name        AddStatus_Name    ,
+       SG.SGrp_GTamStatus, GT.CITM_Name        GTamStatus_Name   ,
+       SG.SGrp_GTaxStatus, TX.CITM_Name        GTaxStatus_Name   ,
+       TS.MSlc_Id        , TS.MSlc_Num       , TS.MSlc_Name      , TS.MSlc_Date      ,
+       TS.MSlc_GNum      , TS.MSlc_GDate     , TS.MSlc_Rem       ,
+       SG.Ins_User       , SG.Ins_Date       , SG.Upd_User       , SG.Upd_Date
+  From Emp_SalGrp  SG,
+       Emp_MTaxSlc TS,
+       Phs_VCode   SL,
+       Phs_VCode   AD,
+       Phs_VCode   GT,
+       Phs_VCode   TX
+ Where SG.MSlc_Id=TS.MSlc_Id
+   And (NVL(SG.SGrp_SalStatus ,1)=SL.CItm_NUM And SL.CGrp_Id=8   )
+   And (NVL(SG.SGrp_AddStatus ,1)=AD.CItm_NUM And AD.CGrp_Id=8   )
+   And (NVL(SG.SGrp_GTamStatus,1)=GT.CItm_NUM And GT.CGrp_Id=1110)
+   And (NVL(SG.SGrp_GTaxStatus,1)=TX.CItm_NUM And TX.CGrp_Id=1110)
+   And SL.Lang_Id=AD.Lang_Id
+   And SL.Lang_Id=GT.Lang_Id
+   And SL.Lang_Id=TX.Lang_Id
+/
+Create Synonym Emp_VSalGrp For Emp_Salary_Groups_View
+/
+
+Create OR Replace View Emp_Salaries_View AS
+Select ALL
+        MM.Sal_Id    , MM.Sal_Year  , MM.Sal_Month, MM.Sal_Rem  ,
+        MM.Sal_Status, ST.CITM_Name   Status_Name , ST.Lang_Id  ,
+        MM.Ins_User    Sal_Ins_User , MM.Ins_Date   Sal_Ins_Date,
+        MM.Upd_User    Sal_Upd_User , MM.Upd_Date   Sal_Upd_Date
+  From Emp_Sal    MM,
+       Phs_VCode  ST
+ Where (NVL(MM.Sal_Status,0)=ST.CItm_NUM And ST.CGrp_Id=1118)
+/
+Create Synonym Emp_VSal For Emp_Salaries_View
+/
+
+Create OR Replace View Emp_Salary_Attendance_View AS
+Select ALL
+        MM.Sal_Id  , MM.Sal_Year  , MM.Sal_Month , MM.Sal_Status, MM.Sal_Rem     ,
+        MM.Ins_User  Sal_Ins_User , MM.Ins_Date    Sal_Ins_Date , MM.Upd_User      Sal_Upd_User   , MM.Upd_Date  Sal_Upd_Date ,
+        AA.SAtt_Id , AA.SAtt_DAdd , AA.SAtt_NAdd , AA.SAtt_WAdd , AA.SAtt_HAdd   , AA.SAtt_Abs    , AA.SAtt_Sik, AA.SAtt_Del  ,
+        AA.SAtt_Par, AA.SAtt_NPay , AA.SAtt_Rem  ,
+        AA.Ins_User  SAtt_Ins_User, AA.Ins_Date    SAtt_Ins_Date, AA.Upd_User      SAtt_Upd_User  , AA.Upd_Date  SAtt_Upd_Date,
+        EE.Emp_Id  , EE.Emp_Name  , EE.Emp_Father, EE.Emp_Mather, EE.Emp_Computer, EE.Emp_Username, EE.User_Id
+  From Emp_Sal    MM,
+       Emp_Emp    EE,
+       Emp_SalAtt AA
+ Where AA.Sal_Id=MM.Sal_Id
+   And AA.Emp_Id=EE.Emp_Id
+/
+Create Synonym Emp_VSalAtt For Emp_Salary_Attendance_View
+/
+
+Create OR Replace View Emp_Salary_Calculated_View AS
+Select ALL
+        MM.Sal_Id     , MM.Sal_Year   , MM.Sal_Month     , MM.Sal_Status    , MM.Sal_Rem      ,
+        MM.Ins_User     Sal_Ins_User  , MM.Ins_Date        Sal_Ins_Date     , MM.Upd_User       Sal_Upd_User    , MM.Upd_Date     Sal_Upd_Date ,
+        AA.TSal_Id    , AA.Session_Id , AA.Sal_Sal       , AA.Sal_FSal      , AA.Sal_Tam      , AA.Sal_WSal     , AA.Sal_Net    ,
+        AA.Sal_Round  , AA.Sal_GETam  , AA.Sal_GBTam1    , AA.Sal_GBTam2    , AA.Sal_GBTam3   , AA.Sal_GAETam   , AA.Sal_GABTam1,
+        AA.Sal_GABTam2, AA.Sal_GABTam3, AA.Sal_GTamStatus, AA.Sal_GTaxStatus, AA.Sal_GTaxFree , AA.Sal_GTax     , AA.Sal_Comp   ,
+        AA.Sal_Ded    , AA.Sal_Cons   , AA.Sal_SalCons   , AA.Sal_AddCons   , AA.Sal_Pun      , AA.Sal_SalPun   , AA.Sal_AddPun ,
+        AA.Sal_Dbt    , AA.Sal_Loan   , AA.Sal_NAddPrice , AA.Sal_DAddPrice , AA.Sal_WAddPrice, AA.Sal_HAddPrice, AA.Sal_DAdd   ,
+        AA.Sal_NAdd   , AA.Sal_WAdd   , AA.Sal_HAdd      , AA.Sal_NAddAmt   , AA.Sal_DAddAmt  , AA.Sal_WAddAmt  , AA.Sal_HAddAmt,
+        AA.Sal_Dels   , AA.Sal_Abs    , AA.Sal_Sick      , AA.Sal_Par       , AA.Sal_NPay     , AA.Sal_DelAmt   , AA.Sal_AbsAmt ,
+        AA.Sal_SickAmt, AA.Sal_ParAmt , AA.Sal_NPayAmt   , AA.Sal_Rem         TSal_Rem        ,
+        AA.Sal_AddAdd , AA.Sal_AddSal , AA.Sal_SubAdd    , AA.Sal_SubSal    ,
+        AA.Ins_User     Calc_Ins_User , AA.Ins_Date        Calc_Ins_Date    , AA.Upd_User       Calc_Upd_User   , AA.Upd_Date     Calc_Upd_Date,
+        EE.Emp_Id     , EE.Emp_Name   , EE.Emp_Father    , EE.Emp_Mather    , EE.Emp_Computer , EE.Emp_Username , EE.User_Id
+  From Emp_Sal     MM,
+       Emp_Emp     EE,
+       Emp_SalCalc AA
+ Where AA.Sal_Id=MM.Sal_Id
+   And AA.Emp_Id=EE.Emp_Id
+/
+Create Synonym Emp_VSalCalc For Emp_Salary_Calculated_View
+/
+
+Create OR Replace View Emp_SalCalc_Debit_View AS
+Select ALL
+        MM.Sal_Id       , MM.Sal_Year     , MM.Sal_Month     , MM.Sal_Status    , MM.Sal_Rem      ,
+        MM.Sal_Ins_User , MM.Sal_Ins_Date , MM.Sal_Upd_User  , MM.Sal_Upd_Date  ,
+        MM.TSal_Id      , MM.Session_Id   , MM.Sal_Sal       , MM.Sal_FSal      , MM.Sal_Tam      , MM.Sal_WSal     , MM.Sal_Net    ,
+        MM.Sal_Round    , MM.Sal_GETam    , MM.Sal_GBTam1    , MM.Sal_GBTam2    , MM.Sal_GBTam3   , MM.Sal_GAETam   , MM.Sal_GABTam1,
+        MM.Sal_GABTam2  , MM.Sal_GABTam3  , MM.Sal_GTamStatus, MM.Sal_GTaxStatus, MM.Sal_GTaxFree , MM.Sal_GTax     , MM.Sal_Comp   ,
+        MM.Sal_Ded      , MM.Sal_Cons     , MM.Sal_SalCons   , MM.Sal_AddCons   , MM.Sal_Pun      , MM.Sal_SalPun   , MM.Sal_AddPun ,
+        MM.Sal_Dbt      , MM.Sal_Loan     , MM.Sal_NAddPrice , MM.Sal_DAddPrice , MM.Sal_WAddPrice, MM.Sal_HAddPrice, MM.Sal_DAdd   ,
+        MM.Sal_NAdd     , MM.Sal_WAdd     , MM.Sal_HAdd      , MM.Sal_NAddAmt   , MM.Sal_DAddAmt  , MM.Sal_WAddAmt  , MM.Sal_HAddAmt,
+        MM.Sal_Dels     , MM.Sal_Abs      , MM.Sal_Sick      , MM.Sal_Par       , MM.Sal_NPay     , MM.Sal_DelAmt   , MM.Sal_AbsAmt ,
+        MM.Sal_SickAmt  , MM.Sal_ParAmt   , MM.Sal_NPayAmt   , MM.TSal_Rem      ,
+        MM.Sal_AddAdd   , MM.Sal_AddSal   , MM.Sal_SubAdd    , MM.Sal_SubSal    ,
+        MM.Calc_Ins_User, MM.Calc_Ins_Date, MM.Calc_Upd_User , MM.Calc_Upd_Date ,
+        MM.Emp_Id       , MM.Emp_Name     , MM.Emp_Father    , MM.Emp_Mather    , MM.Emp_Computer , MM.Emp_Username , MM.User_Id    ,
+        TT.TDbt_Id      , TT.Dbt_Id       , TT.Dbt_Type      , TT.Dbt_Num       , TT.Dbt_Date     , TT.Dbt_Amt      , TT.Dbt_Rem    ,
+        TT.Ins_User       TSal_Ins_User   , TT.Ins_Date        TSal_Ins_Date    , TT.Upd_User       TSal_Upd_User    , TT.Upd_Date    TSal_Upd_Date
+  From Emp_VSalCalc   MM,
+       Emp_SalCalcDbt TT
+ Where TT.TSal_Id=MM.TSal_Id
+/
+Create Synonym Emp_VSalCalcDbt For Emp_SalCalc_Debit_View
+/
+
+Create OR Replace View Emp_SalCalc_Loans_View AS
+Select ALL
+        MM.Sal_Id       , MM.Sal_Year     , MM.Sal_Month     , MM.Sal_Status    , MM.Sal_Rem      ,
+        MM.Sal_Ins_User , MM.Sal_Ins_Date , MM.Sal_Upd_User  , MM.Sal_Upd_Date  ,
+        MM.TSal_Id      , MM.Session_Id   , MM.Sal_Sal       , MM.Sal_FSal      , MM.Sal_Tam      , MM.Sal_WSal     , MM.Sal_Net    ,
+        MM.Sal_Round    , MM.Sal_GETam    , MM.Sal_GBTam1    , MM.Sal_GBTam2    , MM.Sal_GBTam3   , MM.Sal_GAETam   , MM.Sal_GABTam1,
+        MM.Sal_GABTam2  , MM.Sal_GABTam3  , MM.Sal_GTamStatus, MM.Sal_GTaxStatus, MM.Sal_GTaxFree , MM.Sal_GTax     , MM.Sal_Comp   ,
+        MM.Sal_Ded      , MM.Sal_Cons     , MM.Sal_SalCons   , MM.Sal_AddCons   , MM.Sal_Pun      , MM.Sal_SalPun   , MM.Sal_AddPun ,
+        MM.Sal_Dbt      , MM.Sal_Loan     , MM.Sal_NAddPrice , MM.Sal_DAddPrice , MM.Sal_WAddPrice, MM.Sal_HAddPrice, MM.Sal_DAdd   ,
+        MM.Sal_NAdd     , MM.Sal_WAdd     , MM.Sal_HAdd      , MM.Sal_NAddAmt   , MM.Sal_DAddAmt  , MM.Sal_WAddAmt  , MM.Sal_HAddAmt,
+        MM.Sal_Dels     , MM.Sal_Abs      , MM.Sal_Sick      , MM.Sal_Par       , MM.Sal_NPay     , MM.Sal_DelAmt   , MM.Sal_AbsAmt ,
+        MM.Sal_SickAmt  , MM.Sal_ParAmt   , MM.Sal_NPayAmt   , MM.TSal_Rem      ,
+        MM.Sal_AddAdd   , MM.Sal_AddSal   , MM.Sal_SubAdd    , MM.Sal_SubSal    ,
+        MM.Calc_Ins_User, MM.Calc_Ins_Date, MM.Calc_Upd_User , MM.Calc_Upd_Date ,
+        MM.Emp_Id       , MM.Emp_Name     , MM.Emp_Father    , MM.Emp_Mather    , MM.Emp_Computer , MM.Emp_Username , MM.User_Id    ,
+        TT.TLoan_Id     , TT.Loan_Num     , TT.Loan_Date     , TT.Loan_MAmt     , TT.Loan_BAmt    ,
+        TT.Ins_User       TSal_Ins_User   , TT.Ins_Date        TSal_Ins_Date    , TT.Upd_User       TSal_Upd_User    , TT.Upd_Date    TSal_Upd_Date
+  From Emp_VSalCalc    MM,
+       Emp_SalCalcLoan TT
+ Where TT.TSal_Id=MM.TSal_Id
+/
+Create Synonym Emp_VSalCalcLoan For Emp_SalCalc_Loans_View
+/
+
+Create OR Replace View Emp_SalCalc_Consideration_View AS
+Select ALL
+        MM.Sal_Id       , MM.Sal_Year     , MM.Sal_Month     , MM.Sal_Status    , MM.Sal_Rem      ,
+        MM.Sal_Ins_User , MM.Sal_Ins_Date , MM.Sal_Upd_User  , MM.Sal_Upd_Date  ,
+        MM.TSal_Id      , MM.Session_Id   , MM.Sal_Sal       , MM.Sal_FSal      , MM.Sal_Tam      , MM.Sal_WSal     , MM.Sal_Net    ,
+        MM.Sal_Round    , MM.Sal_GETam    , MM.Sal_GBTam1    , MM.Sal_GBTam2    , MM.Sal_GBTam3   , MM.Sal_GAETam   , MM.Sal_GABTam1,
+        MM.Sal_GABTam2  , MM.Sal_GABTam3  , MM.Sal_GTamStatus, MM.Sal_GTaxStatus, MM.Sal_GTaxFree , MM.Sal_GTax     , MM.Sal_Comp   ,
+        MM.Sal_Ded      , MM.Sal_Cons     , MM.Sal_SalCons   , MM.Sal_AddCons   , MM.Sal_Pun      , MM.Sal_SalPun   , MM.Sal_AddPun ,
+        MM.Sal_Dbt      , MM.Sal_Loan     , MM.Sal_NAddPrice , MM.Sal_DAddPrice , MM.Sal_WAddPrice, MM.Sal_HAddPrice, MM.Sal_DAdd   ,
+        MM.Sal_NAdd     , MM.Sal_WAdd     , MM.Sal_HAdd      , MM.Sal_NAddAmt   , MM.Sal_DAddAmt  , MM.Sal_WAddAmt  , MM.Sal_HAddAmt,
+        MM.Sal_Dels     , MM.Sal_Abs      , MM.Sal_Sick      , MM.Sal_Par       , MM.Sal_NPay     , MM.Sal_DelAmt   , MM.Sal_AbsAmt ,
+        MM.Sal_SickAmt  , MM.Sal_ParAmt   , MM.Sal_NPayAmt   , MM.TSal_Rem      ,
+        MM.Sal_AddAdd   , MM.Sal_AddSal   , MM.Sal_SubAdd    , MM.Sal_SubSal    ,
+        MM.Calc_Ins_User, MM.Calc_Ins_Date, MM.Calc_Upd_User , MM.Calc_Upd_Date ,
+        MM.Emp_Id       , MM.Emp_Name     , MM.Emp_Father    , MM.Emp_Mather    , MM.Emp_Computer , MM.Emp_Username , MM.User_Id    ,
+        TT.TCon_ID      , TT.Con_Num      , TT.Con_Date      , TT.CTyp_Id       , TT.Con_Kind     , TT.Con_Amt      , TT.Con_Rem    ,
+        TT.Con_Minutes  ,
+        TT.Ins_User       TSal_Ins_User   , TT.Ins_Date        TSal_Ins_Date    , TT.Upd_User       TSal_Upd_User    , TT.Upd_Date    TSal_Upd_Date
+  From Emp_VSalCalc   MM,
+       Emp_SalCalcCon TT
+ Where TT.TSal_Id=MM.TSal_Id
+/
+Create Synonym Emp_VSalCalcCon For Emp_SalCalc_Consideration_View
+/
+
+Create OR Replace View Emp_SalCalc_Punishment_View AS
+Select ALL
+        MM.Sal_Id       , MM.Sal_Year     , MM.Sal_Month     , MM.Sal_Status    , MM.Sal_Rem      ,
+        MM.Sal_Ins_User , MM.Sal_Ins_Date , MM.Sal_Upd_User  , MM.Sal_Upd_Date  ,
+        MM.TSal_Id      , MM.Session_Id   , MM.Sal_Sal       , MM.Sal_FSal      , MM.Sal_Tam      , MM.Sal_WSal     , MM.Sal_Net    ,
+        MM.Sal_Round    , MM.Sal_GETam    , MM.Sal_GBTam1    , MM.Sal_GBTam2    , MM.Sal_GBTam3   , MM.Sal_GAETam   , MM.Sal_GABTam1,
+        MM.Sal_GABTam2  , MM.Sal_GABTam3  , MM.Sal_GTamStatus, MM.Sal_GTaxStatus, MM.Sal_GTaxFree , MM.Sal_GTax     , MM.Sal_Comp   ,
+        MM.Sal_Ded      , MM.Sal_Cons     , MM.Sal_SalCons   , MM.Sal_AddCons   , MM.Sal_Pun      , MM.Sal_SalPun   , MM.Sal_AddPun ,
+        MM.Sal_Dbt      , MM.Sal_Loan     , MM.Sal_NAddPrice , MM.Sal_DAddPrice , MM.Sal_WAddPrice, MM.Sal_HAddPrice, MM.Sal_DAdd   ,
+        MM.Sal_NAdd     , MM.Sal_WAdd     , MM.Sal_HAdd      , MM.Sal_NAddAmt   , MM.Sal_DAddAmt  , MM.Sal_WAddAmt  , MM.Sal_HAddAmt,
+        MM.Sal_Dels     , MM.Sal_Abs      , MM.Sal_Sick      , MM.Sal_Par       , MM.Sal_NPay     , MM.Sal_DelAmt   , MM.Sal_AbsAmt ,
+        MM.Sal_SickAmt  , MM.Sal_ParAmt   , MM.Sal_NPayAmt   , MM.TSal_Rem      ,
+        MM.Sal_AddAdd   , MM.Sal_AddSal   , MM.Sal_SubAdd    , MM.Sal_SubSal    ,
+        MM.Calc_Ins_User, MM.Calc_Ins_Date, MM.Calc_Upd_User , MM.Calc_Upd_Date ,
+        MM.Emp_Id       , MM.Emp_Name     , MM.Emp_Father    , MM.Emp_Mather    , MM.Emp_Computer , MM.Emp_Username , MM.User_Id    ,
+        TT.TPun_ID      , TT.Pun_Num      , TT.Pun_Date      , TT.PTyp_Id       , TT.Pun_Kind     , TT.Pun_Amt      , TT.Pun_RInM   ,
+        TT.Pun_Minutes  , TT.Pun_Rem      ,
+        TT.Ins_User       TSal_Ins_User   , TT.Ins_Date        TSal_Ins_Date    , TT.Upd_User       TSal_Upd_User    , TT.Upd_Date    TSal_Upd_Date
+  From Emp_VSalCalc   MM,
+       Emp_SalCalcPun TT
+ Where TT.TSal_Id=MM.TSal_Id
+/
+Create Synonym Emp_VSalCalcPun For Emp_SalCalc_Punishment_View
+/
+
+Create OR Replace View Emp_SalCalc_Compensation_View AS
+Select ALL
+        MM.Sal_Id       , MM.Sal_Year     , MM.Sal_Month     , MM.Sal_Status    , MM.Sal_Rem      ,
+        MM.Sal_Ins_User , MM.Sal_Ins_Date , MM.Sal_Upd_User  , MM.Sal_Upd_Date  ,
+        MM.TSal_Id      , MM.Session_Id   , MM.Sal_Sal       , MM.Sal_FSal      , MM.Sal_Tam      , MM.Sal_WSal     , MM.Sal_Net    ,
+        MM.Sal_Round    , MM.Sal_GETam    , MM.Sal_GBTam1    , MM.Sal_GBTam2    , MM.Sal_GBTam3   , MM.Sal_GAETam   , MM.Sal_GABTam1,
+        MM.Sal_GABTam2  , MM.Sal_GABTam3  , MM.Sal_GTamStatus, MM.Sal_GTaxStatus, MM.Sal_GTaxFree , MM.Sal_GTax     , MM.Sal_Comp   ,
+        MM.Sal_Ded      , MM.Sal_Cons     , MM.Sal_SalCons   , MM.Sal_AddCons   , MM.Sal_Pun      , MM.Sal_SalPun   , MM.Sal_AddPun ,
+        MM.Sal_Dbt      , MM.Sal_Loan     , MM.Sal_NAddPrice , MM.Sal_DAddPrice , MM.Sal_WAddPrice, MM.Sal_HAddPrice, MM.Sal_DAdd   ,
+        MM.Sal_NAdd     , MM.Sal_WAdd     , MM.Sal_HAdd      , MM.Sal_NAddAmt   , MM.Sal_DAddAmt  , MM.Sal_WAddAmt  , MM.Sal_HAddAmt,
+        MM.Sal_Dels     , MM.Sal_Abs      , MM.Sal_Sick      , MM.Sal_Par       , MM.Sal_NPay     , MM.Sal_DelAmt   , MM.Sal_AbsAmt ,
+        MM.Sal_SickAmt  , MM.Sal_ParAmt   , MM.Sal_NPayAmt   , MM.TSal_Rem      ,
+        MM.Sal_AddAdd   , MM.Sal_AddSal   , MM.Sal_SubAdd    , MM.Sal_SubSal    ,
+        MM.Calc_Ins_User, MM.Calc_Ins_Date, MM.Calc_Upd_User , MM.Calc_Upd_Date ,
+        MM.Emp_Id       , MM.Emp_Name     , MM.Emp_Father    , MM.Emp_Mather    , MM.Emp_Computer , MM.Emp_Username , MM.User_Id    ,
+        TT.TCom_ID      , TT.ECom_Id      , TT.Com_Id        , TT.Com_Type      , TT.Com_PAmt     , TT.Com_Amt      , TT.Com_Tax    ,
+        TT.Com_Rem      ,
+        TT.Ins_User       TSal_Ins_User   , TT.Ins_Date        TSal_Ins_Date    , TT.Upd_User       TSal_Upd_User    , TT.Upd_Date    TSal_Upd_Date
+  From Emp_VSalCalc    MM,
+       Emp_SalCalcComp TT
+ Where TT.TSal_Id=MM.TSal_Id
+/
+Create Synonym Emp_VSalCalcComp For Emp_SalCalc_Compensation_View
+/
+
+Create OR Replace View Emp_SalCalc_Deduction_View AS
+Select ALL
+        MM.Sal_Id       , MM.Sal_Year     , MM.Sal_Month     , MM.Sal_Status    , MM.Sal_Rem      ,
+        MM.Sal_Ins_User , MM.Sal_Ins_Date , MM.Sal_Upd_User  , MM.Sal_Upd_Date  ,
+        MM.TSal_Id      , MM.Session_Id   , MM.Sal_Sal       , MM.Sal_FSal      , MM.Sal_Tam      , MM.Sal_WSal     , MM.Sal_Net    ,
+        MM.Sal_Round    , MM.Sal_GETam    , MM.Sal_GBTam1    , MM.Sal_GBTam2    , MM.Sal_GBTam3   , MM.Sal_GAETam   , MM.Sal_GABTam1,
+        MM.Sal_GABTam2  , MM.Sal_GABTam3  , MM.Sal_GTamStatus, MM.Sal_GTaxStatus, MM.Sal_GTaxFree , MM.Sal_GTax     , MM.Sal_Comp   ,
+        MM.Sal_Ded      , MM.Sal_Cons     , MM.Sal_SalCons   , MM.Sal_AddCons   , MM.Sal_Pun      , MM.Sal_SalPun   , MM.Sal_AddPun ,
+        MM.Sal_Dbt      , MM.Sal_Loan     , MM.Sal_NAddPrice , MM.Sal_DAddPrice , MM.Sal_WAddPrice, MM.Sal_HAddPrice, MM.Sal_DAdd   ,
+        MM.Sal_NAdd     , MM.Sal_WAdd     , MM.Sal_HAdd      , MM.Sal_NAddAmt   , MM.Sal_DAddAmt  , MM.Sal_WAddAmt  , MM.Sal_HAddAmt,
+        MM.Sal_Dels     , MM.Sal_Abs      , MM.Sal_Sick      , MM.Sal_Par       , MM.Sal_NPay     , MM.Sal_DelAmt   , MM.Sal_AbsAmt ,
+        MM.Sal_SickAmt  , MM.Sal_ParAmt   , MM.Sal_NPayAmt   , MM.TSal_Rem      ,
+        MM.Sal_AddAdd   , MM.Sal_AddSal   , MM.Sal_SubAdd    , MM.Sal_SubSal    ,
+        MM.Calc_Ins_User, MM.Calc_Ins_Date, MM.Calc_Upd_User , MM.Calc_Upd_Date ,
+        MM.Emp_Id       , MM.Emp_Name     , MM.Emp_Father    , MM.Emp_Mather    , MM.Emp_Computer , MM.Emp_Username , MM.User_Id    ,
+        TT.TDed_ID      , TT.EDed_Id      , TT.Ded_Id        , TT.Ded_Type      , TT.Ded_PAmt     , TT.Ded_Amt      , TT.Ded_Tax    ,
+        TT.Ded_Rem      ,
+        TT.Ins_User       TSal_Ins_User   , TT.Ins_Date        TSal_Ins_Date    , TT.Upd_User       TSal_Upd_User    , TT.Upd_Date    TSal_Upd_Date
+  From Emp_VSalCalc   MM,
+       Emp_SalCalcDed TT
+ Where TT.TSal_Id=MM.TSal_Id
+/
+Create Synonym Emp_VSalCalcDed For Emp_SalCalc_Deduction_View
+/
+
+Create OR Replace View Emp_SalCalc_AddOn_View AS
+Select ALL
+        MM.Sal_Id       , MM.Sal_Year     , MM.Sal_Month     , MM.Sal_Status    , MM.Sal_Rem      ,
+        MM.Sal_Ins_User , MM.Sal_Ins_Date , MM.Sal_Upd_User  , MM.Sal_Upd_Date  ,
+        MM.TSal_Id      , MM.Session_Id   , MM.Sal_Sal       , MM.Sal_FSal      , MM.Sal_Tam      , MM.Sal_WSal     , MM.Sal_Net    ,
+        MM.Sal_Round    , MM.Sal_GETam    , MM.Sal_GBTam1    , MM.Sal_GBTam2    , MM.Sal_GBTam3   , MM.Sal_GAETam   , MM.Sal_GABTam1,
+        MM.Sal_GABTam2  , MM.Sal_GABTam3  , MM.Sal_GTamStatus, MM.Sal_GTaxStatus, MM.Sal_GTaxFree , MM.Sal_GTax     , MM.Sal_Comp   ,
+        MM.Sal_Ded      , MM.Sal_Cons     , MM.Sal_SalCons   , MM.Sal_AddCons   , MM.Sal_Pun      , MM.Sal_SalPun   , MM.Sal_AddPun ,
+        MM.Sal_Dbt      , MM.Sal_Loan     , MM.Sal_NAddPrice , MM.Sal_DAddPrice , MM.Sal_WAddPrice, MM.Sal_HAddPrice, MM.Sal_DAdd   ,
+        MM.Sal_NAdd     , MM.Sal_WAdd     , MM.Sal_HAdd      , MM.Sal_NAddAmt   , MM.Sal_DAddAmt  , MM.Sal_WAddAmt  , MM.Sal_HAddAmt,
+        MM.Sal_Dels     , MM.Sal_Abs      , MM.Sal_Sick      , MM.Sal_Par       , MM.Sal_NPay     , MM.Sal_DelAmt   , MM.Sal_AbsAmt ,
+        MM.Sal_SickAmt  , MM.Sal_ParAmt   , MM.Sal_NPayAmt   , MM.TSal_Rem      ,
+        MM.Sal_AddAdd   , MM.Sal_AddSal   , MM.Sal_SubAdd    , MM.Sal_SubSal    ,
+        MM.Calc_Ins_User, MM.Calc_Ins_Date, MM.Calc_Upd_User , MM.Calc_Upd_Date ,
+        MM.Emp_Id       , MM.Emp_Name     , MM.Emp_Father    , MM.Emp_Mather    , MM.Emp_Computer , MM.Emp_Username , MM.User_Id    ,
+        TT.TAdd_ID      , TT.Add_To       , TT.Add_Amt       , TT.Add_Rem       ,
+        TT.Ins_User       TSal_Ins_User   , TT.Ins_Date        TSal_Ins_Date    , TT.Upd_User       TSal_Upd_User    , TT.Upd_Date    TSal_Upd_Date
+  From Emp_VSalCalc     MM,
+       Emp_SalCalcAOSal TT
+ Where TT.TSal_Id=MM.TSal_Id
+/
+Create Synonym Emp_VSalCalcAOSal For Emp_SalCalc_AddOn_View
+/
+
+Create OR Replace View Emp_SalCalc_SubFrom_View AS
+Select ALL
+        MM.Sal_Id       , MM.Sal_Year     , MM.Sal_Month     , MM.Sal_Status    , MM.Sal_Rem      ,
+        MM.Sal_Ins_User , MM.Sal_Ins_Date , MM.Sal_Upd_User  , MM.Sal_Upd_Date  ,
+        MM.TSal_Id      , MM.Session_Id   , MM.Sal_Sal       , MM.Sal_FSal      , MM.Sal_Tam      , MM.Sal_WSal     , MM.Sal_Net    ,
+        MM.Sal_Round    , MM.Sal_GETam    , MM.Sal_GBTam1    , MM.Sal_GBTam2    , MM.Sal_GBTam3   , MM.Sal_GAETam   , MM.Sal_GABTam1,
+        MM.Sal_GABTam2  , MM.Sal_GABTam3  , MM.Sal_GTamStatus, MM.Sal_GTaxStatus, MM.Sal_GTaxFree , MM.Sal_GTax     , MM.Sal_Comp   ,
+        MM.Sal_Ded      , MM.Sal_Cons     , MM.Sal_SalCons   , MM.Sal_AddCons   , MM.Sal_Pun      , MM.Sal_SalPun   , MM.Sal_AddPun ,
+        MM.Sal_Dbt      , MM.Sal_Loan     , MM.Sal_NAddPrice , MM.Sal_DAddPrice , MM.Sal_WAddPrice, MM.Sal_HAddPrice, MM.Sal_DAdd   ,
+        MM.Sal_NAdd     , MM.Sal_WAdd     , MM.Sal_HAdd      , MM.Sal_NAddAmt   , MM.Sal_DAddAmt  , MM.Sal_WAddAmt  , MM.Sal_HAddAmt,
+        MM.Sal_Dels     , MM.Sal_Abs      , MM.Sal_Sick      , MM.Sal_Par       , MM.Sal_NPay     , MM.Sal_DelAmt   , MM.Sal_AbsAmt ,
+        MM.Sal_SickAmt  , MM.Sal_ParAmt   , MM.Sal_NPayAmt   , MM.TSal_Rem      ,
+        MM.Sal_AddAdd   , MM.Sal_AddSal   , MM.Sal_SubAdd    , MM.Sal_SubSal    ,
+        MM.Calc_Ins_User, MM.Calc_Ins_Date, MM.Calc_Upd_User , MM.Calc_Upd_Date ,
+        MM.Emp_Id       , MM.Emp_Name     , MM.Emp_Father    , MM.Emp_Mather    , MM.Emp_Computer , MM.Emp_Username , MM.User_Id    ,
+        TT.TSub_ID      , TT.Sub_From     , TT.Sub_Amt       , TT.Sub_Rem       ,
+        TT.Ins_User       TSal_Ins_User   , TT.Ins_Date        TSal_Ins_Date    , TT.Upd_User       TSal_Upd_User    , TT.Upd_Date    TSal_Upd_Date
+  From Emp_VSalCalc     MM,
+       Emp_SalCalcSFSal TT
+ Where TT.TSal_Id=MM.TSal_Id
+/
+Create Synonym Emp_VSalCalcSFSal For Emp_SalCalc_SubFrom_View
+/

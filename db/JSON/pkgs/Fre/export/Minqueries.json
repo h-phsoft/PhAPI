@@ -1,0 +1,38 @@
+{
+  "Name": "Fre_Minqueries",
+  "Synonym": "Fre_Minqry",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ref",
+      "Field": "ref",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cust",
+      "Field": "cust",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Note",
+      "Field": "note",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

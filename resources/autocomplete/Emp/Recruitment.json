@@ -1,0 +1,9 @@
+{
+  "Synonym": "Emp_Recr",
+  "Select": "SELECT Id, Code||' '||Name||', '||To_Char(Sdate,'DD-MM-YYYY')||', '||To_Char(Edate,'DD-MM-YYYY') AS Name FROM Emp_Recr",
+  "Condition": "Sdate<=sysdate and sysdate<=Edate",
+  "Conds": {
+    "term": "Lower(Code||' '||Name||', '||To_Char(Sdate,'DD-MM-YYYY')||', '||To_Char(Edate,'DD-MM-YYYY')) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Code, Name"
+}

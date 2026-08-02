@@ -1,0 +1,33 @@
+{
+  "Name": "Stor_Change_Location_Master",
+  "Synonym": "Stor_Chlocmst",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Docn",
+      "Field": "docn",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Docd",
+      "Field": "docd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "Name": "Emp_Leaves_View",
+  "Synonym": "Emp_Vleaves",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Emp_Num",
+      "Field": "empNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Name",
+      "Field": "empName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Fname",
+      "Field": "empFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dept_Name",
+      "Field": "deptName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sect_Name",
+      "Field": "sectName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Job_Name",
+      "Field": "jobName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Level_Name",
+      "Field": "levelName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc1_Name",
+      "Field": "spc1Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc2_Name",
+      "Field": "spc2Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc3_Name",
+      "Field": "spc3Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc4_Name",
+      "Field": "spc4Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Leave_Num",
+      "Field": "leaveNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Leave_Ddate",
+      "Field": "leaveDdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Type_Name",
+      "Field": "typeName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Leave_Sdate",
+      "Field": "leaveSdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Leave_Shour",
+      "Field": "leaveShour",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Leave_Sminute",
+      "Field": "leaveSminute",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Leave_Edate",
+      "Field": "leaveEdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Leave_Ehour",
+      "Field": "leaveEhour",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Leave_Eminute",
+      "Field": "leaveEminute",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Leave_Rem",
+      "Field": "leaveRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Leave_Days",
+      "Field": "leaveDays",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Leave_Minutes",
+      "Field": "leaveMinutes",
+      "isSelected": false
+    }
+  ]
+}

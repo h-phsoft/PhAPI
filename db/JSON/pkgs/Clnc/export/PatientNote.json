@@ -1,0 +1,18 @@
+{
+  "Name": "Clnc_Patient_Note",
+  "Synonym": "Clnc_Pat_Note",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Note",
+      "Field": "note",
+      "isSelected": false
+    }
+  ]
+}

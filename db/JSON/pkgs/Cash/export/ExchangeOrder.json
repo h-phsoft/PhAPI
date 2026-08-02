@@ -1,0 +1,143 @@
+{
+  "Name": "Cash_Exchange_Order",
+  "Synonym": "Cash_Eord",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Vhr_Did",
+      "Field": "vhrDid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rnum",
+      "Field": "rnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rdate",
+      "Field": "rdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Edate",
+      "Field": "edate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Execdate",
+      "Field": "execdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Fid",
+      "Field": "curnFid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Frate",
+      "Field": "curnFrate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fcamt",
+      "Field": "fcamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Famt",
+      "Field": "famt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fexcamt",
+      "Field": "fexcamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fexamt",
+      "Field": "fexamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Tid",
+      "Field": "curnTid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Trate",
+      "Field": "curnTrate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tcamt",
+      "Field": "tcamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tamt",
+      "Field": "tamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Texcamt",
+      "Field": "texcamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Texamt",
+      "Field": "texamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Date",
+      "Field": "statusDate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Descr",
+      "Field": "statusDescr",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Phnby",
+      "Field": "phnby",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Correspondent",
+      "Field": "correspondent",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Recipient",
+      "Field": "recipient",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dcust",
+      "Field": "dcust",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Reason",
+      "Field": "reason",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

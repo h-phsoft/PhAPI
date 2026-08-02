@@ -1,0 +1,189 @@
+{
+  "Name": "Acc_Voucher_View",
+  "Synonym": "Acc_Vvoucher",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Bran_Name",
+      "Field": "branName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Period_Name",
+      "Field": "periodName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Period_Sdate",
+      "Field": "periodSdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Period_Edate",
+      "Field": "periodEdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Src_Name",
+      "Field": "srcName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Name",
+      "Field": "statusName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mst_Num",
+      "Field": "mstNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mst_Pnum",
+      "Field": "mstPnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mst_Date",
+      "Field": "mstDate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Doc_Name",
+      "Field": "docName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mst_Docn",
+      "Field": "mstDocn",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mst_Docd",
+      "Field": "mstDocd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mst_Rem",
+      "Field": "mstRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cost_Num",
+      "Field": "costNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cost_Name",
+      "Field": "costName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cost_Fname",
+      "Field": "costFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Num",
+      "Field": "accNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Name",
+      "Field": "accName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Fname",
+      "Field": "accFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Rid",
+      "Field": "accRid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Racc_Num",
+      "Field": "raccNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Racc_Name",
+      "Field": "raccName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Racc_Fname",
+      "Field": "raccFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tdoc_Name",
+      "Field": "tdocName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Docn",
+      "Field": "trnDocn",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Docd",
+      "Field": "trnDocd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Ord",
+      "Field": "trnOrd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Deb",
+      "Field": "trnDeb",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Crd",
+      "Field": "trnCrd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Name",
+      "Field": "curnName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Code",
+      "Field": "curnCode",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Rate",
+      "Field": "curnRate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Debc",
+      "Field": "trnDebc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Crdc",
+      "Field": "trnCrdc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Rem",
+      "Field": "trnRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Rid",
+      "Field": "trnRid",
+      "isSelected": false
+    }
+  ]
+}

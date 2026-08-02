@@ -1,0 +1,18 @@
+{
+  "Name": "Clnc_Code_Shift",
+  "Synonym": "Clnc_Cod_Shift",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

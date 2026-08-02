@@ -1,0 +1,23 @@
+{
+  "Name": "Prd_Productoin_Stage_Employee_Job",
+  "Synonym": "Prd_Prod_Stage_Emp_Job",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Ord",
+      "Field": "ord",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Qnt",
+      "Field": "qnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

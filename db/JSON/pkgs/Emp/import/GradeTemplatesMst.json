@@ -1,0 +1,41 @@
+{
+  "Name": "Emp_Grade_Templates_Mst",
+  "Synonym": "Emp_Gradmst",
+  "Sequence": "Emp_Gradmst_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Isdefault_Id",
+      "Field": "isdefaultId",
+      "DBType": "NUMBER",
+      "Default": "2",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Yesno",
+        "SynonymName": "Phs_Cod_Yesno",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "isdefaultName"
+      }
+    }
+  ]
+}

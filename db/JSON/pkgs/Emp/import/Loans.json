@@ -1,0 +1,108 @@
+{
+  "Name": "Emp_Loans",
+  "Synonym": "Emp_Loan",
+  "Sequence": "Emp_Loan_Seq",
+  "InsUser": false,
+  "hasChilds": true,
+  "Children": [
+    {
+      "Pkg": "Emp",
+      "Key": "LoanPayments",
+      "Table": "Emp_Loan_Payments",
+      "Synonym": "Emp_Ploan",
+      "cascadeDelete": true,
+      "Column": "LOAN_ID",
+      "ColKey": "loanId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Emp_Id",
+      "Field": "empId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Employee",
+        "SynonymName": "Emp_Emp",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "empName"
+      }
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Status",
+        "SynonymName": "Phs_Cod_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }, {
+      "Name": "Pflg_Id",
+      "Field": "pflgId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Yesno",
+        "SynonymName": "Phs_Cod_Yesno",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "pflgName"
+      }
+    }, {
+      "Name": "Tamt",
+      "Field": "tamt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Mamt",
+      "Field": "mamt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Bamt",
+      "Field": "bamt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "Sysdate",
+      "hasRelation": false
+    }, {
+      "Name": "Sdate",
+      "Field": "sdate",
+      "DBType": "DATE",
+      "Default": "Sysdate",
+      "hasRelation": false
+    }, {
+      "Name": "Edate",
+      "Field": "edate",
+      "DBType": "DATE",
+      "Default": "Sysdate",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

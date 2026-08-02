@@ -1,0 +1,33 @@
+{
+  "Name": "Prd_Production_Stage",
+  "Synonym": "Prd_Stage",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Htime",
+      "Field": "htime",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mtime",
+      "Field": "mtime",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

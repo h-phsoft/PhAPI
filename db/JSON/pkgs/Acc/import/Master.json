@@ -1,0 +1,118 @@
+{
+  "Name": "Acc_Master",
+  "Synonym": "Acc_Mst",
+  "Sequence": "Acc_Mst_Seq",
+  "InsUser": false,
+  "hasChilds": true,
+  "Children": [
+    {
+      "Pkg": "Acc",
+      "Key": "Transaction",
+      "Table": "Acc_Transaction",
+      "Synonym": "Acc_Trn",
+      "cascadeDelete": true,
+      "Column": "MST_ID",
+      "ColKey": "mstId"
+    }
+  ],
+  "Unique": [
+    {
+      "Name": "Period_Id",
+      "Field": "periodId"
+    }, {
+      "Name": "Num",
+      "Field": "num"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Period_Id",
+      "Field": "periodId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Periods",
+        "SynonymName": "Cpy_Period",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "periodName"
+      }
+    }, {
+      "Name": "Src_Id",
+      "Field": "srcId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Source",
+        "SynonymName": "Phs_Cod_Src",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "srcName"
+      }
+    }, {
+      "Name": "Commit_Id",
+      "Field": "commitId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Commit_Status",
+        "SynonymName": "Phs_Cod_Commit",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "commitName"
+      }
+    }, {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Pnum",
+      "Field": "pnum",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Mdate",
+      "Field": "mdate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Doc_Id",
+      "Field": "docId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Code_Document",
+        "SynonymName": "Cpy_Cod_Doc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "docName"
+      }
+    }, {
+      "Name": "Docn",
+      "Field": "docn",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Docd",
+      "Field": "docd",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "Name": "Emp_Subfrom_Salary",
+  "Synonym": "Emp_Sfsal",
+  "Sequence": "Emp_Sfsal_Seq",
+  "InsUser": false,
+  "hasChilds": true,
+  "Children": [
+    {
+      "Pkg": "Emp",
+      "Key": "SubfromSalaryEmployees",
+      "Table": "Emp_Subfrom_Salary_Employees",
+      "Synonym": "Emp_Sfsalemp",
+      "cascadeDelete": true,
+      "Column": "SSAL_ID",
+      "ColKey": "ssalId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "SysDate",
+      "hasRelation": false
+    }, {
+      "Name": "Docn",
+      "Field": "docn",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Docd",
+      "Field": "docd",
+      "DBType": "DATE",
+      "Default": "SysDate",
+      "hasRelation": false
+    }, {
+      "Name": "Subfrom_Id",
+      "Field": "subfromId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Affected",
+        "SynonymName": "Emp_Cod_Aff",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "subfromName"
+      }
+    }, {
+      "Name": "Saltyp_Id",
+      "Field": "saltypId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Affected_Salary",
+        "SynonymName": "Emp_Cod_Affsal",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "saltypName"
+      }
+    }, {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Change_Type",
+        "SynonymName": "Emp_Cod_Chngtype",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "typeName"
+      }
+    }, {
+      "Name": "Perc",
+      "Field": "perc",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Amt",
+      "Field": "amt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Nmin",
+      "Field": "nmin",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Nmax",
+      "Field": "nmax",
+      "DBType": "NUMBER",
+      "Default": "9999999999",
+      "hasRelation": false
+    }, {
+      "Name": "Nyear",
+      "Field": "nyear",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Nmonth",
+      "Field": "nmonth",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

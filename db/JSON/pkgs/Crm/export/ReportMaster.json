@@ -1,0 +1,58 @@
+{
+  "Name": "Crm_Report_Master",
+  "Synonym": "Crm_Mrep",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Person",
+      "Field": "person",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Comp",
+      "Field": "comp",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Vcomd",
+      "Field": "vcomd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fdate",
+      "Field": "fdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Frem",
+      "Field": "frem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Report",
+      "Field": "report",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Descr",
+      "Field": "descr",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

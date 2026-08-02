@@ -1,0 +1,54 @@
+{
+  "Name": "Phs_Miprograms_View",
+  "Synonym": "Phs_Vmiprg",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Menu_Name",
+      "Field": "menuName",
+      "isSelected": false
+    }
+    , {
+      "Name": "Menu_Status",
+      "Field": "menuStatus",
+      "isSelected": false
+    }
+    , {
+      "Name": "Mprg_Pid",
+      "Field": "mprgPid",
+      "isSelected": false
+    }
+    , {
+      "Name": "Mprg_Ord",
+      "Field": "mprgOrd",
+      "isSelected": false
+    }
+    , {
+      "Name": "Mprg_Url",
+      "Field": "mprgUrl",
+      "isSelected": false
+    }
+    , {
+      "Name": "Mprg_Apiurl",
+      "Field": "mprgApiurl",
+      "isSelected": false
+    }
+    , {
+      "Name": "Mprg_Icon",
+      "Field": "mprgIcon",
+      "isSelected": false
+    }
+    , {
+      "Name": "Mprg_Status",
+      "Field": "mprgStatus",
+      "isSelected": false
+    }
+    , {
+      "Name": "Mprg_Name",
+      "Field": "mprgName",
+      "isSelected": false
+    }
+  ]
+}

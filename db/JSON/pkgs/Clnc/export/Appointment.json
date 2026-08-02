@@ -1,0 +1,38 @@
+{
+  "Name": "Clnc_Appointment",
+  "Synonym": "Clnc_App",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nhour",
+      "Field": "nhour",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nminute",
+      "Field": "nminute",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Minutes",
+      "Field": "minutes",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Amt",
+      "Field": "amt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Descr",
+      "Field": "descr",
+      "isSelected": false
+    }
+  ]
+}

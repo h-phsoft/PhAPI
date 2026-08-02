@@ -1,0 +1,9 @@
+{
+  "Synonym": "Fin_Mdbt",
+  "Select": "SELECT Id, Num||' - '||ddate AS Name FROM Fin_Mdbt",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' - '||ddate) LIKE '%{term}%'"
+  },
+  "OrderBy": "Num"
+}

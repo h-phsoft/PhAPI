@@ -1,0 +1,10 @@
+{
+  "Synonym": "Acc_VGrant",
+  "Select": "SELECT Acc_Id AS Id, Acc_Num||' - '||Acc_Name AS Name FROM Acc_VGrant",
+  "Condition": "",
+  "Conds": {
+    "term": "Acc_Num||' '||Acc_Name LIKE '%{term}%'",
+    "systemId": "System_Id={systemId}"
+  },
+  "OrderBy": "Acc_Num"
+}

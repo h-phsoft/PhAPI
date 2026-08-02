@@ -1,0 +1,9 @@
+{
+  "Synonym": "Prd_Stage",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Prd_Stage",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

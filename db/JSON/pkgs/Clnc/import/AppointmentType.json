@@ -1,0 +1,46 @@
+{
+  "Name": "Clnc_Appointment_Type",
+  "Synonym": "Clnc_App_Type",
+  "Sequence": "Clnc_App_Type_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Capacity",
+      "Field": "capacity",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Minutes",
+      "Field": "minutes",
+      "DBType": "NUMBER",
+      "Default": "15",
+      "hasRelation": false
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Title_Bg",
+      "Field": "titleBg",
+      "DBType": "VARCHAR2",
+      "Default": "'#CCC'",
+      "hasRelation": false
+    }, {
+      "Name": "Title_Fg",
+      "Field": "titleFg",
+      "DBType": "VARCHAR2",
+      "Default": "'#000'",
+      "hasRelation": false
+    }, {
+      "Name": "Patient_Fg",
+      "Field": "patientFg",
+      "DBType": "VARCHAR2",
+      "Default": "'#777'",
+      "hasRelation": false
+    }
+  ]
+}

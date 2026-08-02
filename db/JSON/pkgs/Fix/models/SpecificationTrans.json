@@ -1,0 +1,569 @@
+{
+  "Name": "Fix_Specification_Trans",
+  "Synonym": "Fix_Spctrn",
+  "Sequence": "Fix_Spctrn_Seq",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Order": "Id",
+  "InsUser": true,
+  "UpdUser": true,
+  "Select": "SELECT Id, Fmst_Id, Ord, Fixd_Id, Ftrn_Id, Ospc1_Id, Ospc2_Id, Ospc3_Id, Ospc4_Id, Ospc5_Id, Ostatus_Id, Ospc6, Spc1_Id, Spc2_Id, Spc3_Id, Spc4_Id, Spc5_Id, Status_Id, Spc6, Rem, Ins_User, To_Char(Ins_Date, 'DD-MM-YYYY') AS Ins_Date, Upd_User, To_Char(Upd_Date, 'DD-MM-YYYY') AS Upd_Date FROM Fix_Spctrn",
+  "Insert": "INSERT INTO Fix_Spctrn (Id, Fmst_Id, Ord, Fixd_Id, Ftrn_Id, Ospc1_Id, Ospc2_Id, Ospc3_Id, Ospc4_Id, Ospc5_Id, Ostatus_Id, Ospc6, Spc1_Id, Spc2_Id, Spc3_Id, Spc4_Id, Spc5_Id, Status_Id, Spc6, Rem, Ins_User, Ins_Date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, Sysdate)",
+  "Update": "UPDATE Fix_Spctrn SET Fmst_Id=?, Ord=?, Fixd_Id=?, Ftrn_Id=?, Ospc1_Id=?, Ospc2_Id=?, Ospc3_Id=?, Ospc4_Id=?, Ospc5_Id=?, Ostatus_Id=?, Ospc6=?, Spc1_Id=?, Spc2_Id=?, Spc3_Id=?, Spc4_Id=?, Spc5_Id=?, Status_Id=?, Spc6=?, Rem=?, Upd_User=?, Upd_Date=Sysdate WHERE Id=?",
+  "hasChilds": false,
+  "Children": [
+  ],
+  "Columns": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "20",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Fmst_Id",
+      "Field": "fmstId",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "10",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ord",
+      "Field": "ord",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Fixd_Id",
+      "Field": "fixdId",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Fixeds_Items",
+        "SynonymName": "Fix_Fixed",
+        "CurId": "Fixd_Id",
+        "RelId": "Id",
+        "RelName": "Num||' - '||Name",
+        "RelField": "fixdFname",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ftrn_Id",
+      "Field": "ftrnId",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "20",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ospc1_Id",
+      "Field": "ospc1Id",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Specification1",
+        "SynonymName": "Fix_Cod_Spec1",
+        "CurId": "Ospc1_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "ospc1Name",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ospc2_Id",
+      "Field": "ospc2Id",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Specification2",
+        "SynonymName": "Fix_Cod_Spec2",
+        "CurId": "Ospc2_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "ospc2Name",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ospc3_Id",
+      "Field": "ospc3Id",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Specification3",
+        "SynonymName": "Fix_Cod_Spec3",
+        "CurId": "Ospc3_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "ospc3Name",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ospc4_Id",
+      "Field": "ospc4Id",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Specification4",
+        "SynonymName": "Fix_Cod_Spec4",
+        "CurId": "Ospc4_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "ospc4Name",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ospc5_Id",
+      "Field": "ospc5Id",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Specification5",
+        "SynonymName": "Fix_Cod_Spec5",
+        "CurId": "Ospc5_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "ospc5Name",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ostatus_Id",
+      "Field": "ostatusId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Status",
+        "SynonymName": "Fix_Cod_Status",
+        "CurId": "Ostatus_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "ostatusName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ospc6",
+      "Field": "ospc6",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Spc1_Id",
+      "Field": "spc1Id",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Specification1",
+        "SynonymName": "Fix_Cod_Spec1",
+        "CurId": "Spc1_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "spc1Name",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Spc2_Id",
+      "Field": "spc2Id",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Specification2",
+        "SynonymName": "Fix_Cod_Spec2",
+        "CurId": "Spc2_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "spc2Name",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Spc3_Id",
+      "Field": "spc3Id",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Specification3",
+        "SynonymName": "Fix_Cod_Spec3",
+        "CurId": "Spc3_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "spc3Name",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Spc4_Id",
+      "Field": "spc4Id",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Specification4",
+        "SynonymName": "Fix_Cod_Spec4",
+        "CurId": "Spc4_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "spc4Name",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Spc5_Id",
+      "Field": "spc5Id",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Specification5",
+        "SynonymName": "Fix_Cod_Spec5",
+        "CurId": "Spc5_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "spc5Name",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Status",
+        "SynonymName": "Fix_Cod_Status",
+        "CurId": "Status_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Spc6",
+      "Field": "spc6",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ins_User",
+      "Field": "insUser",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "20",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ins_Date",
+      "Field": "insDate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Upd_User",
+      "Field": "updUser",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "20",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Upd_Date",
+      "Field": "updDate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+  ]
+}

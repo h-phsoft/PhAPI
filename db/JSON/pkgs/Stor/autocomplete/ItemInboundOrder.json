@@ -1,0 +1,10 @@
+{
+  "Synonym": "Stor_VItem_InboundTrn",
+  "Select": "SELECT Trn_Id Id, Itm_Name Name FROM Stor_VItem_InboundTrn",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(' '||Itm_Name) LIKE Lower('%{term}%')",
+    "MstId": "Trn_Mst_Id={MstId}"
+  },
+  "OrderBy": "Id"
+}

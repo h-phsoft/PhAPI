@@ -1,0 +1,9 @@
+{
+  "Synonym": "Proj_Team",
+  "Select": "SELECT Id,Name AS Name FROM Proj_Team",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Id"
+}

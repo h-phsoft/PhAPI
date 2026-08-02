@@ -1,0 +1,22 @@
+{
+  "Name": "Sal_Commission_Code",
+  "Synonym": "Sal_Comm_Cod",
+  "Sequence": "Sal_Comm_Cod_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

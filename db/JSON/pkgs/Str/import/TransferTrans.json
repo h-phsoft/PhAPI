@@ -1,0 +1,98 @@
+{
+  "Name": "Str_Transfer_Trans",
+  "Synonym": "Str_Trtrn",
+  "Sequence": "Str_Trtrn_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Mst_Id",
+      "Field": "mstId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Transfer_Master",
+        "SynonymName": "Str_Trmst",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "mstName"
+      }
+    }, {
+      "Name": "Smat_Fid",
+      "Field": "smatFid",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Stores_Materiales",
+        "SynonymName": "Str_Smat",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "smatName"
+      }
+    }, {
+      "Name": "Smat_Tid",
+      "Field": "smatTid",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Stores_Materiales",
+        "SynonymName": "Str_Smat",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "smatName"
+      }
+    }, {
+      "Name": "Item_Id",
+      "Field": "itemId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Items",
+        "SynonymName": "Str_Item",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "itemName"
+      }
+    }, {
+      "Name": "Ord",
+      "Field": "ord",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Qnt",
+      "Field": "qnt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Price",
+      "Field": "price",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Cst",
+      "Field": "cst",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Amt",
+      "Field": "amt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "Name": "Str_Store_Items_View",
+  "Synonym": "Str_Vsitem",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Stor_Name",
+      "Field": "storName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Stor_Rem",
+      "Field": "storRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cost_Num",
+      "Field": "costNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cost_Name",
+      "Field": "costName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Num",
+      "Field": "accNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Name",
+      "Field": "accName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Num",
+      "Field": "empNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Name",
+      "Field": "empName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Stor_Status_Name",
+      "Field": "storStatusName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Item_Num",
+      "Field": "itemNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Item_Name",
+      "Field": "itemName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Item_Fname",
+      "Field": "itemFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Item_Rem",
+      "Field": "itemRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Item_Status_Name",
+      "Field": "itemStatusName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Unit_Name",
+      "Field": "unitName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc1_Name",
+      "Field": "spc1Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc2_Name",
+      "Field": "spc2Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc3_Name",
+      "Field": "spc3Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc4_Name",
+      "Field": "spc4Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc5_Name",
+      "Field": "spc5Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cqnt",
+      "Field": "cqnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Camt",
+      "Field": "camt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Req_Limit",
+      "Field": "reqLimit",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Min_Limit",
+      "Field": "minLimit",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Max_Limit",
+      "Field": "maxLimit",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Over_Req",
+      "Field": "overReq",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Over_Min",
+      "Field": "overMin",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Over_Max",
+      "Field": "overMax",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Statusname",
+      "Field": "statusname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loc1name",
+      "Field": "loc1name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loc2name",
+      "Field": "loc2name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loc3name",
+      "Field": "loc3name",
+      "isSelected": false
+    }
+  ]
+}

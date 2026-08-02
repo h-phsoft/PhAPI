@@ -1,0 +1,43 @@
+{
+  "Name": "Proj_Project_Expense",
+  "Synonym": "Proj_Proj_Expense",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Qnt",
+      "Field": "qnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Price",
+      "Field": "price",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Camt",
+      "Field": "camt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Amt",
+      "Field": "amt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rate",
+      "Field": "rate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

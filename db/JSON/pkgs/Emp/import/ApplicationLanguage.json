@@ -1,0 +1,81 @@
+{
+  "Name": "Emp_Application_Language",
+  "Synonym": "Emp_Applang",
+  "Sequence": "Emp_Applang_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Mapp_Id",
+      "Field": "mappId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Application",
+        "SynonymName": "Emp_Appl",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "mappName"
+      }
+    }, {
+      "Name": "Lang_Id",
+      "Field": "langId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Language",
+        "SynonymName": "Emp_Cod_Lang",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "langName"
+      }
+    }, {
+      "Name": "Read_Id",
+      "Field": "readId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Testmarks",
+        "SynonymName": "Emp_Cod_Testmark",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "readName"
+      }
+    }, {
+      "Name": "Write_Id",
+      "Field": "writeId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Testmarks",
+        "SynonymName": "Emp_Cod_Testmark",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "writeName"
+      }
+    }, {
+      "Name": "Speak_Id",
+      "Field": "speakId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Testmarks",
+        "SynonymName": "Emp_Cod_Testmark",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "speakName"
+      }
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

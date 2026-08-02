@@ -1,0 +1,53 @@
+{
+  "Name": "Mng_Contact",
+  "Synonym": "Mng_Cont",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Title",
+      "Field": "title",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Lname",
+      "Field": "lname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Owner",
+      "Field": "owner",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Contact",
+      "Field": "contact",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nlmt",
+      "Field": "nlmt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dlmt",
+      "Field": "dlmt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "Name": "Emp_Day_Attendance_File",
+  "Synonym": "Emp_Dayattfile",
+  "Sequence": "Emp_Dayattfile_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Day_Id",
+      "Field": "dayId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Daily",
+        "SynonymName": "Emp_Day",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "dayName"
+      }
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Vfile",
+      "Field": "vfile",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

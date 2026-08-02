@@ -1,0 +1,9 @@
+{
+  "Synonym": "Sal_Outtrn",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Sal_Outtrn",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

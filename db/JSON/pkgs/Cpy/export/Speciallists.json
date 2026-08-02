@@ -1,0 +1,54 @@
+{
+  "Name": "Copy_Speciallists_View",
+  "Synonym": "Cpy_Vslist",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Slist_Name",
+      "Field": "slistName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Slist_Rem",
+      "Field": "slistRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sprv_Name",
+      "Field": "sprvName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sprv_Rem",
+      "Field": "sprvRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sprv_Lovid",
+      "Field": "sprvLovid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sprv_Lovnum",
+      "Field": "sprvLovnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sprv_Lovname",
+      "Field": "sprvLovname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sprv_Lovtable",
+      "Field": "sprvLovtable",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sprv_Lovwhere",
+      "Field": "sprvLovwhere",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "Name": "Str_Default_Accounts",
+  "Synonym": "Str_Defacc",
+  "Sequence": "Str_Defacc_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Stor_Id",
+      "Field": "storId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Stores",
+        "SynonymName": "Str_Store",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "storName"
+      }
+    }, {
+      "Name": "Trntyp_Id",
+      "Field": "trntypId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Code_Transaction_Type",
+        "SynonymName": "Str_Cod_Trntyp",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "trntypName"
+      }
+    }, {
+      "Name": "Cstacc_Id",
+      "Field": "cstaccId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Account",
+        "SynonymName": "Acc_Acc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "cstaccName"
+      }
+    }, {
+      "Name": "Revacc_Id",
+      "Field": "revaccId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Account",
+        "SynonymName": "Acc_Acc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "revaccName"
+      }
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

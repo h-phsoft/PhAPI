@@ -1,0 +1,36 @@
+{
+  "Name": "Clnc_User_Clinics",
+  "Synonym": "Clnc_User_Clinic",
+  "Sequence": "Clnc_User_Clinic_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "User_Id",
+      "Field": "userId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Users",
+        "SynonymName": "Cpy_User",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "userName"
+      }
+    }, {
+      "Name": "Clinic_Id",
+      "Field": "clinicId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Clinics",
+        "SynonymName": "Clnc_Clinic",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "clinicName"
+      }
+    }
+  ]
+}

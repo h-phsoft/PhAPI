@@ -1,0 +1,58 @@
+{
+  "Name": "Sal_Sales_Master",
+  "Synonym": "Sal_Outmst",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Bcurn_Rate",
+      "Field": "bcurnRate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cmv",
+      "Field": "cmv",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ccom",
+      "Field": "ccom",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Bcom",
+      "Field": "bcom",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rate",
+      "Field": "rate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Docn",
+      "Field": "docn",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Docd",
+      "Field": "docd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

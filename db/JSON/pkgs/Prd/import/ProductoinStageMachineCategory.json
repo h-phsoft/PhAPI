@@ -1,0 +1,54 @@
+{
+  "Name": "Prd_Productoin_Stage_Machine_Category",
+  "Synonym": "Prd_Prod_Stage_Mach_Cat",
+  "Sequence": "Prd_Prod_Stage_Mach_Cat_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Stage_Id",
+      "Field": "stageId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Prd_Production_Stage",
+        "SynonymName": "Prd_Stage",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "stageName"
+      }
+    }, {
+      "Name": "Cat_Id",
+      "Field": "catId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Prd_Code_Machine_Category",
+        "SynonymName": "Prd_Cod_Mchine_Cat",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "catName"
+      }
+    }, {
+      "Name": "Ord",
+      "Field": "ord",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Qnt",
+      "Field": "qnt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

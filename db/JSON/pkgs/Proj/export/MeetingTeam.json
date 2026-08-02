@@ -1,0 +1,13 @@
+{
+  "Name": "Proj_Meeting_Team",
+  "Synonym": "Proj_Meet_Team",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

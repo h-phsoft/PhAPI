@@ -1,0 +1,63 @@
+{
+  "Name": "Bank_Accounts",
+  "Synonym": "Bank_Acc",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Code",
+      "Field": "code",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Cid",
+      "Field": "accCid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Accnum",
+      "Field": "accnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Accname",
+      "Field": "accname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Bname",
+      "Field": "bname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Baddress",
+      "Field": "baddress",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Bswift",
+      "Field": "bswift",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Bfax",
+      "Field": "bfax",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Note",
+      "Field": "note",
+      "isSelected": false
+    }
+  ]
+}

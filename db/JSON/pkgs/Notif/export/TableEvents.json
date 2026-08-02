@@ -1,0 +1,28 @@
+{
+  "Name": "Notif_Table_Events",
+  "Synonym": "Notif_Table_Eevnt",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Title",
+      "Field": "title",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Color",
+      "Field": "color",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Icon",
+      "Field": "icon",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "Name": "Cash_Boxes",
+  "Synonym": "Cash_Box",
+  "Sequence": "Cash_Box_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Cash_Id",
+      "Field": "cashId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Cash_Cashiers",
+        "SynonymName": "Cash_Cash",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "cashName"
+      }
+    }, {
+      "Name": "User_Id",
+      "Field": "userId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Users",
+        "SynonymName": "Cpy_User",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "userName"
+      }
+    }, {
+      "Name": "Cost_Id",
+      "Field": "costId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Cost_Centers",
+        "SynonymName": "Acc_Cost",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "costName"
+      }
+    }, {
+      "Name": "Acc_Cid",
+      "Field": "accCid",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Account",
+        "SynonymName": "Acc_Acc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "accName"
+      }
+    }, {
+      "Name": "Acc_Oid",
+      "Field": "accOid",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Account",
+        "SynonymName": "Acc_Acc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "accName"
+      }
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

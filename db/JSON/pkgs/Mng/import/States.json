@@ -1,0 +1,35 @@
+{
+  "Name": "Mng_States",
+  "Synonym": "Mng_State",
+  "Sequence": "Mng_State_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Cntry_Id",
+      "Field": "cntryId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Mng_Countries",
+        "SynonymName": "Mng_Cntry",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "cntryName"
+      }
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }
+  ]
+}

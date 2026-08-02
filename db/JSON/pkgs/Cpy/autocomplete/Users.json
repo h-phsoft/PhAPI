@@ -1,0 +1,9 @@
+{
+  "Synonym": "Cpy_User",
+  "Select": "SELECT Id, LOGON AS Name FROM Cpy_User",
+  "Condition": "Id>0",
+  "Conds": {
+    "term": "Lower(' '||LOGON) LIKE '%{term}%'"
+  },
+  "OrderBy": "Id"
+}

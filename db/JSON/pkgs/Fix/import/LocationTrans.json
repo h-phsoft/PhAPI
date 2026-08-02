@@ -1,0 +1,139 @@
+{
+  "Name": "Fix_Location_Trans",
+  "Synonym": "Fix_Loctrn",
+  "Sequence": "Fix_Loctrn_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Fmst_Id",
+      "Field": "fmstId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Location_Master",
+        "SynonymName": "Fix_Locmst",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "fmstName"
+      }
+    }, {
+      "Name": "Ord",
+      "Field": "ord",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Fixd_Id",
+      "Field": "fixdId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Fixeds_Items",
+        "SynonymName": "Fix_Fixed",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "fixdName"
+      }
+    }, {
+      "Name": "Ftrn_Id",
+      "Field": "ftrnId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Input_Trans",
+        "SynonymName": "Fix_Intrn",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "ftrnName"
+      }
+    }, {
+      "Name": "Oloc1_Id",
+      "Field": "oloc1Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Location1",
+        "SynonymName": "Fix_Cod_Loc1",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "oloc1Name"
+      }
+    }, {
+      "Name": "Oloc2_Id",
+      "Field": "oloc2Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Location2",
+        "SynonymName": "Fix_Cod_Loc2",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "oloc2Name"
+      }
+    }, {
+      "Name": "Oloc3_Id",
+      "Field": "oloc3Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Location3",
+        "SynonymName": "Fix_Cod_Loc3",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "oloc3Name"
+      }
+    }, {
+      "Name": "Loc1_Id",
+      "Field": "loc1Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Location1",
+        "SynonymName": "Fix_Cod_Loc1",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "loc1Name"
+      }
+    }, {
+      "Name": "Loc2_Id",
+      "Field": "loc2Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Location2",
+        "SynonymName": "Fix_Cod_Loc2",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "loc2Name"
+      }
+    }, {
+      "Name": "Loc3_Id",
+      "Field": "loc3Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Code_Location3",
+        "SynonymName": "Fix_Cod_Loc3",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "loc3Name"
+      }
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

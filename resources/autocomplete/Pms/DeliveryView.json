@@ -1,0 +1,9 @@
+{
+  "Synonym": "Pms_Vdelivery",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Pms_Vdelivery",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

@@ -1,0 +1,48 @@
+{
+  "Name": "Copy_Permission_Groups",
+  "Synonym": "Cpy_Pgrp",
+  "Sequence": "Cpy_Pgrp_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Pstatus_Id",
+      "Field": "pstatusId",
+      "DBType": "NUMBER",
+      "Default": "2",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Code_Periodstatus",
+        "SynonymName": "Cpy_Cod_Pstatus",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "pstatusName"
+      }
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Status",
+        "SynonymName": "Phs_Cod_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

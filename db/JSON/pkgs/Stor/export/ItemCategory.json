@@ -1,0 +1,23 @@
+{
+  "Name": "Stor_Item_Category",
+  "Synonym": "Stor_Item_Cat",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Image",
+      "Field": "image",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

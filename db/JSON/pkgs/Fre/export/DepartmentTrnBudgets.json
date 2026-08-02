@@ -1,0 +1,43 @@
+{
+  "Name": "Fre_Department_Trn_Budgets",
+  "Synonym": "Fre_Depttbud",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Njf",
+      "Field": "njf",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ncust",
+      "Field": "ncust",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nteus",
+      "Field": "nteus",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nweight",
+      "Field": "nweight",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ngp",
+      "Field": "ngp",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nrevenue",
+      "Field": "nrevenue",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

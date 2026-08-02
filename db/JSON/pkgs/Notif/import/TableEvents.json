@@ -1,0 +1,86 @@
+{
+  "Name": "Notif_Table_Events",
+  "Synonym": "Notif_Table_Eevnt",
+  "Sequence": "Notif_Table_Eevnt_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Table_Id",
+      "Field": "tableId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Notif_Tables",
+        "SynonymName": "Notif_Table",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "tableName"
+      }
+    }, {
+      "Name": "Event_Id",
+      "Field": "eventId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Notif_Code_Events",
+        "SynonymName": "Notif_Cod_Event",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "eventName"
+      }
+    }, {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Notif_Code_Type",
+        "SynonymName": "Notif_Cod_Type",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "typeName"
+      }
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Status",
+        "SynonymName": "Phs_Cod_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }, {
+      "Name": "Title",
+      "Field": "title",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Color",
+      "Field": "color",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Icon",
+      "Field": "icon",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

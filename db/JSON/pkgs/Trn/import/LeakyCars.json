@@ -1,0 +1,41 @@
+{
+  "Name": "Trn_Leaky_Cars",
+  "Synonym": "Trn_Leak_Car",
+  "Sequence": "Trn_Leak_Car_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Bln_Id",
+      "Field": "blnId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Trn_Balance",
+        "SynonymName": "Trn_Bln",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "blnName"
+      }
+    }, {
+      "Name": "Pnum",
+      "Field": "pnum",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "Sysdate",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

@@ -1,0 +1,1393 @@
+CREATE OR REPLACE VIEW Stor_Code_Group_Item_View AS
+ SELECT G.Id     AS Grp_Id    , G.Status_Id AS Grp_Status_Id,
+        G.Name   AS Grp_Name  , G.FColor    AS Grp_FColor   ,
+        G.BColor AS Grp_BColor, G.Rem       AS Grp_Rem      ,
+        I.Id     AS Itm_Id    , I.Status_Id AS Itm_Status_Id,
+        I.Name   AS Itm_Name  , I.Rem       AS Itm_Rem
+   FROM Stor_Cod_Grp G
+   JOIN Stor_Cod_Itm I ON I.Grp_Id=G.Id
+/
+CREATE SYNONYM Stor_VCod_Grp_Itm FOR Stor_Code_Group_Item_View
+/
+
+CREATE OR REPLACE VIEW Stor_Item_View AS 
+ SELECT Itm.Id        Item_Id      , Itm.Num      Item_Num   , Itm.Part  Item_Part ,
+        Itm.LName     Item_LName   , Itm.IName    Item_IName ,
+        Itm.Num||' '||Itm.LName||' '||Itm.IName   Item_FName ,
+        ST.Id         Status_Id    , ST.Name      Status_Name,
+        TP.Id         Type_Id      , TP.Name      Type_Name  ,
+        MC.Id         MCost_Id     , MC.Name      MCost_Name ,
+        UN.Id         Unit_Id      , UN.Name      Unit_Name  ,
+        Cat.Id        Cat_Id       , Cat.Name     Cat_Name   ,
+        Sp1.Id        Spc1_Id      , Sp1.Name     Spc1_Name  ,
+        Sp2.Id        Spc2_Id      , Sp2.Name     Spc2_Name  ,
+        Sp3.Id        Spc3_Id      , Sp3.Name     Spc3_Name  ,
+        Sp4.Id        Spc4_Id      , Sp4.Name     Spc4_Name  ,
+        Sp5.Id        Spc5_Id      , Sp5.Name     Spc5_Name  ,
+        Sp6.Id        Spc6_Id      , Sp6.Name     Spc6_Name  ,
+        Sp7.Id        Spc7_Id      , Sp7.Name     Spc7_Name  ,
+        Sp8.Id        Spc8_Id      , Sp8.Name     Spc8_Name  ,
+        Sp9.Id        Spc9_Id      , Sp9.Name     Spc9_Name  ,
+        Sp0.Id        Spc0_Id      , Sp0.Name     Spc0_Name  ,
+        InS.Id        InSale_Id    , InS.Name     InSale_Name,
+        Ses.Id        Season_Id    , Ses.Name     Season_Name,
+        Itm.DWarnty   Item_DWarnty , Itm.NofP     Item_NofP  ,
+        Itm.Min_Unit  Item_Min_Unit, Itm.Box      Item_Box   ,
+        Itm.CPrice    Item_CPrice  , Itm.NPrice   Item_NPrice,
+        Itm.DPrice    Item_DPrice  , Itm.SPrice   Item_SPrice,
+        Itm.WPrice    Item_WPrice  , Itm.RPrice   Item_RPrice,
+        Itm.HPrice    Item_HPrice  , Itm.MPrice   Item_MPrice, Itm.Image Item_Image,
+        M.Id          Method_Id    , M.name       Method_Name,
+        M.Barcode_Id, M.Model_Id   , M.Size_Id  , M.Color_Id ,
+        M.Lot_Id    , M.Ser_Id     , M.SDate_Id , M.EDate_Id ,
+        M.Length_Id , M.Width_Id   , M.Height_Id
+   FROM Stor_Item       Itm
+   JOIN Stor_Cod_Method M   ON Itm.Method_Id=  M.Id
+   JOIN Stor_Cod_Unit   UN  ON itm.Unit_Id  = UN.Id
+   JOIN Phs_Cod_YesNo   Ins ON itm.InSale_id=Ins.Id
+   JOIN Phs_Cod_YesNo   Ses ON itm.Season_Id=Ses.Id
+   JOIN Phs_Cod_Status  ST  ON itm.Status_Id= ST.Id
+   JOIN Stor_Cod_Type   TP  ON itm.Type_Id  = TP.Id
+   JOIN Stor_Cod_Cost   MC  ON itm.MCost_Id = MC.Id
+   JOIN Stor_Item_Cat   Cat ON itm.Cat_Id   =Cat.Id
+   JOIN Stor_Cod_Spec1  Sp1 ON itm.Spc1_Id  =Sp1.Id
+   JOIN Stor_Cod_Spec2  Sp2 ON itm.Spc2_Id  =Sp2.Id
+   JOIN Stor_Cod_Spec3  Sp3 ON itm.Spc3_Id  =Sp3.Id
+   JOIN Stor_Cod_Spec4  Sp4 ON itm.Spc4_Id  =Sp4.Id
+   JOIN Stor_Cod_Spec5  Sp5 ON itm.Spc5_Id  =Sp5.Id
+   JOIN Stor_Cod_Spec6  Sp6 ON itm.Spc6_Id  =Sp6.Id
+   JOIN Stor_Cod_Spec7  Sp7 ON itm.Spc7_Id  =Sp7.Id
+   JOIN Stor_Cod_Spec8  Sp8 ON itm.Spc8_Id  =Sp8.Id
+   JOIN Stor_Cod_Spec9  Sp9 ON itm.Spc9_Id  =Sp9.Id
+   JOIN Stor_Cod_Spec0  Sp0 ON itm.Spc0_Id  =Sp0.Id
+/
+Create Synonym Stor_VItem For Stor_Item_View
+/
+
+CREATE OR REPLACE VIEW Stor_Item_Classes_View AS
+SELECT I.Item_Id      , I.Item_Num      , I.Item_Part   ,
+       I.Item_LName   , I.Item_IName    , I.Item_FName  ,
+       I.Status_Id    , I.Status_Name   , I.Type_Id     , I.Type_Name  ,
+       I.MCost_Id     , I.MCost_Name    , I.Unit_Id     , I.Unit_Name  ,
+       I.Cat_Id       , I.Cat_Name      , I.InSale_Id   , I.InSale_Name,
+       I.Spc1_Id      , I.Spc1_Name     , I.Spc2_Id     , I.Spc2_Name  ,
+       I.Spc3_Id      , I.Spc3_Name     , I.Spc4_Id     , I.Spc4_Name  ,
+       I.Spc5_Id      , I.Spc5_Name     , I.Spc6_Id     , I.Spc6_Name  ,
+       I.Spc7_Id      , I.Spc7_Name     , I.Spc8_Id     , I.Spc8_Name  ,
+       I.Spc9_Id      , I.Spc9_Name     , I.Spc0_Id     , I.Spc0_Name  ,
+       I.Season_Id    , I.Season_Name   , I.Item_DWarnty, I.Item_NofP  ,
+       I.Item_Min_Unit, I.Item_Box      , I.Item_CPrice , I.Item_NPrice,
+       I.Item_DPrice  , I.Item_SPrice   , I.Item_WPrice , I.Item_RPrice,
+       I.Item_HPrice  , I.Item_MPrice   , I.Method_Id   , I.Method_Name, I.Item_Image ,
+       I.Barcode_Id   , I.Model_Id      , I.Size_Id     , I.Color_Id   ,
+       I.Lot_Id       , I.Ser_Id        , I.SDate_Id    , I.EDate_Id   ,
+       I.Length_Id    , I.Width_Id      , I.Height_Id   ,
+       GI.Grp_Id      , GI.Grp_Status_Id, GI.Grp_Name   , GI.Grp_FColor, GI.Grp_BColor, GI.Grp_Rem,
+       GI.Itm_Id      , GI.Itm_Status_Id, GI.Itm_Name   , GI.Itm_Rem   ,
+       CC.Id            Item_Class_Id   , CC.Rem          Item_Class_Rem
+  FROM Stor_VItem        I
+  JOIN Stor_Item_Class   CC ON I.Item_Id=CC.Item_Id
+  JOIN Stor_VCod_Grp_Itm GI ON CC.Grp_Id=GI.Grp_Id  AND CC.Itm_Id=GI.Itm_Id
+/
+CREATE SYNONYM Stor_VItem_Classes FOR Stor_Item_Classes_View
+/
+
+CREATE OR REPLACE VIEW Stor_Stores_View AS
+SELECT S.Id          Stor_Id     , S.LName       Stor_LName  ,
+       S.IName       Stor_IName  , S.Rem         Stor_Rem    ,
+       S.LName||' '||S.IName       Stor_FName  ,
+       S.Cost_Id   , S.Acc_Id    , S.CstAcc_Id , S.RevAcc_Id ,
+       S.PVatAcc_Id, S.SVatAcc_Id, S.Emp_Id    ,
+       S.SDate       Stor_SDate  , S.EDate       Stor_EDate  ,
+       S.Descr       Stor_Descr  , S.Address     Stor_Address,
+       ST.Id         Status_Id   , ST.Name       Status_Name ,
+       TP.Id         Type_Id     , TP.Name       Type_Name   ,
+       OW.Id         Own_Id      , OW.Name       Own_Name    ,
+       YN.Id         Sale_Id     , YN.Name       Sale_Name
+  FROM Stor_Store S
+  JOIN Phs_Cod_Status ST ON S.Status_Id=ST.Id
+  JOIN Phs_Cod_Type   TP ON S.Type_Id  =TP.Id
+  JOIN Stor_Cod_Own   OW ON S.Own_Id   =OW.Id
+  JOIN Phs_Cod_YesNo  YN ON S.Sale_Id  =YN.Id
+/
+CREATE SYNONYM Stor_VStore FOR Stor_Stores_View
+/
+
+CREATE OR REPLACE VIEW Stor_Stores_Materiales_View AS
+SELECT SM.Id           ,
+       SS.Stor_Id      , SS.Stor_LName    , SS.Stor_IName   , SS.Stor_FName    ,
+       SS.Stor_Rem     , SS.Cost_Id         Stor_Cost_Id    ,
+       SS.Acc_Id         Stor_Acc_Id      ,
+       SS.CstAcc_Id      Stor_CstAcc_Id   , SS.RevAcc_Id      Stor_RevAcc_Id   ,
+       SS.PVatAcc_Id     Stor_PVatAcc_Id  ,
+       SS.SVatAcc_Id     Stor_SVatAcc_Id  , SS.Emp_Id         Stor_Emp_Id      ,
+       SS.Stor_SDate   , SS.Stor_EDate    , SS.Stor_Descr   , SS.Stor_Address  ,
+       SS.Status_Id      Stor_Status_Id   , SS.Status_Name    Stor_Status_Name ,
+       SS.Type_Id        Stor_Type_Id     , SS.Type_Name      Stor_Type_Name   ,
+       SS.Own_Id         Stor_Own_Id      , SS.Own_Name       Stor_Own_Name    ,
+       SS.Sale_Id        Stor_Sale_Id     , SS.Sale_Name      Stor_Sale_Name   ,
+       II.Item_Id      , II.Item_Num      , II.Item_Part    ,
+       II.Item_LName   , II.Item_IName    , II.Item_FName   , II.Item_Image    ,
+       II.Status_Id      Item_Status_Id   , II.Status_Name    Item_Status_Name ,
+       II.Type_Id        Item_Type_Id     , II.Type_Name      Item_Type_Name   ,
+       II.MCost_Id       Item_MCost_Id    , II.MCost_Name     Item_MCost_Name  ,
+       II.Unit_Id        Item_Unit_Id     , II.Unit_Name      Item_Unit_Name   ,
+       II.Cat_Id         Item_Cat_Id      , II.Cat_Name       Item_Cat_Name    ,
+       II.Spc1_Id        Item_Spc1_Id     , II.Spc1_Name      Item_Spc1_Name   ,
+       II.Spc2_Id        Item_Spc2_Id     , II.Spc2_Name      Item_Spc2_Name   ,
+       II.Spc3_Id        Item_Spc3_Id     , II.Spc3_Name      Item_Spc3_Name   ,
+       II.Spc4_Id        Item_Spc4_Id     , II.Spc4_Name      Item_Spc4_Name   ,
+       II.Spc5_Id        Item_Spc5_Id     , II.Spc5_Name      Item_Spc5_Name   ,
+       II.Spc6_Id        Item_Spc6_Id     , II.Spc6_Name      Item_Spc6_Name   ,
+       II.Spc7_Id        Item_Spc7_Id     , II.Spc7_Name      Item_Spc7_Name   ,
+       II.Spc8_Id        Item_Spc8_Id     , II.Spc8_Name      Item_Spc8_Name   ,
+       II.Spc9_Id        Item_Spc9_Id     , II.Spc9_Name      Item_Spc9_Name   ,
+       II.Spc0_Id        Item_Spc0_Id     , II.Spc0_Name      Item_Spc0_Name   ,
+       II.InSale_Id      Item_InSale_Id   , II.InSale_Name    Item_InSale_Name ,
+       II.Season_Id      Item_Season_Id   , II.Season_Name    Item_Season_Name ,
+       II.Item_DWarnty , II.Item_NofP     , II.Item_Min_Unit, II.Item_Box      ,
+       II.Item_CPrice  , II.Item_NPrice   , II.Item_DPrice  , II.Item_SPrice   ,
+       II.Item_WPrice  , II.Item_RPrice   , II.Item_HPrice  , II.Item_MPrice   ,
+       II.Method_Id      Item_Method_Id   , II.Method_Name    Item_Method_Name ,
+       II.Barcode_Id     Item_Barcode_Id  , II.Model_Id       Item_Model_Id    ,
+       II.Size_Id        Item_Size_Id     , II.Color_Id       Item_Color_Id    ,
+       II.Lot_Id         Item_Lot_Id      , II.Ser_Id         Item_Ser_Id      ,
+       II.SDate_Id       Item_SDate_Id    , II.EDate_Id       Item_EDate_Id    ,
+       II.Length_Id      Item_Length_Id   , II.Width_Id       Item_Width_Id    ,
+       II.Height_Id      Item_Height_Id   ,
+       ST.Id             Status_Id        , ST.Name           Status_Name      ,
+       L1.Id             Loc1_Id          , L1.Name           Loc1_Name        ,  
+       L2.Id             Loc2_Id          , L2.Name           Loc2_Name        ,  
+       L3.Id             Loc3_Id          , L3.Name           Loc3_Name        ,  
+       Vat             , CQnt             , BQnt            , CWQnt            ,
+       CAmt            , CBAmt            ,
+       Req_Limit       , Min_Limit        , Max_Limit       ,
+       Req_Limit-CQnt    Over_Req_Limit   , Min_Limit-CQnt    Over_Min_Limit   ,
+       CQnt-Max_Limit    Over_Max_Limit
+  FROM Stor_SMat SM
+  JOIN Phs_Cod_Status ST ON SM.Status_Id=ST.Id
+  JOIN Stor_VStore    SS ON SM.Stor_Id  =SS.Stor_Id
+  JOIN Stor_VItem     II ON SM.Item_Id  =II.Item_Id
+  JOIN Stor_Cod_Loc1  L1 ON SM.Loc1_Id  =L1.Id
+  JOIN Stor_Cod_Loc2  L2 ON SM.Loc2_Id  =L2.Id
+  JOIN Stor_Cod_Loc3  L3 ON SM.Loc3_Id  =L3.Id
+/
+Create Synonym Stor_VSMat For Stor_Stores_Materiales_View
+/
+
+CREATE OR REPLACE VIEW Stor_Inbound_Order_View AS 
+ SELECT Mst.Id             Mst_Id            ,
+        Mst.Src_Id         Src_Id            ,
+        Mst.BCurn_Id       BCurn_Id          , Mst.BCurn_Rate     BCurn_Rate       ,
+        Cur.Id             Curn_Id           , Cur.Name           Curn_Name        ,
+        Mst.Curn_Rate      Curn_Rate         ,
+        Mst.Rel_Id         Mst_Rel_Id        , Mst.Fin_Id         Fin_Id           ,
+        Trt.Id             TrnTyp_Id         , Trt.Name           TrnTyp_Name      ,
+        Per.Id             Period_Id         , Per.Name           Period_Name      ,
+        Stor.Stor_Id     , Stor.Stor_LName   , Stor.Stor_IName  , Stor.Stor_FName  ,
+        Cnt.Id             Cont_Id           , Cnt.Num            Cont_Num         , Cnt.Name           Cont_Name        ,
+        Doc.Id             Doc_Id            , Doc.Name           Doc_Name         ,
+        Mst.Num            Mst_Num           , Mst.dDate          Mst_Date         ,
+        To_Number(To_Char(Mst.dDate,'YYYY'))   D_Year           ,
+        To_Number(To_Char(Mst.dDate,'MM'))     D_Month          ,
+        To_Number(To_Char(Mst.dDate,'DD'))     D_DayOfMonth     ,
+        To_Number(To_Char(Mst.dDate,'DDD'))    D_DayOfYear      ,
+        To_Number(To_Char(Mst.dDate,'D'))      D_DayOfWeek      ,
+        To_Char(Mst.dDate,'YYYY-MM')           D_YearMonth      ,
+        Mst.DocN           Mst_DocN          , Mst.DocD           Mst_DocD         ,
+        Mst.Rem            Mst_Rem           , Trn.Rem            Trn_Rem          ,
+        Trn.Id             Trn_Id            , Trn.Rel_Id         Trn_Rel_Id       ,
+        Unt.Id             Unit_Id           , Unt.Name           Unit_Name        ,
+        Mdl.Id             Model_Id          , Mdl.Name           Model_Name       ,
+        Clr.Id             Color_Id          , Clr.Name           Color_Name       ,
+        Siz.Id             Size_Id           , Siz.Name           Size_Name        ,
+        Trn.Ord            Ord               , Trn.Qnt            Qnt              ,
+        Trn.Cqnt           Cqnt              , Trn.Price          Price            ,
+        Trn.CAmt           CAmt              , Trn.Cst            Cst              ,
+        Trn.BCst           BCst              , Trn.BAmt           BAmt             ,
+        Trn.Amt            Amt               , Trn.nLength        nLength          ,
+        Trn.nWidth         nWidth            , Trn.nHeight        nHeight          ,
+        Trn.Barcode        Barcode           , Trn.LotSer         LotSer           ,
+        Trn.SDate          SDate             , Trn.EDate          EDate            ,
+        Itm.Item_Id      , Itm.Item_Num      , Itm.Item_Part    ,
+        Itm.Item_LName   , Itm.Item_IName    , Itm.Item_FName   ,
+        Itm.Status_Id      Item_Status_Id    , Itm.Status_Name    Item_Status_Name ,
+        Itm.Type_Id        Item_Type_Id      , Itm.Type_Name      Item_Type_Name   ,
+        Itm.MCost_Id       Item_MCost_Id     , Itm.MCost_Name     Item_MCost_Name  ,
+        Itm.Unit_Id        Item_Unit_Id      , Itm.Unit_Name      Item_Unit_Name   ,
+        Itm.Cat_Id         Item_Cat_Id       , Itm.Cat_Name       Item_Cat_Name    ,
+        Itm.Spc1_Id        Item_Spc1_Id      , Itm.Spc1_Name      Item_Spc1_Name   ,
+        Itm.Spc2_Id        Item_Spc2_Id      , Itm.Spc2_Name      Item_Spc2_Name   ,
+        Itm.Spc3_Id        Item_Spc3_Id      , Itm.Spc3_Name      Item_Spc3_Name   ,
+        Itm.Spc4_Id        Item_Spc4_Id      , Itm.Spc4_Name      Item_Spc4_Name   ,
+        Itm.Spc5_Id        Item_Spc5_Id      , Itm.Spc5_Name      Item_Spc5_Name   ,
+        Itm.Spc6_Id        Item_Spc6_Id      , Itm.Spc6_Name      Item_Spc6_Name   ,
+        Itm.Spc7_Id        Item_Spc7_Id      , Itm.Spc7_Name      Item_Spc7_Name   ,
+        Itm.Spc8_Id        Item_Spc8_Id      , Itm.Spc8_Name      Item_Spc8_Name   ,
+        Itm.Spc9_Id        Item_Spc9_Id      , Itm.Spc9_Name      Item_Spc9_Name   ,
+        Itm.Spc0_Id        Item_Spc0_Id      , Itm.Spc0_Name      Item_Spc0_Name   ,
+        Itm.InSale_Id      Item_InSale_Id    , Itm.InSale_Name    Item_InSale_Name ,
+        Itm.Season_Id      Item_Season_Id    , Itm.Season_Name    Item_Season_Name ,
+        Itm.Item_DWarnty , Itm.Item_NofP     , Itm.Item_Min_Unit, Itm.Item_Box     ,
+        Itm.Item_CPrice  , Itm.Item_NPrice   , Itm.Item_DPrice  , Itm.Item_SPrice  ,
+        Itm.Item_WPrice  , Itm.Item_RPrice   , Itm.Item_HPrice  , Itm.Item_MPrice  ,
+        Itm.Item_Image   ,
+        Itm.Method_Id      Item_Method_Id    , Itm.Method_Name    Item_Method_Name ,
+        Itm.Barcode_Id     Item_Barcode_Id   , Itm.Model_Id       Item_Model_Id    ,
+        Itm.Size_Id        Item_Size_Id      , Itm.Color_Id       Item_Color_Id    ,
+        Itm.Lot_Id         Item_Lot_Id       , Itm.Ser_Id         Item_Ser_Id      ,
+        Itm.SDate_Id       Item_SDate_Id     , Itm.EDate_Id       Item_EDate_Id    ,
+        Itm.Length_Id      Item_Length_Id    , Itm.Width_Id       Item_Width_Id    ,
+        Itm.Height_Id      Item_Height_Id
+   FROM Stor_InOrdMst   Mst
+   JOIN Stor_InOrdTrn   Trn  ON Trn.Mst_Id          = Mst.Id
+   JOIN Stor_Cod_TrnTyp Trt  ON Mst.TrnTyp_Id       = Trt.Id
+   JOIN Cpy_Period      Per  ON Mst.Period_Id       = Per.Id
+   JOIN Stor_VStore     Stor ON Mst.Stor_Id         = Stor.Stor_Id
+   JOIN Mng_Cont        Cnt  ON Mst.Cont_Id         = Cnt.Id
+   JOIN Stor_Cod_Doc    Doc  ON Mst.Doc_Id          = Doc.Id
+   JOIN Mng_Curn        Cur  ON Mst.Curn_Id         = Cur.Id
+   JOIN Stor_VItem      Itm  ON Trn.Item_Id         = Itm.Item_Id
+   JOIN Stor_Cod_Unit   Unt  ON Trn.Unit_Id         = Unt.Id
+   JOIN Stor_Cod_Model  Mdl  ON NVL(Trn.Model_Id,0) = Mdl.Id
+   JOIN Stor_Cod_Color  Clr  ON NVL(Trn.Color_Id,0) = Clr.Id
+   JOIN Stor_Cod_Size   Siz  ON NVL(Trn.Size_Id ,0) = Siz.Id
+/
+Create Synonym Stor_VInOrd For Stor_Inbound_Order_View
+/
+
+CREATE OR REPLACE VIEW Stor_Outbound_Order_View AS 
+ SELECT Mst.Id             Mst_Id            ,
+        Mst.Src_Id         Src_Id            ,
+        Mst.BCurn_Id       BCurn_Id          , Mst.BCurn_Rate     BCurn_Rate       ,
+        Cur.Id             Curn_Id           , Cur.Name           Curn_Name        ,
+        Mst.Curn_Rate      Curn_Rate         ,
+        Mst.Rel_Id         Mst_Rel_Id        , Mst.Fin_Id         Fin_Id           ,
+        Trt.Id             TrnTyp_Id         , Trt.Name           TrnTyp_Name      ,
+        Per.Id             Period_Id         , Per.Name           Period_Name      ,
+        Stor.Stor_Id     , Stor.Stor_LName   , Stor.Stor_IName  , Stor.Stor_FName  ,
+        Cnt.Id             Cont_Id           , Cnt.Num            Cont_Num         , Cnt.Name           Cont_Name        ,
+        Doc.Id             Doc_Id            , Doc.Name           Doc_Name         ,
+        Mst.Num            Mst_Num           , Mst.dDate          Mst_Date         ,
+        To_Number(To_Char(Mst.dDate,'YYYY'))   D_Year           ,
+        To_Number(To_Char(Mst.dDate,'MM'))     D_Month          ,
+        To_Number(To_Char(Mst.dDate,'DD'))     D_DayOfMonth     ,
+        To_Number(To_Char(Mst.dDate,'DDD'))    D_DayOfYear      ,
+        To_Number(To_Char(Mst.dDate,'D'))      D_DayOfWeek      ,
+        To_Char(Mst.dDate,'YYYY-MM')           D_YearMonth      ,
+        Mst.DocN           Mst_DocN          , Mst.DocD           Mst_DocD         ,
+        Mst.Rem            Mst_Rem           , Trn.Rem            Trn_Rem          ,
+        Trn.Id             Trn_Id            , Trn.Rel_Id         Trn_Rel_Id       ,
+        Unt.Id             Unit_Id           , Unt.Name           Unit_Name        ,
+        Mdl.Id             Model_Id          , Mdl.Name           Model_Name       ,
+        Clr.Id             Color_Id          , Clr.Name           Color_Name       ,
+        Siz.Id             Size_Id           , Siz.Name           Size_Name        ,
+        Trn.Ord            Ord               , Trn.Qnt            Qnt              ,
+        Trn.Cqnt           Cqnt              , Trn.Price          Price            ,
+        Trn.CAmt           CAmt              , Trn.Cst            Cst              ,
+        Trn.BCst           BCst              , Trn.BAmt           BAmt             ,
+        Trn.Amt            Amt               , Trn.nLength        nLength          ,
+        Trn.nWidth         nWidth            , Trn.nHeight        nHeight          ,
+        Trn.Barcode        Barcode           , Trn.LotSer         LotSer           ,
+        Trn.SDate          SDate             , Trn.EDate          EDate            ,
+        Itm.Item_Id      , Itm.Item_Num      , Itm.Item_Part    ,
+        Itm.Item_LName   , Itm.Item_IName    , Itm.Item_FName   ,
+        Itm.Status_Id      Item_Status_Id    , Itm.Status_Name    Item_Status_Name ,
+        Itm.Type_Id        Item_Type_Id      , Itm.Type_Name      Item_Type_Name   ,
+        Itm.MCost_Id       Item_MCost_Id     , Itm.MCost_Name     Item_MCost_Name  ,
+        Itm.Unit_Id        Item_Unit_Id      , Itm.Unit_Name      Item_Unit_Name   ,
+        Itm.Cat_Id         Item_Cat_Id       , Itm.Cat_Name       Item_Cat_Name    ,
+        Itm.Spc1_Id        Item_Spc1_Id      , Itm.Spc1_Name      Item_Spc1_Name   ,
+        Itm.Spc2_Id        Item_Spc2_Id      , Itm.Spc2_Name      Item_Spc2_Name   ,
+        Itm.Spc3_Id        Item_Spc3_Id      , Itm.Spc3_Name      Item_Spc3_Name   ,
+        Itm.Spc4_Id        Item_Spc4_Id      , Itm.Spc4_Name      Item_Spc4_Name   ,
+        Itm.Spc5_Id        Item_Spc5_Id      , Itm.Spc5_Name      Item_Spc5_Name   ,
+        Itm.Spc6_Id        Item_Spc6_Id      , Itm.Spc6_Name      Item_Spc6_Name   ,
+        Itm.Spc7_Id        Item_Spc7_Id      , Itm.Spc7_Name      Item_Spc7_Name   ,
+        Itm.Spc8_Id        Item_Spc8_Id      , Itm.Spc8_Name      Item_Spc8_Name   ,
+        Itm.Spc9_Id        Item_Spc9_Id      , Itm.Spc9_Name      Item_Spc9_Name   ,
+        Itm.Spc0_Id        Item_Spc0_Id      , Itm.Spc0_Name      Item_Spc0_Name   ,
+        Itm.InSale_Id      Item_InSale_Id    , Itm.InSale_Name    Item_InSale_Name ,
+        Itm.Season_Id      Item_Season_Id    , Itm.Season_Name    Item_Season_Name ,
+        Itm.Item_DWarnty , Itm.Item_NofP     , Itm.Item_Min_Unit, Itm.Item_Box     ,
+        Itm.Item_CPrice  , Itm.Item_NPrice   , Itm.Item_DPrice  , Itm.Item_SPrice  ,
+        Itm.Item_WPrice  , Itm.Item_RPrice   , Itm.Item_HPrice  , Itm.Item_MPrice  ,
+        Itm.Item_Image   ,
+        Itm.Method_Id      Item_Method_Id    , Itm.Method_Name    Item_Method_Name ,
+        Itm.Barcode_Id     Item_Barcode_Id   , Itm.Model_Id       Item_Model_Id    ,
+        Itm.Size_Id        Item_Size_Id      , Itm.Color_Id       Item_Color_Id    ,
+        Itm.Lot_Id         Item_Lot_Id       , Itm.Ser_Id         Item_Ser_Id      ,
+        Itm.SDate_Id       Item_SDate_Id     , Itm.EDate_Id       Item_EDate_Id    ,
+        Itm.Length_Id      Item_Length_Id    , Itm.Width_Id       Item_Width_Id    ,
+        Itm.Height_Id      Item_Height_Id
+   FROM Stor_OuOrdMst   Mst
+   JOIN Stor_OuOrdTrn   Trn  ON Trn.Mst_Id          = Mst.Id
+   JOIN Stor_Cod_TrnTyp Trt  ON Mst.TrnTyp_Id       = Trt.Id
+   JOIN Cpy_Period      Per  ON Mst.Period_Id       = Per.Id
+   JOIN Stor_VStore     Stor ON Mst.Stor_Id         = Stor.Stor_Id
+   JOIN Mng_Cont        Cnt  ON Mst.Cont_Id         = Cnt.Id
+   JOIN Stor_Cod_Doc    Doc  ON Mst.Doc_Id          = Doc.Id
+   JOIN Mng_Curn        Cur  ON Mst.Curn_Id         = Cur.Id
+   JOIN Stor_VItem      Itm  ON Trn.Item_Id         = Itm.Item_Id
+   JOIN Stor_Cod_Unit   Unt  ON Trn.Unit_Id         = Unt.Id
+   JOIN Stor_Cod_Model  Mdl  ON NVL(Trn.Model_Id,0) = Mdl.Id
+   JOIN Stor_Cod_Color  Clr  ON NVL(Trn.Color_Id,0) = Clr.Id
+   JOIN Stor_Cod_Size   Siz  ON NVL(Trn.Size_Id ,0) = Siz.Id
+/
+Create Synonym Stor_VOuOrd For Stor_Outbound_Order_View
+/
+
+CREATE OR REPLACE VIEW Stor_Orders_View AS 
+ SELECT Mst_Id            ,
+        Src_Id            ,
+        BCurn_Id          , BCurn_Rate       ,
+        Curn_Id           , Curn_Name        , Curn_Rate         ,
+        Mst_Rel_Id        , Fin_Id           ,
+        TrnTyp_Id         , TrnTyp_Name      , Period_Id         , Period_Name      ,
+        Stor_Id           , Stor_LName       , Stor_IName        , Stor_FName       ,
+        Cont_Id           , Cont_Num         , Cont_Name         , Doc_Id           , Doc_Name         ,
+        Mst_Num           , Mst_Date         , Mst_DocN          , Mst_DocD         ,
+        D_Year            , D_Month          , D_DayOfMonth      , D_DayOfYear      , D_DayOfWeek      , D_YearMonth       ,
+        Mst_Rem           , Trn_Rem          ,
+        Trn_Id            , Trn_Rel_Id       , Unit_Id           , Unit_Name        ,
+        Model_Id          , Model_Name       , Color_Id          , Color_Name       ,
+        Size_Id           , Size_Name        , Ord               , Qnt              ,
+        Cqnt              , Price            , CAmt              , BAmt             ,
+        Amt               , nLength          , nWidth            , nHeight          ,
+        Barcode           , LotSer           , SDate             , EDate            ,
+        Item_Id           , Item_Num         , Item_Part         , Item_Image       ,
+        Item_LName        , Item_IName       , Item_FName        , Item_Status_Id   , Item_Status_Name ,
+        Item_Type_Id      , Item_Type_Name   , Item_MCost_Id     , Item_MCost_Name  ,
+        Item_Unit_Id      , Item_Unit_Name   , Item_Cat_Id       , Item_Cat_Name    ,
+        Item_Spc1_Id      , Item_Spc1_Name   , Item_Spc2_Id      , Item_Spc2_Name   ,
+        Item_Spc3_Id      , Item_Spc3_Name   , Item_Spc4_Id      , Item_Spc4_Name   ,
+        Item_Spc5_Id      , Item_Spc5_Name   , Item_Spc6_Id      , Item_Spc6_Name   ,
+        Item_Spc7_Id      , Item_Spc7_Name   , Item_Spc8_Id      , Item_Spc8_Name   ,
+        Item_Spc9_Id      , Item_Spc9_Name   , Item_Spc0_Id      , Item_Spc0_Name   ,
+        Item_InSale_Id    , Item_InSale_Name , Item_Season_Id    , Item_Season_Name ,
+        Item_DWarnty      , Item_NofP        , Item_Min_Unit     , Item_Box         ,
+        Item_CPrice       , Item_NPrice      , Item_DPrice       , Item_SPrice      ,
+        Item_WPrice       , Item_RPrice      , Item_HPrice       , Item_MPrice      ,
+        Item_Method_Id    , Item_Method_Name , Item_Barcode_Id   , Item_Model_Id    ,
+        Item_Size_Id      , Item_Color_Id    , Item_Lot_Id       , Item_Ser_Id      ,
+        Item_SDate_Id     , Item_EDate_Id    , Item_Length_Id    , Item_Width_Id    ,
+        Item_Height_Id
+   FROM Stor_VInOrd
+UNION ALL
+ SELECT Mst_Id            ,
+        Src_Id            ,
+        BCurn_Id          , BCurn_Rate       ,
+        Curn_Id           , Curn_Name        , Curn_Rate         ,
+        Mst_Rel_Id        , Fin_Id           ,
+        TrnTyp_Id         , TrnTyp_Name      , Period_Id         , Period_Name      ,
+        Stor_Id           , Stor_LName       , Stor_IName        , Stor_FName       ,
+        Cont_Id           , Cont_Num         , Cont_Name         , Doc_Id           , Doc_Name         ,
+        Mst_Num           , Mst_Date         , Mst_DocN          , Mst_DocD         ,
+        D_Year            , D_Month          , D_DayOfMonth      , D_DayOfYear      , D_DayOfWeek      , D_YearMonth       ,
+        Mst_Rem           , Trn_Rem          ,
+        Trn_Id            , Trn_Rel_Id       , Unit_Id           , Unit_Name        ,
+        Model_Id          , Model_Name       , Color_Id          , Color_Name       ,
+        Size_Id           , Size_Name        , Ord               , Qnt              ,
+        Cqnt              , Price            , CAmt              , BAmt             ,
+        Amt               , nLength          , nWidth            , nHeight          ,
+        Barcode           , LotSer           , SDate             , EDate            ,
+        Item_Id           , Item_Num         , Item_Part         , Item_Image       ,
+        Item_LName        , Item_IName       , Item_FName        , Item_Status_Id   , Item_Status_Name ,
+        Item_Type_Id      , Item_Type_Name   , Item_MCost_Id     , Item_MCost_Name  ,
+        Item_Unit_Id      , Item_Unit_Name   , Item_Cat_Id       , Item_Cat_Name    ,
+        Item_Spc1_Id      , Item_Spc1_Name   , Item_Spc2_Id      , Item_Spc2_Name   ,
+        Item_Spc3_Id      , Item_Spc3_Name   , Item_Spc4_Id      , Item_Spc4_Name   ,
+        Item_Spc5_Id      , Item_Spc5_Name   , Item_Spc6_Id      , Item_Spc6_Name   ,
+        Item_Spc7_Id      , Item_Spc7_Name   , Item_Spc8_Id      , Item_Spc8_Name   ,
+        Item_Spc9_Id      , Item_Spc9_Name   , Item_Spc0_Id      , Item_Spc0_Name   ,
+        Item_InSale_Id    , Item_InSale_Name , Item_Season_Id    , Item_Season_Name ,
+        Item_DWarnty      , Item_NofP        , Item_Min_Unit     , Item_Box         ,
+        Item_CPrice       , Item_NPrice      , Item_DPrice       , Item_SPrice      ,
+        Item_WPrice       , Item_RPrice      , Item_HPrice       , Item_MPrice      ,
+        Item_Method_Id    , Item_Method_Name , Item_Barcode_Id   , Item_Model_Id    ,
+        Item_Size_Id      , Item_Color_Id    , Item_Lot_Id       , Item_Ser_Id      ,
+        Item_SDate_Id     , Item_EDate_Id    , Item_Length_Id    , Item_Width_Id    ,
+        Item_Height_Id
+   FROM Stor_VOuOrd
+/
+Create Synonym Stor_VOrds For Stor_Orders_View
+/
+
+CREATE OR REPLACE VIEW Stor_Execute_Inbound_View AS 
+ SELECT Mst.Id             Mst_Id            , 
+        Mst.Ord_Id         Mst_Ord_Id        , Trn.TOrd_Id        Trn_Ord_Id       ,
+        Mst.BCurn_Id       BCurn_Id          , Mst.BCurn_Rate     BCurn_Rate       ,
+        Cur.Id             Curn_Id           , Cur.Name           Curn_Name        ,
+        Mst.Curn_Rate      Curn_Rate         ,
+        Mst.Fin_Id         Fin_Id            ,
+        Per.Id             Period_Id         , Per.Name           Period_Name      ,
+        Trt.Id             TrnTyp_Id         , Trt.Name           TrnTyp_Name      ,
+        Stor.Stor_Id     , Stor.Stor_LName   , Stor.Stor_IName  , Stor.Stor_FName  ,
+        Cnt.Id             Cont_Id           , Cnt.Num            Cont_Num         , Cnt.Name           Cont_Name        ,
+        Doc.Id             Doc_Id            , Doc.Name           Doc_Name         ,
+        Mst.Num            Mst_Num           , Mst.dDate          Mst_Date         ,
+        To_Number(To_Char(Mst.dDate,'YYYY'))   D_Year           ,
+        To_Number(To_Char(Mst.dDate,'MM'))     D_Month          ,
+        To_Number(To_Char(Mst.dDate,'DD'))     D_DayOfMonth     ,
+        To_Number(To_Char(Mst.dDate,'DDD'))    D_DayOfYear      ,
+        To_Number(To_Char(Mst.dDate,'D'))      D_DayOfWeek      ,
+        To_Char(Mst.dDate,'YYYY-MM')           D_YearMonth      ,
+        Mst.DocN           Mst_DocN          , Mst.DocD           Mst_DocD         ,
+        Unt.Id             Unit_Id           , Unt.Name           Unit_Name        ,
+        Mdl.Id             Model_Id          , Mdl.Name           Model_Name       ,
+        Clr.Id             Color_Id          , Clr.Name           Color_Name       ,
+        Siz.Id             Size_Id           , Siz.Name           Size_Name        ,
+        Mst.Rem            Mst_Rem           , Trn.Rem            Trn_Rem          ,
+        Trn.Id             Trn_Id            , Trn.Ord            Ord              ,
+        Trn.Qnt            Qnt               , Trn.Price          Price            ,
+        Trn.CAmt           CAmt              , Trn.Cst            Cst              ,
+        Trn.BCst           BCst              , Trn.BAmt           BAmt             ,
+        Trn.Amt            Amt               , Trn.nLength        nLength          ,
+        Trn.nWidth         nWidth            , Trn.nHeight        nHeight          ,
+        Trn.Barcode        Barcode           , Trn.LotSer         LotSer           ,
+        Trn.SDate          SDate             , Trn.EDate          EDate            ,
+        Itm.Item_Id      , Itm.Item_Num      , Itm.Item_Part    ,
+        Itm.Item_LName   , Itm.Item_IName    , Itm.Item_FName   ,
+        Itm.Status_Id      Item_Status_Id    , Itm.Status_Name    Item_Status_Name ,
+        Itm.Type_Id        Item_Type_Id      , Itm.Type_Name      Item_Type_Name   ,
+        Itm.MCost_Id       Item_MCost_Id     , Itm.MCost_Name     Item_MCost_Name  ,
+        Itm.Unit_Id        Item_Unit_Id      , Itm.Unit_Name      Item_Unit_Name   ,
+        Itm.Cat_Id         Item_Cat_Id       , Itm.Cat_Name       Item_Cat_Name    ,
+        Itm.Spc1_Id        Item_Spc1_Id      , Itm.Spc1_Name      Item_Spc1_Name   ,
+        Itm.Spc2_Id        Item_Spc2_Id      , Itm.Spc2_Name      Item_Spc2_Name   ,
+        Itm.Spc3_Id        Item_Spc3_Id      , Itm.Spc3_Name      Item_Spc3_Name   ,
+        Itm.Spc4_Id        Item_Spc4_Id      , Itm.Spc4_Name      Item_Spc4_Name   ,
+        Itm.Spc5_Id        Item_Spc5_Id      , Itm.Spc5_Name      Item_Spc5_Name   ,
+        Itm.Spc6_Id        Item_Spc6_Id      , Itm.Spc6_Name      Item_Spc6_Name   ,
+        Itm.Spc7_Id        Item_Spc7_Id      , Itm.Spc7_Name      Item_Spc7_Name   ,
+        Itm.Spc8_Id        Item_Spc8_Id      , Itm.Spc8_Name      Item_Spc8_Name   ,
+        Itm.Spc9_Id        Item_Spc9_Id      , Itm.Spc9_Name      Item_Spc9_Name   ,
+        Itm.Spc0_Id        Item_Spc0_Id      , Itm.Spc0_Name      Item_Spc0_Name   ,
+        Itm.InSale_Id      Item_InSale_Id    , Itm.InSale_Name    Item_InSale_Name ,
+        Itm.Season_Id      Item_Season_Id    , Itm.Season_Name    Item_Season_Name ,
+        Itm.Item_DWarnty , Itm.Item_NofP     , Itm.Item_Min_Unit, Itm.Item_Box     ,
+        Itm.Item_CPrice  , Itm.Item_NPrice   , Itm.Item_DPrice  , Itm.Item_SPrice  ,
+        Itm.Item_WPrice  , Itm.Item_RPrice   , Itm.Item_HPrice  , Itm.Item_MPrice  ,
+        Itm.Item_Image   ,
+        Itm.Method_Id      Item_Method_Id    , Itm.Method_Name    Item_Method_Name ,
+        Itm.Barcode_Id     Item_Barcode_Id   , Itm.Model_Id       Item_Model_Id    ,
+        Itm.Size_Id        Item_Size_Id      , Itm.Color_Id       Item_Color_Id    ,
+        Itm.Lot_Id         Item_Lot_Id       , Itm.Ser_Id         Item_Ser_Id      ,
+        Itm.SDate_Id       Item_SDate_Id     , Itm.EDate_Id       Item_EDate_Id    ,
+        Itm.Length_Id      Item_Length_Id    , Itm.Width_Id       Item_Width_Id    ,
+        Itm.Height_Id      Item_Height_Id
+   FROM Stor_EIMst      Mst
+   JOIN Stor_EITrn      Trn  ON Trn.Mst_Id   = Mst.Id
+   JOIN Cpy_Period      Per  ON Mst.Period_Id= Per.Id
+   JOIN Stor_Cod_TrnTyp Trt  ON Mst.TrnTyp_Id= Trt.Id
+   JOIN Stor_VStore     Stor ON Mst.Stor_Id  =Stor.Stor_Id
+   JOIN Mng_Cont        Cnt  ON Mst.Cont_Id  = Cnt.Id
+   JOIN Mng_Curn        Cur  ON Mst.Curn_Id  = Cur.Id
+   JOIN Stor_Cod_Doc    Doc  ON Mst.Doc_Id   = Doc.Id
+   JOIN Stor_VItem      Itm  ON Trn.Item_Id  = Itm.Item_Id
+   JOIN Stor_Cod_Unit   Unt  ON Trn.Unit_Id  = Unt.Id
+   JOIN Stor_Cod_Model  Mdl  ON Trn.Model_Id = Mdl.Id
+   JOIN Stor_Cod_Color  Clr  ON Trn.Color_Id = Clr.Id
+   JOIN Stor_Cod_Size   Siz  ON Trn.Size_Id  = Siz.Id
+/
+Create Synonym Stor_VExecInbound For Stor_Execute_Inbound_View
+/
+
+CREATE OR REPLACE VIEW Stor_Execute_Outbound_View AS 
+ SELECT Mst.Id             Mst_Id            , 
+        Mst.Ord_Id         Mst_Ord_Id        , Trn.TOrd_Id        Trn_Ord_Id       ,
+        Mst.BCurn_Id       BCurn_Id          , Mst.BCurn_Rate     BCurn_Rate       ,
+        Cur.Id             Curn_Id           , Cur.Name           Curn_Name        ,
+        Mst.Curn_Rate      Curn_Rate         ,
+        Mst.Fin_Id         Fin_Id            ,
+        Per.Id             Period_Id         , Per.Name           Period_Name      ,
+        Trt.Id             TrnTyp_Id         , Trt.Name           TrnTyp_Name      ,
+        Stor.Stor_Id     , Stor.Stor_LName   , Stor.Stor_IName  , Stor.Stor_FName  ,
+        Cnt.Id             Cont_Id           , Cnt.Num            Cont_Num         , Cnt.Name           Cont_Name        ,
+        Doc.Id             Doc_Id            , Doc.Name           Doc_Name         ,
+        Mst.Num            Mst_Num           , Mst.dDate          Mst_Date         ,
+        To_Number(To_Char(Mst.dDate,'YYYY'))   D_Year           ,
+        To_Number(To_Char(Mst.dDate,'MM'))     D_Month          ,
+        To_Number(To_Char(Mst.dDate,'DD'))     D_DayOfMonth     ,
+        To_Number(To_Char(Mst.dDate,'DDD'))    D_DayOfYear      ,
+        To_Number(To_Char(Mst.dDate,'D'))      D_DayOfWeek      ,
+        To_Char(Mst.dDate,'YYYY-MM')           D_YearMonth      ,
+        Mst.DocN           Mst_DocN          , Mst.DocD           Mst_DocD         ,
+        Unt.Id             Unit_Id           , Unt.Name           Unit_Name        ,
+        Mdl.Id             Model_Id          , Mdl.Name           Model_Name       ,
+        Clr.Id             Color_Id          , Clr.Name           Color_Name       ,
+        Siz.Id             Size_Id           , Siz.Name           Size_Name        ,
+        Mst.Rem            Mst_Rem           , Trn.Rem            Trn_Rem          ,
+        Trn.Id             Trn_Id            , Trn.Ord            Ord              ,
+        Trn.Qnt            Qnt               , Trn.Price          Price            ,
+        Trn.CAmt           CAmt              , Trn.Cst            Cst              ,
+        Trn.BCst           BCst              , Trn.BAmt           BAmt             ,
+        Trn.Amt            Amt               , Trn.nLength        nLength          ,
+        Trn.nWidth         nWidth            , Trn.nHeight        nHeight          ,
+        Trn.Barcode        Barcode           , Trn.LotSer         LotSer           ,
+        Trn.SDate          SDate             , Trn.EDate          EDate            ,
+        Itm.Item_Id      , Itm.Item_Num      , Itm.Item_Part    ,
+        Itm.Item_LName   , Itm.Item_IName    , Itm.Item_FName   ,
+        Itm.Status_Id      Item_Status_Id    , Itm.Status_Name    Item_Status_Name ,
+        Itm.Type_Id        Item_Type_Id      , Itm.Type_Name      Item_Type_Name   ,
+        Itm.MCost_Id       Item_MCost_Id     , Itm.MCost_Name     Item_MCost_Name  ,
+        Itm.Unit_Id        Item_Unit_Id      , Itm.Unit_Name      Item_Unit_Name   ,
+        Itm.Cat_Id         Item_Cat_Id       , Itm.Cat_Name       Item_Cat_Name    ,
+        Itm.Spc1_Id        Item_Spc1_Id      , Itm.Spc1_Name      Item_Spc1_Name   ,
+        Itm.Spc2_Id        Item_Spc2_Id      , Itm.Spc2_Name      Item_Spc2_Name   ,
+        Itm.Spc3_Id        Item_Spc3_Id      , Itm.Spc3_Name      Item_Spc3_Name   ,
+        Itm.Spc4_Id        Item_Spc4_Id      , Itm.Spc4_Name      Item_Spc4_Name   ,
+        Itm.Spc5_Id        Item_Spc5_Id      , Itm.Spc5_Name      Item_Spc5_Name   ,
+        Itm.Spc6_Id        Item_Spc6_Id      , Itm.Spc6_Name      Item_Spc6_Name   ,
+        Itm.Spc7_Id        Item_Spc7_Id      , Itm.Spc7_Name      Item_Spc7_Name   ,
+        Itm.Spc8_Id        Item_Spc8_Id      , Itm.Spc8_Name      Item_Spc8_Name   ,
+        Itm.Spc9_Id        Item_Spc9_Id      , Itm.Spc9_Name      Item_Spc9_Name   ,
+        Itm.Spc0_Id        Item_Spc0_Id      , Itm.Spc0_Name      Item_Spc0_Name   ,
+        Itm.InSale_Id      Item_InSale_Id    , Itm.InSale_Name    Item_InSale_Name ,
+        Itm.Season_Id      Item_Season_Id    , Itm.Season_Name    Item_Season_Name ,
+        Itm.Item_DWarnty , Itm.Item_NofP     , Itm.Item_Min_Unit, Itm.Item_Box     ,
+        Itm.Item_CPrice  , Itm.Item_NPrice   , Itm.Item_DPrice  , Itm.Item_SPrice  ,
+        Itm.Item_WPrice  , Itm.Item_RPrice   , Itm.Item_HPrice  , Itm.Item_MPrice  ,
+        Itm.Item_Image   ,
+        Itm.Method_Id      Item_Method_Id    , Itm.Method_Name    Item_Method_Name ,
+        Itm.Barcode_Id     Item_Barcode_Id   , Itm.Model_Id       Item_Model_Id    ,
+        Itm.Size_Id        Item_Size_Id      , Itm.Color_Id       Item_Color_Id    ,
+        Itm.Lot_Id         Item_Lot_Id       , Itm.Ser_Id         Item_Ser_Id      ,
+        Itm.SDate_Id       Item_SDate_Id     , Itm.EDate_Id       Item_EDate_Id    ,
+        Itm.Length_Id      Item_Length_Id    , Itm.Width_Id       Item_Width_Id    ,
+        Itm.Height_Id      Item_Height_Id
+   FROM Stor_EOMst      Mst
+   JOIN Stor_EOTrn      Trn  ON Trn.Mst_Id   =     Mst.Id
+   JOIN Cpy_Period      Per  ON Mst.Period_Id=     Per.Id
+   JOIN Stor_Cod_TrnTyp Trt  ON Mst.TrnTyp_Id=     Trt.Id
+   JOIN Stor_VStore     Stor ON Mst.Stor_Id  =    Stor.Stor_Id
+   JOIN Mng_Cont        Cnt  ON Mst.Cont_Id  =     Cnt.Id
+   JOIN Mng_Curn        Cur  ON Mst.Curn_Id  =     Cur.Id
+   JOIN Stor_Cod_Doc    Doc  ON Mst.Doc_Id   =     Doc.Id
+   JOIN Stor_VItem      Itm  ON Trn.Item_Id  =Itm.Item_Id
+   JOIN Stor_Cod_Unit   Unt  ON Trn.Unit_Id  =     Unt.Id
+   JOIN Stor_Cod_Model  Mdl  ON Trn.Model_Id =     Mdl.Id
+   JOIN Stor_Cod_Color  Clr  ON Trn.Color_Id =     Clr.Id
+   JOIN Stor_Cod_Size   Siz  ON Trn.Size_Id  =     Siz.Id
+/
+Create Synonym Stor_VExecOutbound For Stor_Execute_Outbound_View
+/
+
+CREATE OR REPLACE VIEW Stor_Execute_Orders_View AS 
+ SELECT Mst_Id           , 
+        Mst_Ord_Id       , Trn_Ord_Id       , BCurn_Id         , BCurn_Rate       ,
+        Curn_Id          , Curn_Name        , Curn_Rate        , Fin_Id           ,
+        Period_Id        , Period_Name      ,
+        Stor_Id          , Stor_LName       , Stor_IName       , Stor_FName       ,
+        TrnTyp_Id        , TrnTyp_Name      ,
+        Cont_Id          , Cont_Num         , Cont_Name        , Doc_Id           , Doc_Name      ,
+        Mst_Num          , Mst_Date         , Mst_DocN         , Mst_DocD         ,
+        D_Year           , D_Month          , D_DayOfMonth     , D_DayOfYear      , D_DayOfWeek   , D_YearMonth       ,
+        Unit_Id          , Unit_Name        , Model_Id         , Model_Name       ,
+        Color_Id         , Color_Name       , Size_Id          , Size_Name        ,
+        Mst_Rem          , Trn_Rem          ,
+        Trn_Id           , Ord              , Qnt              , Price            ,
+        CAmt             , Cst              , BAmt             , BCst             ,
+        Amt              , nLength          ,
+        nWidth           , nHeight          , Barcode          , LotSer           ,
+        SDate            , EDate            , Item_Id          , Item_Num         , Item_Part        ,
+        Item_LName       , Item_IName       , Item_FName       , Item_Status_Id   , Item_Status_Name ,
+        Item_Type_Id     , Item_Type_Name   , Item_MCost_Id    , Item_MCost_Name  ,
+        Item_Unit_Id     , Item_Unit_Name   , Item_Cat_Id      , Item_Cat_Name    ,
+        Item_Spc1_Id     , Item_Spc1_Name   , Item_Spc2_Id     , Item_Spc2_Name   ,
+        Item_Spc3_Id     , Item_Spc3_Name   , Item_Spc4_Id     , Item_Spc4_Name   ,
+        Item_Spc5_Id     , Item_Spc5_Name   , Item_Spc6_Id     , Item_Spc6_Name   ,
+        Item_Spc7_Id     , Item_Spc7_Name   , Item_Spc8_Id     , Item_Spc8_Name   ,
+        Item_Spc9_Id     , Item_Spc9_Name   , Item_Spc0_Id     , Item_Spc0_Name   ,
+        Item_InSale_Id   , Item_InSale_Name , Item_Season_Id   , Item_Season_Name ,
+        Item_DWarnty     , Item_NofP        , Item_Min_Unit    , Item_Box         ,
+        Item_CPrice      , Item_NPrice      , Item_DPrice      , Item_SPrice      ,
+        Item_WPrice      , Item_RPrice      , Item_HPrice      , Item_MPrice      ,  Item_Image   ,
+        Item_Method_Id   , Item_Method_Name , Item_Barcode_Id  , Item_Model_Id    ,
+        Item_Size_Id     , Item_Color_Id    , Item_Lot_Id      , Item_Ser_Id      ,
+        Item_SDate_Id    , Item_EDate_Id    , Item_Length_Id   , Item_Width_Id    , Item_Height_Id
+   FROM Stor_VExecInbound
+UNION ALL
+ SELECT Mst_Id           , 
+        Mst_Ord_Id       , Trn_Ord_Id       , BCurn_Id         , BCurn_Rate       ,
+        Curn_Id          , Curn_Name        , Curn_Rate        , Fin_Id           ,
+        Period_Id        , Period_Name      ,
+        Stor_Id          , Stor_LName       , Stor_IName       , Stor_FName       ,
+        TrnTyp_Id        , TrnTyp_Name      ,
+        Cont_Id          , Cont_Num         , Cont_Name        , Doc_Id           , Doc_Name      ,
+        Mst_Num          , Mst_Date         , Mst_DocN         , Mst_DocD         ,
+        D_Year           , D_Month          , D_DayOfMonth     , D_DayOfYear      , D_DayOfWeek   , D_YearMonth       ,
+        Unit_Id          , Unit_Name        , Model_Id         , Model_Name       ,
+        Color_Id         , Color_Name       , Size_Id          , Size_Name        ,
+        Mst_Rem          , Trn_Rem          ,
+        Trn_Id           , Ord              , Qnt              , Price            ,
+        CAmt             , Cst              , BAmt             , BCst             ,
+        Amt              , nLength          ,
+        nWidth           , nHeight          , Barcode          , LotSer           ,
+        SDate            , EDate            , Item_Id          , Item_Num         , Item_Part     ,
+        Item_LName       , Item_IName       , Item_FName       , Item_Status_Id   , Item_Status_Name ,
+        Item_Type_Id     , Item_Type_Name   , Item_MCost_Id    , Item_MCost_Name  ,
+        Item_Unit_Id     , Item_Unit_Name   , Item_Cat_Id      , Item_Cat_Name    ,
+        Item_Spc1_Id     , Item_Spc1_Name   , Item_Spc2_Id     , Item_Spc2_Name   ,
+        Item_Spc3_Id     , Item_Spc3_Name   , Item_Spc4_Id     , Item_Spc4_Name   ,
+        Item_Spc5_Id     , Item_Spc5_Name   , Item_Spc6_Id     , Item_Spc6_Name   ,
+        Item_Spc7_Id     , Item_Spc7_Name   , Item_Spc8_Id     , Item_Spc8_Name   ,
+        Item_Spc9_Id     , Item_Spc9_Name   , Item_Spc0_Id     , Item_Spc0_Name   ,
+        Item_InSale_Id   , Item_InSale_Name , Item_Season_Id   , Item_Season_Name ,
+        Item_DWarnty     , Item_NofP        , Item_Min_Unit    , Item_Box         ,
+        Item_CPrice      , Item_NPrice      , Item_DPrice      , Item_SPrice      ,
+        Item_WPrice      , Item_RPrice      , Item_HPrice      , Item_MPrice      ,  Item_Image   ,
+        Item_Method_Id   , Item_Method_Name , Item_Barcode_Id  , Item_Model_Id    ,
+        Item_Size_Id     , Item_Color_Id    , Item_Lot_Id      , Item_Ser_Id      ,
+        Item_SDate_Id    , Item_EDate_Id    , Item_Length_Id   , Item_Width_Id    , Item_Height_Id
+   FROM Stor_VExecOutbound
+/
+Create Synonym Stor_VExec_Ords For Stor_Execute_Orders_View
+/
+
+CREATE OR REPLACE VIEW Stor_Inbound_View AS 
+ SELECT Mst.Id             Mst_Id            , 
+        Mst.BCurn_Id       BCurn_Id          , Mst.BCurn_Rate     BCurn_Rate       ,
+        Cur.Id             Curn_Id           , Cur.Name           Curn_Name        ,
+        Mst.Curn_Rate      Curn_Rate         ,
+        Mst.Fin_Id         Fin_Id            ,
+        Per.Id             Period_Id         , Per.Name           Period_Name      ,
+        Trt.Id             TrnTyp_Id         , Trt.Name           TrnTyp_Name      ,
+        Stor.Stor_Id     , Stor.Stor_LName   , Stor.Stor_IName  , Stor.Stor_FName  ,
+        Cnt.Id             Cont_Id           , Cnt.Num            Cont_Num         , Cnt.Name           Cont_Name        ,
+        Doc.Id             Doc_Id            , Doc.Name           Doc_Name         ,
+        Mst.Num            Mst_Num           , Mst.dDate          Mst_Date         ,
+        To_Number(To_Char(Mst.dDate,'YYYY'))   D_Year           ,
+        To_Number(To_Char(Mst.dDate,'MM'))     D_Month          ,
+        To_Number(To_Char(Mst.dDate,'DD'))     D_DayOfMonth     ,
+        To_Number(To_Char(Mst.dDate,'DDD'))    D_DayOfYear      ,
+        To_Number(To_Char(Mst.dDate,'D'))      D_DayOfWeek      ,
+        To_Char(Mst.dDate,'YYYY-MM')           D_YearMonth      ,
+        Mst.DocN           Mst_DocN          , Mst.DocD           Mst_DocD         ,
+        Unt.Id             Unit_Id           , Unt.Name           Unit_Name        ,
+        Mdl.Id             Model_Id          , Mdl.Name           Model_Name       ,
+        Clr.Id             Color_Id          , Clr.Name           Color_Name       ,
+        Siz.Id             Size_Id           , Siz.Name           Size_Name        ,
+        Mst.Rem            Mst_Rem           , Trn.Rem            Trn_Rem          ,
+        Trn.Id             Trn_Id            , Trn.Ord            Ord              ,
+        Trn.Qnt            Qnt               , Trn.Price          Price            ,
+        Trn.CAmt           CAmt              , Trn.Cst            Cst              ,
+        Trn.BCst           BCst              , Trn.BAmt           BAmt             ,
+        Trn.Amt            Amt               , Trn.nLength        nLength          ,
+        Trn.nWidth         nWidth            , Trn.nHeight        nHeight          ,
+        Trn.Barcode        Barcode           , Trn.LotSer         LotSer           ,
+        Trn.SDate          SDate             , Trn.EDate          EDate            ,
+        Itm.Item_Id      , Itm.Item_Num      , Itm.Item_Part    ,
+        Itm.Item_LName   , Itm.Item_IName    , Itm.Item_FName   ,
+        Itm.Status_Id      Item_Status_Id    , Itm.Status_Name    Item_Status_Name ,
+        Itm.Type_Id        Item_Type_Id      , Itm.Type_Name      Item_Type_Name   ,
+        Itm.MCost_Id       Item_MCost_Id     , Itm.MCost_Name     Item_MCost_Name  ,
+        Itm.Unit_Id        Item_Unit_Id      , Itm.Unit_Name      Item_Unit_Name   ,
+        Itm.Cat_Id         Item_Cat_Id       , Itm.Cat_Name       Item_Cat_Name    ,
+        Itm.Spc1_Id        Item_Spc1_Id      , Itm.Spc1_Name      Item_Spc1_Name   ,
+        Itm.Spc2_Id        Item_Spc2_Id      , Itm.Spc2_Name      Item_Spc2_Name   ,
+        Itm.Spc3_Id        Item_Spc3_Id      , Itm.Spc3_Name      Item_Spc3_Name   ,
+        Itm.Spc4_Id        Item_Spc4_Id      , Itm.Spc4_Name      Item_Spc4_Name   ,
+        Itm.Spc5_Id        Item_Spc5_Id      , Itm.Spc5_Name      Item_Spc5_Name   ,
+        Itm.Spc6_Id        Item_Spc6_Id      , Itm.Spc6_Name      Item_Spc6_Name   ,
+        Itm.Spc7_Id        Item_Spc7_Id      , Itm.Spc7_Name      Item_Spc7_Name   ,
+        Itm.Spc8_Id        Item_Spc8_Id      , Itm.Spc8_Name      Item_Spc8_Name   ,
+        Itm.Spc9_Id        Item_Spc9_Id      , Itm.Spc9_Name      Item_Spc9_Name   ,
+        Itm.Spc0_Id        Item_Spc0_Id      , Itm.Spc0_Name      Item_Spc0_Name   ,
+        Itm.InSale_Id      Item_InSale_Id    , Itm.InSale_Name    Item_InSale_Name ,
+        Itm.Season_Id      Item_Season_Id    , Itm.Season_Name    Item_Season_Name ,
+        Itm.Item_DWarnty , Itm.Item_NofP     , Itm.Item_Min_Unit, Itm.Item_Box     ,
+        Itm.Item_CPrice  , Itm.Item_NPrice   , Itm.Item_DPrice  , Itm.Item_SPrice  ,
+        Itm.Item_WPrice  , Itm.Item_RPrice   , Itm.Item_HPrice  , Itm.Item_MPrice  ,
+        Itm.Item_Image   ,
+        Itm.Method_Id      Item_Method_Id    , Itm.Method_Name    Item_Method_Name ,
+        Itm.Barcode_Id     Item_Barcode_Id   , Itm.Model_Id       Item_Model_Id    ,
+        Itm.Size_Id        Item_Size_Id      , Itm.Color_Id       Item_Color_Id    ,
+        Itm.Lot_Id         Item_Lot_Id       , Itm.Ser_Id         Item_Ser_Id      ,
+        Itm.SDate_Id       Item_SDate_Id     , Itm.EDate_Id       Item_EDate_Id    ,
+        Itm.Length_Id      Item_Length_Id    , Itm.Width_Id       Item_Width_Id    ,
+        Itm.Height_Id      Item_Height_Id
+   FROM Stor_InMst      Mst
+   JOIN Stor_InTrn      Trn  ON Trn.Mst_Id   =     Mst.Id
+   JOIN Cpy_Period      Per  ON Mst.Period_Id=     Per.Id
+   JOIN Stor_Cod_TrnTyp Trt  ON Mst.TrnTyp_Id=     Trt.Id
+   JOIN Stor_VStore     Stor ON Mst.Stor_Id  =    Stor.Stor_Id
+   JOIN Mng_Cont        Cnt  ON Mst.Cont_Id  =     Cnt.Id
+   JOIN Mng_Curn        Cur  ON Mst.Curn_Id  =     Cur.Id
+   JOIN Stor_Cod_Doc    Doc  ON Mst.Doc_Id   =     Doc.Id
+   JOIN Stor_VItem      Itm  ON Trn.Item_Id  =Itm.Item_Id
+   JOIN Stor_Cod_Unit   Unt  ON Trn.Unit_Id  =     Unt.Id
+   JOIN Stor_Cod_Model  Mdl  ON Trn.Model_Id =     Mdl.Id
+   JOIN Stor_Cod_Color  Clr  ON Trn.Color_Id =     Clr.Id
+   JOIN Stor_Cod_Size   Siz  ON Trn.Size_Id  =     Siz.Id
+/
+Create Synonym Stor_VInbound For Stor_Inbound_View
+/
+
+CREATE OR REPLACE VIEW Stor_Outbound_View AS 
+ SELECT Mst.Id             Mst_Id            , 
+        Mst.BCurn_Id       BCurn_Id          , Mst.BCurn_Rate     BCurn_Rate       ,
+        Cur.Id             Curn_Id           , Cur.Name           Curn_Name        ,
+        Mst.Curn_Rate      Curn_Rate         ,
+        Mst.Fin_Id         Fin_Id            ,
+        Per.Id             Period_Id         , Per.Name           Period_Name      ,
+        Trt.Id             TrnTyp_Id         , Trt.Name           TrnTyp_Name      ,
+        Stor.Stor_Id     , Stor.Stor_LName   , Stor.Stor_IName  , Stor.Stor_FName  ,
+        Cnt.Id             Cont_Id           , Cnt.Num            Cont_Num         , Cnt.Name           Cont_Name        ,
+        Doc.Id             Doc_Id            , Doc.Name           Doc_Name         ,
+        Mst.Num            Mst_Num           , Mst.dDate          Mst_Date         ,
+        To_Number(To_Char(Mst.dDate,'YYYY'))   D_Year           ,
+        To_Number(To_Char(Mst.dDate,'MM'))     D_Month          ,
+        To_Number(To_Char(Mst.dDate,'DD'))     D_DayOfMonth     ,
+        To_Number(To_Char(Mst.dDate,'DDD'))    D_DayOfYear      ,
+        To_Number(To_Char(Mst.dDate,'D'))      D_DayOfWeek      ,
+        To_Char(Mst.dDate,'YYYY-MM')           D_YearMonth      ,
+        Mst.DocN           Mst_DocN          , Mst.DocD           Mst_DocD         ,
+        Unt.Id             Unit_Id           , Unt.Name           Unit_Name        ,
+        Mdl.Id             Model_Id          , Mdl.Name           Model_Name       ,
+        Clr.Id             Color_Id          , Clr.Name           Color_Name       ,
+        Siz.Id             Size_Id           , Siz.Name           Size_Name        ,
+        Mst.Rem            Mst_Rem           , Trn.Rem            Trn_Rem          ,
+        Trn.Id             Trn_Id            , Trn.Ord            Ord              ,
+        Trn.Qnt            Qnt               , Trn.Price          Price            ,
+        Trn.CAmt           CAmt              , Trn.Cst            Cst              ,
+        Trn.BCst           BCst              , Trn.BAmt           BAmt             ,
+        Trn.Amt            Amt               , Trn.nLength        nLength          ,
+        Trn.nWidth         nWidth            , Trn.nHeight        nHeight          ,
+        Trn.Barcode        Barcode           , Trn.LotSer         LotSer           ,
+        Trn.SDate          SDate             , Trn.EDate          EDate            ,
+        Itm.Item_Id      , Itm.Item_Num      , Itm.Item_Part    ,
+        Itm.Item_LName   , Itm.Item_IName    , Itm.Item_FName   ,
+        Itm.Status_Id      Item_Status_Id    , Itm.Status_Name    Item_Status_Name ,
+        Itm.Type_Id        Item_Type_Id      , Itm.Type_Name      Item_Type_Name   ,
+        Itm.MCost_Id       Item_MCost_Id     , Itm.MCost_Name     Item_MCost_Name  ,
+        Itm.Unit_Id        Item_Unit_Id      , Itm.Unit_Name      Item_Unit_Name   ,
+        Itm.Cat_Id         Item_Cat_Id       , Itm.Cat_Name       Item_Cat_Name    ,
+        Itm.Spc1_Id        Item_Spc1_Id      , Itm.Spc1_Name      Item_Spc1_Name   ,
+        Itm.Spc2_Id        Item_Spc2_Id      , Itm.Spc2_Name      Item_Spc2_Name   ,
+        Itm.Spc3_Id        Item_Spc3_Id      , Itm.Spc3_Name      Item_Spc3_Name   ,
+        Itm.Spc4_Id        Item_Spc4_Id      , Itm.Spc4_Name      Item_Spc4_Name   ,
+        Itm.Spc5_Id        Item_Spc5_Id      , Itm.Spc5_Name      Item_Spc5_Name   ,
+        Itm.Spc6_Id        Item_Spc6_Id      , Itm.Spc6_Name      Item_Spc6_Name   ,
+        Itm.Spc7_Id        Item_Spc7_Id      , Itm.Spc7_Name      Item_Spc7_Name   ,
+        Itm.Spc8_Id        Item_Spc8_Id      , Itm.Spc8_Name      Item_Spc8_Name   ,
+        Itm.Spc9_Id        Item_Spc9_Id      , Itm.Spc9_Name      Item_Spc9_Name   ,
+        Itm.Spc0_Id        Item_Spc0_Id      , Itm.Spc0_Name      Item_Spc0_Name   ,
+        Itm.InSale_Id      Item_InSale_Id    , Itm.InSale_Name    Item_InSale_Name ,
+        Itm.Season_Id      Item_Season_Id    , Itm.Season_Name    Item_Season_Name ,
+        Itm.Item_DWarnty , Itm.Item_NofP     , Itm.Item_Min_Unit, Itm.Item_Box     ,
+        Itm.Item_CPrice  , Itm.Item_NPrice   , Itm.Item_DPrice  , Itm.Item_SPrice  ,
+        Itm.Item_WPrice  , Itm.Item_RPrice   , Itm.Item_HPrice  , Itm.Item_MPrice  ,
+        Itm.Item_Image   ,
+        Itm.Method_Id      Item_Method_Id    , Itm.Method_Name    Item_Method_Name ,
+        Itm.Barcode_Id     Item_Barcode_Id   , Itm.Model_Id       Item_Model_Id    ,
+        Itm.Size_Id        Item_Size_Id      , Itm.Color_Id       Item_Color_Id    ,
+        Itm.Lot_Id         Item_Lot_Id       , Itm.Ser_Id         Item_Ser_Id      ,
+        Itm.SDate_Id       Item_SDate_Id     , Itm.EDate_Id       Item_EDate_Id    ,
+        Itm.Length_Id      Item_Length_Id    , Itm.Width_Id       Item_Width_Id    ,
+        Itm.Height_Id      Item_Height_Id
+   FROM Stor_OuMst      Mst
+   JOIN Stor_OuTrn      Trn  ON Trn.Mst_Id   =     Mst.Id
+   JOIN Cpy_Period      Per  ON Mst.Period_Id=     Per.Id
+   JOIN Stor_Cod_TrnTyp Trt  ON Mst.TrnTyp_Id=     Trt.Id
+   JOIN Stor_VStore     Stor ON Mst.Stor_Id  =    Stor.Stor_Id
+   JOIN Mng_Cont        Cnt  ON Mst.Cont_Id  =     Cnt.Id
+   JOIN Mng_Curn        Cur  ON Mst.Curn_Id  =     Cur.Id
+   JOIN Stor_Cod_Doc    Doc  ON Mst.Doc_Id   =     Doc.Id
+   JOIN Stor_VItem      Itm  ON Trn.Item_Id  =Itm.Item_Id
+   JOIN Stor_Cod_Unit   Unt  ON Trn.Unit_Id  =     Unt.Id
+   JOIN Stor_Cod_Model  Mdl  ON Trn.Model_Id =     Mdl.Id
+   JOIN Stor_Cod_Color  Clr  ON Trn.Color_Id =     Clr.Id
+   JOIN Stor_Cod_Size   Siz  ON Trn.Size_Id  =     Siz.Id
+/
+Create Synonym Stor_VOutbound For Stor_Outbound_View
+/
+
+CREATE OR REPLACE VIEW Stor_Transfer_View AS 
+ SELECT Mst.Id             Mst_Id            , 
+        Mst.BCurn_Id       BCurn_Id          , Mst.BCurn_Rate     BCurn_Rate       ,
+        Cur.Id             Curn_Id           , Cur.Name           Curn_Name        ,
+        Mst.Curn_Rate      Curn_Rate         ,
+        Mst.Fin_Id         Fin_Id            ,
+        Per.Id             Period_Id         , Per.Name           Period_Name      ,
+        TrtF.Id            TrnTypF_Id        , TrtF.Name          TrnTypF_Name     ,
+        TrtT.Id            TrnTypT_Id        , TrtT.Name          TrnTypT_Name     ,
+        FStr.Stor_Id       StorF_Id          , FStr.Stor_LName    StorF_LName      , FStr.Stor_IName StorF_IName, FStr.Stor_FName StorF_FName   ,
+        TStr.Stor_Id       StorT_Id          , TStr.Stor_LName    StorT_LName      , TStr.Stor_IName StorT_IName, TStr.Stor_FName StorT_FName   ,
+        Doc.Id             Doc_Id            , Doc.Name           Doc_Name         ,
+        Mst.Num            Mst_Num           , Mst.dDate          Mst_Date         ,
+        To_Number(To_Char(Mst.dDate,'YYYY'))   D_Year           ,
+        To_Number(To_Char(Mst.dDate,'MM'))     D_Month          ,
+        To_Number(To_Char(Mst.dDate,'DD'))     D_DayOfMonth     ,
+        To_Number(To_Char(Mst.dDate,'DDD'))    D_DayOfYear      ,
+        To_Number(To_Char(Mst.dDate,'D'))      D_DayOfWeek      ,
+        To_Char(Mst.dDate,'YYYY-MM')           D_YearMonth      ,
+        Mst.DocN           Mst_DocN          , Mst.DocD           Mst_DocD         ,
+        Unt.Id             Unit_Id           , Unt.Name           Unit_Name        ,
+        Mdl.Id             Model_Id          , Mdl.Name           Model_Name       ,
+        Clr.Id             Color_Id          , Clr.Name           Color_Name       ,
+        Siz.Id             Size_Id           , Siz.Name           Size_Name        ,
+        Mst.Rem            Mst_Rem           , Trn.Rem            Trn_Rem          ,
+        Trn.Id             Trn_Id            , Trn.Ord            Ord              ,
+        Trn.Qnt            Qnt               , Trn.Price          Price            ,
+        Trn.CAmt           CAmt              , Trn.Cst            Cst              ,
+        Trn.BCst           BCst              , Trn.BAmt           BAmt             ,
+        Trn.Amt            Amt               , Trn.nLength        nLength          ,
+        Trn.nWidth         nWidth            , Trn.nHeight        nHeight          ,
+        Trn.Barcode        Barcode           , Trn.LotSer         LotSer           ,
+        Trn.SDate          SDate             , Trn.EDate          EDate            ,
+        Itm.Item_Id      , Itm.Item_Num      , Itm.Item_Part    ,
+        Itm.Item_LName   , Itm.Item_IName    , Itm.Item_FName   ,
+        Itm.Status_Id      Item_Status_Id    , Itm.Status_Name    Item_Status_Name ,
+        Itm.Type_Id        Item_Type_Id      , Itm.Type_Name      Item_Type_Name   ,
+        Itm.MCost_Id       Item_MCost_Id     , Itm.MCost_Name     Item_MCost_Name  ,
+        Itm.Unit_Id        Item_Unit_Id      , Itm.Unit_Name      Item_Unit_Name   ,
+        Itm.Cat_Id         Item_Cat_Id       , Itm.Cat_Name       Item_Cat_Name    ,
+        Itm.Spc1_Id        Item_Spc1_Id      , Itm.Spc1_Name      Item_Spc1_Name   ,
+        Itm.Spc2_Id        Item_Spc2_Id      , Itm.Spc2_Name      Item_Spc2_Name   ,
+        Itm.Spc3_Id        Item_Spc3_Id      , Itm.Spc3_Name      Item_Spc3_Name   ,
+        Itm.Spc4_Id        Item_Spc4_Id      , Itm.Spc4_Name      Item_Spc4_Name   ,
+        Itm.Spc5_Id        Item_Spc5_Id      , Itm.Spc5_Name      Item_Spc5_Name   ,
+        Itm.Spc6_Id        Item_Spc6_Id      , Itm.Spc6_Name      Item_Spc6_Name   ,
+        Itm.Spc7_Id        Item_Spc7_Id      , Itm.Spc7_Name      Item_Spc7_Name   ,
+        Itm.Spc8_Id        Item_Spc8_Id      , Itm.Spc8_Name      Item_Spc8_Name   ,
+        Itm.Spc9_Id        Item_Spc9_Id      , Itm.Spc9_Name      Item_Spc9_Name   ,
+        Itm.Spc0_Id        Item_Spc0_Id      , Itm.Spc0_Name      Item_Spc0_Name   ,
+        Itm.InSale_Id      Item_InSale_Id    , Itm.InSale_Name    Item_InSale_Name ,
+        Itm.Season_Id      Item_Season_Id    , Itm.Season_Name    Item_Season_Name ,
+        Itm.Item_DWarnty , Itm.Item_NofP     , Itm.Item_Min_Unit, Itm.Item_Box     ,
+        Itm.Item_CPrice  , Itm.Item_NPrice   , Itm.Item_DPrice  , Itm.Item_SPrice  ,
+        Itm.Item_WPrice  , Itm.Item_RPrice   , Itm.Item_HPrice  , Itm.Item_MPrice  ,
+        Itm.Item_Image   ,
+        Itm.Method_Id      Item_Method_Id    , Itm.Method_Name    Item_Method_Name ,
+        Itm.Barcode_Id     Item_Barcode_Id   , Itm.Model_Id       Item_Model_Id    ,
+        Itm.Size_Id        Item_Size_Id      , Itm.Color_Id       Item_Color_Id    ,
+        Itm.Lot_Id         Item_Lot_Id       , Itm.Ser_Id         Item_Ser_Id      ,
+        Itm.SDate_Id       Item_SDate_Id     , Itm.EDate_Id       Item_EDate_Id    ,
+        Itm.Length_Id      Item_Length_Id    , Itm.Width_Id       Item_Width_Id    ,
+        Itm.Height_Id      Item_Height_Id
+   FROM Stor_TrMst      Mst
+   JOIN Stor_TrTrn      Trn  ON Trn.Mst_Id    =     Mst.Id
+   JOIN Cpy_Period      Per  ON Mst.Period_Id =     Per.Id
+   JOIN Stor_Cod_TrnTyp TrtF ON Mst.TrnTypF_Id=    TrtF.Id
+   JOIN Stor_Cod_TrnTyp TrtT ON Mst.TrnTypT_Id=    TrtT.Id
+   JOIN Stor_VStore     FStr ON Mst.StorF_Id  =    FStr.Stor_Id
+   JOIN Stor_VStore     TStr ON Mst.StorT_Id  =    TStr.Stor_Id
+   JOIN Mng_Curn        Cur  ON Mst.Curn_Id   =     Cur.Id
+   JOIN Stor_Cod_Doc    Doc  ON Mst.Doc_Id    =     Doc.Id
+   JOIN Stor_VItem      Itm  ON Trn.Item_Id   =Itm.Item_Id
+   JOIN Stor_Cod_Unit   Unt  ON Trn.Unit_Id   =     Unt.Id
+   JOIN Stor_Cod_Model  Mdl  ON Trn.Model_Id  =     Mdl.Id
+   JOIN Stor_Cod_Color  Clr  ON Trn.Color_Id  =     Clr.Id
+   JOIN Stor_Cod_Size   Siz  ON Trn.Size_Id   =     Siz.Id
+/
+Create Synonym Stor_VTransfer For Stor_Transfer_View
+/
+
+CREATE OR REPLACE VIEW Stor_Transactions_View AS 
+ SELECT Mst_Id            ,
+        BCurn_Id          , BCurn_Rate       ,
+        Curn_Id           , Curn_Name        , Curn_Rate         ,
+        Fin_Id            , Period_Id        , Period_Name       ,
+        TrnTyp_Id         , TrnTyp_Name      ,
+        Stor_Id           , Stor_LName       , Stor_IName        , Stor_FName       ,
+        Cont_Id           , Cont_Num         , Cont_Name         , Doc_Id           , Doc_Name         ,
+        Mst_Num           , Mst_Date         , Mst_DocN          , Mst_DocD         ,
+        D_Year            , D_Month          , D_DayOfMonth      , D_DayOfYear      , D_DayOfWeek      , D_YearMonth       ,
+        Mst_Rem           , Trn_Rem          ,
+        Trn_Id            , Unit_Id          , Unit_Name         ,
+        Model_Id          , Model_Name       , Color_Id          , Color_Name       ,
+        Size_Id           , Size_Name        , Ord               ,
+        Qnt               ,
+        Price             ,
+        CAmt              ,
+        Cst               ,
+        BAmt              ,
+        BCst              ,
+        Amt               ,
+        Qnt                 IQnt             ,
+        Price               IPrice           ,
+        CAmt                ICAmt            ,
+        Cst                 ICst             ,
+        BAmt                IBAmt            ,
+        BCst                IBCst            ,
+        Amt                 IAmt             ,
+        0                   OQnt             ,
+        0                   OPrice           ,
+        0                   OCAmt            ,
+        0                   OCst             ,
+        0                   OBAmt            ,
+        0                   OBCst            ,
+        0                   OAmt             ,
+        nLength           , nWidth           , nHeight           ,
+        Barcode           , LotSer           , SDate             , EDate            ,
+        Item_Id           , Item_Num         , Item_Part         , Item_Image       ,
+        Item_LName        , Item_IName       , Item_FName        , Item_Status_Id   , Item_Status_Name ,
+        Item_Type_Id      , Item_Type_Name   , Item_MCost_Id     , Item_MCost_Name  ,
+        Item_Unit_Id      , Item_Unit_Name   , Item_Cat_Id       , Item_Cat_Name    ,
+        Item_Spc1_Id      , Item_Spc1_Name   , Item_Spc2_Id      , Item_Spc2_Name   ,
+        Item_Spc3_Id      , Item_Spc3_Name   , Item_Spc4_Id      , Item_Spc4_Name   ,
+        Item_Spc5_Id      , Item_Spc5_Name   , Item_Spc6_Id      , Item_Spc6_Name   ,
+        Item_Spc7_Id      , Item_Spc7_Name   , Item_Spc8_Id      , Item_Spc8_Name   ,
+        Item_Spc9_Id      , Item_Spc9_Name   , Item_Spc0_Id      , Item_Spc0_Name   ,
+        Item_InSale_Id    , Item_InSale_Name , Item_Season_Id    , Item_Season_Name ,
+        Item_DWarnty      , Item_NofP        , Item_Min_Unit     , Item_Box         ,
+        Item_CPrice       , Item_NPrice      , Item_DPrice       , Item_SPrice      ,
+        Item_WPrice       , Item_RPrice      , Item_HPrice       , Item_MPrice      ,
+        Item_Method_Id    , Item_Method_Name , Item_Barcode_Id   , Item_Model_Id    ,
+        Item_Size_Id      , Item_Color_Id    , Item_Lot_Id       , Item_Ser_Id      ,
+        Item_SDate_Id     , Item_EDate_Id    , Item_Length_Id    , Item_Width_Id    ,
+        Item_Height_Id
+   FROM Stor_VInbound
+UNION ALL
+ SELECT Mst_Id            ,
+        BCurn_Id          , BCurn_Rate       ,
+        Curn_Id           , Curn_Name        , Curn_Rate         ,
+        Fin_Id            , Period_Id        , Period_Name       ,
+        TrnTyp_Id         , TrnTyp_Name      ,
+        Stor_Id           , Stor_LName       , Stor_IName        , Stor_FName       ,
+        Cont_Id           , Cont_Num         , Cont_Name         , Doc_Id           , Doc_Name         ,
+        Mst_Num           , Mst_Date         , Mst_DocN          , Mst_DocD         ,
+        D_Year            , D_Month          , D_DayOfMonth      , D_DayOfYear      , D_DayOfWeek      , D_YearMonth       ,
+        Mst_Rem           , Trn_Rem          ,
+        Trn_Id            , Unit_Id          , Unit_Name         ,
+        Model_Id          , Model_Name       , Color_Id          , Color_Name       ,
+        Size_Id           , Size_Name        , Ord               ,
+        Qnt               ,
+        Price             ,
+        CAmt              ,
+        Cst               ,
+        BAmt              ,
+        BCst              ,
+        Amt               ,
+        Qnt                 IQnt             ,
+        Price               IPrice           ,
+        CAmt                ICAmt            ,
+        Cst                 ICst             ,
+        BAmt                IBAmt            ,
+        BCst                IBCst            ,
+        Amt                 IAmt             ,
+        0                   OQnt             ,
+        0                   OPrice           ,
+        0                   OCAmt            ,
+        0                   OCst             ,
+        0                   OBAmt            ,
+        0                   OBCst            ,
+        0                   OAmt             ,
+        nLength           , nWidth           , nHeight           ,
+        Barcode           , LotSer           , SDate             , EDate            ,
+        Item_Id           , Item_Num         , Item_Part         , Item_Image       ,
+        Item_LName        , Item_IName       , Item_FName        , Item_Status_Id   , Item_Status_Name ,
+        Item_Type_Id      , Item_Type_Name   , Item_MCost_Id     , Item_MCost_Name  ,
+        Item_Unit_Id      , Item_Unit_Name   , Item_Cat_Id       , Item_Cat_Name    ,
+        Item_Spc1_Id      , Item_Spc1_Name   , Item_Spc2_Id      , Item_Spc2_Name   ,
+        Item_Spc3_Id      , Item_Spc3_Name   , Item_Spc4_Id      , Item_Spc4_Name   ,
+        Item_Spc5_Id      , Item_Spc5_Name   , Item_Spc6_Id      , Item_Spc6_Name   ,
+        Item_Spc7_Id      , Item_Spc7_Name   , Item_Spc8_Id      , Item_Spc8_Name   ,
+        Item_Spc9_Id      , Item_Spc9_Name   , Item_Spc0_Id      , Item_Spc0_Name   ,
+        Item_InSale_Id    , Item_InSale_Name , Item_Season_Id    , Item_Season_Name ,
+        Item_DWarnty      , Item_NofP        , Item_Min_Unit     , Item_Box         ,
+        Item_CPrice       , Item_NPrice      , Item_DPrice       , Item_SPrice      ,
+        Item_WPrice       , Item_RPrice      , Item_HPrice       , Item_MPrice      ,
+        Item_Method_Id    , Item_Method_Name , Item_Barcode_Id   , Item_Model_Id    ,
+        Item_Size_Id      , Item_Color_Id    , Item_Lot_Id       , Item_Ser_Id      ,
+        Item_SDate_Id     , Item_EDate_Id    , Item_Length_Id    , Item_Width_Id    ,
+        Item_Height_Id
+   FROM Stor_VExecInbound
+UNION ALL
+ SELECT Mst_Id            ,
+        BCurn_Id          , BCurn_Rate       ,
+        Curn_Id           , Curn_Name        , Curn_Rate         ,
+        Fin_Id            , Period_Id        , Period_Name       ,
+        TrnTyp_Id         , TrnTyp_Name      ,
+        Stor_Id           , Stor_LName       , Stor_IName        , Stor_FName       ,
+        Cont_Id           , Cont_Num         , Cont_Name         , Doc_Id           , Doc_Name         ,
+        Mst_Num           , Mst_Date         , Mst_DocN          , Mst_DocD         ,
+        D_Year            , D_Month          , D_DayOfMonth      , D_DayOfYear      , D_DayOfWeek      , D_YearMonth       ,
+        Mst_Rem           , Trn_Rem          ,
+        Trn_Id            , Unit_Id          , Unit_Name         ,
+        Model_Id          , Model_Name       , Color_Id          , Color_Name       ,
+        Size_Id           , Size_Name        , Ord               ,
+        -1*Qnt              Qnt              ,
+        Price             ,
+        -1*CAmt             CAmt             ,
+        -1*Cst              Cst              ,
+        -1*BAmt             BAmt             ,
+        -1*BCst             BCst             ,
+        -1*Amt              Amt              ,
+        0                   IQnt             ,
+        0                   IPrice           ,
+        0                   ICAmt            ,
+        0                   ICst             ,
+        0                   IBAmt            ,
+        0                   IBCst            ,
+        0                   IAmt             ,
+        Qnt                 OQnt             ,
+        Price               OPrice           ,
+        CAmt                OCAmt            ,
+        Cst                 OCst             ,
+        BAmt                OBAmt            ,
+        BCst                OBCst            ,
+        Amt                 OAmt             ,
+        nLength           , nWidth           , nHeight           ,
+        Barcode           , LotSer           , SDate             , EDate            ,
+        Item_Id           , Item_Num         , Item_Part         , Item_Image       ,
+        Item_LName        , Item_IName       , Item_FName        , Item_Status_Id   , Item_Status_Name ,
+        Item_Type_Id      , Item_Type_Name   , Item_MCost_Id     , Item_MCost_Name  ,
+        Item_Unit_Id      , Item_Unit_Name   , Item_Cat_Id       , Item_Cat_Name    ,
+        Item_Spc1_Id      , Item_Spc1_Name   , Item_Spc2_Id      , Item_Spc2_Name   ,
+        Item_Spc3_Id      , Item_Spc3_Name   , Item_Spc4_Id      , Item_Spc4_Name   ,
+        Item_Spc5_Id      , Item_Spc5_Name   , Item_Spc6_Id      , Item_Spc6_Name   ,
+        Item_Spc7_Id      , Item_Spc7_Name   , Item_Spc8_Id      , Item_Spc8_Name   ,
+        Item_Spc9_Id      , Item_Spc9_Name   , Item_Spc0_Id      , Item_Spc0_Name   ,
+        Item_InSale_Id    , Item_InSale_Name , Item_Season_Id    , Item_Season_Name ,
+        Item_DWarnty      , Item_NofP        , Item_Min_Unit     , Item_Box         ,
+        Item_CPrice       , Item_NPrice      , Item_DPrice       , Item_SPrice      ,
+        Item_WPrice       , Item_RPrice      , Item_HPrice       , Item_MPrice      ,
+        Item_Method_Id    , Item_Method_Name , Item_Barcode_Id   , Item_Model_Id    ,
+        Item_Size_Id      , Item_Color_Id    , Item_Lot_Id       , Item_Ser_Id      ,
+        Item_SDate_Id     , Item_EDate_Id    , Item_Length_Id    , Item_Width_Id    ,
+        Item_Height_Id
+   FROM Stor_VOutbound
+UNION ALL
+ SELECT Mst_Id            ,
+        BCurn_Id          , BCurn_Rate       ,
+        Curn_Id           , Curn_Name        , Curn_Rate         ,
+        Fin_Id            , Period_Id        , Period_Name       ,
+        TrnTyp_Id         , TrnTyp_Name      ,
+        Stor_Id           , Stor_LName       , Stor_IName        , Stor_FName       ,
+        Cont_Id           , Cont_Num         , Cont_Name         , Doc_Id           , Doc_Name         ,
+        Mst_Num           , Mst_Date         , Mst_DocN          , Mst_DocD         ,
+        D_Year            , D_Month          , D_DayOfMonth      , D_DayOfYear      , D_DayOfWeek      , D_YearMonth       ,
+        Mst_Rem           , Trn_Rem          ,
+        Trn_Id            , Unit_Id          , Unit_Name         ,
+        Model_Id          , Model_Name       , Color_Id          , Color_Name       ,
+        Size_Id           , Size_Name        , Ord               ,
+        -1*Qnt              Qnt              ,
+        Price             ,
+        -1*CAmt             CAmt             ,
+        -1*Cst              Cst              ,
+        -1*BAmt             BAmt             ,
+        -1*BCst             BCst             ,
+        -1*Amt              Amt              ,
+        0                   IQnt             ,
+        0                   IPrice           ,
+        0                   ICAmt            ,
+        0                   ICst             ,
+        0                   IBAmt            ,
+        0                   IBCst            ,
+        0                   IAmt             ,
+        Qnt                 OQnt             ,
+        Price               OPrice           ,
+        CAmt                OCAmt            ,
+        Cst                 OCst             ,
+        BAmt                OBAmt            ,
+        BCst                OBCst            ,
+        Amt                 OAmt             ,
+        nLength           , nWidth           , nHeight           ,
+        Barcode           , LotSer           , SDate             , EDate            ,
+        Item_Id           , Item_Num         , Item_Part         , Item_Image       ,
+        Item_LName        , Item_IName       , Item_FName        , Item_Status_Id   , Item_Status_Name ,
+        Item_Type_Id      , Item_Type_Name   , Item_MCost_Id     , Item_MCost_Name  ,
+        Item_Unit_Id      , Item_Unit_Name   , Item_Cat_Id       , Item_Cat_Name    ,
+        Item_Spc1_Id      , Item_Spc1_Name   , Item_Spc2_Id      , Item_Spc2_Name   ,
+        Item_Spc3_Id      , Item_Spc3_Name   , Item_Spc4_Id      , Item_Spc4_Name   ,
+        Item_Spc5_Id      , Item_Spc5_Name   , Item_Spc6_Id      , Item_Spc6_Name   ,
+        Item_Spc7_Id      , Item_Spc7_Name   , Item_Spc8_Id      , Item_Spc8_Name   ,
+        Item_Spc9_Id      , Item_Spc9_Name   , Item_Spc0_Id      , Item_Spc0_Name   ,
+        Item_InSale_Id    , Item_InSale_Name , Item_Season_Id    , Item_Season_Name ,
+        Item_DWarnty      , Item_NofP        , Item_Min_Unit     , Item_Box         ,
+        Item_CPrice       , Item_NPrice      , Item_DPrice       , Item_SPrice      ,
+        Item_WPrice       , Item_RPrice      , Item_HPrice       , Item_MPrice      ,
+        Item_Method_Id    , Item_Method_Name , Item_Barcode_Id   , Item_Model_Id    ,
+        Item_Size_Id      , Item_Color_Id    , Item_Lot_Id       , Item_Ser_Id      ,
+        Item_SDate_Id     , Item_EDate_Id    , Item_Length_Id    , Item_Width_Id    ,
+        Item_Height_Id
+   FROM Stor_VExecOutbound
+UNION ALL
+ SELECT Mst_Id            ,
+        BCurn_Id          , BCurn_Rate       ,
+        Curn_Id           , Curn_Name        , Curn_Rate         ,
+        Fin_Id            , Period_Id        , Period_Name       ,
+        TrnTypT_Id          TrnTyp_Id        , TrnTypT_Name        TrnTyp_Name      ,
+        StorT_Id            Stor_Id          , StorT_LName         Stor_LName       ,
+        StorT_IName         Stor_IName       , StorT_FName         Stor_FName       ,
+        null Cont_Id      , null Cont_Num    , null Cont_Name    , Doc_Id           , Doc_Name         ,
+        Mst_Num           , Mst_Date         , Mst_DocN          , Mst_DocD         ,
+        D_Year            , D_Month          , D_DayOfMonth      , D_DayOfYear      , D_DayOfWeek      , D_YearMonth       ,
+        Mst_Rem           , Trn_Rem          ,
+        Trn_Id            , Unit_Id          , Unit_Name         ,
+        Model_Id          , Model_Name       , Color_Id          , Color_Name       ,
+        Size_Id           , Size_Name        , Ord               ,
+        Qnt               ,
+        Price             ,
+        CAmt              ,
+        Cst               ,
+        BAmt              ,
+        BCst              ,
+        Amt               ,
+        Qnt                 IQnt             ,
+        Price               IPrice           ,
+        CAmt                ICAmt            ,
+        Cst                 ICst             ,
+        BAmt                IBAmt            ,
+        BCst                IBCst            ,
+        Amt                 IAmt             ,
+        0                   OQnt             ,
+        0                   OPrice           ,
+        0                   OCAmt            ,
+        0                   OCst             ,
+        0                   OBAmt            ,
+        0                   OBCst            ,
+        0                   OAmt             ,
+        nLength           , nWidth           , nHeight           ,
+        Barcode           , LotSer           , SDate             , EDate            ,
+        Item_Id           , Item_Num         , Item_Part         , Item_Image       ,
+        Item_LName        , Item_IName       , Item_FName        , Item_Status_Id   , Item_Status_Name ,
+        Item_Type_Id      , Item_Type_Name   , Item_MCost_Id     , Item_MCost_Name  ,
+        Item_Unit_Id      , Item_Unit_Name   , Item_Cat_Id       , Item_Cat_Name    ,
+        Item_Spc1_Id      , Item_Spc1_Name   , Item_Spc2_Id      , Item_Spc2_Name   ,
+        Item_Spc3_Id      , Item_Spc3_Name   , Item_Spc4_Id      , Item_Spc4_Name   ,
+        Item_Spc5_Id      , Item_Spc5_Name   , Item_Spc6_Id      , Item_Spc6_Name   ,
+        Item_Spc7_Id      , Item_Spc7_Name   , Item_Spc8_Id      , Item_Spc8_Name   ,
+        Item_Spc9_Id      , Item_Spc9_Name   , Item_Spc0_Id      , Item_Spc0_Name   ,
+        Item_InSale_Id    , Item_InSale_Name , Item_Season_Id    , Item_Season_Name ,
+        Item_DWarnty      , Item_NofP        , Item_Min_Unit     , Item_Box         ,
+        Item_CPrice       , Item_NPrice      , Item_DPrice       , Item_SPrice      ,
+        Item_WPrice       , Item_RPrice      , Item_HPrice       , Item_MPrice      ,
+        Item_Method_Id    , Item_Method_Name , Item_Barcode_Id   , Item_Model_Id    ,
+        Item_Size_Id      , Item_Color_Id    , Item_Lot_Id       , Item_Ser_Id      ,
+        Item_SDate_Id     , Item_EDate_Id    , Item_Length_Id    , Item_Width_Id    ,
+        Item_Height_Id
+   FROM Stor_VTransfer
+UNION ALL
+ SELECT Mst_Id            ,
+        BCurn_Id          , BCurn_Rate       ,
+        Curn_Id           , Curn_Name        , Curn_Rate         ,
+        Fin_Id            , Period_Id        , Period_Name       ,
+        TrnTypF_Id          TrnTyp_Id        , TrnTypF_Name        TrnTyp_Name      ,
+        StorF_Id            Stor_Id          , StorF_LName         Stor_LName       ,
+        StorF_IName         Stor_IName       , StorF_FName         Stor_FName       ,
+        null Cont_Id      , null Cont_Num    , null Cont_Name    , Doc_Id           , Doc_Name         ,
+        Mst_Num           , Mst_Date         , Mst_DocN          , Mst_DocD         ,
+        D_Year            , D_Month          , D_DayOfMonth      , D_DayOfYear      , D_DayOfWeek      , D_YearMonth       ,
+        Mst_Rem           , Trn_Rem          ,
+        Trn_Id            , Unit_Id          , Unit_Name         ,
+        Model_Id          , Model_Name       , Color_Id          , Color_Name       ,
+        Size_Id           , Size_Name        , Ord               ,
+        -1*Qnt              Qnt              ,
+        Price             ,
+        -1*CAmt             CAmt             ,
+        -1*Cst              Cst              ,
+        -1*BAmt             BAmt             ,
+        -1*BCst             BCst             ,
+        -1*Amt              Amt              ,
+        0                   IQnt             ,
+        0                   IPrice           ,
+        0                   ICAmt            ,
+        0                   ICst             ,
+        0                   IBAmt            ,
+        0                   IBCst            ,
+        0                   IAmt             ,
+        Qnt                 OQnt             ,
+        Price               OPrice           ,
+        CAmt                OCAmt            ,
+        Cst                 OCst             ,
+        BAmt                OBAmt            ,
+        BCst                OBCst            ,
+        Amt                 OAmt             ,
+        nLength           , nWidth           , nHeight           ,
+        Barcode           , LotSer           , SDate             , EDate            ,
+        Item_Id           , Item_Num         , Item_Part         , Item_Image       ,
+        Item_LName        , Item_IName       , Item_FName        , Item_Status_Id   , Item_Status_Name ,
+        Item_Type_Id      , Item_Type_Name   , Item_MCost_Id     , Item_MCost_Name  ,
+        Item_Unit_Id      , Item_Unit_Name   , Item_Cat_Id       , Item_Cat_Name    ,
+        Item_Spc1_Id      , Item_Spc1_Name   , Item_Spc2_Id      , Item_Spc2_Name   ,
+        Item_Spc3_Id      , Item_Spc3_Name   , Item_Spc4_Id      , Item_Spc4_Name   ,
+        Item_Spc5_Id      , Item_Spc5_Name   , Item_Spc6_Id      , Item_Spc6_Name   ,
+        Item_Spc7_Id      , Item_Spc7_Name   , Item_Spc8_Id      , Item_Spc8_Name   ,
+        Item_Spc9_Id      , Item_Spc9_Name   , Item_Spc0_Id      , Item_Spc0_Name   ,
+        Item_InSale_Id    , Item_InSale_Name , Item_Season_Id    , Item_Season_Name ,
+        Item_DWarnty      , Item_NofP        , Item_Min_Unit     , Item_Box         ,
+        Item_CPrice       , Item_NPrice      , Item_DPrice       , Item_SPrice      ,
+        Item_WPrice       , Item_RPrice      , Item_HPrice       , Item_MPrice      ,
+        Item_Method_Id    , Item_Method_Name , Item_Barcode_Id   , Item_Model_Id    ,
+        Item_Size_Id      , Item_Color_Id    , Item_Lot_Id       , Item_Ser_Id      ,
+        Item_SDate_Id     , Item_EDate_Id    , Item_Length_Id    , Item_Width_Id    ,
+        Item_Height_Id
+   FROM Stor_VTransfer
+/
+Create Synonym Stor_VTrans For Stor_Transactions_View
+/
+
+CREATE OR REPLACE VIEW Stor_Actual_Quantities_View AS 
+ SELECT Mst.Id             Mst_Id            , 
+        Per.Id             Period_Id         , Per.Name           Period_Name      ,
+        Stor.Stor_Id     , Stor.Stor_LName   , Stor.Stor_IName  , Stor.Stor_FName  ,
+        Doc.Id             Doc_Id            , Doc.Name           Doc_Name         ,
+        Mst.Num            Mst_Num           , Mst.dDate          Mst_Date         ,
+        To_Number(To_Char(Mst.dDate,'YYYY'))   D_Year           ,
+        To_Number(To_Char(Mst.dDate,'MM'))     D_Month          ,
+        To_Number(To_Char(Mst.dDate,'DD'))     D_DayOfMonth     ,
+        To_Number(To_Char(Mst.dDate,'DDD'))    D_DayOfYear      ,
+        To_Number(To_Char(Mst.dDate,'D'))      D_DayOfWeek      ,
+        To_Char(Mst.dDate,'YYYY-MM')           D_YearMonth      ,
+        Mst.DocN           Mst_DocN          , Mst.DocD           Mst_DocD         ,
+        Unt.Id             Unit_Id           , Unt.Name           Unit_Name        ,
+        Mdl.Id             Model_Id          , Mdl.Name           Model_Name       ,
+        Clr.Id             Color_Id          , Clr.Name           Color_Name       ,
+        Siz.Id             Size_Id           , Siz.Name           Size_Name        ,
+        Mst.Rem            Mst_Rem           , Trn.Rem            Trn_Rem          ,
+        Trn.Id             Trn_Id            , Trn.Ord            Ord              ,
+        Trn.Qnt            Qnt               , Trn.nLength        nLength          ,
+        Trn.nWidth         nWidth            , Trn.nHeight        nHeight          ,
+        Trn.Barcode        Barcode           , Trn.LotSer         LotSer           ,
+        Trn.SDate          SDate             , Trn.EDate          EDate            ,
+        Itm.Item_Id      , Itm.Item_Num      , Itm.Item_Part    ,
+        Itm.Item_LName   , Itm.Item_IName    , Itm.Item_FName   ,
+        Itm.Status_Id      Item_Status_Id    , Itm.Status_Name    Item_Status_Name ,
+        Itm.Type_Id        Item_Type_Id      , Itm.Type_Name      Item_Type_Name   ,
+        Itm.MCost_Id       Item_MCost_Id     , Itm.MCost_Name     Item_MCost_Name  ,
+        Itm.Unit_Id        Item_Unit_Id      , Itm.Unit_Name      Item_Unit_Name   ,
+        Itm.Cat_Id         Item_Cat_Id       , Itm.Cat_Name       Item_Cat_Name    ,
+        Itm.Spc1_Id        Item_Spc1_Id      , Itm.Spc1_Name      Item_Spc1_Name   ,
+        Itm.Spc2_Id        Item_Spc2_Id      , Itm.Spc2_Name      Item_Spc2_Name   ,
+        Itm.Spc3_Id        Item_Spc3_Id      , Itm.Spc3_Name      Item_Spc3_Name   ,
+        Itm.Spc4_Id        Item_Spc4_Id      , Itm.Spc4_Name      Item_Spc4_Name   ,
+        Itm.Spc5_Id        Item_Spc5_Id      , Itm.Spc5_Name      Item_Spc5_Name   ,
+        Itm.Spc6_Id        Item_Spc6_Id      , Itm.Spc6_Name      Item_Spc6_Name   ,
+        Itm.Spc7_Id        Item_Spc7_Id      , Itm.Spc7_Name      Item_Spc7_Name   ,
+        Itm.Spc8_Id        Item_Spc8_Id      , Itm.Spc8_Name      Item_Spc8_Name   ,
+        Itm.Spc9_Id        Item_Spc9_Id      , Itm.Spc9_Name      Item_Spc9_Name   ,
+        Itm.Spc0_Id        Item_Spc0_Id      , Itm.Spc0_Name      Item_Spc0_Name   ,
+        Itm.InSale_Id      Item_InSale_Id    , Itm.InSale_Name    Item_InSale_Name ,
+        Itm.Season_Id      Item_Season_Id    , Itm.Season_Name    Item_Season_Name ,
+        Itm.Item_DWarnty , Itm.Item_NofP     , Itm.Item_Min_Unit, Itm.Item_Box     ,
+        Itm.Item_CPrice  , Itm.Item_NPrice   , Itm.Item_DPrice  , Itm.Item_SPrice  ,
+        Itm.Item_WPrice  , Itm.Item_RPrice   , Itm.Item_HPrice  , Itm.Item_MPrice  ,
+        Itm.Item_Image   ,
+        Itm.Method_Id      Item_Method_Id    , Itm.Method_Name    Item_Method_Name ,
+        Itm.Barcode_Id     Item_Barcode_Id   , Itm.Model_Id       Item_Model_Id    ,
+        Itm.Size_Id        Item_Size_Id      , Itm.Color_Id       Item_Color_Id    ,
+        Itm.Lot_Id         Item_Lot_Id       , Itm.Ser_Id         Item_Ser_Id      ,
+        Itm.SDate_Id       Item_SDate_Id     , Itm.EDate_Id       Item_EDate_Id    ,
+        Itm.Length_Id      Item_Length_Id    , Itm.Width_Id       Item_Width_Id    ,
+        Itm.Height_Id      Item_Height_Id
+   FROM Stor_ActMst     Mst
+   JOIN Stor_ActTrn     Trn  ON Trn.Mst_Id   =     Mst.Id
+   JOIN Cpy_Period      Per  ON Mst.Period_Id=     Per.Id
+   JOIN Stor_VStore     Stor ON Mst.Stor_Id  =    Stor.Stor_Id
+   JOIN Stor_Cod_Doc    Doc  ON Mst.Doc_Id   =     Doc.Id
+   JOIN Stor_VItem      Itm  ON Trn.Item_Id  =Itm.Item_Id
+   JOIN Stor_Cod_Unit   Unt  ON Trn.Unit_Id  =     Unt.Id
+   JOIN Stor_Cod_Model  Mdl  ON Trn.Model_Id =     Mdl.Id
+   JOIN Stor_Cod_Color  Clr  ON Trn.Color_Id =     Clr.Id
+   JOIN Stor_Cod_Size   Siz  ON Trn.Size_Id  =     Siz.Id
+/
+Create Synonym Stor_VActQnt For Stor_Actual_Quantities_View
+/
+
+CREATE OR REPLACE VIEW Stor_Item_Classification_View AS 
+ SELECT ICS.Id            ICS_Id         ,
+        I.Item_Id       , I.Item_Num     , I.Item_Part    , I.Item_LName    , I.Item_IName    , I.Item_FName   ,
+        I.Status_Id       Item_Status_Id , I.Status_Name    Item_Status_Name,
+        I.Type_Id         Item_Type_Id   , I.Type_Name      Item_Type_Name  ,
+        I.MCost_Id        Item_MCost_Id  , I.MCost_Name     Item_MCost_Name ,
+        I.Unit_Id         Item_Unit_Id   , I.Unit_Name      Item_Unit_Name  ,
+        I.Cat_Id          Item_Cat_Id    , I.Cat_Name       Item_Cat_Name   ,
+        I.Spc1_Id         Item_Spc1_Id   , I.Spc1_Name      Item_Spc1_Name  ,
+        I.Spc2_Id         Item_Spc2_Id   , I.Spc2_Name      Item_Spc2_Name  ,
+        I.Spc3_Id         Item_Spc3_Id   , I.Spc3_Name      Item_Spc3_Name  ,
+        I.Spc4_Id         Item_Spc4_Id   , I.Spc4_Name      Item_Spc4_Name  ,
+        I.Spc5_Id         Item_Spc5_Id   , I.Spc5_Name      Item_Spc5_Name  ,
+        I.Spc6_Id         Item_Spc6_Id   , I.Spc6_Name      Item_Spc6_Name  ,
+        I.Spc7_Id         Item_Spc7_Id   , I.Spc7_Name      Item_Spc7_Name  ,
+        I.Spc8_Id         Item_Spc8_Id   , I.Spc8_Name      Item_Spc8_Name  ,
+        I.Spc9_Id         Item_Spc9_Id   , I.Spc9_Name      Item_Spc9_Name  ,
+        I.Spc0_Id         Item_Spc0_Id   , I.Spc0_Name      Item_Spc0_Name  ,
+        I.InSale_Id       Item_InSale_Id , I.InSale_Name    Item_InSale_Name,
+        I.Season_Id       Item_Season_Id , I.Season_Name    Item_Season_Name,
+        I.Item_DWarnty  , I.Item_NofP    , I.Item_Min_Unit, I.Item_Box      ,
+        I.Item_CPrice   , I.Item_NPrice  , I.Item_DPrice  , I.Item_SPrice   ,
+        I.Item_WPrice   , I.Item_RPrice  , I.Item_HPrice  , I.Item_MPrice   , I.Item_Image    ,
+        I.Method_Id       Item_Method_Id , I.Method_Name    Item_Method_Name,
+        I.Barcode_Id      Item_Barcode_Id, I.Model_Id       Item_Model_Id   ,
+        I.Size_Id         Item_Size_Id   , I.Color_Id       Item_Color_Id   ,
+        I.Lot_Id          Item_Lot_Id    , I.Ser_Id         Item_Ser_Id     ,
+        I.SDate_Id        Item_SDate_Id  , I.EDate_Id       Item_EDate_Id   ,
+        I.Length_Id       Item_Length_Id , I.Width_Id       Item_Width_Id   , I.Height_Id       Item_Height_Id ,
+        U.Id              Unit_Id        , U.Name           Unit_Name       ,
+        M.Id              Model_Id       , M.Name           Model_Name      ,
+        C.Id              Color_Id       , C.Name           Color_Name      ,
+        S.Id              Size_Id        , S.Name           Size_Name       ,
+        ICS.nLength       ICS_nLength    , ICS.nWidth       ICS_nWidth      ,
+        ICS.nHeight       ICS_nHeight    , ICS.Qnt          ICS_Qnt         ,
+        ICS.CCst          ICS_CCst       , ICS.CBCst        ICS_CBCst       ,
+        ICS.BQnt          ICS_BQnt       , ICS.CQnt         ICS_CQnt        ,
+        ICS.WQnt          ICS_WQnt       , ICS.BWQnt        ICS_BWQnt       ,
+        ICS.CWQnt         ICS_CWQnt      , ICS.CPrice       ICS_CPrice      ,
+        ICS.NPrice        ICS_NPrice     , ICS.DPrice       ICS_DPrice      ,
+        ICS.SPrice        ICS_SPrice     , ICS.WPrice       ICS_WPrice      ,
+        ICS.RPrice        ICS_RPrice     , ICS.HPrice       ICS_HPrice      ,
+        ICS.MPrice        ICS_MPrice     , ICS.Barcode      ICS_Barcode     ,
+        ICS.LotSer        ICS_LotSer     , ICS.SDate        ICS_SDate       ,
+        ICS.EDate         ICS_EDate
+   FROM Stor_ICS       ICS
+   JOIN Stor_VItem     I ON ICS.Item_Id =I.Item_Id
+   JOIN Stor_Cod_Unit  U ON ICS.Unit_Id =     U.Id
+   JOIN Stor_Cod_Model M ON ICS.Model_Id=     M.Id
+   JOIN Stor_Cod_Color C ON ICS.Color_Id=     C.Id
+   JOIN Stor_Cod_Size  S ON ICS.Size_Id =     S.Id
+/
+Create Synonym Stor_VICS For Stor_Item_Classification_View
+/
+----------------------------------------------------------------------------------------------------
+CREATE OR REPLACE VIEW Stor_Stor_Item_Classification_View AS 
+ SELECT SI.Id                 SICS_Id             ,
+        S.Stor_Id           , S.Stor_LName        , S.Stor_IName       , S.Stor_FName        , ICS.ICS_Id          ,
+        ICS.Item_Id         , ICS.Item_Num        , ICS.Item_Part      , ICS.Item_LName      , ICS.Item_IName      , ICS.Item_FName      ,
+        ICS.Item_Status_Id  , ICS.Item_Status_Name, ICS.Item_Type_Id   , ICS.Item_Type_Name  ,
+        ICS.Item_MCost_Id   , ICS.Item_MCost_Name , ICS.Item_Unit_Id   , ICS.Item_Unit_Name  ,
+        ICS.Item_Cat_Id     , ICS.Item_Cat_Name   , ICS.Item_InSale_Id , ICS.Item_InSale_Name,
+        ICS.Item_Spc1_Id    , ICS.Item_Spc1_Name  , ICS.Item_Spc2_Id   , ICS.Item_Spc2_Name  ,
+        ICS.Item_Spc3_Id    , ICS.Item_Spc3_Name  , ICS.Item_Spc4_Id   , ICS.Item_Spc4_Name  ,
+        ICS.Item_Spc5_Id    , ICS.Item_Spc5_Name  , ICS.Item_Spc6_Id   , ICS.Item_Spc6_Name  ,
+        ICS.Item_Spc7_Id    , ICS.Item_Spc7_Name  , ICS.Item_Spc8_Id   , ICS.Item_Spc8_Name  ,
+        ICS.Item_Spc9_Id    , ICS.Item_Spc9_Name  , ICS.Item_Spc0_Id   , ICS.Item_Spc0_Name  ,
+        ICS.Item_Season_Id  , ICS.Item_Season_Name, ICS.Item_DWarnty   , ICS.Item_NofP       ,
+        ICS.Item_Min_Unit   , ICS.Item_Box        , ICS.Item_CPrice    , ICS.Item_NPrice     ,
+        ICS.Item_DPrice     , ICS.Item_SPrice     , ICS.Item_WPrice    , ICS.Item_RPrice     ,
+        ICS.Item_HPrice     , ICS.Item_MPrice     , ICS.Item_Image     , ICS.Item_Method_Id  ,
+        ICS.Item_Method_Name, ICS.Item_Barcode_Id , ICS.Item_Model_Id  , ICS.Item_Size_Id    ,
+        ICS.Item_Color_Id   , ICS.Item_Lot_Id     , ICS.Item_Ser_Id    , ICS.Item_SDate_Id   ,
+        ICS.Item_EDate_Id   , ICS.Item_Length_Id  , ICS.Item_Width_Id  , ICS.Item_Height_Id  ,
+        ICS.Unit_Id           ICS_Unit_Id         , ICS.Unit_Name        ICS_Unit_Name       ,
+        ICS.Model_Id          ICS_Model_Id        , ICS.Model_Name       ICS_Model_Name      ,
+        ICS.Color_Id          ICS_Color_Id        , ICS.Color_Name       ICS_Color_Name      ,
+        ICS.Size_Id           ICS_Size_Id         , ICS.Size_Name        ICS_Size_Name       ,
+        ICS.ICS_nLength     , ICS.ICS_nWidth      , ICS.ICS_nHeight    , ICS.ICS_Qnt         ,
+        ICS.ICS_CCst        , ICS.ICS_CBCst       ,
+        ICS.ICS_BQnt        , ICS.ICS_CQnt        , ICS.ICS_WQnt       , ICS.ICS_BWQnt       ,
+        ICS.ICS_CWQnt       , ICS.ICS_CPrice      , ICS.ICS_NPrice     , ICS.ICS_DPrice      ,
+        ICS.ICS_SPrice      , ICS.ICS_WPrice      , ICS.ICS_RPrice     , ICS.ICS_HPrice      ,
+        ICS.ICS_MPrice      , ICS.ICS_Barcode     , ICS.ICS_LotSer     , ICS.ICS_SDate       , ICS.ICS_EDate       ,
+        L1.Id                 Loc1_Id             , L1.Name              Loc1_Name           ,
+        L2.Id                 Loc2_Id             , L2.Name              Loc2_Name           ,
+        L3.Id                 Loc3_Id             , L3.Name              Loc3_Name           ,
+        SI.Qnt                SICS_Qnt            , SI.BQnt              SICS_BQnt           ,
+        SI.CCst               SICS_CCst           , SI.CBCst             SICS_CBCst          ,
+        SI.CQnt               SICS_CQnt           , SI.WQnt              SICS_WQnt           ,
+        SI.BWQnt              SICS_BWQnt          , SI.CWQnt             SICS_CWQnt          ,
+        SI.CPrice             SICS_CPrice         , SI.NPrice            SICS_NPrice         ,
+        SI.DPrice             SICS_DPrice         , SI.SPrice            SICS_SPrice         ,
+        SI.WPrice             SICS_WPrice         , SI.RPrice            SICS_RPrice         ,
+        SI.HPrice             SICS_HPrice         , SI.MPrice            SICS_MPrice
+   FROM Stor_SICS     SI
+   JOIN Stor_VStore   S   ON SI.Stor_Id=  S.Stor_Id
+   JOIN Stor_VICS     ICS ON SI.ICS_Id =ICS.ICS_Id
+   JOIN Stor_Cod_Loc1 L1  ON SI.Loc1_Id= L1.Id
+   JOIN Stor_Cod_Loc2 L2  ON SI.Loc2_Id= L2.Id
+   JOIN Stor_Cod_Loc3 L3  ON SI.Loc3_Id= L3.Id
+/
+Create Synonym Stor_VSICS For Stor_Stor_Item_Classification_View
+/

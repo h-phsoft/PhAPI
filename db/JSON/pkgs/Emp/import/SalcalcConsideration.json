@@ -1,0 +1,65 @@
+{
+  "Name": "Emp_Salcalc_Consideration",
+  "Synonym": "Emp_Salcalccon",
+  "Sequence": "Emp_Salcalccon_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Tsal_Id",
+      "Field": "tsalId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Salary_Calculated",
+        "SynonymName": "Emp_Salcalc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "tsalName"
+      }
+    }, {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "Sysdate",
+      "hasRelation": false
+    }, {
+      "Name": "Ctyp_Id",
+      "Field": "ctypId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Kind_Id",
+      "Field": "kindId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Amt",
+      "Field": "amt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Minutes",
+      "Field": "minutes",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }
+  ]
+}

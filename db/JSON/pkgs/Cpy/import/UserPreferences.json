@@ -1,0 +1,66 @@
+{
+  "Name": "Copy_User_Preferences",
+  "Synonym": "Cpy_Upref",
+  "Sequence": "Cpy_Upref_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "User_Id",
+      "Field": "userId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Users",
+        "SynonymName": "Cpy_User",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "userName"
+      }
+    }, {
+      "Name": "Visible_Id",
+      "Field": "visibleId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Visible",
+        "SynonymName": "Phs_Cod_Visible",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "visibleName"
+      }
+    }, {
+      "Name": "Key",
+      "Field": "key",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Value1",
+      "Field": "value1",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Value2",
+      "Field": "value2",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

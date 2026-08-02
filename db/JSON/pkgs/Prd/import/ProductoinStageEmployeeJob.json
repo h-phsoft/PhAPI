@@ -1,0 +1,54 @@
+{
+  "Name": "Prd_Productoin_Stage_Employee_Job",
+  "Synonym": "Prd_Prod_Stage_Emp_Job",
+  "Sequence": "Prd_Prod_Stage_Emp_Job_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Stage_Id",
+      "Field": "stageId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Prd_Production_Stage",
+        "SynonymName": "Prd_Stage",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "stageName"
+      }
+    }, {
+      "Name": "Job_Id",
+      "Field": "jobId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Job",
+        "SynonymName": "Emp_Cod_Job",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "jobName"
+      }
+    }, {
+      "Name": "Ord",
+      "Field": "ord",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Qnt",
+      "Field": "qnt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

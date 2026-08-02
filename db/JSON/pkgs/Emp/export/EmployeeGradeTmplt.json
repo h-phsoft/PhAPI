@@ -1,0 +1,29 @@
+{
+  "Name": "Emp_Employee_Grade_Tmplt_View",
+  "Synonym": "Emp_Vempgradtmplt",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Grp_Name",
+      "Field": "grpName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Degree_Name",
+      "Field": "degreeName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Num",
+      "Field": "empNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Name",
+      "Field": "empName",
+      "isSelected": false
+    }
+  ]
+}

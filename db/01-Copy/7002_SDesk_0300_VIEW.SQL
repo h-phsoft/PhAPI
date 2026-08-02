@@ -1,0 +1,404 @@
+CREATE OR REPLACE VIEW SDesk_Categories_Sub_View AS
+ SELECT ALL 
+        C.Id          Cat_Id         , SC.Id          Sub_Id           ,
+        ST.Status_Id  Cat_Status_Id  , ST.Name        Cat_Staus_Name   ,
+        CT.Status_Id  Sub_Status_Id  , CT.Name        Sub_Status_Name  ,
+        C.Num         Cat_Num        , SC.Description Sub_Description  ,
+        C.Name        Cat_Name       , SC.Num         Sub_Num          ,
+        C.Description Cat_Description, SC.Name        Sub_Name
+   FROM SDesk_Cat      C ,
+        SDesk_SubCat   SC,
+        Phs_Cod_Status ST,
+        Phs_Cod_Status CT
+  WHERE C.Id        =SC.Cat_Id
+    AND C.Status_Id =ST.Id
+    AND SC.Status_Id=CT.Id
+/
+Create Synonym SDesk_VCat_Sub For SDesk_Categories_Sub_View
+/
+
+CREATE OR REPLACE VIEW SDesk_Categories_Service_View AS
+ SELECT ALL 
+        C.Id          Cat_Id            , S.Id          Service_Id          ,
+        CS.Id         Cat_Status_Id     , CT.Id         Service_Status_Id   ,
+        CS.Name       Cat_Status_Name   , CT.Name       Service_Status_Name ,
+        C.Num         Cat_Num           , S.Num         Service_Num         ,
+        C.Name        Cat_Name          , S.Name        Service_Name        ,
+        C.Description Cat_Description   , S.Description Service_Description ,
+        SR.Id         CatSrv_Id         , CU.Id         CatSrv_Status_Id    ,
+        CU.Name       CatSrv_Status_Name
+   FROM SDesk_Cat      C ,
+        SDesk_Serv     S ,
+        SDesk_Cat_Serv SR,
+        Phs_Cod_Status CS,
+        Phs_Cod_Status CT,
+        Phs_Cod_Status CU 
+  WHERE C.Id        =SR.Cat_Id
+    AND S.Id        =SR.Serv_Id
+    AND C.Status_Id =CS.Id
+    AND S.Status_Id =CT.Id
+    AND SR.Status_Id=CU.Id
+/
+Create Synonym SDesk_VCat_Serv For SDesk_Categories_Service_View
+/
+
+CREATE OR REPLACE VIEW SDesk_Customer_Service_View AS
+ SELECT ALL 
+        MC.Cont_Id    , MC.Cont_Num     , MC.Cont_Title  , MC.Cont_Name     ,
+        MC.Cont_LName , MC.Cont_Owner   , MC.Cont_Contact,
+        MC.Status_Id  , MC.Status_Name  , MC.BlnMod_Id   , MC.BlnMod_Name   ,
+        MC.Type_Id    , MC.Type_Name    , MC.Spc1_Id     , MC.Spc1_Name     ,
+        MC.Spc2_Id    , MC.Spc2_Name    , MC.Spc3_Id     , MC.Spc3_Name     ,
+        MC.Spc4_Id    , MC.Spc4_Name    , MC.Spc5_Id     , MC.Spc5_Name     ,
+        MC.Spc6_Id    , MC.Spc6_Name    , MC.Spc7_Id     , MC.Spc7_Name     ,
+        MC.Spc8_Id    , MC.Spc8_Name    , MC.Spc9_Id     , MC.Spc9_Name     ,
+        MC.Spc0_Id    , MC.Spc0_Name    , MC.dLmt        , MC.nLmt          ,
+        MC.Repr_Id    , MC.Cost_Id      , MC.AccDbt_Id   , MC.AccCrd_Id     , 
+        CR.Id           Cust_Serv_Id    ,
+        SS.Id           Serv_Id         , SS.Name          Serv_Name        ,
+        CT.Id           Serv_Status_Id  , CT.Name          Serv_Status_Name ,
+        CR.SDate        Serv_SDate      , CR.EDate         Serv_EDate       ,
+        CR.RenewalDate  Serv_RenewalDate, CR.Description   Serv_Description
+   FROM Mng_VContact    MC,
+        SDesk_Cust_Serv CR,
+        SDesk_Serv      SS,
+        Phs_Cod_Status  CT
+  WHERE CR.Serv_Id  =SS.Id
+    AND CR.Cont_Id  =MC.Cont_Id
+    AND CR.Status_Id=CT.Id
+/
+Create Synonym SDesk_VCust_Serv For SDesk_Customer_Service_View
+/
+
+CREATE OR REPLACE VIEW SDesk_Customer_User_View AS
+ SELECT ALL 
+        MC.Cont_Id   , MC.Cont_Num   , MC.Cont_Title  , MC.Cont_Name    ,
+        MC.Cont_LName, MC.Cont_Owner , MC.Cont_Contact,
+        MC.Status_Id , MC.Status_Name, MC.BlnMod_Id   , MC.BlnMod_Name  ,
+        MC.Type_Id   , MC.Type_Name  , MC.Spc1_Id     , MC.Spc1_Name    ,
+        MC.Spc2_Id   , MC.Spc2_Name  , MC.Spc3_Id     , MC.Spc3_Name    ,
+        MC.Spc4_Id   , MC.Spc4_Name  , MC.Spc5_Id     , MC.Spc5_Name    ,
+        MC.Spc6_Id   , MC.Spc6_Name  , MC.Spc7_Id     , MC.Spc7_Name    ,
+        MC.Spc8_Id   , MC.Spc8_Name  , MC.Spc9_Id     , MC.Spc9_Name    ,
+        MC.Spc0_Id   , MC.Spc0_Name  , MC.dLmt        , MC.nLmt         ,
+        MC.Repr_Id   , MC.Cost_Id    , MC.AccDbt_Id   , MC.AccCrd_Id    ,
+        CU.Id          Cust_User_Id  , 
+        US.Id          User_Id       , US.Name          User_Name       ,
+        CT.Id          User_Status_Id, CT.Name          User_Status_Name
+  FROM  Mng_VContact     MC ,        
+        SDesk_Cust_User  CU ,
+        Cpy_User         US ,
+        Phs_Cod_Status   CT        
+  WHERE CU.User_Id  =US.Id
+    AND CU.Cont_Id  =MC.Cont_Id
+    AND CU.Status_Id=CT.Id
+/
+Create Synonym SDesk_VCust_User For SDesk_Customer_User_View
+/
+
+CREATE OR REPLACE VIEW SDesk_Customer_SLA_View AS
+ SELECT ALL 
+        MC.Cont_Id   , MC.Cont_Num   , MC.Cont_Title  , MC.Cont_Name    ,
+        MC.Cont_LName, MC.Cont_Owner , MC.Cont_Contact,
+        MC.Status_Id , MC.Status_Name, MC.BlnMod_Id   , MC.BlnMod_Name  ,
+        MC.Type_Id   , MC.Type_Name  , MC.Spc1_Id     , MC.Spc1_Name    ,
+        MC.Spc2_Id   , MC.Spc2_Name  , MC.Spc3_Id     , MC.Spc3_Name    ,
+        MC.Spc4_Id   , MC.Spc4_Name  , MC.Spc5_Id     , MC.Spc5_Name    ,
+        MC.Spc6_Id   , MC.Spc6_Name  , MC.Spc7_Id     , MC.Spc7_Name    ,
+        MC.Spc8_Id   , MC.Spc8_Name  , MC.Spc9_Id     , MC.Spc9_Name    ,
+        MC.Spc0_Id   , MC.Spc0_Name  , MC.dLmt        , MC.nLmt         ,
+        MC.Repr_Id   , MC.Cost_Id    , MC.AccDbt_Id   , MC.AccCrd_Id    ,
+        SL.Id          CSLA_Id       , SL.SDate         CSLA_SDate      ,
+        SL.EDate       CSLA_EDate    , SL.renewalDate   CSLA_RenewalDate
+  FROM  Mng_VContact     MC,
+        SDesk_Cust_SLA   SL
+  WHERE SL.Cont_Id=MC.Cont_Id
+/
+Create Synonym SDesk_VCust_SLA For SDesk_Customer_SLA_View
+/
+
+CREATE OR REPLACE VIEW SDesk_Customer_SLA_Matrix_View AS
+ SELECT ALL 
+        SM.Cont_Id     , SM.Cont_Num    , SM.Cont_Title  , SM.Cont_Name       ,
+        SM.Cont_LName  , SM.Cont_Owner  , SM.Cont_Contact, 
+        SM.Status_Id   , SM.Status_Name , SM.BlnMod_Id   , SM.BlnMod_Name     ,
+        SM.Type_Id     , SM.Type_Name   , SM.Spc1_Id     , SM.Spc1_Name       ,
+        SM.Spc2_Id     , SM.Spc2_Name   , SM.Spc3_Id     , SM.Spc3_Name       ,
+        SM.Spc4_Id     , SM.Spc4_Name   , SM.Spc5_Id     , SM.Spc5_Name       ,
+        SM.Spc6_Id     , SM.Spc6_Name   , SM.Spc7_Id     , SM.Spc7_Name       ,
+        SM.Spc8_Id     , SM.Spc8_Name   , SM.Spc9_Id     , SM.Spc9_Name       ,
+        SM.Spc0_Id     , SM.Spc0_Name   , SM.dLmt        , SM.nLmt            ,
+        SM.Repr_Id     , SM.Cost_Id     , SM.AccDbt_Id   , SM.AccCrd_Id       ,
+        SM.CSLA_Id     , SM.CSLA_SDate  , SM.CSLA_EDate  , SM.CSLA_RenewalDate,
+        MT.Id            Matrix_Id      ,
+        CS.Id            SLA_Id         , CS.Name          SLA_Name           ,
+        CU.Id            ResponseUnit_Id, CU.Name          ResponseUnit_Name  ,
+        CN.Id            RestoreUnit_Id , CN.Name          RestoreUnit_Name   ,
+        CI.Id            ResolveUnit_Id , CI.Name          ResolveUnit_Name   ,
+        MT.ResponseTime, MT.RestoreTime , MT.ResolveTime , MT.Description
+   FROM SDesk_VCust_SLA     SM,
+        SDesk_Cust_SLA_Mtrx MT,
+        SDesk_Cod_SLA       CS,
+        SDesk_Cod_Unit      CU,
+        SDesk_Cod_Unit      CN,
+        SDesk_Cod_Unit      CI
+  WHERE SM.CSLA_Id        =MT.Mst_Id
+    AND MT.SLA_Id         =CS.Id
+    AND MT.responseUnit_Id=CU.Id
+    AND MT.restoreUnit_Id =CN.Id
+    AND MT.resolveUnit_Id =CI.Id
+/
+Create Synonym SDesk_VCust_SLA_Mtrx For SDesk_Customer_SLA_Matrix_View
+/
+
+CREATE OR REPLACE VIEW SDesk_Customer_SLA_Service_View AS
+ SELECT ALL  
+        SM.Cont_Id     , SM.Cont_Num    , SM.Cont_Title  , SM.Cont_Name       ,
+        SM.Cont_LName  , SM.Cont_Owner  , SM.Cont_Contact, 
+        SM.Status_Id   , SM.Status_Name , SM.BlnMod_Id   , SM.BlnMod_Name     ,
+        SM.Type_Id     , SM.Type_Name   , SM.Spc1_Id     , SM.Spc1_Name       ,
+        SM.Spc2_Id     , SM.Spc2_Name   , SM.Spc3_Id     , SM.Spc3_Name       ,
+        SM.Spc4_Id     , SM.Spc4_Name   , SM.Spc5_Id     , SM.Spc5_Name       ,
+        SM.Spc6_Id     , SM.Spc6_Name   , SM.Spc7_Id     , SM.Spc7_Name       ,
+        SM.Spc8_Id     , SM.Spc8_Name   , SM.Spc9_Id     , SM.Spc9_Name       ,
+        SM.Spc0_Id     , SM.Spc0_Name   , SM.dLmt        , SM.nLmt            ,
+        SM.Repr_Id     , SM.Cost_Id     , SM.AccDbt_Id   , SM.AccCrd_Id       ,
+        SM.CSLA_Id     , SM.CSLA_SDate  , SM.CSLA_EDate  , SM.CSLA_RenewalDate,
+        SR.Id            CServ_Id       ,
+        SS.Id            Serv_Id        , SS.Name          Serv_Name          ,
+        SR.Description
+   FROM SDesk_VCust_SLA     SM, 
+        SDesk_Cust_SLA_Serv SR,
+        SDesk_Serv          SS
+  WHERE SM.CSLA_Id=SR.Mst_Id
+    AND SR.Serv_Id=SS.Id
+/
+Create Synonym SDesk_VCust_SLA_Serv For SDesk_Customer_SLA_Service_View
+/
+
+CREATE OR REPLACE VIEW SDesk_Staff_Services_View AS
+ SELECT ALL 
+        SM.Id Staff_Id       ,
+        CT.Id Status_Id      , CT.Name Status_Name      ,
+        EM.Id Emp_Id         , EM.Name Emp_Name         ,
+        US.Id User_Id        , US.Name User_Name        ,
+        SR.Id Serv_Id        , SR.Name Serv_Name        ,
+        SS.Id SServ_Id       , 
+        CS.Id SServ_Status_Id, CS.Name SServ_Status_Name
+   FROM SDesk_Staff      SM,
+        SDesk_Staff_Serv SS,
+        Phs_Cod_Status   CS,
+        Phs_Cod_Status   CT,
+        Cpy_User         US,
+        SDesk_Serv       SR,
+        Emp_Emp          EM
+  WHERE SM.Emp_Id    =EM.Id
+    AND SM.User_Id   =US.Id
+    AND SM.Status_Id =CT.Id
+    AND SS.Staff_Id  =SM.Id
+    AND SS.Serv_Id   =SR.Id  
+    AND SS.Status_Id =CS.Id
+/
+Create Synonym SDesk_VStaff_Serv For SDesk_Staff_Services_View
+/
+
+CREATE OR REPLACE VIEW SDesk_Ticket_View AS
+ SELECT ALL 
+        ST.Id              Tckt_Id       ,    
+        CU.Id              Cont_Id       , CU.Name     Cont_Name      ,
+        SR.Id              Serv_Id       , SR.Name     Serv_Name      ,
+        SC.Id              Cat_Id        , SC.Name     Cat_Name       ,    
+        SS.Id              SubCat_Id     , SS.Name     SubCat_Name    ,
+        CS.Id              SLA_Id        , CS.Name     SLA_Name       ,
+        CS.Color           SLA_Color     ,                            
+        CC.Id              CUser_Id      , CC.Name     CUser_Name     ,
+        CE.Id              RUser_Id      , CE.Name     RUser_Name     ,
+        CR.Id              SUser_Id      , CR.Name     SUser_Name     ,
+        TS.Status_Id       Status_Id     , TS.Name     Status_Name    ,
+        TS.Color           Status_Color  , TS.nDays    Status_nDays   ,
+        ST.dDate         , ST.SDate      , ST.EDate   ,ST.Description ,
+        ST.RUser_Date    , ST.SUser_Date , ST.SLA_date,ST.Subject     ,
+        ST.Status_Date   ,                 ST.Ins_Date CUser_Date     ,
+        Trunc(sysdate-ST.Ins_Date,2) days         
+  FROM SDesk_Tckt            ST,
+       Mng_Cont              CU,
+       Cpy_User              CC,
+       Cpy_User              CE,
+       Cpy_User              CR,
+       SDesk_Serv            SR,
+       SDesk_Cat             SC,
+       SDesk_SubCat          SS,
+       SDesk_Cod_SLA         CS,
+       SDesk_Cod_Tckt_Status TS 
+  WHERE ST.Cont_Id   =CU.Id
+    AND ST.CUser_Id  =CC.Id
+    AND ST.RUser_Id  =CE.Id(+)
+    AND ST.SUser_Id  =CR.Id(+)
+    AND ST.Serv_Id   =SR.Id
+    AND ST.Cat_Id    =SC.Id
+    AND ST.SubCate_Id=SS.Id
+    AND ST.SLA_Id    =CS.Id
+    AND ST.Status_Id =TS.Id
+/
+Create Synonym SDesk_VTckt For SDesk_Ticket_View
+/
+
+CREATE OR REPLACE VIEW SDesk_Ticket_Conversation_View AS
+ SELECT ALL 
+        VT.Tckt_Id    ,
+        VT.Cont_Id    , VT.Cont_Name   , VT.Serv_Id    , VT.Serv_Name   ,
+        VT.Cat_Id     , VT.Cat_Name    , VT.SubCat_Id  , VT.SubCat_Name ,
+        VT.SLA_Id     , VT.SLA_Name    , VT.CUser_Id   , VT.CUser_Name  ,
+        VT.RUser_Id   , VT.RUser_Name  , VT.SUser_Id   , VT.SUser_Name  ,
+        VT.Status_Id  , VT.Status_Name , VT.Status_Date, VT.Status_Color,
+        VT.Subject    , VT.Description , VT.dDate      , VT.SDate       ,
+        VT.EDate      , VT.Status_nDays, VT.SLA_Color  ,
+        VT.RUser_Date , VT.SUser_Date  , VT.SLA_date   , VT.CUser_Date  ,
+        TC.Id           Conv_Id        ,                                
+        CU.Id           User_Id        , CU.Name         User_Name      ,
+        CS.Id           Side_Id        , CS.Id           Side_Name      ,
+        TC.MsgDate    , TC.RecDate     , TC.Msg                        
+  FROM SDesk_VTckt     VT,
+       SDesk_Tckt_Conv TC,
+       Cpy_User        CU,
+       SDesk_Cod_Side  CS
+  WHERE VT.Tckt_Id=TC.Tckt_Id
+    AND TC.User_Id=CU.Id
+    AND TC.Side_Id=CS.Id
+/
+Create Synonym SDesk_VTckt_Conv For SDesk_Ticket_Conversation_View
+/
+
+CREATE OR REPLACE VIEW SDesk_Ticket_Changes_View AS
+ SELECT ALL 
+        VT.Tckt_Id     ,
+        VT.Cont_Id     , VT.Cont_Name    , VT.Serv_Id    , VT.Serv_Name   ,
+        VT.Cat_Id      , VT.Cat_Name     , VT.SubCat_Id  , VT.SubCat_Name ,
+        VT.SLA_Id      , VT.SLA_Name     , VT.CUser_Id   , VT.CUser_Name  ,
+        VT.RUser_Id    , VT.RUser_Name   , VT.SUser_Id   , VT.SUser_Name  ,
+        VT.Status_Id   , VT.Status_Name  , VT.Status_Date, VT.SLA_Color   ,
+        VT.Status_nDays, VT.Status_Color ,
+        VT.Subject     , VT.Description  , VT.dDate      , VT.SDate       ,
+        VT.User_Id     , VT.User_Name    , VT.Side_Id    , VT.Side_Name   ,
+        VT.EDate       , VT.Conv_Id      , VT.MsgDate    , VT.RecDate     ,
+        VT.Msg         ,
+        VT.RUser_Date  , VT.SUser_Date   , VT.SLA_date   , VT.CUser_Date  ,
+        SC.Id         Chnge_Id      ,
+        CS.Id         oSLA_Id       , CS.Name         oSLA_Name      ,
+        CO.Id         nSLA_Id       , CO.Name         nSLA_Name      ,
+        CC.Id         Chnge_Side_Id , CC.Name         Chnge_Side_Name,
+        CU.Id         Chnge_User_Id , CU.Name         Chnge_User_Name,
+        SC.dDate      Chnge_Date    , SC.Reason       Chnge_Reason
+  FROM SDesk_VTckt_Conv    VT,
+       SDesk_Tckt_SLA_Chng SC,
+       SDesk_Cod_SLA       CS,
+       SDesk_Cod_SLA       CO,
+       Cpy_User            CU,
+       SDesk_Cod_Side      CC
+  WHERE SC.Tckt_Id=VT.Tckt_Id
+    AND SC.Conv_Id=VT.Conv_Id
+    AND SC.oSLA_Id=CS.Id
+    AND SC.nSLA_Id=CO.Id
+    AND SC.User_Id=CU.Id
+    AND SC.Side_Id=CC.Id
+/
+Create Synonym SDesk_VTckt_Chnge For SDesk_Ticket_Changes_View
+/
+
+CREATE OR REPLACE VIEW SDesk_Ticket_User_Changes_View AS
+ SELECT ALL 
+        VT.Tckt_Id     ,
+        VT.Cont_Id     , VT.Cont_Name    , VT.Serv_Id    , VT.Serv_Name   ,
+        VT.Cat_Id      , VT.Cat_Name     , VT.SubCat_Id  , VT.SubCat_Name ,
+        VT.SLA_Id      , VT.SLA_Name     , VT.CUser_Id   , VT.CUser_Name  ,
+        VT.RUser_Id    , VT.RUser_Name   , VT.SUser_Id   , VT.SUser_Name  ,
+        VT.Status_Id   , VT.Status_Name  , VT.Status_Date, VT.SLA_Color   ,
+        VT.Status_nDays, VT.Status_Color ,
+        VT.Subject     , VT.Description  , VT.dDate      , VT.SDate       ,
+        VT.User_Id     , VT.User_Name    , VT.Side_Id    , VT.Side_Name   ,
+        VT.EDate       , VT.Conv_Id      , VT.MsgDate    , VT.RecDate     ,
+        VT.Msg         ,
+        VT.RUser_Date  , VT.SUser_Date   , VT.SLA_date   , VT.CUser_Date  ,
+        UC.Id         Chnge_Id      ,
+        CU.Id         Chnge_oUser_Id, CU.Name         Chnge_oUser_Name,
+        CS.Id         Chnge_nUser_Id, CS.Name         Chnge_nUser_Name,
+        CE.Id         Chnge_User_Id , CE.Name         Chnge_User_Name ,
+        UC.dDate      Chnge_dDate   , UC.reason       Chnge_reason    
+  FROM SDesk_VTckt_Conv      VT,
+       SDesk_Tckt_User_Chng  UC,
+       Cpy_User              CU,
+       Cpy_User              CS,
+       Cpy_User              CE
+  WHERE UC.Tckt_Id =VT.Tckt_Id
+    AND UC.Conv_Id =VT.Conv_Id
+    AND UC.oUser_Id=CU.Id
+    AND UC.nUser_Id=CS.Id
+    AND UC.User_Id =CE.Id
+/
+Create Synonym SDesk_VTckt_User_Chang For SDesk_Ticket_User_Changes_View
+/
+
+CREATE OR REPLACE VIEW SDesk_Ticket_Status_Changes_View AS
+ SELECT ALL 
+        VT.Tckt_Id     ,
+        VT.Cont_Id     , VT.Cont_Name    , VT.Serv_Id    , VT.Serv_Name   ,
+        VT.Cat_Id      , VT.Cat_Name     , VT.SubCat_Id  , VT.SubCat_Name ,
+        VT.SLA_Id      , VT.SLA_Name     , VT.CUser_Id   , VT.CUser_Name  ,
+        VT.RUser_Id    , VT.RUser_Name   , VT.SUser_Id   , VT.SUser_Name  ,
+        VT.Status_Id   , VT.Status_Name  , VT.Status_Date, VT.SLA_Color   ,
+        VT.Status_nDays, VT.Status_Color ,
+        VT.Subject     , VT.Description  , VT.dDate      , VT.SDate       ,
+        VT.User_Id     , VT.User_Name    , VT.Side_Id    , VT.Side_Name   ,
+        VT.EDate       , VT.Conv_Id      , VT.MsgDate    , VT.RecDate     ,
+        VT.Msg         ,
+        VT.RUser_Date  , VT.SUser_Date   , VT.SLA_date   , VT.CUser_Date  ,
+        CS.Id           Chnge_Id          ,  
+        TC.Id           Chnge_oStatus_Id  , TC.Name         Chnge_oStatus_Name,
+        CS.oStatus_Date Chnge_oStatus_Date,                                              
+        CU.Id           Chnge_oUser_Id    , CU.Name         Chnge_oUser_Name  ,
+        TS.Id           Chnge_nStatus_Id  , TS.Name         Chnge_nStatus_Name,
+        CS.nStatus_Date Chnge_nStatus_Date, 
+        CE.Id           Chnge_nUser_Id    , CE.Name         Chnge_nUser_Name  ,
+        CS.nDays        Chnge_nDays
+  FROM SDesk_VTckt_Conv       VT,
+       SDesk_Tckt_Chng_Status CS,
+       SDesk_Cod_Tckt_Status  TC,
+       SDesk_Cod_Tckt_Status  TS,
+       Cpy_User               CU,
+       Cpy_User               CE,
+       SDesk_Tckt_Conv        CN
+  WHERE CS.Tckt_Id   =VT.Tckt_Id
+    AND CS.Conv_Id   =VT.Conv_Id
+    AND CS.oUser_Id  =CU.Id
+    AND CS.nUser_Id  =CE.Id
+    AND CS.oStatus_Id=TC.Id
+    AND CS.nStatus_Id=TS.Id
+/
+Create Synonym SDesk_VTckt_Status_Chang For SDesk_Ticket_Status_Changes_View
+/
+
+CREATE OR REPLACE VIEW SDesk_Ticket_Rate_View AS
+ SELECT ALL 
+        VT.Tckt_Id     ,
+        VT.Cont_Id     , VT.Cont_Name  , VT.Serv_Id    , VT.Serv_Name   ,
+        VT.Cat_Id      , VT.Cat_Name   , VT.SubCat_Id  , VT.SubCat_Name ,
+        VT.SLA_Id      , VT.SLA_Name   , VT.SLA_date   , VT.SLA_Color   ,     
+        VT.CUser_Id    , VT.CUser_Name ,
+        VT.RUser_Id    , VT.RUser_Name , VT.SUser_Id   , VT.SUser_Name  ,
+        VT.Status_Id   , VT.Status_Name, VT.Status_Date, VT.Status_Color,
+        VT.Status_nDays, VT.Description, VT.dDate      , VT.SDate       ,
+        VT.EDate       , VT.Subject    , 
+        VT.RUser_Date  , VT.SUser_Date ,  VT.CUser_Date,
+        CR.Id         TRate_Id         ,
+        CU.Id         User_Id          , CU.Name         User_Name      ,
+        CS.Id         Rate_Id          , CS.Name         Rate_Name
+  FROM SDesk_VTckt      VT,
+       SDesk_Cust_Rate  CR,
+       Cpy_User         CU,
+       SDesk_Cod_Rating CS 
+  WHERE VT.Tckt_Id=CR.Tckt_Id
+    AND CR.User_Id=CU.Id
+    AND CR.Rate_Id=CS.Id
+/
+Create Synonym SDesk_VTckt_Rate For SDesk_Ticket_Rate_View
+/

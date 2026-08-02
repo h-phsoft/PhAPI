@@ -1,0 +1,48 @@
+{
+  "Name": "Cash_Torder_Status",
+  "Synonym": "Cash_Tordstatus",
+  "Sequence": "Cash_Tordstatus_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Ord_Id",
+      "Field": "ordId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Cash_Transfer_Order",
+        "SynonymName": "Cash_Tord",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "ordName"
+      }
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Cash_Code_Status",
+        "SynonymName": "Cash_Cod_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

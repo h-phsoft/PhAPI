@@ -1,0 +1,91 @@
+{
+  "Name": "Fix_Input_Master",
+  "Synonym": "Fix_Inmst",
+  "Sequence": "Fix_Inmst_Seq",
+  "InsUser": false,
+  "hasChilds": true,
+  "Children": [
+    {
+      "Pkg": "Fix",
+      "Key": "InputTrans",
+      "Table": "Fix_Input_Trans",
+      "Synonym": "Fix_Intrn",
+      "cascadeDelete": true,
+      "Column": "MST_ID",
+      "ColKey": "mstId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Period_Id",
+      "Field": "periodId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Periods",
+        "SynonymName": "Cpy_Period",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "periodName"
+      }
+    }, {
+      "Name": "Vhr_Id",
+      "Field": "vhrId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Master",
+        "SynonymName": "Acc_Mst",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "vhrName"
+      }
+    }, {
+      "Name": "Commit_Id",
+      "Field": "commitId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Commit_Status",
+        "SynonymName": "Phs_Cod_Commit",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "commitName"
+      }
+    }, {
+      "Name": "Acc_Id",
+      "Field": "accId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Account",
+        "SynonymName": "Acc_Acc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "accName"
+      }
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "Sysdate",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "Synonym": "Clnc_Patient",
+  "Select": "SELECT Id, Name AS Name FROM Clnc_Patient",
+  "Condition": "Id>0",
+  "Conds": {
+    "term": "Lower(' '||Name) LIKE '%{term}%'",
+    "clinicId": "CLINIC_ID IN (SELECT CLINIC_ID From Clnc_Patient Where clinic_Id={clinicId})"
+  },
+  "OrderBy": "Id"
+}

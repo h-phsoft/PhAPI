@@ -1,0 +1,18 @@
+{
+  "Name": "Clnc_Appointment_Change",
+  "Synonym": "Clnc_App_Change",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Reason",
+      "Field": "reason",
+      "isSelected": false
+    }
+  ]
+}

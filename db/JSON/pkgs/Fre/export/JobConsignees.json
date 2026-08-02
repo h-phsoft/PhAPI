@@ -1,0 +1,13 @@
+{
+  "Name": "Fre_Job_Consignees",
+  "Synonym": "Fre_Cons",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "Synonym": "Pur_Req_Status",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Pur_Req_Status",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

@@ -1,0 +1,23 @@
+{
+  "Name": "Stor_Item_Formula",
+  "Synonym": "Stor_Itm_Form",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Item_Rid",
+      "Field": "itemRid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Qnt",
+      "Field": "qnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

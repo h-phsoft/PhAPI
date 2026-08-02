@@ -1,0 +1,47 @@
+{
+  "Name": "Emp_Application_References",
+  "Synonym": "Emp_Appref",
+  "Sequence": "Emp_Appref_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Mapp_Id",
+      "Field": "mappId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Application",
+        "SynonymName": "Emp_Appl",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "mappName"
+      }
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Pos",
+      "Field": "pos",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Cont",
+      "Field": "cont",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

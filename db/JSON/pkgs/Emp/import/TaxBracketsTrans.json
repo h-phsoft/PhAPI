@@ -1,0 +1,60 @@
+{
+  "Name": "Emp_Tax_Brackets_Trans",
+  "Synonym": "Emp_Ttaxbrkt",
+  "Sequence": "Emp_Ttaxbrkt_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Brkt_Id",
+      "Field": "brktId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Tax_Brackets_Master",
+        "SynonymName": "Emp_Taxbrkt",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "brktName"
+      }
+    }, {
+      "Name": "Samt",
+      "Field": "samt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Eamt",
+      "Field": "eamt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Amount_Type",
+        "SynonymName": "Phs_Cod_Amttype",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "typeName"
+      }
+    }, {
+      "Name": "Tax",
+      "Field": "tax",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

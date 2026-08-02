@@ -1,0 +1,28 @@
+{
+  "Name": "Pms_Purchase_Order_Trn",
+  "Synonym": "Pms_Tpurord",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Qnt",
+      "Field": "qnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cqnt",
+      "Field": "cqnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Price",
+      "Field": "price",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

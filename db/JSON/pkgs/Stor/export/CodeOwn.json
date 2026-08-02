@@ -1,0 +1,18 @@
+{
+  "Name": "Stor_Code_Own",
+  "Synonym": "Stor_Cod_Own",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

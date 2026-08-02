@@ -1,0 +1,28 @@
+{
+  "Name": "Fre_Related_Job_Files",
+  "Synonym": "Fre_Rjfs",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Job_1id",
+      "Field": "job1id",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Job_2id",
+      "Field": "job2id",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

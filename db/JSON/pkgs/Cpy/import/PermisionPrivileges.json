@@ -1,0 +1,42 @@
+{
+  "Name": "Copy_Permision_Privileges",
+  "Synonym": "Cpy_Permpriv",
+  "Sequence": "Cpy_Permpriv_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Perm_Id",
+      "Field": "permId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Permision",
+        "SynonymName": "Cpy_Perm",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "permName"
+      }
+    }, {
+      "Name": "Prv_Id",
+      "Field": "prvId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Privileges",
+        "SynonymName": "Phs_Priv",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "prvName"
+      }
+    }, {
+      "Name": "Ok",
+      "Field": "ok",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }
+  ]
+}

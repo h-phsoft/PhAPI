@@ -1,0 +1,15 @@
+{
+  "SUCCESS": "تمت العملية بنجاح",
+  "CREATED": "تم إنشاء السجل بنجاح",
+  "UPDATED": "تم تحديث السجل بنجاح",
+  "DELETED": "تم حذف السجل بنجاح",
+  "NOT_FOUND": "الكيان أو السجل المطلوب غير موجود",
+  "VALIDATION_ERROR": "فشل التحقق من صحة البيانات",
+  "REQUIRED_FIELD_MISSING": "الحقل {field} مطلوب",
+  "INVALID_TYPE": "الحقل {field} يجب أن يكون من نوع {type}",
+  "READ_ONLY_FIELD": "الحقل {field} غير قابل للتعديل",
+  "UNAUTHORIZED": "دخول غير مصرح به",
+  "FORBIDDEN": "إجراء غير مسموح به",
+  "SERVER_ERROR": "خطأ داخلي في الخادم",
+  "AUTONUMBER_ERROR": "فشل توليد الترقيم التلقائي"
+}

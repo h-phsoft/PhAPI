@@ -1,0 +1,53 @@
+{
+  "Name": "Copy_Preferences",
+  "Synonym": "Cpy_Pref",
+  "Sequence": "Cpy_Pref_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Key",
+      "Field": "key",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Visible_Id",
+      "Field": "visibleId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Visible",
+        "SynonymName": "Phs_Cod_Visible",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "visibleName"
+      }
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Value1",
+      "Field": "value1",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Value2",
+      "Field": "value2",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "Name": "Stor_Stor_Item_Classification",
+  "Synonym": "Stor_Sics",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Qnt",
+      "Field": "qnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Bqnt",
+      "Field": "bqnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cqnt",
+      "Field": "cqnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Wqnt",
+      "Field": "wqnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Bwqnt",
+      "Field": "bwqnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cwqnt",
+      "Field": "cwqnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cprice",
+      "Field": "cprice",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nprice",
+      "Field": "nprice",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dprice",
+      "Field": "dprice",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sprice",
+      "Field": "sprice",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Wprice",
+      "Field": "wprice",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rprice",
+      "Field": "rprice",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Hprice",
+      "Field": "hprice",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mprice",
+      "Field": "mprice",
+      "isSelected": false
+    }
+  ]
+}

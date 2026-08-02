@@ -1,0 +1,47 @@
+{
+  "Name": "Proj_Project_Expense_Attache",
+  "Synonym": "Proj_Projexp_Attache",
+  "Sequence": "Proj_Projexp_Attache_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Projexp_Id",
+      "Field": "projexpId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Proj_Project_Expense",
+        "SynonymName": "Proj_Proj_Expense",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "projexpName"
+      }
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Filename",
+      "Field": "filename",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

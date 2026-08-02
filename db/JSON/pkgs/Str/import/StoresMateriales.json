@@ -1,0 +1,118 @@
+{
+  "Name": "Str_Stores_Materiales",
+  "Synonym": "Str_Smat",
+  "Sequence": "Str_Smat_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Stor_Id",
+      "Field": "storId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Stores",
+        "SynonymName": "Str_Store",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "storName"
+      }
+    }, {
+      "Name": "Item_Id",
+      "Field": "itemId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Items",
+        "SynonymName": "Str_Item",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "itemName"
+      }
+    }, {
+      "Name": "Loc1_Id",
+      "Field": "loc1Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Code_Location1",
+        "SynonymName": "Str_Cod_Loc1",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "loc1Name"
+      }
+    }, {
+      "Name": "Loc2_Id",
+      "Field": "loc2Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Code_Location2",
+        "SynonymName": "Str_Cod_Loc2",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "loc2Name"
+      }
+    }, {
+      "Name": "Loc3_Id",
+      "Field": "loc3Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Str_Code_Location3",
+        "SynonymName": "Str_Cod_Loc3",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "loc3Name"
+      }
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Status",
+        "SynonymName": "Phs_Cod_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }, {
+      "Name": "Req_Limit",
+      "Field": "reqLimit",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Min_Limit",
+      "Field": "minLimit",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Max_Limit",
+      "Field": "maxLimit",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Cqnt",
+      "Field": "cqnt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Camt",
+      "Field": "camt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }
+  ]
+}

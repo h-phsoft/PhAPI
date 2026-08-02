@@ -1,0 +1,64 @@
+{
+  "Name": "Ped_Test__View",
+  "Synonym": "Ped_Vtest",
+  "Sequence": "Ped_Vtest_Seq",
+  "Order": "Id",
+  "InsUser": true,
+  "UpdUser": true,
+  "AutoIncrement": true,
+  "AutoNumber": {
+    "Status": false,
+    "Field": "num",
+    "Aggregate": "",
+    "Condition": ""
+  },
+  "Select": "SELECT Test_Name, Version, Total_Questions FROM Ped_Vtest",
+  "Insert": "",
+  "Update": "",
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Test_Name",
+      "Field": "testName",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": false
+    }, {
+      "Name": "Version",
+      "Field": "version",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": true
+    }, {
+      "Name": "Total_Questions",
+      "Field": "totalQuestions",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": true
+    }
+  ]
+}

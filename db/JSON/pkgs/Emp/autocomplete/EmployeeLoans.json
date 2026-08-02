@@ -1,0 +1,10 @@
+{
+  "Synonym": "EMP_VLOAN",
+  "Select": "SELECT DISTINCT Emp_Id AS Id, ' '||EMP_NAME AS Name FROM EMP_VLOAN",
+  "Condition": "LOAN_BAMT>0 AND To_Date(Loan_Edate, 'DD-MM-YYYY')>To_Date(Sysdate, 'DD-MM-YYYY') AND STATUS_ID=1",
+  "Conds": {
+    "term": "Lower(' '||Name) LIKE Lower('%{term}%')",
+    "eDate": ""
+  },
+  "OrderBy": "Emp_Id"
+}

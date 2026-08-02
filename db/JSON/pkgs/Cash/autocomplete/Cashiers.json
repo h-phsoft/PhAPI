@@ -1,0 +1,9 @@
+{
+  "Synonym": "Cash_Cash",
+  "Select": "SELECT Id, Name AS Name FROM Cash_Cash",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(' '||Name) LIKE '%{term}%'"
+  },
+  "OrderBy": "Num"
+}

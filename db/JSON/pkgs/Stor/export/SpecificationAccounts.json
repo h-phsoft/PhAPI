@@ -1,0 +1,13 @@
+{
+  "Name": "Stor_Specification_Accounts",
+  "Synonym": "Stor_Specacc",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

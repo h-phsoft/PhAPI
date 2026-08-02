@@ -1,0 +1,33 @@
+{
+  "Name": "Stor_Transfer_Master",
+  "Synonym": "Stor_Trmst",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Docn",
+      "Field": "docn",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Docd",
+      "Field": "docd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

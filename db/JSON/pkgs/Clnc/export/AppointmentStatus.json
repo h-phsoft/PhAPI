@@ -1,0 +1,23 @@
+{
+  "Name": "Clnc_Appointment_Status",
+  "Synonym": "Clnc_App_Status",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Bg",
+      "Field": "bg",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fg",
+      "Field": "fg",
+      "isSelected": false
+    }
+  ]
+}

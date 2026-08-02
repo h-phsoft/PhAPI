@@ -1,0 +1,304 @@
+{
+  "Name": "Fix_Actual_View",
+  "Synonym": "Fix_Vactdocs",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Mst_Num",
+      "Field": "mstNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mst_Date",
+      "Field": "mstDate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mst_Rem",
+      "Field": "mstRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Period_Name",
+      "Field": "periodName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Ord",
+      "Field": "trnOrd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Rem",
+      "Field": "trnRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Qnt",
+      "Field": "trnQnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Iid",
+      "Field": "trnIid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Isdate",
+      "Field": "trnIsdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Iedate",
+      "Field": "trnIedate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Iqnt",
+      "Field": "trnIqnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Icqnt",
+      "Field": "trnIcqnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Isqnt",
+      "Field": "trnIsqnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Iscqnt",
+      "Field": "trnIscqnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Iprice",
+      "Field": "trnIprice",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Iamt",
+      "Field": "trnIamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Icamt",
+      "Field": "trnIcamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Iperc",
+      "Field": "trnIperc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Iftot",
+      "Field": "trnIftot",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Ifamt",
+      "Field": "trnIfamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Irtot",
+      "Field": "trnIrtot",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Iramt",
+      "Field": "trnIramt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Irem",
+      "Field": "trnIrem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Ispc6",
+      "Field": "trnIspc6",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Num",
+      "Field": "fixdNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Name",
+      "Field": "fixdName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Fname",
+      "Field": "fixdFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Perc",
+      "Field": "fixdPerc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Rem",
+      "Field": "fixdRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Spc1_Name",
+      "Field": "fixdSpc1Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Spc2_Name",
+      "Field": "fixdSpc2Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Spc3_Name",
+      "Field": "fixdSpc3Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Spc4_Name",
+      "Field": "fixdSpc4Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Spc5_Name",
+      "Field": "fixdSpc5Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Unit_Name",
+      "Field": "fixdUnitName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Acc_Num",
+      "Field": "fixdAccNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Acc_Name",
+      "Field": "fixdAccName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Acc_Fullname",
+      "Field": "fixdAccFullname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Acc_Did",
+      "Field": "fixdAccDid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Acc_Dnum",
+      "Field": "fixdAccDnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Acc_Dname",
+      "Field": "fixdAccDname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Acc_Dfname",
+      "Field": "fixdAccDfname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Acc_Rid",
+      "Field": "fixdAccRid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Acc_Rnum",
+      "Field": "fixdAccRnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Acc_Rname",
+      "Field": "fixdAccRname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Acc_Rfname",
+      "Field": "fixdAccRfname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Acc_Fid",
+      "Field": "fixdAccFid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Acc_Fnum",
+      "Field": "fixdAccFnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Acc_Fname",
+      "Field": "fixdAccFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fixd_Acc_Ffname",
+      "Field": "fixdAccFfname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loc1_Name",
+      "Field": "loc1Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loc2_Name",
+      "Field": "loc2Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loc3_Name",
+      "Field": "loc3Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Name",
+      "Field": "statusName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc1_Name",
+      "Field": "spc1Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc2_Name",
+      "Field": "spc2Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc3_Name",
+      "Field": "spc3Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc4_Name",
+      "Field": "spc4Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc5_Name",
+      "Field": "spc5Name",
+      "isSelected": false
+    }
+  ]
+}

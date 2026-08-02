@@ -1,0 +1,54 @@
+{
+  "Name": "Notif_Tables_Fields",
+  "Synonym": "Notif_Table_Fld",
+  "Sequence": "Notif_Table_Fld_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Table_Id",
+      "Field": "tableId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Notif_Tables",
+        "SynonymName": "Notif_Table",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "tableName"
+      }
+    }, {
+      "Name": "Kind_Id",
+      "Field": "kindId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Notif_Code_Fields_Kind",
+        "SynonymName": "Notif_Cod_Fld_Kind",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "kindName"
+      }
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Dname",
+      "Field": "dname",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

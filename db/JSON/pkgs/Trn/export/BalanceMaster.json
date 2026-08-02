@@ -1,0 +1,68 @@
+{
+  "Name": "Trn_Balance_Master",
+  "Synonym": "Trn_Bln_Mst",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Pnum",
+      "Field": "pnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Bdate",
+      "Field": "bdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rnum",
+      "Field": "rnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Doc_Num",
+      "Field": "docNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Doc_Date",
+      "Field": "docDate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Receipt",
+      "Field": "receipt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Driver",
+      "Field": "driver",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Src",
+      "Field": "src",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dest",
+      "Field": "dest",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Commodity",
+      "Field": "commodity",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

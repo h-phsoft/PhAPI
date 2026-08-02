@@ -1,0 +1,10 @@
+{
+  "Synonym": "Acc_Acc",
+  "Select": "SELECT Id, Num||' - '||Name AS Name FROM Acc_Acc",
+  "Condition": "Type_Id=2 AND Num NOT Like '0%' AND STATUS_ID = 1",
+  "Conds": {
+    "term": "Lower(Num||' - '||Name) LIKE '%{term}%'",
+    "systemId": "id NOT IN (SELECT Acc_Id From Acc_GrantAcc Where System_Id={systemId})"
+  },
+  "OrderBy": "Num"
+}

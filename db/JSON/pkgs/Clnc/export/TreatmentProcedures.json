@@ -1,0 +1,48 @@
+{
+  "Name": "Clnc_Treatment_Procedures",
+  "Synonym": "Clnc_Treat_Proc",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Qnt",
+      "Field": "qnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Price",
+      "Field": "price",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Discount",
+      "Field": "discount",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Amt",
+      "Field": "amt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Vat_Value",
+      "Field": "vatValue",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Vat_Amt",
+      "Field": "vatAmt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Descr",
+      "Field": "descr",
+      "isSelected": false
+    }
+  ]
+}

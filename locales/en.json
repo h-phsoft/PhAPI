@@ -1,0 +1,15 @@
+{
+  "SUCCESS": "Operation completed successfully",
+  "CREATED": "Record created successfully",
+  "UPDATED": "Record updated successfully",
+  "DELETED": "Record deleted successfully",
+  "NOT_FOUND": "Requested entity or record not found",
+  "VALIDATION_ERROR": "Data validation failed",
+  "REQUIRED_FIELD_MISSING": "Field {field} is required",
+  "INVALID_TYPE": "Field {field} must be of type {type}",
+  "READ_ONLY_FIELD": "Field {field} cannot be modified",
+  "UNAUTHORIZED": "Unauthorized access",
+  "FORBIDDEN": "Forbidden action",
+  "SERVER_ERROR": "Internal server error",
+  "AUTONUMBER_ERROR": "Autonumber generation failed"
+}

@@ -1,0 +1,6 @@
+{
+  "Name": "TransactionType",
+  "Key": "CodeTransactionType",
+  "hasUser": false,
+  "sysCode": true
+}

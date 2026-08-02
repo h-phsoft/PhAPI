@@ -1,0 +1,9 @@
+{
+  "Synonym": "Trn_Cod_Model",
+  "Select": "SELECT Id, Name FROM Trn_Cod_Model",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Name"
+}

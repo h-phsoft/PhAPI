@@ -1,0 +1,9 @@
+{
+  "Synonym": "Sdesk_Serv",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Sdesk_Serv",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

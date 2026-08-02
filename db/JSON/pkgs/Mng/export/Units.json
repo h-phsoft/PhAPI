@@ -1,0 +1,18 @@
+{
+  "Name": "Mng_Units",
+  "Synonym": "Mng_Unit",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+  ]
+}

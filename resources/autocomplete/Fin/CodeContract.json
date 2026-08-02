@@ -1,0 +1,9 @@
+{
+  "Synonym": "Fin_Cod_Contract",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Fin_Cod_Contract",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

@@ -1,0 +1,94 @@
+{
+  "Name": "Notif_Table_Event_Recipients",
+  "Synonym": "Notif_Table_Event_Recip",
+  "Sequence": "Notif_Table_Event_Recip_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Tevent_Id",
+      "Field": "teventId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Notif_Table_Events",
+        "SynonymName": "Notif_Table_Eevnt",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "teventName"
+      }
+    }, {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Notif_Code_Destination_Type",
+        "SynonymName": "Notif_Cod_Dest_Type",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "typeName"
+      }
+    }, {
+      "Name": "User_Id",
+      "Field": "userId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Users",
+        "SynonymName": "Cpy_User",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "userName"
+      }
+    }, {
+      "Name": "Dept_Id",
+      "Field": "deptId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Departments",
+        "SynonymName": "Cpy_Dept",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "deptName"
+      }
+    }, {
+      "Name": "Unit_Id",
+      "Field": "unitId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Department_Unit",
+        "SynonymName": "Cpy_Unit",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "unitName"
+      }
+    }, {
+      "Name": "Pgrp_Id",
+      "Field": "pgrpId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Permission_Groups",
+        "SynonymName": "Cpy_Pgrp",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "pgrpName"
+      }
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

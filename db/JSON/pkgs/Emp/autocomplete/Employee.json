@@ -1,0 +1,9 @@
+{
+  "Synonym": "Emp_Emp",
+  "Select": "SELECT Id,Num||' '||Name AS Name FROM Emp_Emp",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

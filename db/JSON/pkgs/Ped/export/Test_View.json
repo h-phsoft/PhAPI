@@ -1,0 +1,23 @@
+{
+  "Name": "Ped_Test__View",
+  "Synonym": "Ped_Vtest",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Test_Name",
+      "Field": "testName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Version",
+      "Field": "version",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Total_Questions",
+      "Field": "totalQuestions",
+      "isSelected": false
+    }
+  ]
+}

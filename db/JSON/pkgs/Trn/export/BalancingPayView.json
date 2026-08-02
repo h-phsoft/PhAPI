@@ -1,0 +1,248 @@
+{
+  "Name": "Trn_Balancing_Pay_View",
+  "Synonym": "Trn_Vpay",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Mst_Num",
+      "Field": "mstNum",
+      "isSelected": false
+    }
+    , {
+      "Name": "Mst_Pnum",
+      "Field": "mstPnum",
+      "isSelected": false
+    }
+    , {
+      "Name": "Mst_Bdate",
+      "Field": "mstBdate",
+      "isSelected": false
+    }
+    , {
+      "Name": "Mst_Driver",
+      "Field": "mstDriver",
+      "isSelected": false
+    }
+    , {
+      "Name": "Mst_Src",
+      "Field": "mstSrc",
+      "isSelected": false
+    }
+    , {
+      "Name": "Mst_Dest",
+      "Field": "mstDest",
+      "isSelected": false
+    }
+    , {
+      "Name": "Mst_Commodity",
+      "Field": "mstCommodity",
+      "isSelected": false
+    }
+    , {
+      "Name": "Mst_Rem",
+      "Field": "mstRem",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Name",
+      "Field": "blnName",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Type_Name",
+      "Field": "blnTypeName",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Type_Rem",
+      "Field": "blnTypeRem",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Loc_Name",
+      "Field": "blnLocName",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Loc_Rem",
+      "Field": "blnLocRem",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Sncrs",
+      "Field": "blnSncrs",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Msncr",
+      "Field": "blnMsncr",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Rsncr",
+      "Field": "blnRsncr",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Lsncr",
+      "Field": "blnLsncr",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Rem",
+      "Field": "blnRem",
+      "isSelected": false
+    }
+    , {
+      "Name": "City_Name",
+      "Field": "cityName",
+      "isSelected": false
+    }
+    , {
+      "Name": "City_Rem",
+      "Field": "cityRem",
+      "isSelected": false
+    }
+    , {
+      "Name": "Model_Name",
+      "Field": "modelName",
+      "isSelected": false
+    }
+    , {
+      "Name": "Model_Axes",
+      "Field": "modelAxes",
+      "isSelected": false
+    }
+    , {
+      "Name": "Model_Weight",
+      "Field": "modelWeight",
+      "isSelected": false
+    }
+    , {
+      "Name": "Model_Rem",
+      "Field": "modelRem",
+      "isSelected": false
+    }
+    , {
+      "Name": "Pay_Amt",
+      "Field": "payAmt",
+      "isSelected": false
+    }
+    , {
+      "Name": "Pay_Rem",
+      "Field": "payRem",
+      "isSelected": false
+    }
+    , {
+      "Name": "Penalty_Name",
+      "Field": "penaltyName",
+      "isSelected": false
+    }
+    , {
+      "Name": "Penalty_Statusid",
+      "Field": "penaltyStatusid",
+      "isSelected": false
+    }
+    , {
+      "Name": "Penalty_Typeid",
+      "Field": "penaltyTypeid",
+      "isSelected": false
+    }
+    , {
+      "Name": "Penalty_Forid",
+      "Field": "penaltyForid",
+      "isSelected": false
+    }
+    , {
+      "Name": "Penalty_Amt",
+      "Field": "penaltyAmt",
+      "isSelected": false
+    }
+    , {
+      "Name": "Penalty_Rem",
+      "Field": "penaltyRem",
+      "isSelected": false
+    }
+    , {
+      "Name": "Fee_Name",
+      "Field": "feeName",
+      "isSelected": false
+    }
+    , {
+      "Name": "Fee_Statusid",
+      "Field": "feeStatusid",
+      "isSelected": false
+    }
+    , {
+      "Name": "Fee_Typeid",
+      "Field": "feeTypeid",
+      "isSelected": false
+    }
+    , {
+      "Name": "Fee_Forid",
+      "Field": "feeForid",
+      "isSelected": false
+    }
+    , {
+      "Name": "Fee_Amt",
+      "Field": "feeAmt",
+      "isSelected": false
+    }
+    , {
+      "Name": "Fee_Rem",
+      "Field": "feeRem",
+      "isSelected": false
+    }
+    , {
+      "Name": "Ptype_Name",
+      "Field": "ptypeName",
+      "isSelected": false
+    }
+    , {
+      "Name": "Ptype_Rem",
+      "Field": "ptypeRem",
+      "isSelected": false
+    }
+    , {
+      "Name": "Pamt_Type_Name",
+      "Field": "pamtTypeName",
+      "isSelected": false
+    }
+    , {
+      "Name": "Pamt_Type_Rem",
+      "Field": "pamtTypeRem",
+      "isSelected": false
+    }
+    , {
+      "Name": "Famt_Type_Name",
+      "Field": "famtTypeName",
+      "isSelected": false
+    }
+    , {
+      "Name": "Famt_Type_Rem",
+      "Field": "famtTypeRem",
+      "isSelected": false
+    }
+    , {
+      "Name": "Penalty_For_Name",
+      "Field": "penaltyForName",
+      "isSelected": false
+    }
+    , {
+      "Name": "Penalty_For_Rem",
+      "Field": "penaltyForRem",
+      "isSelected": false
+    }
+    , {
+      "Name": "Fee_For_Name",
+      "Field": "feeForName",
+      "isSelected": false
+    }
+    , {
+      "Name": "Fee_For_Rem",
+      "Field": "feeForRem",
+      "isSelected": false
+    }
+  ]
+}

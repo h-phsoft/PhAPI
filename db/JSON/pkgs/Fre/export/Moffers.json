@@ -1,0 +1,208 @@
+{
+  "Name": "Fre_Moffers",
+  "Synonym": "Fre_Moffer",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Vdate",
+      "Field": "vdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Folowdate",
+      "Field": "folowdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Oaddress",
+      "Field": "oaddress",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Daddress",
+      "Field": "daddress",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Qnt",
+      "Field": "qnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Wnet",
+      "Field": "wnet",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Wgros",
+      "Field": "wgros",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Wchrg",
+      "Field": "wchrg",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ldm",
+      "Field": "ldm",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cbm",
+      "Field": "cbm",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Etd",
+      "Field": "etd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Eta",
+      "Field": "eta",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Atd",
+      "Field": "atd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ata",
+      "Field": "ata",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Arrodate",
+      "Field": "arrodate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loaddate",
+      "Field": "loaddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dispdate",
+      "Field": "dispdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Arrddate",
+      "Field": "arrddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Udate",
+      "Field": "udate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Truck",
+      "Field": "truck",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Driver",
+      "Field": "driver",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Oplace",
+      "Field": "oplace",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Opsrem",
+      "Field": "opsrem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Vcomod",
+      "Field": "vcomod",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ship",
+      "Field": "ship",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cons",
+      "Field": "cons",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Vpath",
+      "Field": "vpath",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Overdist",
+      "Field": "overdist",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Offer",
+      "Field": "offer",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Container",
+      "Field": "container",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Teu",
+      "Field": "teu",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Shipment",
+      "Field": "shipment",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Statusrem",
+      "Field": "statusrem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Terms",
+      "Field": "terms",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Vfile",
+      "Field": "vfile",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cust",
+      "Field": "cust",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cperson",
+      "Field": "cperson",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

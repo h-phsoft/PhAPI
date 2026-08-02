@@ -1,0 +1,93 @@
+{
+  "Name": "Ped_Test_Question_View",
+  "Synonym": "Ped_Vtest_Question",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Test_Name",
+      "Field": "testName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Question_Text",
+      "Field": "questionText",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Iscata",
+      "Field": "iscata",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Iscatb",
+      "Field": "iscatb",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Iscatc",
+      "Field": "iscatc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Iscatd",
+      "Field": "iscatd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Iscate",
+      "Field": "iscate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Iscatf",
+      "Field": "iscatf",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Iscatg",
+      "Field": "iscatg",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Iscath",
+      "Field": "iscath",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Iscati",
+      "Field": "iscati",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Iscatj",
+      "Field": "iscatj",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Iscatk",
+      "Field": "iscatk",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Iscatl",
+      "Field": "iscatl",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Iscatm",
+      "Field": "iscatm",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Iscatn",
+      "Field": "iscatn",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Question_Remark",
+      "Field": "questionRemark",
+      "isSelected": false
+    }
+  ]
+}

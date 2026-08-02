@@ -1,0 +1,9 @@
+{
+  "Synonym": "Fix_Fixed",
+  "Select": "SELECT Id, Num||' - '||Name AS Name FROM Fix_Fixed",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' - '||Name) LIKE '%{term}%'"
+  },
+  "OrderBy": "Num"
+}

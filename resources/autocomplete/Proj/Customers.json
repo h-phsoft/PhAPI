@@ -1,0 +1,9 @@
+{
+  "Synonym": "Proj_Cust",
+  "Select": "SELECT Id,Name AS Name FROM Proj_Cust",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Id"
+}

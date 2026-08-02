@@ -1,0 +1,99 @@
+{
+  "Name": "Emp_Appraisal_Notes_View",
+  "Synonym": "Emp_Vapprnote",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Emp_Num",
+      "Field": "empNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Name",
+      "Field": "empName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Fname",
+      "Field": "empFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dept_Name",
+      "Field": "deptName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sect_Name",
+      "Field": "sectName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Job_Name",
+      "Field": "jobName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Level_Name",
+      "Field": "levelName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc1_Name",
+      "Field": "spc1Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc2_Name",
+      "Field": "spc2Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc3_Name",
+      "Field": "spc3Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc4_Name",
+      "Field": "spc4Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Note_Num",
+      "Field": "noteNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Note_Ddate",
+      "Field": "noteDdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Type_Name",
+      "Field": "typeName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grp_Name",
+      "Field": "grpName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Itm_Name",
+      "Field": "itmName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Note_Points",
+      "Field": "notePoints",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Note_Rem",
+      "Field": "noteRem",
+      "isSelected": false
+    }
+  ]
+}

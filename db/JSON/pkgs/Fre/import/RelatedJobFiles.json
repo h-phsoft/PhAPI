@@ -1,0 +1,48 @@
+{
+  "Name": "Fre_Related_Job_Files",
+  "Synonym": "Fre_Rjfs",
+  "Sequence": "Fre_Rjfs_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Job_1id",
+      "Field": "job1id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fre_Job_Freight",
+        "SynonymName": "Fre_Job",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "jobName"
+      }
+    }, {
+      "Name": "Job_2id",
+      "Field": "job2id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fre_Job_Freight",
+        "SynonymName": "Fre_Job",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "jobName"
+      }
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

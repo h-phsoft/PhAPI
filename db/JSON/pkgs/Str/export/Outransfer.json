@@ -1,0 +1,174 @@
+{
+  "Name": "Str_Outransfer_View",
+  "Synonym": "Str_Votrtrn",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Mst_Num",
+      "Field": "mstNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mst_Date",
+      "Field": "mstDate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mst_Rem",
+      "Field": "mstRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mst_Docn",
+      "Field": "mstDocn",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mst_Docd",
+      "Field": "mstDocd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Doc_Name",
+      "Field": "docName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Period_Name",
+      "Field": "periodName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Num",
+      "Field": "accNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Name",
+      "Field": "accName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Stor_Name",
+      "Field": "storName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Stor_Rem",
+      "Field": "storRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Stor_Status_Name",
+      "Field": "storStatusName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Stor_Cost_Num",
+      "Field": "storCostNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Stor_Cost_Name",
+      "Field": "storCostName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Stor_Acc_Num",
+      "Field": "storAccNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Stor_Acc_Name",
+      "Field": "storAccName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Ord",
+      "Field": "trnOrd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Qnt",
+      "Field": "trnQnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Price",
+      "Field": "trnPrice",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Cst",
+      "Field": "trnCst",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Amt",
+      "Field": "trnAmt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Rem",
+      "Field": "trnRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Item_Num",
+      "Field": "itemNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Item_Name",
+      "Field": "itemName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Item_Fname",
+      "Field": "itemFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Item_Rem",
+      "Field": "itemRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Item_Status_Name",
+      "Field": "itemStatusName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Unit_Name",
+      "Field": "unitName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc1_Name",
+      "Field": "spc1Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc2_Name",
+      "Field": "spc2Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc3_Name",
+      "Field": "spc3Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc4_Name",
+      "Field": "spc4Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc5_Name",
+      "Field": "spc5Name",
+      "isSelected": false
+    }
+  ]
+}

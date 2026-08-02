@@ -1,0 +1,13 @@
+{
+  "Name": "Fre_Job_Offers",
+  "Synonym": "Fre_Jobofer",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

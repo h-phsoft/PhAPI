@@ -1,0 +1,583 @@
+CREATE OR REPLACE VIEW Cash_Cashiers_Boxes_View AS
+ SELECT ALL 
+        C.Id        Cash_Id       , C.Num     Cash_Num   ,
+        C.Name      Cash_Name     ,
+        C.Cost_Id   Cash_Cost_Id  , C.Acc_Id  Cash_Acc_Id,
+        C.User_Id   Cash_User_Id  , C.Rem     Cash_Rem   ,
+        B.Id        Box_Id        , B.Num     Box_Num    ,
+        B.Name      Box_Name      ,
+        B.Status_Id Box_Status_Id , B.Cash_Id Box_Cash_Id,
+        B.Cost_Id   Box_Cost_Id   , B.Acc_Cid Box_Acc_Cid,
+        B.Acc_Oid   Box_Acc_Oid   , 
+        M.Id        Curn_Id       , M.Num     Curn_Num   ,
+        M.Name      Curn_Name     , M.Code    Curn_Code  ,
+        B.Rem       Box_Rem    
+   FROM Cash_Cash C,
+        Cash_Box  B,
+        Mng_Curn  M
+  WHERE B.Cash_Id=C.Id
+    AND B.Curn_Id=M.ID
+/
+CREATE SYNONYM Cash_VCash_Box FOR Cash_Cashiers_Boxes_View
+/
+
+CREATE OR REPLACE VIEW Cash_Collection_Order_View  AS
+SELECT ALL
+       C.Id          Ord_Id         ,
+       D.Id          Dept_Id        , D.Name          Dept_Name        ,
+       U.Id          Unit_Id        , U.Name          Unit_Name        ,
+       O.Id          Oper_Id        , O.Name          Oper_Name        ,
+       P.Id          Period_Id      , P.Name          Period_Name      ,
+       CO.Id         Cont_Id        , CO.Name         Cont_Name        ,
+       MS.Id         Serv_Id        , MS.Name         Serv_Name        ,
+       CM.Id         Method_Id      , CM.Name         Method_Name      ,
+       CB.Id         Cbox_Id        , CB.Name         Cbox_Name        ,
+       CC.Id         Cash_Id        , CC.Name         Cash_Name        ,
+       T.Id          Trt_Id         , T.Name          Trt_Name         ,
+       C.USER_ID                    ,
+       C.Vhr_Id                     , C.Vhr_Did                        ,
+       C.Insdate     Ord_Insdate    , C.Num           Ord_Num          ,
+       C.Ddate       Ord_Ddate      , C.Rnum          Ord_Rnum         ,
+       C.Rdate       Ord_Rdate      , C.Edate         Ord_Edate        ,
+       C.ExecDate    Ord_ExecDate   ,                                   
+       CU.Id         Curn_Id        , CU.Name         Curn_Name        ,
+       CU.Rate       Curn_Rate      , C.Curn_Rate     Ord_Curn_Rate    ,
+       CU.Code       Curn_Code      ,
+       C.CAmt        Ord_CAmt       , C.Amt           Ord_AMT          ,
+       C.ExcAmt      Ord_ExcAmt     , C.ExAmt         Ord_ExAmt        ,
+       S.Id          Status_Id      , S.Name          STATUS_Name      ,
+       C.Status_Date Ord_Status_Date, C.Status_Descr  Ord_STATUS_DESCR ,
+       Y.Id          Dstatus_Id     , Y.Name          DStatus_Name     ,
+       C.DcAmt       Ord_DcAmt      , C.DAmt          Ord_DAmt         ,
+       C.Bank_Id     Ord_Bank_Id    , C.City_Id       Ord_City_Id      ,
+       C.PhnBy_Id    Ord_Phnby_Id   , C.Correspondent Ord_Correspondent,
+       C.Recipient   Ord_Recipient  , C.Note          Ord_Note         ,
+       C.Dcust       Ord_Dcust      , C.Reason        Ord_Reason       ,
+       C.Rem         Ord_Rem
+  FROM Cash_Cord       C ,
+       Cpy_Dept        D ,
+       Cpy_Unit        U ,
+       Cpy_Oper        O ,
+       Cpy_Period      P ,
+       Cash_Cod_Status S ,
+       Phs_Cod_YesNo   Y ,
+       Cash_Box        CB,
+       Cash_Cash       CC,
+       Cash_Cod_Method CM,
+       Mng_Cont        CO,
+       Mng_Serv        MS,
+       Mng_Curn        CU,
+       Cash_Cod_Trt    T
+ WHERE C.Dept_Id   =D.Id
+   AND C.Unit_Id   =U.Id
+   AND C.Oper_Id   =O.Id
+   AND C.Period_Id =P.Id
+   AND C.Status_Id =S.Id
+   AND C.DStatus_Id=Y.Id
+   AND C.CBox_Id   =CB.Id
+   AND C.Cash_Id   =CC.Id
+   AND C.Method_Id =CM.Id
+   AND C.Cont_Id   =CO.Id
+   AND C.Serv_Id   =MS.Id
+   AND C.Curn_Id   =CU.Id
+   AND T.Id        =11
+/
+CREATE SYNONYM Cash_VCOrd FOR Cash_Collection_Order_View
+/
+
+CREATE OR REPLACE VIEW Cash_Advanced_Payment_Order_View  AS
+SELECT ALL
+       C.Id          Ord_Id         ,
+       D.Id          Dept_Id        , D.Name          Dept_Name        ,
+       U.Id          Unit_Id        , U.Name          Unit_Name        ,
+       O.Id          Oper_Id        , O.Name          Oper_Name        ,
+       P.Id          Period_Id      , P.Name          Period_Name      ,
+       CO.Id         Cont_Id        , CO.Name         Cont_Name        ,
+       MS.Id         Serv_Id        , MS.Name         Serv_Name        ,
+       CM.Id         Method_Id      , CM.Name         Method_Name      ,
+       CB.Id         Cbox_Id        , CB.Name         Cbox_Name        ,
+       CC.Id         Cash_Id        , CC.Name         Cash_Name        ,
+       T.Id          Trt_Id         , T.Name          Trt_Name         ,
+       C.USER_ID                    ,
+       C.Vhr_Id                     , C.Vhr_Did                        ,
+       C.Insdate     Ord_Insdate    , C.Num           Ord_Num          ,
+       C.Ddate       Ord_Ddate      , C.Rnum          Ord_Rnum         ,
+       C.Rdate       Ord_Rdate      , C.Edate         Ord_Edate        ,
+       C.ExecDate    Ord_ExecDate   ,                                   
+       CU.Id         Curn_Id        , CU.Name         Curn_Name        ,
+       CU.Rate       Curn_Rate      , C.Curn_Rate     Ord_Curn_Rate    ,
+       CU.Code       Curn_Code      ,
+       C.CAmt        Ord_CAmt       , C.Amt           Ord_AMT          ,
+       C.ExcAmt      Ord_ExcAmt     , C.ExAmt         Ord_ExAmt        ,
+       S.Id          Status_Id      , S.Name          STATUS_Name      , 
+       C.Status_Date Ord_Status_Date, C.Status_Descr  Ord_STATUS_DESCR ,
+       Y.Id          Dstatus_Id     , Y.Name          DStatus_Name     ,
+       C.DcAmt       Ord_DcAmt      , C.DAmt          Ord_DAmt         ,
+       C.Bank_Id     Ord_Bank_Id    , C.City_Id       Ord_City_Id      ,
+       C.PhnBy_Id    Ord_Phnby_Id   , C.Correspondent Ord_Correspondent,
+       C.Recipient   Ord_Recipient  , C.Note          Ord_Note         ,
+       C.Dcust       Ord_Dcust      , C.Reason        Ord_Reason       ,
+       C.Rem         Ord_Rem        
+  FROM Cash_APOrd      C ,   
+       Cpy_Dept        D ,
+       Cpy_Unit        U ,
+       Cpy_Oper        O ,
+       Cpy_Period      P ,
+       Cash_Cod_Status S ,
+       Phs_Cod_YesNo   Y ,
+       Cash_Box        CB,
+       Cash_Cash       CC,
+       Cash_Cod_Method CM,
+       Mng_Cont        CO,
+       Mng_Serv        MS,
+       Mng_Curn        CU,
+       Cash_Cod_Trt    T 
+ WHERE C.Dept_Id   =D.Id
+   AND C.Unit_Id   =U.Id
+   AND C.Oper_Id   =O.Id
+   AND C.Period_Id =P.Id
+   AND C.Status_Id =S.Id
+   AND C.DStatus_Id=Y.Id
+   AND C.CBox_Id   =CB.Id
+   AND C.Cash_Id   =CC.Id
+   AND C.Method_Id =CM.Id
+   AND C.Cont_Id   =CO.Id
+   AND C.Serv_Id   =MS.Id
+   AND C.Curn_Id   =CU.Id
+   AND T.Id        =20
+/
+CREATE SYNONYM Cash_VAPOrd FOR Cash_Advanced_Payment_Order_View
+/ 
+
+CREATE OR REPLACE VIEW Cash_Payment_Order_View  AS
+SELECT ALL
+       C.Id          Ord_Id         ,
+       D.Id          Dept_Id        , D.Name          Dept_Name        ,
+       U.Id          Unit_Id        , U.Name          Unit_Name        ,
+       O.Id          Oper_Id        , O.Name          Oper_Name        ,
+       P.Id          Period_Id      , P.Name          Period_Name      ,
+       CO.Id         Cont_Id        , CO.Name         Cont_Name        ,
+       MS.Id         Serv_Id        , MS.Name         Serv_Name        ,
+       CM.Id         Method_Id      , CM.Name         Method_Name      ,
+       CB.Id         Cbox_Id        , CB.Name         Cbox_Name        ,
+       CC.Id         Cash_Id        , CC.Name         Cash_Name        ,
+       T.Id          Trt_Id         , T.Name          Trt_Name         ,
+       C.USER_ID                    ,                                   
+       C.Vhr_Id                     , C.Vhr_Did                        ,
+       C.Insdate     Ord_Insdate    , C.Num           Ord_Num          ,
+       C.Ddate       Ord_Ddate      , C.Rnum          Ord_Rnum         ,
+       C.Rdate       Ord_Rdate      , C.Edate         Ord_Edate        ,
+       C.ExecDate    Ord_ExecDate   ,                                   
+       CU.Id         Curn_Id        , CU.Name         Curn_Name        ,
+       CU.Rate       Curn_Rate      , C.Curn_Rate     Ord_Curn_Rate    ,
+       CU.Code       Curn_Code      ,
+       C.CAmt        Ord_CAmt       , C.Amt           Ord_AMT          ,
+       C.ExcAmt      Ord_ExcAmt     , C.ExAmt         Ord_ExAmt        ,
+       S.Id          Status_Id      , S.Name          STATUS_Name      , 
+       C.Status_Date Ord_Status_Date, C.Status_Descr  Ord_STATUS_DESCR ,
+       Y.Id          Dstatus_Id     , Y.Name          DStatus_Name     ,
+       C.DcAmt       Ord_DcAmt      , C.DAmt          Ord_DAmt         ,
+       C.Bank_Id     Ord_Bank_Id    , C.City_Id       Ord_City_Id      ,
+       C.PhnBy_Id    Ord_Phnby_Id   , C.Correspondent Ord_Correspondent,
+       C.Recipient   Ord_Recipient  , C.Note          Ord_Note         ,
+       C.Dcust       Ord_Dcust      , C.Reason        Ord_Reason       ,
+       C.Rem         Ord_Rem        
+  FROM Cash_POrd       C ,   
+       Cpy_Dept        D ,
+       Cpy_Unit        U ,
+       Cpy_Oper        O ,
+       Cpy_Period      P ,
+       Cash_Cod_Status S ,
+       Phs_Cod_YesNo   Y ,
+       Cash_Box        CB,
+       Cash_Cash       CC,
+       Cash_Cod_Method CM,
+       Mng_Cont        CO,
+       Mng_Serv        MS,
+       Mng_Curn        CU,
+       Cash_Cod_Trt    T 
+ WHERE NVL(C.Dept_Id   ,0) =D.Id
+   AND NVL(C.Unit_Id   ,0) =U.Id
+   AND NVL(C.Oper_Id   ,0) =O.Id
+   AND NVL(C.Period_Id ,0) =P.Id
+   AND NVL(C.Status_Id ,0) =S.Id
+   AND NVL(C.DStatus_Id,2) =Y.Id
+   AND NVL(C.CBox_Id   ,0) =CB.Id
+   AND NVL(C.Cash_Id   ,0) =CC.Id
+   AND NVL(C.Method_Id ,0) =CM.Id
+   AND NVL(C.Cont_Id   ,0) =CO.Id
+   AND NVL(C.Serv_Id   ,0) =MS.Id
+   AND NVL(C.Curn_Id   ,1) =CU.Id
+   AND     T.Id            =21
+/
+CREATE SYNONYM Cash_VPOrd FOR Cash_Payment_Order_View
+/ 
+
+CREATE OR REPLACE VIEW Cash_Transfer_Order_View  AS
+SELECT ALL
+       C.Id           ord_ID         ,
+       D.Id           Dept_Id        , D.Name          Dept_Name       ,
+       U.Id           Unit_Id        , U.Name          Unit_Name       ,
+       O.Id           Oper_Id        , O.Name          Oper_Name       ,
+       P.Id           Period_Id      , P.Name          Period_Name     ,
+       CM.Id          Method_Id      , CM.Name         Method_Name     ,
+       FCB.Id         FCbox_Id       , FCB.Name        FCbox_Name      ,
+       TCB.Id         TCbox_Id       , TCB.Name        TCbox_Name      ,
+       FCC.Id         FCash_Id       , FCC.Name        FCash_Name      ,
+       TCC.Id         TCash_Id       , TCC.Name        TCash_Name      ,
+       C.USER_ID                     ,                                 
+       C.Vhr_Id                      , C.Vhr_Did                       ,
+       C.Insdate      ord_Insdate    , C.Num           ord_Num         ,
+       C.Ddate        ord_Ddate      ,                                 
+       C.Edate        ord_Edate      , C.ExecDate      ord_ExecDate    ,
+       FCU.Id         Ord_Curn_FId   , FCU.Name        Curn_FName      ,
+       FCU.Rate       Ord_FRate      , C.Curn_FRate    Ord_Curn_Frate  ,
+       FCU.Code       Curn_FCode     ,
+       C.FCamt        Ord_FCamt      , C.FAmt          Ord_FAmt        ,
+       C.FExcamt      Ord_FExcamt    , C.FExamt        Ord_FExamt      ,
+       TCU.Id         Ord_Curn_TId   , TCU.Name        Curn_TName      ,
+       TCU.Rate       Ord_TRate      , C.Curn_TRate    Ord_Curn_Trate  ,
+       TCU.Code       Curn_TCode     ,
+       C.TCamt        Ord_TCamt      , C.TAmt          Ord_TAmt        ,
+       C.TExcamt      Ord_TExcamt    , C.TExamt        Ord_TExamt      ,
+       S.Id           Status_Id      , S.Name          Status_Name     , 
+       C.Status_Date  Ord_Status_Date, C.Status_Descr  Ord_Status_Descr,  
+       C.Reason       ord_Reason     ,
+       TOT.Id         TrtO_Id        , TOT.Name        TrtO_Name       ,
+       TI.Id          TrtI_Id        , TI.Name         TrtI_Name       ,
+       C.Rem          ord_Rem        
+  FROM Cash_TOrd       C  ,   
+       Cpy_Dept        D  ,
+       Cpy_Unit        U  ,
+       Cpy_Oper        O  ,
+       Cpy_Period      P  ,
+       Cash_Box        TCB,
+       Cash_Box        FCB,
+       Cash_Cash       FCC,
+       Cash_Cash       TCC,
+       Cash_Cod_Method CM , 
+       Cash_Cod_Status S  , 
+       Mng_Curn        FCU,
+       Mng_Curn        TCU,
+       Cash_Cod_Trt    TI ,
+       Cash_Cod_Trt    TOT
+ WHERE C.Dept_Id   =D.Id
+   AND C.Unit_Id   =U.Id
+   AND C.Oper_Id   =O.Id
+   AND C.Period_Id =P.Id
+   AND C.Status_Id =S.Id 
+   AND C.CBox_FId  =FCB.Id
+   AND C.CBox_TId  =TCB.Id
+   AND C.Cash_FId  =FCC.Id
+   AND C.Cash_TId  =TCC.Id
+   AND C.Curn_FId =FCU.Id
+   AND C.Curn_TId =TCU.Id
+   AND TI.Id       =12
+   AND TOT.Id      =22
+/
+CREATE SYNONYM Cash_VTOrd FOR Cash_Transfer_Order_View
+/
+
+CREATE OR REPLACE VIEW Cash_Order_View AS
+SELECT ALL 
+       'Cash Collection' AS Doc_Type,
+       Ord_Id         , Dept_Id          , Dept_Name      ,
+       Unit_Id        , Unit_Name        , Oper_Id        , Oper_Name        ,
+       Period_Id      , Period_Name      , Cont_Id        , Cont_Name        ,
+       Serv_Id        , Serv_Name        , Method_Id      , Method_Name      ,
+       Cbox_Id        , Cbox_Name        , Cash_Id        , Cash_Name        ,
+       Trt_Id         , Trt_Name         , Vhr_Id         , Vhr_Did          ,
+       Ord_Insdate    , Ord_Num          , Ord_Ddate      , Ord_Edate        ,
+       Ord_ExecDate   , Ord_RNum         ,
+       Curn_Id        , Curn_Name        , Curn_Rate      , Ord_Curn_Rate    ,
+       Curn_Code      ,
+       Ord_CAmt       , Ord_AMT          , Ord_ExcAmt     , Ord_ExAmt        ,
+       Ord_ExcAmt       B_ExcAmt         , Ord_ExAmt        B_ExAmt          ,
+       Ord_CAmt         Ord_ICAmt        ,
+       Ord_AMT          Ord_IAmt         ,
+       Ord_ExcAmt       Ord_IExcAmt      ,
+       Ord_ExAmt        Ord_IExAmt       ,
+       0                Ord_OCAmt        ,
+       0                Ord_OAmt         ,
+       0                Ord_OExcAmt      ,
+       0                Ord_OExAmt       ,
+       Decode(Status_Id, 11, Ord_ExcAmt, 12, Ord_ExcAmt, 0)  Act_ExcAmt ,
+       Decode(Status_Id, 11, Ord_ExAmt , 12, Ord_ExAmt , 0)  Act_ExAmt  ,
+       Decode(Status_Id, 0 , Ord_CAmt  , 0)  Ord_New_CAmt       ,
+       Decode(Status_Id, 10, Ord_CAmt  , 0)  Ord_Approved_CAmt  ,
+       Decode(Status_Id, 11, Ord_ExcAmt, 0)  Ord_Executed_CAmt  ,
+       Decode(Status_Id, 12, Ord_ExcAmt, 0)  Ord_Certified_CAmt ,
+       Decode(Status_Id, 13, Ord_CAmt  , 0)  Ord_Canceled_CAmt  ,
+       Decode(Status_Id, 0 , Ord_Amt   , 0)  Ord_New_Amt        ,
+       Decode(Status_Id, 10, Ord_Amt   , 0)  Ord_Approved_Amt   ,
+       Decode(Status_Id, 11, Ord_ExAmt , 0)  Ord_Executed_Amt   ,
+       Decode(Status_Id, 12, Ord_ExAmt , 0)  Ord_Certified_Amt  ,
+       Decode(Status_Id, 13, Ord_Amt   , 0)  Ord_Canceled_Amt   ,
+       Decode(Status_Id, 13, Ord_Amt   , 0)  Ord_INew_CAmt      ,
+       Decode(Status_Id, 12, Ord_CAmt  , 0)  Ord_IApproved_CAmt ,
+       Decode(Status_Id, 11, Ord_ExAmt , 0)  Ord_IExecuted_CAmt ,
+       Decode(Status_Id, 10, Ord_ExAmt , 0)  Ord_ICertified_CAmt,
+       Decode(Status_Id, 0 , Ord_Amt   , 0)  Ord_ICanceled_CAmt ,
+       Decode(Status_Id, 13, Ord_CAmt  , 0)  Ord_INew_Amt       ,
+       Decode(Status_Id, 12, Ord_CAmt  , 0)  Ord_IApproved_Amt  ,
+       Decode(Status_Id, 11, Ord_ExcAmt, 0)  Ord_IExecuted_Amt  ,
+       Decode(Status_Id, 10, Ord_ExcAmt, 0)  Ord_ICertified_Amt ,
+       Decode(Status_Id, 0 , Ord_CAmt  , 0)  Ord_ICanceled_Amt  ,
+       0                                     Ord_ONew_CAmt      ,
+       0                                     Ord_OApproved_CAmt ,
+       0                                     Ord_OExecuted_CAmt ,
+       0                                     Ord_OCertified_CAmt,
+       0                                     Ord_OCanceled_CAmt ,
+       0                                     Ord_ONew_Amt       ,
+       0                                     Ord_OApproved_Amt  ,
+       0                                     Ord_OExecuted_Amt  ,
+       0                                     Ord_OCertified_Amt ,
+       0                                     Ord_OCanceled_Amt  ,
+       Status_Id      , STATUS_Name      , Ord_Status_Date, Ord_STATUS_DESCR ,
+       Dstatus_Id     , DStatus_Name     , Ord_DcAmt      , Ord_DAmt         ,
+       Ord_Bank_Id    , Ord_City_Id      ,
+       Ord_Reason     , Ord_Rem
+  From Cash_VCOrd 
+UNION ALL
+SELECT ALL
+       'Cash Advance Payment' AS Doc_Type,
+       Ord_Id         , Dept_Id          , Dept_Name      ,
+       Unit_Id        , Unit_Name        , Oper_Id        , Oper_Name        ,
+       Period_Id      , Period_Name      , Cont_Id        , Cont_Name        ,
+       Serv_Id        , Serv_Name        , Method_Id      , Method_Name      ,
+       Cbox_Id        , Cbox_Name        , Cash_Id        , Cash_Name        ,
+       Trt_Id         , Trt_Name         , Vhr_Id         , Vhr_Did          ,
+       Ord_Insdate    , Ord_Num          , Ord_Ddate      , Ord_Edate        ,
+       Ord_ExecDate   , Ord_RNum         ,
+       Curn_Id        , Curn_Name        , Curn_Rate      , Ord_Curn_Rate    ,
+       Curn_Code      ,
+       Ord_CAmt       , Ord_AMT          , Ord_ExcAmt     , Ord_ExAmt        ,
+       -1*Ord_ExcAmt    B_ExcAmt         , -1*Ord_ExAmt     B_ExAmt          ,
+       0                Ord_ICAmt        ,
+       0                Ord_IAmt         ,
+       0                Ord_IExcAmt      ,
+       0                Ord_IExAmt       ,
+       Ord_CAmt         Ord_OCAmt        ,
+       Ord_AMT          Ord_OAmt         ,
+       Ord_ExcAmt       Ord_OExcAmt      ,
+       Ord_ExAmt        Ord_OExAmt       ,
+       Decode(Status_Id, 11, Ord_ExcAmt, 12, Ord_ExcAmt, 0)  Act_ExcAmt ,
+       Decode(Status_Id, 11, Ord_ExAmt , 12, Ord_ExAmt , 0)  Act_ExAmt  ,
+       Decode(Status_Id, 0 , Ord_CAmt  , 0)  Ord_New_CAmt       ,
+       Decode(Status_Id, 10, Ord_CAmt  , 0)  Ord_Approved_CAmt  ,
+       Decode(Status_Id, 11, Ord_ExcAmt, 0)  Ord_Executed_CAmt  ,
+       Decode(Status_Id, 12, Ord_ExcAmt, 0)  Ord_Certified_CAmt ,
+       Decode(Status_Id, 13, Ord_CAmt  , 0)  Ord_Canceled_CAmt  ,
+       Decode(Status_Id, 0 , Ord_Amt   , 0)  Ord_New_Amt        ,
+       Decode(Status_Id, 10, Ord_Amt   , 0)  Ord_Approved_Amt   ,
+       Decode(Status_Id, 11, Ord_ExAmt , 0)  Ord_Executed_Amt   ,
+       Decode(Status_Id, 12, Ord_ExAmt , 0)  Ord_Certified_Amt  ,
+       Decode(Status_Id, 13, Ord_Amt   , 0)  Ord_Canceled_Amt   ,
+       0                                     Ord_INew_CAmt      ,
+       0                                     Ord_IApproved_CAmt ,
+       0                                     Ord_IExecuted_CAmt ,
+       0                                     Ord_ICertified_CAmt,
+       0                                     Ord_ICanceled_CAmt ,
+       0                                     Ord_INew_Amt       ,
+       0                                     Ord_IApproved_Amt  ,
+       0                                     Ord_IExecuted_Amt  ,
+       0                                     Ord_ICertified_Amt ,
+       0                                     Ord_ICanceled_Amt  ,
+       Decode(Status_Id, 0 , Ord_CAmt  , 0)  Ord_ONew_CAmt      ,
+       Decode(Status_Id, 10, Ord_CAmt  , 0)  Ord_OApproved_CAmt ,
+       Decode(Status_Id, 11, Ord_ExcAmt, 0)  Ord_OExecuted_CAmt ,
+       Decode(Status_Id, 12, Ord_ExcAmt, 0)  Ord_OCertified_CAmt,
+       Decode(Status_Id, 13, Ord_CAmt  , 0)  Ord_OCanceled_CAmt ,
+       Decode(Status_Id, 0 , Ord_Amt   , 0)  Ord_ONew_Amt       ,
+       Decode(Status_Id, 10, Ord_Amt   , 0)  Ord_OApproved_Amt  ,
+       Decode(Status_Id, 11, Ord_ExAmt , 0)  Ord_OExecuted_Amt  ,
+       Decode(Status_Id, 12, Ord_ExAmt , 0)  Ord_OCertified_Amt ,
+       Decode(Status_Id, 13, Ord_Amt   , 0)  Ord_OCanceled_Amt  ,
+       Status_Id      , STATUS_Name      , Ord_Status_Date, Ord_STATUS_DESCR ,
+       Dstatus_Id     , DStatus_Name     , Ord_DcAmt      , Ord_DAmt         ,
+       Ord_Bank_Id    , Ord_City_Id      ,
+       Ord_Reason     , Ord_Rem
+  From Cash_VAPOrd
+UNION ALL
+SELECT ALL
+       'Cash Payment' AS Doc_Type,
+       Ord_Id         , Dept_Id          , Dept_Name      ,
+       Unit_Id        , Unit_Name        , Oper_Id        , Oper_Name        ,
+       Period_Id      , Period_Name      , Cont_Id        , Cont_Name        ,
+       Serv_Id        , Serv_Name        , Method_Id      , Method_Name      ,
+       Cbox_Id        , Cbox_Name        , Cash_Id        , Cash_Name        ,
+       Trt_Id         , Trt_Name         , Vhr_Id         , Vhr_Did          ,
+       Ord_Insdate    , Ord_Num          , Ord_Ddate      , Ord_Edate        ,
+       Ord_ExecDate   , Ord_RNum         ,
+       Curn_Id        , Curn_Name        , Curn_Rate      , Ord_Curn_Rate    ,
+       Curn_Code      ,
+       Ord_CAmt       , Ord_AMT          , Ord_ExcAmt     , Ord_ExAmt        ,
+       -1*Ord_ExcAmt    B_ExcAmt         , -1*Ord_ExAmt     B_ExAmt          ,
+       0                Ord_ICAmt        ,
+       0                Ord_IAmt         ,
+       0                Ord_IExcAmt      ,
+       0                Ord_IExAmt       ,
+       Ord_CAmt         Ord_OCAmt        ,
+       Ord_AMT          Ord_OAmt         ,
+       Ord_ExcAmt       Ord_OExcAmt      ,
+       Ord_ExAmt        Ord_OExAmt       ,
+       Decode(Status_Id, 11, Ord_ExcAmt, 12, Ord_ExcAmt, 0)  Act_ExcAmt ,
+       Decode(Status_Id, 11, Ord_ExAmt , 12, Ord_ExAmt , 0)  Act_ExAmt  ,
+       Decode(Status_Id, 0 , Ord_CAmt  , 0)  Ord_New_CAmt       ,
+       Decode(Status_Id, 10, Ord_CAmt  , 0)  Ord_Approved_CAmt  ,
+       Decode(Status_Id, 11, Ord_ExcAmt, 0)  Ord_Executed_CAmt  ,
+       Decode(Status_Id, 12, Ord_ExcAmt, 0)  Ord_Certified_CAmt ,
+       Decode(Status_Id, 13, Ord_CAmt  , 0)  Ord_Canceled_CAmt  ,
+       Decode(Status_Id, 0 , Ord_Amt   , 0)  Ord_New_Amt        ,
+       Decode(Status_Id, 10, Ord_Amt   , 0)  Ord_Approved_Amt   ,
+       Decode(Status_Id, 11, Ord_ExAmt , 0)  Ord_Executed_Amt   ,
+       Decode(Status_Id, 12, Ord_ExAmt , 0)  Ord_Certified_Amt  ,
+       Decode(Status_Id, 13, Ord_Amt   , 0)  Ord_Canceled_Amt   ,
+       0                                     Ord_INew_CAmt      ,
+       0                                     Ord_IApproved_CAmt ,
+       0                                     Ord_IExecuted_CAmt ,
+       0                                     Ord_ICertified_CAmt,
+       0                                     Ord_ICanceled_CAmt ,
+       0                                     Ord_INew_Amt       ,
+       0                                     Ord_IApproved_Amt  ,
+       0                                     Ord_IExecuted_Amt  ,
+       0                                     Ord_ICertified_Amt ,
+       0                                     Ord_ICanceled_Amt  ,
+       Decode(Status_Id, 0 , Ord_CAmt  , 0)  Ord_ONew_CAmt      ,
+       Decode(Status_Id, 10, Ord_CAmt  , 0)  Ord_OApproved_CAmt ,
+       Decode(Status_Id, 11, Ord_ExcAmt, 0)  Ord_OExecuted_CAmt ,
+       Decode(Status_Id, 12, Ord_ExcAmt, 0)  Ord_OCertified_CAmt,
+       Decode(Status_Id, 13, Ord_CAmt  , 0)  Ord_OCanceled_CAmt ,
+       Decode(Status_Id, 0 , Ord_Amt   , 0)  Ord_ONew_Amt       ,
+       Decode(Status_Id, 10, Ord_Amt   , 0)  Ord_OApproved_Amt  ,
+       Decode(Status_Id, 11, Ord_ExAmt , 0)  Ord_OExecuted_Amt  ,
+       Decode(Status_Id, 12, Ord_ExAmt , 0)  Ord_OCertified_Amt ,
+       Decode(Status_Id, 13, Ord_Amt   , 0)  Ord_OCanceled_Amt  ,
+       Status_Id      , STATUS_Name      , Ord_Status_Date, Ord_STATUS_DESCR ,
+       Dstatus_Id     , DStatus_Name     , Ord_DcAmt      , Ord_DAmt         ,
+       Ord_Bank_Id    , Ord_City_Id      ,
+       Ord_Reason     , Ord_Rem
+  From Cash_VPOrd
+UNION ALL
+SELECT ALL
+       'Cash Transfer IN' AS Doc_Type,
+       Ord_Id         , Dept_Id          , Dept_Name      ,
+       Unit_Id        , Unit_Name        , Oper_Id        , Oper_Name        ,
+       Period_Id      , Period_Name      , 0              , '-'              ,
+       0              , '-'              , Method_Id      , Method_Name      ,
+       TCbox_Id       , TCbox_Name       , TCash_Id       , TCash_Name       ,
+       TrtI_Id        , TrtI_Name        , Vhr_Id         , Vhr_Did          ,
+       Ord_Insdate    , Ord_Num          , Ord_Ddate      , Ord_Edate        ,
+       Ord_ExecDate   , 0                ,
+       Ord_Curn_FId   , Curn_FName       , Ord_FRate      , Ord_Curn_Frate   ,
+       Curn_FCode     ,
+       Ord_FCamt      , Ord_FAmt         , Ord_FExcamt    , Ord_FExamt       ,
+       Ord_FExcamt      B_ExcAmt         , Ord_FExamt       B_ExAmt          ,
+       Ord_TCamt        Ord_ICAmt        ,
+       Ord_TAMT         Ord_IAmt         ,
+       Ord_TExcAmt      Ord_IExcAmt      ,
+       Ord_TExAmt       Ord_IExAmt       ,
+       0                Ord_OCAmt        ,
+       0                Ord_OAmt         ,
+       0                Ord_OExcAmt      ,
+       0                Ord_OExAmt       ,
+       Decode(Status_Id, 11, Ord_TExcAmt, 12, Ord_TExcAmt, 0)  Act_ExcAmt ,
+       Decode(Status_Id, 11, Ord_TExAmt , 12, Ord_TExAmt , 0)  Act_ExAmt  ,
+       Decode(Status_Id, 0 , Ord_TCAmt  , 0)  Ord_New_CAmt       ,
+       Decode(Status_Id, 10, Ord_TCAmt  , 0)  Ord_Approved_CAmt  ,
+       Decode(Status_Id, 11, Ord_TExcAmt, 0)  Ord_Executed_CAmt  ,
+       Decode(Status_Id, 12, Ord_TExcAmt, 0)  Ord_Certified_CAmt ,
+       Decode(Status_Id, 13, Ord_TCAmt  , 0)  Ord_Canceled_CAmt  ,
+       Decode(Status_Id, 0 , Ord_TAmt   , 0)  Ord_New_Amt        ,
+       Decode(Status_Id, 10, Ord_TAmt   , 0)  Ord_Approved_Amt   ,
+       Decode(Status_Id, 11, Ord_TExAmt , 0)  Ord_Executed_Amt   ,
+       Decode(Status_Id, 12, Ord_TExAmt , 0)  Ord_Certified_Amt  ,
+       Decode(Status_Id, 13, Ord_TAmt   , 0)  Ord_Canceled_Amt   ,
+       Decode(Status_Id, 0 , Ord_TCAmt  , 0)  Ord_INew_CAmt      ,
+       Decode(Status_Id, 10, Ord_TCAmt  , 0)  Ord_IApproved_CAmt ,
+       Decode(Status_Id, 11, Ord_TExcAmt, 0)  Ord_IExecuted_CAmt ,
+       Decode(Status_Id, 12, Ord_TExcAmt, 0)  Ord_ICertified_CAmt,
+       Decode(Status_Id, 13, Ord_TCAmt  , 0)  Ord_ICanceled_CAmt ,
+       Decode(Status_Id, 0 , Ord_TAmt   , 0)  Ord_INew_Amt       ,
+       Decode(Status_Id, 10, Ord_TAmt   , 0)  Ord_IApproved_Amt  ,
+       Decode(Status_Id, 11, Ord_TExAmt , 0)  Ord_IExecuted_Amt  ,
+       Decode(Status_Id, 12, Ord_TExAmt , 0)  Ord_ICertified_Amt ,
+       Decode(Status_Id, 13, Ord_TAmt   , 0)  Ord_ICanceled_Amt  ,
+       0                                      Ord_ONew_CAmt      ,
+       0                                      Ord_OApproved_CAmt ,
+       0                                      Ord_OExecuted_CAmt ,
+       0                                      Ord_OCertified_CAmt,
+       0                                      Ord_OCanceled_CAmt ,
+       0                                      Ord_ONew_Amt       ,
+       0                                      Ord_OApproved_Amt  ,
+       0                                      Ord_OExecuted_Amt  ,
+       0                                      Ord_OCertified_Amt ,
+       0                                      Ord_OCanceled_Amt  ,
+       Status_Id      , STATUS_Name      , Ord_Status_Date, Ord_STATUS_DESCR ,
+       0              , NULL             , 0              , 0                ,
+       NULL           , NULL             ,
+       Ord_Reason     , Ord_Rem
+  From Cash_VTOrd
+UNION ALL
+SELECT ALL
+       'Cach Transfer Out' AS Doc_Type,
+       Ord_Id         , Dept_Id          , Dept_Name      ,
+       Unit_Id        , Unit_Name        , Oper_Id        , Oper_Name        ,
+       Period_Id      , Period_Name      , 0              , '-'              ,
+       0              , '-'              , Method_Id      , Method_Name      ,
+       FCbox_Id       , FCbox_Name       , FCash_Id       , FCash_Name       ,
+       TrtO_Id        , TrtO_Name        , Vhr_Id         , Vhr_Did          ,
+       Ord_Insdate    , Ord_Num          , Ord_Ddate      , Ord_Edate        ,
+       Ord_ExecDate   , 0                ,
+       Ord_Curn_TId   , Curn_TName       , Ord_TRate      , Ord_Curn_Trate   ,
+       Curn_TCode     ,
+       Ord_TCamt      , Ord_TAmt         , Ord_TExcamt    , Ord_TExamt       ,
+       -1*Ord_TExcamt   B_ExcAmt         , -1*Ord_TExamt    B_ExAmt          ,
+       0                Ord_ICAmt        ,
+       0                Ord_IAmt         ,
+       0                Ord_IExcAmt      ,
+       0                Ord_IExAmt       ,
+       Ord_FCAMT        Ord_OCAmt        ,
+       Ord_FAmt         Ord_OAmt         ,
+       Ord_FExCAmt      Ord_OExCAmt      ,
+       Ord_FExAmt       Ord_OExAmt       ,
+       Decode(Status_Id, 11, Ord_FExcAmt, 12, Ord_FExcAmt, 0)  Act_ExcAmt ,
+       Decode(Status_Id, 11, Ord_FExAmt , 12, Ord_FExAmt , 0)  Act_ExAmt  ,
+       Decode(Status_Id, 0 , Ord_FCAmt  , 0)  Ord_New_CAmt       ,
+       Decode(Status_Id, 10, Ord_FCAmt  , 0)  Ord_Approved_CAmt  ,
+       Decode(Status_Id, 11, Ord_FExcAmt, 0)  Ord_Executed_CAmt  ,
+       Decode(Status_Id, 12, Ord_FExcAmt, 0)  Ord_Certified_CAmt ,
+       Decode(Status_Id, 13, Ord_FCAmt  , 0)  Ord_Canceled_CAmt  ,
+       Decode(Status_Id, 0 , Ord_FAmt   , 0)  Ord_New_Amt        ,
+       Decode(Status_Id, 10, Ord_FAmt   , 0)  Ord_Approved_Amt   ,
+       Decode(Status_Id, 11, Ord_FExAmt , 0)  Ord_Executed_Amt   ,
+       Decode(Status_Id, 12, Ord_FExAmt , 0)  Ord_Certified_Amt  ,
+       Decode(Status_Id, 13, Ord_FAmt   , 0)  Ord_Canceled_Amt   ,
+       0                                      Ord_INew_CAmt      ,
+       0                                      Ord_IApproved_CAmt ,
+       0                                      Ord_IExecuted_CAmt ,
+       0                                      Ord_ICertified_CAmt,
+       0                                      Ord_ICanceled_CAmt ,
+       0                                      Ord_INew_Amt       ,
+       0                                      Ord_IApproved_Amt  ,
+       0                                      Ord_IExecuted_Amt  ,
+       0                                      Ord_ICertified_Amt ,
+       0                                      Ord_ICanceled_Amt  ,
+       Decode(Status_Id, 0 , Ord_FCAmt  , 0)  Ord_ONew_CAmt      ,
+       Decode(Status_Id, 10, Ord_FCAmt  , 0)  Ord_OApproved_CAmt ,
+       Decode(Status_Id, 11, Ord_FExCAmt, 0)  Ord_OExecuted_CAmt ,
+       Decode(Status_Id, 12, Ord_FExCAmt, 0)  Ord_OCertified_CAmt,
+       Decode(Status_Id, 13, Ord_FCAmt  , 0)  Ord_OCanceled_CAmt ,
+       Decode(Status_Id, 0 , Ord_FAmt   , 0)  Ord_ONew_Amt       ,
+       Decode(Status_Id, 10, Ord_FAmt   , 0)  Ord_OApproved_Amt  ,
+       Decode(Status_Id, 11, Ord_FExAmt , 0)  Ord_OExecuted_Amt  ,
+       Decode(Status_Id, 12, Ord_FExAmt , 0)  Ord_OCertified_Amt ,
+       Decode(Status_Id, 13, Ord_FAmt   , 0)  Ord_OCanceled_Amt  ,
+       Status_Id      , STATUS_Name      , Ord_Status_Date, Ord_STATUS_DESCR ,
+       0              , NULL             , 0              , 0                ,
+       NULL           , NULL             ,
+       Ord_Reason     , Ord_Rem
+  From Cash_VTOrd
+/
+CREATE SYNONYM Cash_VOrd FOR Cash_Order_View
+/ 

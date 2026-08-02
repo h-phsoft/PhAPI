@@ -1,0 +1,66 @@
+{
+  "Name": "Prd_Productoin_Stage_Ousemiproduct",
+  "Synonym": "Prd_Prod_Stage_Osemi",
+  "Sequence": "Prd_Prod_Stage_Osemi_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Stage_Id",
+      "Field": "stageId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Prd_Production_Stage",
+        "SynonymName": "Prd_Stage",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "stageName"
+      }
+    }, {
+      "Name": "Ord",
+      "Field": "ord",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Item_Id",
+      "Field": "itemId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Stor_Items",
+        "SynonymName": "Stor_Item",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "itemName"
+      }
+    }, {
+      "Name": "Qnt",
+      "Field": "qnt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Perc",
+      "Field": "perc",
+      "DBType": "NUMBER",
+      "Default": "100",
+      "hasRelation": false
+    }, {
+      "Name": "Descr",
+      "Field": "descr",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

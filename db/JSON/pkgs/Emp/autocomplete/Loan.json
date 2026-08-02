@@ -1,0 +1,9 @@
+{
+  "Synonym": "Emp_Loan",
+  "Select": "SELECT Id, Sdate||' , '||Num AS Name FROM Emp_Loan",
+  "Condition": "",
+  "Conds": {
+    "term": "'Sdate||' , '||Num AS Name LIKE '%{term}%'"
+  },
+  "OrderBy": "Num"
+}

@@ -1,0 +1,93 @@
+{
+  "Name": "Emp_Compensation",
+  "Synonym": "Emp_Com",
+  "Sequence": "Emp_Com_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Brkt_Id",
+      "Field": "brktId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Tax_Brackets_Master",
+        "SynonymName": "Emp_Taxbrkt",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "brktName"
+      }
+    }, {
+      "Name": "Comtype_Id",
+      "Field": "comtypeId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Comtype",
+        "SynonymName": "Emp_Cod_Comtype",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "comtypeName"
+      }
+    }, {
+      "Name": "Taxpay_Id",
+      "Field": "taxpayId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Taxpay",
+        "SynonymName": "Emp_Cod_Taxpay",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "taxpayName"
+      }
+    }, {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Amount_Type",
+        "SynonymName": "Phs_Cod_Amttype",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "typeName"
+      }
+    }, {
+      "Name": "Isded_Id",
+      "Field": "isdedId",
+      "DBType": "NUMBER",
+      "Default": "2",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Yesno",
+        "SynonymName": "Phs_Cod_Yesno",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "isdedName"
+      }
+    }, {
+      "Name": "Pamt",
+      "Field": "pamt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }
+  ]
+}

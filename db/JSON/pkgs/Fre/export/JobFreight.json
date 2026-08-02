@@ -1,0 +1,433 @@
+{
+  "Name": "Fre_Job_Freight",
+  "Synonym": "Fre_Job",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Contr_Rid",
+      "Field": "contrRid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cont_Rid",
+      "Field": "contRid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Rate",
+      "Field": "curnRate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Descr",
+      "Field": "descr",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Oname",
+      "Field": "oname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Oaddress",
+      "Field": "oaddress",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dname",
+      "Field": "dname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Daddress",
+      "Field": "daddress",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Vcomd",
+      "Field": "vcomd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ship",
+      "Field": "ship",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cons",
+      "Field": "cons",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dist",
+      "Field": "dist",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Odist",
+      "Field": "odist",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Qnt",
+      "Field": "qnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Price",
+      "Field": "price",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Wnet",
+      "Field": "wnet",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Wgros",
+      "Field": "wgros",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Wchrg",
+      "Field": "wchrg",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Volume",
+      "Field": "volume",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Amt",
+      "Field": "amt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Camt",
+      "Field": "camt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Comm",
+      "Field": "comm",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ccomm",
+      "Field": "ccomm",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Etd",
+      "Field": "etd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Eta",
+      "Field": "eta",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Atd",
+      "Field": "atd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ata",
+      "Field": "ata",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sdate",
+      "Field": "sdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Srem",
+      "Field": "srem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dnum",
+      "Field": "dnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dperson",
+      "Field": "dperson",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dcust",
+      "Field": "dcust",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Delname",
+      "Field": "delname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Deldate",
+      "Field": "deldate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Delrem",
+      "Field": "delrem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Duedate",
+      "Field": "duedate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mnum",
+      "Field": "mnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mdate",
+      "Field": "mdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Hnum",
+      "Field": "hnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Hdate",
+      "Field": "hdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Enum",
+      "Field": "enum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Edate",
+      "Field": "edate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fnum",
+      "Field": "fnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fdate",
+      "Field": "fdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tpnm",
+      "Field": "tpnm",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tpnt",
+      "Field": "tpnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nref",
+      "Field": "nref",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Bref",
+      "Field": "bref",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Porder",
+      "Field": "porder",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Vtrip",
+      "Field": "vtrip",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dtrip",
+      "Field": "dtrip",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sdm",
+      "Field": "sdm",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ldm",
+      "Field": "ldm",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cbm",
+      "Field": "cbm",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cmrdate",
+      "Field": "cmrdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Oplace",
+      "Field": "oplace",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Kdocnum",
+      "Field": "kdocnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Kdocdate",
+      "Field": "kdocdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nkdoc",
+      "Field": "nkdoc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dkdoc",
+      "Field": "dkdoc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Waybill",
+      "Field": "waybill",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Truck",
+      "Field": "truck",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Driver",
+      "Field": "driver",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Opsrem",
+      "Field": "opsrem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Idecnum",
+      "Field": "idecnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Idocdate",
+      "Field": "idocdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Odecnum",
+      "Field": "odecnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Odocdate",
+      "Field": "odocdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tripno",
+      "Field": "tripno",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Odmrge",
+      "Field": "odmrge",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ddmrge",
+      "Field": "ddmrge",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Overqnt",
+      "Field": "overqnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Arrodate",
+      "Field": "arrodate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loaddate",
+      "Field": "loaddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dispdate",
+      "Field": "dispdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Arrddate",
+      "Field": "arrddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Udate",
+      "Field": "udate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Docdate",
+      "Field": "docdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Origrem",
+      "Field": "origrem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Destrem",
+      "Field": "destrem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Vpath",
+      "Field": "vpath",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Overdist",
+      "Field": "overdist",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "Name": "Proj_Project_Ratingtrn",
+  "Synonym": "Proj_Proj_Ratetrn",
+  "Sequence": "Proj_Proj_Ratetrn_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Mst_Id",
+      "Field": "mstId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Proj_Project_Ratingmst",
+        "SynonymName": "Proj_Proj_Ratemst",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "mstName"
+      }
+    }, {
+      "Name": "Rate_Id",
+      "Field": "rateId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Proj_Code_Rate",
+        "SynonymName": "Proj_Cod_Rate",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "rateName"
+      }
+    }, {
+      "Name": "User_Id",
+      "Field": "userId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

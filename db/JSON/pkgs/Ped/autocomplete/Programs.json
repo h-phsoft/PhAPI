@@ -1,0 +1,9 @@
+{
+  "Synonym": "Ped_Prog",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Ped_Prog",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

@@ -1,0 +1,23 @@
+{
+  "Name": "Clnc_Laboratory_Receive",
+  "Synonym": "Clnc_Labor_Receive",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    , {
+      "Name": "Qnt",
+      "Field": "qnt",
+      "isSelected": false
+    }
+    , {
+      "Name": "Descr",
+      "Field": "descr",
+      "isSelected": false
+    }
+  ]
+}

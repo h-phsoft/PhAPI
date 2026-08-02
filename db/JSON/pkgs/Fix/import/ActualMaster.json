@@ -1,0 +1,58 @@
+{
+  "Name": "Fix_Actual_Master",
+  "Synonym": "Fix_Actmst",
+  "Sequence": "Fix_Actmst_Seq",
+  "InsUser": false,
+  "hasChilds": true,
+  "Children": [
+    {
+      "Pkg": "Fix",
+      "Key": "ActualTrans",
+      "Table": "Fix_Actual_Trans",
+      "Synonym": "Fix_Acttrn",
+      "cascadeDelete": true,
+      "Column": "FMST_ID",
+      "ColKey": "fmstId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Period_Id",
+      "Field": "periodId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Periods",
+        "SynonymName": "Cpy_Period",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "periodName"
+      }
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "Sysdate",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

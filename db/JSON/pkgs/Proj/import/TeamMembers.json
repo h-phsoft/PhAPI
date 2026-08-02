@@ -1,0 +1,87 @@
+{
+  "Name": "Proj_Team_Members",
+  "Synonym": "Proj_Team",
+  "Sequence": "Proj_Team_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "User_Id",
+      "Field": "userId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Users",
+        "SynonymName": "Cpy_User",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "userName"
+      }
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Status",
+        "SynonymName": "Phs_Cod_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }, {
+      "Name": "Class1_Id",
+      "Field": "class1Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Proj_Code_Project_Class1",
+        "SynonymName": "Proj_Cod_Proj_Class1",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "class1Name"
+      }
+    }, {
+      "Name": "Class2_Id",
+      "Field": "class2Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Proj_Code_Project_Class2",
+        "SynonymName": "Proj_Cod_Proj_Class2",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "class2Name"
+      }
+    }, {
+      "Name": "Class3_Id",
+      "Field": "class3Id",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Proj_Code_Project_Class3",
+        "SynonymName": "Proj_Cod_Proj_Class3",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "class3Name"
+      }
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Image",
+      "Field": "image",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "Synonym": "Proj_Proj_Tsheet",
+  "Select": "SELECT Id, Rem AS Rem FROM Proj_Proj_Tsheet",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Rem) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Id"
+}

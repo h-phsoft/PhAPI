@@ -1,0 +1,60 @@
+{
+  "Name": "Clnc_Procedures",
+  "Synonym": "Clnc_Proc",
+  "Sequence": "Clnc_Proc_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Cat_Id",
+      "Field": "catId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Category",
+        "SynonymName": "Clnc_Cat",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "catName"
+      }
+    }, {
+      "Name": "Vat_Id",
+      "Field": "vatId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Code_Vat",
+        "SynonymName": "Clnc_Cod_Vat",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "vatName"
+      }
+    }, {
+      "Name": "Code",
+      "Field": "code",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Price",
+      "Field": "price",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Vat",
+      "Field": "vat",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }
+  ]
+}

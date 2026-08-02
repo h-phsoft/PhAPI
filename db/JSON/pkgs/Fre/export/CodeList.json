@@ -1,0 +1,18 @@
+{
+  "Name": "Fre_Code_List",
+  "Synonym": "Fre_Cod_List",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

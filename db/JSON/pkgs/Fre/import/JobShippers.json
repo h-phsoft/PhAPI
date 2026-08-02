@@ -1,0 +1,29 @@
+{
+  "Name": "Fre_Job_Shippers",
+  "Synonym": "Fre_Ship",
+  "Sequence": "Fre_Ship_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Job_Id",
+      "Field": "jobId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fre_Job_Freight",
+        "SynonymName": "Fre_Job",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "jobName"
+      }
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

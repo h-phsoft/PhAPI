@@ -1,0 +1,9 @@
+{
+  "Synonym": "Fre_VClr_TJob_Offers",
+  "Select": "SELECT Id, Name FROM (SELECT V.Job_Id as Id, 'RFQ:' || V.Inqry_Num || ' - ' || To_char(V.Inqry_Date,'dd-mm-yyyy') || ' | OFR:' || V.Offer_Num || ' - ' || To_char(V.Offer_Date,'dd-mm-yyyy') || ' | JF:' || V.Job_Num || ' - ' || To_char(V.Job_Date,'dd-mm-yyyy') AS Name FROM Fre_VClr_TJob_Offers V)",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Name"
+}

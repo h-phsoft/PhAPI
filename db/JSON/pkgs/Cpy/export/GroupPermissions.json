@@ -1,0 +1,64 @@
+{
+  "Name": "Copy_Group_Permissions_View",
+  "Synonym": "Cpy_Vgperm",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Grp_Name",
+      "Field": "grpName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grp_Wper",
+      "Field": "grpWper",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grp_Rem",
+      "Field": "grpRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Menu_Name",
+      "Field": "menuName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Menu_Status",
+      "Field": "menuStatus",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mprg_Pid",
+      "Field": "mprgPid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mprg_Ord",
+      "Field": "mprgOrd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mprg_Name",
+      "Field": "mprgName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mprg_Status",
+      "Field": "mprgStatus",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mprg_Url",
+      "Field": "mprgUrl",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Perm_Ok",
+      "Field": "permOk",
+      "isSelected": false
+    }
+  ]
+}

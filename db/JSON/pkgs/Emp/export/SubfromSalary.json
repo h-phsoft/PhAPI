@@ -1,0 +1,144 @@
+{
+  "Name": "Emp_Subfrom_Salary_View",
+  "Synonym": "Emp_Vsfsal",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Sfsal_Num",
+      "Field": "sfsalNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sfsal_Ddate",
+      "Field": "sfsalDdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sfsal_Docn",
+      "Field": "sfsalDocn",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sfsal_Docd",
+      "Field": "sfsalDocd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Name",
+      "Field": "empName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Fname",
+      "Field": "empFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dept_Name",
+      "Field": "deptName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sect_Name",
+      "Field": "sectName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Job_Name",
+      "Field": "jobName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Level_Name",
+      "Field": "levelName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc1_Name",
+      "Field": "spc1Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc2_Name",
+      "Field": "spc2Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc3_Name",
+      "Field": "spc3Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc4_Name",
+      "Field": "spc4Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sfsalemp_Sal",
+      "Field": "sfsalempSal",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sfsalemp_Amt",
+      "Field": "sfsalempAmt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sfsalemp_Rem",
+      "Field": "sfsalempRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cod_Aff_Name",
+      "Field": "codAffName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cod_Affsal_Name",
+      "Field": "codAffsalName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cod_Chngtype_Name",
+      "Field": "codChngtypeName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sfsal_Nyear",
+      "Field": "sfsalNyear",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sfsal_Nmonth",
+      "Field": "sfsalNmonth",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sfsal_Perc",
+      "Field": "sfsalPerc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sfsal_Amt",
+      "Field": "sfsalAmt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sfsal_Nmin",
+      "Field": "sfsalNmin",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sfsal_Nmax",
+      "Field": "sfsalNmax",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sfsal_Rem",
+      "Field": "sfsalRem",
+      "isSelected": false
+    }
+  ]
+}

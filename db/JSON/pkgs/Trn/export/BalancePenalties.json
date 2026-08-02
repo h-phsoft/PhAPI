@@ -1,0 +1,18 @@
+{
+  "Name": "Trn_Balance_Penalties",
+  "Synonym": "Trn_Bln_Penalty",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Amt",
+      "Field": "amt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

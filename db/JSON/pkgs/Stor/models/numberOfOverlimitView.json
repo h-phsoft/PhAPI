@@ -1,0 +1,63 @@
+{
+  "Name": "Number_Of_OverLimit",
+  "Synonym": "Num_OverLimit",
+  "Order": "Req_Limit",
+  "InsUser": true,
+  "UpdUser": true,
+  "AutoIncrement": true,
+  "AutoNumber": {
+    "Status": false,
+    "Field": "num",
+    "Aggregate": "",
+    "Condition": ""
+  },
+  "Select": "SELECT Sum(Req_Limit)Req_Limit ,Sum(Min_Limit)Min_Limit,Sum(Max_Limit)Max_Limit from ((Select Count(*)as Req_Limit,0 Min_Limit,0 Max_Limit from Stor_Vsmat WHERE Over_Req_Limit>0)UNION ALL(Select 0,Count(*)as Min_Limit,0 from Stor_Vsmat WHERE Over_Min_Limit>0)UNION ALL(Select 0,0,Count(*)as Max_Limit from Stor_Vsmat WHERE Over_Max_Limit>0))",
+  "Insert": "",
+  "Update": "",
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Req_Limit",
+      "Field": "reqLimit",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "10",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": false
+    }, {
+      "Name": "Min_Limit",
+      "Field": "minLimit",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "10",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": false
+    }, {
+      "Name": "Max_Limit",
+      "Field": "maxLimit",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "10",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": false
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "Synonym": "Fre_Cod_Contr_Kind",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Fre_Cod_Contr_Kind",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

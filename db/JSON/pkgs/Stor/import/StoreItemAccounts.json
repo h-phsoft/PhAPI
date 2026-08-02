@@ -1,0 +1,107 @@
+{
+  "Name": "Stor_Store_Item_Accounts",
+  "Synonym": "Stor_Stritemacc",
+  "Sequence": "Stor_Stritemacc_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Stor_Id",
+      "Field": "storId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Stor_Stores",
+        "SynonymName": "Stor_Store",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "storName"
+      }
+    }, {
+      "Name": "Item_Id",
+      "Field": "itemId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Stor_Items",
+        "SynonymName": "Stor_Item",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "itemName"
+      }
+    }, {
+      "Name": "Trntyp_Id",
+      "Field": "trntypId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Stor_Code_Transaction_Type",
+        "SynonymName": "Stor_Cod_Trntyp",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "trntypName"
+      }
+    }, {
+      "Name": "Cstacc_Id",
+      "Field": "cstaccId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Account",
+        "SynonymName": "Acc_Acc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "cstaccName"
+      }
+    }, {
+      "Name": "Revacc_Id",
+      "Field": "revaccId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Account",
+        "SynonymName": "Acc_Acc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "revaccName"
+      }
+    }, {
+      "Name": "Comacc_Id",
+      "Field": "comaccId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Account",
+        "SynonymName": "Acc_Acc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "comaccName"
+      }
+    }, {
+      "Name": "Disacc_Id",
+      "Field": "disaccId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Account",
+        "SynonymName": "Acc_Acc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "disaccName"
+      }
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

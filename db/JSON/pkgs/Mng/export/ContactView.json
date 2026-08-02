@@ -1,0 +1,123 @@
+{
+  "Name": "Mng_Contact_View",
+  "Synonym": "Mng_Vcont",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Title",
+      "Field": "title",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Lname",
+      "Field": "lname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Owner",
+      "Field": "owner",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Contact",
+      "Field": "contact",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nlmt",
+      "Field": "nlmt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dlmt",
+      "Field": "dlmt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Repr_Name",
+      "Field": "reprName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cost_Name",
+      "Field": "costName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Accdbt_Name",
+      "Field": "accdbtName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acccrd_Name",
+      "Field": "acccrdName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc1_Name",
+      "Field": "spc1Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc2_Name",
+      "Field": "spc2Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc3_Name",
+      "Field": "spc3Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc4_Name",
+      "Field": "spc4Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc5_Name",
+      "Field": "spc5Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc6_Name",
+      "Field": "spc6Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc7_Name",
+      "Field": "spc7Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc8_Name",
+      "Field": "spc8Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc9_Name",
+      "Field": "spc9Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc0_Name",
+      "Field": "spc0Name",
+      "isSelected": false
+    }
+  ]
+}

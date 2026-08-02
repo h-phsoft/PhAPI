@@ -1,0 +1,3 @@
+--DELETE FROM Phs_Dash_Blocks WHERE Menu_Id=0;
+--INSERT INTO Phs_Dash_Blocks (Ord , Type_Id, Menu_Id, MCol, SCol, Method, Url                                     , Name                            , Title     )
+--VALUES                      (1050, 301    , 0      , 12  , 10  , 'POST', '/Dashboard/Cpy/Task/List'              , 'Calendar'                      , 'Calendar');

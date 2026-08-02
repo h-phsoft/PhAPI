@@ -1,0 +1,64 @@
+{
+  "Name": "Acc_Total_View",
+  "Synonym": "Acc_Vtot",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Tot_Num",
+      "Field": "totNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tot_Name",
+      "Field": "totName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Perc",
+      "Field": "perc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sign_Name",
+      "Field": "signName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Amttyp_Name",
+      "Field": "amttypName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Num",
+      "Field": "accNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Name",
+      "Field": "accName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Fname",
+      "Field": "accFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cost_Num",
+      "Field": "costNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cost_Name",
+      "Field": "costName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cost_Fname",
+      "Field": "costFname",
+      "isSelected": false
+    }
+  ]
+}

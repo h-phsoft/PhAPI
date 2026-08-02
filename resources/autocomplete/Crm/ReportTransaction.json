@@ -1,0 +1,9 @@
+{
+  "Synonym": "Crm_Trep",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Crm_Trep",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE '%{term}%'"
+  },
+  "OrderBy": "Num"
+}

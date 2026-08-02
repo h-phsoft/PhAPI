@@ -1,0 +1,18 @@
+{
+  "Name": "Proj_Team_Members",
+  "Synonym": "Proj_Team",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Image",
+      "Field": "image",
+      "isSelected": false
+    }
+  ]
+}

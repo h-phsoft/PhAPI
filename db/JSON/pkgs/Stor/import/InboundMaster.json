@@ -1,0 +1,160 @@
+{
+  "Name": "Stor_Inbound_Master",
+  "Synonym": "Stor_Inmst",
+  "Sequence": "Stor_Inmst_Seq",
+  "InsUser": false,
+  "hasChilds": true,
+  "Children": [
+    {
+      "Pkg": "Stor",
+      "Key": "InboundTrans",
+      "Table": "Stor_Inbound_Trans",
+      "Synonym": "Stor_Intrn",
+      "cascadeDelete": true,
+      "Column": "MST_ID",
+      "ColKey": "mstId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Period_Id",
+      "Field": "periodId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Periods",
+        "SynonymName": "Cpy_Period",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "periodName"
+      }
+    }, {
+      "Name": "Stor_Id",
+      "Field": "storId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Stor_Stores",
+        "SynonymName": "Stor_Store",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "storName"
+      }
+    }, {
+      "Name": "Acc_Id",
+      "Field": "accId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Account",
+        "SynonymName": "Acc_Acc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "accName"
+      }
+    }, {
+      "Name": "Doc_Id",
+      "Field": "docId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Code_Document",
+        "SynonymName": "Cpy_Cod_Doc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "docName"
+      }
+    }, {
+      "Name": "Curn_Id",
+      "Field": "curnId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Mng_Currency",
+        "SynonymName": "Mng_Curn",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "curnName"
+      }
+    }, {
+      "Name": "Curn_Rate",
+      "Field": "curnRate",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Bcurn_Id",
+      "Field": "bcurnId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Bcurn_Rate",
+      "Field": "bcurnRate",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Ord_Id",
+      "Field": "ordId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Stor_Inbound_Order_Master",
+        "SynonymName": "Stor_Inordmst",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "ordName"
+      }
+    }, {
+      "Name": "Fin_Id",
+      "Field": "finId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fin_Credit_Mst",
+        "SynonymName": "Fin_Mcrd",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "finName"
+      }
+    }, {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Docn",
+      "Field": "docn",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Docd",
+      "Field": "docd",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

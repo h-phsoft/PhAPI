@@ -1,0 +1,114 @@
+{
+  "Name": "Emp_Overtimes_View",
+  "Synonym": "Emp_Votime",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Emp_Num",
+      "Field": "empNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Name",
+      "Field": "empName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Fname",
+      "Field": "empFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dept_Name",
+      "Field": "deptName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sect_Name",
+      "Field": "sectName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Job_Name",
+      "Field": "jobName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Level_Name",
+      "Field": "levelName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc1_Name",
+      "Field": "spc1Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc2_Name",
+      "Field": "spc2Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc3_Name",
+      "Field": "spc3Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc4_Name",
+      "Field": "spc4Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Otim_Num",
+      "Field": "otimNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Otim_Ddate",
+      "Field": "otimDdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Type_Name",
+      "Field": "typeName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Otim_Sdate",
+      "Field": "otimSdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Otim_Shour",
+      "Field": "otimShour",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Otim_Sminute",
+      "Field": "otimSminute",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Otim_Edate",
+      "Field": "otimEdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Otim_Ehour",
+      "Field": "otimEhour",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Otim_Eminute",
+      "Field": "otimEminute",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Otim_Rem",
+      "Field": "otimRem",
+      "isSelected": false
+    }
+  ]
+}

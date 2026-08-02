@@ -1,0 +1,53 @@
+{
+  "Name": "Fre_Job_Containers",
+  "Synonym": "Fre_Cntr",
+  "Sequence": "Fre_Cntr_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Job_Id",
+      "Field": "jobId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fre_Job_Freight",
+        "SynonymName": "Fre_Job",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "jobName"
+      }
+    }, {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Val",
+      "Field": "val",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Qnt",
+      "Field": "qnt",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Teu",
+      "Field": "teu",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }
+  ]
+}

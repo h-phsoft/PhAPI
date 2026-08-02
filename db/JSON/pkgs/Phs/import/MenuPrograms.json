@@ -1,0 +1,126 @@
+{
+  "Name": "Phs_Menu_Programs",
+  "Synonym": "Phs_Mprg",
+  "Sequence": "Phs_Mprg_Seq",
+  "InsUser": false,
+  "hasChilds": true,
+  "Children": [
+    {
+      "Pkg": "Phs",
+      "Key": "ProgramsPrivileges",
+      "Table": "Phs_Programs_Privileges",
+      "Synonym": "Phs_Mprgpriv",
+      "cascadeDelete": true,
+      "Column": "MPRG_ID",
+      "ColKey": "mprgId"
+    }
+   , {
+      "Pkg": "Phs",
+      "Key": "MenuPrograms",
+      "Table": "Phs_Menu_Programs",
+      "Synonym": "Phs_Mprg",
+      "cascadeDelete": true,
+      "Column": "MPRG_ID",
+      "ColKey": "mprgId"
+    }
+   , {
+      "Pkg": "Phs",
+      "Key": "ProgramsSpecprivileges",
+      "Table": "Phs_Programs_Specprivileges",
+      "Synonym": "Phs_Mprgspriv",
+      "cascadeDelete": true,
+      "Column": "MPRG_ID",
+      "ColKey": "mprgId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Mprg_Id",
+      "Field": "mprgId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Menu_Programs",
+        "SynonymName": "Phs_Mprg",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "mprgName"
+      }
+    }, {
+      "Name": "Menu_Id",
+      "Field": "menuId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Menus",
+        "SynonymName": "Phs_Menu",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "menuName"
+      }
+    }, {
+      "Name": "Ord",
+      "Field": "ord",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Status",
+        "SynonymName": "Phs_Cod_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Apiurl",
+      "Field": "apiurl",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Url",
+      "Field": "url",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Reltable",
+      "Field": "reltable",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Icon",
+      "Field": "icon",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Js",
+      "Field": "js",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Params",
+      "Field": "params",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

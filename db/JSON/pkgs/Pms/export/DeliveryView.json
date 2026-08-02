@@ -1,0 +1,88 @@
+{
+  "Name": "Pms_Delivery_View",
+  "Synonym": "Pms_Vdelivery",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Ord_Num",
+      "Field": "ordNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ord_Date",
+      "Field": "ordDate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ord_Rem",
+      "Field": "ordRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cont_Name",
+      "Field": "contName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Name",
+      "Field": "curnName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Rate",
+      "Field": "curnRate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Name",
+      "Field": "statusName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mst_Num",
+      "Field": "mstNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mst_Date",
+      "Field": "mstDate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mst_Rem",
+      "Field": "mstRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Item_Name",
+      "Field": "itemName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Qnt",
+      "Field": "trnQnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Price",
+      "Field": "trnPrice",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Camt",
+      "Field": "trnCamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Amt",
+      "Field": "trnAmt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Trn_Rem",
+      "Field": "trnRem",
+      "isSelected": false
+    }
+  ]
+}

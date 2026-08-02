@@ -1,0 +1,108 @@
+{
+  "Name": "Copy_Dashboard_Permission",
+  "Synonym": "Cpy_Dash_Perm",
+  "Sequence": "Cpy_Dash_Perm_Seq",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Order": "Id",
+  "InsUser": true,
+  "UpdUser": true,
+  "Select": "SELECT Id, Pgrp_Id, Dashboard_Id, Ok FROM Cpy_Dash_Perm",
+  "Insert": "INSERT INTO Cpy_Dash_Perm (Id, Pgrp_Id, Dashboard_Id, Ok, Ins_User, Ins_Date) VALUES (?, ?, ?, ?, ?, Sysdate)",
+  "Update": "UPDATE Cpy_Dash_Perm SET Pgrp_Id=?, Dashboard_Id=?, Ok=?, Upd_User=?, Upd_Date=Sysdate WHERE Id=?",
+  "hasChilds": false,
+  "Children": [
+  ],
+  "Columns": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "10",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Pgrp_Id",
+      "Field": "pgrpId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Permission_Groups",
+        "SynonymName": "Cpy_Pgrp",
+        "CurId": "Pgrp_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "pgrpName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Dashboard_Id",
+      "Field": "dashboardId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Dashboard_Blocks",
+        "SynonymName": "Phs_Dash_Blocks",
+        "CurId": "Dashboard_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "dashboardName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Ok",
+      "Field": "ok",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+  ]
+}

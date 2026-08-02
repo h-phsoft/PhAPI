@@ -1,0 +1,10 @@
+{
+  "Synonym": "Stor_Stores_Materiales",
+  "Select": "SELECT Id, Name FROM (SELECT I.Id, I.Num, I.LName As Name, Stor.stor_id as stor_id, Stor.item_id as item_id from Stor_Items I, Stor_Stores_Materiales Stor where I.id = Stor.Item_id)",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' - '||Name) LIKE Lower('%{term}%')",
+    "storId": "stor_id={storId}"
+  },
+  "OrderBy": "Id"
+}

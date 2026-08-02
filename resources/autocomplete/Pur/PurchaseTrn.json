@@ -1,0 +1,9 @@
+{
+  "Synonym": "Pur_Tpur",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Pur_Tpur",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

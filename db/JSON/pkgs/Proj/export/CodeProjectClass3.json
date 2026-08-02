@@ -1,0 +1,18 @@
+{
+  "Name": "Proj_Code_Project_Class3",
+  "Synonym": "Proj_Cod_Proj_Class3",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

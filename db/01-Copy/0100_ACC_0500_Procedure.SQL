@@ -1,0 +1,315 @@
+Create OR Replace Procedure Acc_RefreshAccTree IS
+Begin
+  UPDATE Acc_Acc SET PId=0  WHERE Id!=0;
+  For I IN (SELECT Id, Num
+              FROM Acc_Acc
+              WHERE Type_Id=1
+              ORDER BY Num
+            ) Loop
+    UPDATE Acc_Acc SET
+           PId=I.Id
+          WHERE Id!=I.Id
+            AND Num LIKE I.Num||'%';
+  End Loop;
+  UPDATE Acc_Acc SET PId=-1 WHERE Id=0;
+End Acc_RefreshAccTree;
+/
+
+Create OR Replace Procedure Acc_RefreshCostTree IS
+Begin
+  UPDATE Acc_Cost SET PId=0  WHERE Id!=0;
+  For I IN (SELECT Id, Num
+              FROM Acc_Cost
+              WHERE Type_Id=1
+              ORDER BY Num
+            ) Loop
+    UPDATE Acc_Cost SET
+           PId=I.Id
+          WHERE Id!=I.Id
+            AND Num LIKE I.Num||'%';
+  End Loop;
+  UPDATE Acc_Cost SET PId=-1 WHERE Id=0;
+End Acc_RefreshCostTree;
+/
+
+CREATE OR REPLACE PROCEDURE SP_Acc_Year_Open (
+    P_CYearId    IN NUMBER,
+    P_OYearId    IN NUMBER,
+    P_CDocId     IN NUMBER,
+    P_ODocId     IN NUMBER,
+    P_UserId     IN NUMBER DEFAULT 1,
+    P_BranId     IN NUMBER DEFAULT 0,
+    P_CommitId   IN NUMBER DEFAULT 1
+)
+IS
+    v_mst_close_id    NUMBER(10);
+    v_mst_open_id     NUMBER(10);
+    v_close_edate     DATE;
+    v_open_sdate      DATE;
+    v_open_edate      DATE;
+    v_exists          NUMBER;
+    v_cnt             NUMBER := 0;
+    
+    v_trn_id          NUMBER(20);
+    v_rate            NUMBER;
+    v_abs_bln         NUMBER;
+    v_abs_blnc        NUMBER;
+    v_dir_desc        VARCHAR2(10);
+    v_ord_close       NUMBER := 1;
+    v_ord_open        NUMBER := 1;
+
+    CURSOR c_balances IS
+        SELECT t.Acc_Id, t.Cost_Id, t.Curn_Id,
+               SUM(t.Deb) - SUM(t.Crd)      AS Bln,
+               SUM(t.DebC) - SUM(t.CrdC)    AS Blnc
+          FROM Acc_Trn t
+          JOIN Acc_Mst m ON t.Mst_Id = m.Id
+         WHERE m.Period_Id = P_CYearId 
+           AND m.Bran_Id   = P_BranId 
+           AND m.Commit_Id = P_CommitId
+      GROUP BY t.Acc_Id, t.Cost_Id, t.Curn_Id
+        HAVING (SUM(t.Deb) - SUM(t.Crd)) <> 0 
+            OR (SUM(t.DebC) - SUM(t.CrdC)) <> 0;
+BEGIN
+    IF P_CYearId IS NULL OR P_OYearId IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001, 'يجب تحديد عام الإغلاق وعام الفتح');
+    END IF;
+
+    DBMS_OUTPUT.PUT_LINE('🔄 بدء الترحيل (ROW-BY-ROW): إغلاق ['||P_CYearId||'] -> فتح ['||P_OYearId||']');
+    DBMS_OUTPUT.PUT_LINE('📌 شروط الفلترة: Bran_Id='||P_BranId||', Commit_Id='||P_CommitId);
+
+    -- 1️⃣ التحقق من وجود فترة الفتح وإنشاؤها إن لزم الأمر
+    BEGIN SELECT COUNT(*) INTO v_exists FROM Cpy_Period WHERE Id = P_OYearId;
+    EXCEPTION WHEN NO_DATA_FOUND THEN v_exists := 0; END;
+
+    IF v_exists = 0 THEN
+        BEGIN SELECT EDate INTO v_close_edate FROM Cpy_Period WHERE Id = P_CYearId;
+        EXCEPTION WHEN NO_DATA_FOUND THEN v_close_edate := TRUNC(SYSDATE) - 1; END;
+        
+        v_open_sdate := v_close_edate + 1;
+        v_open_edate := ADD_MONTHS(v_open_sdate, 12) - 1;
+
+        INSERT INTO Cpy_Period (Id, Num, Status_Id, SDate, EDate, Name, Rem, Ins_User, Ins_Date, Upd_User, Upd_Date)
+        VALUES (P_OYearId, Cpy_Period_Seq.NEXTVAL, 1, v_open_sdate, v_open_edate, 
+                'فترة انتقال '||TO_CHAR(SYSDATE,'YYYYMMDD'), 'ترحيل تلقائي لأرصدة السنة المالية', 
+                P_UserId, SYSDATE, P_UserId, SYSDATE);
+        
+        DBMS_OUTPUT.PUT_LINE('✅ تم إنشاء فترة الفتح الجديدة (ID: '||P_OYearId||')');
+    END IF;
+
+    -- 2️⃣ إنشاء ترويسة سند التصفير
+    SELECT Acc_Mst_Seq.NEXTVAL INTO v_mst_close_id FROM DUAL;
+    INSERT INTO Acc_Mst (Id, Bran_Id, Period_Id, Src_Id, Commit_Id, Num, PNum, MDate, Doc_Id, Docn, Docd, Rem, Ins_User, Ins_Date, Upd_User, Upd_Date)
+    VALUES (v_mst_close_id, P_BranId, P_CYearId, 0, 0, v_mst_close_id, v_mst_close_id, TRUNC(SYSDATE), P_CDocId, NULL, NULL, 
+            'تصفير أرصدة نهاية الفترة', P_UserId, SYSDATE, P_UserId, SYSDATE);
+
+    -- 3️⃣ إنشاء ترويسة سند الفتح
+    SELECT Acc_Mst_Seq.NEXTVAL INTO v_mst_open_id FROM DUAL;
+    INSERT INTO Acc_Mst (Id, Bran_Id, Period_Id, Src_Id, Commit_Id, Num, PNum, MDate, Doc_Id, Docn, Docd, Rem, Ins_User, Ins_Date, Upd_User, Upd_Date)
+    VALUES (v_mst_open_id, P_BranId, P_OYearId, 0, 0, v_mst_open_id, v_mst_open_id, TRUNC(SYSDATE), P_ODocId, NULL, NULL, 
+            'فتح أرصدة بداية الفترة', P_UserId, SYSDATE, P_UserId, SYSDATE);
+
+    -- 4️⃣ معالجة البنود صف بصف
+    FOR rec IN c_balances LOOP
+        v_cnt := v_cnt + 1;
+        v_rate     := CASE WHEN rec.bln <> 0 THEN ABS(rec.blnc / rec.bln) ELSE 1 END;
+        v_abs_bln  := ABS(rec.bln);
+        v_abs_blnc := ABS(rec.blnc);
+        v_dir_desc := CASE WHEN rec.bln > 0 THEN 'مدين' ELSE 'دائن' END;
+
+        -- 🔹 بند التصفير (عكس الاتجاه الحالي)
+        v_trn_id := Acc_Trn_Seq.NEXTVAL;
+        IF rec.bln > 0 THEN
+            INSERT INTO Acc_Trn (Id, Mst_Id, Acc_Id, Cost_Id, Acc_RId, TDoc_Id, TDocn, TDocd, Ord,
+                                 Deb, Crd, Curn_Id, Curn_Rate, DebC, CrdC, Rem, RId, SRem,
+                                 Ins_User, Ins_Date, Upd_User, Upd_Date)
+            VALUES (v_trn_id, v_mst_close_id, rec.Acc_Id, rec.Cost_Id, 0, 0, NULL, NULL, v_ord_close,
+                    0, v_abs_bln, rec.Curn_Id, v_rate, 0, v_abs_blnc, 'تصفير رصيد '||v_dir_desc, 0, NULL,
+                    P_UserId, SYSDATE, P_UserId, SYSDATE);
+        ELSE
+            INSERT INTO Acc_Trn (Id, Mst_Id, Acc_Id, Cost_Id, Acc_RId, TDoc_Id, TDocn, TDocd, Ord,
+                                 Deb, Crd, Curn_Id, Curn_Rate, DebC, CrdC, Rem, RId, SRem,
+                                 Ins_User, Ins_Date, Upd_User, Upd_Date)
+            VALUES (v_trn_id, v_mst_close_id, rec.Acc_Id, rec.Cost_Id, 0, 0, NULL, NULL, v_ord_close,
+                    v_abs_bln, 0, rec.Curn_Id, v_rate, v_abs_blnc, 0, 'تصفير رصيد '||v_dir_desc, 0, NULL,
+                    P_UserId, SYSDATE, P_UserId, SYSDATE);
+        END IF;
+        v_ord_close := v_ord_close + 1;
+
+        -- 🔹 بند الفتح (نفس الاتجاه الأصلي)
+        v_trn_id := Acc_Trn_Seq.NEXTVAL;
+        IF rec.bln > 0 THEN
+            INSERT INTO Acc_Trn (Id, Mst_Id, Acc_Id, Cost_Id, Acc_RId, TDoc_Id, TDocn, TDocd, Ord,
+                                 Deb, Crd, Curn_Id, Curn_Rate, DebC, CrdC, Rem, RId, SRem,
+                                 Ins_User, Ins_Date, Upd_User, Upd_Date)
+            VALUES (v_trn_id, v_mst_open_id, rec.Acc_Id, rec.Cost_Id, 0, 0, NULL, NULL, v_ord_open,
+                    v_abs_bln, 0, rec.Curn_Id, v_rate, v_abs_blnc, 0, 'فتح رصيد '||v_dir_desc, 0, NULL,
+                    P_UserId, SYSDATE, P_UserId, SYSDATE);
+        ELSE
+            INSERT INTO Acc_Trn (Id, Mst_Id, Acc_Id, Cost_Id, Acc_RId, TDoc_Id, TDocn, TDocd, Ord,
+                                 Deb, Crd, Curn_Id, Curn_Rate, DebC, CrdC, Rem, RId, SRem,
+                                 Ins_User, Ins_Date, Upd_User, Upd_Date)
+            VALUES (v_trn_id, v_mst_open_id, rec.Acc_Id, rec.Cost_Id, 0, 0, NULL, NULL, v_ord_open,
+                    0, v_abs_bln, rec.Curn_Id, v_rate, 0, v_abs_blnc, 'فتح رصيد '||v_dir_desc, 0, NULL,
+                    P_UserId, SYSDATE, P_UserId, SYSDATE);
+        END IF;
+        v_ord_open := v_ord_open + 1;
+    END LOOP;
+
+    IF v_cnt = 0 THEN
+        DBMS_OUTPUT.PUT_LINE('⚠️ لم يتم العثور على أرصدة غير صفرية بالشروط المحددة. لم تتم إضافة أي بنود.');
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('✅ تمت المعالجة بنجاح. عدد الحسابات: '||v_cnt);
+        DBMS_OUTPUT.PUT_LINE('📄 مفتاح سند التصفير: ' || v_mst_close_id);
+        DBMS_OUTPUT.PUT_LINE('📄 مفتاح سند الفتح  : ' || v_mst_open_id);
+    END IF;
+
+    COMMIT;
+
+EXCEPTION
+    WHEN OTHERS THEN
+        ROLLBACK;
+        DBMS_OUTPUT.PUT_LINE('❌ فشل الإجراء: ' || SQLERRM);
+        RAISE_APPLICATION_ERROR(-20002, 'خطأ أثناء ترحيل الأرصدة: ' || SQLERRM);
+END SP_Acc_Year_Open;
+/
+
+CREATE OR REPLACE PROCEDURE SP_Acc_Year_Open_BULK (
+    P_CYearId    IN NUMBER,
+    P_OYearId    IN NUMBER,
+    P_CDocId     IN NUMBER,
+    P_ODocId     IN NUMBER,
+    P_UserId     IN NUMBER DEFAULT 1,
+    P_BranId     IN NUMBER DEFAULT 0,      -- ✅ قابل للتغيير
+    P_CommitId   IN NUMBER DEFAULT 1       -- ✅ قابل للتغيير
+)
+IS
+    v_mst_close_id    NUMBER(10);
+    v_mst_open_id     NUMBER(10);
+    v_close_edate     DATE;
+    v_open_sdate      DATE;
+    v_open_edate      DATE;
+    v_exists          NUMBER;
+    v_cnt             NUMBER;
+
+    TYPE t_bal_rec IS RECORD (
+        acc_id   NUMBER(9), cost_id  NUMBER(9), curn_id  NUMBER(3),
+        bln      NUMBER(25,2), blnc     NUMBER(25,3)
+    );
+    TYPE t_bal_tab IS TABLE OF t_bal_rec INDEX BY PLS_INTEGER;
+    v_balances t_bal_tab;
+
+    TYPE t_trn_rec IS RECORD (
+        id NUMBER(20), mst_id NUMBER(10), acc_id NUMBER(9), cost_id NUMBER(9),
+        ord NUMBER(5), deb NUMBER(25,2), crd NUMBER(25,2), curn_id NUMBER(3),
+        curn_rate NUMBER(25,9), debc NUMBER(25,3), crdc NUMBER(25,3), rem VARCHAR2(100)
+    );
+    TYPE t_trn_tab IS TABLE OF t_trn_rec INDEX BY PLS_INTEGER;
+    v_close_trns t_trn_tab; v_open_trns  t_trn_tab;
+
+    TYPE t_num_tab IS TABLE OF NUMBER(20) INDEX BY PLS_INTEGER;
+    v_seq_close  t_num_tab; v_seq_open   t_num_tab;
+    v_idx PLS_INTEGER;
+BEGIN
+    IF P_CYearId IS NULL OR P_OYearId IS NULL THEN
+        RAISE_APPLICATION_ERROR(-20001, 'يجب تحديد عام الإغلاق وعام الفتح');
+    END IF;
+
+    DBMS_OUTPUT.PUT_LINE('🔄 بدء الترحيل | إغلاق: '||P_CYearId||' | فتح: '||P_OYearId);
+    DBMS_OUTPUT.PUT_LINE('📌 شروط الفلترة: Bran_Id='||P_BranId||', Commit_Id='||P_CommitId);
+
+    -- 1️⃣ التحقق/إنشاء فترة الفتح
+    BEGIN SELECT COUNT(*) INTO v_exists FROM Cpy_Period WHERE Id = P_OYearId;
+    EXCEPTION WHEN NO_DATA_FOUND THEN v_exists := 0; END;
+
+    IF v_exists = 0 THEN
+        BEGIN SELECT EDate INTO v_close_edate FROM Cpy_Period WHERE Id = P_CYearId;
+        EXCEPTION WHEN NO_DATA_FOUND THEN v_close_edate := TRUNC(SYSDATE) - 1; END;
+        v_open_sdate := v_close_edate + 1;
+        v_open_edate := ADD_MONTHS(v_open_sdate, 12) - 1;
+
+        INSERT INTO Cpy_Period (Id, Num, Status_Id, SDate, EDate, Name, Rem, Ins_User, Ins_Date, Upd_User, Upd_Date)
+        VALUES (P_OYearId, Cpy_Period_Seq.NEXTVAL, 1, v_open_sdate, v_open_edate, 
+                'فترة انتقال '||TO_CHAR(SYSDATE,'YYYYMMDD'), 'ترحيل تلقائي', P_UserId, SYSDATE, P_UserId, SYSDATE);
+        DBMS_OUTPUT.PUT_LINE('✅ تم إنشاء فترة الفتح (ID: '||P_OYearId||')');
+    END IF;
+
+    -- 2️⃣ جلب الأرصدة
+    SELECT t.Acc_Id, t.Cost_Id, t.Curn_Id,
+           SUM(t.Deb) - SUM(t.Crd), SUM(t.DebC) - SUM(t.CrdC)
+    BULK COLLECT INTO v_balances
+    FROM Acc_Trn t JOIN Acc_Mst m ON t.Mst_Id = m.Id
+    WHERE m.Period_Id = P_CYearId 
+      AND m.Bran_Id   = P_BranId 
+      AND m.Commit_Id = P_CommitId
+    GROUP BY t.Acc_Id, t.Cost_Id, t.Curn_Id
+    HAVING (SUM(t.Deb)-SUM(t.Crd))<>0 OR (SUM(t.DebC)-SUM(t.CrdC))<>0;
+
+    v_cnt := v_balances.COUNT;
+    IF v_cnt = 0 THEN
+        DBMS_OUTPUT.PUT_LINE('⚠️ لم يتم العثور على أرصدة غير صفرية بالشروط المحددة.');
+        RETURN;
+    END IF;
+    DBMS_OUTPUT.PUT_LINE('📊 تم إيجاد '||v_cnt||' رصيد غير صفري.');
+
+    -- 3️⃣ إنشاء الترويسات
+    SELECT Acc_Mst_Seq.NEXTVAL INTO v_mst_close_id FROM DUAL;
+    INSERT INTO Acc_Mst (Id, Bran_Id, Period_Id, Src_Id, Commit_Id, Num, PNum, MDate, Doc_Id, Rem, Ins_User, Ins_Date, Upd_User, Upd_Date)
+    VALUES (v_mst_close_id, P_BranId, P_CYearId, 0, 0, v_mst_close_id, v_mst_close_id, TRUNC(SYSDATE), P_CDocId, 'تصفير أرصدة نهاية الفترة', P_UserId, SYSDATE, P_UserId, SYSDATE);
+
+    SELECT Acc_Mst_Seq.NEXTVAL INTO v_mst_open_id FROM DUAL;
+    INSERT INTO Acc_Mst (Id, Bran_Id, Period_Id, Src_Id, Commit_Id, Num, PNum, MDate, Doc_Id, Rem, Ins_User, Ins_Date, Upd_User, Upd_Date)
+    VALUES (v_mst_open_id, P_BranId, P_OYearId, 0, 0, v_mst_open_id, v_mst_open_id, TRUNC(SYSDATE), P_ODocId, 'فتح أرصدة بداية الفترة', P_UserId, SYSDATE, P_UserId, SYSDATE);
+
+    -- 4️⃣ توليد التسلسلات جماعياً
+    SELECT Acc_Trn_Seq.NEXTVAL BULK COLLECT INTO v_seq_close FROM DUAL CONNECT BY LEVEL <= v_cnt;
+    SELECT Acc_Trn_Seq.NEXTVAL BULK COLLECT INTO v_seq_open  FROM DUAL CONNECT BY LEVEL <= v_cnt;
+
+    -- 5️⃣ تعبئة المصفوفات
+    v_idx := 1;
+    FOR i IN 1 .. v_cnt LOOP
+        DECLARE
+            v_rate     NUMBER := CASE WHEN v_balances(i).bln <> 0 THEN ABS(v_balances(i).blnc / v_balances(i).bln) ELSE 1 END;
+            v_abs_bln  NUMBER := ABS(v_balances(i).bln);
+            v_abs_blnc NUMBER := ABS(v_balances(i).blnc);
+            v_dir      VARCHAR2(10) := CASE WHEN v_balances(i).bln > 0 THEN 'مدين' ELSE 'دائن' END;
+        BEGIN
+            v_close_trns(v_idx).id := v_seq_close(i); v_close_trns(v_idx).mst_id := v_mst_close_id;
+            v_close_trns(v_idx).acc_id := v_balances(i).acc_id; v_close_trns(v_idx).cost_id := v_balances(i).cost_id;
+            v_close_trns(v_idx).ord := i; v_close_trns(v_idx).curn_id := v_balances(i).curn_id;
+            v_close_trns(v_idx).curn_rate := v_rate; v_close_trns(v_idx).rem := 'تصفير رصيد '||v_dir;
+            IF v_balances(i).bln > 0 THEN v_close_trns(v_idx).crd:=v_abs_bln; v_close_trns(v_idx).crdc:=v_abs_blnc;
+            ELSE v_close_trns(v_idx).deb:=v_abs_bln; v_close_trns(v_idx).debc:=v_abs_blnc; END IF;
+
+            v_open_trns(v_idx).id := v_seq_open(i); v_open_trns(v_idx).mst_id := v_mst_open_id;
+            v_open_trns(v_idx).acc_id := v_balances(i).acc_id; v_open_trns(v_idx).cost_id := v_balances(i).cost_id;
+            v_open_trns(v_idx).ord := i; v_open_trns(v_idx).curn_id := v_balances(i).curn_id;
+            v_open_trns(v_idx).curn_rate := v_rate; v_open_trns(v_idx).rem := 'فتح رصيد '||v_dir;
+            IF v_balances(i).bln > 0 THEN v_open_trns(v_idx).deb:=v_abs_bln; v_open_trns(v_idx).debc:=v_abs_blnc;
+            ELSE v_open_trns(v_idx).crd:=v_abs_bln; v_open_trns(v_idx).crdc:=v_abs_blnc; END IF;
+
+            v_idx := v_idx + 1;
+        END;
+    END LOOP;
+
+    -- 6️⃣ الحقن الجماعي
+    IF v_close_trns.COUNT > 0 THEN
+        FORALL i IN 1..v_close_trns.COUNT
+            INSERT INTO Acc_Trn (Id, Mst_Id, Acc_Id, Cost_Id, Acc_RId, TDoc_Id, TDocn, TDocd, Ord, Deb, Crd, Curn_Id, Curn_Rate, DebC, CrdC, Rem, RId, SRem, Ins_User, Ins_Date, Upd_User, Upd_Date)
+            VALUES (v_close_trns(i).id, v_close_trns(i).mst_id, v_close_trns(i).acc_id, v_close_trns(i).cost_id, 0, 0, NULL, NULL, v_close_trns(i).ord, v_close_trns(i).deb, v_close_trns(i).crd, v_close_trns(i).curn_id, v_close_trns(i).curn_rate, v_close_trns(i).debc, v_close_trns(i).crdc, v_close_trns(i).rem, 0, NULL, P_UserId, SYSDATE, P_UserId, SYSDATE);
+
+        FORALL i IN 1..v_open_trns.COUNT
+            INSERT INTO Acc_Trn (Id, Mst_Id, Acc_Id, Cost_Id, Acc_RId, TDoc_Id, TDocn, TDocd, Ord, Deb, Crd, Curn_Id, Curn_Rate, DebC, CrdC, Rem, RId, SRem, Ins_User, Ins_Date, Upd_User, Upd_Date)
+            VALUES (v_open_trns(i).id, v_open_trns(i).mst_id, v_open_trns(i).acc_id, v_open_trns(i).cost_id, 0, 0, NULL, NULL, v_open_trns(i).ord, v_open_trns(i).deb, v_open_trns(i).crd, v_open_trns(i).curn_id, v_open_trns(i).curn_rate, v_open_trns(i).debc, v_open_trns(i).crdc, v_open_trns(i).rem, 0, NULL, P_UserId, SYSDATE, P_UserId, SYSDATE);
+    END IF;
+
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('✅ تمت العملية بنجاح. التصفير: '||v_mst_close_id||' | الفتح: '||v_mst_open_id);
+
+EXCEPTION
+    WHEN OTHERS THEN
+        ROLLBACK;
+        DBMS_OUTPUT.PUT_LINE('❌ فشل: '||SQLERRM);
+        RAISE_APPLICATION_ERROR(-20002, 'خطأ أثناء الترحيل: '||SQLERRM);
+END SP_Acc_Year_Open_BULK;
+/

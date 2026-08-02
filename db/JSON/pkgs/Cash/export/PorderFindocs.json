@@ -1,0 +1,53 @@
+{
+  "Name": "Cash_Porder_Findocs",
+  "Synonym": "Cash_Pordfin",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Dept_Rid",
+      "Field": "deptRid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Unit_Rid",
+      "Field": "unitRid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Oper_Rid",
+      "Field": "operRid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nord",
+      "Field": "nord",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dbcr",
+      "Field": "dbcr",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Rate",
+      "Field": "curnRate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Camt",
+      "Field": "camt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Amt",
+      "Field": "amt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

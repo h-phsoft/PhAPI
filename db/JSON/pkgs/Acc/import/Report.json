@@ -1,0 +1,33 @@
+{
+  "Name": "Acc_Report",
+  "Synonym": "Acc_Rep",
+  "Sequence": "Acc_Rep_Seq",
+  "InsUser": false,
+  "hasChilds": true,
+  "Children": [
+    {
+      "Pkg": "Acc",
+      "Key": "ReportItems",
+      "Table": "Acc_Report_Items",
+      "Synonym": "Acc_Repitm",
+      "cascadeDelete": true,
+      "Column": "REP_ID",
+      "ColKey": "repId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

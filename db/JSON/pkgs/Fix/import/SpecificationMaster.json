@@ -1,0 +1,52 @@
+{
+  "Name": "Fix_Specification_Master",
+  "Synonym": "Fix_Spcmst",
+  "Sequence": "Fix_Spcmst_Seq",
+  "InsUser": false,
+  "hasChilds": true,
+  "Children": [
+    {
+      "Pkg": "Fix",
+      "Key": "SpecificationTrans",
+      "Table": "Fix_Specification_Trans",
+      "Synonym": "Fix_Spctrn",
+      "cascadeDelete": true,
+      "Column": "FMST_ID",
+      "ColKey": "fmstId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Period_Id",
+      "Field": "periodId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Periods",
+        "SynonymName": "Cpy_Period",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "periodName"
+      }
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "Sysdate",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

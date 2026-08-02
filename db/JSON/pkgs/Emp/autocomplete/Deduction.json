@@ -1,0 +1,9 @@
+{
+  "Synonym": "Emp_Ded",
+  "Select": "SELECT Id, ' '||Name AS Name FROM Emp_Ded",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

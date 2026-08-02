@@ -1,0 +1,33 @@
+{
+  "Name": "Notif_Table_Event_Actions",
+  "Synonym": "Notif_Table_Event_Action",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dname",
+      "Field": "dname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Api",
+      "Field": "api",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Icon",
+      "Field": "icon",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

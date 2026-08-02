@@ -1,0 +1,34 @@
+{
+  "Name": "Acc_Grant_Account_View",
+  "Synonym": "Acc_Vgrant",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Acc_Num",
+      "Field": "accNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Name",
+      "Field": "accName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Fname",
+      "Field": "accFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "System_Name",
+      "Field": "systemName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

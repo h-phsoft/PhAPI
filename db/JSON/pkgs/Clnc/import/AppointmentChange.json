@@ -1,0 +1,48 @@
+{
+  "Name": "Clnc_Appointment_Change",
+  "Synonym": "Clnc_App_Change",
+  "Sequence": "Clnc_App_Change_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "App_Id",
+      "Field": "appId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Appointment",
+        "SynonymName": "Clnc_App",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "appName"
+      }
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Appointment_Status",
+        "SynonymName": "Clnc_App_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "SYSDATE",
+      "hasRelation": false
+    }, {
+      "Name": "Reason",
+      "Field": "reason",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

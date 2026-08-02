@@ -1,0 +1,33 @@
+{
+  "Name": "Crm_Representatives",
+  "Synonym": "Crm_Repr",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Cid",
+      "Field": "accCid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Comm",
+      "Field": "comm",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Target",
+      "Field": "target",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

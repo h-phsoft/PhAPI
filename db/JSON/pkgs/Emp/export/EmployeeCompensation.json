@@ -1,0 +1,124 @@
+{
+  "Name": "Emp_Employee_Compensation_View",
+  "Synonym": "Emp_Vecom",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Comp_Num",
+      "Field": "compNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Comp_Name",
+      "Field": "compName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Comtype_Name",
+      "Field": "comtypeName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Amttype_Name",
+      "Field": "amttypeName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Taxbrkt_Name",
+      "Field": "taxbrktName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Taxpay_Name",
+      "Field": "taxpayName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Comp_Pamt",
+      "Field": "compPamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Num",
+      "Field": "empNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Name",
+      "Field": "empName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Fname",
+      "Field": "empFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dept_Name",
+      "Field": "deptName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sect_Name",
+      "Field": "sectName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Job_Name",
+      "Field": "jobName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Level_Name",
+      "Field": "levelName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc1_Name",
+      "Field": "spc1Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc2_Name",
+      "Field": "spc2Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc3_Name",
+      "Field": "spc3Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc4_Name",
+      "Field": "spc4Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Start_Date",
+      "Field": "startDate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "End_Date",
+      "Field": "endDate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Name",
+      "Field": "statusName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ecomp_Pamt",
+      "Field": "ecompPamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ecomp_Rem",
+      "Field": "ecompRem",
+      "isSelected": false
+    }
+  ]
+}

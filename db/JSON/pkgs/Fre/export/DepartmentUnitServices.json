@@ -1,0 +1,13 @@
+{
+  "Name": "Fre_Department_Unit_Services",
+  "Synonym": "Fre_Duserv",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "Name": "Mng_Currency_History_View",
+  "Synonym": "Mng_Vcurnhist",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Curn_Name",
+      "Field": "curnName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Code",
+      "Field": "curnCode",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Rate",
+      "Field": "curnRate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Status",
+      "Field": "curnStatus",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Rem",
+      "Field": "curnRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Chist_Date",
+      "Field": "chistDate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Chist_Rate",
+      "Field": "chistRate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Chist_Rem",
+      "Field": "chistRem",
+      "isSelected": false
+    }
+  ]
+}

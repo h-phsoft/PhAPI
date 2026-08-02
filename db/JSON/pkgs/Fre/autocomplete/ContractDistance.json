@@ -1,0 +1,9 @@
+{
+  "Synonym": "Fre_Dcntrct",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Fre_Dcntrct",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

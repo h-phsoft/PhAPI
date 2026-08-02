@@ -1,0 +1,48 @@
+{
+  "Name": "Clnc_Laboratory",
+  "Synonym": "Clnc_Labor",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mobile",
+      "Field": "mobile",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Phone1",
+      "Field": "phone1",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Phone2",
+      "Field": "phone2",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Email",
+      "Field": "email",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Company",
+      "Field": "company",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Langs",
+      "Field": "langs",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Descr",
+      "Field": "descr",
+      "isSelected": false
+    }
+  ]
+}

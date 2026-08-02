@@ -1,0 +1,346 @@
+{
+  "Name": "Str_Default_Accounts",
+  "Synonym": "Str_Defacc",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Order": "Id",
+  "Actions": [
+  ],
+  "Options": {
+
+  },
+  "Fields": [
+    {
+      "Name": "Id",
+      "Expression": "",
+      "Field": "id",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "100px",
+        "Color": "000000",
+        "bgColor": "FFFFFFFF",
+        "Align": "start"
+      }
+    }
+    , {
+      "Name": "Stor_Id",
+      "Expression": "",
+      "Field": "storId",
+      "Autocomplete": {
+        "Pkg": "Str_Stores",
+        "Name": "Str_Store",
+        "Condition": "{}"
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "100px",
+        "Color": "000000",
+        "bgColor": "FFFFFFFF",
+        "Align": "start"
+      }
+    }
+    , {
+      "Name": "Trntyp_Id",
+      "Expression": "",
+      "Field": "trntypId",
+      "Autocomplete": {
+        "Pkg": "Str_Code_Transaction_Type",
+        "Name": "Str_Cod_Trntyp",
+        "Condition": "{}"
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "100px",
+        "Color": "000000",
+        "bgColor": "FFFFFFFF",
+        "Align": "start"
+      }
+    }
+    , {
+      "Name": "Cstacc_Id",
+      "Expression": "",
+      "Field": "cstaccId",
+      "Autocomplete": {
+        "Pkg": "Acc_Account",
+        "Name": "Acc_Acc",
+        "Condition": "{}"
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "100px",
+        "Color": "000000",
+        "bgColor": "FFFFFFFF",
+        "Align": "start"
+      }
+    }
+    , {
+      "Name": "Revacc_Id",
+      "Expression": "",
+      "Field": "revaccId",
+      "Autocomplete": {
+        "Pkg": "Acc_Account",
+        "Name": "Acc_Acc",
+        "Condition": "{}"
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "100px",
+        "Color": "000000",
+        "bgColor": "FFFFFFFF",
+        "Align": "start"
+      }
+    }
+    , {
+      "Name": "Rem",
+      "Expression": "",
+      "Field": "rem",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "100px",
+        "Color": "000000",
+        "bgColor": "FFFFFFFF",
+        "Align": "start"
+      }
+    }
+    , {
+      "Name": "Ins_User",
+      "Expression": "",
+      "Field": "insUser",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "100px",
+        "Color": "000000",
+        "bgColor": "FFFFFFFF",
+        "Align": "start"
+      }
+    }
+    , {
+      "Name": "Ins_Date",
+      "Expression": "",
+      "Field": "insDate",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><", "%", "!%"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "100px",
+        "Color": "000000",
+        "bgColor": "FFFFFFFF",
+        "Align": "start"
+      }
+    }
+    , {
+      "Name": "Upd_User",
+      "Expression": "",
+      "Field": "updUser",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "100px",
+        "Color": "000000",
+        "bgColor": "FFFFFFFF",
+        "Align": "start"
+      }
+    }
+    , {
+      "Name": "Upd_Date",
+      "Expression": "",
+      "Field": "updDate",
+      "Autocomplete": {
+      },
+      "isVisible": "true",
+      "isFilter": "true",
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><", "%", "!%"],
+      "isDisplay": "true",
+      "isGroup": "true",
+      "defaultAggregate": "0",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": "true",
+        "Min": "true",
+        "Max": "true",
+        "Avg": "true",
+        "StdDev": "true",
+        "Variance": "true",
+        "Median": "true"
+      },
+      "Default": "",
+      "isOrder": true,
+      "Style": {
+        "Width": "100px",
+        "Color": "000000",
+        "bgColor": "FFFFFFFF",
+        "Align": "start"
+      }
+    }
+  ]
+}

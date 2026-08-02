@@ -1,0 +1,47 @@
+{
+  "Name": "Prd_Plan_Trn",
+  "Synonym": "Prd_Tplan",
+  "Sequence": "Prd_Tplan_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Plan_Id",
+      "Field": "planId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Prd_Plan_Mst",
+        "SynonymName": "Prd_Mplan",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "planName"
+      }
+    }, {
+      "Name": "Item_Id",
+      "Field": "itemId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Form_Id",
+      "Field": "formId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Qnt",
+      "Field": "qnt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

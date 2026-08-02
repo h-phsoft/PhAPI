@@ -1,0 +1,38 @@
+{
+  "Name": "Cash_Porder_Apvs",
+  "Synonym": "Cash_Pordapv",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Apord_Rid",
+      "Field": "apordRid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nord",
+      "Field": "nord",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Rate",
+      "Field": "curnRate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Camt",
+      "Field": "camt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Amt",
+      "Field": "amt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

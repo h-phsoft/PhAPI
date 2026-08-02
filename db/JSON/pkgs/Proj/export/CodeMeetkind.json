@@ -1,0 +1,18 @@
+{
+  "Name": "Proj_Code_Meetkind",
+  "Synonym": "Proj_Cod_Meetkind",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "Name": "Copy_Unit_Forward_Status",
+  "Synonym": "Cpy_Unit_Frwrd_Status",
+  "Sequence": "Cpy_Unit_Frwrd_Status_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Status",
+        "SynonymName": "Phs_Cod_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }, {
+      "Name": "Urstatusr_Id",
+      "Field": "urstatusrId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Unit_Receive_Status",
+        "SynonymName": "Cpy_Unit_Rec_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "urstatusrName"
+      }
+    }, {
+      "Name": "Urstatusf_Id",
+      "Field": "urstatusfId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Unit_Receive_Status",
+        "SynonymName": "Cpy_Unit_Rec_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "urstatusfName"
+      }
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

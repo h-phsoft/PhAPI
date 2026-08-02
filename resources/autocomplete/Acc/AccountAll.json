@@ -1,0 +1,9 @@
+{
+  "Synonym": "Acc_Acc",
+  "Select": "SELECT Id, Num||' - '||Name AS Name FROM Acc_Acc",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' - '||Name) LIKE '%{term}%'"
+  },
+  "OrderBy": "Num"
+}

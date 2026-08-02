@@ -1,0 +1,62 @@
+{
+  "Name": "Copy_Permision_Specprivileges",
+  "Synonym": "Cpy_Permspriv",
+  "Sequence": "Cpy_Permspriv_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Perm_Id",
+      "Field": "permId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Permision",
+        "SynonymName": "Cpy_Perm",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "permName"
+      }
+    }, {
+      "Name": "Sprv_Id",
+      "Field": "sprvId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Special_Privileges",
+        "SynonymName": "Phs_Specpriv",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "sprvName"
+      }
+    }, {
+      "Name": "Slist_Id",
+      "Field": "slistId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Speciallists",
+        "SynonymName": "Cpy_Slist",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "slistName"
+      }
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Yesno",
+        "SynonymName": "Phs_Cod_Yesno",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }
+  ]
+}

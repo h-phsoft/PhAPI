@@ -1,0 +1,23 @@
+{
+  "Name": "Mng_Unit_Formula",
+  "Synonym": "Mng_Unit_Form",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Perc",
+      "Field": "perc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Minunit",
+      "Field": "minunit",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

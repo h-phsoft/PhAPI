@@ -1,0 +1,141 @@
+{
+  "Name": "Trn_Code_Model",
+  "Synonym": "Trn_Cod_Model",
+  "Sequence": "Trn_Cod_Model_Seq",
+  "Condition": "Id>0",
+  "Order": "Id",
+  "InsUser": true,
+  "UpdUser": true,
+  "AutoIncrement": true,
+  "AutoNumber": {
+    "Status": false,
+    "Field": "num",
+    "Aggregate": "",
+    "Condition": ""
+  },
+  "Select": "SELECT Id, Status_Id, Name, Axes, Weight, Rem, Image FROM Trn_Cod_Model",
+  "Insert": "INSERT INTO Trn_Cod_Model (Id, Status_Id, Name, Axes, Weight, Rem, Image, Ins_User, Ins_Date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, Sysdate)",
+  "Update": "UPDATE Trn_Cod_Model SET Status_Id=?, Name=?, Axes=?, Weight=?, Rem=?, Image=?, Upd_User=?, Upd_Date=Sysdate WHERE Id=?",
+  "hasChilds": true,
+  "Children": [
+    {
+      "ChildKey": "child",
+      "Pkg": "Trn",
+      "Key": "CodeModelDetails",
+      "Table": "Trn_Code_Model_Details",
+      "Synonym": "Trn_Cod_Model_Detail",
+      "cascadeDelete": true,
+      "Column": "Model_Id",
+      "ColKey": "modelId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": false
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Status",
+        "SynonymName": "Phs_Cod_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      },
+      "isNull": false
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": false
+    }, {
+      "Name": "Axes",
+      "Field": "axes",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "2",
+      "Default": "2",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": false
+    }, {
+      "Name": "Weight",
+      "Field": "weight",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Int",
+      "Scale": "0",
+      "Precision": "7",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": true
+    }, {
+      "Name": "Image",
+      "Field": "image",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "isFile": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": false
+    }
+  ]
+}

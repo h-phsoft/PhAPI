@@ -1,0 +1,59 @@
+{
+  "Name": "Copy_Permision_Privileges_View",
+  "Synonym": "Cpy_Vgppriv",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Grp_Name",
+      "Field": "grpName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grp_Wper",
+      "Field": "grpWper",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grp_Rem",
+      "Field": "grpRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Menu_Name",
+      "Field": "menuName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mprg_Ord",
+      "Field": "mprgOrd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mprg_Name",
+      "Field": "mprgName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mprg_Url",
+      "Field": "mprgUrl",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mprg_Status",
+      "Field": "mprgStatus",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Perm_Ok",
+      "Field": "permOk",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Pprv_Ok",
+      "Field": "pprvOk",
+      "isSelected": false
+    }
+  ]
+}

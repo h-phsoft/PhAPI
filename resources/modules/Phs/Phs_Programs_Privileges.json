@@ -1,0 +1,146 @@
+{
+  "package": "Phs",
+  "module": "Phs",
+  "tableName": "Phs_Programs_Privileges",
+  "synonym": "Phs_Mprgpriv",
+  "primaryKey": "id",
+  "hasChilds": false,
+  "children": [],
+  "auditFields": {
+    "createdBy": "insUser",
+    "createdAt": "insDate",
+    "updatedBy": "updUser",
+    "updatedAt": "updDate"
+  },
+  "fields": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "20",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Id",
+        "Synonym": "Phs_Mprgpriv",
+        "Sequence": "Phs_Mprgpriv_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": false,
+      "relation": null
+    },
+    {
+      "Name": "Mprg_Id",
+      "Field": "mprgId",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "20",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Mprg_Id",
+        "Synonym": "Phs_Mprgpriv",
+        "Sequence": "Phs_Mprgpriv_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": false,
+      "relation": {
+        "refTable": "Phs_Menu_Programs",
+        "refSynonym": "Phs_Mprg",
+        "primaryKey": "Id",
+        "foreignKey": "Mprg_Id",
+        "displayField": "Name",
+        "apiDisplayField": "mprgName"
+      }
+    },
+    {
+      "Name": "Prv_Id",
+      "Field": "prvId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Prv_Id",
+        "Synonym": "Phs_Mprgpriv",
+        "Sequence": "Phs_Mprgpriv_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": false,
+      "relation": {
+        "refTable": "Phs_Privileges",
+        "refSynonym": "Phs_Priv",
+        "primaryKey": "Id",
+        "foreignKey": "Prv_Id",
+        "displayField": "Name",
+        "apiDisplayField": "prvName"
+      }
+    },
+    {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Status_Id",
+        "Synonym": "Phs_Mprgpriv",
+        "Sequence": "Phs_Mprgpriv_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": false,
+      "relation": {
+        "refTable": "Phs_Code_Status",
+        "refSynonym": "Phs_Cod_Status",
+        "primaryKey": "Id",
+        "foreignKey": "Status_Id",
+        "displayField": "Name",
+        "apiDisplayField": "statusName"
+      }
+    }
+  ]
+}

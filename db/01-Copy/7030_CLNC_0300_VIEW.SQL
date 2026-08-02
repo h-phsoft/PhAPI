@@ -1,0 +1,362 @@
+CREATE OR REPLACE VIEW Clnc_Procedures_View AS
+ SELECT ALL
+        C.Id         Cat_Id       ,
+        C.Status_Id  Cat_Status_Id,
+        C.Special_Id Cat_Special_Id,
+        C.Name       Cat_Name     ,
+        C.Rem        Cat_Rem      ,
+        P.Id         Proc_Id      ,
+        P.Vat_Id     Proc_Vat_Id  ,
+        P.Code       Proc_Code    ,
+        P.Name       Proc_Name    ,
+        P.Price      Proc_Price   ,
+        P.Vat        Proc_Vat
+   FROM Clnc_Cat  C,
+        Clnc_Proc P
+  WHERE P.Cat_Id=C.Id
+/
+Create Synonym Clnc_VProc For Clnc_Procedures_View
+/
+
+CREATE OR REPLACE VIEW Clnc_Doctors_View AS
+ SELECT ALL
+        D.Id     Doctor_Id    , D.Name   Doctor_Name  ,
+        ST.Id    Status_Id    , ST.Name  Status_Name  ,
+        G.Id     Gender_Id    , G.Name   Gender_Name  ,
+        M.Id     Martial_Id   , M.Name   Martial_Name ,
+        I.Id     IdType_Id    , I.Name   IdType_Name  ,
+        N.Id     Nat_Id       , N.Name   Nat_Name     ,
+        S.Id     Special_Id   , S.Name   Special_Name ,
+        U.Id     User_id      , U.Name   User_Name    ,
+        D.DoB    Doctor_DoB   , D.IdNum  Doctor_IdNum ,
+        D.NatNum Doctor_NatNum, D.Mobile Doctor_Mobile,
+        D.Phone1 Doctor_Phone1, D.Phone2 Doctor_Phone2,
+        D.Email  Doctor_Email , D.Langs  Doctor_Langs ,
+        D.Descr  Doctor_Descr
+   FROM Clnc_Doctor     D ,
+        Phs_Cod_Gender  G ,
+        Phs_Cod_Status  ST,
+        Phs_Cod_IdType  I ,
+        Phs_Cod_Marital M ,
+        Clnc_Cod_Nat    N ,
+        Clnc_Special    S ,
+        Cpy_User        U
+  WHERE D.Status_Id =ST.Id
+    AND D.Gender_Id =G.Id
+    AND D.Martial_Id=M.Id
+    AND D.IdType_Id =I.Id
+    AND D.Nat_Id    =N.Id
+    AND D.Special_Id=S.Id
+    AND D.User_id   =U.Id
+/
+Create Synonym Clnc_VDoctor For Clnc_Doctors_View
+/
+
+CREATE OR REPLACE VIEW Clnc_Patients_View AS
+ SELECT ALL
+        P.Id      Patient_Id     , P.Name    Patient_Name   ,
+        C.Id      Clinic_Id      , C.Name    Clinic_Name    ,
+        L.Id      List_Id        , L.Name    List_Name      ,
+        G.Id      Gender_Id      , G.Name    Gender_Name    ,
+        M.Id      Martial_Id     , M.Name    Martial_Name   ,
+        I.Id      IdType_Id      , I.Name    IdType_Name    ,
+        N.Id      Nat_Id         , N.Name    Nat_Name       ,
+        P.DoB     Patient_DoB    , P.IdNum   Patient_IdNum  ,
+        P.NatNum  Patient_NatNum , P.Mobile  Patient_Mobile ,
+        P.Phone1  Patient_Phone1 , P.Phone2  Patient_Phone2 ,
+        P.Email   Patient_Email  , P.Company Patient_Company,
+        P.Langs   Patient_Langs  , P.Descr   Patient_Descr
+   FROM Clnc_Patient    P,
+        Clnc_Clinic     C,
+        Clnc_List       L,
+        Phs_Cod_Gender  G,
+        Phs_Cod_IdType  I,
+        Phs_Cod_Marital M,
+        Clnc_Cod_Nat    N
+  WHERE P.Clinic_Id =C.Id
+    AND P.Gender_Id =G.Id
+    AND P.Martial_Id=M.Id
+    AND P.IdType_Id =I.Id
+    AND P.Nat_Id    =N.Id
+/
+Create Synonym Clnc_VPatient For Clnc_Patients_View
+/
+
+CREATE OR REPLACE VIEW Clnc_Appointment_View AS
+ SELECT ALL
+        A.Id              APP_Id               ,
+        C.Id              Clinic_Id            , C.Name            Clinic_Name         ,
+        C.Status_id       Clinic_Status_id     , C.Email           Clinic_Email        , 
+        C.Phone1          Clinic_Phone1        , C.Phone2          Clinic_Phone2       , 
+        C.Phone3          Clinic_Phone3        , C.Address         Clinic_Address      ,
+        SP.Id             APP_Special_Id       , SP.Name           App_Special_Name    ,
+        SP.Status_Id      APP_Special_Status_Id, SP.Rem            App_Special_Rem     ,
+        ST.Id             APP_Status_Id        , ST.Name           App_Status_Name     ,
+        ST.BG             APP_Status_BG        , ST.FG             App_Status_FG       ,
+        TP.Id             App_Type_Id          , TP.Name           App_Type_Name       ,
+        TP.Capacity       APP_Type_Capacity    , TP.Minutes        App_Type_Minutes    ,
+        TP.Title_BG       APP_Type_Title_BG    , TP.Title_FG       App_Type_Title_FG   ,
+        TP.Patient_FG     APP_Type_Patient_FG  , 
+        D.Doctor_Id     , D.Doctor_Name        , D.Doctor_DoB    , D.Doctor_IdNum      ,
+        D.Status_Id       Doctor_Status_Id     , D.Status_Name     Doctor_Status_Name  ,
+        D.Gender_Id       Doctor_Gender_Id     , D.Gender_Name     Doctor_Gender_Name  ,
+        D.Martial_Id      Doctor_Martial_Id    , D.Martial_Name    Doctor_Martial_Name ,
+        D.IdType_Id       Doctor_IdType_Id     , D.IdType_Name     Doctor_IdType_Name  ,
+        D.Nat_Id          Doctor_Nat_Id        , D.Nat_Name        Doctor_Nat_Name     ,
+        D.Special_Id      Doctor_Special_Id    , D.Special_Name    Doctor_Special_Name ,
+        D.User_id         Doctor_User_id       , D.User_Name       Doctor_User_Name    ,
+        D.Doctor_NatNum , D.Doctor_Mobile      , D.Doctor_Phone1 , D.Doctor_Phone2     ,
+        D.Doctor_Email  , D.Doctor_Langs       , D.Doctor_Descr  ,
+        P.Patient_Id    , P.Patient_Name       ,
+        P.Clinic_Id       Patient_Clinic_Id    , P.Clinic_Name     Patient_Clinic_Name ,
+        P.List_Id         Patient_List_Id      , P.List_Name       Patient_List_Name   ,
+        P.Gender_Id       Patient_Gender_Id    , P.Gender_Name     Patient_Gender_Name ,
+        P.Martial_Id      Patient_Martial_Id   , P.Martial_Name    Patient_Martial_Name,
+        P.IdType_Id       Patient_IdType_Id    , P.IdType_Name     Patient_IdType_Name ,
+        P.Nat_Id          Patient_Nat_Id       , P.Nat_Name        Patient_Nat_Name    ,
+        P.Patient_DoB   , P.Patient_IdNum      , P.Patient_NatNum, P.Patient_Mobile    ,
+        P.Patient_Phone1, P.Patient_Phone2     , P.Patient_Email , P.Patient_Company   ,
+        P.Patient_Langs , P.Patient_Descr      ,
+        To_Number(To_Char(A.DDate,'YYYY'))       D_Year          ,
+        To_Number(To_Char(A.DDate,'MM'))         D_Month         ,
+        To_Number(To_Char(A.DDate,'DD'))         D_DayOfMonth    ,
+        To_Number(To_Char(A.DDate,'DDD'))        D_DayOfYear     ,
+        To_Number(To_Char(A.DDate,'D'))          D_DayOfWeek     ,
+        To_Char(A.DDate,'YYYY-MM')               D_YearMonth     ,
+        To_Char(A.DDate,'YYYY-DDD')              D_YearDay       ,
+        A.dDate           App_dDate            , A.Minutes         App_Minutes         ,
+        A.nHour           App_nHour            , A.nMinute         App_nMinute         ,
+        A.Amt             App_Amt              , A.Descr           App_Descr
+   FROM Clnc_App        A ,
+        Clnc_Clinic     C ,
+        Clnc_Special    SP,
+        Clnc_App_Status ST,
+        Clnc_App_Type   TP,
+        Clnc_VDoctor    D ,
+        Clnc_VPatient   P
+  WHERE A.Clinic_Id =C.Id
+    AND A.Special_Id=SP.Id
+    AND A.Status_Id =ST.Id
+    AND A.Type_Id   =TP.Id
+    AND A.Doctor_Id =D.Doctor_Id
+    AND A.Patient_Id=P.Patient_Id
+/
+Create Synonym Clnc_VApp For Clnc_Appointment_View
+/
+
+CREATE OR REPLACE VIEW Clnc_Treatment_View AS
+ SELECT ALL
+        C.Id              Clinic_Id           , C.Name           Clinic_Name          ,
+        D.Doctor_Id     , D.Doctor_Name       ,
+        D.Status_Id       Doctor_Status_Id    , D.Status_Name     Doctor_Status_Name  ,
+        D.Gender_Id       Doctor_Gender_Id    , D.Gender_Name     Doctor_Gender_Name  ,
+        D.Martial_Id      Doctor_Martial_Id   , D.Martial_Name    Doctor_Martial_Name ,
+        D.IdType_Id       Doctor_IdType_Id    , D.IdType_Name     Doctor_IdType_Name  ,
+        D.Nat_Id          Doctor_Nat_Id       , D.Nat_Name        Doctor_Nat_Name     ,
+        D.Special_Id      Doctor_Special_Id   , D.Special_Name    Doctor_Special_Name ,
+        D.User_id         Doctor_User_id      , D.User_Name       Doctor_User_Name    ,
+        D.Doctor_DoB    , D.Doctor_IdNum      , D.Doctor_NatNum , D.Doctor_Mobile     ,
+        D.Doctor_Phone1 , D.Doctor_Phone2     , D.Doctor_Email  , D.Doctor_Langs      ,
+        D.Doctor_Descr  ,
+        P.Patient_Id    , P.Patient_Name      ,
+        P.Clinic_Id       Patient_Clinic_Id   , P.Clinic_Name     Patient_Clinic_Name ,
+        P.List_Id         Patient_List_Id     , P.List_Name       Patient_List_Name   ,
+        P.Gender_Id       Patient_Gender_Id   , P.Gender_Name     Patient_Gender_Name ,
+        P.Martial_Id      Patient_Martial_Id  , P.Martial_Name    Patient_Martial_Name,
+        P.IdType_Id       Patient_IdType_Id   , P.IdType_Name     Patient_IdType_Name ,
+        P.Nat_Id          Patient_Nat_Id      , P.Nat_Name        Patient_Nat_Name    ,
+        P.Patient_DoB   , P.Patient_IdNum     , P.Patient_NatNum, P.Patient_Mobile    ,
+        P.Patient_Phone1, P.Patient_Phone2    , P.Patient_Email , P.Patient_Company   ,
+        P.Patient_Langs , P.Patient_Descr     ,
+        To_Number(To_Char(TM.DDate,'YYYY'))     D_Year          ,
+        To_Number(To_Char(TM.DDate,'MM'))       D_Month         ,
+        To_Number(To_Char(TM.DDate,'DD'))       D_DayOfMonth    ,
+        To_Number(To_Char(TM.DDate,'DDD'))      D_DayOfYear     ,
+        To_Number(To_Char(TM.DDate,'D'))        D_DayOfWeek     ,
+        To_Char(TM.DDate,'YYYY-MM')             D_YearMonth     ,
+        To_Char(TM.DDate,'YYYY-DDD')            D_YearDay       ,
+        ST.Id             Status_Id           , ST.Name           Status_Name         ,
+        TM.Id             Treat_Id            , TM.Inv_Id         Treat_Inv_Id        ,
+        TM.dDate          Treat_Date          , TM.Descr          Treat_Descr         ,
+        CT.Id             Cat_Id              , CT.Status_Id      Cat_Status_Id       ,
+        CT.Name           Cat_Name            , CT.Rem            Cat_Rem             ,
+        PR.Id             Proc_Id             , PR.Cat_Id         Proc_Cat_Id         ,
+        PR.Vat_Id         Proc_Vat_Id         , PR.Code           Proc_Code           ,
+        PR.Name           Proc_Name           , PR.Price          Proc_Price          ,
+        PR.Vat            Proc_Vat            ,
+        VT.Id             Vat_Id              , VT.Name           Vat_Name            ,
+        TP.Id             Treat_Proc_Id       , TP.Qnt            Treat_Proc_Qnt      ,
+        TP.Price          Treat_Proc_Price    , TP.Discount       Treat_Proc_Discount ,
+        TP.Amt            Treat_Proc_Amt      , TP.Vat_Value      Treat_Proc_Vat_Value,
+        TP.Vat_Amt        Treat_Proc_Vat_Amt  , TP.dDate          Treat_Proc_dDate    ,
+        TP.Descr          Treat_Proc_Descr
+   FROM Clnc_Treat        TM,
+        Clnc_Clinic       C ,
+        Clnc_VDoctor      D ,
+        Clnc_VPatient     P ,
+        Clnc_Treat_Status ST,
+        Clnc_Treat_Proc   TP,
+        Clnc_Cod_Vat      VT,
+        Clnc_Cat          CT,
+        Clnc_Proc         PR
+  WHERE TP.Treat_Id  =TM.Id
+    AND TM.Clinic_Id =C.Id
+    AND TM.Doctor_Id =D.Doctor_Id
+    AND TM.Patient_Id=P.Patient_Id
+    AND TM.Status_Id =ST.Id
+    AND PR.Cat_Id    =CT.Id
+    AND TP.Proc_Id   =PR.Id
+/
+Create Synonym Clnc_VTreat For Clnc_Treatment_View
+/
+
+CREATE OR REPLACE VIEW Clnc_Laboratory_Send_View AS
+ SELECT ALL
+        L.Id       Labor_Id       ,
+        L.Name     Labor_Name     ,
+        L.Mobile   Labor_Mobile   ,
+        L.Phone1   Labor_Phone1   ,
+        L.Phone2   Labor_Phone2   ,
+        L.Email    Labor_Email    ,
+        L.Company  Labor_Company  ,
+        L.Langs    Labor_Langs    ,
+        L.Descr    Labor_Descr    ,
+        D.Id       Doctor_Id      , D.Name     Doctor_Name    ,
+        D.DoB      Doctor_DoB     , D.IdNum    Doctor_IdNum   ,
+        D.NatNum   Doctor_NatNum  , D.Mobile   Doctor_Mobile  ,
+        D.Phone1   Doctor_Phone1  , D.Phone2   Doctor_Phone2  ,
+        D.Email    Doctor_Email   , D.Langs    Doctor_Langs   ,
+        D.Descr    Doctor_Descr   ,
+        C.Id       Clinic_Id      , C.Name     Clinic_Name    ,
+        P.Id       Patient_Id     , P.Name     Patient_Name   ,
+        P.DoB      Patient_DoB    , P.IdNum    Patient_IdNum  ,
+        P.NatNum   Patient_NatNum , P.Mobile   Patient_Mobile ,
+        P.Phone1   Patient_Phone1 , P.Phone2   Patient_Phone2 ,
+        P.Email    Patient_Email  , P.Company  Patient_Company,
+        P.Langs    Patient_Langs  , P.Descr    Patient_Descr  ,
+        S.Id       Send_Id        , S.dDate    Send_dDate     ,
+        To_Number(To_Char(S.DDate,'YYYY'))     D_Year         ,
+        To_Number(To_Char(S.DDate,'MM'))       D_Month        ,
+        To_Number(To_Char(S.DDate,'DD'))       D_DayOfMonth   ,
+        To_Number(To_Char(S.DDate,'DDD'))      D_DayOfYear    ,
+        To_Number(To_Char(S.DDate,'D'))        D_DayOfWeek    ,
+        To_Char(S.DDate,'YYYY-MM')             D_YearMonth    ,
+        To_Char(S.DDate,'YYYY-DDD')            D_YearDay      ,
+        S.Qnt      Send_Qnt       , S.CQnt     Send_CQnt      ,
+        S.Descr    Send_Descr
+   FROM Clnc_Doctor     D,
+        Clnc_Labor      L,
+        Clnc_Labor_Send S,
+        Clnc_Clinic     C,
+        Clnc_Patient    P
+  WHERE S.Labor_Id  =L.Id
+    AND S.Doctor_Id =D.Id
+    AND S.Clinic_Id =C.Id
+    AND S.Patient_Id=P.Id
+/
+Create Synonym Clnc_VLabor_Send For Clnc_Laboratory_Send_View
+/
+
+CREATE OR REPLACE VIEW Clnc_Laboratory_Recieve_View AS
+ SELECT ALL
+        L.Id       Labor_Id       ,
+        L.Name     Labor_Name     ,
+        L.Mobile   Labor_Mobile   ,
+        L.Phone1   Labor_Phone1   ,
+        L.Phone2   Labor_Phone2   ,
+        L.Email    Labor_Email    ,
+        L.Company  Labor_Company  ,
+        L.Langs    Labor_Langs    ,
+        L.Descr    Labor_Descr    ,
+        D.Id       Doctor_Id      , D.Name     Doctor_Name    ,
+        D.DoB      Doctor_DoB     , D.IdNum    Doctor_IdNum   ,
+        D.NatNum   Doctor_NatNum  , D.Mobile   Doctor_Mobile  ,
+        D.Phone1   Doctor_Phone1  , D.Phone2   Doctor_Phone2  ,
+        D.Email    Doctor_Email   , D.Langs    Doctor_Langs   ,
+        D.Descr    Doctor_Descr   ,
+        C.Id       Clinic_Id      , C.Name     Clinic_Name    ,
+        P.Id       Patient_Id     , P.Name     Patient_Name   ,
+        P.DoB      Patient_DoB    , P.IdNum    Patient_IdNum  ,
+        P.NatNum   Patient_NatNum , P.Mobile   Patient_Mobile ,
+        P.Phone1   Patient_Phone1 , P.Phone2   Patient_Phone2 ,
+        P.Email    Patient_Email  , P.Company  Patient_Company,
+        P.Langs    Patient_Langs  , P.Descr    Patient_Descr  ,
+        R.Id       Recieve_Id     , R.Send_Id  Send_Id        ,
+        R.dDate    Recieve_dDate  ,
+        To_Number(To_Char(R.DDate,'YYYY'))     D_Year         ,
+        To_Number(To_Char(R.DDate,'MM'))       D_Month        ,
+        To_Number(To_Char(R.DDate,'DD'))       D_DayOfMonth   ,
+        To_Number(To_Char(R.DDate,'DDD'))      D_DayOfYear    ,
+        To_Number(To_Char(R.DDate,'D'))        D_DayOfWeek    ,
+        To_Char(R.DDate,'YYYY-MM')             D_YearMonth    ,
+        To_Char(R.DDate,'YYYY-DDD')            D_YearDay      ,
+        R.Qnt      Recieve_Qnt    ,
+        R.Descr    Recieve_Descr
+   FROM Clnc_Doctor        D,
+        Clnc_Labor         L,
+        Clnc_Labor_Receive R,
+        Clnc_Clinic        C,
+        Clnc_Patient       P
+  WHERE R.Labor_Id  =L.Id
+    AND R.Doctor_Id =D.Id
+    AND R.Clinic_Id =C.Id
+    AND R.Patient_Id=P.Id
+/
+Create Synonym Clnc_VLabor_Recieve For Clnc_Laboratory_Recieve_View
+/
+
+CREATE OR REPLACE VIEW Clnc_Laboratory_Send_Recieve_View AS
+ SELECT ALL
+        Labor_Id       ,
+        1                Type_Id        , 'Clnc.Send'      Type_Name      ,
+        Labor_Name     , Labor_Mobile   , Labor_Phone1   , Labor_Phone2   ,
+        Labor_Email    , Labor_Company  , Labor_Langs    , Labor_Descr    ,
+        Doctor_Id      , Doctor_Name    , Doctor_DoB     , Doctor_IdNum   ,
+        Doctor_NatNum  , Doctor_Mobile  , Doctor_Phone1  , Doctor_Phone2  ,
+        Doctor_Email   , Doctor_Langs   , Doctor_Descr   ,
+        Clinic_Id      , Clinic_Name    , Patient_Id     , Patient_Name   ,
+        Patient_DoB    , Patient_IdNum  , Patient_NatNum , Patient_Mobile ,
+        Patient_Phone1 , Patient_Phone2 , Patient_Email  , Patient_Company,
+        Patient_Langs  , Patient_Descr  ,
+        Send_Id          SR_Id          ,
+        Send_dDate       SR_SDate       , Send_dDate       SR_RDate       ,
+        D_Year         ,
+        D_Month        ,
+        D_DayOfMonth   ,
+        D_DayOfYear    ,
+        D_DayOfWeek    ,
+        D_YearMonth    ,
+        D_YearDay      ,
+        Send_Qnt         SR_SQnt        , 0                SR_RQnt        ,
+        Send_Qnt         SR_Qnt         , Send_Descr
+   FROM Clnc_VLabor_Send
+UNION ALL
+ SELECT ALL
+        R.Labor_Id       ,
+        2                  Type_Id          , 'Clnc.Recieve'     Type_Name        ,
+        R.Labor_Name     , R.Labor_Mobile   , R.Labor_Phone1   , R.Labor_Phone2   ,
+        R.Labor_Email    , R.Labor_Company  , R.Labor_Langs    , R.Labor_Descr    ,
+        R.Doctor_Id      , R.Doctor_Name    , R.Doctor_DoB     , R.Doctor_IdNum   ,
+        R.Doctor_NatNum  , R.Doctor_Mobile  , R.Doctor_Phone1  , R.Doctor_Phone2  ,
+        R.Doctor_Email   , R.Doctor_Langs   , R.Doctor_Descr   ,
+        R.Clinic_Id      , R.Clinic_Name    , R.Patient_Id     , R.Patient_Name   ,
+        R.Patient_DoB    , R.Patient_IdNum  , R.Patient_NatNum , R.Patient_Mobile ,
+        R.Patient_Phone1 , R.Patient_Phone2 , R.Patient_Email  , R.Patient_Company,
+        R.Patient_Langs  , R.Patient_Descr  ,
+        R.Recieve_Id       SR_Id            ,
+        S.Send_dDate       SR_SDate         , R.Recieve_dDate    SR_RDate         ,
+        S.D_Year         ,
+        S.D_Month        ,
+        S.D_DayOfMonth   ,
+        S.D_DayOfYear    ,
+        S.D_DayOfWeek    ,
+        S.D_YearMonth    ,
+        S.D_YearDay      ,
+        0                  SR_SQnt          , R.Recieve_Qnt      SR_RQnt          ,
+        -1*R.Recieve_Qnt   SR_Qnt           , R.Recieve_Descr
+   FROM Clnc_VLabor_Recieve R,
+        Clnc_VLabor_Send    S
+  WHERE R.Send_Id=S.Send_Id
+/
+Create Synonym Clnc_VLabor_SR For Clnc_Laboratory_Send_Recieve_View
+/

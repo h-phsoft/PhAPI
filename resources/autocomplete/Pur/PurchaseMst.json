@@ -1,0 +1,9 @@
+{
+  "Synonym": "Pur_Mpur",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Pur_Mpur",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

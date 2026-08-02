@@ -1,0 +1,67 @@
+{
+  "Name": "Notif_Table_Event_Description",
+  "Synonym": "Notif_Table_Event_Descr",
+  "Sequence": "Notif_Table_Event_Descr_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Tevent_Id",
+      "Field": "teventId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Notif_Table_Events",
+        "SynonymName": "Notif_Table_Eevnt",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "teventName"
+      }
+    }, {
+      "Name": "Field_Id",
+      "Field": "fieldId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Notif_Tables_Fields",
+        "SynonymName": "Notif_Table_Fld",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "fieldName"
+      }
+    }, {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Notif_Code_Content_Type",
+        "SynonymName": "Notif_Cod_Cont_Type",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "typeName"
+      }
+    }, {
+      "Name": "Norder",
+      "Field": "norder",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Value",
+      "Field": "value",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

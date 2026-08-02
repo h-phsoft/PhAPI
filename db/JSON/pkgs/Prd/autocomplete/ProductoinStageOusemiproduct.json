@@ -1,0 +1,9 @@
+{
+  "Synonym": "Prd_Prod_Stage_Osemi",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Prd_Prod_Stage_Osemi",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

@@ -1,0 +1,10 @@
+{
+  "Synonym": "Crm_Cod_Itm",
+  "Select": "SELECT Id, Name FROM Crm_Cod_Itm",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(' '||Name) LIKE '%{term}%'",
+    "nGrpId": "Grp_Id={nGrpId}"
+  },
+  "OrderBy": "Name"
+}

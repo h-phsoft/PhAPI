@@ -1,0 +1,55 @@
+{
+  "Name": "Copy_User_Units",
+  "Synonym": "Cpy_User_Unit",
+  "Sequence": "Cpy_User_Unit_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "User_Id",
+      "Field": "userId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Users",
+        "SynonymName": "Cpy_User",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "userName"
+      }
+    }, {
+      "Name": "Dept_Id",
+      "Field": "deptId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Departments",
+        "SynonymName": "Cpy_Dept",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "deptName"
+      }
+    }, {
+      "Name": "Unit_Id",
+      "Field": "unitId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Department_Unit",
+        "SynonymName": "Cpy_Unit",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "unitName"
+      }
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

@@ -1,0 +1,316 @@
+Create OR Replace View Acc_Account_View AS
+Select ALL
+       GA.Id , GA.Num        , GA.Name, GA.Ins_User, GA.Ins_Date, GA.Upd_User, GA.Upd_Date,
+       GA.Num||' - '||GA.Name  FName  ,
+       TA.Id   Type_Id       , TA.Name  Type_Name  ,
+       ST.Id   Status_Id     , ST.Name  Status_Name,
+       DC.Id   DBCR_Id       , DC.Name  DBCR_Name  ,
+       CA.Id   Close_Id      , CA.Name  Close_Name ,
+       GA.Rem
+  From Acc_Acc        GA,
+       Phs_Cod_Type   TA,
+       Phs_Cod_Status ST,
+       Phs_Cod_DBCR   DC,
+       Acc_Close      CA
+  Where GA.Type_Id  =TA.Id
+    And GA.Status_Id=ST.Id
+    And GA.DBCR_Id  =DC.Id
+    And GA.Close_Id =CA.Id
+/
+Create Synonym Acc_VAcc For Acc_Account_View
+/
+
+Create OR Replace View Acc_Cost_Center_View AS
+Select ALL
+       GA.Id , GA.Num        , GA.Name, GA.Ins_User, GA.Ins_Date, GA.Upd_User, GA.Upd_Date,
+       GA.Num||' - '||GA.Name  FName  ,
+       TA.Id   Type_Id       , TA.Name  Type_Name  ,
+       ST.Id   Status_Id     , ST.Name  Status_Name,
+       GA.Rem
+  From Acc_Cost       GA,
+       Phs_Cod_Type   TA,
+       Phs_Cod_Status ST
+  Where GA.Type_Id  =TA.Id
+    And GA.Status_Id=ST.Id
+/
+Create Synonym Acc_VCost For Acc_Cost_Center_View
+/
+
+Create OR Replace View Acc_Grant_Account_View AS
+Select ALL
+  GA.Id ,
+  AA.Id   Acc_Id   , AA.Num    Acc_Num    , AA.Name   Acc_Name   ,
+  AA.Num||' - '||AA.Name       Acc_FName  ,
+  ST.Id   System_Id, ST.Name   System_Name,
+  GA.Rem
+  From Acc_GrantAcc   GA,
+       Acc_Acc        AA,
+       Phs_Cod_System ST
+  Where GA.Acc_Id   =AA.Id
+    And GA.System_Id=ST.Id
+/
+Create Synonym Acc_VGrant For Acc_Grant_Account_View
+/
+
+Create OR Replace View Acc_Budget_View AS
+Select ALL
+       M.Id  Mst_Id , M.Num  Mst_Num , M.Name  Mst_Name , M.BDate Mst_Date, M.Rem Mst_Rem   ,
+       T.Id  Trn_Id , T.Ord  Trn_Ord , T.Bud   Trn_Bud  , T.Rem Trn_Rem,
+       CT.Id Cost_Id, CT.Num Cost_Num, CT.Name Cost_Name, CT.Num||' - '||CT.Name  Cost_FName,
+       AC.Id Acc_Id , AC.Num Acc_Num , AC.Name Acc_Name , AC.Num||' - '||AC.Name  Acc_FName
+  From Acc_BudMst M ,
+       Acc_BudTrn T ,
+       Acc_Cost   CT,
+       Acc_Acc    AC
+ Where T.Mst_Id =M.Id
+   And T.Cost_Id=CT.Id
+   And T.Acc_Id =AC.Id
+/
+Create Synonym Acc_VBud For Acc_Budget_View
+/
+
+Create OR Replace View Acc_Voucher_View AS
+Select ALL
+       M.Id         Mst_Id     ,
+       To_Number(To_Char(M.MDate,'YYYY'))     D_Year      ,
+       To_Number(To_Char(M.MDate,'MM'))       D_Month     ,
+       To_Number(To_Char(M.MDate,'DD'))       D_DayOfMonth,
+       To_Number(To_Char(M.MDate,'DDD'))      D_DayOfYear ,
+       To_Number(To_Char(M.MDate,'D'))        D_DayOfWeek ,
+       To_Char(M.MDate,'YYYY-MM')             D_YearMonth ,
+       To_Char(M.MDate,'YYYY-DDD')            D_YearDay  ,
+       B.Id         Bran_Id    , B.Name       Bran_Name  ,
+       W.Id         Period_Id  , W.Name       Period_Name, W.SDate       Period_SDate , W.EDate      Period_EDate,
+       SR.Id        Src_Id     , SR.Name      Src_Name   , ST.Id         Commit_Id    , ST.Name      Status_Name ,
+       M.Num        Mst_Num    , M.PNum       Mst_PNum   , M.MDate       Mst_Date     ,
+       CD.Id        Doc_Id     , CD.Name      Doc_Name   ,
+       M.Docn       Mst_Docn   , M.Docd       Mst_Docd   , M.Rem         Mst_Rem      ,
+       M.Ins_User   MIns_User  , M.Ins_Date   MIns_Date  ,
+       M.Upd_User   MUpd_User  , M.Upd_Date   MUpd_Date  ,
+       T.Id         Trn_Id     ,
+       CT.Id        Cost_Id    , CT.Num       Cost_Num   , CT.Name       Cost_Name    ,
+       CT.Num||' - '||CT.Name    Cost_FName ,
+       AC.Id        Acc_Id     , AC.Num       Acc_Num    , AC.Name       Acc_Name     ,
+       AC.Num||' - '||AC.Name    Acc_FName  , AC.Type_Id   Acc_Type_Id , AC.DBCR_Id      Acc_DbCr_Id ,
+       T.Acc_RId  , RA.Num       RAcc_Num   , RA.Name      RAcc_Name   ,
+       RA.Num||' - '||RA.Name    RAcc_FName , RA.Type_Id   RAcc_Type_Id, RA.DBCR_Id      RAcc_DbCr_Id,
+       BD.Id        TDoc_Id    , BD.Name      TDoc_Name  ,
+       T.TDocn      Trn_Docn   , T.TDocd      Trn_Docd   ,
+       T.Ord        Trn_Ord    , T.Deb        Trn_Deb    , T.Crd         Trn_Crd      ,
+       MC.Id        Curn_Id    , MC.Name      Curn_Name  , MC.Code       Curn_Code    ,
+       T.Curn_Rate, T.DebC       Trn_DebC   , T.CrdC       Trn_CrdC    , T.Rem Trn_Rem,
+       T.RId        Trn_RId    ,
+       T.Ins_User   TIns_User  , T.Ins_Date    TIns_Date  ,
+       T.Upd_User   TUpd_User  , T.Upd_Date    TUpd_Date
+  From Acc_Mst        M ,
+       Acc_Trn        T ,
+       Acc_Cost       CT,
+       Acc_Acc        AC,
+       Acc_Acc        RA,
+       Mng_Curn       MC,
+       Cpy_Period     W ,
+       Cpy_Bran       B ,
+       Phs_Cod_Src    SR,
+       Phs_Cod_Commit ST,
+       Cpy_Cod_Doc    CD,
+       Acc_Cod_Doc    BD
+ Where T.Mst_Id   =M.Id
+   And M.Bran_Id  =B.Id
+   And M.Period_Id=W.Id
+   And M.Src_Id   =SR.Id
+   And M.Commit_Id=ST.Id
+   And M.Doc_Id   =CD.Id
+   And T.Cost_Id  =CT.Id
+   And T.Acc_Id   =AC.Id
+   And T.Acc_RId  =RA.Id
+   And T.Curn_Id  =MC.Id
+   And T.TDoc_Id  =BD.Id
+/
+Create Synonym Acc_VVoucher For Acc_Voucher_View
+/
+
+Create OR Replace View Acc_SumVoucher_View AS
+Select ALL
+       Mst_Id      , Bran_Id    , Bran_Name   ,
+       Period_Id   , Period_Name, Period_SDate, Period_EDate,
+       Src_Id      , Src_Name   , Commit_Id   , Status_Name,
+       Mst_Num     , Mst_PNum   , Mst_Date    , Mst_Rem    ,
+       Doc_Id      , Doc_Name   , Mst_Docn    , Mst_Docd   ,
+       MIns_User   , MIns_Date  , MUpd_User   , MUpd_Date  ,
+       SUM(Trn_Deb ) Sum_Deb    , SUM(Trn_Crd ) Sum_Crd    ,
+       SUM(Trn_DebC) Sum_DebC   , SUM(Trn_CrdC) Sum_CrdC
+  From Acc_VVoucher
+  Group By Mst_Id   , Bran_Id    , Bran_Name   ,
+           Period_Id, Period_Name, Period_SDate, Period_EDate,
+           Src_Id   , Src_Name   , Commit_Id   , Status_Name ,
+           Mst_Num  , Mst_PNum   , Mst_Date    , Mst_Rem     ,
+           Doc_Id   , Doc_Name   , Mst_Docn    , Mst_Docd    ,
+           MIns_User, MIns_Date  , MUpd_User   , MUpd_Date
+/
+Create Synonym Acc_VSVoucher For Acc_SumVoucher_View
+/
+
+Create OR Replace View Acc_Bank_Trn_View AS
+Select ALL
+       M.Id         Mst_Id     ,
+       B.Id         Bran_Id    , B.Name       Bran_Name  ,
+       W.Id         Period_Id  , W.Name       Period_Name, W.SDate       Period_SDate , W.EDate      Period_EDate,
+       M.Num        Mst_Num    , M.MDate      Mst_Date   ,
+       AC.Id        Acc_Id     , AC.Num       Acc_Num    , AC.Name       Acc_Name     ,
+       AC.Num||' - '||AC.Name    Acc_FName  , AC.Type_Id   Acc_Type_Id , AC.DBCR_Id     Acc_DbCr_Id ,
+       M.Rem        Mst_Rem    ,
+       M.Ins_User   MIns_User  , M.Ins_Date   MIns_Date  ,
+       M.Upd_User   MUpd_User  , M.Upd_Date   MUpd_Date  ,
+       T.Id         Trn_Id     ,
+       BD.Id        TDoc_Id    , BD.Name      TDoc_Name  ,
+       T.TDocn      Trn_Docn   , T.TDocd      Trn_Docd   ,
+       T.Ord        Trn_Ord    , T.Deb        Trn_Deb    , T.Crd         Trn_Crd      ,
+       MC.Id        Curn_Id    , MC.Name      Curn_Name  , MC.Code       Curn_Code    ,
+       T.Curn_Rate, T.DebC       Trn_DebC   , T.CrdC       Trn_CrdC    , T.Rem Trn_Rem,
+       T.Ins_User   TIns_User  , T.Ins_Date    TIns_Date  ,
+       T.Upd_User   TUpd_User  , T.Upd_Date    TUpd_Date
+  From Acc_Bank_Mst   M ,
+       Acc_Bank_Trn   T ,
+       Acc_Acc        AC,
+       Mng_Curn       MC,
+       Cpy_Period     W ,
+       Cpy_Bran       B ,
+       Acc_Cod_Doc    BD
+ Where T.Mst_Id   =M.Id
+   And M.Bran_Id  =B.Id
+   And M.Period_Id=W.Id
+   And M.Acc_Id   =AC.Id
+   And T.Curn_Id  =MC.Id
+   And T.TDoc_Id  =BD.Id
+/
+Create Synonym Acc_VBank_Trn For Acc_Bank_Trn_View
+/
+
+Create OR Replace View ACC_Total_View As
+SELECT ALL
+       M.Id  Tot_Id   , M.Num  Tot_Num    , M.Name Tot_Name ,
+       T.Id, T.Perc   ,
+       S.Id  Sign_Id  , S.Name Sign_Name  ,
+       R.Id  AmtTyp_Id, R.Name AmtTyp_Name,
+       A.Id  Acc_Id   , A.Num  Acc_Num    , A.Name Acc_Name , A.Num||' - '||A.Name Acc_FName ,
+       A.Type_Id        Acc_Type_Id       , A.Dbcr_Id         Acc_DBCR_Id,
+       C.Id  Cost_Id  , C.Num  Cost_Num   , C.Name Cost_Name, C.Num||' - '||C.Name Cost_FName,
+       C.Type_Id        Cost_Type_Id
+  FROM Acc_Tot        M,
+       Acc_TotAcc     T,
+       Acc_Acc        A,
+       Acc_Cost       C,
+       Phs_Cod_Sign   S,
+       Acc_Cod_RepAmt R
+ WHERE T.Tot_Id   =M.Id
+   AND T.Acc_Id   =A.Id
+   AND T.Cost_Id  =C.Id
+   AND T.Sign_Id  =S.Id
+   AND T.AmtTyp_Id=R.Id
+/
+Create Synonym Acc_VTot For ACC_Total_View
+/
+
+Create Or Replace View Acc_Report_View As
+Select All
+       M.Id       Rep_Id   , M.Name     Rep_Name     , M.Rem      Rep_Rem  ,
+       M.Ins_User MIns_User, M.Ins_Date MIns_Date    , M.Upd_User MUpd_User, M.Upd_Date MUpd_Date,
+       T.Id, T.Ord, T.Label, T.Rem,
+       LT.Id LineType_Id   , LT.Name    LineType_Name,
+       MS.Id AmtSide_Id    , MS.Name    AmtSide_Name ,
+       MT.Id AmtTyp_Id     , MT.Name    AmtTyp_Name  ,
+       A.Id  Acc_Id        , A.Num      Acc_Num      , A.Name     Acc_Name , A.Num||' - '||A.Name   Acc_FName , A.Type_Id Acc_Type_Id ,
+       C.Id  Cost_Id       , C.Num      Cost_Num     , C.Name     Cost_Name, C.Num||' - '||C.Name   Cost_FName, C.Type_Id Cost_Type_Id,
+       TT.Id Tot_Id        , TT.Num     Tot_Num      , TT.Name    Tot_Name , TT.Num||' - '||TT.Name Tot_FName ,
+       T.Ins_User TIns_User, T.Ins_Date TIns_Date    , T.Upd_User TUpd_User, T.Upd_Date TUpd_Date
+  From Acc_Rep          M ,
+       Acc_RepItm       T ,
+       Acc_Acc          A ,
+       Acc_Cost         C ,
+       Acc_Tot          TT,
+       Acc_Cod_LineType LT,
+       Acc_Cod_AmtSide  MS,
+       Acc_Cod_RepAmt   MT
+ Where T.Rep_ID       =M.ID
+   And NVL(T.Acc_ID,0)=A.ID
+   And T.Cost_Id      =C.ID
+   And NVL(T.Tot_Id,0)=TT.ID
+   And T.LineType_Id  =LT.ID
+   And T.AmtSide_Id   =MS.ID
+   And T.AmtTyp_Id    =MT.ID
+/
+Create Synonym Acc_VRep For Acc_Report_View
+/
+/*
+Create Materialized View Acc_MV_Voucher_Summary
+  Build Immediate -- قم بإنشاء البيانات مباشرة عند إنشاء الـ MV
+  Refresh Complete On Demand -- سيتم تحديثها يدويًا أو عبر جدولة
+  -- Refresh Fast On Commit -- خيار أسرع لكن يتطلب Log على الجداول المصدر (غير موضح هنا)
+  -- Refresh Complete On Demand Start With (SysDate) Next (SysDate + 1) -- مثال على جدولة يومية
+  As
+Select /*+ Use_Concat * / -- توجيه للمحسن لتحسين الأداء
+       M.Id         As Mst_Id     ,
+       M.MDate      As Mst_Date   ,
+       M.Num        As Mst_Num    ,
+       M.PNum       As Mst_PNum   ,
+       M.Rem        As Mst_Rem    ,
+       B.Id         As Bran_Id    , B.Name       As Bran_Name  ,
+       W.Id         As Period_Id  , W.Name       As Period_Name,
+       SR.Name      As Src_Name   ,
+       ST.Name      As Status_Name,
+       CD.Name      As Doc_Name   ,
+       M.Docn       As Mst_Docn   , M.Docd       As Mst_Docd   ,
+
+       T.Id         As Trn_Id     ,
+       T.Ord        As Trn_Ord    ,
+       T.Deb        As Trn_Deb    , T.Crd         As Trn_Crd    ,
+       T.DebC       As Trn_DebC   , T.CrdC        As Trn_CrdC   ,
+       T.Rem        As Trn_Rem    ,
+
+       CT.Id        As Cost_Id    , CT.Num       As Cost_Num   , CT.Name       As Cost_Name    ,
+       CT.Num||' - '||CT.Name    As Cost_FName ,
+
+       AC.Id        As Acc_Id     , AC.Num       As Acc_Num    , AC.Name       As Acc_Name     ,
+       AC.Num||' - '||AC.Name    As Acc_FName  ,
+
+       RA.Id        As RAcc_Id    , RA.Num       As RAcc_Num   , RA.Name       As RAcc_Name    ,
+       RA.Num||' - '||RA.Name    As RAcc_FName ,
+
+       MC.Code      As Curn_Code  , T.Curn_Rate
+
+  From Acc_Mst        M ,
+       Acc_Trn        T ,
+       Acc_Cost       CT,
+       Acc_Acc        AC,
+       Acc_Acc        RA, -- الحساب المقابل
+       Mng_Curn       MC,
+       Cpy_Period     W ,
+       Cpy_Bran       B ,
+       Phs_Cod_Src    SR,
+       Phs_Cod_Commit ST,
+       Cpy_Cod_Doc    CD
+ Where T.Mst_Id   =M.Id
+   And M.Bran_Id  =B.Id
+   And M.Period_Id=W.Id
+   And M.Src_Id   =SR.Id
+   And M.Commit_Id=ST.Id
+   And M.Doc_Id   =CD.Id
+   And T.Cost_Id  =CT.Id
+   And T.Acc_Id   =AC.Id
+   And T.Acc_RId  =RA.Id (+) -- Left Join للسماح ببنود بدون حساب مقابل
+   And T.Curn_Id  =MC.Id
+   -- مثال على فلترة لتحسين الأداء الأولي وتخزين جزء فقط من البيانات
+   And M.MDate >= Trunc(SysDate, 'YEAR'); -- فقط سندات السنة الحالية
+
+-- إضافة مفتاح أساسي (اختياري لكن مفيد)
+-- يتطلب أن يكون الـ MV محددًا بـ Primary Key
+-- هذا مثال، قد تحتاج تعديله حسب متطلباتك الدقيقة
+-- Alter Table Acc_MV_Voucher_Summary Add Constraint Acc_MV_Voucher_Summary_PK Primary Key (Mst_Id, Trn_Id);
+
+-- إنشاء فهارس على الـ Materialized View لتحسين استعلامات SELECT عليها
+Create Index Acc_MV_Voucher_Summary_Date_Idx On Acc_MV_Voucher_Summary (Mst_Date);
+Create Index Acc_MV_Voucher_Summary_Bran_Idx On Acc_MV_Voucher_Summary (Bran_Id);
+Create Index Acc_MV_Voucher_Summary_Acc_Idx  On Acc_MV_Voucher_Summary (Acc_Id);
+Create Index Acc_MV_Voucher_Summary_Cost_Idx On Acc_MV_Voucher_Summary (Cost_Id);
+-- أضف فهارس أخرى حسب الاستعلامات الشائعة
+*/

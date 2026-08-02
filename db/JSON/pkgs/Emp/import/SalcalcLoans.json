@@ -1,0 +1,47 @@
+{
+  "Name": "Emp_Salcalc_Loans",
+  "Synonym": "Emp_Salcalcloan",
+  "Sequence": "Emp_Salcalcloan_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Tsal_Id",
+      "Field": "tsalId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Salary_Calculated",
+        "SynonymName": "Emp_Salcalc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "tsalName"
+      }
+    }, {
+      "Name": "Loan_Id",
+      "Field": "loanId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "Sysdate",
+      "hasRelation": false
+    }, {
+      "Name": "Mamt",
+      "Field": "mamt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Bamt",
+      "Field": "bamt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }
+  ]
+}

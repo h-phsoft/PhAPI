@@ -1,0 +1,60 @@
+{
+  "Name": "Cpy_Unit_Formula",
+  "Synonym": "Cpy_Unit_Form",
+  "Sequence": "Cpy_Unit_Form_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Funit_Id",
+      "Field": "funitId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Code_Unit",
+        "SynonymName": "Cpy_Cod_Unit",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "funitName"
+      }
+    }, {
+      "Name": "Tunit_Id",
+      "Field": "tunitId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Code_Unit",
+        "SynonymName": "Cpy_Cod_Unit",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "tunitName"
+      }
+    }, {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Perc",
+      "Field": "perc",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Minunit",
+      "Field": "minunit",
+      "DBType": "NUMBER",
+      "Default": "0.001",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

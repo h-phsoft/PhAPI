@@ -1,0 +1,9 @@
+{
+  "Synonym": "Pms_Mpurord",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Pms_Mpurord",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

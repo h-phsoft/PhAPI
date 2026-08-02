@@ -1,0 +1,79 @@
+{
+  "Name": "Clnc_Invoices",
+  "Synonym": "Clnc_Invoice",
+  "Sequence": "Clnc_Invoice_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Clinic_Id",
+      "Field": "clinicId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Clinics",
+        "SynonymName": "Clnc_Clinic",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "clinicName"
+      }
+    }, {
+      "Name": "Patient_Id",
+      "Field": "patientId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Patients",
+        "SynonymName": "Clnc_Patient",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "patientName"
+      }
+    }, {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "SYSDATE",
+      "hasRelation": false
+    }, {
+      "Name": "Disc_Id",
+      "Field": "discId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Code_Discount",
+        "SynonymName": "Clnc_Cod_Disc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "discName"
+      }
+    }, {
+      "Name": "Disc_Val",
+      "Field": "discVal",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Disc_Amt",
+      "Field": "discAmt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Disc_Reason",
+      "Field": "discReason",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

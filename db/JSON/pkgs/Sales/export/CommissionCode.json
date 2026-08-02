@@ -1,0 +1,18 @@
+{
+  "Name": "Sal_Commission_Code",
+  "Synonym": "Sal_Comm_Cod",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

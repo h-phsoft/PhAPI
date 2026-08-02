@@ -1,0 +1,128 @@
+{
+  "Name": "Trn_Balancing_Master_View",
+  "Synonym": "Trn_Vblncing_Mst",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Mst_Num",
+      "Field": "mstNum",
+      "isSelected": false
+    }
+    , {
+      "Name": "Mst_Pnum",
+      "Field": "mstPnum",
+      "isSelected": false
+    }
+    , {
+      "Name": "Mst_Bdate",
+      "Field": "mstBdate",
+      "isSelected": false
+    }
+    , {
+      "Name": "Mst_Driver",
+      "Field": "mstDriver",
+      "isSelected": false
+    }
+    , {
+      "Name": "Mst_Src",
+      "Field": "mstSrc",
+      "isSelected": false
+    }
+    , {
+      "Name": "Mst_Dest",
+      "Field": "mstDest",
+      "isSelected": false
+    }
+    , {
+      "Name": "Mst_Commodity",
+      "Field": "mstCommodity",
+      "isSelected": false
+    }
+    , {
+      "Name": "Mst_Rem",
+      "Field": "mstRem",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Name",
+      "Field": "blnName",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Type_Name",
+      "Field": "blnTypeName",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Type_Rem",
+      "Field": "blnTypeRem",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Loc_Name",
+      "Field": "blnLocName",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Loc_Rem",
+      "Field": "blnLocRem",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Sncrs",
+      "Field": "blnSncrs",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Msncr",
+      "Field": "blnMsncr",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Rsncr",
+      "Field": "blnRsncr",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Lsncr",
+      "Field": "blnLsncr",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Rem",
+      "Field": "blnRem",
+      "isSelected": false
+    }
+    , {
+      "Name": "City_Name",
+      "Field": "cityName",
+      "isSelected": false
+    }
+    , {
+      "Name": "City_Rem",
+      "Field": "cityRem",
+      "isSelected": false
+    }
+    , {
+      "Name": "Model_Name",
+      "Field": "modelName",
+      "isSelected": false
+    }
+    , {
+      "Name": "Model_Axes",
+      "Field": "modelAxes",
+      "isSelected": false
+    }
+    , {
+      "Name": "Model_Weight",
+      "Field": "modelWeight",
+      "isSelected": false
+    }
+    , {
+      "Name": "Model_Rem",
+      "Field": "modelRem",
+      "isSelected": false
+    }
+  ]
+}

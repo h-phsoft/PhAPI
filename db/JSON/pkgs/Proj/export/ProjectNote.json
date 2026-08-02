@@ -1,0 +1,18 @@
+{
+  "Name": "Proj_Project_Note",
+  "Synonym": "Proj_Proj_Note",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Note",
+      "Field": "note",
+      "isSelected": false
+    }
+  ]
+}

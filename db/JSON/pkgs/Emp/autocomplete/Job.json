@@ -1,0 +1,9 @@
+{
+  "Synonym": "Emp_Cod_Job",
+  "Select": "SELECT Id, Name AS Name FROM Emp_Cod_Job",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Name"
+}

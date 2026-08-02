@@ -1,0 +1,77 @@
+{
+  "Name": "Emp_Appraisal_Employee_Mst",
+  "Synonym": "Emp_Apprempmst",
+  "Sequence": "Emp_Apprempmst_Seq",
+  "InsUser": false,
+  "hasChilds": true,
+  "Children": [
+    {
+      "Pkg": "Emp",
+      "Key": "AppraisalEmployeeTrn",
+      "Table": "Emp_Appraisal_Employee_Trn",
+      "Synonym": "Emp_Appremptrn",
+      "cascadeDelete": true,
+      "Column": "AEMP_ID",
+      "ColKey": "aempId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Appr_Id",
+      "Field": "apprId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Appraisal_Templates_Mst",
+        "SynonymName": "Emp_Apprmst",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "apprName"
+      }
+    }, {
+      "Name": "Emp_Id",
+      "Field": "empId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Employee",
+        "SynonymName": "Emp_Emp",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "empName"
+      }
+    }, {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Fdate",
+      "Field": "fdate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Tdate",
+      "Field": "tdate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

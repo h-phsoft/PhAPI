@@ -1,0 +1,53 @@
+{
+  "Name": "Mng_Currency_History",
+  "Synonym": "Mng_Curnhist",
+  "Sequence": "Mng_Curnhist_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Hdate",
+      "Field": "hdate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Curn_Id",
+      "Field": "curnId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Mng_Currency",
+        "SynonymName": "Mng_Curn",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "curnName"
+      }
+    }, {
+      "Name": "Rate",
+      "Field": "rate",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Nmin",
+      "Field": "nmin",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Nmax",
+      "Field": "nmax",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

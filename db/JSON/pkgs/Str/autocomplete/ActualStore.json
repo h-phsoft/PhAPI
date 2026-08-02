@@ -1,0 +1,10 @@
+{
+  "Synonym": "Str_Actmst",
+  "Select": "SELECT Id, Num||' - ('||To_Char(Ddate, 'DD-MM-YYYY')||')' AS Name FROM Str_Actmst ",
+  "Condition": "",
+  "Conds": {
+    "term": "Num||' - ('||To_Char(Ddate, 'DD-MM-YYYY')||')' LIKE Lower('%{term}%')",
+    "storId": "STOR_ID ={storId}"
+  },
+  "OrderBy": "Ddate"
+}

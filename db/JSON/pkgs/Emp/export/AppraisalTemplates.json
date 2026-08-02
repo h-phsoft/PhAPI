@@ -1,0 +1,44 @@
+{
+  "Name": "Emp_Appraisal_Templates_View",
+  "Synonym": "Emp_Vapprtmplt",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Tmplt_Num",
+      "Field": "tmpltNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tmplt_Name",
+      "Field": "tmpltName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tmpltm_Rem",
+      "Field": "tmpltmRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Agrp_Name",
+      "Field": "agrpName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Aitm_Name",
+      "Field": "aitmName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tmplt_Point",
+      "Field": "tmpltPoint",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tmpltt_Rem",
+      "Field": "tmplttRem",
+      "isSelected": false
+    }
+  ]
+}

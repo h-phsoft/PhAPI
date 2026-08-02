@@ -1,0 +1,72 @@
+{
+  "Name": "Emp_Appraisal_Templates_Trn",
+  "Synonym": "Emp_Apprtrn",
+  "Sequence": "Emp_Apprtrn_Seq",
+  "InsUser": false,
+  "hasChilds": true,
+  "Children": [
+    {
+      "Pkg": "Emp",
+      "Key": "AppraisalEmployeeTrn",
+      "Table": "Emp_Appraisal_Employee_Trn",
+      "Synonym": "Emp_Appremptrn",
+      "cascadeDelete": true,
+      "Column": "TAPPR_ID",
+      "ColKey": "tapprId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Appr_Id",
+      "Field": "apprId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Appraisal_Templates_Mst",
+        "SynonymName": "Emp_Apprmst",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "apprName"
+      }
+    }, {
+      "Name": "Apprgrp_Id",
+      "Field": "apprgrpId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Appraisal_Grp",
+        "SynonymName": "Emp_Cod_Appraisal_Grp",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "apprgrpName"
+      }
+    }, {
+      "Name": "Appritm_Id",
+      "Field": "appritmId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Appraisal_Item",
+        "SynonymName": "Emp_Cod_Appraisal_Item",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "appritmName"
+      }
+    }, {
+      "Name": "Points",
+      "Field": "points",
+      "DBType": "NUMBER",
+      "Default": "100",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

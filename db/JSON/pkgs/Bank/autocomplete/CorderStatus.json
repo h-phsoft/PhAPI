@@ -1,0 +1,9 @@
+{
+  "Synonym": "Bank_Cordstatus",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Bank_Cordstatus",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE '%{term}%'"
+  },
+  "OrderBy": "Num"
+}

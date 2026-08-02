@@ -1,0 +1,9 @@
+{
+  "Synonym": "Fre_Cod_Pay_Term",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Fre_Cod_Pay_Term",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

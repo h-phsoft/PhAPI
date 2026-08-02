@@ -1,0 +1,98 @@
+{
+  "Name": "Stor_Items",
+  "Synonym": "Stor_Item",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Part",
+      "Field": "part",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dwarnty",
+      "Field": "dwarnty",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nofp",
+      "Field": "nofp",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Min_Unit",
+      "Field": "minUnit",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Box",
+      "Field": "box",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cprice",
+      "Field": "cprice",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nprice",
+      "Field": "nprice",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dprice",
+      "Field": "dprice",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sprice",
+      "Field": "sprice",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Wprice",
+      "Field": "wprice",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rprice",
+      "Field": "rprice",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Hprice",
+      "Field": "hprice",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mprice",
+      "Field": "mprice",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Image",
+      "Field": "image",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Descr",
+      "Field": "descr",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

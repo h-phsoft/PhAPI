@@ -1,0 +1,52 @@
+{
+  "Name": "Emp_Admin_Consideration_Mst",
+  "Synonym": "Emp_Madmcon",
+  "Sequence": "Emp_Madmcon_Seq",
+  "InsUser": false,
+  "hasChilds": true,
+  "Children": [
+    {
+      "Pkg": "Emp",
+      "Key": "AdminConsiderationTrn",
+      "Table": "Emp_Admin_Consideration_Trn",
+      "Synonym": "Emp_Tadmcon",
+      "cascadeDelete": true,
+      "Column": "MACON_ID",
+      "ColKey": "maconId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Consideration",
+        "SynonymName": "Emp_Cod_Cons",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "typeName"
+      }
+    }, {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "Sysdate",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

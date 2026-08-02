@@ -1,0 +1,9 @@
+{
+  "Synonym": "Prd_Qa_Checklist",
+  "Select": "SELECT Id,Name AS Name FROM Prd_Qa_Checklist",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Name"
+}

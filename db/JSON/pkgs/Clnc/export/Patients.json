@@ -1,0 +1,63 @@
+{
+  "Name": "Clnc_Patients",
+  "Synonym": "Clnc_Patient",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dob",
+      "Field": "dob",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Idnum",
+      "Field": "idnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Natnum",
+      "Field": "natnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mobile",
+      "Field": "mobile",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Phone1",
+      "Field": "phone1",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Phone2",
+      "Field": "phone2",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Email",
+      "Field": "email",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Company",
+      "Field": "company",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Langs",
+      "Field": "langs",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Descr",
+      "Field": "descr",
+      "isSelected": false
+    }
+  ]
+}

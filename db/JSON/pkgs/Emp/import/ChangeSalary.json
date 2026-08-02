@@ -1,0 +1,127 @@
+{
+  "Name": "Emp_Change_Salary",
+  "Synonym": "Emp_Csal",
+  "Sequence": "Emp_Csal_Seq",
+  "InsUser": false,
+  "hasChilds": true,
+  "Children": [
+    {
+      "Pkg": "Emp",
+      "Key": "ChangeSalaryEmployees",
+      "Table": "Emp_Change_Salary_Employees",
+      "Synonym": "Emp_Csalemp",
+      "cascadeDelete": true,
+      "Column": "CSAL_ID",
+      "ColKey": "csalId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "SysDate",
+      "hasRelation": false
+    }, {
+      "Name": "Docn",
+      "Field": "docn",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Docd",
+      "Field": "docd",
+      "DBType": "DATE",
+      "Default": "SysDate",
+      "hasRelation": false
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Status",
+        "SynonymName": "Phs_Cod_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }, {
+      "Name": "Saltyp_Id",
+      "Field": "saltypId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Affected_Salary",
+        "SynonymName": "Emp_Cod_Affsal",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "saltypName"
+      }
+    }, {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Change_Type",
+        "SynonymName": "Emp_Cod_Chngtype",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "typeName"
+      }
+    }, {
+      "Name": "Brkt_Id",
+      "Field": "brktId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Changesalary_Brackets_Mst",
+        "SynonymName": "Emp_Mchsalbrkt",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "brktName"
+      }
+    }, {
+      "Name": "Perc",
+      "Field": "perc",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Amt",
+      "Field": "amt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Nmin",
+      "Field": "nmin",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Nmax",
+      "Field": "nmax",
+      "DBType": "NUMBER",
+      "Default": "9999999999",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

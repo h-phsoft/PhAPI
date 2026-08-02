@@ -1,0 +1,53 @@
+{
+  "Name": "Notif_Notification",
+  "Synonym": "Notif_Notif",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rdate",
+      "Field": "rdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sdate",
+      "Field": "sdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Relid",
+      "Field": "relid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Title",
+      "Field": "title",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Color",
+      "Field": "color",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Icon",
+      "Field": "icon",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Message",
+      "Field": "message",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

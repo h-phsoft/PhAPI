@@ -1,0 +1,97 @@
+{
+  "Name": "Clnc_Treatment_Procedures",
+  "Synonym": "Clnc_Treat_Proc",
+  "Sequence": "Clnc_Treat_Proc_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Treat_Id",
+      "Field": "treatId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Treatment",
+        "SynonymName": "Clnc_Treat",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "treatName"
+      }
+    }, {
+      "Name": "Proc_Id",
+      "Field": "procId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Procedures",
+        "SynonymName": "Clnc_Proc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "procName"
+      }
+    }, {
+      "Name": "Vat_Id",
+      "Field": "vatId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Code_Vat",
+        "SynonymName": "Clnc_Cod_Vat",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "vatName"
+      }
+    }, {
+      "Name": "Qnt",
+      "Field": "qnt",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Price",
+      "Field": "price",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Discount",
+      "Field": "discount",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Amt",
+      "Field": "amt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Vat_Value",
+      "Field": "vatValue",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Vat_Amt",
+      "Field": "vatAmt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "SYSDATE",
+      "hasRelation": false
+    }, {
+      "Name": "Descr",
+      "Field": "descr",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

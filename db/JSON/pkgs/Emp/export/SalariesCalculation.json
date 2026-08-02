@@ -1,0 +1,359 @@
+{
+  "Name": "Emp_Salaries_Calculation_View",
+  "Synonym": "Emp_Vsalcalc",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Sal_Year",
+      "Field": "salYear",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Month",
+      "Field": "salMonth",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Num",
+      "Field": "empNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Name",
+      "Field": "empName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Fname",
+      "Field": "empFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dept_Name",
+      "Field": "deptName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sect_Name",
+      "Field": "sectName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Job_Name",
+      "Field": "jobName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Level_Name",
+      "Field": "levelName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc1_Name",
+      "Field": "spc1Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc2_Name",
+      "Field": "spc2Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc3_Name",
+      "Field": "spc3Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc4_Name",
+      "Field": "spc4Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Bankstatus_Name",
+      "Field": "bankstatusName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Bankacc",
+      "Field": "bankacc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Bankname",
+      "Field": "bankname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Sal",
+      "Field": "salSal",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Fsal",
+      "Field": "salFsal",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Tam",
+      "Field": "salTam",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Wsal",
+      "Field": "salWsal",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Net",
+      "Field": "salNet",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Round",
+      "Field": "salRound",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Getam",
+      "Field": "salGetam",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Gbtam1",
+      "Field": "salGbtam1",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Gbtam2",
+      "Field": "salGbtam2",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Gbtam3",
+      "Field": "salGbtam3",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Gaetam",
+      "Field": "salGaetam",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Gabtam1",
+      "Field": "salGabtam1",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Gabtam2",
+      "Field": "salGabtam2",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Gabtam3",
+      "Field": "salGabtam3",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Gtaxfree",
+      "Field": "salGtaxfree",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Gtax",
+      "Field": "salGtax",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Comp",
+      "Field": "salComp",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Ded",
+      "Field": "salDed",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Addadd",
+      "Field": "salAddadd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Addsal",
+      "Field": "salAddsal",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Subadd",
+      "Field": "salSubadd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Subsal",
+      "Field": "salSubsal",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Cons",
+      "Field": "salCons",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Salcons",
+      "Field": "salSalcons",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Addcons",
+      "Field": "salAddcons",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Pun",
+      "Field": "salPun",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Salpun",
+      "Field": "salSalpun",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Addpun",
+      "Field": "salAddpun",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Dbt",
+      "Field": "salDbt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Loan",
+      "Field": "salLoan",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Naddprice",
+      "Field": "salNaddprice",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Daddprice",
+      "Field": "salDaddprice",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Waddprice",
+      "Field": "salWaddprice",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Haddprice",
+      "Field": "salHaddprice",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Dadd",
+      "Field": "salDadd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Nadd",
+      "Field": "salNadd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Wadd",
+      "Field": "salWadd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Hadd",
+      "Field": "salHadd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Naddamt",
+      "Field": "salNaddamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Daddamt",
+      "Field": "salDaddamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Waddamt",
+      "Field": "salWaddamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Haddamt",
+      "Field": "salHaddamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Ndels",
+      "Field": "salNdels",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Nabs",
+      "Field": "salNabs",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Nsick",
+      "Field": "salNsick",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Npar",
+      "Field": "salNpar",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Nnpay",
+      "Field": "salNnpay",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Delamt",
+      "Field": "salDelamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Absamt",
+      "Field": "salAbsamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Sickamt",
+      "Field": "salSickamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Paramt",
+      "Field": "salParamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Npayamt",
+      "Field": "salNpayamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Rem",
+      "Field": "salRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sal_Taxablesal",
+      "Field": "salTaxablesal",
+      "isSelected": false
+    }
+  ]
+}

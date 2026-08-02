@@ -1,0 +1,124 @@
+{
+  "Name": "Clnc_Appointment",
+  "Synonym": "Clnc_App",
+  "Sequence": "Clnc_App_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Clinic_Id",
+      "Field": "clinicId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Clinics",
+        "SynonymName": "Clnc_Clinic",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "clinicName"
+      }
+    }, {
+      "Name": "Special_Id",
+      "Field": "specialId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Specials",
+        "SynonymName": "Clnc_Special",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "specialName"
+      }
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "10",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Appointment_Status",
+        "SynonymName": "Clnc_App_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }, {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Appointment_Type",
+        "SynonymName": "Clnc_App_Type",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "typeName"
+      }
+    }, {
+      "Name": "Doctor_Id",
+      "Field": "doctorId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Doctors",
+        "SynonymName": "Clnc_Doctor",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "doctorName"
+      }
+    }, {
+      "Name": "Patient_Id",
+      "Field": "patientId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Clnc_Patients",
+        "SynonymName": "Clnc_Patient",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "patientName"
+      }
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Nhour",
+      "Field": "nhour",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Nminute",
+      "Field": "nminute",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Minutes",
+      "Field": "minutes",
+      "DBType": "NUMBER",
+      "Default": "15",
+      "hasRelation": false
+    }, {
+      "Name": "Amt",
+      "Field": "amt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Descr",
+      "Field": "descr",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "Name": "Fre_Drivers",
+  "Synonym": "Fre_Driv",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Natid",
+      "Field": "natid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fname",
+      "Field": "fname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Lname",
+      "Field": "lname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Father",
+      "Field": "father",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mother",
+      "Field": "mother",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Phone",
+      "Field": "phone",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mobile",
+      "Field": "mobile",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

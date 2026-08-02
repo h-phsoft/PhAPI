@@ -1,0 +1,9 @@
+{
+  "Synonym": "Prd_Torder",
+  "Select": "SELECT Id, Ord AS Name FROM Prd_Torder",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Ord) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Ord"
+}

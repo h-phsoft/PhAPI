@@ -1,0 +1,18 @@
+{
+  "Name": "Cash_Eorder_Status",
+  "Synonym": "Cash_Eordstatus",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

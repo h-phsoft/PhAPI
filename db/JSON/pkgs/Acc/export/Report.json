@@ -1,0 +1,94 @@
+{
+  "Name": "Acc_Report_View",
+  "Synonym": "Acc_Vrep",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rep_Name",
+      "Field": "repName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rep_Rem",
+      "Field": "repRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ord",
+      "Field": "ord",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Label",
+      "Field": "label",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Linetype_Name",
+      "Field": "linetypeName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Amtside_Name",
+      "Field": "amtsideName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Amttyp_Name",
+      "Field": "amttypName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Num",
+      "Field": "accNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Name",
+      "Field": "accName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Acc_Fname",
+      "Field": "accFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cost_Num",
+      "Field": "costNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cost_Name",
+      "Field": "costName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cost_Fname",
+      "Field": "costFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tot_Num",
+      "Field": "totNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tot_Name",
+      "Field": "totName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tot_Fname",
+      "Field": "totFname",
+      "isSelected": false
+    }
+  ]
+}

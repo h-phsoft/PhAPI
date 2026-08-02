@@ -1,0 +1,9 @@
+{
+  "Synonym": "Notif_Cod_Dest_Type",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Notif_Cod_Dest_Type",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

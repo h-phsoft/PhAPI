@@ -1,0 +1,9 @@
+{
+  "Synonym": "Prd_Morder",
+  "Select": "SELECT Id, Num AS Name FROM Prd_Morder",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

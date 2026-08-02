@@ -1,0 +1,9 @@
+{
+  "Synonym": "Sdesk_Tckt",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Sdesk_Tckt",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

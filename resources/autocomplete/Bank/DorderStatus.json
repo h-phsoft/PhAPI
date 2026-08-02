@@ -1,0 +1,9 @@
+{
+  "Synonym": "Bank_Dordstatus",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Bank_Dordstatus",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE '%{term}%'"
+  },
+  "OrderBy": "Num"
+}

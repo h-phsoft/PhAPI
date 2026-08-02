@@ -1,0 +1,28 @@
+{
+  "Name": "Fre_Job_Containers",
+  "Synonym": "Fre_Cntr",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Val",
+      "Field": "val",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Qnt",
+      "Field": "qnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Teu",
+      "Field": "teu",
+      "isSelected": false
+    }
+  ]
+}

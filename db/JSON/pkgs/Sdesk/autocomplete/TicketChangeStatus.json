@@ -1,0 +1,9 @@
+{
+  "Synonym": "Sdesk_Tckt_Chng_Status",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Sdesk_Tckt_Chng_Status",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

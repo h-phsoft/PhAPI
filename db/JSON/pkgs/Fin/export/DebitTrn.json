@@ -1,0 +1,58 @@
+{
+  "Name": "Fin_Debit_Trn",
+  "Synonym": "Fin_Tdbt",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Nord",
+      "Field": "nord",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cont_Rid",
+      "Field": "contRid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Rate",
+      "Field": "curnRate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Qnt",
+      "Field": "qnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Price",
+      "Field": "price",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Camt",
+      "Field": "camt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Amt",
+      "Field": "amt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nref",
+      "Field": "nref",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dref",
+      "Field": "dref",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

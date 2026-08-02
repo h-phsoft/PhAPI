@@ -1,0 +1,64 @@
+{
+  "Name": "Copy_Branche_View",
+  "Synonym": "Cpy_Vmbran",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Bran_Num",
+      "Field": "branNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Bran_Name",
+      "Field": "branName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Name",
+      "Field": "statusName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Bran_Rem",
+      "Field": "branRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Day1",
+      "Field": "day1",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Day2",
+      "Field": "day2",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Day3",
+      "Field": "day3",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Day4",
+      "Field": "day4",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Day5",
+      "Field": "day5",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Day6",
+      "Field": "day6",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Day7",
+      "Field": "day7",
+      "isSelected": false
+    }
+  ]
+}

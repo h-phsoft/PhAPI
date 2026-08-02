@@ -1,0 +1,9 @@
+{
+  "Synonym": "Mng_Cod_Spec4",
+  "Select": "SELECT Id, Name FROM Mng_Cod_Spec4",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Name) LIKE '%{term}%'"
+  },
+  "OrderBy": "Name"
+}

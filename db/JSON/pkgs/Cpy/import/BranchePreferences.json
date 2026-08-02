@@ -1,0 +1,66 @@
+{
+  "Name": "Copy_Branche_Preferences",
+  "Synonym": "Cpy_Bpref",
+  "Sequence": "Cpy_Bpref_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Bran_Id",
+      "Field": "branId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Branches",
+        "SynonymName": "Cpy_Bran",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "branName"
+      }
+    }, {
+      "Name": "Visible_Id",
+      "Field": "visibleId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Visible",
+        "SynonymName": "Phs_Cod_Visible",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "visibleName"
+      }
+    }, {
+      "Name": "Key",
+      "Field": "key",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Value1",
+      "Field": "value1",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Value2",
+      "Field": "value2",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

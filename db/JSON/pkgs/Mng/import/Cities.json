@@ -1,0 +1,35 @@
+{
+  "Name": "Mng_Cities",
+  "Synonym": "Mng_City",
+  "Sequence": "Mng_City_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "State_Id",
+      "Field": "stateId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Mng_States",
+        "SynonymName": "Mng_State",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "stateName"
+      }
+    }, {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

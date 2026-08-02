@@ -1,0 +1,75 @@
+{
+  "Name": "Emp_Daily",
+  "Synonym": "Emp_Day",
+  "Sequence": "Emp_Day_Seq",
+  "InsUser": false,
+  "hasChilds": true,
+  "Children": [
+    {
+      "Pkg": "Emp",
+      "Key": "DayAttendanceFile",
+      "Table": "Emp_Day_Attendance_File",
+      "Synonym": "Emp_Dayattfile",
+      "cascadeDelete": true,
+      "Column": "DAY_ID",
+      "ColKey": "dayId"
+    }
+   , {
+      "Pkg": "Emp",
+      "Key": "DailyEntout",
+      "Table": "Emp_Daily_Entout",
+      "Synonym": "Emp_Deo",
+      "cascadeDelete": true,
+      "Column": "DAY_ID",
+      "ColKey": "dayId"
+    }
+   , {
+      "Pkg": "Emp",
+      "Key": "EmployeeDailyEntout",
+      "Table": "Emp_Employee_Daily_Entout",
+      "Synonym": "Emp_Edeo",
+      "cascadeDelete": true,
+      "Column": "DAY_ID",
+      "ColKey": "dayId"
+    }
+   , {
+      "Pkg": "Emp",
+      "Key": "Entrance",
+      "Table": "Emp_Entrance",
+      "Synonym": "Emp_Ent",
+      "cascadeDelete": true,
+      "Column": "DAY_ID",
+      "ColKey": "dayId"
+    }
+   , {
+      "Pkg": "Emp",
+      "Key": "Outgoing",
+      "Table": "Emp_Outgoing",
+      "Synonym": "Emp_Out",
+      "cascadeDelete": true,
+      "Column": "DAY_ID",
+      "ColKey": "dayId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "SysDate",
+      "hasRelation": false
+    }, {
+      "Name": "Commit_Id",
+      "Field": "commitId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

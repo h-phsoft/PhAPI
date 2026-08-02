@@ -1,0 +1,68 @@
+{
+  "Name": "Fre_Department_Unit_Services",
+  "Synonym": "Fre_Duserv",
+  "Sequence": "Fre_Duserv_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Unit_Id",
+      "Field": "unitId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Department_Unit",
+        "SynonymName": "Cpy_Unit",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "unitName"
+      }
+    }, {
+      "Name": "Loc_Id",
+      "Field": "locId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fre_Code_Location",
+        "SynonymName": "Fre_Cod_Loc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "locName"
+      }
+    }, {
+      "Name": "Serv_Id",
+      "Field": "servId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Mng_Services",
+        "SynonymName": "Mng_Serv",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "servName"
+      }
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Status",
+        "SynonymName": "Phs_Cod_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

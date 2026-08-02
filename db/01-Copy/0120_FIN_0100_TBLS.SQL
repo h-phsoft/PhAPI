@@ -1,0 +1,781 @@
+--set Pagesize 1000
+--select 'Drop table '   || table_name    || ';' from user_tables    where table_name    like 'FIN%' ;
+--select 'Drop Synonym ' || Synonym_name  || ';' from user_Synonyms  where Synonym_name  like 'FIN%' ;
+--select 'Drop Sequence '|| Sequence_name || ';' from user_Sequences where Sequence_name like 'FIN%' ;
+--select 'Drop View '    || View_name     || ';' from user_Views     where View_name     like 'FIN%' ;
+----------------------------------------------------------------------------------------------------
+Create Table Fin_Code_Type                                 -- جدول ترميز نوع البند
+( Id         Number(2) NOT NULL,                           -- مفتاح رئيسي
+  Status_Id  Number(1) Default 1,                          -- حالة الترميز
+  Name       Varchar2(100 Char) NOT NULL,                  -- الاسم
+  Rem        Varchar2(100 Char),                           -- ملاحظات
+  Ins_User   Number(5), Ins_Date     Date,
+  Upd_User   Number(5), Upd_Date     Date,
+  CONSTRAINT Fin_Cod_Type_PK     PRIMARY KEY (Id  ),
+  CONSTRAINT Fin_Cod_Type_UK     UNIQUE      (Name),
+  CONSTRAINT Fin_Cod_Type_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
+  CONSTRAINT Fin_Cod_Type_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
+  CONSTRAINT Fin_Cod_Type_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+)
+/
+Create Synonym Fin_Cod_Type For Fin_Code_Type
+/
+INSERT INTO Fin_Cod_Type (Id, Name) VALUES (-1, 'Subtract');
+INSERT INTO Fin_Cod_Type (Id, Name) VALUES (1 , 'Add'     );
+---------------------------------------------------------------------------------------------------
+Create Table Fin_Code_Trt                                  -- جدول ترميز أنواع الحركات
+( Id         Number(5) NOT NULL,                           -- مفتاح رئيسي
+  Status_Id  Number(1) Default 1,                          -- حالة الترميز
+  Name       Varchar2(100 Char) NOT NULL,                  -- الاسم
+  Rem        Varchar2(100 Char),                           -- ملاحظات
+  Ins_User   Number(5), Ins_Date     Date,
+  Upd_User   Number(5), Upd_Date     Date,
+  CONSTRAINT Fin_Cod_Trt_PK     PRIMARY KEY (Id  ),
+  CONSTRAINT Fin_Cod_Trt_UK     UNIQUE      (Name),
+  CONSTRAINT Fin_Cod_Trt_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
+  CONSTRAINT Fin_Cod_Trt_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
+  CONSTRAINT Fin_Cod_Trt_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+)
+/
+Create Synonym Fin_Cod_Trt For Fin_Code_Trt
+/
+INSERT INTO Fin_Cod_Trt (Id, Name, Rem) VALUES (0 , '-'   , '-');
+INSERT INTO Fin_Cod_Trt (Id, Name, Rem) VALUES (10, 'DB'  , 'Debit');
+INSERT INTO Fin_Cod_Trt (Id, Name, Rem) VALUES (11, 'Inv' , 'Invoice');
+INSERT INTO Fin_Cod_Trt (Id, Name, Rem) VALUES (12, 'Dbt' , 'Debit Note');
+INSERT INTO Fin_Cod_Trt (Id, Name, Rem) VALUES (13, 'DRec', 'Debit Reconcile Note');
+INSERT INTO Fin_Cod_Trt (Id, Name, Rem) VALUES (14, 'DAlc', 'Debit Allocate Note');
+INSERT INTO Fin_Cod_Trt (Id, Name, Rem) VALUES (20, 'CR'  , 'Credit');
+INSERT INTO Fin_Cod_Trt (Id, Name, Rem) VALUES (21, 'Crd' , 'Credit Note');
+INSERT INTO Fin_Cod_Trt (Id, Name, Rem) VALUES (22, 'Exp' , 'Expense Note');
+INSERT INTO Fin_Cod_Trt (Id, Name, Rem) VALUES (23, 'CRec', 'Credit Reconcile Note');
+INSERT INTO Fin_Cod_Trt (Id, Name, Rem) VALUES (24, 'CAlc', 'Credit Allocate Note');
+---------------------------------------------------------------------------------------------------
+Create Table Fin_Code_Status                               -- جدول ترميز 
+( Id         Number(1) NOT NULL,				                   -- مفتاح رئيسي
+  Status_Id  Number(1) Default 1,				                   -- حالة الترميز
+  Name       Varchar2(100 Char) NOT NULL,				           -- الاسم
+  Rem        Varchar2(100 Char),          				         -- ملاحظات
+  Ins_User   Number(5), Ins_Date     Date,
+  Upd_User   Number(5), Upd_Date     Date,
+  CONSTRAINT Fin_Cod_Status_PK     PRIMARY KEY (Id  ),
+  CONSTRAINT Fin_Cod_Status_UK     UNIQUE      (Name),
+  CONSTRAINT Fin_Cod_Status_Ins_FK Foreign Key (Ins_User) References Cpy_User      (Id),
+  CONSTRAINT Fin_Cod_Status_Upd_FK Foreign Key (Upd_User) References Cpy_User      (Id)
+)
+/
+Create Synonym Fin_Cod_Status For Fin_Code_Status
+/
+Insert into Fin_Cod_Status (Id,Name) values (0,'Draft');
+Insert into Fin_Cod_Status (Id,Name) values (1,'Final');
+----------------------------------------------------------------------------------------------------
+Create Table Fin_Code_Method                               -- جدول ترميز أنواع الطرق
+( Id         Number(5) NOT NULL,                           -- مفتاح رئيسي
+  Status_Id  Number(1) Default 1,                          -- حالة الترميز
+  Name       Varchar2(100 Char) NOT NULL,                  -- الاسم
+  Rem        Varchar2(100 Char),                           -- ملاحظات
+  Ins_User   Number(5), Ins_Date     Date,
+  Upd_User   Number(5), Upd_Date     Date,
+  CONSTRAINT Fin_Cod_Method_PK     PRIMARY KEY (Id  ),
+  CONSTRAINT Fin_Cod_Method_UK     UNIQUE      (Name),
+  CONSTRAINT Fin_Cod_Method_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
+  CONSTRAINT Fin_Cod_Method_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
+  CONSTRAINT Fin_Cod_Method_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+)
+/
+Create Synonym Fin_Cod_Method For Fin_Code_Method
+/
+INSERT INTO Fin_Cod_Method (Id, Name) VALUES (0 , '-');
+INSERT INTO Fin_Cod_Method (Id, Name) VALUES (11, 'Cash');
+INSERT INTO Fin_Cod_Method (Id, Name) VALUES (20, 'Transfer');
+INSERT INTO Fin_Cod_Method (Id, Name) VALUES (21, 'Bank Transfer');
+INSERT INTO Fin_Cod_Method (Id, Name) VALUES (22, 'Bank Check');
+INSERT INTO Fin_Cod_Method (Id, Name) VALUES (30, 'Telephone Transfer');
+---------------------------------------------------------------------------------------------------
+Create Sequence Fin_Cod_Contract_Seq MinValue 1 Start With 1 MaxValue 99999 INCREMENT BY 1 CACHE 2;
+Create Table Fin_Code_Contract                             -- جدول ترميز العقود
+( Id         Number(5) NOT NULL,                           -- مفتاح رئيسي
+  Status_Id  Number(1) Default 1,                          -- حالة الترميز
+  Name       Varchar2(100 Char) NOT NULL,                  -- الاسم
+  Rem        Varchar2(100 Char),                           -- ملاحظات
+  Ins_User   Number(5), Ins_Date     Date,
+  Upd_User   Number(5), Upd_Date     Date,
+  CONSTRAINT Fin_Cod_Contract_PK     PRIMARY KEY (Id  ),
+  CONSTRAINT Fin_Cod_Contract_UK     UNIQUE      (Name),
+  CONSTRAINT Fin_Cod_Contract_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
+  CONSTRAINT Fin_Cod_Contract_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
+  CONSTRAINT Fin_Cod_Contract_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+)
+/
+Create Synonym Fin_Cod_Contract For Fin_Code_Contract
+/
+INSERT INTO Fin_Cod_Contract (Id, Name) VALUES (0, '-');
+---------------------------------------------------------------------------------------------------
+Create Sequence Fin_Cod_KeyType_Seq MinValue 1 Start With 1 MaxValue 99999 INCREMENT BY 1 CACHE 2;
+Create Table Fin_Code_KeyType                              -- جدول ترميز أنواع الوثائق
+( Id         Number(5) NOT NULL,                           -- مفتاح رئيسي
+  Status_Id  Number(1) Default 1,                          -- حالة الترميز
+  Name       Varchar2(100 Char) NOT NULL,                  -- الاسم
+  Rem        Varchar2(100 Char),                           -- ملاحظات
+  Ins_User   Number(5), Ins_Date     Date,
+  Upd_User   Number(5), Upd_Date     Date,
+  CONSTRAINT Fin_Cod_KeyType_PK     PRIMARY KEY (Id  ),
+  CONSTRAINT Fin_Cod_KeyType_UK     UNIQUE      (Name),
+  CONSTRAINT Fin_Cod_KeyType_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
+  CONSTRAINT Fin_Cod_KeyType_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
+  CONSTRAINT Fin_Cod_KeyType_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+)
+/
+Create Synonym Fin_Cod_KeyType For Fin_Code_KeyType
+/
+INSERT INTO Fin_Cod_KeyType (Id, Name) VALUES (0, '-');
+---------------------------------------------------------------------------------------------------
+Create Sequence Fin_Cod_Loc_Seq MinValue 1 Start With 1 MaxValue 99999 INCREMENT BY 1 CACHE 2;
+Create Table Fin_Code_Location                             -- جدول ترميز المنطقة/المرحلة
+( Id         Number(5) NOT NULL,                           -- مفتاح رئيسي
+  Status_Id  Number(1) Default 1,                          -- حالة الترميز
+  Name       Varchar2(100 Char) NOT NULL,                  -- الاسم
+  Rem        Varchar2(100 Char),                           -- ملاحظات
+  Ins_User   Number(5), Ins_Date     Date,
+  Upd_User   Number(5), Upd_Date     Date,
+  CONSTRAINT Fin_Cod_Loc_PK     PRIMARY KEY (Id  ),
+  CONSTRAINT Fin_Cod_Loc_UK     UNIQUE      (Name),
+  CONSTRAINT Fin_Cod_Loc_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
+  CONSTRAINT Fin_Cod_Loc_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
+  CONSTRAINT Fin_Cod_Loc_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+)
+/
+Create Synonym Fin_Cod_Loc For Fin_Code_Location
+/
+INSERT INTO Fin_Cod_Loc (Id, Name) VALUES (0, '-');
+---------------------------------------------------------------------------------------------------
+Create Sequence Fin_Cod_LType_Seq MinValue 1 Start With 1 MaxValue 99999 INCREMENT BY 1 CACHE 2;
+Create Table Fin_Code_Line_Type                            -- جدول ترميز نوع البند
+( Id         Number(5) NOT NULL,                           -- مفتاح رئيسي
+  Status_Id  Number(1) Default 1,                          -- حالة الترميز
+  Name       Varchar2(100 Char) NOT NULL,                  -- الاسم
+  Rem        Varchar2(100 Char),                           -- ملاحظات
+  Ins_User   Number(5), Ins_Date     Date,
+  Upd_User   Number(5), Upd_Date     Date,
+  CONSTRAINT Fin_Cod_LType_PK     PRIMARY KEY (Id  ),
+  CONSTRAINT Fin_Cod_LType_UK     UNIQUE      (Name),
+  CONSTRAINT Fin_Cod_LType_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
+  CONSTRAINT Fin_Cod_LType_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
+  CONSTRAINT Fin_Cod_LType_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+)
+/
+Create Synonym Fin_Cod_LType For Fin_Code_Line_Type
+/
+INSERT INTO Fin_Cod_LType (Id, Name) VALUES (0, 'خدمة');
+INSERT INTO Fin_Cod_LType (Id, Name) VALUES (1, 'متعامل');
+INSERT INTO Fin_Cod_LType (Id, Name) VALUES (2, 'حساب');
+INSERT INTO Fin_Cod_LType (Id, Name) VALUES (3, 'مادة');
+---------------------------------------------------------------------------------------------------
+Create Sequence Fin_MInv_Seq MinValue 1 Start With 1 MaxValue 99999 INCREMENT BY 1 CACHE 2;
+Create Table Fin_Invoice_Mst                               -- فواتير التدقيق المالي
+( Id            Number(9),                                 -- مفتاح رئيسي
+  Dept_Id       Number(5) Default 0,                       -- الدائرة
+  Unit_Id       Number(5) Default 0,                       -- القسم
+  Oper_Id       Number(5) Default 0,                       -- العملية
+  Period_Id     Number(4) Default 0,                       -- السنة
+  Dept_RId      Number(5) Default 0,                       -- الدائرة
+  Unit_RId      Number(5) Default 0,                       -- القسم
+  Oper_RId      Number(5) Default 0,                       -- العملية
+  Src_Id        Number(5) Default 0,                       -- أصل الوثيقة
+  Trt_Id        Number(5) Default 11,                      -- نوع الحركة
+  Status_Id     Number(5) Default 0,                       -- الحالة 1 مسودة \ 2 نهائية
+  Method_Id     Number(5) Default 0,                       -- النوع 0 نقدا \ 1 شيك \ 2 حوالة مصرفية \ 3 حوالة هاتفية \ 4 حوالة
+  Cont_Id       Number(10) Default 0,                      -- المتعامل\الزبون
+  Vhr_Id        Number(10),                                -- مفتاح سند القيد
+  Bank_Id       Number(5),                                 -- البنك
+  Ord_Id        Number(10),                                -- مقتاح الأمر
+  Num           Number(10) Default 0,                      -- رقم
+  dDate         Date Default Sysdate,                      -- تاريخ
+  RefNum        Varchar2(30 Char),                         -- رقم مرتبط بالعميل
+  Contract_Id   Number(5) Default 0,                       -- العقد
+  KeyType_Id    Number(5) Default 0,                       -- نوع الوثيقة المرتبطة
+  KeyNum        Varchar2(30 Char),                         -- رقم الوثيقة المرتبطة
+  KeyDate       Date,                                      -- تاريخ الوثيقة المرتبطة
+  DueDate       Date,                                      -- تاريخ الإستحقاق
+  Rem           Varchar2(250 Char),                        -- ملاحظات
+  Note          Varchar2(2000 Char),                       -- نص توصيف الوثيقة
+  ACAmt         Number(25,3) Default 0,                    -- المبلغ المستخدم في أوامر الصندوق قطع
+  AAmt          Number(25,2) Default 0,                    -- المبلغ المستخدم في أوام الصندوق محلي
+  APCAmt        Number(25,3) Default 0,                    -- المبلغ المستخدم في السلفة
+  APAmt         Number(25,2) Default 0,                    -- المبلغ المستخدم في السلفة محلي
+  Ins_User      Number(5), Ins_Date     Date,
+  Upd_User      Number(5), Upd_Date     Date,
+  CONSTRAINT    Fin_Inv_PK           Primary Key (Id),
+  CONSTRAINT    Fin_Inv_UK           Unique      (Period_Id, Num),
+  CONSTRAINT    Fin_Inv_WPer_FK      Foreign Key (Period_Id  ) References Cpy_Period      (Id),
+  CONSTRAINT    Fin_Inv_Vhr_FK       Foreign Key (Vhr_Id     ) References Acc_Mst         (Id),
+  CONSTRAINT    Fin_Inv_Dept_FK      Foreign Key (Dept_Id    ) References Cpy_Dept        (Id),
+  CONSTRAINT    Fin_Inv_Unit_FK      Foreign Key (Unit_Id    ) References Cpy_Unit        (Id),
+  CONSTRAINT    Fin_Inv_Oper_FK      Foreign Key (Oper_Id    ) References Cpy_Oper        (Id),
+  CONSTRAINT    Fin_Inv_Cont_FK      Foreign Key (Cont_Id    ) References Mng_Cont        (Id),
+  CONSTRAINT    Fin_Inv_RActv_FK     Foreign Key (Dept_RId   ) References Cpy_Dept        (Id),
+  CONSTRAINT    Fin_Inv_RASec_FK     Foreign Key (Unit_RId   ) References Cpy_Unit        (Id),
+  CONSTRAINT    Fin_Inv_RASOp_FK     Foreign Key (Oper_RId   ) References Cpy_Oper        (Id),
+  CONSTRAINT    Fin_Inv_Src_FK       Foreign Key (Src_Id     ) References Phs_Cod_Src     (Id),
+  CONSTRAINT    Fin_Inv_Trt_FK       Foreign Key (Trt_Id     ) References Fin_Cod_Trt     (Id),
+  CONSTRAINT    Fin_Inv_Status_FK    Foreign Key (Status_Id  ) References Fin_Cod_Status  (Id),
+  CONSTRAINT    Fin_Inv_Method_FK    Foreign Key (Method_Id  ) References Fin_Cod_Method  (Id),
+  CONSTRAINT    Fin_Inv_Contract_FK  Foreign Key (Contract_Id) References Fin_Cod_Contract(Id),
+  CONSTRAINT    Fin_Inv_KeyType_FK   Foreign Key (KeyType_Id ) References Fin_Cod_KeyType (Id),
+  CONSTRAINT    Fin_Inv_Ins_FK       Foreign Key (Ins_User   ) References Cpy_User        (Id),
+  CONSTRAINT    Fin_Inv_Upd_FK       Foreign Key (Upd_User   ) References Cpy_User        (Id)
+)
+/
+Create Synonym Fin_MInv For Fin_Invoice_Mst
+/
+Create Sequence Fin_TInv_Seq MinValue 1 Start With 1 MaxValue 99999 INCREMENT BY 1 CACHE 2;
+Create Table Fin_Invoice_Trn                               -- بنود الفواتير
+( Id         Number(20) NOT NULL,                          -- مفتاح رئيسي
+  Mst_Id     Number(9) NOT NULL,                           -- مفتاح الأب
+  nOrd       Number(4) Default 0,                          -- مسلسل الإظهار
+  Job_Id     Number(10),                                   -- مفتاح ملف العمل
+  Type_Id    Number(5) Default 1,                          -- النوع 1 إضافة / -1 طرح
+  Rel_Id     Number(20),                                   -- مفتاح الوثائق المدينة أو الدائنة للأقسام
+  Loc_Id     Number(2) Default 0,                          -- المكان Location / 1 Origin / 2 Shipping / 3 Destination
+  LType_Id   Number(2) Default 0,                          -- نوع البند 0 خدمة \ 1 متعامل \ 2 حساب \ 3 مادة
+  Item_Id    Number(9) Default 0,                          -- المادة
+  Cont_RId   Number(9) Default 0,                          -- المتعامل
+  Serv_Id    Number(9) Default 0,                          -- الخدمة
+  Acc_Id     Number(9) Default 0,                          -- الحساب
+  Unit_Id    Number(5) Default 0,                          -- الوحدة
+  Curn_Id    Number(3) Default 1,                          -- العملة
+  Curn_Rate  Number(25,9) Default 1,                       -- سعر الصرف
+  Qnt        Number(25,3) Default 0,                       -- الكمية
+  Price      Number(25,3) Default 0,                       -- إفرادي
+  CAmt       Number(25,3) Default 0,                       -- المبلغ عملة
+  Amt        Number(25,2) Default 0,                       -- المبلغ محلي
+  Vat_Perc   Number(6,2) Default 0,                        -- نسبة الVAT
+  Vat_Value  Number(25,2) Default 0,                       -- فيمة الVAT
+  nRef       Varchar2(30 Char),                            -- الرقم المرجع
+  dRef       Date,                                         -- التاريخ المرجع
+  Rem        Varchar2(250 Char),                           -- البيان
+  Ins_User   Number(5),  Ins_Date  Date,
+  Upd_User   Number(5),  Upd_Date  Date,
+  CONSTRAINT Fin_TInv_PK       Primary Key (Id),
+  CONSTRAINT Fin_TInv_MInv_FK  Foreign Key (Mst_Id  ) References Fin_MInv     (Id),
+  CONSTRAINT Fin_TInv_Cont_FK  Foreign Key (Cont_RId) References Mng_Cont     (Id),
+  CONSTRAINT Fin_TInv_Serv_FK  Foreign Key (Serv_Id ) References Mng_Serv     (Id),
+  CONSTRAINT Fin_TInv_Acc_FK   Foreign Key (Acc_Id  ) References Acc_Acc      (Id),
+--CONSTRAINT Fin_TInv_Item_FK  Foreign Key (Item_Id ) References Stor_Item    (Id),
+  CONSTRAINT Fin_TInv_Curn_FK  Foreign Key (Curn_Id ) References Mng_Curn     (Id),
+  CONSTRAINT Fin_TInv_LType_FK Foreign Key (LType_Id) References Fin_Cod_LType(Id),
+  CONSTRAINT Fin_TInv_Type_FK  Foreign Key (Type_Id ) References Fin_Cod_Type (Id),
+  CONSTRAINT Fin_TInv_Loc_FK   Foreign Key (Loc_Id  ) References Fin_Cod_Loc  (Id),
+  CONSTRAINT Fin_TInv_Unit_FK  Foreign Key (Unit_Id ) References Cpy_Unit     (Id),
+  CONSTRAINT Fin_TInv_Ins_FK   Foreign Key (Ins_User) References Cpy_User     (Id),
+  CONSTRAINT Fin_TInv_Upd_FK   Foreign Key (Upd_User) References Cpy_User     (Id)
+)
+/
+Create Synonym Fin_TInv For Fin_Invoice_Trn
+/
+---------------------------------------------------------------------------------------------------
+Create Sequence Fin_MDbt_Seq MinValue 1 Start With 1 MaxValue 99999 INCREMENT BY 1 CACHE 2;
+Create Table Fin_Debit_Mst                            -- الوثائق المدينة
+( Id            Number(9),                            -- مفتاح رئيسي
+  Dept_Id       Number(5) Default 0,                  -- الدائرة
+  Unit_Id       Number(5) Default 0,                  -- القسم
+  Oper_Id       Number(5) Default 0,                  -- العملية
+  Period_Id     Number(4) Default 0,                  -- السنة
+  Dept_RId      Number(5) Default 0,                  -- الدائرة
+  Unit_RId      Number(5) Default 0,                  -- القسم
+  Oper_RId      Number(5) Default 0,                  -- العملية
+  Src_Id        Number(5) Default 0,                  -- أصل الوثيقة
+  Trt_Id        Number(5) Default 12,                 -- نوع الحركة
+  Status_Id     Number(5) Default 0,                  -- الحالة 1 مسودة \ 2 نهائية
+  Method_Id     Number(5) Default 0,                  -- النوع 0 نقدا \ 1 شيك \ 2 حوالة مصرفية \ 3 حوالة هاتفية \ 4 حوالة
+  Cont_Id       Number(10) Default 0,                 -- المتعامل\الزبون
+  Vhr_Id        Number(10),                           -- مفتاح سند القيد
+  Bank_Id       Number(5),                            -- البنك
+  Ord_Id        Number(10),                           -- مقتاح الأمر
+  Num           Number(10) Default 0,                 -- رقم
+  dDate         Date Default Sysdate,                 -- تاريخ
+  RefNum        Varchar2(30 Char),                    -- رقم مرتبط بالعميل
+  Contract_Id   Number(5) Default 0,                  -- العقد
+  KeyType_Id    Number(5) Default 0,                  -- نوع الوثيقة المرتبطة
+  KeyNum        Varchar2(30 Char),                    -- رقم الوثيقة المرتبطة
+  KeyDate       Date,                                 -- تاريخ الوثيقة المرتبطة
+  DueDate       Date,                                 -- تاريخ الإستحقاق
+  Rem           Varchar2(250 Char),                   -- ملاحظات
+  Note          Varchar2(2000 Char),                  -- نص توصيف الوثيقة
+  ACAmt         Number(25,3) Default 0,               -- المبلغ المستخدم في أوامر الصندوق قطع
+  AAmt          Number(25,2) Default 0,               -- المبلغ المستخدم في أوام الصندوق محلي
+  APCAmt        Number(25,3) Default 0,               -- المبلغ المستخدم في السلفة
+  APAmt         Number(25,2) Default 0,               -- المبلغ المستخدم في السلفة محلي
+  Ins_User      Number(5), Ins_Date     Date,
+  Upd_User      Number(5), Upd_Date     Date,
+  CONSTRAINT    Fin_Dbt_PK           Primary Key (Id),
+  CONSTRAINT    Fin_Dbt_UK           Unique      (Period_Id, Num),
+  CONSTRAINT    Fin_Dbt_Period_FK    Foreign Key (period_Id  ) References Cpy_Period      (Id),
+  CONSTRAINT    Fin_Dbt_Vhr_FK       Foreign Key (Vhr_Id     ) References Acc_Mst         (Id),
+  CONSTRAINT    Fin_Dbt_Dept_FK      Foreign Key (Dept_Id    ) References Cpy_Dept        (Id),
+  CONSTRAINT    Fin_Dbt_Unit_FK      Foreign Key (Unit_Id    ) References Cpy_Unit        (Id),
+  CONSTRAINT    Fin_Dbt_Oper_FK      Foreign Key (Oper_Id    ) References Cpy_Oper        (Id),
+  CONSTRAINT    Fin_Dbt_Cont_FK      Foreign Key (Cont_Id    ) References Mng_Cont        (Id),
+  CONSTRAINT    Fin_Dbt_RActv_FK     Foreign Key (Dept_RId   ) References Cpy_Dept        (Id),
+  CONSTRAINT    Fin_Dbt_RASec_FK     Foreign Key (Unit_RId   ) References Cpy_Unit        (Id),
+  CONSTRAINT    Fin_Dbt_RASOp_FK     Foreign Key (Oper_RId   ) References Cpy_Oper        (Id),
+  CONSTRAINT    Fin_Dbt_Src_FK       Foreign Key (Src_Id     ) References Phs_Cod_Src     (Id),
+  CONSTRAINT    Fin_Dbt_Trt_FK       Foreign Key (Trt_Id     ) References Fin_Cod_Trt     (Id),
+  CONSTRAINT    Fin_Dbt_Method_FK    Foreign Key (Method_Id  ) References Fin_Cod_Method  (Id),
+  CONSTRAINT    Fin_Dbt_Contract_FK  Foreign Key (Contract_Id) References Fin_Cod_Contract(Id),
+  CONSTRAINT    Fin_Dbt_KeyType_FK   Foreign Key (KeyType_Id ) References Fin_Cod_KeyType (Id),
+  CONSTRAINT    Fin_Dbt_Ins_FK       Foreign Key (Ins_User   ) References Cpy_User        (Id),
+  CONSTRAINT    Fin_Dbt_Upd_FK       Foreign Key (Upd_User   ) References Cpy_User        (Id)
+)
+/
+Create Synonym Fin_MDbt For Fin_Debit_Mst
+/
+
+Create Sequence Fin_TDbt_Seq MinValue 1 Start With 1 MaxValue 99999 INCREMENT BY 1 CACHE 2;
+Create Table Fin_Debit_Trn                            -- بنود الوثائق المدينة
+( Id         Number(20) NOT NULL,                     -- مفتاح رئيسي
+  Mst_Id     Number(9) NOT NULL,                      -- مفتاح الأب
+  nOrd       Number(4) Default 0,                     -- مسلسل الإظهار
+  Job_Id     Number(10),                              -- مفتاح ملف العمل
+  Type_Id    Number(5) Default 1,                     -- النوع 1 إضافة / -1 طرح
+  Rel_Id     Number(20),                              -- مفتاح الوثائق المدينة أو الدائنة للأقسام
+  Loc_Id     Number(2) Default 0,                     -- المكان Location / 1 Origin / 2 Shipping / 3 Destination
+  LType_Id   Number(2) Default 0,                     -- نوع البند 0 خدمة \ 1 متعامل \ 2 حساب \ 3 مادة
+  Item_Id    Number(9) Default 0,                     -- المادة
+  Cont_RId   Number(9) Default 0,                     -- المتعامل\الزبون
+  Serv_Id    Number(9) Default 0,                     -- الخدمة
+  Acc_Id     Number(9) Default 0,                     -- الخدمة
+  Unit_Id    Number(5) Default 0,                     -- الوحدة
+  Curn_Id    Number(3) Default 1,                     -- العملة
+  Curn_Rate  Number(25,9) Default 1,                  -- سعر الصرف
+  Qnt        Number(25,3) Default 0,                  -- الكمية
+  Price      Number(25,3) Default 0,                  -- إفرادي
+  CAmt       Number(25,3) Default 0,                  -- المبلغ عملة
+  Amt        Number(25,2) Default 0,                  -- المبلغ محلي
+  Vat_Perc   Number(6,2) Default 0,                   -- نسبة الVAT
+  Vat_Value  Number(25,2) Default 0,                  -- فيمة الVAT
+  nRef       Varchar2(30 Char),                       -- الرقم المرجع
+  dRef       Date,                                    -- التاريخ المرجع
+  Rem        Varchar2(250 Char),                      -- البيان
+  Ins_User   Number(5),  Ins_Date  Date,
+  Upd_User   Number(5),  Upd_Date  Date,
+  CONSTRAINT Fin_TDbt_PK       Primary Key (Id),
+  CONSTRAINT Fin_TDbt_MDbt_FK  Foreign Key (Mst_Id  ) References Fin_MDbt     (Id),
+  CONSTRAINT Fin_TDbt_Cont_FK  Foreign Key (Cont_RId) References Mng_Cont     (Id),
+  CONSTRAINT Fin_TDbt_Serv_FK  Foreign Key (Serv_Id ) References Mng_Serv     (Id),
+  CONSTRAINT Fin_TDbt_Acc_FK   Foreign Key (Acc_Id  ) References Acc_Acc      (Id),
+--CONSTRAINT Fin_TDbt_Item_FK  Foreign Key (Item_Id ) References Stor_Item    (Id),
+  CONSTRAINT Fin_TDbt_Curn_FK  Foreign Key (Curn_Id ) References Mng_Curn     (Id),
+  CONSTRAINT Fin_TDbt_LType_FK Foreign Key (LType_Id) References Fin_Cod_LType(Id),
+  CONSTRAINT Fin_TDbt_Type_FK  Foreign Key (Type_Id ) References Fin_Cod_Type (Id),
+  CONSTRAINT Fin_TDbt_Loc_FK   Foreign Key (Loc_Id  ) References Fin_Cod_Loc  (Id),
+  CONSTRAINT Fin_TDbt_Unit_FK  Foreign Key (Unit_Id ) References Cpy_Unit     (Id),
+  CONSTRAINT Fin_TDbt_Ins_FK   Foreign Key (Ins_User) References Cpy_User     (Id),
+  CONSTRAINT Fin_TDbt_Upd_FK   Foreign Key (Upd_User) References Cpy_User     (Id)
+)
+/
+Create Synonym Fin_TDbt For Fin_Debit_Trn
+/
+---------------------------------------------------------------------------------------------------
+Create Sequence Fin_MCrd_Seq MinValue 1 Start With 1 MaxValue 99999 INCREMENT BY 1 CACHE 2;
+Create Table Fin_Credit_Mst                           -- الوثائق الدائنة
+( Id            Number(9),                            -- مفتاح رئيسي
+  Dept_Id       Number(5) Default 0,                  -- الدائرة
+  Unit_Id       Number(5) Default 0,                  -- القسم
+  Oper_Id       Number(5) Default 0,                  -- العملية
+  Period_Id     Number(4) Default 0,                  -- السنة
+  Dept_RId      Number(5) Default 0,                  -- الدائرة
+  Unit_RId      Number(5) Default 0,                  -- القسم
+  Oper_RId      Number(5) Default 0,                  -- العملية
+  Src_Id        Number(5) Default 0,                  -- أصل الوثيقة
+  Trt_Id        Number(5) Default 21,                 -- نوع الحركة
+  Status_Id     Number(5) Default 0,                  -- الحالة 1 مسودة \ 2 نهائية
+  Method_Id     Number(5) Default 0,                  -- النوع 0 نقدا \ 1 شيك \ 2 حوالة مصرفية \ 3 حوالة هاتفية \ 4 حوالة
+  Cont_Id       Number(10) Default 0,                 -- المتعامل\الزبون
+  Vhr_Id        Number(10),                           -- مفتاح سند القيد
+  Bank_Id       Number(5),                            -- البنك
+  Ord_Id        Number(10),                           -- مقتاح الأمر
+  Num           Number(10) Default 0,                 -- رقم
+  dDate         Date Default Sysdate,                 -- تاريخ
+  RefNum        Varchar2(30 Char),                    -- رقم مرتبط بالعميل
+  Contract_Id   Number(5) Default 0,                  -- العقد
+  KeyType_Id    Number(5) Default 0,                  -- نوع الوثيقة المرتبطة
+  KeyNum        Varchar2(30 Char),                    -- رقم الوثيقة المرتبطة
+  KeyDate       Date,                                 -- تاريخ الوثيقة المرتبطة
+  DueDate       Date,                                 -- تاريخ الإستحقاق
+  Rem           Varchar2(250 Char),                   -- ملاحظات
+  Note          Varchar2(2000 Char),                  -- نص توصيف الوثيقة
+  ACAmt         Number(25,3) Default 0,               -- المبلغ المستخدم في أوامر الصندوق قطع
+  AAmt          Number(25,2) Default 0,               -- المبلغ المستخدم في أوام الصندوق محلي
+  APCAmt        Number(25,3) Default 0,               -- المبلغ المستخدم في السلفة
+  APAmt         Number(25,2) Default 0,               -- المبلغ المستخدم في السلفة محلي
+  Ins_User      Number(5), Ins_Date     Date,
+  Upd_User      Number(5), Upd_Date     Date,
+  CONSTRAINT    Fin_Crd_PK           Primary Key (Id),
+  CONSTRAINT    Fin_Crd_UK           Unique      (Period_Id, Num),
+  CONSTRAINT    Fin_Crd_Period_FK    Foreign Key (period_Id  ) References Cpy_Period      (Id),
+  CONSTRAINT    Fin_Crd_Vhr_FK       Foreign Key (Vhr_Id     ) References Acc_Mst         (Id),
+  CONSTRAINT    Fin_Crd_Dept_FK      Foreign Key (Dept_Id    ) References Cpy_Dept        (Id),
+  CONSTRAINT    Fin_Crd_Unit_FK      Foreign Key (Unit_Id    ) References Cpy_Unit        (Id),
+  CONSTRAINT    Fin_Crd_Oper_FK      Foreign Key (Oper_Id    ) References Cpy_Oper        (Id),
+  CONSTRAINT    Fin_Crd_Cont_FK      Foreign Key (Cont_Id    ) References Mng_Cont        (Id),
+  CONSTRAINT    Fin_Crd_RActv_FK     Foreign Key (Dept_RId   ) References Cpy_Dept        (Id),
+  CONSTRAINT    Fin_Crd_RASec_FK     Foreign Key (Unit_RId   ) References Cpy_Unit        (Id),
+  CONSTRAINT    Fin_Crd_RASOp_FK     Foreign Key (Oper_RId   ) References Cpy_Oper        (Id),
+  CONSTRAINT    Fin_Crd_Src_FK       Foreign Key (Src_Id     ) References Phs_Cod_Src     (Id),
+  CONSTRAINT    Fin_Crd_Trt_FK       Foreign Key (Trt_Id     ) References Fin_Cod_Trt     (Id),
+  CONSTRAINT    Fin_Crd_Method_FK    Foreign Key (Method_Id  ) References Fin_Cod_Method  (Id),
+  CONSTRAINT    Fin_Crd_Contract_FK  Foreign Key (Contract_Id) References Fin_Cod_Contract(Id),
+  CONSTRAINT    Fin_Crd_KeyType_FK   Foreign Key (KeyType_Id ) References Fin_Cod_KeyType (Id),
+  CONSTRAINT    Fin_Crd_Ins_FK       Foreign Key (Ins_User   ) References Cpy_User        (Id),
+  CONSTRAINT    Fin_Crd_Upd_FK       Foreign Key (Upd_User   ) References Cpy_User        (Id)
+)
+/
+Create Synonym Fin_MCrd For Fin_Credit_Mst
+/
+
+Create Sequence Fin_TCrd_Seq MinValue 1 Start With 1 MaxValue 99999 INCREMENT BY 1 CACHE 2;
+Create Table Fin_Credit_Trn                           -- بنود الوثائق الدائنة
+( Id         Number(20) NOT NULL,                     -- مفتاح رئيسي
+  Mst_Id     Number(9) NOT NULL,                      -- مفتاح الأب
+  nOrd       Number(4) Default 0,                     -- مسلسل الإظهار
+  Job_Id     Number(10),                              -- مفتاح ملف العمل
+  Type_Id    Number(5) Default 1,                     -- النوع 1 إضافة / -1 طرح
+  Rel_Id     Number(20),                              -- مفتاح الوثائق المدينة أو الدائنة للأقسام
+  Loc_Id     Number(2) Default 0,                     -- المكان Location / 1 Origin / 2 Shipping / 3 Destination
+  LType_Id   Number(2) Default 0,                     -- نوع البند 0 خدمة \ 1 متعامل \ 2 حساب \ 3 مادة
+  Item_Id    Number(9) Default 0,                     -- المادة
+  Cont_RId   Number(9) Default 0,                     -- المتعامل\الزبون
+  Serv_Id    Number(9) Default 0,                     -- الخدمة
+  Acc_Id     Number(9) Default 0,                     -- الخدمة
+  Unit_Id    Number(5) Default 0,                     -- الوحدة
+  Curn_Id    Number(3) Default 1,                     -- العملة
+  Curn_Rate  Number(25,9) Default 1,                  -- سعر الصرف
+  Qnt        Number(25,3) Default 0,                  -- الكمية
+  Price      Number(25,3) Default 0,                  -- إفرادي
+  CAmt       Number(25,3) Default 0,                  -- المبلغ عملة
+  Amt        Number(25,2) Default 0,                  -- المبلغ محلي
+  Vat_Perc   Number(6,2) Default 0,                   -- نسبة الVAT
+  Vat_Value  Number(25,2) Default 0,                  -- فيمة الVAT
+  nRef       Varchar2(30 Char),                       -- الرقم المرجع
+  dRef       Date,                                    -- التاريخ المرجع
+  Rem        Varchar2(250 Char),                      -- البيان
+  Ins_User   Number(5),  Ins_Date  Date,
+  Upd_User   Number(5),  Upd_Date  Date,
+  CONSTRAINT Fin_TCrd_PK       Primary Key (Id),
+  CONSTRAINT Fin_TCrd_MCrd_FK  Foreign Key (Mst_Id  ) References Fin_MCrd     (Id),
+  CONSTRAINT Fin_TCrd_Cont_FK  Foreign Key (Cont_RId) References Mng_Cont     (Id),
+  CONSTRAINT Fin_TCrd_Serv_FK  Foreign Key (Serv_Id ) References Mng_Serv     (Id),
+  CONSTRAINT Fin_TCrd_Acc_FK   Foreign Key (Acc_Id  ) References Acc_Acc      (Id),
+--CONSTRAINT Fin_TCrd_Item_FK  Foreign Key (Item_Id ) References Stor_Item    (Id),
+  CONSTRAINT Fin_TCrd_Curn_FK  Foreign Key (Curn_Id ) References Mng_Curn     (Id),
+  CONSTRAINT Fin_TCrd_LType_FK Foreign Key (LType_Id) References Fin_Cod_LType(Id),
+  CONSTRAINT Fin_TCrd_Type_FK  Foreign Key (Type_Id ) References Fin_Cod_Type (Id),
+  CONSTRAINT Fin_TCrd_Loc_FK   Foreign Key (Loc_Id  ) References Fin_Cod_Loc  (Id),
+  CONSTRAINT Fin_TCrd_Unit_FK  Foreign Key (Unit_Id ) References Cpy_Unit     (Id),
+  CONSTRAINT Fin_TCrd_Ins_FK   Foreign Key (Ins_User) References Cpy_User     (Id),
+  CONSTRAINT Fin_TCrd_Upd_FK   Foreign Key (Upd_User) References Cpy_User     (Id)
+)
+/
+Create Synonym Fin_TCrd For Fin_Credit_Trn
+/
+---------------------------------------------------------------------------------------------------
+Create Sequence Fin_MExp_Seq MinValue 1 Start With 1 MaxValue 99999 INCREMENT BY 1 CACHE 2;
+Create Table Fin_Expense_Mst                          -- مصاريف
+( Id            Number(9),                            -- مفتاح رئيسي
+  Dept_Id       Number(5) Default 0,                  -- الدائرة
+  Unit_Id       Number(5) Default 0,                  -- القسم
+  Oper_Id       Number(5) Default 0,                  -- العملية
+  Period_Id     Number(4) Default 0,                  -- السنة
+  Dept_RId      Number(5) Default 0,                  -- الدائرة
+  Unit_RId      Number(5) Default 0,                  -- القسم
+  Oper_RId      Number(5) Default 0,                  -- العملية
+  Src_Id        Number(5) Default 0,                  -- أصل الوثيقة
+  Trt_Id        Number(5) Default 22,                 -- نوع الحركة
+  Status_Id     Number(5) Default 0,                  -- الحالة 1 مسودة \ 2 نهائية
+  Method_Id     Number(5) Default 0,                  -- النوع 0 نقدا \ 1 شيك \ 2 حوالة مصرفية \ 3 حوالة هاتفية \ 4 حوالة
+  Cont_Id       Number(10) Default 0,                 -- المتعامل\الزبون
+  Vhr_Id        Number(10),                           -- مفتاح سند القيد
+  Bank_Id       Number(5),                            -- البنك
+  Ord_Id        Number(10),                           -- مقتاح الأمر
+  Num           Number(10) Default 0,                 -- رقم
+  dDate         Date Default Sysdate,                 -- تاريخ
+  RefNum        Varchar2(30 Char),                    -- رقم مرتبط بالعميل
+  Contract_Id   Number(5) Default 0,                  -- العقد
+  KeyType_Id    Number(5) Default 0,                  -- نوع الوثيقة المرتبطة
+  KeyNum        Varchar2(30 Char),                    -- رقم الوثيقة المرتبطة
+  KeyDate       Date,                                 -- تاريخ الوثيقة المرتبطة
+  DueDate       Date,                                 -- تاريخ الإستحقاق
+  Rem           Varchar2(250 Char),                   -- ملاحظات
+  Note          Varchar2(2000 Char),                  -- نص توصيف الوثيقة
+  ACAmt         Number(25,3) Default 0,               -- المبلغ المستخدم في أوامر الصندوق قطع
+  AAmt          Number(25,2) Default 0,               -- المبلغ المستخدم في أوام الصندوق محلي
+  APCAmt        Number(25,3) Default 0,               -- المبلغ المستخدم في السلفة
+  APAmt         Number(25,2) Default 0,               -- المبلغ المستخدم في السلفة محلي
+  Ins_User      Number(5), Ins_Date     Date,
+  Upd_User      Number(5), Upd_Date     Date,
+  CONSTRAINT    Fin_Exp_PK           Primary Key (Id),
+  CONSTRAINT    Fin_Exp_UK           Unique      (Period_Id, Num),
+  CONSTRAINT    Fin_Exp_Period_FK    Foreign Key (period_Id  ) References Cpy_Period      (Id),
+  CONSTRAINT    Fin_Exp_Vhr_FK       Foreign Key (Vhr_Id     ) References Acc_Mst         (Id),
+  CONSTRAINT    Fin_Exp_Dept_FK      Foreign Key (Dept_Id    ) References Cpy_Dept        (Id),
+  CONSTRAINT    Fin_Exp_Unit_FK      Foreign Key (Unit_Id    ) References Cpy_Unit        (Id),
+  CONSTRAINT    Fin_Exp_Oper_FK      Foreign Key (Oper_Id    ) References Cpy_Oper        (Id),
+  CONSTRAINT    Fin_Exp_Cont_FK      Foreign Key (Cont_Id    ) References Mng_Cont        (Id),
+  CONSTRAINT    Fin_Exp_RActv_FK     Foreign Key (Dept_RId   ) References Cpy_Dept        (Id),
+  CONSTRAINT    Fin_Exp_RASec_FK     Foreign Key (Unit_RId   ) References Cpy_Unit        (Id),
+  CONSTRAINT    Fin_Exp_RASOp_FK     Foreign Key (Oper_RId   ) References Cpy_Oper        (Id),
+  CONSTRAINT    Fin_Exp_Src_FK       Foreign Key (Src_Id     ) References Phs_Cod_Src     (Id),
+  CONSTRAINT    Fin_Exp_Trt_FK       Foreign Key (Trt_Id     ) References Fin_Cod_Trt     (Id),
+  CONSTRAINT    Fin_Exp_Method_FK    Foreign Key (Method_Id  ) References Fin_Cod_Method  (Id),
+  CONSTRAINT    Fin_Exp_Contract_FK  Foreign Key (Contract_Id) References Fin_Cod_Contract(Id),
+  CONSTRAINT    Fin_Exp_KeyType_FK   Foreign Key (KeyType_Id ) References Fin_Cod_KeyType (Id),
+  CONSTRAINT    Fin_Exp_Ins_FK       Foreign Key (Ins_User   ) References Cpy_User        (Id),
+  CONSTRAINT    Fin_Exp_Upd_FK       Foreign Key (Upd_User   ) References Cpy_User        (Id)
+)
+/
+Create Synonym Fin_MExp For Fin_Expense_Mst
+/
+
+Create Sequence Fin_TExp_Seq MinValue 1 Start With 1 MaxValue 99999 INCREMENT BY 1 CACHE 2;
+Create Table Fin_Expense_Trn                          -- بنود المصاريف
+( Id         Number(20) NOT NULL,                     -- مفتاح رئيسي
+  Mst_Id     Number(9) NOT NULL,                      -- مفتاح الأب
+  nOrd       Number(4) Default 0,                     -- مسلسل الإظهار
+  Job_Id     Number(10),                              -- مفتاح ملف العمل
+  Type_Id    Number(5) Default 1,                     -- النوع 1 إضافة / -1 طرح
+  Rel_Id     Number(20),                              -- مفتاح الوثائق المدينة أو الدائنة للأقسام
+  Loc_Id     Number(2) Default 0,                     -- المكان Location / 1 Origin / 2 Shipping / 3 Destination
+  LType_Id   Number(2) Default 0,                     -- نوع البند 0 خدمة \ 1 متعامل \ 2 حساب \ 3 مادة
+  Item_Id    Number(9) Default 0,                     -- المادة
+  Cont_RId   Number(9) Default 0,                     -- المتعامل\الزبون
+  Serv_Id    Number(9) Default 0,                     -- الخدمة
+  Acc_Id     Number(9) Default 0,                     -- الخدمة
+  Unit_Id    Number(5) Default 0,                     -- الوحدة
+  Curn_Id    Number(3) Default 1,                     -- العملة
+  Curn_Rate  Number(25,9) Default 1,                  -- سعر الصرف
+  Qnt        Number(25,3) Default 0,                  -- الكمية
+  Price      Number(25,3) Default 0,                  -- إفرادي
+  CAmt       Number(25,3) Default 0,                  -- المبلغ عملة
+  Amt        Number(25,2) Default 0,                  -- المبلغ محلي
+  Vat_Perc   Number(6,2) Default 0,                   -- نسبة الVAT
+  Vat_Value  Number(25,2) Default 0,                  -- فيمة الVAT
+  nRef       Varchar2(30 Char),                       -- الرقم المرجع
+  dRef       Date,                                    -- التاريخ المرجع
+  Rem        Varchar2(250 Char),                      -- البيان
+  Ins_User   Number(5),  Ins_Date  Date,
+  Upd_User   Number(5),  Upd_Date  Date,
+  CONSTRAINT Fin_TExp_PK       Primary Key (Id),
+  CONSTRAINT Fin_TExp_MInv_FK  Foreign Key (Mst_Id  ) References Fin_MExp     (Id),
+  CONSTRAINT Fin_TExp_Cont_FK  Foreign Key (Cont_RId) References Mng_Cont     (Id),
+  CONSTRAINT Fin_TExp_Serv_FK  Foreign Key (Serv_Id ) References Mng_Serv     (Id),
+  CONSTRAINT Fin_TExp_Acc_FK   Foreign Key (Acc_Id  ) References Acc_Acc      (Id),
+--CONSTRAINT Fin_TExp_Item_FK  Foreign Key (Item_Id ) References Stor_Item    (Id),
+  CONSTRAINT Fin_TExp_Curn_FK  Foreign Key (Curn_Id ) References Mng_Curn     (Id),
+  CONSTRAINT Fin_TExp_LType_FK Foreign Key (LType_Id) References Fin_Cod_LType(Id),
+  CONSTRAINT Fin_TExp_Type_FK  Foreign Key (Type_Id ) References Fin_Cod_Type (Id),
+  CONSTRAINT Fin_TExp_Loc_FK   Foreign Key (Loc_Id  ) References Fin_Cod_Loc  (Id),
+  CONSTRAINT Fin_TExp_Unit_FK  Foreign Key (Unit_Id ) References Cpy_Unit     (Id),
+  CONSTRAINT Fin_TExp_Ins_FK   Foreign Key (Ins_User) References Cpy_User     (Id),
+  CONSTRAINT Fin_TExp_Upd_FK   Foreign Key (Upd_User) References Cpy_User     (Id)
+)
+/
+Create Synonym Fin_TExp For Fin_Expense_Trn
+/
+---------------------------------------------------------------------------------------------------
+Create Sequence Fin_MRec_Seq MinValue 1 Start With 1 MaxValue 99999 INCREMENT BY 1 CACHE 2;
+Create Table Fin_Reconcile                            -- وثائق المناقلة بين المتعاملين
+( Id            Number(9),                            -- مفتاح رئيسي
+  Dept_Id       Number(5) Default 0,                  -- الدائرة
+  Unit_Id       Number(5) Default 0,                  -- القسم
+  Oper_Id       Number(5) Default 0,                  -- العملية
+  Period_Id     Number(4) Default 0,                  -- السنة
+  Dept_RId      Number(5) Default 0,                  -- الدائرة
+  Unit_RId      Number(5) Default 0,                  -- القسم
+  Oper_RId      Number(5) Default 0,                  -- العملية
+  Src_Id        Number(5) Default 0,                  -- أصل الوثيقة
+  Trt_Id        Number(5) Default 13,                 -- نوع الحركة
+  Trt_RId       Number(5) Default 23,                 -- نوع الحركة
+  Status_Id     Number(5) Default 0,                  -- الحالة 1 مسودة \ 2 نهائية
+  Method_Id     Number(5) Default 0,                  -- النوع 0 نقدا \ 1 شيك \ 2 حوالة مصرفية \ 3 حوالة هاتفية \ 4 حوالة
+  Cont_Id       Number(10) Default 0,                 -- المتعامل\الزبون
+  Cont_RId      Number(10) Default 0,                 -- المتعامل\الزبون
+  Vhr_Id        Number(10),                           -- مفتاح سند القيد
+  Bank_Id       Number(5),                            -- البنك
+  Ord_Id        Number(10),                           -- مقتاح الأمر
+  Num           Number(10) Default 0,                 -- رقم
+  dDate         Date Default Sysdate,                 -- تاريخ
+  RefNum        Varchar2(30 Char),                    -- رقم مرتبط بالعميل
+  Contract_Id   Number(5) Default 0,                  -- العقد
+  KeyType_Id    Number(5) Default 0,                  -- نوع الوثيقة المرتبطة
+  KeyNum        Varchar2(30 Char),                    -- رقم الوثيقة المرتبطة
+  KeyDate       Date,                                 -- تاريخ الوثيقة المرتبطة
+  DueDate       Date,                                 -- تاريخ الإستحقاق
+  Rem           Varchar2(250 Char),                   -- ملاحظات
+  Note          Varchar2(2000 Char),                  -- نص توصيف الوثيقة
+  Curn_Id       Number(3) Default 1,                  -- العملة
+  Curn_Rate     Number(25,9) Default 1,               -- سعر الصرف
+  CAmt          Number(25,3) Default 0,               -- المبلغ عملة
+  Amt           Number(25,2) Default 0,               -- المبلغ محلي
+  Curn_RId      Number(3) Default 1,                  -- العملة
+  Curn_RRate    Number(25,9) Default 1,               -- سعر الصرف
+  RCAmt         Number(25,3) Default 0,               -- المبلغ عملة
+  RAmt          Number(25,2) Default 0,               -- المبلغ محلي
+  ACAmt         Number(25,3) Default 0,               -- المبلغ المستخدم في أوامر الصندوق قطع
+  AAmt          Number(25,2) Default 0,               -- المبلغ المستخدم في أوام الصندوق محلي
+  APCAmt        Number(25,3) Default 0,               -- المبلغ المستخدم في السلفة
+  APAmt         Number(25,2) Default 0,               -- المبلغ المستخدم في السلفة محلي
+  Ins_User      Number(5), Ins_Date     Date,
+  Upd_User      Number(5), Upd_Date     Date,
+  CONSTRAINT    Fin_Rec_PK           Primary Key (Id),
+  CONSTRAINT    Fin_Rec_UK           Unique      (Period_Id, Num),
+  CONSTRAINT    Fin_Rec_Period_FK    Foreign Key (period_Id  ) References Cpy_Period      (Id),
+  CONSTRAINT    Fin_Rec_Vhr_FK       Foreign Key (Vhr_Id     ) References Acc_Mst         (Id),
+  CONSTRAINT    Fin_Rec_Dept_FK      Foreign Key (Dept_Id    ) References Cpy_Dept        (Id),
+  CONSTRAINT    Fin_Rec_Unit_FK      Foreign Key (Unit_Id    ) References Cpy_Unit        (Id),
+  CONSTRAINT    Fin_Rec_Oper_FK      Foreign Key (Oper_Id    ) References Cpy_Oper        (Id),
+  CONSTRAINT    Fin_Rec_Cont_FK      Foreign Key (Cont_Id    ) References Mng_Cont        (Id),
+  CONSTRAINT    Fin_Rec_ContR_FK     Foreign Key (Cont_RId   ) References Mng_Cont        (Id),
+  CONSTRAINT    Fin_Rec_RActv_FK     Foreign Key (Dept_RId   ) References Cpy_Dept        (Id),
+  CONSTRAINT    Fin_Rec_RASec_FK     Foreign Key (Unit_RId   ) References Cpy_Unit        (Id),
+  CONSTRAINT    Fin_Rec_RASOp_FK     Foreign Key (Oper_RId   ) References Cpy_Oper        (Id),
+  CONSTRAINT    Fin_Rec_Src_FK       Foreign Key (Src_Id     ) References Phs_Cod_Src     (Id),
+  CONSTRAINT    Fin_Rec_Trt_FK       Foreign Key (Trt_Id     ) References Fin_Cod_Trt     (Id),
+  CONSTRAINT    Fin_Rec_TrtR_FK      Foreign Key (Trt_RId    ) References Fin_Cod_Trt     (Id),
+  CONSTRAINT    Fin_Rec_Method_FK    Foreign Key (Method_Id  ) References Fin_Cod_Method  (Id),
+  CONSTRAINT    Fin_Rec_Contract_FK  Foreign Key (Contract_Id) References Fin_Cod_Contract(Id),
+  CONSTRAINT    Fin_Rec_KeyType_FK   Foreign Key (KeyType_Id ) References Fin_Cod_KeyType (Id),
+  CONSTRAINT    Fin_Rec_Curn_FK      Foreign Key (Curn_Id    ) References Mng_Curn        (Id),
+  CONSTRAINT    Fin_Rec_CurnR_FK     Foreign Key (Curn_RId   ) References Mng_Curn        (Id),
+  CONSTRAINT    Fin_Rec_Ins_FK       Foreign Key (Ins_User   ) References Cpy_User        (Id),
+  CONSTRAINT    Fin_Rec_Upd_FK       Foreign Key (Upd_User   ) References Cpy_User        (Id)
+)
+/
+Create Synonym Fin_MRec For Fin_Reconcile
+/
+---------------------------------------------------------------------------------------------------
+Create Sequence Fin_MAlc_Seq MinValue 1 Start With 1 MaxValue 99999 INCREMENT BY 1 CACHE 2;
+Create Table Fin_Allocate_Mst                         -- إغلاق الأوراق المالية
+( Id            Number(9),                            -- مفتاح رئيسي
+  Dept_Id       Number(5) Default 0,                  -- الدائرة
+  Unit_Id       Number(5) Default 0,                  -- القسم
+  Oper_Id       Number(5) Default 0,                  -- العملية
+  Period_Id     Number(4) Default 0,                  -- السنة
+  Dept_RId      Number(5) Default 0,                  -- الدائرة
+  Unit_RId      Number(5) Default 0,                  -- القسم
+  Oper_RId      Number(5) Default 0,                  -- العملية
+  Src_Id        Number(5) Default 0,                  -- أصل الوثيقة
+  Trt_Id        Number(5) Default 14,                 -- نوع الحركة
+  Trt_RId       Number(5) Default 24,                 -- نوع الحركة
+  Status_Id     Number(5) Default 0,                  -- الحالة 1 مسودة \ 2 نهائية
+  Method_Id     Number(5) Default 0,                  -- النوع 0 نقدا \ 1 شيك \ 2 حوالة مصرفية \ 3 حوالة هاتفية \ 4 حوالة
+  Cont_Id       Number(10) Default 0,                 -- المتعامل\الزبون
+  Cont_RId      Number(10) Default 0,                 -- المتعامل\الزبون
+  Vhr_Id        Number(10),                           -- مفتاح سند القيد
+  Bank_Id       Number(5),                            -- البنك
+  Ord_Id        Number(10),                           -- مقتاح الأمر
+  Num           Number(10) Default 0,                 -- رقم
+  dDate         Date Default Sysdate,                 -- تاريخ
+  RefNum        Varchar2(30 Char),                    -- رقم مرتبط بالعميل
+  Contract_Id   Number(5) Default 0,                  -- العقد
+  KeyType_Id    Number(5) Default 0,                  -- نوع الوثيقة المرتبطة
+  KeyNum        Varchar2(30 Char),                    -- رقم الوثيقة المرتبطة
+  KeyDate       Date,                                 -- تاريخ الوثيقة المرتبطة
+  DueDate       Date,                                 -- تاريخ الإستحقاق
+  Rem           Varchar2(250 Char),                   -- ملاحظات
+  Note          Varchar2(2000 Char),                  -- نص توصيف الوثيقة
+  ACAmt         Number(25,3) Default 0,               -- المبلغ المستخدم في أوامر الصندوق قطع
+  AAmt          Number(25,2) Default 0,               -- المبلغ المستخدم في أوام الصندوق محلي
+  APCAmt        Number(25,3) Default 0,               -- المبلغ المستخدم في السلفة
+  APAmt         Number(25,2) Default 0,               -- المبلغ المستخدم في السلفة محلي
+  Ins_User      Number(20), Ins_Date Date,
+  Upd_User      Number(20), Upd_Date Date,
+  CONSTRAINT    Fin_Alc_PK           Primary Key (Id),
+  CONSTRAINT    Fin_Alc_UK           Unique      (Period_Id, Num),
+  CONSTRAINT    Fin_Alc_Period_FK    Foreign Key (period_Id  ) References Cpy_Period      (Id),
+  CONSTRAINT    Fin_Alc_Vhr_FK       Foreign Key (Vhr_Id     ) References Acc_Mst         (Id),
+  CONSTRAINT    Fin_Alc_Dept_FK      Foreign Key (Dept_Id    ) References Cpy_Dept        (Id),
+  CONSTRAINT    Fin_Alc_Unit_FK      Foreign Key (Unit_Id    ) References Cpy_Unit        (Id),
+  CONSTRAINT    Fin_Alc_Oper_FK      Foreign Key (Oper_Id    ) References Cpy_Oper        (Id),
+  CONSTRAINT    Fin_Alc_Cont_FK      Foreign Key (Cont_Id    ) References Mng_Cont        (Id),
+  CONSTRAINT    Fin_Alc_ContR_FK     Foreign Key (Cont_RId   ) References Mng_Cont        (Id),
+  CONSTRAINT    Fin_Alc_RActv_FK     Foreign Key (Dept_RId   ) References Cpy_Dept        (Id),
+  CONSTRAINT    Fin_Alc_RASec_FK     Foreign Key (Unit_RId   ) References Cpy_Unit        (Id),
+  CONSTRAINT    Fin_Alc_RASOp_FK     Foreign Key (Oper_RId   ) References Cpy_Oper        (Id),
+  CONSTRAINT    Fin_Alc_Src_FK       Foreign Key (Src_Id     ) References Phs_Cod_Src     (Id),
+  CONSTRAINT    Fin_Alc_Trt_FK       Foreign Key (Trt_Id     ) References Fin_Cod_Trt     (Id),
+  CONSTRAINT    Fin_Alc_TrtR_FK      Foreign Key (Trt_RId    ) References Fin_Cod_Trt     (Id),
+  CONSTRAINT    Fin_Alc_Method_FK    Foreign Key (Method_Id  ) References Fin_Cod_Method  (Id),
+  CONSTRAINT    Fin_Alc_Contract_FK  Foreign Key (Contract_Id) References Fin_Cod_Contract(Id),
+  CONSTRAINT    Fin_Alc_KeyType_FK   Foreign Key (KeyType_Id ) References Fin_Cod_KeyType (Id),
+  CONSTRAINT    Fin_Alc_Ins_FK       Foreign Key (Ins_User   ) References Cpy_User        (Id),
+  CONSTRAINT    Fin_Alc_Upd_FK       Foreign Key (Upd_User   ) References Cpy_User        (Id)
+)
+/
+Create Synonym Fin_MAlc For Fin_Allocate_Mst
+/
+
+Create Sequence Fin_AlcDbt_Seq MinValue 1 Start With 1 MaxValue 99999 INCREMENT BY 1 CACHE 2;
+Create Table Fin_Allocate_Debit                       -- وثائق المالية المرتبطة
+( Id         Number(20) NOT NULL,                     -- مفتاح رئيسي
+  Mst_Id     Number(9) NOT NULL,                      -- مفتاح الأب
+  Dept_RId   Number(5) Default 0,                     -- النشاط المقابل
+  Unit_RId   Number(5) Default 0,                     -- القسم المقابل
+  Oper_RId   Number(5) Default 0,                     -- نوع العملية المقابل
+  Type_Id    Number(5) Default 1,                     -- النوع 1 إضافة / -1 طرح
+--Trt_RId    Number(5),                               -- نوع االوثيقة
+  Rel_Id     Number(5),                               -- مفتاح الوثيقة
+  nOrd       Number(4) Default 0,                     -- مسلسل الإظهار
+  Curn_Id    Number(10) Default 1,                    -- العملة
+  Curn_Rate  Number(25,9) Default 1,                  -- سعر الصرف
+  CAmt       Number(25,3) Default 0,                  -- المبلغ عملة
+  Amt        Number(25,2) Default 0,                  -- المبلغ محلي
+  Rem        Varchar2(250 Char),                      -- البيان
+  Ins_User   Number(20),  Ins_Date  Date,
+  Upd_User   Number(20),  Upd_Date  Date,
+  CONSTRAINT Fin_TDAlc_PK       Primary Key (Id),
+  CONSTRAINT Fin_TDAlc_FK       Foreign Key (Mst_Id  ) References Fin_MAlc    (Id),
+  CONSTRAINT Fin_TDAlc_RActv_FK Foreign Key (Dept_RId) References Cpy_Dept    (Id),
+  CONSTRAINT Fin_TDAlc_RASec_FK Foreign Key (Unit_RId) References Cpy_Unit    (Id),
+  CONSTRAINT Fin_TDAlc_RASOp_FK Foreign Key (Oper_RId) References Cpy_Oper    (Id),
+  CONSTRAINT Fin_TDAlc_Curn_FK  Foreign Key (Curn_Id ) References Mng_Curn    (Id),
+  CONSTRAINT Fin_TDAlc_Type_FK  Foreign Key (Type_Id ) References Fin_Cod_Type(Id),
+  CONSTRAINT Fin_TDAlc_Ins_FK   Foreign Key (Ins_User) References Cpy_User    (Id),
+  CONSTRAINT Fin_TDAlc_Upd_FK   Foreign Key (Upd_User) References Cpy_User    (Id)
+)
+/
+Create Synonym Fin_AlcDbt For Fin_Allocate_Debit
+/
+
+Create Sequence Fin_AlcCrd_Seq MinValue 1 Start With 1 MaxValue 99999 INCREMENT BY 1 CACHE 2;
+Create Table Fin_Allocate_Credit                      -- وثائق المالية المرتبطة
+( Id         Number(20) NOT NULL,                     -- مفتاح رئيسي
+  Mst_Id     Number(9) NOT NULL,                      -- مفتاح الأب
+  Dept_RId   Number(5) Default 0,                     -- النشاط المقابل
+  Unit_RId   Number(5) Default 0,                     -- القسم المقابل
+  Oper_RId   Number(5) Default 0,                     -- نوع العملية المقابل
+  Type_Id    Number(5) Default 1,                          -- النوع 1 إضافة / -1 طرح
+  Trt_RId    Number(5),                               -- نوع االوثيقة
+  Rel_Id     Number(5),                               -- مفتاح الوثيقة
+  nOrd       Number(4) Default 0,                     -- مسلسل الإظهار
+  Curn_Id    Number(10) Default 1,                    -- العملة
+  Curn_Rate  Number(25,9) Default 1,                  -- سعر الصرف
+  CAmt       Number(25,3) Default 0,                  -- المبلغ عملة
+  Amt        Number(25,2) Default 0,                  -- المبلغ محلي
+  Rem        Varchar2(250 Char),                      -- البيان
+  Ins_User   Number(20),  Ins_Date  Date,
+  Upd_User   Number(20),  Upd_Date  Date,
+  CONSTRAINT Fin_TCAlc_PK       Primary Key (Id),
+  CONSTRAINT Fin_TCAlc_FK       Foreign Key (Mst_Id  ) References Fin_MAlc    (Id),
+  CONSTRAINT Fin_TCAlc_RActv_FK Foreign Key (Dept_RId) References Cpy_Dept    (Id),
+  CONSTRAINT Fin_TCAlc_RASec_FK Foreign Key (Unit_RId) References Cpy_Unit    (Id),
+  CONSTRAINT Fin_TCAlc_RASOp_FK Foreign Key (Oper_RId) References Cpy_Oper    (Id),
+  CONSTRAINT Fin_TCAlc_Curn_FK  Foreign Key (Curn_Id ) References Mng_Curn    (Id),
+  CONSTRAINT Fin_TCAlc_Type_FK  Foreign Key (Type_Id ) References Fin_Cod_Type(Id),
+  CONSTRAINT Fin_TCAlc_Ins_FK   Foreign Key (Ins_User) References Cpy_User    (Id),
+  CONSTRAINT Fin_TCAlc_Upd_FK   Foreign Key (Upd_User) References Cpy_User    (Id)
+)
+/
+Create Synonym Fin_TAlcCrd For Fin_Allocate_Credit
+/
+---------------------------------------------------------------------------------------------------

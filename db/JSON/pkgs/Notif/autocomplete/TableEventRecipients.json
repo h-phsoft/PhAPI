@@ -1,0 +1,9 @@
+{
+  "Synonym": "Notif_Table_Event_Recip",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Notif_Table_Event_Recip",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

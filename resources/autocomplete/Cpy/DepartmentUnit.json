@@ -1,0 +1,10 @@
+{
+  "Synonym": "Cpy_Unit",
+  "Select": "SELECT Id,Name AS Name FROM Cpy_Unit",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Name) LIKE Lower('%{term}%')",
+    "DeptId": "Dept_Id={DeptId}"
+  },
+  "OrderBy": "Id"
+}

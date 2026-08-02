@@ -1,0 +1,139 @@
+{
+  "Name": "Emp_Appraisal_Employee_View",
+  "Synonym": "Emp_Vappremp",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Emp_Num",
+      "Field": "empNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Name",
+      "Field": "empName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Fname",
+      "Field": "empFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dept_Name",
+      "Field": "deptName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sect_Name",
+      "Field": "sectName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Job_Name",
+      "Field": "jobName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Level_Name",
+      "Field": "levelName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc1_Name",
+      "Field": "spc1Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc2_Name",
+      "Field": "spc2Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc3_Name",
+      "Field": "spc3Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc4_Name",
+      "Field": "spc4Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Eappr_Num",
+      "Field": "eapprNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Eappr_Ddate",
+      "Field": "eapprDdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Eappr_Fdate",
+      "Field": "eapprFdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Eappr_Tdate",
+      "Field": "eapprTdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Eappr_Rem",
+      "Field": "eapprRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Eappr_Tid",
+      "Field": "eapprTid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Eappr_Points",
+      "Field": "eapprPoints",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Eappr_Trem",
+      "Field": "eapprTrem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grp_Name",
+      "Field": "grpName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Itm_Name",
+      "Field": "itmName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tmplt_Name",
+      "Field": "tmpltName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tmplt_Rem",
+      "Field": "tmpltRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tmplt_Tid",
+      "Field": "tmpltTid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tmplt_Points",
+      "Field": "tmpltPoints",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tmplt_Trem",
+      "Field": "tmpltTrem",
+      "isSelected": false
+    }
+  ]
+}

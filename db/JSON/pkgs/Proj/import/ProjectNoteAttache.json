@@ -1,0 +1,47 @@
+{
+  "Name": "Proj_Project_Note_Attache",
+  "Synonym": "Proj_Projnote_Attache",
+  "Sequence": "Proj_Projnote_Attache_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Projnote_Id",
+      "Field": "projnoteId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Proj_Project_Note",
+        "SynonymName": "Proj_Proj_Note",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "projnoteName"
+      }
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Filename",
+      "Field": "filename",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

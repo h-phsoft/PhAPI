@@ -1,0 +1,94 @@
+{
+  "Name": "Acc_Sumvoucher_View",
+  "Synonym": "Acc_Vsvoucher",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Bran_Name",
+      "Field": "branName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Period_Name",
+      "Field": "periodName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Period_Sdate",
+      "Field": "periodSdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Period_Edate",
+      "Field": "periodEdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Src_Name",
+      "Field": "srcName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Name",
+      "Field": "statusName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mst_Num",
+      "Field": "mstNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mst_Pnum",
+      "Field": "mstPnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mst_Date",
+      "Field": "mstDate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mst_Rem",
+      "Field": "mstRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Doc_Name",
+      "Field": "docName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mst_Docn",
+      "Field": "mstDocn",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mst_Docd",
+      "Field": "mstDocd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sum_Deb",
+      "Field": "sumDeb",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sum_Crd",
+      "Field": "sumCrd",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sum_Debc",
+      "Field": "sumDebc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sum_Crdc",
+      "Field": "sumCrdc",
+      "isSelected": false
+    }
+  ]
+}

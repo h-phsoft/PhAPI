@@ -1,0 +1,66 @@
+{
+  "Name": "Emp_Appraisal_Templates_Mst",
+  "Synonym": "Emp_Apprmst",
+  "Sequence": "Emp_Apprmst_Seq",
+  "InsUser": false,
+  "hasChilds": true,
+  "Children": [
+    {
+      "Pkg": "Emp",
+      "Key": "AppraisalEmployeeMst",
+      "Table": "Emp_Appraisal_Employee_Mst",
+      "Synonym": "Emp_Apprempmst",
+      "cascadeDelete": true,
+      "Column": "APPR_ID",
+      "ColKey": "apprId"
+    }
+   , {
+      "Pkg": "Emp",
+      "Key": "AppraisalEvaluation",
+      "Table": "Emp_Appraisal_Evaluation",
+      "Synonym": "Emp_Appreval",
+      "cascadeDelete": true,
+      "Column": "APPR_ID",
+      "ColKey": "apprId"
+    }
+   , {
+      "Pkg": "Emp",
+      "Key": "AppraisalTemplatesTrn",
+      "Table": "Emp_Appraisal_Templates_Trn",
+      "Synonym": "Emp_Apprtrn",
+      "cascadeDelete": true,
+      "Column": "APPR_ID",
+      "ColKey": "apprId"
+    }
+   , {
+      "Pkg": "Emp",
+      "Key": "Employee",
+      "Table": "Emp_Employee",
+      "Synonym": "Emp_Emp",
+      "cascadeDelete": true,
+      "Column": "APPR_ID",
+      "ColKey": "apprId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

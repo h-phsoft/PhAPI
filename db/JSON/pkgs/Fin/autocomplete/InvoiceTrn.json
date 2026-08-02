@@ -1,0 +1,9 @@
+{
+  "Synonym": "Fin_Tinv",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Fin_Tinv",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

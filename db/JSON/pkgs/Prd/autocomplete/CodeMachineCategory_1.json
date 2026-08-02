@@ -1,0 +1,9 @@
+{
+  "Synonym": "Prd_Cod_Mchine_Cat",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Prd_Cod_Mchine_Cat",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

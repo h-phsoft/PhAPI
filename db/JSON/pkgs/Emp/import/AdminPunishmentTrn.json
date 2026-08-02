@@ -1,0 +1,80 @@
+{
+  "Name": "Emp_Admin_Punishment_Trn",
+  "Synonym": "Emp_Tadmpun",
+  "Sequence": "Emp_Tadmpun_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Mapun_Id",
+      "Field": "mapunId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Admin_Punishment_Mst",
+        "SynonymName": "Emp_Madmpun",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "mapunName"
+      }
+    }, {
+      "Name": "Emp_Id",
+      "Field": "empId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Employee",
+        "SynonymName": "Emp_Emp",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "empName"
+      }
+    }, {
+      "Name": "Apprgrp_Id",
+      "Field": "apprgrpId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Appraisal_Grp",
+        "SynonymName": "Emp_Cod_Appraisal_Grp",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "apprgrpName"
+      }
+    }, {
+      "Name": "Appritm_Id",
+      "Field": "appritmId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Code_Appraisal_Item",
+        "SynonymName": "Emp_Cod_Appraisal_Item",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "appritmName"
+      }
+    }, {
+      "Name": "Points",
+      "Field": "points",
+      "DBType": "NUMBER",
+      "Default": "100",
+      "hasRelation": false
+    }, {
+      "Name": "Days",
+      "Field": "days",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

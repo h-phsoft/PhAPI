@@ -1,0 +1,10 @@
+{
+  "Synonym": "Stor_Oumst",
+  "Select": "SELECT Id, Num||' - '||dDate AS Name FROM Stor_Oumst AS Out ",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' - '||dDate) LIKE '%{term}%'",
+    "storId": "stor_id={storId}"
+  },
+  "OrderBy": "Num"
+}

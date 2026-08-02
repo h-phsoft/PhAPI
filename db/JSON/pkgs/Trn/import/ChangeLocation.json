@@ -1,0 +1,61 @@
+{
+  "Name": "Trn_Change_Location",
+  "Synonym": "Trn_Chloc",
+  "Sequence": "Trn_Chloc_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Bln_Id",
+      "Field": "blnId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Trn_Balance",
+        "SynonymName": "Trn_Bln",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "blnName"
+      }
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Oloc_Id",
+      "Field": "olocId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Trn_Code_Location",
+        "SynonymName": "Trn_Cod_Loc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "olocName"
+      }
+    }, {
+      "Name": "Nloc_Id",
+      "Field": "nlocId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Trn_Code_Location",
+        "SynonymName": "Trn_Cod_Loc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "nlocName"
+      }
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "Name": "Proj_Project_Team_Ratingmst",
+  "Synonym": "Proj_Projteam_Ratemst",
+  "Sequence": "Proj_Projteam_Ratemst_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Team_Id",
+      "Field": "teamId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Proj_Project_Team",
+        "SynonymName": "Proj_Proj_Team",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "teamName"
+      }
+    }, {
+      "Name": "Sdate",
+      "Field": "sdate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Edate",
+      "Field": "edate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

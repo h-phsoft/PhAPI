@@ -1,0 +1,72 @@
+{
+  "Name": "Cash_Porder_Apvs",
+  "Synonym": "Cash_Pordapv",
+  "Sequence": "Cash_Pordapv_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Ord_Id",
+      "Field": "ordId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Cash_Payment_Order",
+        "SynonymName": "Cash_Pord",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "ordName"
+      }
+    }, {
+      "Name": "Apord_Rid",
+      "Field": "apordRid",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Nord",
+      "Field": "nord",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Curn_Id",
+      "Field": "curnId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Mng_Currency",
+        "SynonymName": "Mng_Curn",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "curnName"
+      }
+    }, {
+      "Name": "Curn_Rate",
+      "Field": "curnRate",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Camt",
+      "Field": "camt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Amt",
+      "Field": "amt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+Create OR Replace View Fix_Responsibility_View AS
+Select ALL
+       M.Id       Mst_Id      , M.Num        Mst_Num       ,
+       M.dDate    Mst_Date    , M.Rem        Mst_Rem       ,
+       P.Id       Period_Id   , P.Name       Period_Name   ,
+       CT.Id      Commit_Id   , CT.Name      Commit_Name   ,
+       E.Id       Emp_Id      , E.Num        Emp_Num       ,
+       E.Name     Emp_Name    , E.Num||' '||E.Name           Emp_FName,
+       T.Id       Trn_Id      , T.Ord        Trn_Ord       , T.Rem        Trn_Rem       , T.Qnt          Trn_Qnt          ,
+       TI.Id      Trn_IId     , TI.SDate     Trn_ISDate    , TI.EDate     Trn_IEDate    ,
+       TI.Qnt     Trn_IQnt    , TI.CQnt      Trn_ICQnt     , TI.SQnt      Trn_ISQnt     ,
+       TI.SCQnt   Trn_ISCQnt  , TI.Price     Trn_IPrice    , TI.Amt       Trn_IAmt      , TI.CAmt        Trn_ICAmt        ,
+       TI.Perc    Trn_IPerc   , TI.FTot      Trn_IFTot     , TI.FAmt      Trn_IFAmt     , TI.RTot        Trn_IRTot        ,
+       TI.RAmt    Trn_IRAmt   , TI.Rem       Trn_IRem      , TI.Spc6      Trn_ISpc6     ,
+       F.Id       Fixd_Id     , F.Num        Fixd_Num      ,
+       F.Name     Fixd_Name   , F.FName      Fixd_FName    ,
+       F.Perc     Fixd_Perc   , F.Rem        Fixd_Rem      ,
+       F.Spc1_Id  Fixd_Spc1_Id, F.Spc1_Name  Fixd_Spc1_Name,
+       F.Spc2_Id  Fixd_Spc2_Id, F.Spc2_Name  Fixd_Spc2_Name,
+       F.Spc3_Id  Fixd_Spc3_Id, F.Spc3_Name  Fixd_Spc3_Name,
+       F.Spc4_Id  Fixd_Spc4_Id, F.Spc4_Name  Fixd_Spc4_Name,
+       F.Spc5_Id  Fixd_Spc5_Id, F.Spc5_Name  Fixd_Spc5_Name,
+       F.Unit_Id  Fixd_Unit_Id, F.Unit_Name  Fixd_Unit_Name,
+       F.Acc_Id   Fixd_Acc_Id , F.Acc_Num    Fixd_Acc_Num  , F.Acc_Name   Fixd_Acc_Name , F.Acc_FullName Fixd_Acc_FullName,
+       F.Acc_DId  Fixd_Acc_DId, F.Acc_DNum   Fixd_Acc_DNum , F.Acc_DName  Fixd_Acc_DName, F.Acc_DFName   Fixd_Acc_DFName  ,
+       F.Acc_RId  Fixd_Acc_RId, F.Acc_RNum   Fixd_Acc_RNum , F.Acc_RName  Fixd_Acc_RName, F.Acc_RFName   Fixd_Acc_RFName  ,
+       F.Acc_FId  Fixd_Acc_FId, F.Acc_FNum   Fixd_Acc_FNum , F.Acc_FName  Fixd_Acc_FName, F.Acc_FFName   Fixd_Acc_FFName  ,
+       L1.Id      Loc1_Id     , L1.Name      Loc1_Name     ,
+       L2.Id      Loc2_Id     , L2.Name      Loc2_Name     ,
+       L3.Id      Loc3_Id     , L3.Name      Loc3_Name     ,
+       ST.Id      Status_Id   , ST.Name      Status_Name   ,
+       S1.Id      Spc1_Id     , S1.Name      Spc1_Name     ,
+       S2.Id      Spc2_Id     , S2.Name      Spc2_Name     ,
+       S3.Id      Spc3_Id     , S3.Name      Spc3_Name     ,
+       S4.Id      Spc4_Id     , S4.Name      Spc4_Name     ,
+       S5.Id      Spc5_Id     , S5.Name      Spc5_Name
+  From Fix_ResMst     M ,
+       Fix_ResTrn     T ,
+       Fix_InTrn      TI,
+       Cpy_Period     P ,
+       Phs_Cod_Commit CT,
+       Emp_Emp        E ,
+       Fix_VFixed     F ,
+       Fix_Cod_Loc1   L1,
+       Fix_Cod_Loc2   L2,
+       Fix_Cod_Loc3   L3,
+       Fix_Cod_Status ST,
+       Fix_Cod_Spec1  S1,
+       Fix_Cod_Spec2  S2,
+       Fix_Cod_Spec3  S3,
+       Fix_Cod_Spec4  S4,
+       Fix_Cod_Spec5  S5
+ WHERE T.Mst_Id    =M.Id
+   AND T.FTrn_Id   =TI.Id
+   AND M.Period_Id =P.Id
+   AND M.Commit_Id =CT.Id
+   AND M.Emp_Id    =E.Id
+   AND T.Fixd_Id   =F.Id
+   AND TI.Loc1_Id  =L1.Id
+   AND TI.Loc2_Id  =L2.Id
+   AND TI.Loc3_Id  =L3.Id
+   AND TI.Status_Id=ST.Id
+   AND TI.Spc1_Id  =S1.Id
+   AND TI.Spc2_Id  =S2.Id
+   AND TI.Spc3_Id  =S3.Id
+   AND TI.Spc4_Id  =S4.Id
+   AND TI.Spc5_Id  =S5.Id
+/

@@ -1,0 +1,9 @@
+{
+  "Synonym": "Fin_Mcrd",
+  "Select": "SELECT Id, Num||' '||Ddate AS Name FROM Fin_Mcrd",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Ddate) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

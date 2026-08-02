@@ -1,0 +1,9 @@
+{
+  "Synonym": "Fin_Malc",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Fin_Malc",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

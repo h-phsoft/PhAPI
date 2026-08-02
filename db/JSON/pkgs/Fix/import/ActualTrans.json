@@ -1,0 +1,67 @@
+{
+  "Name": "Fix_Actual_Trans",
+  "Synonym": "Fix_Acttrn",
+  "Sequence": "Fix_Acttrn_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Fmst_Id",
+      "Field": "fmstId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Actual_Master",
+        "SynonymName": "Fix_Actmst",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "fmstName"
+      }
+    }, {
+      "Name": "Ord",
+      "Field": "ord",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Fixd_Id",
+      "Field": "fixdId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Fixeds_Items",
+        "SynonymName": "Fix_Fixed",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "fixdName"
+      }
+    }, {
+      "Name": "Ftrn_Id",
+      "Field": "ftrnId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fix_Input_Trans",
+        "SynonymName": "Fix_Intrn",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "ftrnName"
+      }
+    }, {
+      "Name": "Qnt",
+      "Field": "qnt",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

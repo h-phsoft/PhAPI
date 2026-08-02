@@ -1,0 +1,18 @@
+{
+  "Name": "Pur_Code_Status",
+  "Synonym": "Pur_Cod_Status",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "Name": "Prd_Productoin_Stage_Expenses",
+  "Synonym": "Prd_Prod_Stage_Exp",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Ord",
+      "Field": "ord",
+      "isSelected": false
+    }
+    , {
+      "Name": "Acc_Eid",
+      "Field": "accEid",
+      "isSelected": false
+    }
+    , {
+      "Name": "Acc_Rid",
+      "Field": "accRid",
+      "isSelected": false
+    }
+    , {
+      "Name": "Amt",
+      "Field": "amt",
+      "isSelected": false
+    }
+    , {
+      "Name": "Perc",
+      "Field": "perc",
+      "isSelected": false
+    }
+    , {
+      "Name": "Descr",
+      "Field": "descr",
+      "isSelected": false
+    }
+    , {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

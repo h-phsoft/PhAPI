@@ -1,0 +1,108 @@
+{
+  "Name": "Fre_Contract_Trn",
+  "Synonym": "Fre_Tcntrct",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Ndmrge",
+      "Field": "ndmrge",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nload",
+      "Field": "nload",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Noffload",
+      "Field": "noffload",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Noverload",
+      "Field": "noverload",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ncooling",
+      "Field": "ncooling",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ncancel",
+      "Field": "ncancel",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Noverdist",
+      "Field": "noverdist",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mt5",
+      "Field": "mt5",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mt10",
+      "Field": "mt10",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mt15",
+      "Field": "mt15",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mt20",
+      "Field": "mt20",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mt25",
+      "Field": "mt25",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mt30",
+      "Field": "mt30",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mt35",
+      "Field": "mt35",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mt40",
+      "Field": "mt40",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mt45",
+      "Field": "mt45",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mt50",
+      "Field": "mt50",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Oaddress",
+      "Field": "oaddress",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Daddress",
+      "Field": "daddress",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

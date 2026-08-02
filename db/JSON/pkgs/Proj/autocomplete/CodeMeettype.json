@@ -1,0 +1,9 @@
+{
+  "Synonym": "Proj_Cod_Meettype",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Proj_Cod_Meettype",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

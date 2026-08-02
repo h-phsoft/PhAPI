@@ -1,0 +1,42 @@
+{
+  "Name": "Acc_Grant_Account",
+  "Synonym": "Acc_Grantacc",
+  "Sequence": "Acc_Grantacc_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "System_Id",
+      "Field": "systemId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_System",
+        "SynonymName": "Phs_Cod_System",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "systemName"
+      }
+    }, {
+      "Name": "Acc_Id",
+      "Field": "accId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Acc_Account",
+        "SynonymName": "Acc_Acc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "accName"
+      }
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "Name": "Fre_Dbcr_Documents",
+  "Synonym": "Fre_Dbcr",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Nord",
+      "Field": "nord",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Curn_Rate",
+      "Field": "curnRate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Qnt",
+      "Field": "qnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Price",
+      "Field": "price",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Camt",
+      "Field": "camt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Amt",
+      "Field": "amt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nref",
+      "Field": "nref",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dref",
+      "Field": "dref",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dept_Rid",
+      "Field": "deptRid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Unit_Rid",
+      "Field": "unitRid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Job_Rid",
+      "Field": "jobRid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Waybill",
+      "Field": "waybill",
+      "isSelected": false
+    }
+  ]
+}

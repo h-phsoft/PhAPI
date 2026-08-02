@@ -1,0 +1,53 @@
+{
+  "Name": "Emp_Salcalc_Debit",
+  "Synonym": "Emp_Salcalcdbt",
+  "Sequence": "Emp_Salcalcdbt_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Tsal_Id",
+      "Field": "tsalId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Salary_Calculated",
+        "SynonymName": "Emp_Salcalc",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "tsalName"
+      }
+    }, {
+      "Name": "Dbt_Id",
+      "Field": "dbtId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "Sysdate",
+      "hasRelation": false
+    }, {
+      "Name": "Amt",
+      "Field": "amt",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

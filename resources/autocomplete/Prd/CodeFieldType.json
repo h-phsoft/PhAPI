@@ -1,0 +1,9 @@
+{
+  "Synonym": "Prd_Cod_Fld_Type",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Prd_Cod_Fld_Type",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

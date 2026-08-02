@@ -1,0 +1,9 @@
+{
+  "Synonym": "Pur_Tpurord",
+  "Select": "SELECT Id, Treq_Id AS Name FROM Pur_Tpurord",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Id"
+}

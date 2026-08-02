@@ -1,0 +1,9 @@
+{
+  "Synonym": "Ped_Vcats",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Ped_Vcats",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

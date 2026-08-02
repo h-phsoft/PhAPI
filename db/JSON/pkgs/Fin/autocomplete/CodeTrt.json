@@ -1,0 +1,9 @@
+{
+  "Synonym": "Fin_Cod_Trt",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Fin_Cod_Trt",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

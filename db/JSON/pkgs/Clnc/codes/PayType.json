@@ -1,0 +1,6 @@
+{
+  "Name": "PayType",
+  "Key": "PaymentType",
+  "hasUser": false,
+  "sysCode": true
+}

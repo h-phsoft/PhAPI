@@ -1,0 +1,8 @@
+Alter Table Mng_Services Add CONSTRAINT Mng_Serv_Cost_FK Foreign Key (Cost_Id ) References Acc_Cost(Id);
+Alter Table Mng_Services Add CONSTRAINT Mng_Serv_Acc_FK  Foreign Key (Acc_Id  ) References Acc_Acc (Id);
+Alter Table Mng_Services Add CONSTRAINT Mng_Serv_RAcc_FK Foreign Key (Acc_RId ) References Acc_Acc (Id);
+
+
+ALTER TABLE Mng_Contact ADD CONSTRAINT Mng_Cont_Cost_FK   Foreign Key (Cost_Id  ) References Acc_Cost(Id);
+ALTER TABLE Mng_Contact ADD CONSTRAINT Mng_Cont_AccDbt_FK Foreign Key (AccDbt_Id) References Acc_Acc (Id);
+ALTER TABLE Mng_Contact ADD CONSTRAINT Mng_Cont_AccCrd_FK Foreign Key (AccCrd_Id) References Acc_Acc (Id);

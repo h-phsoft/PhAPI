@@ -1,0 +1,9 @@
+{
+  "Synonym": "Ped_Cod_Grp",
+  "Select": "SELECT Id,' '||Name AS Name FROM Ped_Cod_Grp",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(' '||Name) LIKE '%{term}%'"
+  },
+  "OrderBy": "Id"
+}

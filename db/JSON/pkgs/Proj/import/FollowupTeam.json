@@ -1,0 +1,36 @@
+{
+  "Name": "Proj_Followup_Team",
+  "Synonym": "Proj_Follow_Team",
+  "Sequence": "Proj_Follow_Team_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Follow_Id",
+      "Field": "followId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Task_Followup",
+        "SynonymName": "Cpy_Task_Follow",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "followName"
+      }
+    }, {
+      "Name": "Team_Id",
+      "Field": "teamId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Proj_Team_Members",
+        "SynonymName": "Proj_Team",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "teamName"
+      }
+    }
+  ]
+}

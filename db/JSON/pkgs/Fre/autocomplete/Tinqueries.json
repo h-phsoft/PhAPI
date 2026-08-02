@@ -1,0 +1,9 @@
+{
+  "Synonym": "Fre_Tinqry",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Fre_Tinqry",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

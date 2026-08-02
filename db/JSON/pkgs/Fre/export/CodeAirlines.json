@@ -1,0 +1,18 @@
+{
+  "Name": "Fre_Code_Airlines",
+  "Synonym": "Fre_Cod_Airline",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "Name": "Proj_Project_Team",
+  "Synonym": "Proj_Proj_Team",
+  "Sequence": "Proj_Proj_Team_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Proj_Id",
+      "Field": "projId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Proj_Project",
+        "SynonymName": "Proj_Proj",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "projName"
+      }
+    }, {
+      "Name": "Team_Id",
+      "Field": "teamId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Proj_Team_Members",
+        "SynonymName": "Proj_Team",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "teamName"
+      }
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Status",
+        "SynonymName": "Phs_Cod_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }, {
+      "Name": "Title",
+      "Field": "title",
+      "DBType": "VARCHAR2",
+      "Default": "'Member'",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

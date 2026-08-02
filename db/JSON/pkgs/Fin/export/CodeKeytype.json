@@ -1,0 +1,18 @@
+{
+  "Name": "Fin_Code_Keytype",
+  "Synonym": "Fin_Cod_Keytype",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

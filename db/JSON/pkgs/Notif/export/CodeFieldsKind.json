@@ -1,0 +1,18 @@
+{
+  "Name": "Notif_Code_Fields_Kind",
+  "Synonym": "Notif_Cod_Fld_Kind",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

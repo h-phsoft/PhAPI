@@ -1,0 +1,48 @@
+{
+  "Name": "Trn_Balance_Transaction",
+  "Synonym": "Trn_Bln_Trn",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Axe",
+      "Field": "axe",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Weight",
+      "Field": "weight",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Weight1",
+      "Field": "weight1",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Weight2",
+      "Field": "weight2",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Overweight",
+      "Field": "overweight",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Overweight1",
+      "Field": "overweight1",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Overweight2",
+      "Field": "overweight2",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

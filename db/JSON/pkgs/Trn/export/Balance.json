@@ -1,0 +1,38 @@
+{
+  "Name": "Trn_Balance",
+  "Synonym": "Trn_Bln",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sncrs",
+      "Field": "sncrs",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Msncr",
+      "Field": "msncr",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rsncr",
+      "Field": "rsncr",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Lsncr",
+      "Field": "lsncr",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "Name": "Prd_Machines",
+  "Synonym": "Prd_Machine",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Lname",
+      "Field": "lname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Iname",
+      "Field": "iname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Hamt",
+      "Field": "hamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Helec",
+      "Field": "helec",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

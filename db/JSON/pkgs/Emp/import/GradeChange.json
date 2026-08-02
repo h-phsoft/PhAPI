@@ -1,0 +1,79 @@
+{
+  "Name": "Emp_Grade_Change",
+  "Synonym": "Emp_Chgrade",
+  "Sequence": "Emp_Chgrade_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Emp_Id",
+      "Field": "empId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Employee",
+        "SynonymName": "Emp_Emp",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "empName"
+      }
+    }, {
+      "Name": "Tgrad_Oid",
+      "Field": "tgradOid",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Grade_Templates_Trn",
+        "SynonymName": "Emp_Gradtrn",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "tgradName"
+      }
+    }, {
+      "Name": "Tgrad_Nid",
+      "Field": "tgradNid",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Emp_Grade_Templates_Trn",
+        "SynonymName": "Emp_Gradtrn",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "tgradName"
+      }
+    }, {
+      "Name": "Sdate",
+      "Field": "sdate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Days",
+      "Field": "days",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

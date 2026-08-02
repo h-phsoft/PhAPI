@@ -1,0 +1,23 @@
+{
+  "Name": "Prd_Productoin_Stage_Machine_Category",
+  "Synonym": "Prd_Prod_Stage_Mach_Cat",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Ord",
+      "Field": "ord",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Qnt",
+      "Field": "qnt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

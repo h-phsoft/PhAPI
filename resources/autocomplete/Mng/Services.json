@@ -1,0 +1,9 @@
+{
+  "Synonym": "Mng_Serv",
+  "Select": "SELECT Id, Code||' '||Name AS Name FROM Mng_Serv",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Code||' '||Name) LIKE '%{term}%'"
+  },
+  "OrderBy": "Code"
+}

@@ -1,0 +1,9 @@
+{
+  "Synonym": "Prd_Machine",
+  "Select": "SELECT Id,LName AS Name FROM Prd_Machine",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(LName) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Id"
+}

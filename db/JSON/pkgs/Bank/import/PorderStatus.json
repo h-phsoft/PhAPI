@@ -1,0 +1,48 @@
+{
+  "Name": "Bank_Porder_Status",
+  "Synonym": "Bank_Pordstatus",
+  "Sequence": "Bank_Pordstatus_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Ord_Id",
+      "Field": "ordId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Bank_Payment_Order",
+        "SynonymName": "Bank_Pord",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "ordName"
+      }
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "0",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Bank_Code_Status",
+        "SynonymName": "Bank_Cod_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }, {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

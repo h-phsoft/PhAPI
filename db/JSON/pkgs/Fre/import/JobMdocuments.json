@@ -1,0 +1,29 @@
+{
+  "Name": "Fre_Job_Mdocuments",
+  "Synonym": "Fre_Mdoc",
+  "Sequence": "Fre_Mdoc_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Job_Id",
+      "Field": "jobId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Fre_Job_Freight",
+        "SynonymName": "Fre_Job",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "jobName"
+      }
+    }, {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "Name": "Fre_Job_Mdocuments",
+  "Synonym": "Fre_Mdoc",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+  ]
+}

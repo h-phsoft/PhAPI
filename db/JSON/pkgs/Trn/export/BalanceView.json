@@ -1,0 +1,58 @@
+{
+  "Name": "Trn_Balance_View",
+  "Synonym": "Trn_Vbln",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Bln_Name",
+      "Field": "blnName",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Type_Name",
+      "Field": "blnTypeName",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Type_Rem",
+      "Field": "blnTypeRem",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Loc_Name",
+      "Field": "blnLocName",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Loc_Rem",
+      "Field": "blnLocRem",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Sncrs",
+      "Field": "blnSncrs",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Msncr",
+      "Field": "blnMsncr",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Rsncr",
+      "Field": "blnRsncr",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Lsncr",
+      "Field": "blnLsncr",
+      "isSelected": false
+    }
+    , {
+      "Name": "Bln_Rem",
+      "Field": "blnRem",
+      "isSelected": false
+    }
+  ]
+}

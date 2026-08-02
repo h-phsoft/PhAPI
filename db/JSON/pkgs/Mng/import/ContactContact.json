@@ -1,0 +1,84 @@
+{
+  "Name": "Mng_Contact_Contact",
+  "Synonym": "Mng_Cont_Cont",
+  "Sequence": "Mng_Cont_Cont_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Cont_Id",
+      "Field": "contId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Mng_Contact",
+        "SynonymName": "Mng_Cont",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "contName"
+      }
+    }, {
+      "Name": "Gender_Id",
+      "Field": "genderId",
+      "DBType": "NUMBER",
+      "Default": "",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Gender",
+        "SynonymName": "Phs_Cod_Gender",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "genderName"
+      }
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Position",
+      "Field": "position",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Title",
+      "Field": "title",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Phone",
+      "Field": "phone",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Mobile",
+      "Field": "mobile",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Fax",
+      "Field": "fax",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Email",
+      "Field": "email",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

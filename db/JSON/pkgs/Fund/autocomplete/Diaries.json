@@ -1,0 +1,9 @@
+{
+  "Synonym": "Fund_Diary",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Fund_Diary",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

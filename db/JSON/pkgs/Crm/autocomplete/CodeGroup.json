@@ -1,0 +1,9 @@
+{
+  "Synonym": "Crm_Cod_Grp",
+  "Select": "SELECT Id, Name FROM Crm_Cod_Grp",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(' '||Name) LIKE '%{term}%'"
+  },
+  "OrderBy": "Name"
+}

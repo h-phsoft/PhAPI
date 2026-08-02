@@ -1,0 +1,13 @@
+{
+  "Name": "Stor_Store_Accounts",
+  "Synonym": "Stor_Stracc",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

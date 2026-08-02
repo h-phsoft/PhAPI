@@ -1,0 +1,9 @@
+{
+  "Synonym": "Trn_Cod_Ptype",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Trn_Cod_Ptype",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

@@ -1,0 +1,92 @@
+{
+  "Name": "Copy_Users",
+  "Synonym": "Cpy_User",
+  "Sequence": "Cpy_User_Seq",
+  "InsUser": false,
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Ugrp_Id",
+      "Field": "ugrpId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Usergrp",
+        "SynonymName": "Phs_Cod_Ugrp",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "ugrpName"
+      }
+    }, {
+      "Name": "Pgrp_Id",
+      "Field": "pgrpId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Permission_Groups",
+        "SynonymName": "Cpy_Pgrp",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "pgrpName"
+      }
+    }, {
+      "Name": "Gender_Id",
+      "Field": "genderId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Gender",
+        "SynonymName": "Phs_Cod_Gender",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "genderName"
+      }
+    }, {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Default": "1",
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Phs_Code_Status",
+        "SynonymName": "Phs_Cod_Status",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "statusName"
+      }
+    }, {
+      "Name": "Logon",
+      "Field": "logon",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Pass",
+      "Field": "pass",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Name",
+      "Field": "name",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Picture",
+      "Field": "picture",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }, {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Default": "",
+      "hasRelation": false
+    }
+  ]
+}

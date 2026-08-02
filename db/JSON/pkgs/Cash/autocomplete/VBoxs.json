@@ -1,0 +1,13 @@
+{
+  "Synonym": "Cash_VCash_Box",
+  "Select": "SELECT Box_Id AS Id, Box_Num||' - '||Box_Name AS Name, Cash_Id, Cash_Name FROM Cash_VCash_Box",
+  "Fields": [
+    "Cash_Id",
+    "Cash_Name"
+  ],
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Box_Num||' - '||Box_Name) LIKE '%{term}%'"
+  },
+  "OrderBy": "Box_Num"
+}

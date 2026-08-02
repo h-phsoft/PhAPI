@@ -1,0 +1,9 @@
+{
+  "Synonym": "Sdesk_Cust_Sla_Mtrx",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Sdesk_Cust_Sla_Mtrx",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
+  },
+  "OrderBy": "Num"
+}

@@ -1,0 +1,139 @@
+{
+  "Name": "Emp_Loan_Payments_View",
+  "Synonym": "Emp_Vploan",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Loan_Tamt",
+      "Field": "loanTamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loan_Mamt",
+      "Field": "loanMamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loan_Bamt",
+      "Field": "loanBamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loan_Num",
+      "Field": "loanNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loan_Ddate",
+      "Field": "loanDdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loan_Sdate",
+      "Field": "loanSdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loan_Edate",
+      "Field": "loanEdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loan_Rem",
+      "Field": "loanRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ploan_Srcid",
+      "Field": "ploanSrcid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ploan_Amt",
+      "Field": "ploanAmt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ploan_Num",
+      "Field": "ploanNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ploan_Ddate",
+      "Field": "ploanDdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ploan_Rem",
+      "Field": "ploanRem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Num",
+      "Field": "empNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Name",
+      "Field": "empName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Fname",
+      "Field": "empFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dept_Name",
+      "Field": "deptName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sect_Name",
+      "Field": "sectName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Job_Name",
+      "Field": "jobName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Level_Name",
+      "Field": "levelName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc1_Name",
+      "Field": "spc1Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc2_Name",
+      "Field": "spc2Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc3_Name",
+      "Field": "spc3Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc4_Name",
+      "Field": "spc4Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Status_Name",
+      "Field": "statusName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Yesno_Name",
+      "Field": "yesnoName",
+      "isSelected": false
+    }
+  ]
+}

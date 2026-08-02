@@ -1,0 +1,139 @@
+{
+  "Name": "Emp_Grade_Change_View",
+  "Synonym": "Emp_Vchgrade",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Emp_Num",
+      "Field": "empNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Name",
+      "Field": "empName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Emp_Fname",
+      "Field": "empFname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dept_Name",
+      "Field": "deptName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sect_Name",
+      "Field": "sectName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Job_Name",
+      "Field": "jobName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Level_Name",
+      "Field": "levelName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc1_Name",
+      "Field": "spc1Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc2_Name",
+      "Field": "spc2Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc3_Name",
+      "Field": "spc3Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Spc4_Name",
+      "Field": "spc4Name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cgrad_Num",
+      "Field": "cgradNum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cgrad_Ddate",
+      "Field": "cgradDdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tgrad_Oid",
+      "Field": "tgradOid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grp_Oid",
+      "Field": "grpOid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grp_Oname",
+      "Field": "grpOname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Degree_Oid",
+      "Field": "degreeOid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Degree_Oname",
+      "Field": "degreeOname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tgrad_Nid",
+      "Field": "tgradNid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grp_Nid",
+      "Field": "grpNid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Grp_Nname",
+      "Field": "grpNname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Degree_Nid",
+      "Field": "degreeNid",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Degree_Nname",
+      "Field": "degreeNname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cgrad_Days",
+      "Field": "cgradDays",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cgrad_Sdate",
+      "Field": "cgradSdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Cgrad_Rem",
+      "Field": "cgradRem",
+      "isSelected": false
+    }
+  ]
+}

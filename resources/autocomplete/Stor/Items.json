@@ -1,0 +1,10 @@
+{
+  "Synonym": "Stor_Item",
+  "Select": "SELECT Id, Num||' - '||LName AS Name FROM Stor_Item ",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' - '||LName||' '||IName) LIKE Lower('%{term}%')",
+    "itemId": "id!='{itemId}'"
+  },
+  "OrderBy": "Num"
+}
