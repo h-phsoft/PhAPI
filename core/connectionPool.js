@@ -29,6 +29,11 @@ class ConnectionPoolManager {
 
   async createPool(tenantId, config) {
     const dbType = (config.dbType || 'mysql').toLowerCase();
+    const logger = require('../utils/logger');
+
+    console.log(`[Database] 🔌 Creating connection pool for copy '${tenantId}': dbType='${dbType}', host='${config.host}:${config.port || 'default'}', user='${config.user}', database='${config.database}'`);
+    logger.info(`[Database] 🔌 Creating connection pool for copy '${tenantId}': dbType='${dbType}', host='${config.host}:${config.port || 'default'}', user='${config.user}', database='${config.database}'`);
+
 
     if (dbType === 'mysql') {
       if (!mysql) mysql = require('mysql2/promise');
@@ -108,7 +113,7 @@ class ConnectionPoolManager {
           oracledb.outFormat = oracledb.OUT_FORMAT_OBJECT;
           oracledb.autoCommit = true;
         } catch (err) {
-          throw new Error('[ConnectionPoolManager] Oracle DB driver (oracledb) is not installed or available on this host.');
+          throw new Error(`[ConnectionPoolManager] Oracle DB driver (oracledb) failed to load: ${err.message}`);
         }
       }
 
@@ -117,7 +122,7 @@ class ConnectionPoolManager {
         user: config.user,
         password: config.password,
         connectString,
-        poolMin: 2,
+        poolMin: 1,
         poolMax: config.connectionLimit || 10
       });
 
@@ -130,6 +135,8 @@ class ConnectionPoolManager {
           return {
             driverConn: connection,
             async query(sql, params) {
+              console.log(`[SQL Execution] [copy: '${tenantId}', user: '${config.user}'] SQL: ${sql} | Params: ${JSON.stringify(params || {})}`);
+              logger.info(`[SQL Execution] [copy: '${tenantId}', user: '${config.user}'] SQL: ${sql} | Params: ${JSON.stringify(params || {})}`);
               const res = await connection.execute(sql, params || {}, { autoCommit: false });
               return res.rows;
             },
@@ -142,14 +149,19 @@ class ConnectionPoolManager {
         async query(sql, params) {
           const connection = await pool.getConnection();
           try {
+            console.log(`[SQL Execution] [copy: '${tenantId}', user: '${config.user}'] SQL: ${sql} | Params: ${JSON.stringify(params || {})}`);
+            logger.info(`[SQL Execution] [copy: '${tenantId}', user: '${config.user}'] SQL: ${sql} | Params: ${JSON.stringify(params || {})}`);
             const res = await connection.execute(sql, params || {});
             return res.rows;
           } finally {
             await connection.close();
           }
         }
+
       };
     } else {
+
+
       throw new Error(`[ConnectionPoolManager] Unsupported dbType: ${dbType}`);
     }
   }

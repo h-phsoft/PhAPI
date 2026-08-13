@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Cod_Nat",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Cod_Nat",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

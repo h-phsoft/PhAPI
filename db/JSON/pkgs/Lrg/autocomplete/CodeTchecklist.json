@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Cod_Tchecklist",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Cod_Tchecklist",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

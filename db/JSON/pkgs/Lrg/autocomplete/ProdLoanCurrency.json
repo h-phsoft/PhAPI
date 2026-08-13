@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Prod_Loan_Curn",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Prod_Loan_Curn",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

@@ -1,0 +1,494 @@
+{
+  "Name": "Lrg_Suits",
+  "Synonym": "Lrg_Suit",
+  "Sequence": "Lrg_Suit_Seq",
+  "Condition": "Suit_Id=0",
+  "PeriodCondition": "",
+  "Order": "Id",
+  "InsUser": true,
+  "UpdUser": true,
+  "Select": "SELECT Id, Req_Id, Suit_Id, Type_Id, Court_Id, City_Id, Bnum, Subject, Plaintiffname, Defendantname, Lawyer_Id, Stage, To_Char(Ddate, 'DD-MM-YYYY') AS Ddate, Lawyor, Proccess, Lawyor2,  Rem, Ins_User, To_Char(Ins_Date, 'DD-MM-YYYY') AS Ins_Date, Upd_User, To_Char(Upd_Date, 'DD-MM-YYYY') AS Upd_Date FROM Lrg_Suit",
+  "Insert": "INSERT INTO Lrg_Suit (Id, Req_Id, Suit_Id, Type_Id, Court_Id, City_Id, Bnum, Subject, Plaintiffname, Defendantname, Lawyer_Id, Stage, Ddate, Lawyor, Proccess, Lawyor2, Rem, Ins_User, Ins_Date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, To_Date(?, 'DD-MM-YYYY'), ?, ?, ?, ?, ?, Sysdate)",
+  "Update": "UPDATE Lrg_Suit SET Req_Id=?, Suit_Id=?, Type_Id=?, Court_Id=?, City_Id=?, Bnum=?, Subject=?, Plaintiffname=?, Defendantname=?, Lawyer_Id=?, Stage=?, Ddate=To_Date(?, 'DD-MM-YYYY'), Lawyor=?, Proccess=?, Lawyor2=?, Rem=?, Upd_User=?, Upd_Date=Sysdate WHERE Id=?",
+  "hasChilds": true,
+  "Children": [
+    {
+      "ChildKey": "child",
+      "Pkg": "Lrg",
+      "Key": "SuitsSession",
+      "Table": "Lrg_Suits_Session",
+      "Synonym": "Lrg_Suit_Sess",
+      "cascadeDelete": true,
+      "Column": "Mst_Id",
+      "ColKey": "mstId"
+    }, {
+      "ChildKey": "child1",
+      "Pkg": "Lrg",
+      "Key": "SuitsSessionStageTwo",
+      "Table": "Lrg_Suits_Session",
+      "Synonym": "Lrg_Suit_Sess",
+      "cascadeDelete": true,
+      "Column": "Mst_Id",
+      "ColKey": "mstId"
+    }, {
+      "ChildKey": "child2",
+      "Pkg": "Lrg",
+      "Key": "SuitsSessionStageThree",
+      "Table": "Lrg_Suits_Session",
+      "Synonym": "Lrg_Suit_Sess",
+      "cascadeDelete": true,
+      "Column": "Mst_Id",
+      "ColKey": "mstId"
+    }, {
+      "ChildKey": "child3",
+      "Pkg": "Lrg",
+      "Key": "SuitsSessionStageFour",
+      "Table": "Lrg_Suits_Session",
+      "Synonym": "Lrg_Suit_Sess",
+      "cascadeDelete": true,
+      "Column": "Mst_Id",
+      "ColKey": "mstId"
+    }, {
+      "ChildKey": "child4",
+      "Pkg": "Lrg",
+      "Key": "SuitsChecklist",
+      "Table": "Lrg_Suits_Checklist",
+      "Synonym": "Lrg_Suit_Checklist",
+      "cascadeDelete": true,
+      "Column": "Mst_Id",
+      "ColKey": "mstId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Req_Id",
+      "Field": "reqId",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Lrg_Request_View",
+        "SynonymName": "Lrg_Vreq",
+        "CurId": "Req_Id",
+        "RelId": "Req_Id",
+        "RelName": "Lnum",
+        "RelField": "reqName",
+        "aRelFields": [
+          {
+            "Column": "Borrower_Id",
+            "Field": "borrowerId"
+          }, {
+            "Column": "Borrower_Name",
+            "Field": "borrowerName"
+          }, {
+            "Column": "Lnum",
+            "Field": "reqName"
+          }
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Suit_Id",
+      "Field": "suitId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Lrg_Code_Suits",
+        "SynonymName": "Lrg_Cod_Suits",
+        "CurId": "Suit_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "suitName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Lrg_Code_Suits_Type",
+        "SynonymName": "Lrg_Cod_Suits_Typ",
+        "CurId": "Type_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "typeName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Court_Id",
+      "Field": "courtId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Lrg_Code_Court",
+        "SynonymName": "Lrg_Cod_Court",
+        "CurId": "Court_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "courtName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "City_Id",
+      "Field": "cityId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Lrg_Code_City",
+        "SynonymName": "Lrg_Cod_City",
+        "CurId": "City_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "cityName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }, {
+      "Name": "Bnum",
+      "Field": "bnum",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Subject",
+      "Field": "subject",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Plaintiffname",
+      "Field": "plaintiffname",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Defendantname",
+      "Field": "defendantname",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Lawyer_Id",
+      "Field": "lawyerId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Lrg_Lawyers",
+        "SynonymName": "Lrg_Lawyer",
+        "CurId": "Lawyer_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "lawyerName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Stage",
+      "Field": "stage",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Lawyor",
+      "Field": "lawyor",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Proccess",
+      "Field": "proccess",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }, {
+      "Name": "Lawyor2",
+      "Field": "Lawyor2",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ins_User",
+      "Field": "insUser",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ins_Date",
+      "Field": "insDate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Upd_User",
+      "Field": "updUser",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Upd_Date",
+      "Field": "updDate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+  ]
+}

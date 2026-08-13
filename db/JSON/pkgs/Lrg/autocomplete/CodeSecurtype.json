@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Cod_Securtype",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Cod_Securtype",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

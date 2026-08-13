@@ -16,7 +16,7 @@
   },
   "Select": "SELECT Id, Period_Id, Dept_Id, Unit_Id, Oper_Id, Contr_Id, Inqry_Id, User_Id, Cont_Id, Clearance_Id, Num, To_Char(Ddate, 'DD-MM-YYYY') AS Ddate, To_Char(Vdate, 'DD-MM-YYYY') AS Vdate, To_Char(Folowdate, 'DD-MM-YYYY') AS Folowdate, Iterm_Id, Pterm_Id, Ocntry_Id, Ocity_Id, Oport_Id, Osport_Id, Oaport_Id, Oaddress, Dcntry_Id, Dcity_Id, Dport_Id, Dsport_Id, Daport_Id, Daddress, Qnt, Wnet, Wgros, Wchrg, Ldm, Cbm, To_Char(Etd, 'DD-MM-YYYY HH24:MI') AS Etd, To_Char(Eta, 'DD-MM-YYYY HH24:MI') AS Eta, Vcomod, Ship, Cons, Offer, Status_Id, Statustype_Id, Statusrem, Terms, Cust, Cperson, Rem, Ins_User, To_Char(Ins_Date, 'DD-MM-YYYY') AS Ins_Date, Upd_User, To_Char(Upd_Date, 'DD-MM-YYYY') AS Upd_Date, Freight_Id, Transport_Id, Price, Amt, Curn_Id, Curn_Rate, Camt FROM Fre_Moffer",
   "Insert": "INSERT INTO Fre_Moffer (Id, Period_Id, Dept_Id, Unit_Id, Oper_Id, Contr_Id, Inqry_Id, User_Id, Cont_Id, Clearance_Id, Num, Ddate, Vdate, Folowdate, Iterm_Id, Pterm_Id, Ocntry_Id, Ocity_Id, Oport_Id, Osport_Id, Oaport_Id, Oaddress, Dcntry_Id, Dcity_Id, Dport_Id, Dsport_Id, Daport_Id, Daddress, Qnt, Wnet, Wgros, Wchrg, Ldm, Cbm, Etd, Eta, Vcomod, Ship, Cons, Offer, Status_Id, Statustype_Id, Statusrem, Terms, Cust, Cperson, Rem, Freight_Id, Transport_Id, Price, Amt, Curn_Id, Curn_Rate, Camt, Ins_User, Ins_Date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, To_Date(?, 'DD-MM-YYYY'), To_Date(?, 'DD-MM-YYYY'), To_Date(?, 'DD-MM-YYYY'), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, To_Date(?, 'DD-MM-YYYY HH24:MI'), To_Date(?, 'DD-MM-YYYY HH24:MI'), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, Sysdate)",
-  "Update": "UPDATE Fre_Moffer SET Period_Id=?, Dept_Id=?, Unit_Id=?, Oper_Id=?, Contr_Id=?, Inqry_Id=?, User_Id=?, Cont_Id=?, Clearance_Id=?, Num=?, Ddate=To_Date(?, 'DD-MM-YYYY'), Vdate=To_Date(?, 'DD-MM-YYYY'), Folowdate=To_Date(?, 'DD-MM-YYYY'), Iterm_Id=?, Pterm_Id=?, Ocntry_Id=?, Ocity_Id=?, Oport_Id=?, Osport_Id=?, Oaport_Id=?, Oaddress=?, Dcntry_Id=?, Dcity_Id=?, Dport_Id=?, Dsport_Id=?, Daport_Id=?, Daddress=?, Qnt=?, Wnet=?, Wgros=?, Wchrg=?, Ldm=?, Cbm=?, Etd=To_Date(?, 'DD-MM-YYYY HH24:MI'), Eta=To_Date(?, 'DD-MM-YYYY HH24:MI'), Vcomod=?, Ship=?, Cons=?, Offer=?, Status_Id=?, Statustype_Id=?, Statusrem=?, Terms=?, Cust=?, Cperson=?, Rem=?, Freight_Id=?, Transport_Id=?, Price=?, Amt=?, Curn_Id=?, Curn_Rate=?, Camt=?, Upd_User=?, Upd_Date=Sysdate WHERE Id=?",
+  "Update": "UPDATE Fre_Moffer SET Period_Id=?, Dept_Id=?, Unit_Id=?, Oper_Id=?, Contr_Id=?, Inqry_Id=?, Cont_Id=?, Clearance_Id=?, Num=?, Ddate=To_Date(?, 'DD-MM-YYYY'), Vdate=To_Date(?, 'DD-MM-YYYY'), Folowdate=To_Date(?, 'DD-MM-YYYY'), Iterm_Id=?, Pterm_Id=?, Ocntry_Id=?, Ocity_Id=?, Oport_Id=?, Osport_Id=?, Oaport_Id=?, Oaddress=?, Dcntry_Id=?, Dcity_Id=?, Dport_Id=?, Dsport_Id=?, Daport_Id=?, Daddress=?, Qnt=?, Wnet=?, Wgros=?, Wchrg=?, Ldm=?, Cbm=?, Etd=To_Date(?, 'DD-MM-YYYY HH24:MI'), Eta=To_Date(?, 'DD-MM-YYYY HH24:MI'), Vcomod=?, Ship=?, Cons=?, Offer=?, Status_Id=?, Statustype_Id=?, Statusrem=?, Terms=?, Cust=?, Cperson=?, Rem=?, Freight_Id=?, Transport_Id=?, Price=?, Amt=?, Curn_Id=?, Curn_Rate=?, Camt=?, Upd_User=?, Upd_Date=Sysdate WHERE Id=?",
   "hasChilds": true,
   "Children": [{
       "ChildKey": "child",
@@ -182,7 +182,7 @@
       "Default": "",
       "query": true,
       "insert": true,
-      "update": true,
+      "update": false,
       "hasRelation": true,
       "Relation": {
         "TableName": "Copy_Users",

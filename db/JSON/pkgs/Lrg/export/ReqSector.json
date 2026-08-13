@@ -1,0 +1,14 @@
+{
+  "Name": "Lrg_Req_Sector",
+  "Synonym": "Lrg_Req_Sect",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

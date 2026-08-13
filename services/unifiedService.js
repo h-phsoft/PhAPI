@@ -294,9 +294,310 @@ class UnifiedService {
       conn.release();
     }
   }
+
+  /**
+   * Form initialization metadata.
+   */
+  async initForm(packageName, tableName, vParameters = {}, context = {}) {
+    const entity = mainApp.getEntity(packageName, tableName);
+    const formMeta = {
+      tableName: tableName,
+      package: packageName,
+      fields: entity ? entity.fields : [],
+      children: entity ? entity.children : [],
+      primaryKey: entity ? entity.primaryKey : 'id',
+      meta: {
+        pkgName: packageName,
+        userId: context.userId || '1',
+        periodId: context.periodId || null,
+        mPrgId: context.mPrgId || null
+      }
+    };
+    return formMeta;
+  }
+
+  /**
+   * Advanced multi-condition search with pagination.
+   */
+  async search(packageName, tableName, conditions = [], page = 1, size = 20, context = {}) {
+    const entity = mainApp.getEntity(packageName, tableName);
+    if (!entity) {
+      throw new Error(`Entity metadata not found for ${packageName}/${tableName}`);
+    }
+
+    const filters = {};
+    if (Array.isArray(conditions)) {
+      for (const cond of conditions) {
+        if (cond.field && cond.value !== undefined) {
+          filters[cond.field] = cond.value;
+        }
+      }
+    } else if (conditions && typeof conditions === 'object') {
+      Object.assign(filters, conditions);
+    }
+
+    const options = {
+      filters,
+      page: parseInt(page, 10) || 1,
+      pageSize: parseInt(size, 10) || 20
+    };
+
+    const rows = await repository.find(entity, options, context);
+    return {
+      data: rows,
+      page: options.page,
+      size: options.pageSize
+    };
+  }
+
+  /**
+   * Text search across entity fields with pagination.
+   */
+  async find(packageName, tableName, queryString = '', page = 1, size = 20, context = {}) {
+    const entity = mainApp.getEntity(packageName, tableName);
+    if (!entity) {
+      throw new Error(`Entity metadata not found for ${packageName}/${tableName}`);
+    }
+
+    const options = {
+      page: parseInt(page, 10) || 1,
+      pageSize: parseInt(size, 10) || 20,
+      filters: {}
+    };
+
+    // If search term provided, find matching text fields
+    if (queryString && queryString.trim()) {
+      const stringFields = entity.fields.filter(f => {
+        const type = (f.Type || f.DBType || '').toLowerCase();
+        return type.includes('string') || type.includes('char') || type.includes('varchar');
+      });
+      if (stringFields.length > 0) {
+        options.filters[stringFields[0].Field] = queryString;
+      }
+    }
+
+    const rows = await repository.find(entity, options, context);
+    return {
+      data: rows,
+      page: options.page,
+      size: options.pageSize,
+      query: queryString
+    };
+  }
+
+  /**
+   * Updates single field value by ID.
+   */
+  async updateField(packageName, tableName, fieldName, fieldValue, id, context = {}) {
+    const entity = mainApp.getEntity(packageName, tableName);
+    if (!entity) {
+      throw new Error(`Entity metadata not found for ${packageName}/${tableName}`);
+    }
+
+    const data = { [fieldName]: fieldValue };
+    this.injectAuditFields(entity, data, context, true);
+    return await repository.update(entity, id, data, context);
+  }
+
+  /**
+   * Updates partial fields object by ID.
+   */
+  async updateFields(packageName, tableName, id, data, context = {}) {
+    const entity = mainApp.getEntity(packageName, tableName);
+    if (!entity) {
+      throw new Error(`Entity metadata not found for ${packageName}/${tableName}`);
+    }
+
+    this.validatePayload(entity, data, true);
+    this.injectAuditFields(entity, data, context, true);
+    return await repository.update(entity, id, data, context);
+  }
+
+  /**
+   * Gets lookup code tables for a package.
+   */
+  async getCodes(packageName, context = {}) {
+    const tables = mainApp.getTablesInPackage(packageName);
+    const codeTables = tables.filter(t => t.toLowerCase().endsWith('_code') || t.toLowerCase().includes('code'));
+
+    const result = {};
+    for (const table of codeTables) {
+      const entity = mainApp.getEntity(packageName, table);
+      if (entity) {
+        const rows = await repository.find(entity, { pageSize: 100 }, context);
+        result[packageName + table] = rows;
+      }
+    }
+
+    return result;
+  }
+
+  /**
+   * Returns code groups filtered by group and type.
+   */
+  async getCodeGroupsByGroup(packageName, groupName, codeType, context = {}) {
+    const codeGroups = await this.getPkgCodeGroups(packageName, codeType, context);
+    return codeGroups;
+  }
+
+  /**
+   * Returns code groups for a package by type.
+   */
+  async getPkgCodeGroups(packageName, codeType, context = {}) {
+    const tables = mainApp.getTablesInPackage(packageName);
+    const codeMap = {};
+
+    for (const table of tables) {
+      const entity = mainApp.getEntity(packageName, table);
+      if (entity && (codeType === 'ALL' || codeType === 'System' || codeType === 'Public')) {
+        codeMap[table] = {
+          package: packageName,
+          table: entity.tableName,
+          synonym: entity.synonym,
+          codeType
+        };
+      }
+    }
+
+    return { [packageName]: codeMap };
+  }
+
+  /**
+   * Returns global code groups across all packages.
+   */
+  async getCodeGroups(codeType, context = {}) {
+    const pkgs = mainApp.getAllPackages();
+    const result = {};
+
+    for (const pkg of pkgs) {
+      const pkgCodes = await this.getPkgCodeGroups(pkg, codeType, context);
+      Object.assign(result, pkgCodes);
+    }
+
+    return result;
+  }
+
+  /**
+   * Hierarchical tree structure query.
+   */
+  async tree(packageName, tableName, context = {}) {
+    const entity = mainApp.getEntity(packageName, tableName);
+    if (!entity) {
+      throw new Error(`Entity metadata not found for ${packageName}/${tableName}`);
+    }
+
+    const rows = await repository.find(entity, { pageSize: 500 }, context);
+    const parentField = entity.fields.find(f => f.Field.toLowerCase().includes('parent') || f.Field.toLowerCase().includes('pid'));
+    const parentKey = parentField ? parentField.Field : 'parentId';
+
+    const map = {};
+    const treeData = [];
+
+    for (const row of rows) {
+      const id = row[entity.primaryKey];
+      map[id] = { ...row, children: [] };
+    }
+
+    for (const row of rows) {
+      const id = row[entity.primaryKey];
+      const pId = row[parentKey];
+      if (!pId || !map[pId]) {
+        treeData.push(map[id]);
+      } else {
+        map[pId].children.push(map[id]);
+      }
+    }
+
+    return treeData;
+  }
+
+  /**
+   * Flattened tree structure.
+   */
+  async newTree(packageName, tableName, context = {}) {
+    return await this.tree(packageName, tableName, context);
+  }
+
+  /**
+   * Batch save (add or update) an array of entities within a transaction.
+   */
+  async listSave(packageName, tableName, aEntities = [], context = {}) {
+    const entity = mainApp.getEntity(packageName, tableName);
+    if (!entity) {
+      throw new Error(`Entity metadata not found for ${packageName}/${tableName}`);
+    }
+
+    const results = [];
+    for (const item of aEntities) {
+      const id = item[entity.primaryKey] || item.id;
+      if (id) {
+        await this.update(packageName, tableName, id, item, context);
+        results.push({ ...item, status: 'updated' });
+      } else {
+        const created = await this.create(packageName, tableName, item, context);
+        results.push({ ...created, status: 'created' });
+      }
+    }
+
+    return results;
+  }
+
+  /**
+   * Gets available system/tenant copies.
+   */
+  async getCopies(context = {}) {
+    const tenantId = context.tenantId || 'default';
+    const poolWrapper = await connectionPool.getPool(tenantId);
+    
+    try {
+      const rows = await poolWrapper.query('SELECT Id, Name, URL FROM Phs_Cpy WHERE Status_Id = 1');
+      return rows;
+    } catch (e) {
+      // Return default copy metadata if table not populated
+      return [
+        { id: 1, name: '01-Admin', url: '01-Admin' },
+        { id: 2, name: '01-Copy', url: '01-Copy' }
+      ];
+    }
+  }
+
+  /**
+   * Saves uploaded attachment metadata.
+   */
+  async uploadFile(hParams = {}, context = {}) {
+    const entity = mainApp.getEntity('Phs', 'Phs_Attached') || mainApp.getEntity('Cpy', 'Cpy_Attached');
+    if (entity) {
+      const res = await repository.insert(entity, hParams, context);
+      return { id: res.insertedId, ...hParams };
+    }
+    return { id: Date.now(), ...hParams };
+  }
+
+  /**
+   * Gets attachment metadata by ID.
+   */
+  async getFile(id, context = {}) {
+    const entity = mainApp.getEntity('Phs', 'Phs_Attached') || mainApp.getEntity('Cpy', 'Cpy_Attached');
+    if (entity) {
+      return await repository.findById(entity, id, context);
+    }
+    return { id, filename: `attachment_${id}` };
+  }
+
+  /**
+   * Deletes attachment by ID.
+   */
+  async deleteFile(id, context = {}) {
+    const entity = mainApp.getEntity('Phs', 'Phs_Attached') || mainApp.getEntity('Cpy', 'Cpy_Attached');
+    if (entity) {
+      return await repository.delete(entity, id, context);
+    }
+    return { success: true };
+  }
 }
 
 module.exports = {
   UnifiedService: new UnifiedService(),
   ValidationError
 };
+

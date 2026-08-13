@@ -17,8 +17,8 @@
       "type": "string"
     },
     {
-      "key": "tenantId",
-      "value": "1",
+      "key": "vCopy",
+      "value": "MKM",
       "type": "string"
     },
     {
@@ -40,8 +40,8 @@
                 "exec": [
                   "if (pm.response.code === 200) {",
                   "    var jsonData = pm.response.json();",
-                  "    if (jsonData.data && jsonData.data.token) {",
-                  "        pm.environment.set(\"jwtToken\", jsonData.data.token);",
+                  "    if (jsonData.token) {",
+                  "        pm.environment.set(\"jwtToken\", jsonData.token);",
                   "        console.log(\"Successfully auto-updated jwtToken in environment!\");",
                   "    }",
                   "}"
@@ -61,7 +61,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"PhPass\",\n  \"tenantId\": \"1\",\n  \"periodId\": 2026\n}"
+              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"PhPass\",\n  \"vCopy\": \"{{vCopy}}\",\n  \"periodId\": 2026\n}"
             },
             "url": {
               "raw": "{{baseUrl}}/PhsAPI/Auth/Login",
@@ -108,8 +108,8 @@
                 "type": "text"
               },
               {
-                "key": "x-tenant-id",
-                "value": "{{tenantId}}",
+                "key": "vcopy",
+                "value": "{{vCopy}}",
                 "type": "text"
               },
               {
@@ -152,8 +152,8 @@
                 "type": "text"
               },
               {
-                "key": "x-tenant-id",
-                "value": "{{tenantId}}",
+                "key": "vcopy",
+                "value": "{{vCopy}}",
                 "type": "text"
               }
             ],
@@ -192,8 +192,8 @@
                 "type": "text"
               },
               {
-                "key": "x-tenant-id",
-                "value": "{{tenantId}}",
+                "key": "vcopy",
+                "value": "{{vCopy}}",
                 "type": "text"
               }
             ],
@@ -223,8 +223,8 @@
                 "type": "text"
               },
               {
-                "key": "x-tenant-id",
-                "value": "{{tenantId}}",
+                "key": "vcopy",
+                "value": "{{vCopy}}",
                 "type": "text"
               },
               {
@@ -263,8 +263,8 @@
                 "type": "text"
               },
               {
-                "key": "x-tenant-id",
-                "value": "{{tenantId}}",
+                "key": "vcopy",
+                "value": "{{vCopy}}",
                 "type": "text"
               }
             ],
@@ -304,8 +304,8 @@
                 "type": "text"
               },
               {
-                "key": "x-tenant-id",
-                "value": "{{tenantId}}",
+                "key": "vcopy",
+                "value": "{{vCopy}}",
                 "type": "text"
               }
             ],
@@ -344,8 +344,8 @@
                 "type": "text"
               },
               {
-                "key": "x-tenant-id",
-                "value": "{{tenantId}}",
+                "key": "vcopy",
+                "value": "{{vCopy}}",
                 "type": "text"
               }
             ],
@@ -385,8 +385,8 @@
                 "type": "text"
               },
               {
-                "key": "x-tenant-id",
-                "value": "{{tenantId}}",
+                "key": "vcopy",
+                "value": "{{vCopy}}",
                 "type": "text"
               }
             ],

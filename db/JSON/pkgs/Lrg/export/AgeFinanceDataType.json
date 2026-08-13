@@ -1,0 +1,14 @@
+{
+  "Name": "Lrg_Age_Finance_Data_Type",
+  "Synonym": "Lrg_Age_Fin_Data_Type",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

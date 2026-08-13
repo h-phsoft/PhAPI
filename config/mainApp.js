@@ -169,8 +169,30 @@ class MainApp {
 
   getEntity(packageName, tableName) {
     if (!packageName || !tableName) return null;
-    const key = `${packageName.toLowerCase()}:${tableName.toLowerCase()}`;
-    return this.metadataByPackageAndTable.get(key) || null;
+    const pkgLower = packageName.toLowerCase();
+    const tableLower = tableName.toLowerCase();
+
+    // 1. Direct package:table lookup (e.g. Acc:Acc_Master or Acc:Master)
+    let key = `${pkgLower}:${tableLower}`;
+    if (this.metadataByPackageAndTable.has(key)) {
+      return this.metadataByPackageAndTable.get(key);
+    }
+
+    // 2. Prepend package name if omitted (e.g. Acc:Master -> Acc:Acc_Master)
+    key = `${pkgLower}:${pkgLower}_${tableLower}`;
+    if (this.metadataByPackageAndTable.has(key)) {
+      return this.metadataByPackageAndTable.get(key);
+    }
+
+    // 3. Lookup by Synonym (e.g. Acc_Mst)
+    const bySynonym = this.getEntityBySynonym(tableName);
+    if (bySynonym) return bySynonym;
+
+    // 4. Lookup by Table Name or package-prefixed Table Name
+    const byTable = this.getEntityByTable(tableName) || this.getEntityByTable(`${pkgLower}_${tableLower}`);
+    if (byTable) return byTable;
+
+    return null;
   }
 
   getEntityBySynonym(synonym) {
@@ -182,6 +204,7 @@ class MainApp {
     if (!tableName) return null;
     return this.metadataByTable.get(tableName.toLowerCase()) || null;
   }
+
 
   getAllPackages() {
     return Array.from(this.packages.keys());

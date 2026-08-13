@@ -1,0 +1,29 @@
+{
+  "Name": "Lrg_Code_Loan_Age",
+  "Synonym": "Lrg_Cod_Loan_Age",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Nstart",
+      "Field": "nstart",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nend",
+      "Field": "nend",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Fin_List_Itm_Form",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Fin_List_Itm_Form",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

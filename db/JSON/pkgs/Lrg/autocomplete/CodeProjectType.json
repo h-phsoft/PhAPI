@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Cod_Proj_Type",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Cod_Proj_Type",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' - '||Name) LIKE '%{term}%'"
+  },
+  "OrderBy": "Num"
+}

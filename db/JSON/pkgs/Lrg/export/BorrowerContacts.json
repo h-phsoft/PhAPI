@@ -1,0 +1,44 @@
+{
+  "Name": "Lrg_Borrower_Contacts",
+  "Synonym": "Lrg_Borrower_Cont",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Title",
+      "Field": "title",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mobile",
+      "Field": "mobile",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Phone",
+      "Field": "phone",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fax",
+      "Field": "fax",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Email",
+      "Field": "email",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

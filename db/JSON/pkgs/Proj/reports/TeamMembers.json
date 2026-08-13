@@ -11,7 +11,8 @@
   "Fields": [
     {
       "Name": "Id",
-      "Field": "Proj.id",
+      "Field": "id",
+      "Label": "Proj.id",
       "Default": "",
       "Autocomplete": {
       },
@@ -36,19 +37,23 @@
     }
     , {
       "Name": "User_Id",
-      "Field": "Proj.userId",
+      "Field": "userId",
+      "Label": "Proj.userId",
       "Default": "",
       "Autocomplete": {
-        "Pkg": "Copy_Users",
-        "Name": "Cpy_User",
-        "Condition": {}
+         "Pkg": "Copy_Users",
+         "Name": "Cpy_User",
+         "Condition": {}
       },
-      "isVisible": true,
+      "isVisible": false,
       "isFilter": true,
       "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
       "isDisplay": true,
       "isGroup": true,
       "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
       "Aggregate": {
         "Sum": true,
         "Min": true,
@@ -64,19 +69,23 @@
     }
     , {
       "Name": "Status_Id",
-      "Field": "Proj.statusId",
+      "Field": "statusId",
+      "Label": "Proj.statusId",
       "Default": "1",
       "Autocomplete": {
-        "Pkg": "Phs_Code_Status",
-        "Name": "Phs_Cod_Status",
-        "Condition": {}
+         "Pkg": "Phs_Code_Status",
+         "Name": "Phs_Cod_Status",
+         "Condition": {}
       },
-      "isVisible": true,
+      "isVisible": false,
       "isFilter": true,
       "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
       "isDisplay": true,
       "isGroup": true,
       "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
       "Aggregate": {
         "Sum": true,
         "Min": true,
@@ -92,19 +101,20 @@
     }
     , {
       "Name": "Class1_Id",
-      "Field": "Proj.class1Id",
+      "Field": "class1Id",
+      "Label": "Proj.class1Id",
       "Default": "0",
       "Autocomplete": {
-        "Pkg": "Proj_Code_Project_Class1",
-        "Name": "Proj_Cod_Proj_Class1",
-        "Condition": {}
       },
-      "isVisible": true,
+      "isVisible": false,
       "isFilter": true,
       "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
       "isDisplay": true,
       "isGroup": true,
       "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
       "Aggregate": {
         "Sum": true,
         "Min": true,
@@ -120,19 +130,20 @@
     }
     , {
       "Name": "Class2_Id",
-      "Field": "Proj.class2Id",
+      "Field": "class2Id",
+      "Label": "Proj.class2Id",
       "Default": "0",
       "Autocomplete": {
-        "Pkg": "Proj_Code_Project_Class2",
-        "Name": "Proj_Cod_Proj_Class2",
-        "Condition": {}
       },
-      "isVisible": true,
+      "isVisible": false,
       "isFilter": true,
       "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
       "isDisplay": true,
       "isGroup": true,
       "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
       "Aggregate": {
         "Sum": true,
         "Min": true,
@@ -148,19 +159,20 @@
     }
     , {
       "Name": "Class3_Id",
-      "Field": "Proj.class3Id",
+      "Field": "class3Id",
+      "Label": "Proj.class3Id",
       "Default": "0",
       "Autocomplete": {
-        "Pkg": "Proj_Code_Project_Class3",
-        "Name": "Proj_Cod_Proj_Class3",
-        "Condition": {}
       },
-      "isVisible": true,
+      "isVisible": false,
       "isFilter": true,
       "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
       "isDisplay": true,
       "isGroup": true,
       "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
       "Aggregate": {
         "Sum": true,
         "Min": true,
@@ -176,7 +188,8 @@
     }
     , {
       "Name": "Name",
-      "Field": "Proj.name",
+      "Field": "name",
+      "Label": "Proj.name",
       "Default": "",
       "Autocomplete": {
       },
@@ -201,7 +214,34 @@
     }
     , {
       "Name": "Image",
-      "Field": "Proj.image",
+      "Field": "image",
+      "Label": "Proj.image",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Rem",
+      "Field": "rem",
+      "Label": "Proj.rem",
       "Default": "",
       "Autocomplete": {
       },
@@ -226,7 +266,8 @@
     }
     , {
       "Name": "Ins_User",
-      "Field": "Proj.insUser",
+      "Field": "insUser",
+      "Label": "Proj.insUser",
       "Default": "",
       "Autocomplete": {
       },
@@ -251,7 +292,8 @@
     }
     , {
       "Name": "Ins_Date",
-      "Field": "Proj.insDate",
+      "Field": "insDate",
+      "Label": "Proj.insDate",
       "Expression": "To_Char(Ins_Date, 'DD-MM-YYYY')",
       "Default": "",
       "Autocomplete": {
@@ -277,7 +319,8 @@
     }
     , {
       "Name": "Upd_User",
-      "Field": "Proj.updUser",
+      "Field": "updUser",
+      "Label": "Proj.updUser",
       "Default": "",
       "Autocomplete": {
       },
@@ -302,7 +345,8 @@
     }
     , {
       "Name": "Upd_Date",
-      "Field": "Proj.updDate",
+      "Field": "updDate",
+      "Label": "Proj.updDate",
       "Expression": "To_Char(Upd_Date, 'DD-MM-YYYY')",
       "Default": "",
       "Autocomplete": {
@@ -313,6 +357,64 @@
       "isDisplay": true,
       "isGroup": true,
       "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Hprice",
+      "Field": "hprice",
+      "Label": "Proj.hprice",
+      "Default": "0",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Curn_Id",
+      "Field": "curnId",
+      "Label": "Proj.curnId",
+      "Default": "1",
+      "Autocomplete": {
+         "Pkg": "Mng_Currency",
+         "Name": "Mng_Curn",
+         "Condition": {}
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
       "Aggregate": {
         "Sum": true,
         "Min": true,

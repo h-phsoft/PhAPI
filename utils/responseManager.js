@@ -1,38 +1,75 @@
 class ResultManager {
-  static ok(data) {
+  static ok(dataOrMessage, data) {
+    if (typeof dataOrMessage === 'string' && data !== undefined) {
+      return {
+        status: true,
+        code: 200,
+        message: dataOrMessage,
+        data: data || {}
+      };
+    }
+    if (typeof dataOrMessage === 'string') {
+      return {
+        status: true,
+        code: 200,
+        message: dataOrMessage,
+        data: {}
+      };
+    }
     return {
-      success: true,
-      data: data || null,
+      status: true,
+      code: 200,
       message: 'Success',
-      timestamp: new Date().toISOString()
+      data: dataOrMessage !== undefined && dataOrMessage !== null ? dataOrMessage : {}
     };
   }
 
   static invalid(message) {
     return {
-      success: false,
-      data: null,
-      message: message || 'Invalid request',
-      timestamp: new Date().toISOString()
+      status: false,
+      code: 404,
+      message: message || 'Invalid Request',
+      data: {}
     };
   }
 
-  static error(message, code) {
+  static error(code, message) {
+    const numericCode = typeof code === 'number' ? code : 400;
+    const msg = typeof code === 'string' ? code : message;
     return {
-      success: false,
-      data: null,
-      message: message || 'Error occurred',
-      code: code || 500,
-      timestamp: new Date().toISOString()
+      status: false,
+      code: numericCode,
+      message: msg || 'Error occurred',
+      data: {}
     };
   }
 
   static success(message) {
     return {
-      success: true,
-      data: null,
+      status: true,
+      code: 200,
       message: message || 'Operation successful',
-      timestamp: new Date().toISOString()
+      data: {}
+    };
+  }
+
+  static welcome(message, token, data = {}) {
+    return {
+      status: true,
+      code: 200,
+      message: message || 'Welcome',
+      token: token || '',
+      data: data || {}
+    };
+  }
+
+  static invalidLogin(message) {
+    return {
+      status: false,
+      code: 401,
+      message: message || 'Invalid login or password',
+      token: '',
+      data: {}
     };
   }
 }

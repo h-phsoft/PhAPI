@@ -1,0 +1,10 @@
+{
+  "Synonym": "Lrg_vReq",
+  "Select": "SELECT Req_Id AS Id, lNum||' - '||Lender_Name||' - '||Borrower_Name AS Name FROM Lrg_vReq",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(lNum||'/'||Lender_Name||'/'||Borrower_Name||' '||Borrower_Father||' '||Borrower_LName) LIKE '%{term}%'",
+    "statusId": "status_id={statusId}"
+  },
+  "OrderBy": "Req_Id"
+}

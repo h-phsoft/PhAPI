@@ -1,0 +1,19 @@
+{
+  "Name": "Lrg_Code_Loan_Purpose",
+  "Synonym": "Lrg_Cod_Loan_Purpose",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

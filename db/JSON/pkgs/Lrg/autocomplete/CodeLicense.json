@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Cod_License",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Cod_License",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

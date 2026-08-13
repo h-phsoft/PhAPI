@@ -1,4 +1,6 @@
+const ResultManager = require('../utils/responseManager');
 const i18nHelper = require('../utils/i18nHelper');
+const logger = require('../utils/logger');
 
 function errorHandler(err, req, res, next) {
   const lang = req.context?.lang || 'en';
@@ -21,15 +23,25 @@ function errorHandler(err, req, res, next) {
 
   const localizedMessage = i18nHelper.getMessage(messageKey, lang);
 
-  console.error(`[Error] ${err.name} (${statusCode}):`, err.message, err.stack);
-
-  res.status(statusCode).json({
-    success: false,
-    status: statusCode,
-    messageKey,
-    message: err.message || localizedMessage,
-    details: err.details || null
+  // Write full error metadata & stack trace to log file
+  logger.error(`[GlobalErrorHandler] ${err.name} (${statusCode}): ${err.message}`, {
+    method: req.method,
+    url: req.originalUrl,
+    headers: {
+      vcopy: req.headers['vcopy'] || req.headers['vCopy'],
+      mprgid: req.headers['mprgid'] || req.headers['mPrgId'],
+      periodid: req.headers['periodid'] || req.headers['periodId'],
+      vlang: req.headers['vlang'] || req.headers['vLang']
+    },
+    body: req.body,
+    context: req.context ? { copy: req.context.vCopy || req.context.tenantId, userId: req.context.userId } : null,
+    stack: err.stack
   });
+
+
+  res.status(200).json(ResultManager.error(statusCode, err.message || localizedMessage));
 }
 
 module.exports = errorHandler;
+
+

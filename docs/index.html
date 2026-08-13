@@ -554,10 +554,10 @@
               <td>Bearer eyJhbGciOi...</td>
             </tr>
             <tr>
-              <td><span class="entity-tag">x-tenant-id</span></td>
+              <td><span class="entity-tag">vcopy</span></td>
               <td>String / Number</td>
               <td>Target Tenant Schema ID (Resolves Oracle Database pool)</td>
-              <td>1 or NSCC</td>
+              <td>MKM or NSCC</td>
             </tr>
             <tr>
               <td><span class="entity-tag">x-period-id</span></td>
@@ -600,7 +600,7 @@
           </div>
           <div class="code-block">curl -X POST http://localhost:3000/PhsAPI/Auth/Login \
   -H "Content-Type: application/json" \
-  -d '{"username": "admin", "password": "PhPass", "tenantId": "1", "periodId": 2026}'</div>
+  -d '{"username": "admin", "password": "PhPass", "vCopy": "MKM", "periodId": 2026}'</div>
         </div>
 
         <!-- POST New -->
@@ -617,7 +617,7 @@
           </div>
           <div class="code-block">curl -X POST http://localhost:3000/PhsAPI/Acc/Acc_Master/New \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  -H "x-tenant-id: 1" \
+  -H "vcopy: MKM" \
   -H "x-period-id: 2026" \
   -H "Content-Type: application/json" \
   -d '{
@@ -642,7 +642,7 @@
           </div>
           <div class="code-block">curl -X GET "http://localhost:3000/PhsAPI/Acc/Acc_Master/List?page=1&pageSize=10&docNo=DOC-2026-001" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  -H "x-tenant-id: 1"</div>
+  -H "vcopy: MKM"</div>
         </div>
 
         <!-- GET Get/id -->
@@ -659,7 +659,7 @@
           </div>
           <div class="code-block">curl -X GET "http://localhost:3000/PhsAPI/Acc/Acc_Master/Get/1001" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  -H "x-tenant-id: 1"</div>
+  -H "vcopy: MKM"</div>
         </div>
 
         <!-- PUT Update/id -->
@@ -676,7 +676,7 @@
           </div>
           <div class="code-block">curl -X PUT "http://localhost:3000/PhsAPI/Acc/Acc_Master/Update/1001" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  -H "x-tenant-id: 1" \
+  -H "vcopy: MKM" \
   -H "Content-Type: application/json" \
   -d '{"notes": "Updated Entry Notes"}'</div>
         </div>
@@ -695,7 +695,7 @@
           </div>
           <div class="code-block">curl -X DELETE "http://localhost:3000/PhsAPI/Acc/Acc_Master/Delete/1001" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  -H "x-tenant-id: 1"</div>
+  -H "vcopy: MKM"</div>
         </div>
 
         <!-- GET Autocomplete -->
@@ -712,7 +712,7 @@
           </div>
           <div class="code-block">curl -X GET "http://localhost:3000/PhsAPI/Acc/Account/Autocomplete?term=cash" \
   -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  -H "x-tenant-id: 1"</div>
+  -H "vcopy: MKM"</div>
         </div>
       </div>
 

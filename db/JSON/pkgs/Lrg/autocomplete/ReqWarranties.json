@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Req_Mach_Warnty",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Req_Mach_Warnty",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

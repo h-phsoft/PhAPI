@@ -1,0 +1,19 @@
+{
+  "Name": "Lrg_Req_Financial_List_Item",
+  "Synonym": "Lrg_Req_Fin_List_Itm",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Val",
+      "Field": "val",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

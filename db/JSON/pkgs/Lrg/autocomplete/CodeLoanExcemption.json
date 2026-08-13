@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Cod_Loan_Excemption",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Cod_Loan_Excemption",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

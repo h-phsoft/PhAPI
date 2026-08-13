@@ -16,7 +16,7 @@
   },
   "Select": "SELECT Id, Period_Id, Dept_Id, Unit_Id, Oper_Id, Contr_Id, User_Id, Num, To_Char(Ddate, 'DD-MM-YYYY') AS Ddate, Cont_Id, Ocntry_Id, Ocity_Id, Dcntry_Id, Dcity_Id, Ref, Cust, Note, Rem, Ins_User, To_Char(Ins_Date, 'DD-MM-YYYY') AS Ins_Date, Upd_User, To_Char(Upd_Date, 'DD-MM-YYYY') AS Upd_Date, Transport_Id, Freight_Id, Clearance_Id, Iterm_Id, Pterm_Id, Oport_Id, Osport_Id, Oaport_Id, Dport_Id, Dsport_Id, Daport_Id, Oaddress, Daddress, Qnt, Wnet, Wgros, Wchrg, Ldm, Cbm, Vcomod FROM Fre_Minqry",
   "Insert": "INSERT INTO Fre_Minqry (Id, Period_Id, Dept_Id, Unit_Id, Oper_Id, Contr_Id, User_Id, Num, Ddate, Cont_Id, Ocntry_Id, Ocity_Id, Dcntry_Id, Dcity_Id, Ref, Cust, Note, Rem, Transport_Id, Freight_Id, Clearance_Id, Iterm_Id, Pterm_Id, Oport_Id, Osport_Id, Oaport_Id, Dport_Id, Dsport_Id, Daport_Id, Oaddress, Daddress, Qnt, Wnet, Wgros, Wchrg, Ldm, Cbm, Vcomod, Ins_User, Ins_Date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, To_Date(?, 'DD-MM-YYYY'), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, Sysdate)",
-  "Update": "UPDATE Fre_Minqry SET Period_Id=?, Dept_Id=?, Unit_Id=?, Oper_Id=?, Contr_Id=?, User_Id=?, Num=?, Ddate=To_Date(?, 'DD-MM-YYYY'), Cont_Id=?, Ocntry_Id=?, Ocity_Id=?, Dcntry_Id=?, Dcity_Id=?, Ref=?, Cust=?, Note=?, Rem=?, Transport_Id=?, Freight_Id=?, Clearance_Id=?, Iterm_Id=?, Pterm_Id=?, Oport_Id=?, Osport_Id=?, Oaport_Id=?, Dport_Id=?, Dsport_Id=?, Daport_Id=?, Oaddress=?, Daddress=?, Qnt=?, Wnet=?, Wgros=?, Wchrg=?, Ldm=?, Cbm=?, Vcomod=?, Upd_User=?, Upd_Date=Sysdate WHERE Id=?",
+  "Update": "UPDATE Fre_Minqry SET Period_Id=?, Dept_Id=?, Unit_Id=?, Oper_Id=?, Contr_Id=?, Num=?, Ddate=To_Date(?, 'DD-MM-YYYY'), Cont_Id=?, Ocntry_Id=?, Ocity_Id=?, Dcntry_Id=?, Dcity_Id=?, Ref=?, Cust=?, Note=?, Rem=?, Transport_Id=?, Freight_Id=?, Clearance_Id=?, Iterm_Id=?, Pterm_Id=?, Oport_Id=?, Osport_Id=?, Oaport_Id=?, Dport_Id=?, Dsport_Id=?, Daport_Id=?, Oaddress=?, Daddress=?, Qnt=?, Wnet=?, Wgros=?, Wchrg=?, Ldm=?, Cbm=?, Vcomod=?, Upd_User=?, Upd_Date=Sysdate WHERE Id=?",
   "hasChilds": true,
   "Children": [
     {
@@ -153,7 +153,7 @@
       "Default": "",
       "query": true,
       "insert": true,
-      "update": true,
+      "update": false,
       "hasRelation": true,
       "Relation": {
         "TableName": "Copy_Users",

@@ -1,0 +1,123 @@
+{
+  "Name": "Lrg_Request",
+  "Synonym": "Lrg_Req",
+  "Sequence": "Lrg_Req_Seq",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Order": "Id",
+  "InsUser": true,
+  "UpdUser": true,
+  "Select": "SELECT Id, Rsk_ProjectIdDoc, Rsk_Active, Rsk_QueryResult, Rsk_ProjSize, Rsk_CreditApproval, Rsk_FinStudy  FROM Lrg_Req",
+  "Insert": "INSERT INTO Lrg_Req (Id, Rsk_ProjectIdDoc, Rsk_Active, Rsk_QueryResult, Rsk_ProjSize, Rsk_CreditApproval, Rsk_FinStudy, Ins_User, Ins_Date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, Sysdate)",
+  "Update": "UPDATE Lrg_Req SET Rsk_ProjectIdDoc=?, Rsk_Active=?, Rsk_QueryResult=?, Rsk_ProjSize=?, Rsk_CreditApproval=?, Rsk_FinStudy=?, Upd_User=?, Upd_Date=Sysdate WHERE Id=?",
+  "hasChilds": false,
+  "Columns": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }, {
+      "Name": "Rsk_ProjectIdDoc",
+      "Field": "RskProjectIdDoc",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Rsk_Active",
+      "Field": "RskActive",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Rsk_QueryResult",
+      "Field": "RskQueryResult",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Rsk_ProjSize",
+      "Field": "RskProjSize",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Rsk_CreditApproval",
+      "Field": "RskCreditApproval",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Rsk_FinStudy",
+      "Field": "RskFinStudy",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isNull": false
+    }
+  ]
+}
+

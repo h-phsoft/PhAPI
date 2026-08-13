@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Req_Pointer",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Req_Pointer",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

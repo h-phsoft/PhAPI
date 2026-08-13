@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Prod_Proj_Size",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Prod_Proj_Size",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

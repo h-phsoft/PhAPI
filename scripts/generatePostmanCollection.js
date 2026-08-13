@@ -25,7 +25,7 @@ function generatePostman() {
     variable: [
       { key: 'baseUrl', value: 'http://localhost:3000', type: 'string' },
       { key: 'jwtToken', value: '', type: 'string' },
-      { key: 'tenantId', value: '1', type: 'string' },
+      { key: 'vCopy', value: 'MKM', type: 'string' },
       { key: 'periodId', value: '2026', type: 'string' }
     ],
     item: [
@@ -41,8 +41,8 @@ function generatePostman() {
                   exec: [
                     'if (pm.response.code === 200) {',
                     '    var jsonData = pm.response.json();',
-                    '    if (jsonData.data && jsonData.data.token) {',
-                    '        pm.environment.set("jwtToken", jsonData.data.token);',
+                    '    if (jsonData.token) {',
+                    '        pm.environment.set("jwtToken", jsonData.token);',
                     '        console.log("Successfully auto-updated jwtToken in environment!");',
                     '    }',
                     '}'
@@ -61,7 +61,7 @@ function generatePostman() {
                 raw: JSON.stringify({
                   username: "admin",
                   password: "PhPass",
-                  tenantId: "1",
+                  vCopy: "{{vCopy}}",
                   periodId: 2026
                 }, null, 2)
               },
@@ -95,7 +95,7 @@ function generatePostman() {
               method: 'POST',
               header: [
                 { key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text' },
-                { key: 'x-tenant-id', value: '{{tenantId}}', type: 'text' },
+                { key: 'vcopy', value: '{{vCopy}}', type: 'text' },
                 { key: 'x-period-id', value: '{{periodId}}', type: 'text' },
                 { key: 'Content-Type', value: 'application/json', type: 'text' }
               ],
@@ -124,7 +124,7 @@ function generatePostman() {
               method: 'GET',
               header: [
                 { key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text' },
-                { key: 'x-tenant-id', value: '{{tenantId}}', type: 'text' }
+                { key: 'vcopy', value: '{{vCopy}}', type: 'text' }
               ],
               url: {
                 raw: '{{baseUrl}}/PhsAPI/Acc/Acc_Master/List?page=1&pageSize=10',
@@ -143,7 +143,7 @@ function generatePostman() {
               method: 'GET',
               header: [
                 { key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text' },
-                { key: 'x-tenant-id', value: '{{tenantId}}', type: 'text' }
+                { key: 'vcopy', value: '{{vCopy}}', type: 'text' }
               ],
               url: {
                 raw: '{{baseUrl}}/PhsAPI/Acc/Acc_Master/Get/101',
@@ -158,7 +158,7 @@ function generatePostman() {
               method: 'PUT',
               header: [
                 { key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text' },
-                { key: 'x-tenant-id', value: '{{tenantId}}', type: 'text' },
+                { key: 'vcopy', value: '{{vCopy}}', type: 'text' },
                 { key: 'Content-Type', value: 'application/json', type: 'text' }
               ],
               body: {
@@ -180,7 +180,7 @@ function generatePostman() {
               method: 'GET',
               header: [
                 { key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text' },
-                { key: 'x-tenant-id', value: '{{tenantId}}', type: 'text' }
+                { key: 'vcopy', value: '{{vCopy}}', type: 'text' }
               ],
               url: {
                 raw: '{{baseUrl}}/PhsAPI/Acc/Account/Autocomplete?term=cash',
@@ -203,7 +203,7 @@ function generatePostman() {
               method: 'GET',
               header: [
                 { key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text' },
-                { key: 'x-tenant-id', value: '{{tenantId}}', type: 'text' }
+                { key: 'vcopy', value: '{{vCopy}}', type: 'text' }
               ],
               url: {
                 raw: '{{baseUrl}}/PhsAPI/Stor/Items/List?page=1&pageSize=20',
@@ -222,7 +222,7 @@ function generatePostman() {
               method: 'GET',
               header: [
                 { key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text' },
-                { key: 'x-tenant-id', value: '{{tenantId}}', type: 'text' }
+                { key: 'vcopy', value: '{{vCopy}}', type: 'text' }
               ],
               url: {
                 raw: '{{baseUrl}}/PhsAPI/Stor/Items/Autocomplete?term=item',
@@ -245,7 +245,7 @@ function generatePostman() {
               method: 'GET',
               header: [
                 { key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text' },
-                { key: 'x-tenant-id', value: '{{tenantId}}', type: 'text' }
+                { key: 'vcopy', value: '{{vCopy}}', type: 'text' }
               ],
               url: {
                 raw: '{{baseUrl}}/PhsAPI/Emp/Employee/List?page=1&pageSize=10',
@@ -269,7 +269,7 @@ function generatePostman() {
     values: [
       { key: 'baseUrl', value: 'http://localhost:3000', enabled: true },
       { key: 'jwtToken', value: '', enabled: true },
-      { key: 'tenantId', value: '1', enabled: true },
+      { key: 'vCopy', value: 'MKM', enabled: true },
       { key: 'periodId', value: '2026', enabled: true }
     ]
   };

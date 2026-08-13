@@ -1,0 +1,114 @@
+{
+  "Name": "Lrg_Borrowers",
+  "Synonym": "Lrg_Borrower",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Father",
+      "Field": "father",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mother",
+      "Field": "mother",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Lname",
+      "Field": "lname",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Issudate",
+      "Field": "issudate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Expiredate",
+      "Field": "expiredate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Kiedplace",
+      "Field": "kiedplace",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Kiednum",
+      "Field": "kiednum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Dob",
+      "Field": "dob",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Pob",
+      "Field": "pob",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Partner",
+      "Field": "partner",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Homecity",
+      "Field": "homecity",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Homestreet",
+      "Field": "homestreet",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Homebld",
+      "Field": "homebld",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Homeaddress",
+      "Field": "homeaddress",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Jobcity",
+      "Field": "jobcity",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Jobstreet",
+      "Field": "jobstreet",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Jobbld",
+      "Field": "jobbld",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Jobaddress",
+      "Field": "jobaddress",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

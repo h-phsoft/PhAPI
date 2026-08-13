@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Age_Fin_Data_Type",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Age_Fin_Data_Type",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' - '||Name) LIKE '%{term}%'"
+  },
+  "OrderBy": "Num"
+}

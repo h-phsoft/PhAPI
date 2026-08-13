@@ -1,0 +1,29 @@
+{
+  "Name": "Lrg_Req_Personal_Warranties",
+  "Synonym": "Lrg_Req_Personal_Warnty",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Period",
+      "Field": "period",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Val",
+      "Field": "val",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Sdate",
+      "Field": "sdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

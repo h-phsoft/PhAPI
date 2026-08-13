@@ -1,0 +1,19 @@
+{
+  "Name": "Lrg_Borrower_Partners",
+  "Synonym": "Lrg_Borrower_Partner",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Perc",
+      "Field": "perc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

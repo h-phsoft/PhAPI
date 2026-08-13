@@ -1,0 +1,418 @@
+{
+  "Name": "Lrg_Req_Warranties",
+  "Synonym": "Lrg_Req_Warnty",
+  "Sequence": "Lrg_Req_Warnty_Seq",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Order": "Id",
+  "InsUser": true,
+  "UpdUser": true,
+  "Select": "SELECT Id, Req_Id, Asset_Id, Owner_Id, Owntype_Id, Ownperc, Estimateval, Mortgage_Id, Mortgageval, Mortgagenum, Num, Owner, Descr, Rem, Ins_User, To_Char(Ins_Date, 'DD-MM-YYYY') AS Ins_Date, Upd_User, To_Char(Upd_Date, 'DD-MM-YYYY') AS Upd_Date FROM Lrg_Req_Warnty",
+  "Insert": "INSERT INTO Lrg_Req_Warnty (Id, Req_Id, Asset_Id, Owner_Id, Owntype_Id, Ownperc, Estimateval, Mortgage_Id, Mortgageval, Mortgagenum, Num, Owner, Descr, Rem, Ins_User, Ins_Date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, Sysdate)",
+  "Update": "UPDATE Lrg_Req_Warnty SET Req_Id=?, Asset_Id=?, Owner_Id=?, Owntype_Id=?, Ownperc=?, Estimateval=?, Mortgage_Id=?, Mortgageval=?, Mortgagenum=?, Num=?, Owner=?, Descr=?, Rem=?, Upd_User=?, Upd_Date=Sysdate WHERE Id=?",
+  "hasChilds": true,
+  "Children": [
+    {
+      "ChildKey": "child1",
+      "Pkg": "Lrg",
+      "Key": "ReqVehicleWarranties",
+      "Table": "Lrg_Req_Vehicle_Warranties",
+      "Synonym": "Lrg_Req_Vicle_Warnty",
+      "cascadeDelete": true,
+      "Column": "Warnty_Id",
+      "ColKey": "warntyId"
+    }
+    , {
+      "ChildKey": "child2",
+      "Pkg": "Lrg",
+      "Key": "ReqSecuritiesWarranties",
+      "Table": "Lrg_Req_Securities_Warranties",
+      "Synonym": "Lrg_Req_Secur_Warnty",
+      "cascadeDelete": true,
+      "Column": "Warnty_Id",
+      "ColKey": "warntyId"
+    }
+    , {
+      "ChildKey": "child3",
+      "Pkg": "Lrg",
+      "Key": "ReqRealestateWarranties",
+      "Table": "Lrg_Req_Realestate_Warranties",
+      "Synonym": "Lrg_Req_Real_Warnty",
+      "cascadeDelete": true,
+      "Column": "Warnty_Id",
+      "ColKey": "warntyId"
+    }
+    , {
+      "ChildKey": "child4",
+      "Pkg": "Lrg",
+      "Key": "ReqPersonalWarranties",
+      "Table": "Lrg_Req_Personal_Warranties",
+      "Synonym": "Lrg_Req_Personal_Warnty",
+      "cascadeDelete": true,
+      "Column": "Warnty_Id",
+      "ColKey": "warntyId"
+    }
+    , {
+      "ChildKey": "child5",
+      "Pkg": "Lrg",
+      "Key": "ReqMachineWarranties",
+      "Table": "Lrg_Req_Machine_Warranties",
+      "Synonym": "Lrg_Req_Mach_Warnty",
+      "cascadeDelete": true,
+      "Column": "Warnty_Id",
+      "ColKey": "warntyId"
+    }
+  ],
+  "Columns": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Req_Id",
+      "Field": "reqId",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Asset_Id",
+      "Field": "assetId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Lrg_Code_Assets",
+        "SynonymName": "Lrg_Cod_Assets",
+        "CurId": "Asset_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "assteName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Owner_Id",
+      "Field": "ownerId",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Lrg_Borrowers",
+        "SynonymName": "Lrg_Borrower",
+        "CurId": "Owner_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "ownerName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Owntype_Id",
+      "Field": "owntypeId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Lrg_Code_Own_Type",
+        "SynonymName": "Lrg_Cod_Own_Type",
+        "CurId": "Owntype_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "owntypeName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ownperc",
+      "Field": "ownperc",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "2",
+      "Precision": "7",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Estimateval",
+      "Field": "estimateval",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "3",
+      "Precision": "17",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Mortgage_Id",
+      "Field": "mortgageId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Lrg_Code_Mortgage",
+        "SynonymName": "Lrg_Cod_Mortgage",
+        "CurId": "Mortgage_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "mortgageName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Mortgageval",
+      "Field": "mortgageval",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "3",
+      "Precision": "17",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Mortgagenum",
+      "Field": "mortgagenum",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Num",
+      "Field": "num",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Owner",
+      "Field": "owner",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Descr",
+      "Field": "descr",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ins_User",
+      "Field": "insUser",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ins_Date",
+      "Field": "insDate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Upd_User",
+      "Field": "updUser",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Upd_Date",
+      "Field": "updDate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+  ]
+}

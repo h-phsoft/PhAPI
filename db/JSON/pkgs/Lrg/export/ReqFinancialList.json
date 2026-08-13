@@ -1,0 +1,19 @@
+{
+  "Name": "Lrg_Req_Financial_List",
+  "Synonym": "Lrg_Req_Fin_List",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Fyear",
+      "Field": "fyear",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

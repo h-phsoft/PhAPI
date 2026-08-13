@@ -1,0 +1,19 @@
+{
+  "Name": "Lrg_Code_Borrower_Legal",
+  "Synonym": "Lrg_Cod_Borrower_Legal",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

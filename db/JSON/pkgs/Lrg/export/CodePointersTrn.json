@@ -1,0 +1,49 @@
+{
+  "Name": "Lrg_Code_Pointers_Trn",
+  "Synonym": "Lrg_Cod_Tpointer",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Weight",
+      "Field": "weight",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Fdate",
+      "Field": "fdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tdate",
+      "Field": "tdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nfvalue",
+      "Field": "nfvalue",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ntvalue",
+      "Field": "ntvalue",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Vfvalue",
+      "Field": "vfvalue",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Vtvalue",
+      "Field": "vtvalue",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

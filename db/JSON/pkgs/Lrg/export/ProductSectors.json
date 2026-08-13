@@ -1,0 +1,14 @@
+{
+  "Name": "Lrg_Product_Sectors",
+  "Synonym": "Lrg_Prod_Sector",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

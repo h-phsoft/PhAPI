@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Prod_Sponsor",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Prod_Sponsor",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

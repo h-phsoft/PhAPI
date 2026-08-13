@@ -1,0 +1,329 @@
+{
+  "Name": "Lrg_Request",
+  "Synonym": "Lrg_Req",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Dnum",
+      "Field": "dnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rdate",
+      "Field": "rdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Lnum",
+      "Field": "lnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ldate",
+      "Field": "ldate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Req_Lamt",
+      "Field": "reqLamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Req_Gamt",
+      "Field": "reqGamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Req_Gperc",
+      "Field": "reqGperc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Gamt",
+      "Field": "gamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loan_Lamt",
+      "Field": "loanLamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loan_Gamt",
+      "Field": "loanGamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loan_Gperc",
+      "Field": "loanGperc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loan_Purpose",
+      "Field": "loanPurpose",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Brwr_Nnum",
+      "Field": "brwrNnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Brwr_Name",
+      "Field": "brwrName",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Minperiod",
+      "Field": "minperiod",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Maxperiod",
+      "Field": "maxperiod",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Prodcapacity",
+      "Field": "prodcapacity",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Target",
+      "Field": "target",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Eval_Bank",
+      "Field": "evalBank",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Eval_Vendor",
+      "Field": "evalVendor",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Eval_Customer",
+      "Field": "evalCustomer",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Eval_Oper",
+      "Field": "evalOper",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Eval_Tax",
+      "Field": "evalTax",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Eval_Intrnal",
+      "Field": "evalIntrnal",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Eval_Other",
+      "Field": "evalOther",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Eval_Experience",
+      "Field": "evalExperience",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Actv_Type",
+      "Field": "actvType",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Actv_Place",
+      "Field": "actvPlace",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Actv_Yincome",
+      "Field": "actvYincome",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Actv_Mincome",
+      "Field": "actvMincome",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Des_Mainactivity",
+      "Field": "desMainactivity",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Des_Underfundactv",
+      "Field": "desUnderfundactv",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Des_Localcategory",
+      "Field": "desLocalcategory",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Des_Indprospect",
+      "Field": "desIndprospect",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Des_Indorgs",
+      "Field": "desIndorgs",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Des_Imppentration",
+      "Field": "desImppentration",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Des_Indbarries",
+      "Field": "desIndbarries",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Des_Indprofit",
+      "Field": "desIndprofit",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Des_Indsenscond",
+      "Field": "desIndsenscond",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Des_Indsenstech",
+      "Field": "desIndsenstech",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Des_Indsenstechfact",
+      "Field": "desIndsenstechfact",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Des_Age",
+      "Field": "desAge",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Des_Ageunderfinance",
+      "Field": "desAgeunderfinance",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Des_Outletproducts",
+      "Field": "desOutletproducts",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Des_Rawmaterialsrc",
+      "Field": "desRawmaterialsrc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Des_Compeposition",
+      "Field": "desCompeposition",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Des_Prodactvunderfund",
+      "Field": "desProdactvunderfund",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Des_Prodactvotherunderfund",
+      "Field": "desProdactvotherunderfund",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Des_Flexactvdemand",
+      "Field": "desFlexactvdemand",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Des_Compeposactvprods",
+      "Field": "desCompeposactvprods",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Adm_Occupation",
+      "Field": "admOccupation",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Adm_Actualemps",
+      "Field": "admActualemps",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Adm_Planemps",
+      "Field": "admPlanemps",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Adm_Academic",
+      "Field": "admAcademic",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Adm_Techexper",
+      "Field": "admTechexper",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Adm_Admtechexper",
+      "Field": "admAdmtechexper",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Adm_Jobspec",
+      "Field": "admJobspec",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Adm_Carrer",
+      "Field": "admCarrer",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Adm_Authresp",
+      "Field": "admAuthresp",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Adm_Mngrole",
+      "Field": "admMngrole",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Adm_Systems",
+      "Field": "admSystems",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Adm_Visitoutput",
+      "Field": "admVisitoutput",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

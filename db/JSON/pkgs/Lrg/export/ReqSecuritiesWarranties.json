@@ -1,0 +1,24 @@
+{
+  "Name": "Lrg_Req_Securities_Warranties",
+  "Synonym": "Lrg_Req_Secur_Warnty",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Estimateval",
+      "Field": "estimateval",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Source",
+      "Field": "source",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

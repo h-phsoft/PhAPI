@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Lender",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Lender",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

@@ -1,0 +1,470 @@
+{
+  "Name": "Lrg_Request",
+  "Synonym": "Lrg_Req",
+  "Sequence": "Lrg_Req_Seq",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Order": "Id Desc",
+  "InsUser": true,
+  "UpdUser": true,
+  "Select": "SELECT Id, loan_purpose_id, period_Id, User_Id, Lender_Id, Lbran_Id,Prod_Id,Lnum, Borrower_Id,Dnum, To_Char(Ddate, 'DD-MM-YYYY') AS Ddate, To_Char(Rdate, 'DD-MM-YYYY') AS Rdate, To_Char(Ldate, 'DD-MM-YYYY') AS Ldate, Req_Lamt, Req_Gamt, Req_Gperc, Ins_User, To_Char(Ins_Date, 'DD-MM-YYYY') AS Ins_Date, Upd_User, To_Char(Upd_Date, 'DD-MM-YYYY') AS Upd_Date FROM Lrg_Req",
+  "Insert": "INSERT INTO Lrg_Req (Id, loan_purpose_id ,period_Id, User_Id, Lender_Id, Lbran_Id,Prod_Id, Lnum,  Borrower_Id, Dnum, Ddate, Rdate,Ldate, Req_Lamt, Req_Gamt, Req_Gperc, Ins_User, Ins_Date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, To_Date(?, 'DD-MM-YYYY'), To_Date(?, 'DD-MM-YYYY'), To_Date(?, 'DD-MM-YYYY'), ?, ?, ?, ?, Sysdate)",
+  "Update": "UPDATE Lrg_Req SET Req_Lamt=?, Req_Gamt=?, Req_Gperc=?,Rem=?, Upd_User=?, Upd_Date=Sysdate WHERE Id=?",
+  "hasChilds": false,
+  "Children": [
+  ],
+  "Columns": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Loan_Purpose_Id",
+      "Field": "loanPurposeId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": false,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Lrg_Code_Loan_Purpose",
+        "SynonymName": "Lrg_Cod_Loan_Purpose",
+        "CurId": "Loan_Purpose_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "loanPurposeName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Period_Id",
+      "Field": "periodId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "2",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": false,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Lrg_Code_Periodic_Doc",
+        "SynonymName": "Lrg_Cod_Period_Doc",
+        "CurId": "Period_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "periodName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "User_Id",
+      "Field": "userId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": false,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Copy_Users",
+        "SynonymName": "Cpy_User",
+        "CurId": "User_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "userName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Lender_Id",
+      "Field": "lenderId",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": false,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Lrg_Lenders",
+        "SynonymName": "Lrg_Lender",
+        "CurId": "Lender_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "lenderName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Lbran_Id",
+      "Field": "lbranId",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": false,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Lrg_Lender_Branches",
+        "SynonymName": "Lrg_Lender_Branch",
+        "CurId": "Lbran_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "lbranName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Prod_Id",
+      "Field": "prodId",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": false,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Lrg_Products",
+        "SynonymName": "Lrg_Prod",
+        "CurId": "Prod_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "prodName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Lnum",
+      "Field": "lnum",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": false,
+      "hasRelation": false,
+      "isAutonumber": true,
+      "Autonumber": {
+        "Mode": "11",
+        "Aggr": "Max",
+        "Column": "Lnum",
+        "Synonym": "Lrg_Req",
+        "Sequence": "Lrg_Req_Seq",
+        "Condition": "Lender_Id={lenderId}",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Borrower_Id",
+      "Field": "borrowerId",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": false,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Lrg_Borrowers",
+        "SynonymName": "Lrg_Borrower",
+        "CurId": "Borrower_Id",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "borrowerName",
+        "aRelFields": [
+
+        ]
+      },
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Dnum",
+      "Field": "dnum",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Integer",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": false,
+      "hasRelation": false,
+      "isAutonumber": true,
+      "Autonumber": {
+        "Mode": "11",
+        "Aggr": "Max",
+        "Column": "Dnum",
+        "Synonym": "Lrg_Req",
+        "Sequence": "Lrg_Req_Seq",
+        "Condition": "",
+        "PeriodCondition": "Period_Id={periodId}"
+      },
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "Sysdate",
+      "query": true,
+      "insert": true,
+      "update": false,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Rdate",
+      "Field": "rdate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "Sysdate",
+      "query": true,
+      "insert": true,
+      "update": false,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ldate",
+      "Field": "ldate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": false,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": false
+    }
+    , {
+      "Name": "Req_Lamt",
+      "Field": "reqLamt",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "2",
+      "Precision": "17",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Req_Gamt",
+      "Field": "reqGamt",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "2",
+      "Precision": "17",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Req_Gperc",
+      "Field": "reqGperc",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "2",
+      "Precision": "6",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ins_User",
+      "Field": "insUser",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Ins_Date",
+      "Field": "insDate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Upd_User",
+      "Field": "updUser",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Upd_Date",
+      "Field": "updDate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+    , {
+      "Name": "Rem",
+      "Field": "rem",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "isFile": false,
+      "isNull": true
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "Name": "Lrg_Prod_Accounts",
+  "Synonym": "Lrg_Prod_Account",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "Name": "Lrg_Code_Project_Size",
+  "Synonym": "Lrg_Cod_Proj_Size",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

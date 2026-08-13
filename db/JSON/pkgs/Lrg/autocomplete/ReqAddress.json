@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Req_Addr",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Req_Addr",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

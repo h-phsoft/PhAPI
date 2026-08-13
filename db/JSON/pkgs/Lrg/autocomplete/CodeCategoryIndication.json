@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Cod_Cat_Indic",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Cod_Cat_Indic",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

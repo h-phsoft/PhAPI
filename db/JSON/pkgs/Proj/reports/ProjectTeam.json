@@ -11,7 +11,8 @@
   "Fields": [
     {
       "Name": "Id",
-      "Field": "Proj.id",
+      "Field": "id",
+      "Label": "Proj.id",
       "Default": "",
       "Autocomplete": {
       },
@@ -36,19 +37,23 @@
     }
     , {
       "Name": "Proj_Id",
-      "Field": "Proj.projId",
+      "Field": "projId",
+      "Label": "Proj.projId",
       "Default": "",
       "Autocomplete": {
-        "Pkg": "Proj_Project",
-        "Name": "Proj_Proj",
-        "Condition": {}
+         "Pkg": "Proj_Project",
+         "Name": "Proj_Proj",
+         "Condition": {}
       },
-      "isVisible": true,
+      "isVisible": false,
       "isFilter": true,
       "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
       "isDisplay": true,
       "isGroup": true,
       "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
       "Aggregate": {
         "Sum": true,
         "Min": true,
@@ -64,19 +69,23 @@
     }
     , {
       "Name": "Team_Id",
-      "Field": "Proj.teamId",
+      "Field": "teamId",
+      "Label": "Proj.teamId",
       "Default": "",
       "Autocomplete": {
-        "Pkg": "Proj_Team_Members",
-        "Name": "Proj_Team",
-        "Condition": {}
+         "Pkg": "Proj_Team_Members",
+         "Name": "Proj_Team",
+         "Condition": {}
       },
-      "isVisible": true,
+      "isVisible": false,
       "isFilter": true,
       "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
       "isDisplay": true,
       "isGroup": true,
       "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
       "Aggregate": {
         "Sum": true,
         "Min": true,
@@ -92,19 +101,23 @@
     }
     , {
       "Name": "Status_Id",
-      "Field": "Proj.statusId",
+      "Field": "statusId",
+      "Label": "Proj.statusId",
       "Default": "1",
       "Autocomplete": {
-        "Pkg": "Phs_Code_Status",
-        "Name": "Phs_Cod_Status",
-        "Condition": {}
+         "Pkg": "Phs_Code_Status",
+         "Name": "Phs_Cod_Status",
+         "Condition": {}
       },
-      "isVisible": true,
+      "isVisible": false,
       "isFilter": true,
       "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
       "isDisplay": true,
       "isGroup": true,
       "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
       "Aggregate": {
         "Sum": true,
         "Min": true,
@@ -120,7 +133,8 @@
     }
     , {
       "Name": "Title",
-      "Field": "Proj.title",
+      "Field": "title",
+      "Label": "Proj.title",
       "Default": "'Member'",
       "Autocomplete": {
       },
@@ -145,7 +159,8 @@
     }
     , {
       "Name": "Rem",
-      "Field": "Proj.rem",
+      "Field": "rem",
+      "Label": "Proj.rem",
       "Default": "",
       "Autocomplete": {
       },
@@ -170,7 +185,8 @@
     }
     , {
       "Name": "Ins_User",
-      "Field": "Proj.insUser",
+      "Field": "insUser",
+      "Label": "Proj.insUser",
       "Default": "",
       "Autocomplete": {
       },
@@ -195,7 +211,8 @@
     }
     , {
       "Name": "Ins_Date",
-      "Field": "Proj.insDate",
+      "Field": "insDate",
+      "Label": "Proj.insDate",
       "Expression": "To_Char(Ins_Date, 'DD-MM-YYYY')",
       "Default": "",
       "Autocomplete": {
@@ -221,7 +238,8 @@
     }
     , {
       "Name": "Upd_User",
-      "Field": "Proj.updUser",
+      "Field": "updUser",
+      "Label": "Proj.updUser",
       "Default": "",
       "Autocomplete": {
       },
@@ -246,7 +264,8 @@
     }
     , {
       "Name": "Upd_Date",
-      "Field": "Proj.updDate",
+      "Field": "updDate",
+      "Label": "Proj.updDate",
       "Expression": "To_Char(Upd_Date, 'DD-MM-YYYY')",
       "Default": "",
       "Autocomplete": {

@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Cod_Tpointer",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Cod_Tpointer",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

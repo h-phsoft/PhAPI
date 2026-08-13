@@ -1,0 +1,14 @@
+{
+  "Name": "Lrg_Prod_Sponsors",
+  "Synonym": "Lrg_Prod_Sponsor",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

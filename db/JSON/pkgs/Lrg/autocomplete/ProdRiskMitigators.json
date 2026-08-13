@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Prod_Mitigators",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Prod_Mitigators",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

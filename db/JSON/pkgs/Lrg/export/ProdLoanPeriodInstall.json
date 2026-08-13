@@ -1,0 +1,14 @@
+{
+  "Name": "Lrg_Prod_Loan_Period_Install",
+  "Synonym": "Lrg_Prod_Loan_Period",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "Name": "ConcentrationType",
+  "Key": "CodeConcentrationType",
+  "hasUser": false,
+  "Group": "risk",
+  "sysCode": false
+}

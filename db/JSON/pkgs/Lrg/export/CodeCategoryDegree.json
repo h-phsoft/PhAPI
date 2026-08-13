@@ -1,0 +1,29 @@
+{
+  "Name": "Lrg_Code_Category_Degree",
+  "Synonym": "Lrg_Cod_Cat_Degree",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Fval",
+      "Field": "fval",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Tval",
+      "Field": "tval",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

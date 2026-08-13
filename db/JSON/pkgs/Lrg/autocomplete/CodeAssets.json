@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Cod_Assets",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Cod_Assets",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

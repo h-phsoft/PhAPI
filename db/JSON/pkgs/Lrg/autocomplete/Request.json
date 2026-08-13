@@ -1,0 +1,10 @@
+{
+  "Synonym": "Lrg_Req",
+  "Select": "SELECT Id ||' '||,lNum AS Name FROM Lrg_Req",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(lNum) LIKE '%{term}%'",
+    "statusId": "status_id={statusId}"
+  },
+  "OrderBy": "Id"
+}

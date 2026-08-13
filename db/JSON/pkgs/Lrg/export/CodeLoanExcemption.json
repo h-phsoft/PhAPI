@@ -1,0 +1,19 @@
+{
+  "Name": "Lrg_Code_Loan_Excemption",
+  "Synonym": "Lrg_Cod_Loan_Excemption",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

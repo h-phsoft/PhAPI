@@ -1,0 +1,14 @@
+{
+  "Name": "Lrg_Code_Tchecklist",
+  "Synonym": "Lrg_Cod_Tchecklist",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

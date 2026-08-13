@@ -1,0 +1,14 @@
+{
+  "Name": "Lrg_Product_Loan_Type",
+  "Synonym": "Lrg_Prod_Loan_Type",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

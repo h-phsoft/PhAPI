@@ -31,6 +31,8 @@ app.use(cors());
 // Body parser
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text({ type: ['text/*', 'text/plain', 'text/html', 'application/text'], limit: '10mb' }));
+
 
 // Load metadata singleton at startup directly from resources/modules
 const modulesDir = path.join(__dirname, 'resources', 'modules');
@@ -51,26 +53,49 @@ app.get('/health', (req, res) => {
 // Mount API routes
 app.use('/', routes);
 
+const ResultManager = require('./utils/responseManager');
+
 // 404 handler
 app.use((req, res) => {
-  res.status(404).json({
-    success: false,
-    status: 404,
-    messageKey: 'NOT_FOUND',
-    message: 'Route not found'
-  });
+  res.status(200).json(ResultManager.invalid('Route not found'));
 });
+
 
 // Global error handling middleware
 app.use(errorHandler);
 
+const { getTenantDbConfig } = require('./config/db.config');
+const connectionPoolManager = require('./core/connectionPool');
+
+async function checkDatabaseConnectionOnStartup() {
+  try {
+    const config = await getTenantDbConfig('default');
+    console.log(`[Database] Checking connection to default database (${config.dbType} on ${config.host}:${config.port || 'default'})...`);
+    
+    const pool = await connectionPoolManager.getPool('default');
+    const conn = await pool.getConnection();
+    
+    if (config.dbType === 'oracle') {
+      await conn.query('SELECT 1 FROM DUAL');
+    } else {
+      await conn.query('SELECT 1');
+    }
+    await conn.release();
+    console.log(`[Database] ✓ Connection to default database (${config.dbType}) verified successfully.`);
+  } catch (err) {
+    console.error(`[Database] ❌ Database startup connection check failed:`, err.message);
+  }
+}
+
 // Start server
 if (require.main === module) {
-  app.listen(PORT, () => {
+  app.listen(PORT, async () => {
     console.log(`[PhsAPI] Server running on http://localhost:${PORT}`);
     console.log(`[PhsAPI] Interactive Docs available at http://localhost:${PORT}/docs/index.html`);
     console.log(`[PhsAPI] Environment: ${process.env.NODE_ENV || 'development'}`);
+    await checkDatabaseConnectionOnStartup();
   });
 }
 
 module.exports = app;
+

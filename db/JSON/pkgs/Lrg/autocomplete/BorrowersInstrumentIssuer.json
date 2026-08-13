@@ -1,0 +1,8 @@
+{
+  "Synonym": "Lrg_VInst",
+  "Select": "select Borrower_Id AS Id, Borrower_Name AS Name from Lrg_VInst",
+  "Condition": "Inst_Status_Id=0",
+  "Conds": {
+  },
+  "OrderBy": "Name"
+}

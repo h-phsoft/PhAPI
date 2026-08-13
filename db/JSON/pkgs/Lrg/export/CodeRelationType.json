@@ -1,0 +1,19 @@
+{
+  "Name": "Lrg_Code_Relation_Type",
+  "Synonym": "Lrg_Cod_Relation_Type",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

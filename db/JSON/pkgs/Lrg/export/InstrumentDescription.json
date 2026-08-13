@@ -1,0 +1,19 @@
+{
+  "Name": "Lrg_Instrument_Description",
+  "Synonym": "Lrg_Inst_Desc",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Note",
+      "Field": "note",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

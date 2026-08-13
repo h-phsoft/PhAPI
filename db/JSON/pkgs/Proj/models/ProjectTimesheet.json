@@ -12,9 +12,9 @@
     "Aggregate": "",
     "Condition": ""
   },
-  "Select": "SELECT Id, Proj_Id, Team_Id, Mwitem_Id, Twitem_Id, To_Char(Ddate, 'DD-MM-YYYY') AS Ddate, Hours, Sprice, Cprice, Curn_Id, Curn_Rate, Camt, Amt, Ccst, Cst, Rem, Ins_User, To_Char(Ins_Date, 'DD-MM-YYYY') AS Ins_Date, Upd_User, To_Char(Upd_Date, 'DD-MM-YYYY') AS Upd_Date FROM Proj_Proj_Tsheet",
-  "Insert": "INSERT INTO Proj_Proj_Tsheet (Id, Proj_Id, Team_Id, Mwitem_Id, Twitem_Id, Ddate, Hours, Sprice, Cprice, Curn_Id, Curn_Rate, Camt, Amt, Ccst, Cst, Rem, Ins_User, Ins_Date) VALUES (?, ?, ?, ?, ?, To_Date(?, 'DD-MM-YYYY'), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, Sysdate)",
-  "Update": "UPDATE Proj_Proj_Tsheet SET Proj_Id=?, Team_Id=?, Mwitem_Id=?, Twitem_Id=?, Ddate=To_Date(?, 'DD-MM-YYYY'), Hours=?, Sprice=?, Cprice=?, Curn_Id=?, Curn_Rate=?, Camt=?, Amt=?, Ccst=?, Cst=?, Rem=?, Upd_User=?, Upd_Date=Sysdate WHERE Id=?",
+  "Select": "SELECT Id, Proj_Id, Team_Id, Mwitem_Id, Twitem_Id, To_Char(Ddate, 'DD-MM-YYYY') AS Ddate, Hours, Rem, Ins_User, To_Char(Ins_Date, 'DD-MM-YYYY') AS Ins_Date, Upd_User, To_Char(Upd_Date, 'DD-MM-YYYY') AS Upd_Date FROM Proj_Proj_Tsheet",
+  "Insert": "INSERT INTO Proj_Proj_Tsheet (Id, Proj_Id, Team_Id, Mwitem_Id, Twitem_Id, Ddate, Hours, Rem, Ins_User, Ins_Date, Sprice, Cprice, Scurn_Id, Scurn_Rate, Ccurn_Id, Ccurn_Rate, Camt, Amt, Ccst, Cst) VALUES (?, ?, ?, ?, ?, To_Date(?, 'DD-MM-YYYY'), ?, ?, ?, Sysdate, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0)",
+  "Update": "UPDATE Proj_Proj_Tsheet SET Proj_Id=?, Team_Id=?, Mwitem_Id=?, Twitem_Id=?, Ddate=To_Date(?, 'DD-MM-YYYY'), Hours=?, Rem=?, Upd_User=?, Upd_Date=Sysdate WHERE Id=?",
   "hasChilds": false,
   "Columns": [
     {
@@ -31,7 +31,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Proj_Id",
       "Field": "projId",
       "DBType": "NUMBER",
@@ -52,7 +53,8 @@
         "RelField": "projName"
       },
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Team_Id",
       "Field": "teamId",
       "DBType": "NUMBER",
@@ -73,14 +75,15 @@
         "RelField": "teamName"
       },
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Mwitem_Id",
       "Field": "mwitemId",
       "DBType": "NUMBER",
-      "Type": "Short",
-      "Short": "Short",
+      "Type": "Long",
+      "Short": "Long",
       "Scale": "0",
-      "Precision": "5",
+      "Precision": "9",
       "Default": "",
       "query": true,
       "insert": true,
@@ -94,7 +97,8 @@
         "RelField": "mwitemName"
       },
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Twitem_Id",
       "Field": "twitemId",
       "DBType": "NUMBER",
@@ -115,7 +119,8 @@
         "RelField": "twitemName"
       },
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Ddate",
       "Field": "ddate",
       "DBType": "DATE",
@@ -129,7 +134,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Hours",
       "Field": "hours",
       "DBType": "NUMBER",
@@ -143,7 +149,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Sprice",
       "Field": "sprice",
       "DBType": "NUMBER",
@@ -152,12 +159,13 @@
       "Scale": "2",
       "Precision": "25",
       "Default": "0",
-      "query": true,
-      "insert": true,
-      "update": true,
+      "query": false,
+      "insert": false,
+      "update": false,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Cprice",
       "Field": "cprice",
       "DBType": "NUMBER",
@@ -166,47 +174,28 @@
       "Scale": "2",
       "Precision": "25",
       "Default": "0",
-      "query": true,
-      "insert": true,
-      "update": true,
+      "query": false,
+      "insert": false,
+      "update": false,
       "hasRelation": false,
       "isNull": false
-    }, {
-      "Name": "Curn_Id",
-      "Field": "curnId",
-      "DBType": "NUMBER",
-      "Type": "Short",
-      "Short": "Short",
-      "Scale": "0",
-      "Precision": "3",
-      "Default": "1",
-      "query": true,
-      "insert": true,
-      "update": true,
-      "hasRelation": true,
-      "Relation": {
-        "TableName": "Mng_Currency",
-        "SynonymName": "Mng_Curn",
-        "RelId": "Id",
-        "RelName": "Name",
-        "RelField": "curnName"
-      },
-      "isNull": false
-    }, {
-      "Name": "Curn_Rate",
-      "Field": "curnRate",
+    },
+    {
+      "Name": "Scurn_Rate",
+      "Field": "scurnRate",
       "DBType": "NUMBER",
       "Type": "Double",
       "Short": "Double",
       "Scale": "9",
       "Precision": "25",
       "Default": "1",
-      "query": true,
-      "insert": true,
-      "update": true,
+      "query": false,
+      "insert": false,
+      "update": false,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Camt",
       "Field": "camt",
       "DBType": "NUMBER",
@@ -215,12 +204,13 @@
       "Scale": "2",
       "Precision": "25",
       "Default": "0",
-      "query": true,
-      "insert": true,
-      "update": true,
+      "query": false,
+      "insert": false,
+      "update": false,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Amt",
       "Field": "amt",
       "DBType": "NUMBER",
@@ -229,12 +219,13 @@
       "Scale": "2",
       "Precision": "25",
       "Default": "0",
-      "query": true,
-      "insert": true,
-      "update": true,
+      "query": false,
+      "insert": false,
+      "update": false,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Ccst",
       "Field": "ccst",
       "DBType": "NUMBER",
@@ -243,12 +234,13 @@
       "Scale": "2",
       "Precision": "25",
       "Default": "0",
-      "query": true,
-      "insert": true,
-      "update": true,
+      "query": false,
+      "insert": false,
+      "update": false,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Cst",
       "Field": "cst",
       "DBType": "NUMBER",
@@ -257,12 +249,13 @@
       "Scale": "2",
       "Precision": "25",
       "Default": "0",
-      "query": true,
-      "insert": true,
-      "update": true,
+      "query": false,
+      "insert": false,
+      "update": false,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Rem",
       "Field": "rem",
       "DBType": "VARCHAR2",
@@ -276,7 +269,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Ins_User",
       "Field": "insUser",
       "DBType": "NUMBER",
@@ -290,7 +284,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Ins_Date",
       "Field": "insDate",
       "DBType": "DATE",
@@ -304,7 +299,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Upd_User",
       "Field": "updUser",
       "DBType": "NUMBER",
@@ -318,7 +314,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Upd_Date",
       "Field": "updDate",
       "DBType": "DATE",
@@ -331,6 +328,65 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
+      "isNull": true
+    },
+    {
+      "Name": "Ccurn_Id",
+      "Field": "ccurnId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "3",
+      "Default": "1",
+      "query": false,
+      "insert": false,
+      "update": false,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Mng_Currency",
+        "SynonymName": "Mng_Curn",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "ccurnName"
+      },
+      "isNull": true
+    },
+    {
+      "Name": "Ccurn_Rate",
+      "Field": "ccurnRate",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "9",
+      "Precision": "25",
+      "Default": "1",
+      "query": false,
+      "insert": false,
+      "update": false,
+      "hasRelation": false,
+      "isNull": true
+    },
+    {
+      "Name": "Scurn_Id",
+      "Field": "scurnId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "3",
+      "Default": "1",
+      "query": false,
+      "insert": false,
+      "update": false,
+      "hasRelation": true,
+      "Relation": {
+        "TableName": "Mng_Currency",
+        "SynonymName": "Mng_Curn",
+        "RelId": "Id",
+        "RelName": "Name",
+        "RelField": "scurnName"
+      },
       "isNull": true
     }
   ]

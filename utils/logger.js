@@ -11,31 +11,31 @@ const logFormat = winston.format.combine(
   })
   );
 
+// Create logs directory if it doesn't exist
+const fs = require('fs');
+const logDir = path.join(__dirname, '../logs');
+if (!fs.existsSync(logDir)) {
+  fs.mkdirSync(logDir, { recursive: true });
+}
+
 const logger = winston.createLogger({
   level: process.env.DEBUG_MODE === 'true' ? 'debug' : 'info',
   format: logFormat,
   transports: [
     new winston.transports.File({
-      filename: path.join(__dirname, '../../logs/error.log'),
+      filename: path.join(logDir, 'error.log'),
       level: 'error'
     }),
     new winston.transports.File({
-      filename: path.join(__dirname, '../../logs/combined.log')
+      filename: path.join(logDir, 'combined.log')
     }),
     new winston.transports.Console({
       format: winston.format.combine(
         winston.format.colorize(),
         winston.format.simple()
-        )
+      )
     })
   ]
 });
-
-// Create logs directory if it doesn't exist
-const fs = require('fs');
-const logDir = path.join(__dirname, '../../logs');
-if (!fs.existsSync(logDir)) {
-  fs.mkdirSync(logDir);
-}
 
 module.exports = logger;

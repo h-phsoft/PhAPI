@@ -1,0 +1,14 @@
+{
+  "Name": "Lrg_Prod_Nationalities",
+  "Synonym": "Lrg_Prod_Nat",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

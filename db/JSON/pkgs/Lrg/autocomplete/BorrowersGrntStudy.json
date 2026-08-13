@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Borrower",
+  "Select": " SELECT Id, Name||' '||Father||' '||LName AS Name FROM Lrg_Borrower",
+  "Condition": "ID in (select Lender_Id from Lrg_Req where Status_Id IN (SELECT CStatus_Id FROM CPY_VUNIT_REC_STATUS WHERE Unit_Id IN (SELECT Unit_Id FROM CPY_USER_UNIT WHERE User_Id = {userId})))",
+  "Conds": {
+    "term": "Lower(Name||' '||Father||' '||LName) LIKE '%{term}%'"
+  },
+  "OrderBy": "Num"
+}

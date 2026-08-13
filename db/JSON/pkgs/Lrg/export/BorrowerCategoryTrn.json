@@ -1,0 +1,19 @@
+{
+  "Name": "Lrg_Borrower_Category_Trn",
+  "Synonym": "Lrg_Req_Cat_Trn",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Weight",
+      "Field": "weight",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

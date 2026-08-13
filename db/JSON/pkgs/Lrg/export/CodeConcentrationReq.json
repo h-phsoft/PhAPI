@@ -1,0 +1,19 @@
+{
+  "Name": "Lrg_Code_Concentration_Req",
+  "Synonym": "Lrg_Cod_Concent_Req",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

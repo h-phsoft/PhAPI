@@ -1,0 +1,29 @@
+{
+  "Name": "Lrg_Req_History",
+  "Synonym": "Lrg_Req_Hist",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Period",
+      "Field": "period",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Lates",
+      "Field": "lates",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Failure",
+      "Field": "failure",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

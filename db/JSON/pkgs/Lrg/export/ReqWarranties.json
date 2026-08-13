@@ -1,0 +1,89 @@
+{
+  "Name": "Lrg_Req_Warranties",
+  "Synonym": "Lrg_Req_Mach_Warnty",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Ownperc",
+      "Field": "ownperc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ownperc",
+      "Field": "ownperc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Estimateval",
+      "Field": "estimateval",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Estimateval",
+      "Field": "estimateval",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mortgageval",
+      "Field": "mortgageval",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mortgageval",
+      "Field": "mortgageval",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mortgagenum",
+      "Field": "mortgagenum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mortgagenum",
+      "Field": "mortgagenum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Owner",
+      "Field": "owner",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Owner",
+      "Field": "owner",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Descr",
+      "Field": "descr",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Descr",
+      "Field": "descr",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

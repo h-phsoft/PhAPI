@@ -1,0 +1,24 @@
+{
+  "Name": "Lrg_Req_Visits",
+  "Synonym": "Lrg_Req_Visit",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Vdate",
+      "Field": "vdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Voutput",
+      "Field": "voutput",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

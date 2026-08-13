@@ -1,0 +1,29 @@
+{
+  "Name": "Lrg_Request_Category_Mst",
+  "Synonym": "Lrg_Req_Cat_Mst",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Opinion",
+      "Field": "opinion",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Footnote",
+      "Field": "footnote",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

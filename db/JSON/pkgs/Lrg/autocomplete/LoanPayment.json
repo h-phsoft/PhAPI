@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Loan_Pay",
+  "Select": "SELECT Id, Amt||'-'||Num||'-'||dDate AS Name FROM Lrg_Loan_Pay",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

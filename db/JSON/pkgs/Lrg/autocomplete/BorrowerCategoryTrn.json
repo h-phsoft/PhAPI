@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Req_Cat_Trn",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Req_Cat_Trn",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Num||' - '||Name) LIKE '%{term}%'"
+  },
+  "OrderBy": "Num"
+}

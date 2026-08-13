@@ -1,0 +1,19 @@
+{
+  "Name": "Lrg_Code_Product_Kind",
+  "Synonym": "Lrg_Cod_Prod_Kind",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "Name": "Lrg_Products",
+  "Synonym": "Lrg_Prod",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Pdate",
+      "Field": "pdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loan_Age_Min",
+      "Field": "loanAgeMin",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Loan_Age_Max",
+      "Field": "loanAgeMax",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Excempt_Months",
+      "Field": "excemptMonths",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Brwr_Sage",
+      "Field": "brwrSage",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Brwr_Eage",
+      "Field": "brwrEage",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Equity_Ratio",
+      "Field": "equityRatio",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Debit_Equity",
+      "Field": "debitEquity",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Experinces",
+      "Field": "experinces",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Guarantee_Ratio",
+      "Field": "guaranteeRatio",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Guarantee_Amt",
+      "Field": "guaranteeAmt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Guarantee_Comm",
+      "Field": "guaranteeComm",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Guarantee_Period",
+      "Field": "guaranteePeriod",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Guarantee_Fee",
+      "Field": "guaranteeFee",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Description",
+      "Field": "description",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

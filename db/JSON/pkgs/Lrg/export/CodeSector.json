@@ -1,0 +1,19 @@
+{
+  "Name": "Lrg_Code_Sector",
+  "Synonym": "Lrg_Cod_Sector",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

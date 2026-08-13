@@ -1,0 +1,19 @@
+{
+  "Name": "Lrg_Code_Risk_Mitigators",
+  "Synonym": "Lrg_Cod_Risk_Mitigators",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

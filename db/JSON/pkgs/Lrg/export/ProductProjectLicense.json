@@ -1,0 +1,14 @@
+{
+  "Name": "Lrg_Product_Project_License",
+  "Synonym": "Lrg_Prod_Proj_License",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "Name": "Lrg_Request_Checklist",
+  "Synonym": "Lrg_Req_Checklist",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

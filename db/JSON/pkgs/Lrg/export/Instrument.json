@@ -1,0 +1,74 @@
+{
+  "Name": "Lrg_Instrument",
+  "Synonym": "Lrg_Inst",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Dnum",
+      "Field": "dnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Agrnum",
+      "Field": "agrnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Agrdate",
+      "Field": "agrdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mintnum",
+      "Field": "mintnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Mintdate",
+      "Field": "mintdate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Lamt",
+      "Field": "lamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Gamt",
+      "Field": "gamt",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Gperc",
+      "Field": "gperc",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Comm",
+      "Field": "comm",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Director",
+      "Field": "director",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Note",
+      "Field": "note",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

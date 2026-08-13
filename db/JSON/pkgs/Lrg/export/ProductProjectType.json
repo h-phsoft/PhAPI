@@ -1,0 +1,14 @@
+{
+  "Name": "Lrg_Product_Project_Type",
+  "Synonym": "Lrg_Prod_Proj_Type",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "Name": "Lrg_Code_Periodtype",
+  "Synonym": "Lrg_Cod_Periodtype",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

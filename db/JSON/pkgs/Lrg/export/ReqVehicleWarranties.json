@@ -1,0 +1,44 @@
+{
+  "Name": "Lrg_Req_Vehicle_Warranties",
+  "Synonym": "Lrg_Req_Vicle_Warnty",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Estimateval",
+      "Field": "estimateval",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Chnum",
+      "Field": "chnum",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Licence",
+      "Field": "licence",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Insurance",
+      "Field": "insurance",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Brand",
+      "Field": "brand",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

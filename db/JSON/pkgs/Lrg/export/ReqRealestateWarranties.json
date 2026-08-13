@@ -1,0 +1,39 @@
+{
+  "Name": "Lrg_Req_Realestate_Warranties",
+  "Synonym": "Lrg_Req_Real_Warnty",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Estimateval",
+      "Field": "estimateval",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Estreservval",
+      "Field": "estreservval",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Areasize",
+      "Field": "areasize",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Area",
+      "Field": "area",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Num",
+      "Field": "num",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

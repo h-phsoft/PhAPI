@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Borrower",
+  "Select": "SELECT Id, Name||' '||Father||' '||LName AS Name FROM Lrg_Borrower",
+  "Condition": "",
+  "Conds": {
+    "term": "Lower(Name||' '||Father||' '||LName) LIKE '%{term}%'"
+  },
+  "OrderBy": "Num"
+}

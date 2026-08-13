@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Cod_Borrower_Class3",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Cod_Borrower_Class3",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

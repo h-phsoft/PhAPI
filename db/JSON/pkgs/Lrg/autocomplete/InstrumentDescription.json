@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Inst_Desc",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Inst_Desc",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

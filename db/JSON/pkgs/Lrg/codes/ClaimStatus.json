@@ -1,0 +1,6 @@
+{
+  "Name": "ClaimStatus",
+  "Key": "CodeClaimStatus",
+  "hasUser": false,
+  "sysCode": true
+}

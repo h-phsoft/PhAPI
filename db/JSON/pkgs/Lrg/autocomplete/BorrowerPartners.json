@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Borrower_Partner",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Borrower_Partner",
+  "Condition": "",
+  "Conds": {
+    "": ""
+  },
+  "OrderBy": "Num"
+}

@@ -1,0 +1,19 @@
+{
+  "Name": "Lrg_Code_Req_Check_Grp",
+  "Synonym": "Lrg_Cod_Req_Check_Grp",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Name",
+      "Field": "name",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

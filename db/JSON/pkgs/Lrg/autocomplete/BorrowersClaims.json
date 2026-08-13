@@ -1,0 +1,9 @@
+{
+  "Synonym": "Lrg_Borrower",
+  "Select": "SELECT Id, Num||' '||Name AS Name FROM Lrg_Borrower",
+  "Condition": "id IN (SELECT borrower_Id FROM Lrg_Req WHERE Status_Id IN (SELECT RStatus_Id FROM Cpy_Unit_Rec_Status WHERE Unit_Id IN (SELECT Unit_ID FROM Cpy_User_Unit WHERE user_id={userId})) AND Status_Id in (select Cstatus_id from Cpy_VStatus_Grp where  UPPER(Mst_Name)=UPPER('Default')))",
+  "Conds": {
+    "term": "Lower(Num||' - '||Name) LIKE '%{term}%'"
+  },
+  "OrderBy": "Num"
+}

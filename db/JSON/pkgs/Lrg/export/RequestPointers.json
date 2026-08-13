@@ -1,0 +1,29 @@
+{
+  "Name": "Lrg_Request_Pointers",
+  "Synonym": "Lrg_Req_Pointer",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Ddate",
+      "Field": "ddate",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Nvalue",
+      "Field": "nvalue",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Vvalue",
+      "Field": "vvalue",
+      "isSelected": false
+    }
+    ,{
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

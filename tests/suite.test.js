@@ -197,7 +197,7 @@ async function runAllTests() {
     assert.strictEqual(Array.isArray(res.body.packages), true);
   });
 
-  await testAsync('Protected API endpoint without JWT returns 401 UNAUTHORIZED', async () => {
+  await testAsync('Protected API endpoint without JWT returns 401 UNAUTHORIZED status', async () => {
     const res = await new Promise((resolve, reject) => {
       http.get('http://localhost:3009/PhsAPI/Acc/Account/List', (response) => {
         let body = '';
@@ -206,9 +206,58 @@ async function runAllTests() {
       }).on('error', reject);
     });
 
-    assert.strictEqual(res.status, 401);
-    assert.strictEqual(res.body.messageKey, 'UNAUTHORIZED');
+    assert.strictEqual(res.body.status, false);
+    assert.strictEqual(res.body.code, 401);
   });
+
+  const jwt = require('jsonwebtoken');
+  const testToken = jwt.sign({ jui: 1, Copy: '01-Admin' }, process.env.JWT_SECRET || 'phs_api_secret_key_2026');
+
+  await testAsync('Authenticated POST /UC/InitForm returns 200 OK', async () => {
+    const postData = JSON.stringify({ package: 'Acc', table: 'Acc_Master' });
+    const res = await new Promise((resolve, reject) => {
+      const req = http.request('http://localhost:3009/UC/InitForm', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${testToken}`,
+          'Content-Type': 'application/json',
+          'Content-Length': Buffer.byteLength(postData)
+        }
+      }, (response) => {
+        let body = '';
+        response.on('data', chunk => body += chunk);
+        response.on('end', () => resolve({ status: response.statusCode, body: JSON.parse(body) }));
+      });
+      req.on('error', reject);
+      req.write(postData);
+      req.end();
+    });
+
+    assert.strictEqual(res.body.status, true);
+    assert.strictEqual(res.body.code, 200);
+  });
+
+  await testAsync('Authenticated POST /CC/getCopies returns 200 OK', async () => {
+    const res = await new Promise((resolve, reject) => {
+      const req = http.request('http://localhost:3009/CC/getCopies', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${testToken}`
+        }
+      }, (response) => {
+        let body = '';
+        response.on('data', chunk => body += chunk);
+        response.on('end', () => resolve({ status: response.statusCode, body: JSON.parse(body) }));
+      });
+      req.on('error', reject);
+      req.end();
+    });
+
+    assert.strictEqual(res.body.status, true);
+    assert.strictEqual(res.body.code, 200);
+    assert.strictEqual(Array.isArray(res.body.data), true);
+  });
+
 
   server.close();
 
@@ -223,3 +272,4 @@ async function runAllTests() {
 }
 
 runAllTests();
+

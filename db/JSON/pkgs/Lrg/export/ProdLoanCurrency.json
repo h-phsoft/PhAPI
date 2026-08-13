@@ -1,0 +1,14 @@
+{
+  "Name": "Lrg_Prod_Loan_Currency",
+  "Synonym": "Lrg_Prod_Loan_Curn",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

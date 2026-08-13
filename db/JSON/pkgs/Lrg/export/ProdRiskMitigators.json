@@ -1,0 +1,14 @@
+{
+  "Name": "Lrg_Prod_Risk_Mitigators",
+  "Synonym": "Lrg_Prod_Mitigators",
+  "Sequence": "null",
+  "Condition": "",
+  "PeriodCondition": "",
+  "Fields": [
+    {
+      "Name": "Rem",
+      "Field": "rem",
+      "isSelected": false
+    }
+  ]
+}

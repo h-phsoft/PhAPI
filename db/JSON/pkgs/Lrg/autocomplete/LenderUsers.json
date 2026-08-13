@@ -1,0 +1,9 @@
+{
+  "Synonym": "Cpy_User",
+  "Select": "SELECT Id, LOGON AS Name FROM Cpy_User",
+  "Condition": "Id>0 AND ID IN (select user_id from CPY_USER_UNIT where unit_id=800)",
+  "Conds": {
+    "term": "Lower(' '||LOGON) LIKE '%{term}%'"
+  },
+  "OrderBy": "Id"
+}

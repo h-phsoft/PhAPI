@@ -1,17 +1,48 @@
 {
-  "Name": "Proj_Project_Expense",
-  "Synonym": "Proj_Proj_Expense",
+  "Name": "Proj_Expense_View",
+  "Synonym": "Proj_Vexpense",
   "Condition": "",
   "PeriodCondition": "",
-  "Order": "Id",
+  "Order": "Exp_Id",
   "Actions": [
   ],
   "Options": {
   },
   "Fields": [
     {
-      "Name": "Id",
-      "Field": "Proj.id",
+      "Name": "Exp_Id",
+      "Field": "expId",
+      "Label": "Agg.Count",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "true",
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Exp_Date",
+      "Field": "expDate",
+      "Label": "Proj.ddate",
+      "Expression": "To_Char(Exp_Date, 'DD-MM-YYYY')",
       "Default": "",
       "Autocomplete": {
       },
@@ -35,93 +66,9 @@
       }
     }
     , {
-      "Name": "Proj_Id",
-      "Field": "Proj.projId",
-      "Default": "",
-      "Autocomplete": {
-        "Pkg": "Proj_Project",
-        "Name": "Proj_Proj",
-        "Condition": {}
-      },
-      "isVisible": true,
-      "isFilter": true,
-      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
-      "isDisplay": true,
-      "isGroup": true,
-      "isOrder": true,
-      "Aggregate": {
-        "Sum": true,
-        "Min": true,
-        "Max": true,
-        "Avg": true,
-        "StdDev": true,
-        "Variance": true,
-        "Median": true
-      },
-      "Style": {
-        "Width": "max-content"
-      }
-    }
-    , {
-      "Name": "Cont_Id",
-      "Field": "Proj.contId",
-      "Default": "",
-      "Autocomplete": {
-        "Pkg": "Mng_Contact",
-        "Name": "Mng_Cont",
-        "Condition": {}
-      },
-      "isVisible": true,
-      "isFilter": true,
-      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
-      "isDisplay": true,
-      "isGroup": true,
-      "isOrder": true,
-      "Aggregate": {
-        "Sum": true,
-        "Min": true,
-        "Max": true,
-        "Avg": true,
-        "StdDev": true,
-        "Variance": true,
-        "Median": true
-      },
-      "Style": {
-        "Width": "max-content"
-      }
-    }
-    , {
-      "Name": "Serv_Id",
-      "Field": "Proj.servId",
-      "Default": "",
-      "Autocomplete": {
-        "Pkg": "Mng_Services",
-        "Name": "Mng_Serv",
-        "Condition": {}
-      },
-      "isVisible": true,
-      "isFilter": true,
-      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
-      "isDisplay": true,
-      "isGroup": true,
-      "isOrder": true,
-      "Aggregate": {
-        "Sum": true,
-        "Min": true,
-        "Max": true,
-        "Avg": true,
-        "StdDev": true,
-        "Variance": true,
-        "Median": true
-      },
-      "Style": {
-        "Width": "max-content"
-      }
-    }
-    , {
-      "Name": "Ddate",
-      "Field": "Proj.ddate",
-      "Expression": "To_Char(Ddate, 'DD-MM-YYYY')",
+      "Name": "Exp_Qnt",
+      "Field": "expQnt",
+      "Label": "Proj.qnt",
       "Default": "",
       "Autocomplete": {
       },
@@ -145,9 +92,10 @@
       }
     }
     , {
-      "Name": "Qnt",
-      "Field": "Proj.qnt",
-      "Default": "0",
+      "Name": "Exp_Price",
+      "Field": "expPrice",
+      "Label": "Proj.Price",
+      "Default": "",
       "Autocomplete": {
       },
       "isVisible": true,
@@ -170,9 +118,10 @@
       }
     }
     , {
-      "Name": "Price",
-      "Field": "Proj.price",
-      "Default": "0",
+      "Name": "Exp_Camt",
+      "Field": "expCamt",
+      "Label": "Proj.Camt",
+      "Default": "",
       "Autocomplete": {
       },
       "isVisible": true,
@@ -195,9 +144,10 @@
       }
     }
     , {
-      "Name": "Camt",
-      "Field": "Proj.camt",
-      "Default": "0",
+      "Name": "Exp_Amt",
+      "Field": "expAmt",
+      "Label": "Proj.Amt",
+      "Default": "",
       "Autocomplete": {
       },
       "isVisible": true,
@@ -220,17 +170,21 @@
       }
     }
     , {
-      "Name": "Amt",
-      "Field": "Proj.amt",
-      "Default": "0",
+      "Name": "Exp_Billable_Id",
+      "Field": "expBillableId",
+      "Label": "Proj.BillableId",
+      "Default": "",
       "Autocomplete": {
       },
-      "isVisible": true,
+      "isVisible": false,
       "isFilter": true,
       "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
       "isDisplay": true,
       "isGroup": true,
       "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "false",
       "Aggregate": {
         "Sum": true,
         "Min": true,
@@ -245,61 +199,9 @@
       }
     }
     , {
-      "Name": "Curn_Id",
-      "Field": "Proj.curnId",
-      "Default": "1",
-      "Autocomplete": {
-        "Pkg": "Mng_Currency",
-        "Name": "Mng_Curn",
-        "Condition": {}
-      },
-      "isVisible": true,
-      "isFilter": true,
-      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
-      "isDisplay": true,
-      "isGroup": true,
-      "isOrder": true,
-      "Aggregate": {
-        "Sum": true,
-        "Min": true,
-        "Max": true,
-        "Avg": true,
-        "StdDev": true,
-        "Variance": true,
-        "Median": true
-      },
-      "Style": {
-        "Width": "max-content"
-      }
-    }
-    , {
-      "Name": "Rate",
-      "Field": "Proj.rate",
-      "Default": "1",
-      "Autocomplete": {
-      },
-      "isVisible": true,
-      "isFilter": true,
-      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
-      "isDisplay": true,
-      "isGroup": true,
-      "isOrder": true,
-      "Aggregate": {
-        "Sum": true,
-        "Min": true,
-        "Max": true,
-        "Avg": true,
-        "StdDev": true,
-        "Variance": true,
-        "Median": true
-      },
-      "Style": {
-        "Width": "max-content"
-      }
-    }
-    , {
-      "Name": "Rem",
-      "Field": "Proj.rem",
+      "Name": "Billable_Name",
+      "Field": "billableName",
+      "Label": "Proj.billableName",
       "Default": "",
       "Autocomplete": {
       },
@@ -323,8 +225,255 @@
       }
     }
     , {
-      "Name": "Ins_User",
-      "Field": "Proj.insUser",
+      "Name": "Exp_Billed_Id",
+      "Field": "expBilledId",
+      "Label": "Proj.BilledId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Billed_Name",
+      "Field": "billedName",
+      "Label": "Proj.billedName",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Exp_Rem",
+      "Field": "expRem",
+      "Label": "Proj.Rem",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Exp_Proj_Id",
+      "Field": "expProjId",
+      "Label": "Proj.ProjId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Proj_Name",
+      "Field": "projName",
+      "Label": "Proj.projName",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Exp_Serv_Id",
+      "Field": "expServId",
+      "Label": "Proj.ServId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Serv_Name",
+      "Field": "servName",
+      "Label": "Proj.servName",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Exp_Curn_Id",
+      "Field": "expCurnId",
+      "Label": "Proj.CurnId",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": false,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "defaultAggregate": "1",
+      "dataType": "0",
+      "isAggregate": "false",
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Curn_Name",
+      "Field": "curnName",
+      "Label": "Proj.curnName",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", "[%", "%]", "%", "![%", "!%]", "!%"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Exp_Curn_Rate",
+      "Field": "expCurnRate",
+      "Label": "Proj.CurnRate",
       "Default": "",
       "Autocomplete": {
       },
@@ -348,9 +497,9 @@
       }
     }
     , {
-      "Name": "Ins_Date",
-      "Field": "Proj.insDate",
-      "Expression": "To_Char(Ins_Date, 'DD-MM-YYYY')",
+      "Name": "Exp_Ins_User",
+      "Field": "expInsUser",
+      "Label": "Proj.InsUser",
       "Default": "",
       "Autocomplete": {
       },
@@ -374,8 +523,10 @@
       }
     }
     , {
-      "Name": "Upd_User",
-      "Field": "Proj.updUser",
+      "Name": "Exp_Ins_Date",
+      "Field": "expInsDate",
+      "Label": "Proj.InsDate",
+      "Expression": "To_Char(Exp_Ins_Date, 'DD-MM-YYYY')",
       "Default": "",
       "Autocomplete": {
       },
@@ -399,9 +550,36 @@
       }
     }
     , {
-      "Name": "Upd_Date",
-      "Field": "Proj.updDate",
-      "Expression": "To_Char(Upd_Date, 'DD-MM-YYYY')",
+      "Name": "Exp_Upd_User",
+      "Field": "expUpdUser",
+      "Label": "Proj.UpdUser",
+      "Default": "",
+      "Autocomplete": {
+      },
+      "isVisible": true,
+      "isFilter": true,
+      "Operations": ["=", "!=", ">", ">=", "<", "<=", "<>", "><"],
+      "isDisplay": true,
+      "isGroup": true,
+      "isOrder": true,
+      "Aggregate": {
+        "Sum": true,
+        "Min": true,
+        "Max": true,
+        "Avg": true,
+        "StdDev": true,
+        "Variance": true,
+        "Median": true
+      },
+      "Style": {
+        "Width": "max-content"
+      }
+    }
+    , {
+      "Name": "Exp_Upd_Date",
+      "Field": "expUpdDate",
+      "Label": "Proj.UpdDate",
+      "Expression": "To_Char(Exp_Upd_Date, 'DD-MM-YYYY')",
       "Default": "",
       "Autocomplete": {
       },
