@@ -28,13 +28,12 @@ function errorHandler(err, req, res, next) {
     method: req.method,
     url: req.originalUrl,
     headers: {
-      vcopy: req.headers['vcopy'] || req.headers['vCopy'],
       mprgid: req.headers['mprgid'] || req.headers['mPrgId'],
       periodid: req.headers['periodid'] || req.headers['periodId'],
       vlang: req.headers['vlang'] || req.headers['vLang']
     },
     body: req.body,
-    context: req.context ? { copy: req.context.vCopy || req.context.tenantId, userId: req.context.userId } : null,
+    context: req.context ? {copy: req.context.tenantId, userId: req.context.userId} : null,
     stack: err.stack
   });
 

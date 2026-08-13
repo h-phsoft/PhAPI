@@ -7,7 +7,7 @@ const docsDir = path.join(__dirname, '..', 'docs');
 
 function ensureDir(dir) {
   if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
+    fs.mkdirSync(dir, {recursive: true});
   }
 }
 
@@ -32,13 +32,13 @@ function generateHtmlDocs() {
         hasChilds: entity ? entity.hasChilds : false,
         fieldsCount: entity ? entity.fields.length : 0,
         fields: entity ? entity.fields.map(f => ({
-          name: f.Name,
-          field: f.Field,
-          type: f.Type,
-          dbType: f.DBType,
-          isAutonumber: f.isAutonumber,
-          isNull: f.isNull
-        })) : []
+            name: f.Name,
+            field: f.Field,
+            type: f.Type,
+            dbType: f.DBType,
+            isAutonumber: f.isAutonumber,
+            isNull: f.isNull
+          })) : []
       };
     });
   }
@@ -486,12 +486,6 @@ function generateHtmlDocs() {
               <td>Bearer eyJhbGciOi...</td>
             </tr>
             <tr>
-              <td><span class="entity-tag">vcopy</span></td>
-              <td>String / Number</td>
-              <td>Target Tenant Schema ID (Resolves Oracle Database pool)</td>
-              <td>MKM or NSCC</td>
-            </tr>
-            <tr>
               <td><span class="entity-tag">x-period-id</span></td>
               <td>Number</td>
               <td>Operating Period ID (Injected into Mode 11 autonumber queries)</td>
@@ -530,9 +524,11 @@ function generateHtmlDocs() {
             <button class="tab-btn">JavaScript</button>
             <button class="tab-btn">Python</button>
           </div>
-          <div class="code-block">curl -X POST http://localhost:3000/PhsAPI/Auth/Login \\
-  -H "Content-Type: application/json" \\
-  -d '{"username": "admin", "password": "PhPass", "vCopy": "MKM", "periodId": 2026}'</div>
+          <div class="code-block">
+            curl -X POST http://localhost:3000/PhsAPI/Auth/Login \\
+                 -H "Content-Type: application/json" \\
+                 -d '{"username": "admin", "password": "PhPass", "vCopy": "MKM", "periodId": 2026}'
+          </div>
         </div>
 
         <!-- POST New -->
@@ -547,17 +543,18 @@ function generateHtmlDocs() {
           <div class="endpoint-desc">
             Validates input payload, computes autonumbers (Sequences / Max aggregation), injects audit fields (<span class="entity-tag">insUser</span>, <span class="entity-tag">insDate</span>), and inserts master and child arrays atomically in a transaction.
           </div>
-          <div class="code-block">curl -X POST http://localhost:3000/PhsAPI/Acc/Acc_Master/New \\
-  -H "Authorization: Bearer YOUR_JWT_TOKEN" \\
-  -H "vcopy: MKM" \\
-  -H "x-period-id: 2026" \\
-  -H "Content-Type: application/json" \\
-  -d '{
-    "docNo": "DOC-2026-001",
-    "mdate": "01-08-2026",
-    "notes": "Accounting Entry",
-    "transactions": [{ "accountNo": "101", "amount": 5000.00 }]
-  }'</div>
+          <div class="code-block">
+            curl -X POST http://localhost:3000/PhsAPI/Acc/Master/New \\
+                  -H "Authorization: Bearer YOUR_JWT_TOKEN" \\
+                  -H "x-period-id: 2026" \\
+                  -H "Content-Type: application/json" \\
+                  -d '{
+                        "docNo": "DOC-2026-001",
+                        "mdate": "01-08-2026",
+                        "notes": "Accounting Entry",
+                        "transactions": [{ "accountNo": "101", "amount": 5000.00 }]
+                      }'
+          </div>
         </div>
 
         <!-- GET List -->
@@ -572,9 +569,10 @@ function generateHtmlDocs() {
           <div class="endpoint-desc">
             Fetches paginated and filtered entity records using database-native pagination syntax (Oracle 12c+ <span class="entity-tag">FETCH NEXT</span>, MySQL <span class="entity-tag">LIMIT OFFSET</span>).
           </div>
-          <div class="code-block">curl -X GET "http://localhost:3000/PhsAPI/Acc/Acc_Master/List?page=1&pageSize=10&docNo=DOC-2026-001" \\
-  -H "Authorization: Bearer YOUR_JWT_TOKEN" \\
-  -H "vcopy: MKM"</div>
+          <div class="code-block">
+            curl -X GET "http://localhost:3000/PhsAPI/Acc/Master/List?page=1&pageSize=10&docNo=DOC-2026-001" \\
+                  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+          </div>
         </div>
 
         <!-- GET Get/id -->
@@ -589,9 +587,10 @@ function generateHtmlDocs() {
           <div class="endpoint-desc">
             Retrieves parent record by primary key and automatically fetches and nests child record arrays.
           </div>
-          <div class="code-block">curl -X GET "http://localhost:3000/PhsAPI/Acc/Acc_Master/Get/1001" \\
-  -H "Authorization: Bearer YOUR_JWT_TOKEN" \\
-  -H "vcopy: MKM"</div>
+          <div class="code-block">
+            curl -X GET "http://localhost:3000/PhsAPI/Acc/Master/Get/1001" \\
+                  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+          </div>
         </div>
 
         <!-- PUT Update/id -->
@@ -606,11 +605,12 @@ function generateHtmlDocs() {
           <div class="endpoint-desc">
             Validates update permissions on writable fields, injects update audit fields (<span class="entity-tag">updUser</span>, <span class="entity-tag">updDate</span>), and updates record.
           </div>
-          <div class="code-block">curl -X PUT "http://localhost:3000/PhsAPI/Acc/Acc_Master/Update/1001" \\
-  -H "Authorization: Bearer YOUR_JWT_TOKEN" \\
-  -H "vcopy: MKM" \\
-  -H "Content-Type: application/json" \\
-  -d '{"notes": "Updated Entry Notes"}'</div>
+          <div class="code-block">
+            curl -X PUT "http://localhost:3000/PhsAPI/Acc/Master/Update/1001" \\
+              -H "Authorization: Bearer YOUR_JWT_TOKEN" \\
+              -H "Content-Type: application/json" \\
+              -d '{"notes": "Updated Entry Notes"}'
+          </div>
         </div>
 
         <!-- DELETE Delete/id -->
@@ -625,9 +625,10 @@ function generateHtmlDocs() {
           <div class="endpoint-desc">
             Deletes record by primary key and automatically cascades deletion to child records if <span class="entity-tag">cascadeDelete = true</span>.
           </div>
-          <div class="code-block">curl -X DELETE "http://localhost:3000/PhsAPI/Acc/Acc_Master/Delete/1001" \\
-  -H "Authorization: Bearer YOUR_JWT_TOKEN" \\
-  -H "vcopy: MKM"</div>
+          <div class="code-block">
+            curl -X DELETE "http://localhost:3000/PhsAPI/Acc/Master/Delete/1001" \\
+              -H "Authorization: Bearer YOUR_JWT_TOKEN"
+          </div>
         </div>
 
         <!-- GET Autocomplete -->
@@ -642,9 +643,10 @@ function generateHtmlDocs() {
           <div class="endpoint-desc">
             Executes optimized search queries across 374+ autocomplete templates with runtime parameter substitution.
           </div>
-          <div class="code-block">curl -X GET "http://localhost:3000/PhsAPI/Acc/Account/Autocomplete?term=cash" \\
-  -H "Authorization: Bearer YOUR_JWT_TOKEN" \\
-  -H "vcopy: MKM"</div>
+          <div class="code-block">
+            curl -X GET "http://localhost:3000/PhsAPI/Acc/Account/Autocomplete?term=cash" \\
+              -H "Authorization: Bearer YOUR_JWT_TOKEN"
+          </div>
         </div>
       </div>
 
@@ -665,7 +667,7 @@ function generateHtmlDocs() {
       document.getElementById('overviewSection').style.display = sectionId === 'overviewSection' ? 'block' : 'none';
       document.getElementById('endpointsSection').style.display = sectionId === 'endpointsSection' ? 'block' : 'none';
       document.getElementById('catalogSection').style.display = sectionId === 'catalogSection' ? 'block' : 'none';
-      
+
       document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
       event.target.classList.add('active');
     }
@@ -675,7 +677,7 @@ function generateHtmlDocs() {
       document.getElementById('catalogTitle').innerText = '📦 Package: ' + pkg + ' (' + entities.length + ' Entities)';
 
       let html = '<table><thead><tr><th>Entity / Table</th><th>Synonym</th><th>Primary Key</th><th>Children</th><th>Fields</th></tr></thead><tbody>';
-      
+
       entities.forEach(ent => {
         html += '<tr>' +
           '<td><span class="entity-tag">' + ent.tableName + '</span></td>' +

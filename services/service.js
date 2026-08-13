@@ -1,4 +1,4 @@
-const { UnifiedService } = require('./unifiedService');
+const {UnifiedService} = require('./unifiedService');
 const ResultManager = require('../utils/responseManager');
 const logger = require('../utils/logger');
 
@@ -11,17 +11,16 @@ class Service {
     this.userId = requestParams.userId;
     this.periodId = requestParams.periodId;
     this.vLang = requestParams.vLang;
-    this.vCopy = requestParams.vCopy;
     this.debugMode = requestParams.debugMode || false;
 
     this.context = {
-      tenantId: this.vCopy || 'default',
+      tenantId: 'default',
       periodId: this.periodId,
       mPrgId: requestParams.mPrgId,
       userId: this.userId || '1',
       lang: this.vLang || 'en',
       vLang: this.vLang || 'en',
-      vCopy: this.vCopy || 'default'
+      vCopy: 'default'
     };
   }
 
@@ -38,7 +37,7 @@ class Service {
   async list(vWhere) {
     try {
       const filters = typeof vWhere === 'string' ? JSON.parse(vWhere) : (vWhere || {});
-      const res = await UnifiedService.list(this.pkgName, this.tableName, { filters, pageSize: 500 }, this.context);
+      const res = await UnifiedService.list(this.pkgName, this.tableName, {filters, pageSize: 500}, this.context);
       return ResultManager.ok(res);
     } catch (error) {
       logger.error('list error:', error);
@@ -53,7 +52,7 @@ class Service {
     } catch (error) {
       logger.error('search error:', error);
       return ResultManager.invalid(error.message);
-    }
+  }
   }
 
   async find(queryString, page = 1, size = 20) {
@@ -63,13 +62,14 @@ class Service {
     } catch (error) {
       logger.error('find error:', error);
       return ResultManager.invalid(error.message);
-    }
+  }
   }
 
   async get(id) {
     try {
       const record = await UnifiedService.get(this.pkgName, this.tableName, id, this.context);
-      if (!record) return ResultManager.invalid('Record not found');
+      if (!record)
+        return ResultManager.invalid('Record not found');
       return ResultManager.ok(record);
     } catch (error) {
       logger.error('get error:', error);
@@ -90,7 +90,8 @@ class Service {
   async update(entity) {
     try {
       const id = entity.id || entity.Id;
-      if (!id) return ResultManager.invalid('ID is required for update');
+      if (!id)
+        return ResultManager.invalid('ID is required for update');
       const res = await UnifiedService.update(this.pkgName, this.tableName, id, entity, this.context);
       return ResultManager.ok(res);
     } catch (error) {
