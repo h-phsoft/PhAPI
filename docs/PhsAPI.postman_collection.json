@@ -5,6 +5,27 @@
     "description": "Complete Postman Collection with automatic JWT login and environment variable setting for PhsAPI.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "pm.collectionVariables.set(\"baseURL\",pm.collectionVariables.get(\"localURL\"));",
+          "if (pm.collectionVariables.get(\"isOnline\")===\"true\"){",
+          "  pm.collectionVariables.set(\"baseURL\",pm.collectionVariables.get(\"webURL\"));",
+          "}",
+          "pm.request.headers.upsert({ key: \"mPrgId\"       , value: pm.collectionVariables.get(\"mPrgId\") });",
+          "pm.request.headers.upsert({ key: \"vLang\"        , value: pm.collectionVariables.get(\"vLang\") });",
+          "pm.request.headers.upsert({ key: \"apiKey\"       , value: pm.collectionVariables.get(\"apiKey\") });",
+          "pm.request.headers.upsert({ key: \"Authorization\", value: pm.collectionVariables.get(\"token\") });",
+          "pm.request.headers.upsert({ key: \"Accept\"       , value: \"application/json\" });",
+          "console.log(\"Authorization:\", pm.request.headers.get(\"Authorization\"));",
+          "console.log(pm.collectionVariables.get(\"token\"));"
+        ]
+      }
+    }
+  ],
   "variable": [
     {
       "key": "baseUrl",
