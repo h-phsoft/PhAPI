@@ -1,3 +1,5 @@
+/* global process */
+
 const jwt = require('jsonwebtoken');
 const ResultManager = require('../utils/responseManager');
 
