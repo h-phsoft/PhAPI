@@ -94,7 +94,7 @@ Governing Principle: **"Definition Once, Execute Everywhere"**
 
 ## Active Package & Entity Catalog
 
-Registered Packages: **24 Packages**
+Registered Packages: **25 Packages**
 
 ### Package: `Acc` (28 Entities)
 | Table / Entity Name | Synonym | Primary Key | Has Children | Fields Count |
@@ -564,6 +564,27 @@ Registered Packages: **24 Packages**
 | `Fund_Diaries` | `Fund_Diary` | `id` | No | 17 |
 | `Fund_Diary_View` | `Fund_Vdiary` | `id` | No | 32 |
 
+### Package: `Mkm` (17 Entities)
+| Table / Entity Name | Synonym | Primary Key | Has Children | Fields Count |
+| :--- | :--- | :--- | :---: | :---: |
+| `Mkm_Brands` | `Mkm_Brand` | `id` | No | 9 |
+| `Mkm_Categories` | `Mkm_Cat` | `id` | No | 12 |
+| `Mkm_Code_City` | `Mkm_Cod_City` | `id` | No | 10 |
+| `Mkm_Code_Country` | `Mkm_Cod_Cntry` | `id` | No | 16 |
+| `Mkm_Code_Installment_Status` | `Mkm_Cod_Istatus` | `id` | No | 8 |
+| `Mkm_Code_Ticket_Status` | `Mkm_Cod_Tstatus` | `id` | No | 8 |
+| `Mkm_Installments_Items` | `Mkm_Inst_Items` | `id` | No | 9 |
+| `Mkm_Member_Installments` | `Mkm_Minstallment` | `id` | Yes | 13 |
+| `Mkm_Members` | `Mkm_Member` | `id` | No | 20 |
+| `Mkm_Prod_Serials` | `Mkm_Prod_Serial` | `id` | No | 10 |
+| `Mkm_Products` | `Mkm_Product` | `id` | Yes | 21 |
+| `Mkm_Sales` | `Mkm_Sale` | `id` | Yes | 10 |
+| `Mkm_Sales_Items` | `Mkm_Sales_Item` | `id` | No | 10 |
+| `Mkm_Tickets` | `Mkm_Ticket` | `id` | No | 14 |
+| `Mkm_User_Profile_View` | `Mkm_Vuser_Profile` | `id` | No | 22 |
+| `Mkm_Worker_Installments_View` | `Mkm_Vminstallment` | `id` | No | 36 |
+| `Mkm_Workers_View` | `Mkm_Vworker` | `id` | No | 36 |
+
 ### Package: `Mng` (26 Entities)
 | Table / Entity Name | Synonym | Primary Key | Has Children | Fields Count |
 | :--- | :--- | :--- | :---: | :---: |
@@ -955,4 +976,4 @@ Registered Packages: **24 Packages**
 | `Trn_Total_Balancing_View` | `Trn_Vtblncing` | `id` | No | 44 |
 
 
-Total Registered Entities Across Application: **762 Entities**
+Total Registered Entities Across Application: **779 Entities**

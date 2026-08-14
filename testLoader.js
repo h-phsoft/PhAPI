@@ -1,3 +1,5 @@
+/* global __dirname */
+
 const path = require('path');
 const mainApp = require('./config/mainApp');
 

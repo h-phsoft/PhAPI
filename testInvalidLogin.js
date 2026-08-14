@@ -1,3 +1,5 @@
+/* global Buffer */
+
 const http = require('http');
 
 console.log('--- Testing Login Validation Failure ---');

@@ -281,21 +281,9 @@ function generatePostman() {
     ]
   };
 
-  const environment = {
-    id: 'f1e2d3c4-b5a6-7890-1234-567890abcdef',
-    name: 'PhsAPI Development Environment',
-    values: [
-      {key: 'baseUrl', value: 'http://localhost:3000', enabled: true},
-      {key: 'jwtToken', value: '', enabled: true},
-      {key: 'periodId', value: '2026', enabled: true}
-    ]
-  };
-
   fs.writeFileSync(path.join(docsDir, 'PhsAPI.postman_collection.json'), JSON.stringify(collection, null, 2), 'utf8');
-  fs.writeFileSync(path.join(docsDir, 'PhsAPI.postman_environment.json'), JSON.stringify(environment, null, 2), 'utf8');
 
   console.log(`Successfully generated Postman Collection in ${docsDir}/PhsAPI.postman_collection.json`);
-  console.log(`Successfully generated Postman Environment in ${docsDir}/PhsAPI.postman_environment.json`);
 }
 
 generatePostman();
