@@ -146,6 +146,7 @@ class MainApp {
     const pkg = metadata.package;
     const table = metadata.tableName;
     const synonym = metadata.synonym;
+    const filename = path.basename(sourcePath, '.json');
 
     if (!pkg || !table) {
       console.warn(`[MainApp] Invalid metadata format in ${sourcePath}: missing package or tableName`);
@@ -153,9 +154,13 @@ class MainApp {
     }
 
     const key = `${pkg.toLowerCase()}:${table.toLowerCase()}`;
+    const fileKey = `${pkg.toLowerCase()}:${filename.toLowerCase()}`;
 
     this.metadataByPackageAndTable.set(key, metadata);
+    this.metadataByPackageAndTable.set(fileKey, metadata);
+    
     this.metadataByTable.set(table.toLowerCase(), metadata);
+    this.metadataByTable.set(filename.toLowerCase(), metadata);
 
     if (synonym) {
       this.metadataBySynonym.set(synonym.toLowerCase(), metadata);
@@ -164,7 +169,8 @@ class MainApp {
     if (!this.packages.has(pkg)) {
       this.packages.set(pkg, new Set());
     }
-    this.packages.get(pkg).add(table);
+    // Store filename instead of tableName in packages for cleaner API endpoints
+    this.packages.get(pkg).add(filename);
   }
 
   getEntity(packageName, tableName) {
