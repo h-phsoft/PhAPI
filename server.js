@@ -16,9 +16,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Security middleware
-app.use(helmet({
-  contentSecurityPolicy: false
-}));
+app.use(helmet());
+
+app.set('trust proxy', 1);
 
 // Rate limiting
 const limiter = rateLimit({
@@ -31,9 +31,9 @@ app.use(limiter);
 app.use(cors());
 
 // Body parser
-app.use(bodyParser.json({limit: '10mb'}));
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.text({type: ['text/*', 'text/plain', 'text/html', 'application/text'], limit: '10mb'}));
+app.use(bodyParser.json({limit: '1mb'}));
+app.use(bodyParser.urlencoded({extended: true, limit: '1mb'}));
+app.use(bodyParser.text({type: ['text/*', 'text/plain', 'text/html', 'application/text'], limit: '1mb'}));
 
 
 // Load metadata singleton at startup directly from resources/modules
@@ -59,7 +59,7 @@ const ResultManager = require('./utils/responseManager');
 
 // 404 handler
 app.use((req, res) => {
-  res.status(200).json(ResultManager.invalid('Route not found'));
+  res.status(404).json(ResultManager.invalid('Route not found'));
 });
 
 

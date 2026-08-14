@@ -51,7 +51,7 @@ async function resolveTenantFromAdminDb(tenantKey) {
     'c##phsAdmin'
   ].filter(Boolean)));
 
-  const adminPass = process.env.ADMIN_DB_PASS || process.env.DB_PASSWORD || 'PhaPass';
+  const adminPass = process.env.ADMIN_DB_PASS || process.env.DB_PASSWORD;
 
   let connection = null;
   const logger = require('../utils/logger');

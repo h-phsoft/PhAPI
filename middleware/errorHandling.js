@@ -32,7 +32,7 @@ function errorHandler(err, req, res, next) {
       periodid: req.headers['periodid'] || req.headers['periodId'],
       vlang: req.headers['vlang'] || req.headers['vLang']
     },
-    body: req.body,
+    body: process.env.NODE_ENV === 'development' ? req.body : '[REDACTED FOR SECURITY]',
     context: req.context ? {copy: req.context.tenantId, userId: req.context.userId} : null,
     stack: err.stack
   });
