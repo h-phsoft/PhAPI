@@ -1,5 +1,6 @@
-require('dotenv').config();
+/* global process */
 
+require('dotenv').config();
 let oracledb = null;
 try {
   oracledb = require('oracledb');
@@ -40,8 +41,8 @@ async function resolveTenantFromAdminDb(tenantKey) {
   }
 
   const adminConnectString = process.env.ADMIN_DB_CONNECT_STRING ||
-                             process.env.DB_CONNECT_STRING ||
-                             `${process.env.DB_HOST || 'localhost'}:${process.env.DB_PORT || 1521}/${process.env.DB_NAME || 'xe'}`;
+    process.env.DB_CONNECT_STRING ||
+    `${process.env.DB_HOST || 'localhost'}:${process.env.DB_PORT || 1521}/${process.env.DB_NAME || 'xe'}`;
 
   const candidateAdminUsers = Array.from(new Set([
     process.env.ADMIN_DB_USER,
@@ -81,15 +82,15 @@ async function resolveTenantFromAdminDb(tenantKey) {
 
   try {
     const sql = `
-      SELECT Id, OUser, OPass 
-      FROM Phs_Cpy 
+      SELECT Id, OUser, OPass
+      FROM Phs_Cpy
       WHERE lower(Name)=:p_1 OR lower(URL)=:p_2
     `;
 
-    console.log(`[SQL Execution] [Admin DB Lookup] SQL: ${sql.trim()} | Params: ${JSON.stringify({ p_1: String(tenantKey).toLowerCase(), p_2: String(tenantKey).toLowerCase() })}`);
-    logger.info(`[SQL Execution] [Admin DB Lookup] SQL: ${sql.trim()} | Params: ${JSON.stringify({ p_1: String(tenantKey).toLowerCase(), p_2: String(tenantKey).toLowerCase() })}`);
+    console.log(`[SQL Execution] [Admin DB Lookup] SQL: ${sql.trim()} | Params: ${JSON.stringify({p_1: String(tenantKey).toLowerCase(), p_2: String(tenantKey).toLowerCase()})}`);
+    logger.info(`[SQL Execution] [Admin DB Lookup] SQL: ${sql.trim()} | Params: ${JSON.stringify({p_1: String(tenantKey).toLowerCase(), p_2: String(tenantKey).toLowerCase()})}`);
 
-    const result = await connection.execute(sql, { p_1: String(tenantKey).toLowerCase(), p_2: String(tenantKey).toLowerCase() });
+    const result = await connection.execute(sql, {p_1: String(tenantKey).toLowerCase(), p_2: String(tenantKey).toLowerCase()});
 
 
     if (result.rows && result.rows.length > 0) {
@@ -109,9 +110,12 @@ async function resolveTenantFromAdminDb(tenantKey) {
       };
 
       tenantConfigs[String(tenantKey).toLowerCase()] = config;
-      if (row.ID) tenantConfigs[String(row.ID).toLowerCase()] = config;
-      if (row.URL) tenantConfigs[String(row.URL).toLowerCase()] = config;
-      if (row.NAME) tenantConfigs[String(row.NAME).toLowerCase()] = config;
+      if (row.ID)
+        tenantConfigs[String(row.ID).toLowerCase()] = config;
+      if (row.URL)
+        tenantConfigs[String(row.URL).toLowerCase()] = config;
+      if (row.NAME)
+        tenantConfigs[String(row.NAME).toLowerCase()] = config;
 
       return config;
     }
@@ -133,7 +137,8 @@ async function resolveTenantFromAdminDb(tenantKey) {
 
 
 function deriveCopyUser(copyKey) {
-  if (!copyKey) return process.env.DB_USER || 'c##erpAdmin';
+  if (!copyKey)
+    return process.env.DB_USER || 'c##erpAdmin';
   const strKey = String(copyKey).trim();
   if (strKey.toLowerCase().startsWith('c##')) {
     return strKey;
@@ -147,7 +152,7 @@ function deriveCopyUser(copyKey) {
 /**
  * Resolves database configuration for a tenant copy key.
  * Queries Admin DB Phs_Cpy table for OUser and OPass credentials, or derives c##erp{copy}.
- * @param {string|number} tenantKey 
+ * @param {string|number} tenantKey
  * @returns {Promise<Object>}
  */
 async function getTenantDbConfig(tenantKey) {

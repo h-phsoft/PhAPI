@@ -1,3 +1,5 @@
+/* global process, __dirname */
+
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -29,9 +31,9 @@ app.use(limiter);
 app.use(cors());
 
 // Body parser
-app.use(bodyParser.json({ limit: '10mb' }));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.text({ type: ['text/*', 'text/plain', 'text/html', 'application/text'], limit: '10mb' }));
+app.use(bodyParser.json({limit: '10mb'}));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.text({type: ['text/*', 'text/plain', 'text/html', 'application/text'], limit: '10mb'}));
 
 
 // Load metadata singleton at startup directly from resources/modules
@@ -64,17 +66,17 @@ app.use((req, res) => {
 // Global error handling middleware
 app.use(errorHandler);
 
-const { getTenantDbConfig } = require('./config/db.config');
+const {getTenantDbConfig} = require('./config/db.config');
 const connectionPoolManager = require('./core/connectionPool');
 
 async function checkDatabaseConnectionOnStartup() {
   try {
     const config = await getTenantDbConfig('default');
     console.log(`[Database] Checking connection to default database (${config.dbType} on ${config.host}:${config.port || 'default'})...`);
-    
+
     const pool = await connectionPoolManager.getPool('default');
     const conn = await pool.getConnection();
-    
+
     if (config.dbType === 'oracle') {
       await conn.query('SELECT 1 FROM DUAL');
     } else {

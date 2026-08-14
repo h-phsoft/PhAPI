@@ -1,4 +1,6 @@
-const { AuthService } = require('../services/authService');
+/* global Buffer */
+
+const {AuthService} = require('../services/authService');
 const ResultManager = require('../utils/responseManager');
 const i18nHelper = require('../utils/i18nHelper');
 
@@ -23,7 +25,7 @@ class AuthController {
       const result = await AuthService.login(credentials, context);
       const msg = i18nHelper.getMessage('SUCCESS', lang);
 
-      const { token, ...userData } = result;
+      const {token, ...userData} = result;
       return res.status(200).json(ResultManager.welcome(msg, token, userData));
     } catch (err) {
       if (err.name === 'AuthError' || err.statusCode === 401) {
