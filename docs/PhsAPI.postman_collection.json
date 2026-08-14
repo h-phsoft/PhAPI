@@ -20,8 +20,7 @@
           "pm.request.headers.upsert({ key: \"apiKey\"       , value: pm.collectionVariables.get(\"apiKey\") });",
           "pm.request.headers.upsert({ key: \"Authorization\", value: pm.collectionVariables.get(\"jwtToken\") });",
           "pm.request.headers.upsert({ key: \"Accept\"       , value: \"application/json\" });",
-          "console.log(\"Authorization:\", pm.request.headers.get(\"Authorization\"));",
-          "console.log(pm.collectionVariables.get(\"jwtToken\"));"
+          "console.log(\"Successfully auto-updated collection variables!\");"
         ]
       }
     }
@@ -86,7 +85,7 @@
           "name": "Login & Auto-Set JWT Token",
           "event": [
             {
-              "listen": "postrequest",
+              "listen": "post-response",
               "script": {
                 "exec": [
                   "if (pm.response.code === 200) {",
@@ -102,6 +101,21 @@
             }
           ],
           "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "demo:admin",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "admin",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "POST",
             "header": [
               {
@@ -112,7 +126,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"PhPass\",\n  \"periodId\": 2026\n}"
+              "raw": ""
             },
             "url": {
               "raw": "{{baseUrl}}/PhsAPI/Auth/Login",
@@ -125,7 +139,8 @@
                 "Login"
               ]
             }
-          }
+          },
+          "response": []
         },
         {
           "name": "Public Health Check",

@@ -1,3 +1,5 @@
+/* global __dirname */
+
 const fs = require('fs');
 const path = require('path');
 const mainApp = require('../config/mainApp');
@@ -139,8 +141,7 @@ function generatePostman() {
             "pm.request.headers.upsert({ key: \"apiKey\"       , value: pm.collectionVariables.get(\"apiKey\") });",
             "pm.request.headers.upsert({ key: \"Authorization\", value: pm.collectionVariables.get(\"jwtToken\") });",
             "pm.request.headers.upsert({ key: \"Accept\"       , value: \"application/json\" });",
-            "console.log(\"Authorization:\", pm.request.headers.get(\"Authorization\"));",
-            "console.log(pm.collectionVariables.get(\"jwtToken\"));"
+            "console.log(\"Successfully auto-updated collection variables!\");"
           ]
         }
       }
@@ -165,40 +166,50 @@ function generatePostman() {
             name: 'Login & Auto-Set JWT Token',
             event: [
               {
-                listen: 'postrequest',
+                listen: 'postresponse',
                 script: {
                   exec: [
-                    'if (pm.response.code === 200) {',
-                    '    var jsonData = pm.response.json();',
-                    '    if (jsonData.token) {',
-                    '        pm.collectionVariables.set("jwtToken", jsonData.token);',
-                    '        console.log("Successfully auto-updated jwtToken in collection variables!");',
-                    '    }',
-                    '}'
+                    "if (pm.response.code === 200) {",
+                    "    var jsonData = pm.response.json();",
+                    "    if (jsonData.token) {",
+                    "        pm.collectionVariables.set(\"jwtToken\", jsonData.token);",
+                    "        console.log(\"Successfully auto-updated jwtToken in collection variables!\");",
+                    "    }",
+                    "}"
                   ],
                   type: 'text/javascript'
                 }
               }
             ],
             request: {
+              auth: {
+                type: 'basic',
+                basic: [
+                  {key: 'username', value: 'demo:admin', type: 'string'},
+                  {key: 'password', value: 'admin', type: 'string'}
+                ]
+              },
               method: 'POST',
               header: [
                 {key: 'Content-Type', value: 'application/json', type: 'text'}
               ],
               body: {
                 mode: 'raw',
-                raw: JSON.stringify({
-                  username: "admin",
-                  password: "PhPass",
-                  periodId: 2026
-                }, null, 2)
+                raw: ''
               },
               url: {
                 raw: '{{baseUrl}}/PhsAPI/Auth/Login',
-                host: ['{{baseUrl}}'],
-                path: ['PhsAPI', 'Auth', 'Login']
+                host: [
+                  '{{baseUrl}}'
+                ],
+                path: [
+                  'PhsAPI',
+                  'Auth',
+                  'Login'
+                ]
               }
-            }
+            },
+            response: []
           },
           {
             name: 'Public Health Check',
