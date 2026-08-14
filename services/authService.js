@@ -90,6 +90,7 @@ class AuthService {
 
     const connectionPoolManager = require('../core/connectionPool');
     const logger = require('../utils/logger');
+    const authRepository = require('../repository/authRepository');
 
     let dbUser = null;
     let passwordValidated = false;
@@ -98,56 +99,52 @@ class AuthService {
 
     try {
       const pool = await connectionPoolManager.getPool(loginCopy);
+      const conn = await pool.getConnection();
 
-        const conn = await pool.getConnection();
-
+      try {
+        // 1. Try Java Check_Login function if available
         try {
-          // 1. Try Java Check_Login function if available
-          try {
-            const funcSql = `SELECT Check_Login(:logon, :pass) AS UserId FROM DUAL`;
-            const funcRows = await conn.query(funcSql, { logon: String(loginUser).trim(), pass: String(loginPass).trim() });
-            if (funcRows && funcRows.length > 0 && funcRows[0].USERID && Number(funcRows[0].USERID) > -99) {
-              const p_id = funcRows[0].USERID;
-              const userSql = `SELECT Id, UGrp_Id, PGrp_Id, Gender_Id, Status_Id, Logon, Pass, Name, Picture FROM Cpy_User WHERE Id = :p_id`;
-              const uRows = await conn.query(userSql, { p_id });
-              if (uRows && uRows.length > 0) {
-                dbUser = uRows[0];
-                passwordValidated = true; // Check_Login already validated the password
-              }
-            }
-          } catch (funcErr) {
-            // Function Check_Login may not exist or failed
-            logger.debug(`[AuthService] Check_Login function skipped: ${funcErr.message}`);
-          }
-
-          // 2. Iterate candidate tables if dbUser not yet resolved
-          if (!dbUser) {
-            for (const table of candidateTables) {
-              try {
-                const sql = `SELECT Id, UGrp_Id, PGrp_Id, Gender_Id, Status_Id, Logon, Pass, Name, Picture FROM ${table} WHERE LOWER(Logon) = LOWER(:logon)`;
-                const rows = await conn.query(sql, [String(loginUser).trim()]);
-                if (rows && rows.length > 0) {
-                  dbUser = rows[0];
-                  logger.info(`[AuthService] Successfully found user '${loginUser}' in table '${table}'`);
-                  break;
-                }
-              } catch (tblErr) {
-                errors.push(`${table}: ${tblErr.message}`);
-              }
+          const funcRows = await authRepository.executeCheckLogin(conn, String(loginUser).trim(), String(loginPass).trim());
+          if (funcRows && funcRows.length > 0 && funcRows[0].USERID && Number(funcRows[0].USERID) > -99) {
+            const p_id = funcRows[0].USERID;
+            const uRows = await authRepository.getUserById(conn, p_id);
+            if (uRows && uRows.length > 0) {
+              dbUser = uRows[0];
+              passwordValidated = true; // Check_Login already validated the password
             }
           }
-        } finally {
-          await conn.release();
+        } catch (funcErr) {
+          // Function Check_Login may not exist or failed
+          logger.debug(`[AuthService] Check_Login function skipped: ${funcErr.message}`);
         }
-      } catch (poolErr) {
-        logger.error(`[AuthService] Database connection pool failure during login`, {
-          user: loginUser,
-          copy: loginCopy,
-          error: poolErr.message,
-          stack: poolErr.stack
-        });
-        throw new AuthError(`Database connection error: ${poolErr.message}`, 500);
+
+        // 2. Iterate candidate tables if dbUser not yet resolved
+        if (!dbUser) {
+          for (const table of candidateTables) {
+            try {
+              const rows = await authRepository.getUserByLogon(conn, table, String(loginUser).trim());
+              if (rows && rows.length > 0) {
+                dbUser = rows[0];
+                logger.info(`[AuthService] Successfully found user '${loginUser}' in table '${table}'`);
+                break;
+              }
+            } catch (tblErr) {
+              errors.push(`${table}: ${tblErr.message}`);
+            }
+          }
+        }
+      } finally {
+        await conn.release();
       }
+    } catch (poolErr) {
+      logger.error(`[AuthService] Database connection pool failure during login`, {
+        user: loginUser,
+        copy: loginCopy,
+        error: poolErr.message,
+        stack: poolErr.stack
+      });
+      throw new AuthError(`Database connection error: ${poolErr.message}`, 500);
+    }
 
     if (!dbUser && errors.length > 0) {
       logger.error(`[AuthService] Failed user query across all candidate tables`, {
@@ -206,6 +203,114 @@ class AuthService {
     };
   }
 
+  async getMenu(conn, pgrpId, pid) {
+    let aList = [];
+    try {
+      const authRepository = require('../repository/authRepository');
+      let rows = await authRepository.getMenuByPid(conn, pgrpId, pid);
+      
+      if (rows && rows.length > 0) {
+        for (let row of rows) {
+          let hParamsStr = row.MPRG_PARAMS || row.MPrg_Params || row.mprg_params;
+          let hParamsObj = {};
+          if (hParamsStr) {
+            hParamsStr.split('&').forEach(param => {
+              let parts = param.split('=');
+              if (parts.length === 2) hParamsObj[parts[0]] = parts[1];
+            });
+          }
+
+          let obj = {
+            id: row.MPRG_ID || row.MPrg_Id || row.mprg_id,
+            pId: row.MPRG_PID || row.MPrg_PId || row.mprg_pid,
+            menuId: row.MENU_ID || row.Menu_Id || row.menu_id,
+            menuName: row.MENU_NAME || row.Menu_Name || row.menu_name,
+            menuImage: row.MENU_IMAGE || row.Menu_Image || row.menu_image,
+            menuUrl: row.MENU_URL || row.Menu_URL || row.menu_url,
+            menuDescr: row.MENU_DESCR || row.Menu_Descr || row.menu_descr,
+            menuStatusId: row.MENU_STATUS_ID || row.Menu_Status_Id || row.menu_status_id,
+            menuStatusName: row.MENU_STATUS_NAME || row.Menu_Status_Name || row.menu_status_name,
+            typeId: row.TYPE_ID || row.Type_Id || row.type_id,
+            typeName: row.TYPE_NAME || row.Type_Name || row.type_name,
+            typeIcon: row.TYPE_ICON || row.Type_Icon || row.type_icon,
+            ord: row.MPRG_ORD || row.MPrg_Ord || row.mprg_ord,
+            name: row.MPRG_NAME || row.MPrg_Name || row.mprg_name,
+            url: row.MPRG_URL || row.MPrg_URL || row.mprg_url,
+            apiUrl: row.MPRG_APIURL || row.MPrg_ApiURL || row.mprg_apiurl,
+            icon: row.MPRG_ICON || row.MPrg_Icon || row.mprg_icon,
+            relTable: row.MPRG_RELTABLE || row.MPrg_RelTable || row.mprg_reltable,
+            hParams: hParamsObj,
+            statusId: row.MPRG_STATUS_ID || row.MPrg_Status_Id || row.mprg_status_id,
+            statusName: row.MPRG_STATUS_NAME || row.MPrg_Status_Name || row.mprg_status_name,
+          };
+          obj.aList = await this.getMenu(conn, pgrpId, obj.id);
+          aList.push(obj);
+        }
+      }
+    } catch (err) {
+      const logger = require('../utils/logger');
+      logger.error(`[AuthService] Error in getMenu: ${err.message}`);
+    }
+    return aList;
+  }
+
+  async getUserProfile(context = {}) {
+    const connectionPoolManager = require('../core/connectionPool');
+    const authRepository = require('../repository/authRepository');
+    const tenantId = context.tenantId || context.copy || context.vCopy;
+    const userId = context.userId || context.jui;
+
+    if (!tenantId || !userId) {
+      throw new AuthError('Missing tenant or user context', 400);
+    }
+
+    const pool = await connectionPoolManager.getPool(tenantId);
+    const conn = await pool.getConnection();
+
+    try {
+      const formatKeys = (obj, omitKeys = []) => {
+        const result = {};
+        const lowerOmitKeys = omitKeys.map(k => k.toLowerCase());
+        for (const key in obj) {
+          if (lowerOmitKeys.includes(key.toLowerCase())) continue;
+          
+          // CamelCase: convert entire key to lower, then remove _ and uppercase following char
+          let newKey = key.toLowerCase().replace(/_([a-z0-9])/g, (g) => g[1].toUpperCase());
+          
+          result[newKey] = obj[key];
+        }
+        return result;
+      };
+
+      let profile = {};
+      let pgrpId = 0;
+      
+      const userRows = await authRepository.getFullUserById(conn, userId);
+      if (userRows && userRows.length > 0) {
+        const rawProfile = userRows[0];
+        pgrpId = rawProfile.PGRP_ID || rawProfile.PGrp_Id || rawProfile.pgrp_id || 0;
+        profile = formatKeys(rawProfile, ['pass', 'password']);
+      }
+
+      let permissions = {};
+      if (pgrpId > 0) {
+        const pgrpRows = await authRepository.getPGrpById(conn, pgrpId);
+        if (pgrpRows && pgrpRows.length > 0) {
+          permissions = formatKeys(pgrpRows[0], []);
+        }
+      }
+
+      let programs = await this.getMenu(conn, pgrpId, 0);
+
+      return {
+        profile,
+        permissions,
+        programs
+      };
+    } finally {
+      await conn.release();
+    }
+  }
 
 }
 

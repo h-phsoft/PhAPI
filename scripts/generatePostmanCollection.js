@@ -271,6 +271,20 @@ function generatePostman() {
             response: []
           },
           {
+            name: 'Get User Profile',
+            request: {
+              method: 'GET',
+              header: [
+                {key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text'}
+              ],
+              url: {
+                raw: '{{baseUrl}}/PhsAPI/UserAccount/getUserProfile',
+                host: ['{{baseUrl}}'],
+                path: ['PhsAPI', 'UserAccount', 'getUserProfile']
+              }
+            }
+          },
+          {
             name: 'Public Health Check',
             request: {
               method: 'GET',

@@ -385,13 +385,15 @@ class UnifiedService {
     };
   }
 
-  /**
-   * Updates single field value by ID.
-   */
   async updateField(packageName, tableName, fieldName, fieldValue, id, context = {}) {
     const entity = mainApp.getEntity(packageName, tableName);
     if (!entity) {
       throw new Error(`Entity metadata not found for ${packageName}/${tableName}`);
+    }
+
+    const fieldMeta = entity.fields.find(f => f.Field === fieldName || f.Name === fieldName);
+    if (!fieldMeta) {
+      throw new Error(`Invalid field name: ${fieldName}`);
     }
 
     const data = { [fieldName]: fieldValue };

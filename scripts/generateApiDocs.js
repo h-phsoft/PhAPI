@@ -181,6 +181,33 @@ Registered Packages: **${packages.length} Packages**
           }
         }
       },
+      '/PhsAPI/Auth/Login': {
+        post: {
+          summary: 'User Login',
+          requestBody: {
+            required: true,
+            content: { 'application/json': { schema: { type: 'object' } } }
+          },
+          responses: {
+            '200': { description: 'JWT Token and user info' },
+            '401': { description: 'Unauthorized' }
+          }
+        }
+      },
+      '/PhsAPI/UserAccount/getUserProfile': {
+        get: {
+          summary: 'Get User Profile',
+          responses: {
+            '200': { description: 'User profile, permissions, and programs' }
+          }
+        },
+        post: {
+          summary: 'Get User Profile',
+          responses: {
+            '200': { description: 'User profile, permissions, and programs' }
+          }
+        }
+      },
       '/PhsAPI/{package}/{table}/New': {
         post: {
           summary: 'Create New Entity Record',

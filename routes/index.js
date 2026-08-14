@@ -18,6 +18,12 @@ router.post('/UserAccount/getAccessToken', (req, res, next) => authController.lo
 router.use(authenticateToken);
 router.use(resolveTenant);
 
+router.post('/PhsAPI/UserAccount/getUserProfile', (req, res, next) => authController.getUserProfile(req, res, next));
+router.post('/UserAccount/getUserProfile', (req, res, next) => authController.getUserProfile(req, res, next));
+router.get('/PhsAPI/UserAccount/getUserProfile', (req, res, next) => authController.getUserProfile(req, res, next));
+router.get('/UserAccount/getUserProfile', (req, res, next) => authController.getUserProfile(req, res, next));
+
+
 // Helper function to mount routes on both prefixed (/PhsAPI) and non-prefixed paths
 function mount(method, pathStr, handler) {
   router[method](pathStr, handler);

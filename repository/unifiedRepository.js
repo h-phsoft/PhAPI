@@ -2,6 +2,24 @@ const connectionPool = require('../core/connectionPool');
 const sqlBuilder = require('../core/sqlBuilder');
 
 class UnifiedRepository {
+  mapToCamelCase(data) {
+    if (!data) return data;
+    if (Array.isArray(data)) {
+      return data.map(item => this.mapToCamelCase(item));
+    }
+    if (typeof data === 'object') {
+      const result = {};
+      for (const key in data) {
+        if (Object.prototype.hasOwnProperty.call(data, key)) {
+          const newKey = key.toLowerCase().replace(/_([a-z0-9])/g, (g) => g[1].toUpperCase());
+          result[newKey] = data[key];
+        }
+      }
+      return result;
+    }
+    return data;
+  }
+
   /**
    * Selects records from DB.
    */
@@ -12,7 +30,7 @@ class UnifiedRepository {
 
     const { sql, params } = sqlBuilder.buildSelect(dbType, entity, options);
     const rows = await poolWrapper.query(sql, params);
-    return rows;
+    return this.mapToCamelCase(rows);
   }
 
   /**
@@ -28,7 +46,7 @@ class UnifiedRepository {
 
     const { sql, params } = sqlBuilder.buildSelect(dbType, entity, { filters, page: 1, pageSize: 1 });
     const rows = await poolWrapper.query(sql, params);
-    return rows && rows.length > 0 ? rows[0] : null;
+    return rows && rows.length > 0 ? this.mapToCamelCase(rows[0]) : null;
   }
 
   /**

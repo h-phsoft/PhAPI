@@ -145,7 +145,25 @@ class AutocompleteService {
 
     // Execute query
     const rows = await poolWrapper.query(finalSql);
-    return rows;
+
+    // Map to camelCase
+    const mapToCamelCase = (data) => {
+      if (!data) return data;
+      if (Array.isArray(data)) return data.map(item => mapToCamelCase(item));
+      if (typeof data === 'object') {
+        const result = {};
+        for (const key in data) {
+          if (Object.prototype.hasOwnProperty.call(data, key)) {
+            const newKey = key.toLowerCase().replace(/_([a-z0-9])/g, (g) => g[1].toUpperCase());
+            result[newKey] = data[key];
+          }
+        }
+        return result;
+      }
+      return data;
+    };
+
+    return mapToCamelCase(rows);
   }
 }
 

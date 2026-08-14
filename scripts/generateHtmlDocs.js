@@ -531,6 +531,29 @@ function generateHtmlDocs() {
           </div>
         </div>
 
+        <!-- GET / POST getUserProfile -->
+        <div class="endpoint-card">
+          <div class="endpoint-summary">
+            <div style="display: flex; align-items: center; gap: 0.75rem;">
+              <span class="method get">GET</span> <span class="method post">POST</span>
+              <span class="endpoint-path">/PhsAPI/UserAccount/getUserProfile</span>
+            </div>
+            <span style="color: var(--text-muted); font-size: 0.85rem;">Get User Profile, Permissions, and Programs</span>
+          </div>
+          <div class="endpoint-desc">
+            Retrieves the authenticated user's profile, permission group, and allowed programs (menu). Requires a valid JWT token.
+          </div>
+          <div class="code-tabs">
+            <button class="tab-btn active">cURL</button>
+            <button class="tab-btn">JavaScript</button>
+            <button class="tab-btn">Python</button>
+          </div>
+          <div class="code-block">
+            curl -X GET http://localhost:3000/PhsAPI/UserAccount/getUserProfile \\
+                 -H "Authorization: Bearer YOUR_JWT_TOKEN"
+          </div>
+        </div>
+
         <!-- POST New -->
         <div class="endpoint-card">
           <div class="endpoint-summary">

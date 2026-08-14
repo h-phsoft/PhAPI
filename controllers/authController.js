@@ -34,6 +34,19 @@ class AuthController {
       next(err);
     }
   }
+  async getUserProfile(req, res, next) {
+    try {
+      const context = req.context || {};
+      const lang = context.lang || req.headers['vlang'] || req.headers['vLang'] || 'en';
+
+      const result = await AuthService.getUserProfile(context);
+      const msg = i18nHelper.getMessage('SUCCESS', lang);
+
+      return res.status(200).json(ResultManager.welcome(msg, null, result));
+    } catch (err) {
+      next(err);
+    }
+  }
 }
 
 module.exports = new AuthController();
