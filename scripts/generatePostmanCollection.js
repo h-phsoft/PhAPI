@@ -22,11 +22,52 @@ function generatePostman() {
     return {
       name: `${pkgIndex} - ${pkg} API`,
       item: mainApp.getTablesInPackage(pkg).map(table => {
-        return {
-          name: `${table} Operations`,
-          item: [
+        const oName = table.substring(pkg.length + 1).split('_')
+          .filter(part => part.length > 0) // Remove empty parts
+          .map(part => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
+          .join('');
+        const isView = oName.endsWith('View');
+        let operations = [];
+
+        if (isView) {
+          operations = [
             {
-              name: `Create ${table} (New)`,
+              name: `List ${oName} Records`,
+              request: {
+                method: 'GET',
+                header: [
+                  {key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text'}
+                ],
+                url: {
+                  raw: `{{baseUrl}}/PhsAPI/${pkg}/${oName}/List?page=1&pageSize=10`,
+                  host: ['{{baseUrl}}'],
+                  path: ['PhsAPI', pkg, oName, 'List'],
+                  query: [
+                    {key: 'page', value: '1'},
+                    {key: 'pageSize', value: '10'}
+                  ]
+                }
+              }
+            },
+            {
+              name: `Get ${oName} Record by ID`,
+              request: {
+                method: 'GET',
+                header: [
+                  {key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text'}
+                ],
+                url: {
+                  raw: `{{baseUrl}}/PhsAPI/${pkg}/${oName}/Get/1`,
+                  host: ['{{baseUrl}}'],
+                  path: ['PhsAPI', pkg, oName, 'Get', '1']
+                }
+              }
+            }
+          ];
+        } else {
+          operations = [
+            {
+              name: `Create ${oName} (New)`,
               request: {
                 method: 'POST',
                 header: [
@@ -39,23 +80,23 @@ function generatePostman() {
                   raw: JSON.stringify({}, null, 2)
                 },
                 url: {
-                  raw: `{{baseUrl}}/PhsAPI/${pkg}/${table}/New`,
+                  raw: `{{baseUrl}}/PhsAPI/${pkg}/${oName}/New`,
                   host: ['{{baseUrl}}'],
-                  path: ['PhsAPI', pkg, table, 'New']
+                  path: ['PhsAPI', pkg, oName, 'New']
                 }
               }
             },
             {
-              name: `List ${table} Records`,
+              name: `List ${oName} Records`,
               request: {
                 method: 'GET',
                 header: [
                   {key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text'}
                 ],
                 url: {
-                  raw: `{{baseUrl}}/PhsAPI/${pkg}/${table}/List?page=1&pageSize=10`,
+                  raw: `{{baseUrl}}/PhsAPI/${pkg}/${oName}/List?page=1&pageSize=10`,
                   host: ['{{baseUrl}}'],
-                  path: ['PhsAPI', pkg, table, 'List'],
+                  path: ['PhsAPI', pkg, oName, 'List'],
                   query: [
                     {key: 'page', value: '1'},
                     {key: 'pageSize', value: '10'}
@@ -64,21 +105,35 @@ function generatePostman() {
               }
             },
             {
-              name: `Get ${table} Record by ID`,
+              name: `Get ${oName} Record by ID`,
               request: {
                 method: 'GET',
                 header: [
                   {key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text'}
                 ],
                 url: {
-                  raw: `{{baseUrl}}/PhsAPI/${pkg}/${table}/Get/1`,
+                  raw: `{{baseUrl}}/PhsAPI/${pkg}/${oName}/Get/1`,
                   host: ['{{baseUrl}}'],
-                  path: ['PhsAPI', pkg, table, 'Get', '1']
+                  path: ['PhsAPI', pkg, oName, 'Get', '1']
                 }
               }
             },
             {
-              name: `Update ${table} Record`,
+              name: `Delete ${oName} Record by ID`,
+              request: {
+                method: 'DELETE',
+                header: [
+                  {key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text'}
+                ],
+                url: {
+                  raw: `{{baseUrl}}/PhsAPI/${pkg}/${oName}/Delete/1`,
+                  host: ['{{baseUrl}}'],
+                  path: ['PhsAPI', pkg, oName, 'Delete', '1']
+                }
+              }
+            },
+            {
+              name: `Update ${oName} Record`,
               request: {
                 method: 'PUT',
                 header: [
@@ -90,30 +145,34 @@ function generatePostman() {
                   raw: JSON.stringify({}, null, 2)
                 },
                 url: {
-                  raw: `{{baseUrl}}/PhsAPI/${pkg}/${table}/Update/1`,
+                  raw: `{{baseUrl}}/PhsAPI/${pkg}/${oName}/Update/1`,
                   host: ['{{baseUrl}}'],
-                  path: ['PhsAPI', pkg, table, 'Update', '1']
+                  path: ['PhsAPI', pkg, oName, 'Update', '1']
                 }
               }
             },
             {
-              name: `${table} Autocomplete Query`,
+              name: `${oName} Autocomplete Query`,
               request: {
                 method: 'GET',
                 header: [
                   {key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text'},
                 ],
                 url: {
-                  raw: `{{baseUrl}}/PhsAPI/${pkg}/${table}/Autocomplete?term=test`,
+                  raw: `{{baseUrl}}/PhsAPI/${pkg}/${oName}/Autocomplete?term=test`,
                   host: ['{{baseUrl}}'],
-                  path: ['PhsAPI', pkg, table, 'Autocomplete'],
+                  path: ['PhsAPI', pkg, oName, 'Autocomplete'],
                   query: [
                     {key: 'term', value: 'test'}
                   ]
                 }
               }
             }
-          ]
+          ];
+        }
+        return {
+          name: `${oName} Operations`,
+          item: operations
         };
       })
     };
