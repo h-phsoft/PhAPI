@@ -1,3 +1,5 @@
+/* global process */
+
 const mysql = require('mysql2/promise');
 require('dotenv').config();
 
@@ -12,13 +14,13 @@ class Database {
         this.pool = mysql.createPool({
           host: process.env.DB_HOST || 'localhost',
           user: process.env.DB_USER || 'root',
-          password: process.env.DB_PASSWORD || '',
-          database: process.env.DB_NAME || 'mydb',
+          password: process.env.DB_PASSWORD || 'RootPass',
+          database: process.env.DB_NAME || 'erpadmin',
           waitForConnections: true,
           connectionLimit: 10,
-          queueLimit: 0,
-          // You can customize connection based on parameters
-          // For example, use different databases based on vCopy
+          queueLimit: 0
+            // You can customize connection based on parameters
+            // For example, use different databases based on vCopy
         });
       }
 
