@@ -39,7 +39,8 @@ class AuthRepository {
     }
     sql += ` ORDER BY Menu_Id, MPrg_PId, MPrg_Ord`;
 
-    return conn.query(sql, { pid });
+    // Ensure pid is passed properly in the params object
+    return conn.query(sql, { pid: Number(pid) || 0 });
   }
 }
 

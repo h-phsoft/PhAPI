@@ -257,10 +257,14 @@ class AuthService {
   async getUserProfile(context = {}) {
     const connectionPoolManager = require('../core/connectionPool');
     const authRepository = require('../repository/authRepository');
-    const tenantId = context.tenantId || context.copy || context.vCopy;
-    const userId = context.userId || context.jui;
+    
+    // Extract properly from verified JWT token context (set by authenticateToken middleware)
+    const tenantId = context.tenantId || context.copy || context.vCopy || (context.user && (context.user.tenantId || context.user.Copy));
+    const userId = context.userId || context.jui || (context.user && (context.user.userId || context.user.jui || context.user.sub));
 
     if (!tenantId || !userId) {
+      const logger = require('../utils/logger');
+      logger.error(`[AuthService] Missing tenant or user context in getUserProfile. Context:`, context);
       throw new AuthError('Missing tenant or user context', 400);
     }
 

@@ -42,7 +42,7 @@ class AuthController {
       const result = await AuthService.getUserProfile(context);
       const msg = i18nHelper.getMessage('SUCCESS', lang);
 
-      return res.status(200).json(ResultManager.welcome(msg, null, result));
+      return res.status(200).json(ResultManager.ok(msg, result));
     } catch (err) {
       next(err);
     }
