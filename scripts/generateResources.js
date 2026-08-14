@@ -1,3 +1,5 @@
+/* global __dirname */
+
 const fs = require('fs');
 const path = require('path');
 
@@ -7,7 +9,7 @@ const destAutocompleteDir = path.join(__dirname, '..', 'resources', 'autocomplet
 
 function ensureDir(dir) {
   if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
+    fs.mkdirSync(dir, {recursive: true});
   }
 }
 
@@ -21,8 +23,10 @@ function normalizeModel(raw, pkgName, filename) {
 
   // Infer primaryKey
   let primaryKey = 'id';
-  if (raw.primaryKey) primaryKey = raw.primaryKey;
-  else if (raw.PrimaryKey) primaryKey = raw.PrimaryKey;
+  if (raw.primaryKey)
+    primaryKey = raw.primaryKey;
+  else if (raw.PrimaryKey)
+    primaryKey = raw.PrimaryKey;
 
   const rawFields = raw.fields || raw.Columns || [];
   const fields = rawFields.map(f => {
@@ -91,17 +95,19 @@ function normalizeModel(raw, pkgName, filename) {
 
   // Infer primaryKey from fields if possible
   const idField = fields.find(f => f.Field.toLowerCase() === 'id' || f.Name.toLowerCase() === 'id');
-  if (idField) primaryKey = idField.Field;
+  if (idField) {
+    primaryKey = idField.Field;
+  }
 
   const rawChildren = raw.children || raw.Children || [];
   const children = rawChildren.map(c => ({
-    childKey: c.childKey || c.ChildKey || 'children',
-    pkg: c.pkg || c.Pkg || pkg,
-    table: c.table || c.Table || c.Key,
-    synonym: c.synonym || c.Synonym,
-    foreignKey: c.foreignKey || c.ColKey || c.Column || 'mstId',
-    cascadeDelete: c.cascadeDelete !== undefined ? c.cascadeDelete : true
-  }));
+      childKey: c.childKey || c.ChildKey || 'children',
+      pkg: c.pkg || c.Pkg || pkg,
+      table: c.table || c.Table || c.Key,
+      synonym: c.synonym || c.Synonym,
+      foreignKey: c.foreignKey || c.ColKey || c.Column || 'mstId',
+      cascadeDelete: c.cascadeDelete !== undefined ? c.cascadeDelete : true
+    }));
 
   return {
     package: pkg,
@@ -139,7 +145,9 @@ function processAll() {
 
   for (const pkg of packages) {
     const pkgPath = path.join(srcPkgsDir, pkg);
-    if (!fs.statSync(pkgPath).isDirectory()) continue;
+    if (!fs.statSync(pkgPath).isDirectory()) {
+      continue;
+    }
 
     // 1. Process Models
     const modelsDir = path.join(pkgPath, 'models');

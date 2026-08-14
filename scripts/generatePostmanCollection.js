@@ -15,6 +15,108 @@ function generatePostman() {
   mainApp.loadMetadata(modulesDir);
   ensureDir(docsDir);
 
+  const aPkgs = mainApp.getAllPackages().map((pkg, index) => {
+    const pkgIndex = String(index + 2).padStart(2, '0');
+    return {
+      name: `${pkgIndex} - ${pkg} API`,
+      item: mainApp.getTablesInPackage(pkg).map(table => {
+        return {
+          name: `${table} Operations`,
+          item: [
+            {
+              name: `Create ${table} (New)`,
+              request: {
+                method: 'POST',
+                header: [
+                  {key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text'},
+                  {key: 'x-period-id', value: '{{periodId}}', type: 'text'},
+                  {key: 'Content-Type', value: 'application/json', type: 'text'}
+                ],
+                body: {
+                  mode: 'raw',
+                  raw: JSON.stringify({}, null, 2)
+                },
+                url: {
+                  raw: `{{baseUrl}}/PhsAPI/${pkg}/${table}/New`,
+                  host: ['{{baseUrl}}'],
+                  path: ['PhsAPI', pkg, table, 'New']
+                }
+              }
+            },
+            {
+              name: `List ${table} Records`,
+              request: {
+                method: 'GET',
+                header: [
+                  {key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text'}
+                ],
+                url: {
+                  raw: `{{baseUrl}}/PhsAPI/${pkg}/${table}/List?page=1&pageSize=10`,
+                  host: ['{{baseUrl}}'],
+                  path: ['PhsAPI', pkg, table, 'List'],
+                  query: [
+                    {key: 'page', value: '1'},
+                    {key: 'pageSize', value: '10'}
+                  ]
+                }
+              }
+            },
+            {
+              name: `Get ${table} Record by ID`,
+              request: {
+                method: 'GET',
+                header: [
+                  {key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text'}
+                ],
+                url: {
+                  raw: `{{baseUrl}}/PhsAPI/${pkg}/${table}/Get/1`,
+                  host: ['{{baseUrl}}'],
+                  path: ['PhsAPI', pkg, table, 'Get', '1']
+                }
+              }
+            },
+            {
+              name: `Update ${table} Record`,
+              request: {
+                method: 'PUT',
+                header: [
+                  {key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text'},
+                  {key: 'Content-Type', value: 'application/json', type: 'text'}
+                ],
+                body: {
+                  mode: 'raw',
+                  raw: JSON.stringify({}, null, 2)
+                },
+                url: {
+                  raw: `{{baseUrl}}/PhsAPI/${pkg}/${table}/Update/1`,
+                  host: ['{{baseUrl}}'],
+                  path: ['PhsAPI', pkg, table, 'Update', '1']
+                }
+              }
+            },
+            {
+              name: `${table} Autocomplete Query`,
+              request: {
+                method: 'GET',
+                header: [
+                  {key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text'},
+                ],
+                url: {
+                  raw: `{{baseUrl}}/PhsAPI/${pkg}/${table}/Autocomplete?term=test`,
+                  host: ['{{baseUrl}}'],
+                  path: ['PhsAPI', pkg, table, 'Autocomplete'],
+                  query: [
+                    {key: 'term', value: 'test'}
+                  ]
+                }
+              }
+            }
+          ]
+        };
+      })
+    };
+  });
+
   const collection = {
     info: {
       name: 'PhsAPI - Postman Test Collection',
@@ -112,172 +214,7 @@ function generatePostman() {
           }
         ]
       },
-      {
-        name: '02 - Accounting (Acc) API',
-        item: [
-          {
-            name: 'Create Acc Master with Transactions (New)',
-            request: {
-              method: 'POST',
-              header: [
-                {key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text'},
-                {key: 'x-period-id', value: '{{periodId}}', type: 'text'},
-                {key: 'Content-Type', value: 'application/json', type: 'text'}
-              ],
-              body: {
-                mode: 'raw',
-                raw: JSON.stringify({
-                  docNo: "DOC-2026-101",
-                  mdate: "01-08-2026",
-                  notes: "Sample Accounting Master Entry",
-                  transactions: [
-                    {accountNo: "101", amount: 1500.00},
-                    {accountNo: "102", amount: 2500.50}
-                  ]
-                }, null, 2)
-              },
-              url: {
-                raw: '{{baseUrl}}/PhsAPI/Acc/Acc_Master/New',
-                host: ['{{baseUrl}}'],
-                path: ['PhsAPI', 'Acc', 'Acc_Master', 'New']
-              }
-            }
-          },
-          {
-            name: 'List Acc Master Records',
-            request: {
-              method: 'GET',
-              header: [
-                {key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text'}
-              ],
-              url: {
-                raw: '{{baseUrl}}/PhsAPI/Acc/Acc_Master/List?page=1&pageSize=10',
-                host: ['{{baseUrl}}'],
-                path: ['PhsAPI', 'Acc', 'Acc_Master', 'List'],
-                query: [
-                  {key: 'page', value: '1'},
-                  {key: 'pageSize', value: '10'}
-                ]
-              }
-            }
-          },
-          {
-            name: 'Get Acc Master Record by ID',
-            request: {
-              method: 'GET',
-              header: [
-                {key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text'}
-              ],
-              url: {
-                raw: '{{baseUrl}}/PhsAPI/Acc/Acc_Master/Get/101',
-                host: ['{{baseUrl}}'],
-                path: ['PhsAPI', 'Acc', 'Acc_Master', 'Get', '101']
-              }
-            }
-          },
-          {
-            name: 'Update Acc Master Record',
-            request: {
-              method: 'PUT',
-              header: [
-                {key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text'},
-                {key: 'Content-Type', value: 'application/json', type: 'text'}
-              ],
-              body: {
-                mode: 'raw',
-                raw: JSON.stringify({
-                  notes: "Updated Accounting Master Notes"
-                }, null, 2)
-              },
-              url: {
-                raw: '{{baseUrl}}/PhsAPI/Acc/Acc_Master/Update/101',
-                host: ['{{baseUrl}}'],
-                path: ['PhsAPI', 'Acc', 'Acc_Master', 'Update', '101']
-              }
-            }
-          },
-          {
-            name: 'Account Autocomplete Query',
-            request: {
-              method: 'GET',
-              header: [
-                {key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text'},
-              ],
-              url: {
-                raw: '{{baseUrl}}/PhsAPI/Acc/Account/Autocomplete?term=cash',
-                host: ['{{baseUrl}}'],
-                path: ['PhsAPI', 'Acc', 'Account', 'Autocomplete'],
-                query: [
-                  {key: 'term', value: 'cash'}
-                ]
-              }
-            }
-          }
-        ]
-      },
-      {
-        name: '03 - Storage (Stor) API',
-        item: [
-          {
-            name: 'List Items in Storage',
-            request: {
-              method: 'GET',
-              header: [
-                {key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text'},
-              ],
-              url: {
-                raw: '{{baseUrl}}/PhsAPI/Stor/Items/List?page=1&pageSize=20',
-                host: ['{{baseUrl}}'],
-                path: ['PhsAPI', 'Stor', 'Items', 'List'],
-                query: [
-                  {key: 'page', value: '1'},
-                  {key: 'pageSize', value: '20'}
-                ]
-              }
-            }
-          },
-          {
-            name: 'Items Autocomplete',
-            request: {
-              method: 'GET',
-              header: [
-                {key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text'},
-              ],
-              url: {
-                raw: '{{baseUrl}}/PhsAPI/Stor/Items/Autocomplete?term=item',
-                host: ['{{baseUrl}}'],
-                path: ['PhsAPI', 'Stor', 'Items', 'Autocomplete'],
-                query: [
-                  {key: 'term', value: 'item'}
-                ]
-              }
-            }
-          }
-        ]
-      },
-      {
-        name: '04 - Employee (Emp) API',
-        item: [
-          {
-            name: 'List Employees',
-            request: {
-              method: 'GET',
-              header: [
-                {key: 'Authorization', value: 'Bearer {{jwtToken}}', type: 'text'},
-              ],
-              url: {
-                raw: '{{baseUrl}}/PhsAPI/Emp/Employee/List?page=1&pageSize=10',
-                host: ['{{baseUrl}}'],
-                path: ['PhsAPI', 'Emp', 'Employee', 'List'],
-                query: [
-                  {key: 'page', value: '1'},
-                  {key: 'pageSize', value: '10'}
-                ]
-              }
-            }
-          }
-        ]
-      }
+      ...aPkgs
     ]
   };
 
