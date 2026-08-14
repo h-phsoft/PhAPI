@@ -6,11 +6,12 @@ const i18nHelper = require('../utils/i18nHelper');
 
 class AuthController {
   async login(req, res, next) {
-    try {
-      let credentials = req.body;
-      const context = req.context || {};
-      const lang = context.lang || req.headers['vlang'] || req.headers['vLang'] || 'en';
+    const logger = require('../utils/logger');
+    let credentials = req.body;
+    const context = req.context || {};
+    const lang = context.lang || req.headers['vlang'] || req.headers['vLang'] || 'en';
 
+    try {
       const authHeader = req.headers['authorization'] || req.headers['Authorization'];
       if (authHeader && authHeader.toLowerCase().startsWith('basic ')) {
         const base64Str = authHeader.substring(6);
@@ -22,15 +23,31 @@ class AuthController {
         }
       }
 
+      logger.info(`[AuthController] Login attempt initiated from IP: ${req.ip}`);
       const result = await AuthService.login(credentials, context);
       const msg = i18nHelper.getMessage('SUCCESS', lang);
 
       const {token, ...userData} = result;
+      logger.info(`[AuthController] Login successful for user: ${userData.username || 'unknown'} in tenant: ${userData.tenantId || 'unknown'}`);
       return res.status(200).json(ResultManager.welcome(msg, token, userData));
     } catch (err) {
       if (err.name === 'AuthError' || err.statusCode === 401) {
+        logger.warn(`[AuthController] Login failed from IP: ${req.ip} - Reason: ${err.message}`);
         return res.status(200).json(ResultManager.invalidLogin(err.message));
       }
+      logger.error(`[AuthController] Unexpected error during login: ${err.message}`);
+      next(err);
+    }
+  }
+
+  async logout(req, res, next) {
+    try {
+      const logger = require('../utils/logger');
+      const user = req.user || {};
+      logger.info(`[AuthController] Logout requested for user: ${user.userId || 'unknown'} in tenant: ${user.tenantId || 'unknown'}`);
+      
+      return res.status(200).json(ResultManager.success('Logged out successfully'));
+    } catch (err) {
       next(err);
     }
   }

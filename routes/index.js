@@ -23,6 +23,11 @@ router.post('/UserAccount/getUserProfile', (req, res, next) => authController.ge
 router.get('/PhsAPI/UserAccount/getUserProfile', (req, res, next) => authController.getUserProfile(req, res, next));
 router.get('/UserAccount/getUserProfile', (req, res, next) => authController.getUserProfile(req, res, next));
 
+router.post('/PhsAPI/Auth/Logout', (req, res, next) => authController.logout(req, res, next));
+router.post('/Auth/Logout', (req, res, next) => authController.logout(req, res, next));
+router.post('/PhsAPI/UserAccount/Logout', (req, res, next) => authController.logout(req, res, next));
+router.post('/UserAccount/Logout', (req, res, next) => authController.logout(req, res, next));
+
 
 // Helper function to mount routes on both prefixed (/PhsAPI) and non-prefixed paths
 function mount(method, pathStr, handler) {
