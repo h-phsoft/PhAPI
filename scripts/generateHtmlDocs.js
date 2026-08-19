@@ -488,7 +488,7 @@ function generateHtmlDocs() {
             <tr>
               <td><span class="entity-tag">x-period-id</span></td>
               <td>Number</td>
-              <td>Operating Period ID (Injected into Mode 11 autonumber queries)</td>
+              <td>Operating Period ID</td>
               <td>2026</td>
             </tr>
             <tr>
@@ -724,7 +724,7 @@ function selectPackage(pkg, target) {
   document.getElementById('catalogSection').style.display = 'block';
 
   document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-  if (target) { target.classList.add('active'); } else { 
+  if (target) { target.classList.add('active'); } else {
     const el = document.querySelector('.pkg-nav-item[data-package="' + pkg + '"]');
     if (el) el.classList.add('active');
   }
