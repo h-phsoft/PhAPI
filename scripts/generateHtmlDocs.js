@@ -440,17 +440,17 @@ function generateHtmlDocs() {
     <sidebar>
       <div class="search-box">
         <span class="search-icon">🔍</span>
-        <input type="text" id="packageSearch" placeholder="Search packages & models..." onkeyup="filterSidebar()">
+        <input type="text" id="packageSearch" placeholder="Search packages & models...">
       </div>
       <div class="sidebar-menu" id="sidebarMenu">
         <div class="sidebar-section-title">Core Endpoints</div>
-        <a class="nav-item active" onclick="showSection('overviewSection')">Overview & Auth</a>
-        <a class="nav-item" onclick="showSection('endpointsSection')">Generic REST Endpoints</a>
-        <a class="nav-item" onclick="showSection('autocompleteSection')">Autocomplete API</a>
+        <a class="nav-item active" data-section="overviewSection">Overview & Auth</a>
+        <a class="nav-item" data-section="endpointsSection">Generic REST Endpoints</a>
+        <a class="nav-item" data-section="autocompleteSection">Autocomplete API</a>
 
         <div class="sidebar-section-title">Packages Catalog (${packages.length})</div>
         ${packages.map(pkg => `
-          <a class="nav-item pkg-nav-item" onclick="selectPackage('${pkg}')">
+          <a class="nav-item pkg-nav-item" data-package="${pkg}">
             <span>${pkg}</span>
             <span class="badge-count">${catalogData[pkg].length}</span>
           </a>
@@ -683,61 +683,88 @@ function generateHtmlDocs() {
     </main>
   </div>
 
-  <script>
-    const catalogData = ${catalogJsonStr};
-
-    function showSection(sectionId) {
-      document.getElementById('overviewSection').style.display = sectionId === 'overviewSection' ? 'block' : 'none';
-      document.getElementById('endpointsSection').style.display = sectionId === 'endpointsSection' ? 'block' : 'none';
-      document.getElementById('catalogSection').style.display = sectionId === 'catalogSection' ? 'block' : 'none';
-
-      document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-      event.target.classList.add('active');
-    }
-
-    function selectPackage(pkg) {
-      const entities = catalogData[pkg] || [];
-      document.getElementById('catalogTitle').innerText = '📦 Package: ' + pkg + ' (' + entities.length + ' Entities)';
-
-      let html = '<table><thead><tr><th>Entity / Table</th><th>Synonym</th><th>Primary Key</th><th>Children</th><th>Fields</th></tr></thead><tbody>';
-
-      entities.forEach(ent => {
-        html += '<tr>' +
-          '<td><span class="entity-tag">' + ent.tableName + '</span></td>' +
-          '<td>' + ent.synonym + '</td>' +
-          '<td>' + ent.primaryKey + '</td>' +
-          '<td>' + (ent.hasChilds ? 'Yes' : 'No') + '</td>' +
-          '<td>' + ent.fieldsCount + ' fields</td>' +
-          '</tr>';
-      });
-
-      html += '</tbody></table>';
-
-      document.getElementById('catalogContent').innerHTML = html;
-
-      document.getElementById('overviewSection').style.display = 'none';
-      document.getElementById('endpointsSection').style.display = 'none';
-      document.getElementById('catalogSection').style.display = 'block';
-
-      document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-      event.currentTarget.classList.add('active');
-    }
-
-    function filterSidebar() {
-      const q = document.getElementById('packageSearch').value.toLowerCase();
-      document.querySelectorAll('.pkg-nav-item').forEach(item => {
-        const text = item.innerText.toLowerCase();
-        item.style.display = text.includes(q) ? 'flex' : 'none';
-      });
-    }
-
-    // Default view
-    selectPackage('${packages[0]}');
-  </script>
+  <script src="app.js"></script>
 </body>
 </html>`;
 
+  const appJsContent = `
+const catalogData = ${catalogJsonStr};
+
+function showSection(sectionId, target) {
+  document.getElementById('overviewSection').style.display = sectionId === 'overviewSection' ? 'block' : 'none';
+  document.getElementById('endpointsSection').style.display = sectionId === 'endpointsSection' ? 'block' : 'none';
+  document.getElementById('catalogSection').style.display = sectionId === 'catalogSection' ? 'block' : 'none';
+
+  document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+  if (target) target.classList.add('active');
+}
+
+function selectPackage(pkg, target) {
+  const entities = catalogData[pkg] || [];
+  document.getElementById('catalogTitle').innerText = '📦 Package: ' + pkg + ' (' + entities.length + ' Entities)';
+
+  let html = '<table><thead><tr><th>Entity / Table</th><th>Synonym</th><th>Primary Key</th><th>Children</th><th>Fields</th></tr></thead><tbody>';
+
+  entities.forEach(ent => {
+    html += '<tr>' +
+      '<td><span class="entity-tag">' + ent.tableName + '</span></td>' +
+      '<td>' + ent.synonym + '</td>' +
+      '<td>' + ent.primaryKey + '</td>' +
+      '<td>' + (ent.hasChilds ? 'Yes' : 'No') + '</td>' +
+      '<td>' + ent.fieldsCount + ' fields</td>' +
+      '</tr>';
+  });
+
+  html += '</tbody></table>';
+
+  document.getElementById('catalogContent').innerHTML = html;
+
+  document.getElementById('overviewSection').style.display = 'none';
+  document.getElementById('endpointsSection').style.display = 'none';
+  document.getElementById('catalogSection').style.display = 'block';
+
+  document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+  if (target) { target.classList.add('active'); } else { 
+    const el = document.querySelector('.pkg-nav-item[data-package="' + pkg + '"]');
+    if (el) el.classList.add('active');
+  }
+}
+
+function filterSidebar() {
+  const q = document.getElementById('packageSearch').value.toLowerCase();
+  document.querySelectorAll('.pkg-nav-item').forEach(item => {
+    const text = item.innerText.toLowerCase();
+    item.style.display = text.includes(q) ? 'flex' : 'none';
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Navigation items
+  document.querySelectorAll('.nav-item').forEach(el => {
+    el.addEventListener('click', (e) => {
+      const section = el.getAttribute('data-section');
+      const pkg = el.getAttribute('data-package');
+      if (section) {
+        showSection(section, el);
+      } else if (pkg) {
+        selectPackage(pkg, el);
+      }
+    });
+  });
+
+  // Search box
+  const searchInput = document.getElementById('packageSearch');
+  if (searchInput) {
+    searchInput.addEventListener('keyup', filterSidebar);
+  }
+});
+
+// Default view
+selectPackage('${packages[0]}');
+`;
+
   fs.writeFileSync(path.join(docsDir, 'index.html'), htmlContent, 'utf8');
+  fs.writeFileSync(path.join(docsDir, 'app.js'), appJsContent, 'utf8');
   console.log(`Successfully generated interactive HTML documentation at ${docsDir}/index.html`);
 }
 

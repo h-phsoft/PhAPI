@@ -43,6 +43,12 @@ mainApp.loadMetadata(modulesDir);
 // Serve static HTML documentation portal at /docs
 app.use('/docs', express.static(path.join(__dirname, 'docs')));
 
+// Serve static landing page at root
+app.use(express.static(path.join(__dirname, 'public')));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 // Public Health check
 app.get('/health', (req, res) => {
   res.json({
@@ -90,14 +96,12 @@ async function checkDatabaseConnectionOnStartup() {
 }
 
 // Start server
-if (require.main === module) {
-  app.listen(PORT, async () => {
-    console.log(`[PhsAPI] Server running on http://localhost:${PORT}`);
-    console.log(`[PhsAPI] Interactive Docs available at http://localhost:${PORT}/docs/index.html`);
-    console.log(`[PhsAPI] Environment: ${process.env.NODE_ENV || 'development'}`);
-    await checkDatabaseConnectionOnStartup();
-  });
-}
+app.listen(PORT, async () => {
+  console.log(`[PhsAPI] Server running on http://localhost:${PORT}`);
+  console.log(`[PhsAPI] Interactive Docs available at http://localhost:${PORT}/docs/index.html`);
+  console.log(`[PhsAPI] Environment: ${process.env.NODE_ENV || 'development'}`);
+  await checkDatabaseConnectionOnStartup();
+});
 
 module.exports = app;
 
