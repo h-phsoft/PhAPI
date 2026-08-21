@@ -135,6 +135,10 @@ module.exports = {
   // How long a user's resolved program set is cached, in seconds.
   rbacCacheTtlSeconds: parseInt(process.env.RBAC_CACHE_TTL_SECONDS || '300', 10),
 
+  // Audit writes are fail-safe, so this defaults on; tenants without a Phs_Logs
+  // table trip a breaker after a few failures rather than logging every request.
+  auditLogEnabled: String(process.env.AUDIT_LOG || 'true').toLowerCase() !== 'false',
+
   rateLimitWindowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || String(15 * 60 * 1000), 10),
   // Generous, because an ERP screen fans out into many lookup calls per user action.
   rateLimitMax: parseInt(process.env.RATE_LIMIT_MAX || '1000', 10),

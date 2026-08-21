@@ -1,6 +1,7 @@
 const { UnifiedService } = require('../services/unifiedService');
 const autocompleteService = require('../services/autocompleteService');
 const reportService = require('../services/reportService');
+const auditService = require('../services/auditService');
 const ResultManager = require('../utils/responseManager');
 const i18nHelper = require('../utils/i18nHelper');
 const { coercePage, coercePageSize } = require('../utils/pagination');
@@ -26,6 +27,14 @@ class UnifiedController {
       const context = req.context || {};
 
       const result = await UnifiedService.create(pkg, table, data, context);
+
+      auditService.recordAsync({
+        type: 'CREATE',
+        text: `${pkg}/${table} id=${(result && (result.id || result.Id)) || '?'}`,
+        context,
+        req
+      });
+
       res.status(200).json(ResultManager.ok(result));
     } catch (err) {
       next(err);
@@ -115,6 +124,16 @@ class UnifiedController {
       const context = req.context || {};
 
       const result = await UnifiedService.update(pkg, table, id, data, context);
+
+      auditService.recordAsync({
+        type: 'UPDATE',
+        // Field names only: values may hold business data that does not belong
+        // in a log line.
+        text: `${pkg}/${table} id=${id} fields=${Object.keys(data || {}).join(',')}`,
+        context,
+        req
+      });
+
       res.status(200).json(ResultManager.ok(result));
     } catch (err) {
       next(err);
@@ -158,6 +177,14 @@ class UnifiedController {
       const context = req.context || {};
 
       const result = await UnifiedService.delete(pkg, table, id, context);
+
+      auditService.recordAsync({
+        type: 'DELETE',
+        text: `${pkg}/${table} id=${id}`,
+        context,
+        req
+      });
+
       res.status(200).json(ResultManager.ok(result));
     } catch (err) {
       next(err);

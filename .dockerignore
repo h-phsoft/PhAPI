@@ -1,0 +1,15 @@
+node_modules
+npm-debug.log*
+.git
+.gitignore
+.github
+
+# Never copy real configuration or credentials into an image layer.
+.env
+.env.*
+!.env.example
+
+logs
+*.log
+nbproject
+scratch

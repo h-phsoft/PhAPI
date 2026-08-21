@@ -325,6 +325,51 @@ async function runAllTests() {
   });
 
   // -------------------------------------------------------------
+  // 4f. AUDIT TRAIL TESTS
+  // -------------------------------------------------------------
+  console.log('\n--- 4f. Audit Trail Tests ---');
+
+  const auditService = require('../services/auditService');
+
+  await testAsync('Audit failures never propagate to the caller', async () => {
+    auditService.resetBreakers();
+
+    // 'no-such-copy' cannot be resolved, so the write fails. record() must
+    // still resolve false rather than reject, or a successful mutation would be
+    // reported to the client as an error.
+    const written = await auditService.record({
+      type: 'CREATE',
+      text: 'test',
+      context: { tenantId: 'no-such-copy', userId: '1' }
+    });
+
+    assert.strictEqual(written, false);
+    auditService.resetBreakers();
+  });
+
+  await testAsync('Audit breaker stops retrying a tenant that keeps failing', async () => {
+    auditService.resetBreakers();
+    const tenant = 'another-missing-copy';
+
+    for (let i = 0; i < auditService.FAILURE_THRESHOLD; i++) {
+      await auditService.record({ type: 'CREATE', text: 'test', context: { tenantId: tenant, userId: '1' } });
+    }
+
+    assert.strictEqual(
+      auditService.failureCount(tenant) >= auditService.FAILURE_THRESHOLD,
+      true,
+      'consecutive failures should reach the threshold'
+    );
+
+    // Past the threshold the tenant is skipped outright.
+    const skipped = await auditService.record({ type: 'CREATE', text: 'test', context: { tenantId: tenant, userId: '1' } });
+    assert.strictEqual(skipped, false);
+
+    auditService.resetBreakers();
+    assert.strictEqual(auditService.failureCount(tenant), 0, 'resetBreakers should clear the count');
+  });
+
+  // -------------------------------------------------------------
   // 4e. REPORT / DASHBOARD TESTS
   // -------------------------------------------------------------
   console.log('\n--- 4e. Report & Dashboard Tests ---');
