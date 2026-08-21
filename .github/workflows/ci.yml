@@ -1,0 +1,80 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+    branches: ['**']
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: ['22.x', '24.x']
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        # The suite validates configuration at startup, so it needs a secret even
+        # though nothing here issues a real token. Tests needing a provisioned
+        # tenant are skipped unless RUN_INTEGRATION_TESTS=1.
+        run: npm test
+        env:
+          JWT_SECRET: ci-only-secret-not-used-for-any-real-token-0123456789abcdef
+          NODE_ENV: development
+
+  audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check for known vulnerabilities
+        run: npm audit --audit-level=high
+
+  secrets:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Ensure no .env file is committed
+        # .env holds tenant database credentials and the signing secret. Only the
+        # documented template belongs in the repository.
+        run: |
+          if git ls-files --error-unmatch .env >/dev/null 2>&1; then
+            echo "::error::.env is tracked by git. Remove it and rotate the credentials it held."
+            exit 1
+          fi
+          echo "OK: .env is not tracked"
+
+      - name: Ensure no hardcoded JWT fallback secret
+        run: |
+          if grep -rn "phs_api_secret_key_2026" --include='*.js' . \
+               | grep -v node_modules \
+               | grep -v 'config/env.js'; then
+            echo "::error::Hardcoded signing secret found outside the forbidden-value list."
+            exit 1
+          fi
+          echo "OK: no hardcoded signing secret"

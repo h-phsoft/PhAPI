@@ -14,6 +14,12 @@ console.log('===================================================\n');
 
 let passedTests = 0;
 let totalTests = 0;
+let skippedTests = 0;
+
+// Some tests need a fully provisioned tenant (Cpy_User, Phs_Cpy and friends),
+// which a plain checkout and CI do not have. They are skipped unless asked for:
+//   RUN_INTEGRATION_TESTS=1 npm test
+const RUN_INTEGRATION = process.env.RUN_INTEGRATION_TESTS === '1';
 
 function test(name, fn) {
   totalTests++;
@@ -37,6 +43,16 @@ async function testAsync(name, fn) {
     console.error(`✗ [FAIL] ${name}`);
     console.error(`  Error: ${err.message}`);
   }
+}
+
+/** Runs only when RUN_INTEGRATION_TESTS=1; otherwise reported as skipped. */
+async function testIntegration(name, fn) {
+  if (!RUN_INTEGRATION) {
+    skippedTests++;
+    console.log(`- [SKIP] ${name} (needs a provisioned tenant; set RUN_INTEGRATION_TESTS=1)`);
+    return;
+  }
+  await testAsync(name, fn);
 }
 
 async function runAllTests() {
@@ -309,6 +325,38 @@ async function runAllTests() {
   });
 
   // -------------------------------------------------------------
+  // 4d. PAGINATION COERCION TESTS
+  // -------------------------------------------------------------
+  console.log('\n--- 4d. Pagination Coercion Tests ---');
+
+  const { coercePage, coercePageSize, MAX_PAGE_SIZE } = require('../utils/pagination');
+
+  test('Pagination coerces unusable page values to the first page', () => {
+    assert.strictEqual(coercePage('3'), 3);
+    assert.strictEqual(coercePage(3), 3);
+    // parseInt alone would yield NaN here and reach the query builder.
+    assert.strictEqual(coercePage('abc'), 1);
+    assert.strictEqual(coercePage(undefined), 1);
+    assert.strictEqual(coercePage(null), 1);
+    assert.strictEqual(coercePage(0), 1);
+    assert.strictEqual(coercePage(-4), 1);
+  });
+
+  test('Pagination caps page size so one request cannot pull a whole table', () => {
+    assert.strictEqual(coercePageSize('50'), 50);
+    assert.strictEqual(coercePageSize(999999), MAX_PAGE_SIZE);
+    assert.strictEqual(coercePageSize('abc'), 20, 'falls back to the default');
+    assert.strictEqual(coercePageSize(undefined), 20);
+    assert.strictEqual(coercePageSize(0), 20);
+    assert.strictEqual(coercePageSize(-10), 20);
+  });
+
+  test('Pagination honours a caller-supplied fallback but still caps it', () => {
+    assert.strictEqual(coercePageSize(undefined, 500), 500);
+    assert.strictEqual(coercePageSize(undefined, 99999), MAX_PAGE_SIZE);
+  });
+
+  // -------------------------------------------------------------
   // 4c. AUTHORIZATION TARGET MAPPING TESTS
   // -------------------------------------------------------------
   console.log('\n--- 4c. Authorization Mapping Tests ---');
@@ -383,7 +431,7 @@ async function runAllTests() {
   const env = require('../config/env');
   const testToken = jwt.sign({ jui: 1, Copy: '01-Admin' }, env.jwtSecret);
 
-  await testAsync('Authenticated POST /UC/InitForm returns 200 OK', async () => {
+  await testIntegration('Authenticated POST /UC/InitForm returns 200 OK', async () => {
     const postData = JSON.stringify({ package: 'Acc', table: 'Acc_Master' });
     const res = await new Promise((resolve, reject) => {
       const req = http.request('http://localhost:3009/UC/InitForm', {
@@ -407,7 +455,7 @@ async function runAllTests() {
     assert.strictEqual(res.body.code, 200);
   });
 
-  await testAsync('Authenticated POST /CC/getCopies returns 200 OK', async () => {
+  await testIntegration('Authenticated POST /CC/getCopies returns 200 OK', async () => {
     const res = await new Promise((resolve, reject) => {
       const req = http.request('http://localhost:3009/CC/getCopies', {
         method: 'POST',
@@ -436,6 +484,9 @@ async function runAllTests() {
   // -------------------------------------------------------------
   console.log('\n===================================================');
   console.log(`       TEST RESULTS: ${passedTests} / ${totalTests} PASSED        `);
+  if (skippedTests > 0) {
+    console.log(`       ${skippedTests} skipped (RUN_INTEGRATION_TESTS=1 to include)`);
+  }
   console.log('===================================================\n');
 
   process.exit(passedTests === totalTests ? 0 : 1);

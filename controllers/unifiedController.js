@@ -3,6 +3,7 @@ const autocompleteService = require('../services/autocompleteService');
 const UnifiedReportService = require('../services/unifiedReportService');
 const ResultManager = require('../utils/responseManager');
 const i18nHelper = require('../utils/i18nHelper');
+const { coercePage, coercePageSize } = require('../utils/pagination');
 
 class UnifiedController {
   async initForm(req, res, next) {
@@ -41,8 +42,8 @@ class UnifiedController {
       const vWhere = req.body && Object.keys(req.body).length > 0 ? req.body : filters;
 
       const options = {
-        page: page ? parseInt(page, 10) : 1,
-        pageSize: pageSize ? parseInt(pageSize, 10) : 500,
+        page: coercePage(page),
+        pageSize: coercePageSize(pageSize, 500),
         sortBy,
         sortOrder,
         filters: vWhere
@@ -59,8 +60,8 @@ class UnifiedController {
     try {
       const pkg = req.params.package || req.params.pkgName;
       const table = req.params.table || req.params.tableName;
-      const page = req.params.page || 1;
-      const size = req.params.size || 20;
+      const page = coercePage(req.params.page);
+      const size = coercePageSize(req.params.size);
       const conditions = req.body;
       const context = req.context || {};
 
@@ -75,8 +76,8 @@ class UnifiedController {
     try {
       const pkg = req.params.package || req.params.pkgName;
       const table = req.params.table || req.params.tableName;
-      const page = req.params.page || 1;
-      const size = req.params.size || 20;
+      const page = coercePage(req.params.page);
+      const size = coercePageSize(req.params.size);
       const queryString = typeof req.body === 'string' ? req.body : (req.body?.query || '');
       const context = req.context || {};
 
