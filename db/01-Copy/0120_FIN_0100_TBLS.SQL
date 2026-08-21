@@ -186,6 +186,7 @@ Create Table Fin_Invoice_Mst                               -- فواتير ال�
   Status_Id     Number(5) Default 0,                       -- الحالة 1 مسودة \ 2 نهائية
   Method_Id     Number(5) Default 0,                       -- النوع 0 نقدا \ 1 شيك \ 2 حوالة مصرفية \ 3 حوالة هاتفية \ 4 حوالة
   Cont_Id       Number(10) Default 0,                      -- المتعامل\الزبون
+  Acc_Id        Number(9)  Default 0,                      -- الحساب
   Vhr_Id        Number(10),                                -- مفتاح سند القيد
   Bank_Id       Number(5),                                 -- البنك
   Ord_Id        Number(10),                                -- مقتاح الأمر
@@ -213,6 +214,7 @@ Create Table Fin_Invoice_Mst                               -- فواتير ال�
   CONSTRAINT    Fin_Inv_Unit_FK      Foreign Key (Unit_Id    ) References Cpy_Unit        (Id),
   CONSTRAINT    Fin_Inv_Oper_FK      Foreign Key (Oper_Id    ) References Cpy_Oper        (Id),
   CONSTRAINT    Fin_Inv_Cont_FK      Foreign Key (Cont_Id    ) References Mng_Cont        (Id),
+  CONSTRAINT    Fin_Inv_Acc_FK       Foreign Key (Acc_Id     ) References Acc_Acc         (Id),
   CONSTRAINT    Fin_Inv_RActv_FK     Foreign Key (Dept_RId   ) References Cpy_Dept        (Id),
   CONSTRAINT    Fin_Inv_RASec_FK     Foreign Key (Unit_RId   ) References Cpy_Unit        (Id),
   CONSTRAINT    Fin_Inv_RASOp_FK     Foreign Key (Oper_RId   ) References Cpy_Oper        (Id),
@@ -289,6 +291,7 @@ Create Table Fin_Debit_Mst                            -- الوثائق المد
   Status_Id     Number(5) Default 0,                  -- الحالة 1 مسودة \ 2 نهائية
   Method_Id     Number(5) Default 0,                  -- النوع 0 نقدا \ 1 شيك \ 2 حوالة مصرفية \ 3 حوالة هاتفية \ 4 حوالة
   Cont_Id       Number(10) Default 0,                 -- المتعامل\الزبون
+  Acc_Id        Number(9)  Default 0,                 -- الحساب
   Vhr_Id        Number(10),                           -- مفتاح سند القيد
   Bank_Id       Number(5),                            -- البنك
   Ord_Id        Number(10),                           -- مقتاح الأمر
@@ -316,6 +319,7 @@ Create Table Fin_Debit_Mst                            -- الوثائق المد
   CONSTRAINT    Fin_Dbt_Unit_FK      Foreign Key (Unit_Id    ) References Cpy_Unit        (Id),
   CONSTRAINT    Fin_Dbt_Oper_FK      Foreign Key (Oper_Id    ) References Cpy_Oper        (Id),
   CONSTRAINT    Fin_Dbt_Cont_FK      Foreign Key (Cont_Id    ) References Mng_Cont        (Id),
+  CONSTRAINT    Fin_Dbt_Acc_FK       Foreign Key (Acc_Id     ) References Acc_Acc         (Id),
   CONSTRAINT    Fin_Dbt_RActv_FK     Foreign Key (Dept_RId   ) References Cpy_Dept        (Id),
   CONSTRAINT    Fin_Dbt_RASec_FK     Foreign Key (Unit_RId   ) References Cpy_Unit        (Id),
   CONSTRAINT    Fin_Dbt_RASOp_FK     Foreign Key (Oper_RId   ) References Cpy_Oper        (Id),
@@ -392,6 +396,7 @@ Create Table Fin_Credit_Mst                           -- الوثائق الدا
   Status_Id     Number(5) Default 0,                  -- الحالة 1 مسودة \ 2 نهائية
   Method_Id     Number(5) Default 0,                  -- النوع 0 نقدا \ 1 شيك \ 2 حوالة مصرفية \ 3 حوالة هاتفية \ 4 حوالة
   Cont_Id       Number(10) Default 0,                 -- المتعامل\الزبون
+  Acc_Id        Number(9)  Default 0,                 -- الحساب
   Vhr_Id        Number(10),                           -- مفتاح سند القيد
   Bank_Id       Number(5),                            -- البنك
   Ord_Id        Number(10),                           -- مقتاح الأمر
@@ -419,6 +424,7 @@ Create Table Fin_Credit_Mst                           -- الوثائق الدا
   CONSTRAINT    Fin_Crd_Unit_FK      Foreign Key (Unit_Id    ) References Cpy_Unit        (Id),
   CONSTRAINT    Fin_Crd_Oper_FK      Foreign Key (Oper_Id    ) References Cpy_Oper        (Id),
   CONSTRAINT    Fin_Crd_Cont_FK      Foreign Key (Cont_Id    ) References Mng_Cont        (Id),
+  CONSTRAINT    Fin_Crd_Acc_FK       Foreign Key (Acc_Id     ) References Acc_Acc         (Id),
   CONSTRAINT    Fin_Crd_RActv_FK     Foreign Key (Dept_RId   ) References Cpy_Dept        (Id),
   CONSTRAINT    Fin_Crd_RASec_FK     Foreign Key (Unit_RId   ) References Cpy_Unit        (Id),
   CONSTRAINT    Fin_Crd_RASOp_FK     Foreign Key (Oper_RId   ) References Cpy_Oper        (Id),
@@ -495,6 +501,7 @@ Create Table Fin_Expense_Mst                          -- مصاريف
   Status_Id     Number(5) Default 0,                  -- الحالة 1 مسودة \ 2 نهائية
   Method_Id     Number(5) Default 0,                  -- النوع 0 نقدا \ 1 شيك \ 2 حوالة مصرفية \ 3 حوالة هاتفية \ 4 حوالة
   Cont_Id       Number(10) Default 0,                 -- المتعامل\الزبون
+  Acc_Id        Number(9)  Default 0,                 -- الحساب
   Vhr_Id        Number(10),                           -- مفتاح سند القيد
   Bank_Id       Number(5),                            -- البنك
   Ord_Id        Number(10),                           -- مقتاح الأمر
@@ -522,6 +529,7 @@ Create Table Fin_Expense_Mst                          -- مصاريف
   CONSTRAINT    Fin_Exp_Unit_FK      Foreign Key (Unit_Id    ) References Cpy_Unit        (Id),
   CONSTRAINT    Fin_Exp_Oper_FK      Foreign Key (Oper_Id    ) References Cpy_Oper        (Id),
   CONSTRAINT    Fin_Exp_Cont_FK      Foreign Key (Cont_Id    ) References Mng_Cont        (Id),
+  CONSTRAINT    Fin_Exp_Acc_FK       Foreign Key (Acc_Id     ) References Acc_Acc         (Id),
   CONSTRAINT    Fin_Exp_RActv_FK     Foreign Key (Dept_RId   ) References Cpy_Dept        (Id),
   CONSTRAINT    Fin_Exp_RASec_FK     Foreign Key (Unit_RId   ) References Cpy_Unit        (Id),
   CONSTRAINT    Fin_Exp_RASOp_FK     Foreign Key (Oper_RId   ) References Cpy_Oper        (Id),

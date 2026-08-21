@@ -1,0 +1,464 @@
+CREATE OR REPLACE VIEW Proj_Team_View AS 
+SELECT ALL
+       T.Id , T.Name   , T.Image,
+       U.Id   User_Id  , U.Name   User_Name  ,
+       ST.Id  Status_Id, ST.Name  Status_Name,
+       S1.Id  Class1_Id, S1.Name  Class1_Name,
+       S2.Id  Class2_Id, S2.Name  Class2_Name,
+       S3.Id  Class3_Id, S3.Name  Class3_Name
+  FROM Proj_Team            T ,
+       Cpy_User             U ,
+       Phs_Cod_Status       ST,
+       Proj_Cod_Team_Class1 S1,
+       Proj_Cod_Team_Class2 S2,
+       Proj_Cod_Team_Class3 S3
+ WHERE T.User_Id  =U.Id
+   AND T.Status_Id=ST.Id
+   AND T.Class1_Id=S1.Id
+   AND T.Class2_Id=S2.Id
+   AND T.Class3_Id=S3.Id
+/
+Create Synonym Proj_VTeam For Proj_Team_View
+/
+
+CREATE OR REPLACE VIEW Proj_Project_View AS
+SELECT ALL
+       PP.Id            , PP.Proj_Id         , PP.Name                 ,
+       PP.Customer      , PP.SDate           , PP.EDate                ,
+       PP.ASDate        , PP.AEDate          , PP.Progress             ,
+       PP.Rem           , PP.Descr           ,
+       PS.Id            Status_Id     , PS.Name        Status_Name     ,
+       PPY.Id           Priority_Id   , PPY.Name       Priority_Name   ,
+       PT.Id            Team_Id       , PT.Name        Team_Name       ,
+       PT.Status_Id     Team_Status_Id, PT.User_Id     Team_User_Id    ,
+       PType.Id         Type_Id       , PType.Name     Type_Name       ,
+       PC1.Id           Class1_Id     , PC1.Name       Class1_Name     ,
+       PC2.Id           Class2_Id     , PC2.Name       Class2_Name     ,
+       PC3.Id           Class3_Id     , PC3.Name       Class3_Name     ,
+       AC.Id            Acc_Id        , AC.Num         Acc_Num         ,
+       AC.Name          Acc_Name      ,
+       CO.Id            Cost_Id       , CO.Num         Cost_Num        ,
+       CO.Name          Cost_Name     
+  FROM Proj_Proj             PP   ,
+       Proj_Cod_Status       PS   ,
+       Proj_Cod_Priority     PPY  ,
+       Proj_Team             PT   ,
+       Proj_Cod_Type         PType,
+       Proj_Cod_Proj_Class1  PC1  ,
+       Proj_Cod_Proj_Class2  PC2  ,
+       Proj_Cod_Proj_Class3  PC3  ,
+       Acc_Acc               AC   ,
+       Acc_Cost              CO
+  WHERE PP.Status_Id   = PS.Id
+    AND PP.Priority_Id = PPY.Id
+    AND PP.Team_Id     = PT.Id
+    AND PP.Type_Id     = PType.Id
+    AND PP.Class1_Id   = PC1.Id
+    AND PP.Class2_Id   = PC2.Id
+    AND PP.Class3_Id   = PC3.Id
+    AND PP.Acc_Id      = AC.Id
+    AND PP.Cost_Id     = CO.Id
+/
+CREATE SYNONYM Proj_VProject FOR Proj_Project_View;
+/
+
+CREATE OR REPLACE VIEW Proj_Project_Task_View AS
+SELECT ALL
+       PV.Id                  Proj_Id                 , PV.Proj_Id          Proj_Proj_Id         ,
+       PV.Name                Proj_Name               , PV.EDate            Proj_EDate           ,
+       PV.Customer            Proj_Customer           , PV.SDate            Proj_SDate           ,
+       PV.ASDate              Proj_ASDate             , PV.AEDate           Proj_AEDate          ,
+       PV.Rem                 Proj_Rem                , PV.Descr            Proj_Descr           ,
+       PV.Status_Id           Proj_Status_Id          , PV.Status_Name      Proj_Status_Name     ,
+       PV.Priority_Id         Proj_Priority_Id        , PV.Priority_Name    Proj_Priority_Name   ,
+       PV.Team_Id             Proj_Team_Id            , PV.Team_Name        Proj_Team_Name       ,
+       PV.Team_Status_Id      Proj_Team_Status_Id     , PV.Team_User_Id     Proj_Team_User_Id    ,
+       PV.Type_Id             Proj_Type_Id            , PV.Type_Name        Proj_Type_Name       ,
+       PV.Class1_Id           Proj_Class1_Id          , PV.Class1_Name      Proj_Class1_Name     ,
+       PV.Class2_Id           Proj_Class2_Id          , PV.Class2_Name      Proj_Class2_Name     ,
+       PV.Class3_Id           Proj_Class3_Id          , PV.Class3_Name      Proj_Class3_Name     ,
+       PV.Acc_Id              Proj_Acc_Id             , PV.Acc_Num          Proj_Acc_Num         ,
+       PV.Acc_Name            Proj_Acc_Name           ,
+       PV.Cost_Id             Proj_Cost_Id            , PV.Cost_Num         Proj_Cost_Num        ,
+       PV.Cost_Name           Proj_Cost_Name          ,
+       PV.Progress            Proj_Progress           ,
+       TV.Id                  Task_Id                 , TV.Task_Id          Task_Task_Id         ,
+       TV.Comp_Perc           Task_Comp_Perc          ,
+       TV.RemindDays          Task_RemindDays         ,
+       TV.RemindDate          Task_RemindDate         , TV.Name             Task_Name            ,
+       TV.SDate               Task_SDate              , TV.EDate            Task_EDate           ,
+       TV.SDate_YEAR          Task_SDate_WDays        , TV.EDate_YEAR       Task_EDate_YEAR      ,
+       TV.SDate_Month         Task_SDate_MDays        , TV.EDate_Month      Task_EDate_Month     ,
+       TV.SDate_Week          Task_SDate_YDays        , TV.EDate_Week       Task_EDate_Week      ,
+       TV.SDate_YDays         Task_SDate_Week         , TV.EDate_YDays      Task_EDate_YDays     ,
+       TV.SDate_MDays         Task_SDate_Month        , TV.EDate_MDays      Task_EDate_MDays     ,
+       TV.SDate_WDays         Task_SDate_YEAR         , TV.EDate_WDays      Task_EDate_WDays     ,
+       TV.ASDate              Task_ASDate             , TV.AEDate           Task_AEDate          ,
+       TV.ASDate_YEAR         Task_ASDate_YEAR        , TV.AEDate_YEAR      Task_AEDate_YEAR     ,
+       TV.ASDate_Month        Task_ASDate_Month       , TV.AEDate_Month     Task_AEDate_Month    ,
+       TV.ASDate_Week         Task_ASDate_Week        , TV.AEDate_Week      Task_AEDate_Week     ,
+       TV.ASDate_YDays        Task_ASDate_YDays       , TV.AEDate_YDays     Task_AEDate_YDays    ,
+       TV.ASDate_MDays        Task_ASDate_MDays       , TV.AEDate_MDays     Task_AEDate_MDays    ,
+       TV.ASDate_WDays        Task_ASDate_WDays       , TV.AEDate_WDays     Task_AEDate_WDays    ,
+       TV.Status_Id           Task_Status_Id          , TV.Status_Name      Task_Status_Name     ,
+       TV.Status_Bcolor       Task_Status_Bcolor      , TV.Status_Fcolor    Task_Status_Fcolor   ,
+       TV.Status_NOrder       Task_Status_NOrder      , TV.Status_Rem       Task_Status_Rem      ,
+       TV.Priority_Id         Task_Priority_Id        , TV.Priority_Name    Task_Priority_Name   ,
+       TV.Priority_Color      Task_Priority_Color     , TV.Priority_NOrder  Task_Priority_NOrde  ,
+       TV.Privacy_Id          Task_Privacy_Id         , TV.Privacy_Name     Task_Privacy_Name    ,
+       TV.Privacy_Icon        Task_Privacy_Icon       ,
+       TV.Reminder_Id         Task_Reminder_Id        , TV.Reminder_Name    Task_Reminder_Name   ,
+       TV.Dept_Id             Task_Dept_Id            , TV.Dept_Name        Task_Dept_Name       ,
+       TV.Dept_Status_Id      Task_Dept_Status_Id     , TV.Dept_User_Id     Task_Dept_User_Id    ,
+       TV.Unit_Id             Task_Unit_Id            , TV.Unit_Name        Task_Unit_Name       ,
+       TV.Unit_User_Id        Task_Unit_User_Id       , TV.Unit_Status_Id   Task_Unit_Status_Id  ,
+       TV.User_Id             Task_User_Id            , TV.User_Name        Task_User_Name       ,
+       TV.User_Grp_Id         Task_User_Grp_Id        , TV.User_Grp_Name    Task_User_Grp_Name   ,
+       TV.User_Grp_PStatus_Id Task_User_Grp_PStatus_Id, TV.User_Grp_Rem     Task_User_Grp_Rem    ,
+       TV.User_Logon          Task_User_Logon         ,
+       TV.User_UGrp_Id        Task_User_UGrp_Id       , TV.User_UGrp_Name   Task_User_UGrp_Name  ,
+       TV.User_Gender_Id      Task_User_Gender_Id     , TV.User_Gender_Name Task_User_Gender_Name,
+       TV.User_Status_Id      Task_User_Status_Id     , TV.User_Status_Name Task_User_Status_Name,
+       TV.User_Picture        Task_User_Picture  
+  FROM Proj_VProject PV,
+       Cpy_VTask     TV
+  WHERE TV.Proj_Id =  PV.Id
+/
+CREATE SYNONYM Proj_VProj_Task FOR Proj_Project_Task_View;
+/
+/*
+       U.Id   User_Id  , U.Name   User_Name  ,
+              Cpy_User
+       ST.Id  Status_Id, ST.Name  Status_Name,
+              Proj_Cod_Status
+       S1.Id  Class1_Id, S1.Name  Class1_Name,
+              Proj_Cod_Team_Class1
+       S2.Id  Class2_Id, S2.Name  Class2_Name,
+              Proj_Cod_Team_Class2
+       S3.Id  Class3_Id, S3.Name  Class3_Name,
+              Proj_Cod_Team_Class3
+
+       S1.Id  Class1_Id, S1.Name  Class1_Name,
+              Proj_Cod_Proj_Class1
+       S2.Id  Class2_Id, S2.Name  Class2_Name,
+              Proj_Cod_Proj_Class2
+       S3.Id  Class3_Id, S3.Name  Class3_Name,
+              Proj_Cod_Proj_Class3
+
+       MT.Id  MeetType_Id, MT.Name  MeetType_Name,
+              Proj_Cod_MeetType
+       MK.Id  MeetKind_Id, MK.Name  MeetKind_Name,
+              Proj_Cod_MeetKind
+       RT.Id  Rate_Id, RT.Name  Rate_Name,
+              Proj_Cod_Rate
+       PT.Id  Priority_Id, PT.Name  Priority_Name,
+              Proj_Cod_Priority
+       TP.Id  Type_Id, TP.Name  Type_Name,
+              Proj_Cod_Type
+
+CREATE OR REPLACE VIEW Proj_VFProject AS 
+SELECT ALL
+       p.id            AS id              ,
+       p.name          AS name            ,
+       p.customer      AS customer        ,
+       p.start         AS start           ,
+       p.end           AS end             ,
+       p.progress      AS progress        ,
+       p.rem           AS rem             ,
+       p.vdesc         AS vdesc           ,
+       tt.id           AS type_id         ,
+       tt.name         AS type_name       ,
+       tt.rem          AS type_rem        ,
+       ps.id           AS status_id       ,
+       ps.name         AS status_name     ,
+       ps.rem          AS status_rem      ,
+       pr.id           AS priority_id     ,
+       pr.name         AS priority_name   ,
+       pr.rem          AS priority_rem    ,
+       pc1.id          AS class1_id       ,
+       pc1.name        AS class1_name     ,
+       pc1.rem         AS class1_rem      ,
+       pc2.id          AS class2_id       ,
+       pc2.name        AS class2_name     ,
+       pc2.rem         AS class2_rem      ,
+       pc3.id          AS class3_id       ,
+       pc3.name        AS class3_name     ,
+       pc3.rem         AS class3_rem      ,
+       t.id            AS team_id         ,
+       t.name          AS team_name       ,
+       t.user_id       AS team_user_id    ,
+       t.user_name     AS team_user_name  ,
+       t.user_logon    AS team_user_logon ,
+       t.image         AS team_image      ,
+       t.gender_id     AS team_gender_id  ,
+       t.status_id     AS team_status_id  ,
+       t.status_name   AS team_status_name,
+       t.class1_id     AS team_class1_id  ,
+       t.class1_name   AS team_class1_name,
+       t.class1_rem    AS team_class1_rem ,
+       t.class2_id     AS team_class2_id  ,
+       t.class2_name   AS team_class2_name,
+       t.class2_rem    AS team_class2_rem ,
+       t.class3_id     AS team_class3_id  ,
+       t.class3_name   AS team_class3_name,
+       t.class3_rem    AS team_class3_rem ,
+       a.id            AS acc_id          ,
+       a.name          AS acc_name        ,
+       c.id            AS cost_id         ,
+       c.name          AS cost_name
+  FROM proj_project            p  ,
+       proj_vteam              t  ,
+       acc_acc                 a  ,
+       acc_cost                c  ,
+       proj_cod_type           tt ,
+       proj_cod_status         ps ,
+       Proj_Cod_Priority       pr ,
+       proj_cod_project_class1 pc1,
+       proj_cod_project_class2 pc2,
+       proj_cod_project_class3 pc3
+ WHERE p.team_id     = t.id
+   AND p.acc_id      = a.id
+   AND p.cost_id     = c.id
+   AND p.type_id     = tt.id
+   AND p.status_id   = ps.id
+   AND p.priority_id = pr.id
+   AND p.class1_id   = pc1.id
+   AND p.class2_id   = pc2.id
+   AND p.class3_id   = pc3.id
+/
+
+CREATE OR REPLACE VIEW Proj_Vproject AS 
+SELECT ALL
+       p.id        AS id           ,
+       p.team_id   AS team_id      ,
+       p.acc_id    AS acc_id       ,
+       p.cost_id   AS cost_id      ,
+       p.name      AS name         ,
+       p.customer  AS customer     ,
+       p.start     AS start        ,
+       p.end       AS end          ,
+       p.progress  AS progress     ,
+       p.rem       AS rem          ,
+       p.vdesc     AS vdesc        ,
+       tt.id       AS type_id      ,
+       tt.name     AS type_name    ,
+       tt.rem      AS type_rem     ,
+       ps.id       AS status_id    ,
+       ps.name     AS status_name  ,
+       ps.rem      AS status_rem   ,
+       pr.id       AS priority_id  ,
+       pr.name     AS priority_name,
+       pr.rem      AS priority_rem ,
+       pc1.id      AS class1_id    ,
+       pc1.name    AS class1_name  ,
+       pc1.rem     AS class1_rem   ,
+       pc2.id      AS class2_id    ,
+       pc2.name    AS class2_name  ,
+       pc2.rem     AS class2_rem   ,
+       pc3.id      AS class3_id    ,
+       pc3.name    AS class3_name  ,
+       pc3.rem     AS class3_rem
+  FROM proj_project            p  ,
+       proj_cod_type           tt ,
+       proj_cod_status         ps ,
+       Proj_Cod_Priority       pr ,
+       proj_cod_project_class1 pc1,
+       proj_cod_project_class2 pc2,
+       proj_cod_project_class3 pc3
+ WHERE p.type_id     = tt.id
+   AND p.status_id   = ps.id
+   AND p.priority_id = pr.id
+   AND p.class1_id   = pc1.id
+   AND p.class2_id   = pc2.id
+   AND p.class3_id   = pc3.id
+/
+
+CREATE OR REPLACE VIEW Proj_Team_View AS 
+SELECT ALL
+       TM.Id   AS Id        , TM.Name     AS Name       ,
+       U.Id    AS User_Id   , U.Name      AS User_Name  ,
+       U.Logon AS User_Logon, U.Gender_Id AS Gender_Id  ,
+       S.Id    AS Status_Id , S.Name      AS Status_Name,
+       TC1.Id  AS Class1_Id , TC1.Name    AS Class1_Name, TC1.Rem AS Class1_Rem,
+       TC2.Id  AS Class2_Id , TC2.Name    AS Class2_Name, TC2.Rem AS Class2_Rem,
+       TC3.Id  AS Class3_Id , TC3.Name    AS Class3_Name, TC3.Rem AS Class3_Rem,
+       NVL(U.Image,'avatar'||U.Gender_Id||'_256.png') AS Image
+  FROM Proj_Team            TM ,
+       Cpy_User             U  ,
+       Phs_Cod_Status       S  ,
+       Proj_Cod_Team_Class1 TC1,
+       Proj_Cod_Team_Class2 TC2,
+       Proj_Cod_Team_Class3 TC3
+ WHERE TM.User_Id   = U.Id
+   AND TM.Status_Id = S.Id
+   AND TM.Class1_Id = TC1.Id
+   AND TM.Class2_Id = TC2.Id
+   AND TM.Class3_Id = TC3.Id
+/
+*/
+CREATE OR REPLACE VIEW Proj_Project_Note_View AS
+SELECT ALL
+       PN.Id            Note_Id           , PN.DDate       Note_DDate      ,
+       PN.Note          Note_Note         , 
+       PV.Id            Proj_Id           , PV.Proj_Id     Proj_Proj_Id    ,
+       PV.Name          Proj_Name         , PV.Customer    Proj_Customer   ,
+       PV.SDate         Proj_SDate        , PV.EDate       Proj_EDate      ,
+       PV.ASDate        Proj_ASDate       , PV.AEDate      Proj_AEDate     ,
+       PV.Progress      Proj_Progress     , PV.Rem         Proj_Rem        ,
+       PV.Descr         Proj_Descr        , PV.Status_Id   Proj_Status_Id  ,
+       PV.Status_Name   Proj_Status       , PV.Priority_Id Proj_Priority_Id,
+       PV.Priority_Name Proj_Priority_Name, PV.Team_Id     Proj_Team       ,
+       PV.Team_Name     Proj_Team_Name    ,
+       PV.Team_User_Id  Proj_Team_User    , PV.Type_Id     Proj_Type_Id    ,
+       PV.Type_Name     Proj_Type_Name    , PV.Class1_Id   Proj_Class1_Id  ,
+       PV.Class1_Name   Proj_Class1_Name  , PV.Class2_Id   Proj_Class2_Id  ,
+       PV.Class2_Name   Proj_Class2_Name  , PV.Class3_Id   Proj_Class3_Id  ,
+       PV.Class3_Name   Proj_Class3_Name  , PV.Acc_Id      Proj_Acc_Id     ,
+       PV.Acc_Num       Proj_Acc_Num      , PV.Acc_Name    Proj_Acc_Name   ,
+       PV.Cost_Id       Proj_Cost_Id      , PV.Cost_Num    Proj_Cost_Num   ,
+       PV.Cost_Name     Proj_Cost_Name    ,
+       CU.Id            Cpy_Id            , CU.Name        Cpy_Name
+  FROM Proj_Proj_Note PN,
+       Proj_VProject  PV,
+       Cpy_User       CU
+ WHERE PN.Proj_Id=PV.Id
+   AND PN.User_Id=CU.Id
+/
+CREATE SYNONYM Proj_VProject_Note FOR Proj_Project_Note_View;
+/
+
+CREATE OR REPLACE VIEW Proj_Project_Expense_View AS
+SELECT ALL
+       PE.Id            Expense_Id        ,
+       PE.DDate         Expense_DDate     , PE.Qnt          Expense_Qnt     ,
+       PE.Price         Expense_Price     , PE.CAmt         Expense_CAmt    ,
+       PE.Amt           Expense_Amt       ,
+       PE.Rate          Expense_Rate      , PE.Rem          Expense_Rem     ,
+       PV.Id            Proj_Id           , PV.Proj_Id      Proj_Proj_Id    ,
+       PV.Name          Proj_Name         , PV.Customer     Proj_Customer   ,
+       PV.SDate         Proj_SDate        , PV.EDate        Proj_EDate      ,
+       PV.ASDate        Proj_ASDate       , PV.AEDate       Proj_AEDate     ,
+       PV.Progress      Proj_Progress     , PV.Rem          Proj_Rem        ,
+       PV.Descr         Proj_Descr        , PV.Status_Id    Proj_Status_Id  ,
+       PV.Status_Name   Proj_Status       , PV.Priority_Id  Proj_Priority_Id,
+       PV.Priority_Name Proj_Priority_Name, PV.Team_Id      Proj_Team       ,
+       PV.Team_Name     Proj_Team_Name    ,
+       PV.Team_User_Id  Proj_Team_User    , PV.Type_Id      Proj_Type_Id    ,
+       PV.Type_Name     Proj_Type_Name    , PV.Class1_Id    Proj_Class1_Id  ,
+       PV.Class1_Name   Proj_Class1_Name  , PV.Class2_Id    Proj_Class2_Id  ,
+       PV.Class2_Name   Proj_Class2_Name  , PV.Class3_Id    Proj_Class3_Id  ,
+       PV.Class3_Name   Proj_Class3_Name  , PV.Acc_Id       Proj_Acc_Id     ,
+       PV.Acc_Num       Proj_Acc_Num      , PV.Acc_Name     Proj_Acc_Name   ,
+       PV.Cost_Id       Proj_Cost_Id      , PV.Cost_Num     Proj_Cost_Num   ,
+       PV.Cost_Name     Proj_Cost_Name    ,
+       MC.Id            Cont_Id           , MC.Name         Cont_Name       ,
+       MS.Id            Serv_Id           , MS.Name         Serv_Name       ,
+       C.Id             Curn_Id           , C.Name          Curn_Name
+  FROM Proj_Proj_Expense PE,
+       Proj_VProject     PV,
+       Mng_Cont          MC,
+       Mng_Serv          MS,
+       Mng_Curn          C
+ WHERE PE.Proj_Id=PV.Id
+   AND PE.Cont_Id=MC.Id
+   AND PE.Serv_Id=MS.Id
+   AND PE.Curn_Id=C.Id 
+/
+CREATE SYNONYM Proj_VProject_Expense FOR Proj_Project_Expense_View;
+/
+
+CREATE OR REPLACE VIEW Proj_Project_Team_View AS
+SELECT ALL
+       PT.Id            Team_Id           , PT.Proj_Id     Team_Proj_Id    ,
+       PT.Team_Id       Team_Team_Id      , PT.Status_Id   Team_Status_Id  ,
+       PT.Title         Team_Title        , PT.Rem         Team_Rem        ,
+       PV.Id            Proj_Id           , PV.Proj_Id     Proj_Proj_Id    ,
+       PV.Name          Proj_Name         , PV.Customer    Proj_Customer   ,
+       PV.SDate         Proj_SDate        , PV.EDate       Proj_EDate      ,
+       PV.ASDate        Proj_ASDate       , PV.AEDate      Proj_AEDate     ,
+       PV.Progress      Proj_Progress     , PV.Rem         Proj_Rem        ,
+       PV.Descr         Proj_Descr        , PV.Status_Id   Proj_Status_Id  ,
+       PV.Status_Name   Proj_Status       , PV.Priority_Id Proj_Priority_Id,
+       PV.Priority_Name Proj_Priority_Name,
+       PV.Team_Name     Proj_Team_Name    ,
+       PV.Team_User_Id  Proj_Team_User    , PV.Type_Id     Proj_Type_Id    ,
+       PV.Type_Name     Proj_Type_Name    , PV.Class1_Id   Proj_Class1_Id  ,
+       PV.Class1_Name   Proj_Class1_Name  , PV.Class2_Id   Proj_Class2_Id  ,
+       PV.Class2_Name   Proj_Class2_Name  , PV.Class3_Id   Proj_Class3_Id  ,
+       PV.Class3_Name   Proj_Class3_Name  , PV.Acc_Id      Proj_Acc_Id     ,
+       PV.Acc_Num       Proj_Acc_Num      , PV.Acc_Name    Proj_Acc_Name   ,
+       PV.Cost_Id       Proj_Cost_Id      , PV.Cost_Num    Proj_Cost_Num   ,
+       PV.Cost_Name     Proj_Cost_Name
+  FROM Proj_Proj_Team PT,
+       Proj_VProject  PV
+ WHERE PT.Proj_Id=PV.Id
+/
+CREATE SYNONYM Proj_VProject_Team FOR Proj_Project_Team_View;
+/
+
+CREATE OR REPLACE VIEW Proj_Project_Meeting_View AS
+SELECT ALL
+       PM.Id            Meeting_Id             , PM.ESDate      Meeting_ESDate           ,
+       PM.EEDate        Meeting_EEDate         , PM.ASDate      Meeting_ASDate           ,
+       PM.AEDate        Meeting_AEDate         , PM.Location    Meeting_Location         ,
+       PM.Title         Meeting_Title          , PM.Exter_Emp   Meeting_Exter            ,
+       PM.Result        Meeting_Result         ,
+       PM.Rem           Meeting_Rem            ,
+       PV.Id            Proj_Id                , PV.Proj_Id     Proj_Proj_Id             ,
+       PV.Name          Proj_Name              , PV.Customer    Proj_Customer            ,
+       PV.SDate         Proj_SDate             , PV.EDate       Proj_EDate               ,
+       PV.ASDate        Proj_ASDate            , PV.AEDate      Proj_AEDate              ,
+       PV.Progress      Proj_Progress          , PV.Rem         Proj_Rem                 ,
+       PV.Descr         Proj_Descr             , PV.Status_Id   Proj_Status_Id           ,
+       PV.Status_Name   Proj_Status            , PV.Priority_Id Proj_Priority_Id         ,
+       PV.Priority_Name Proj_Priority_Name     ,
+       PV.Team_Name     Proj_Team_Name         ,
+       PV.Team_User_Id  Proj_Team_User         , PV.Type_Id     Proj_Type_Id             ,
+       PV.Type_Name     Proj_Type_Name         , PV.Class1_Id   Proj_Class1_Id           ,
+       PV.Class1_Name   Proj_Class1_Name       , PV.Class2_Id   Proj_Class2_Id           ,
+       PV.Class2_Name   Proj_Class2_Name       , PV.Class3_Id   Proj_Class3_Id           ,
+       PV.Class3_Name   Proj_Class3_Name       , PV.Acc_Id      Proj_Acc_Id              ,
+       PV.Acc_Num       Proj_Acc_Num           , PV.Acc_Name    Proj_Acc_Name            ,
+       PV.Cost_Id       Proj_Cost_Id           , PV.Cost_Num    Proj_Cost_Num            ,
+       PV.Cost_Name     Proj_Cost_Name         ,
+       CU.Id            Meeting_Cpy_User_Id    , CU.Name        Meeting_User_Name        ,
+       MT.Id            Meeting_Cod_MeetType_Id, MT.Name        Meeting_MeetType_Name    ,
+       CY.Id            Meeting_Cod_YesNo_Id   , CY.Name        Meeting_Cod_YesNo_Name   ,
+       MK.Id            Meeting_Cod_MeetKind_Id, MK.Name        Meeting_Cod_MeetKind_Name
+  FROM Proj_Meet         PM,
+       Proj_VProject     PV,
+       Cpy_User          CU,
+       Proj_Cod_MeetType MT,
+       Phs_Cod_YesNo     CY,
+       Proj_Cod_MeetKind MK
+ WHERE PM.Proj_Id    =PV.Id
+   AND PM.Type_Id    =MT.Id
+   AND PM.SchedEmp_Id=CU.Id
+   AND PM.Status_Id  =CY.Id
+   AND PM.Kind_Id    =MK.Id
+/
+CREATE SYNONYM Proj_VProject_Meeting FOR Proj_Project_Meeting_View;
+/
+
+CREATE OR REPLACE VIEW Proj_Meeting_View AS
+SELECT ALL
+       PM.Id       , PM.Proj_Id             , PM.Kind_Id , PM.SchedEmp_Id           ,
+       PM.Type_Id  , PM.Status_Id           , PM.ESDate  , PM.EEDate                ,
+       PM.ASDate   , PM.AEDate              , PM.Location, PM.Title                 ,
+       PM.Exter_Emp, PM.Result              , PM.Rem     ,
+       CU.Id         Cpy_User_Id            , CU.Name      Cpy_User_Name            ,
+       MT.Id         Meeting_MeetType_Id    , MT.Name      Meeting_MeetType_Name    ,
+       CY.Id         Meeting_Cod_YesNo_Id   , CY.Name      Meeting_Cod_YesNo_Name   ,
+       MK.Id         Meeting_Cod_MeetKind_Id, MK.Name      Meeting_Cod_MeetKind_Name
+  FROM Proj_Meet  PM,
+       Cpy_User   CU,
+       Proj_Cod_MeetType MT,
+       Phs_Cod_YesNo     CY,
+       Proj_Cod_MeetKind MK
+ WHERE PM.SchedEmp_Id = CU.Id
+   AND PM.Type_Id     = MT.Id
+   AND PM.Status_Id   = CY.Id
+   AND PM.Kind_Id     = MK.Id
+/
+CREATE SYNONYM Proj_VMeeting FOR Proj_Meeting_View;
+/

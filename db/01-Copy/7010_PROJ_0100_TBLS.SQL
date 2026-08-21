@@ -443,12 +443,14 @@ CREATE TABLE Proj_Project_Timesheet                        -- أعمال مشر�
   Hours      Number(5,2) Default 0 NOT NULL,               -- عدد الساعات
   SPrice     Number(25,2) Default 0 NOT NULL,              -- سعر البيع
   CPrice     Number(25,2) Default 0 NOT NULL,              -- سعر التكلفة
-  Curn_Id    Number(3) Default 1 NOT NULL,                 -- العملة
-  Curn_Rate  Number(25,9) Default 1,                       -- سعر الصرف
-  CAmt       Number(25,2) Default 0 NOT NULL,              -- القيمة قطع = Hours * SPrice * Curn_Rate
-  Amt        Number(25,2) Default 0 NOT NULL,              -- القيمة = Hours * SPrice
-  CCst       Number(25,2) Default 0 NOT NULL,              -- الكلفة قطع = Hours * CPrice * Curn_Rate
-  Cst        Number(25,2) Default 0 NOT NULL,              -- الكلفة = Hours * CPrice
+  SCurn_Id    Number(3) Default 1 NOT NULL,                -- العملة
+  SCurn_Rate  Number(25,9) Default 1,                      -- سعر الصرف
+  CCurn_Id    Number(3) Default 1 NOT NULL,                -- العملة
+  CCurn_Rate  Number(25,9) Default 1,                      -- سعر الصرف
+  CAmt       Number(25,2) Default 0 NOT NULL,              -- القيمة قطع = Hours * SPrice 
+  Amt        Number(25,2) Default 0 NOT NULL,              -- القيمة = Hours * SPrice * SCurn_Rate
+  CCst       Number(25,2) Default 0 NOT NULL,              -- الكلفة قطع = Hours * CPrice 
+  Cst        Number(25,2) Default 0 NOT NULL,              -- الكلفة = Hours * CPrice * CCurn_Rate
   Rem        Varchar2(250 Char),                           -- ملاحظات
   Ins_User   Number(5), Ins_Date     Date,
   Upd_User   Number(5), Upd_Date     Date,
@@ -457,7 +459,8 @@ CREATE TABLE Proj_Project_Timesheet                        -- أعمال مشر�
   CONSTRAINT Proj_Proj_TSheet_Team_Id_FK   Foreign Key (Team_Id  ) References Proj_Team  (Id),
   CONSTRAINT Proj_Proj_TSheet_MWItem_Id_FK Foreign Key (MWItem_Id) References Proj_MWItem(Id),
   CONSTRAINT Proj_Proj_TSheet_TWItem_FK    Foreign Key (TWItem_Id) References Proj_TWItem(Id),
-  CONSTRAINT Proj_Proj_TSheet_Curn_FK      Foreign Key (Curn_Id  ) References Mng_Curn   (Id),
+  CONSTRAINT Proj_Proj_TSheet_SCurn_FK     Foreign Key (SCurn_Id ) References Mng_Curn   (Id),
+  CONSTRAINT Proj_Proj_TSheet_CCurn_FK     Foreign Key (CCurn_Id ) References Mng_Curn   (Id),
   CONSTRAINT Proj_Proj_TSheet_Ins_FK       Foreign Key (Ins_User ) References Cpy_User   (Id),
   CONSTRAINT Proj_Proj_TSheet_Upd_FK       Foreign Key (Upd_User ) References Cpy_User   (Id)
 )

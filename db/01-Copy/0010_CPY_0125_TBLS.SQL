@@ -33,9 +33,11 @@ Create Table Copy_Branches		                        -- دليل الفروع
   Day6       Number(1) Default 1,	                  -- دوام يوم الجمعة
   Day7       Number(1) Default 1,	                  -- دوام يوم السبت
   Status_Id  Number(1) Default 1,			              -- الحالة
-  Curn_Id    Number(3) Default 1,                  -- العملة
-  Cost_Id    Number(9) Default 0,                  -- مركز الكلفة الإفتراضي
+  Curn_Id    Number(3) Default 1,                   -- العملة
+  Cost_Id    Number(9) Default 0,                   -- مركز الكلفة الإفتراضي
   Name       Varchar2(100 Char) NOT NULL,           -- الاسم
+  mobile     Varchar2(50 Char),                     -- رقم الموبايل        
+  address    Varchar2(256 Char),                    -- العنوان  
   Rem        Varchar2(250 Char),	                  -- ملاحظات
   Ins_User   Number(5), Ins_Date   Date,
   Upd_User   Number(5), Upd_Date   Date,

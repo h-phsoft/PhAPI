@@ -257,8 +257,9 @@ Create Table Copy_Cod_Notif
 /
 Create Synonym Cpy_Cod_Notifs For Copy_Cod_Notif
 /
+Insert into Cpy_Cod_Notifs (Id,Status_Id,Code,Iname,Lname) values (1,1,'POINTS_ADDED'   ,'Points Added'   ,'إضافة نقاط');
+Insert into Cpy_Cod_Notifs (Id,Status_Id,Code,Iname,Lname) values (2,1,'POINTS_DEDUCTED','Points Deducted','خصم نقاط' );
 
--- 3. Recreate Per-User Notification Preferences Table
 Create Sequence Cpy_User_Notif_Pref_Seq MinValue 1 Start With 1 MaxValue 99999999 INCREMENT BY 1 CACHE 2
 /
 Create Table Copy_User_Notification_Pref

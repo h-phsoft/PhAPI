@@ -464,7 +464,7 @@ Create Synonym MKM_Inst_Items For MKM_Installments_Items
 /
 ----------------------------------------------------------------------------------------------------
 Create Sequence MKM_Inst_Upd_Seq MinValue 1 Start With 1 MaxValue 9999999999 INCREMENT BY 1 CACHE 2;
-Create Table MKM_Installments_Update                                -- جدول طلبات تعديل التركيبات
+Create Table MKM_Installments_Update                                  -- جدول طلبات تعديل التركيبات
 ( Id         Number(30) NOT NULL,                                -- مفتاح رئيسي
   Inst_Id    Number(30) NOT NULL,                                -- مفتاح التركيب الأصلي
   User_Id    Number(5) NOT NULL,                                 -- المستخدم
@@ -474,9 +474,10 @@ Create Table MKM_Installments_Update                                -- جدول 
   Name       Varchar2(200 Char),                                 -- اسم الزبون
   Address    Varchar2(512 Char),                                 -- العنوان
   Rem        Varchar2(100 Char),                                 -- ملاحظات
+  Image      Varchar2(500 Char),                                 -- صورة التركيب
   Ins_User   Number(5), Ins_Date Date,                           -- المستخدم وتاريخ الإدخال
   Upd_User   Number(5), Upd_Date Date,                           -- المستخدم وتاريخ التعديل
-  CONSTRAINT MKM_Inst_Upd_PK         PRIMARY KEY (Id),
+  CONSTRAINT MKM_Inst_Upd_PK           PRIMARY KEY (Id),
   CONSTRAINT MKM_Inst_Upd_User_FK    Foreign Key (User_Id) References Cpy_User (Id),
   CONSTRAINT MKM_Inst_Upd_RStatus_FK Foreign Key (rStatus) References MKM_Code_Request_Status(Id),
   CONSTRAINT MKM_Inst_Upd_Ins_FK     Foreign Key (Ins_User) References Cpy_User (Id),
@@ -506,7 +507,7 @@ Create Synonym MKM_Inst_Item_Upd For MKM_Installments_Items_Update
 /
 ----------------------------------------------------------------------------------------------------
 Create Sequence MKM_Inst_Del_Seq MinValue 1 Start With 1 MaxValue 9999999999 INCREMENT BY 1 CACHE 2;
-Create Table MKM_Installments_Delete                                -- جدول طلبات حذف التركيبات
+Create Table MKM_Installments_Delete                                  -- جدول طلبات حذف التركيبات
 ( Id         Number(30) NOT NULL,                                -- مفتاح رئيسي
   Inst_Id    Number(30) NOT NULL,                                -- مفتاح التركيب الأصلي
   User_Id    Number(5) NOT NULL,                                 -- المستخدم
@@ -516,9 +517,10 @@ Create Table MKM_Installments_Delete                                -- جدول 
   Name       Varchar2(200 Char),                                 -- اسم الزبون
   Address    Varchar2(512 Char),                                 -- العنوان
   Rem        Varchar2(100 Char),                                 -- ملاحظات
+  Image      Varchar2(500 Char),                                 -- صورة التركيب
   Ins_User   Number(5), Ins_Date Date,                           -- المستخدم وتاريخ الإدخال
   Upd_User   Number(5), Upd_Date Date,                           -- المستخدم وتاريخ التعديل
-  CONSTRAINT MKM_Inst_Del_PK         PRIMARY KEY (Id),
+  CONSTRAINT MKM_Inst_Del_PK           PRIMARY KEY (Id),
   CONSTRAINT MKM_Inst_Del_User_FK    Foreign Key (User_Id) References Cpy_User (Id),
   CONSTRAINT MKM_Inst_Del_RStatus_FK Foreign Key (rStatus) References MKM_Code_Request_Status(Id),
   CONSTRAINT MKM_Inst_Del_Ins_FK     Foreign Key (Ins_User) References Cpy_User (Id),
