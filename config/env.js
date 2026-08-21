@@ -86,6 +86,28 @@ function parseCorsOrigins(raw) {
 
 const corsOrigins = parseCorsOrigins(process.env.CORS_ORIGINS);
 
+/**
+ * RBAC rollout stage.
+ *   off     - no permission checks at all
+ *   audit   - resolve permissions and log what would be denied, but allow it
+ *   enforce - deny with 403
+ *
+ * Defaults to audit: the request-to-program mapping depends on the MPrg_ApiURL
+ * values held in each tenant database, so enforcement should only be switched on
+ * once the audit log shows legitimate traffic resolving cleanly.
+ * @returns {string}
+ */
+function parseRbacMode(raw) {
+  const mode = (raw || 'audit').trim().toLowerCase();
+  if (!['off', 'audit', 'enforce'].includes(mode)) {
+    errors.push(`RBAC_MODE must be one of off | audit | enforce (received '${raw}').`);
+    return 'audit';
+  }
+  return mode;
+}
+
+const rbacMode = parseRbacMode(process.env.RBAC_MODE);
+
 if (errors.length > 0) {
   throw new Error(
     '\n[PhsAPI] Invalid environment configuration:\n' +
@@ -108,6 +130,10 @@ module.exports = {
 
   // null means "any origin" — permitted in development only.
   corsOrigins,
+
+  rbacMode,
+  // How long a user's resolved program set is cached, in seconds.
+  rbacCacheTtlSeconds: parseInt(process.env.RBAC_CACHE_TTL_SECONDS || '300', 10),
 
   rateLimitWindowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || String(15 * 60 * 1000), 10),
   // Generous, because an ERP screen fans out into many lookup calls per user action.

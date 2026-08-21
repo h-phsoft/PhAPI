@@ -186,11 +186,16 @@ class AuthService {
     const userId = dbUser.id || dbUser.ID || dbUser.Id || loginUser;
     const userName = dbUser.name || dbUser.NAME || dbUser.Name || loginUser;
 
+    // Carried so the authorization middleware can resolve the permission group
+    // without an extra user lookup on every request.
+    const pgrpId = Number(dbUser.pgrpId || dbUser.PGRP_ID || dbUser.PGrp_Id || 0) || 0;
+
     // Issue JWT token only after successful database verification
     const tokenPayload = {
       jui: String(userId),
       userId: String(userId),
       userName,
+      pgrpId,
       Copy: String(loginCopy),
       copy: String(loginCopy),
       vCopy: String(loginCopy),

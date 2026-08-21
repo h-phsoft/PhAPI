@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const authenticateToken = require('../middleware/auth');
 const resolveTenant = require('../middleware/tenantResolver');
+const authorize = require('../middleware/authorize');
 const unifiedController = require('../controllers/unifiedController');
 const authController = require('../controllers/authController');
 
@@ -29,11 +30,13 @@ router.post('/PhsAPI/UserAccount/Logout', (req, res, next) => authController.log
 router.post('/UserAccount/Logout', (req, res, next) => authController.logout(req, res, next));
 
 
-// Helper function to mount routes on both prefixed (/PhsAPI) and non-prefixed paths
+// Helper function to mount routes on both prefixed (/PhsAPI) and non-prefixed paths.
+// authorize runs per-route rather than via router.use so that it can read the
+// resolved :package/:table params and skip routes that are not program-scoped.
 function mount(method, pathStr, handler) {
-  router[method](pathStr, handler);
+  router[method](pathStr, authorize, handler);
   if (!pathStr.startsWith('/PhsAPI')) {
-    router[method](`/PhsAPI${pathStr}`, handler);
+    router[method](`/PhsAPI${pathStr}`, authorize, handler);
   }
 }
 
@@ -73,13 +76,13 @@ mount('get', '/CC/attached/:id', (req, res, next) => unifiedController.getFile(r
 mount('delete', '/CC/attached/:id', (req, res, next) => unifiedController.deleteFile(req, res, next));
 
 // --- GENERIC REST ENDPOINTS (/PhsAPI/:package/:table/...) ---
-router.get('/PhsAPI/:package/:table/Autocomplete', (req, res, next) => unifiedController.autocomplete(req, res, next));
-router.post('/PhsAPI/:package/:table/New', (req, res, next) => unifiedController.newRecord(req, res, next));
-router.get('/PhsAPI/:package/:table/List', (req, res, next) => unifiedController.listRecords(req, res, next));
-router.post('/PhsAPI/:package/:table/List', (req, res, next) => unifiedController.listRecords(req, res, next));
-router.get('/PhsAPI/:package/:table/Get/:id', (req, res, next) => unifiedController.getRecord(req, res, next));
-router.put('/PhsAPI/:package/:table/Update/:id', (req, res, next) => unifiedController.updateRecord(req, res, next));
-router.patch('/PhsAPI/:package/:table/Update/:id', (req, res, next) => unifiedController.updateRecord(req, res, next));
-router.delete('/PhsAPI/:package/:table/Delete/:id', (req, res, next) => unifiedController.deleteRecord(req, res, next));
+router.get('/PhsAPI/:package/:table/Autocomplete', authorize, (req, res, next) => unifiedController.autocomplete(req, res, next));
+router.post('/PhsAPI/:package/:table/New', authorize, (req, res, next) => unifiedController.newRecord(req, res, next));
+router.get('/PhsAPI/:package/:table/List', authorize, (req, res, next) => unifiedController.listRecords(req, res, next));
+router.post('/PhsAPI/:package/:table/List', authorize, (req, res, next) => unifiedController.listRecords(req, res, next));
+router.get('/PhsAPI/:package/:table/Get/:id', authorize, (req, res, next) => unifiedController.getRecord(req, res, next));
+router.put('/PhsAPI/:package/:table/Update/:id', authorize, (req, res, next) => unifiedController.updateRecord(req, res, next));
+router.patch('/PhsAPI/:package/:table/Update/:id', authorize, (req, res, next) => unifiedController.updateRecord(req, res, next));
+router.delete('/PhsAPI/:package/:table/Delete/:id', authorize, (req, res, next) => unifiedController.deleteRecord(req, res, next));
 
 module.exports = router;

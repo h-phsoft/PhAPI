@@ -309,6 +309,42 @@ async function runAllTests() {
   });
 
   // -------------------------------------------------------------
+  // 4c. AUTHORIZATION TARGET MAPPING TESTS
+  // -------------------------------------------------------------
+  console.log('\n--- 4c. Authorization Mapping Tests ---');
+
+  const authorize = require('../middleware/authorize');
+  const normalizeTarget = authorize.normalizeTarget;
+
+  test('Authorize maps request paths to a package/table target', () => {
+    assert.strictEqual(normalizeTarget('/UC/Acc/Account/List'), 'acc/account');
+    assert.strictEqual(normalizeTarget('/PhsAPI/UC/Acc/Account/List'), 'acc/account');
+    assert.strictEqual(normalizeTarget('/PhsAPI/Acc/Account/Get/12'), 'acc/account');
+    assert.strictEqual(normalizeTarget('/UC/Stor/Items/Search/1/20'), 'stor/items');
+  });
+
+  test('Authorize normalises stored MPrg_ApiURL values the same way', () => {
+    // The column's shape varies by tenant, so every plausible form has to reduce
+    // to the same key as the request path it guards.
+    assert.strictEqual(normalizeTarget('Acc/Account'), 'acc/account');
+    assert.strictEqual(normalizeTarget('/Acc/Account'), 'acc/account');
+    assert.strictEqual(normalizeTarget('/PhsAPI/Acc/Account'), 'acc/account');
+    assert.strictEqual(normalizeTarget('/UC/Acc/Account/List'), 'acc/account');
+    assert.strictEqual(normalizeTarget('https://api.example.com/PhsAPI/Acc/Account'), 'acc/account');
+    assert.strictEqual(normalizeTarget('/UC/Acc/Account?x=1'), 'acc/account');
+    assert.strictEqual(normalizeTarget('ACC/ACCOUNT'), 'acc/account');
+  });
+
+  test('Authorize returns null for paths that are not program-scoped', () => {
+    // These carry no package/table pair, so they cannot be permission-checked.
+    assert.strictEqual(normalizeTarget('/UC/InitForm'), null);
+    assert.strictEqual(normalizeTarget('/CC/getCopies'), null);
+    assert.strictEqual(normalizeTarget(''), null);
+    assert.strictEqual(normalizeTarget(null), null);
+    assert.strictEqual(normalizeTarget('/PhsAPI'), null);
+  });
+
+  // -------------------------------------------------------------
   // 5. SERVER INTEGRATION & ROUTE MATCHING TESTS
   // -------------------------------------------------------------
   console.log('\n--- 5. Express Server Health & Route Verification ---');
