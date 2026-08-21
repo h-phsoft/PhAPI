@@ -34,13 +34,15 @@ class AuthRepository {
                 FROM Phs_VMIPrg
                 WHERE MPrg_ID > 0 AND MPrg_PId = :pid AND MPrg_Status_Id = 1 AND Menu_Status_Id = 1`;
     
+    const params = { pid: Number(pid) || 0 };
+
     if (pgrpId > 0) {
-      sql += ` AND MPrg_Id IN (SELECT MPrg_Id FROM Cpy_Perm WHERE PGrp_Id = ${pgrpId} AND OK = 1)`;
+      sql += ` AND MPrg_Id IN (SELECT MPrg_Id FROM Cpy_Perm WHERE PGrp_Id = :pgrpId AND OK = 1)`;
+      params.pgrpId = Number(pgrpId);
     }
     sql += ` ORDER BY Menu_Id, MPrg_PId, MPrg_Ord`;
 
-    // Ensure pid is passed properly in the params object
-    return conn.query(sql, { pid: Number(pid) || 0 });
+    return conn.query(sql, params);
   }
 }
 

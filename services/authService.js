@@ -3,6 +3,7 @@ const env = require('../config/env');
 const mainApp = require('../config/mainApp');
 const repository = require('../repository/unifiedRepository');
 const i18nHelper = require('../utils/i18nHelper');
+const passwordUtil = require('../utils/password');
 
 class AuthError extends Error {
   constructor(message, statusCode = 401) {
@@ -168,8 +169,17 @@ class AuthService {
     }
 
     if (!passwordValidated) {
-      if (String(dbPass) !== String(loginPass)) {
+      const { valid, legacy } = await passwordUtil.verify(loginPass, dbPass);
+
+      if (!valid) {
         throw new AuthError('Invalid username or password', 401);
+      }
+
+      if (legacy) {
+        // The stored value is still plaintext. Login is allowed so the tenant
+        // keeps working, but every hit is recorded so the migration can be
+        // tracked. See scripts/migratePasswords.js.
+        logger.warn(`[AuthService] User '${loginUser}' in copy '${loginCopy}' authenticated against a plaintext password`);
       }
     }
 

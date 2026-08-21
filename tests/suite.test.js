@@ -258,6 +258,57 @@ async function runAllTests() {
   });
 
   // -------------------------------------------------------------
+  // 4b. PASSWORD VERIFICATION TESTS
+  // -------------------------------------------------------------
+  console.log('\n--- 4b. Password Verification Tests ---');
+
+  const passwordUtil = require('../utils/password');
+
+  await testAsync('Password verify accepts a bcrypt digest and rejects a wrong one', async () => {
+    const digest = await passwordUtil.hash('correct horse');
+    assert.strictEqual(passwordUtil.isHashed(digest), true, 'hash() must produce a recognisable digest');
+
+    const good = await passwordUtil.verify('correct horse', digest);
+    assert.deepStrictEqual(good, { valid: true, legacy: false });
+
+    const bad = await passwordUtil.verify('wrong horse', digest);
+    assert.deepStrictEqual(bad, { valid: false, legacy: false });
+  });
+
+  await testAsync('Password verify still accepts legacy plaintext and flags it', async () => {
+    const good = await passwordUtil.verify('PhPass', 'PhPass');
+    assert.deepStrictEqual(good, { valid: true, legacy: true }, 'existing tenants must keep working');
+
+    const bad = await passwordUtil.verify('nope', 'PhPass');
+    assert.deepStrictEqual(bad, { valid: false, legacy: true });
+  });
+
+  await testAsync('Password verify rejects null/undefined stored values', async () => {
+    assert.deepStrictEqual(await passwordUtil.verify('x', null), { valid: false, legacy: false });
+    assert.deepStrictEqual(await passwordUtil.verify('x', undefined), { valid: false, legacy: false });
+    assert.deepStrictEqual(await passwordUtil.verify(null, 'x'), { valid: false, legacy: false });
+  });
+
+  await testAsync('Password verify handles length mismatch without throwing', async () => {
+    // crypto.timingSafeEqual throws on unequal buffer lengths, so the constant
+    // time comparison has to handle that case itself.
+    const short = await passwordUtil.verify('a', 'a-much-longer-stored-value');
+    assert.deepStrictEqual(short, { valid: false, legacy: true });
+
+    const long = await passwordUtil.verify('a-much-longer-submitted-value', 'a');
+    assert.deepStrictEqual(long, { valid: false, legacy: true });
+  });
+
+  test('isHashed distinguishes digests from plaintext that looks similar', () => {
+    assert.strictEqual(passwordUtil.isHashed('$2b$12$abcdefghijklmnopqrstuv'), true);
+    assert.strictEqual(passwordUtil.isHashed('$2a$10$abcdefghijklmnopqrstuv'), true);
+    assert.strictEqual(passwordUtil.isHashed('PhPass'), false);
+    assert.strictEqual(passwordUtil.isHashed('$2x$99$notreally'), false);
+    assert.strictEqual(passwordUtil.isHashed(''), false);
+    assert.strictEqual(passwordUtil.isHashed(null), false);
+  });
+
+  // -------------------------------------------------------------
   // 5. SERVER INTEGRATION & ROUTE MATCHING TESTS
   // -------------------------------------------------------------
   console.log('\n--- 5. Express Server Health & Route Verification ---');
