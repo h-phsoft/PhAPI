@@ -292,10 +292,10 @@ async function runAllTests() {
   });
 
   await testAsync('Password verify still accepts legacy plaintext and flags it', async () => {
-    const good = await passwordUtil.verify('PhPass', 'PhPass');
+    const good = await passwordUtil.verify('legacy-sample-pw', 'legacy-sample-pw');
     assert.deepStrictEqual(good, { valid: true, legacy: true }, 'existing tenants must keep working');
 
-    const bad = await passwordUtil.verify('nope', 'PhPass');
+    const bad = await passwordUtil.verify('nope', 'legacy-sample-pw');
     assert.deepStrictEqual(bad, { valid: false, legacy: true });
   });
 
@@ -318,7 +318,7 @@ async function runAllTests() {
   test('isHashed distinguishes digests from plaintext that looks similar', () => {
     assert.strictEqual(passwordUtil.isHashed('$2b$12$abcdefghijklmnopqrstuv'), true);
     assert.strictEqual(passwordUtil.isHashed('$2a$10$abcdefghijklmnopqrstuv'), true);
-    assert.strictEqual(passwordUtil.isHashed('PhPass'), false);
+    assert.strictEqual(passwordUtil.isHashed('legacy-sample-pw'), false);
     assert.strictEqual(passwordUtil.isHashed('$2x$99$notreally'), false);
     assert.strictEqual(passwordUtil.isHashed(''), false);
     assert.strictEqual(passwordUtil.isHashed(null), false);
