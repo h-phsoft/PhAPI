@@ -1,8 +1,11 @@
+/* global process */
+
 const http = require('http');
+require('dotenv').config();
 
 console.log('--- Testing Interactive HTML Docs Endpoint ---');
 
-http.get('http://localhost:3000/docs/index.html', (res) => {
+http.get(`http://localhost:${process.env.PORT || 3000}/docs/index.html`, (res) => {
   console.log('HTML Docs Status:', res.statusCode);
   let body = '';
   res.on('data', chunk => body += chunk);

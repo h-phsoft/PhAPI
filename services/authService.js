@@ -1,9 +1,8 @@
 const jwt = require('jsonwebtoken');
+const env = require('../config/env');
 const mainApp = require('../config/mainApp');
 const repository = require('../repository/unifiedRepository');
 const i18nHelper = require('../utils/i18nHelper');
-
-const JWT_SECRET = process.env.JWT_SECRET || 'phs_api_secret_key_2026';
 
 class AuthError extends Error {
   constructor(message, statusCode = 401) {
@@ -189,7 +188,7 @@ class AuthService {
       periodId: loginPeriod
     };
 
-    const token = jwt.sign(tokenPayload, JWT_SECRET, { expiresIn: '24h' });
+    const token = jwt.sign(tokenPayload, env.jwtSecret, { expiresIn: env.jwtExpiresIn });
 
     return {
       token,

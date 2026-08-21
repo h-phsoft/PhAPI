@@ -175,6 +175,88 @@ async function runAllTests() {
     assert.notStrictEqual(meta.Select, undefined);
   });
 
+  // Regression cover for the injection fix: 17 shipped templates interpolate a
+  // parameter in numeric context (e.g. "stor_id={storId}"), where quote-escaping
+  // offers no protection. Caller values must always leave as bind parameters.
+  const numericCondMeta = {
+    Synonym: 'Stor_Items',
+    Select: 'SELECT Id, Name FROM Stor_Items',
+    Conds: { storId: 'stor_id={storId}' }
+  };
+  const termCondMeta = {
+    Synonym: 'Acc_Acc',
+    Select: "SELECT Id, Num||' - '||Name AS Name FROM Acc_Acc",
+    Condition: 'STATUS_ID = 1',
+    Conds: { term: "Lower(Num||' - '||Name) LIKE '%{term}%'" }
+  };
+
+  test('Autocomplete binds numeric-context params instead of interpolating them', () => {
+    const payload = '1 OR 1=1';
+
+    for (const dbType of ['oracle', 'mysql', 'postgres']) {
+      const { sql, params } = autocompleteService.buildQuery(numericCondMeta, 'Items', dbType, { storId: payload }, {});
+      assert.strictEqual(sql.includes('OR 1=1'), false, `${dbType}: payload must not reach the SQL text`);
+
+      const values = Array.isArray(params) ? params : Object.values(params);
+      assert.deepStrictEqual(values, [payload], `${dbType}: payload must be a bind value`);
+    }
+  });
+
+  test('Autocomplete emits dialect-correct bind placeholders', () => {
+    const oracle = autocompleteService.buildQuery(numericCondMeta, 'Items', 'oracle', { storId: 5 }, {});
+    assert.strictEqual(oracle.sql.includes('stor_id=:ac_1'), true);
+    assert.deepStrictEqual(oracle.params, { ac_1: 5 });
+
+    const mysql = autocompleteService.buildQuery(numericCondMeta, 'Items', 'mysql', { storId: 5 }, {});
+    assert.strictEqual(mysql.sql.includes('stor_id=?'), true);
+    assert.deepStrictEqual(mysql.params, [5]);
+
+    const pg = autocompleteService.buildQuery(numericCondMeta, 'Items', 'postgres', { storId: 5 }, {});
+    assert.strictEqual(pg.sql.includes('stor_id=$1'), true);
+    assert.deepStrictEqual(pg.params, [5]);
+  });
+
+  test('Autocomplete LIKE template binds the whole literal, wildcards included', () => {
+    const { sql, params } = autocompleteService.buildQuery(termCondMeta, 'Account', 'oracle', { term: 'CASH' }, {});
+
+    assert.strictEqual(sql.includes('LIKE :ac_1'), true, 'LIKE argument should be a bind');
+    assert.strictEqual(sql.includes('%'), false, 'wildcards belong in the value, not the SQL');
+    assert.deepStrictEqual(params, { ac_1: '%cash%' }, 'term stays lower-cased for the Lower() comparison');
+    assert.strictEqual(sql.includes('(STATUS_ID = 1)'), true, 'metadata Condition should survive');
+  });
+
+  test('Autocomplete quote in a term cannot break out of the literal', () => {
+    const { sql, params } = autocompleteService.buildQuery(termCondMeta, 'Account', 'oracle', { term: "x' OR '1'='1" }, {});
+
+    assert.strictEqual(sql.includes("OR '1'='1"), false, 'payload must not reach the SQL text');
+    assert.deepStrictEqual(params, { ac_1: "%x' or '1'='1%" });
+  });
+
+  test('Autocomplete omits conditions whose parameter was not supplied', () => {
+    const absent = autocompleteService.buildQuery(numericCondMeta, 'Items', 'mysql', {}, {});
+    assert.strictEqual(absent.sql.includes('stor_id'), false);
+    assert.deepStrictEqual(absent.params, []);
+
+    const blank = autocompleteService.buildQuery(numericCondMeta, 'Items', 'mysql', { storId: '   ' }, {});
+    assert.strictEqual(blank.sql.includes('stor_id'), false);
+
+    // Values fall back to the request context when absent from the query params.
+    const fromContext = autocompleteService.buildQuery(numericCondMeta, 'Items', 'mysql', {}, { storId: 7 });
+    assert.deepStrictEqual(fromContext.params, [7]);
+  });
+
+  test('Autocomplete row limit rejects non-numeric and caps oversized page sizes', () => {
+    const garbage = autocompleteService.buildQuery(numericCondMeta, 'Items', 'mysql', { pageSize: 'DROP TABLE' }, {});
+    assert.strictEqual(garbage.sql.includes('DROP'), false);
+    assert.strictEqual(/LIMIT \d+$/.test(garbage.sql), true);
+
+    const oversized = autocompleteService.buildQuery(numericCondMeta, 'Items', 'mysql', { pageSize: 999999 }, {});
+    assert.strictEqual(oversized.sql.endsWith('LIMIT 500'), true, 'should cap at MAX_AUTOCOMPLETE_ROWS');
+
+    const negative = autocompleteService.buildQuery(numericCondMeta, 'Items', 'mysql', { pageSize: -5 }, {});
+    assert.strictEqual(negative.sql.includes('-5'), false);
+  });
+
   // -------------------------------------------------------------
   // 5. SERVER INTEGRATION & ROUTE MATCHING TESTS
   // -------------------------------------------------------------
@@ -211,7 +293,8 @@ async function runAllTests() {
   });
 
   const jwt = require('jsonwebtoken');
-  const testToken = jwt.sign({ jui: 1, Copy: '01-Admin' }, process.env.JWT_SECRET || 'phs_api_secret_key_2026');
+  const env = require('../config/env');
+  const testToken = jwt.sign({ jui: 1, Copy: '01-Admin' }, env.jwtSecret);
 
   await testAsync('Authenticated POST /UC/InitForm returns 200 OK', async () => {
     const postData = JSON.stringify({ package: 'Acc', table: 'Acc_Master' });

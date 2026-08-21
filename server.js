@@ -6,29 +6,64 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const bodyParser = require('body-parser');
 const path = require('path');
-require('dotenv').config();
+
+// Validate configuration before anything else loads. A missing or unsafe secret
+// has to stop the process here, not surface at the first authenticated request.
+let env;
+try {
+  env = require('./config/env');
+} catch (err) {
+  console.error(err.message);
+  process.exit(1);
+}
 
 const mainApp = require('./config/mainApp');
 const routes = require('./routes');
 const errorHandler = require('./middleware/errorHandling');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = env.port;
 
 // Security middleware
 app.use(helmet());
 
 app.set('trust proxy', 1);
 
-// Rate limiting
+// Rate limiting. /health is exempt so uptime monitoring never eats a user's budget.
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100
+  windowMs: env.rateLimitWindowMs,
+  max: env.rateLimitMax,
+  skip: (req) => req.path === '/health'
 });
 app.use(limiter);
 
-// CORS
-app.use(cors());
+// Login endpoints get a far tighter budget of their own: they are the ones worth
+// brute-forcing, and a legitimate user only hits them once per session.
+const authLimiter = rateLimit({
+  windowMs: env.rateLimitWindowMs,
+  max: env.authRateLimitMax,
+  skipSuccessfulRequests: true,
+  // A rejected login still answers HTTP 200 to stay compatible with the legacy
+  // Java client, so the status code cannot be trusted here — authController
+  // marks genuine failures on res.locals instead.
+  requestWasSuccessful: (req, res) => !res.locals.loginFailed,
+  message: { status: false, code: 429, message: 'Too many login attempts. Try again later.' }
+});
+const AUTH_PATHS = [
+  '/Auth/Login',
+  '/UserAccount/Authentication',
+  '/UserAccount/getAccessToken'
+];
+AUTH_PATHS.forEach((authPath) => {
+  app.use(authPath, authLimiter);
+  app.use(`/PhsAPI${authPath}`, authLimiter);
+});
+
+// CORS. env.corsOrigins is null only outside production, where any origin is allowed.
+app.use(cors({
+  origin: env.corsOrigins || true,
+  credentials: true
+}));
 
 // Body parser
 app.use(bodyParser.json({limit: '1mb'}));
@@ -99,7 +134,7 @@ async function checkDatabaseConnectionOnStartup() {
 app.listen(PORT, async () => {
   console.log(`[PhsAPI] Server running on http://localhost:${PORT}`);
   console.log(`[PhsAPI] Interactive Docs available at http://localhost:${PORT}/docs/index.html`);
-  console.log(`[PhsAPI] Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`[PhsAPI] Environment: ${env.nodeEnv}`);
   await checkDatabaseConnectionOnStartup();
 });
 

@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
+const env = require('../config/env');
 
 class JWebToken {
   static getInstanceByAuthorization(authorization) {
@@ -9,7 +9,7 @@ class JWebToken {
 
     const token = authorization.replace('Bearer ', '');
     try {
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      const decoded = jwt.verify(token, env.jwtSecret);
       return {
         getPayload: () => decoded
       };
@@ -19,12 +19,12 @@ class JWebToken {
   }
 
   static generateToken(payload) {
-    return jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: '24h'});
+    return jwt.sign(payload, env.jwtSecret, {expiresIn: env.jwtExpiresIn});
   }
 
   static verifyToken(token) {
     try {
-      return jwt.verify(token, process.env.JWT_SECRET);
+      return jwt.verify(token, env.jwtSecret);
     } catch (error) {
       return null;
     }
