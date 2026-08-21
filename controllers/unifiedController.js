@@ -1,6 +1,6 @@
 const { UnifiedService } = require('../services/unifiedService');
 const autocompleteService = require('../services/autocompleteService');
-const UnifiedReportService = require('../services/unifiedReportService');
+const reportService = require('../services/reportService');
 const ResultManager = require('../utils/responseManager');
 const i18nHelper = require('../utils/i18nHelper');
 const { coercePage, coercePageSize } = require('../utils/pagination');
@@ -315,9 +315,9 @@ class UnifiedController {
   async initReport(req, res, next) {
     try {
       const { pkgName, reportName } = req.params;
-      const reportService = new UnifiedReportService({ getName: () => reportName, getTitle: () => reportName, getDescription: () => '', getFields: () => [], getParameters: () => [], getChartConfig: () => null, isDashboard: () => false }, null);
-      const result = await reportService.init(req.body);
-      res.status(200).json(result);
+
+      const result = await reportService.init(pkgName, reportName);
+      res.status(200).json(ResultManager.ok(result));
     } catch (err) {
       next(err);
     }
@@ -325,8 +325,11 @@ class UnifiedController {
 
   async reportStatistics(req, res, next) {
     try {
-      const reportService = new UnifiedReportService({ getQuery: () => 'SELECT 1', getTitle: () => 'Stats' }, null);
-      res.status(200).json(ResultManager.ok({ total: 0, summary: {} }));
+      const { pkgName, reportName } = req.params;
+      const context = req.context || {};
+
+      const result = await reportService.statistics(pkgName, reportName, req.body, context);
+      res.status(200).json(ResultManager.ok(result));
     } catch (err) {
       next(err);
     }
@@ -334,7 +337,11 @@ class UnifiedController {
 
   async reportQuery(req, res, next) {
     try {
-      res.status(200).json(ResultManager.ok({ data: [], count: 0 }));
+      const { pkgName, reportName } = req.params;
+      const context = req.context || {};
+
+      const result = await reportService.query(pkgName, reportName, req.body, context);
+      res.status(200).json(ResultManager.ok(result));
     } catch (err) {
       next(err);
     }
@@ -342,15 +349,33 @@ class UnifiedController {
 
   async reportPDF(req, res, next) {
     try {
-      res.status(200).json(ResultManager.ok({ format: 'PDF', status: 'ready' }));
+      const { pkgName, reportName } = req.params;
+      const context = req.context || {};
+      const filename = `${reportName}_${Date.now()}.pdf`;
+
+      // The document streams straight to the response, so headers must be set
+      // before rendering starts. Any failure after that point cannot be turned
+      // back into a JSON error body.
+      res.setHeader('Content-Type', 'application/pdf');
+      res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+
+      await reportService.renderPDF(pkgName, reportName, req.body, context, res);
     } catch (err) {
+      if (res.headersSent) {
+        res.end();
+        return;
+      }
       next(err);
     }
   }
 
   async dashLine(req, res, next) {
     try {
-      res.status(200).json(ResultManager.ok({ type: 'line', data: { labels: [], datasets: [] } }));
+      const { pkgName, reportName } = req.params;
+      const context = req.context || {};
+
+      const result = await reportService.dashLine(pkgName, reportName, req.body, context);
+      res.status(200).json(ResultManager.ok(result));
     } catch (err) {
       next(err);
     }
@@ -358,7 +383,11 @@ class UnifiedController {
 
   async dashPie(req, res, next) {
     try {
-      res.status(200).json(ResultManager.ok({ type: 'pie', data: { labels: [], datasets: [] } }));
+      const { pkgName, reportName } = req.params;
+      const context = req.context || {};
+
+      const result = await reportService.dashPie(pkgName, reportName, req.body, context);
+      res.status(200).json(ResultManager.ok(result));
     } catch (err) {
       next(err);
     }

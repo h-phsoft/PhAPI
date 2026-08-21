@@ -325,6 +325,90 @@ async function runAllTests() {
   });
 
   // -------------------------------------------------------------
+  // 4e. REPORT / DASHBOARD TESTS
+  // -------------------------------------------------------------
+  console.log('\n--- 4e. Report & Dashboard Tests ---');
+
+  const reportService = require('../services/reportService');
+
+  test('Report metadata is projected from registered entity metadata', () => {
+    // Reports are registered as ordinary entities, so init must resolve real
+    // metadata rather than the empty placeholder the endpoint used to return.
+    const meta = reportService.resolve('Acc', 'Acc_Master') || reportService.resolve('Acc', 'Master');
+    assert.notStrictEqual(meta.report, null);
+    assert.strictEqual(meta.report.getFields().length > 0, true, 'fields must not be empty');
+    assert.strictEqual(typeof meta.report.getTitle(), 'string');
+    assert.strictEqual(meta.report.getParameters().length > 0, true, 'queryable fields become parameters');
+  });
+
+  test('Unknown report name raises rather than returning empty data', () => {
+    assert.throws(() => reportService.resolve('Nope', 'DoesNotExist'), /Report metadata not found/);
+  });
+
+  test('Report aggregations summarise numeric columns only', () => {
+    const rows = [
+      { region: 'North', amount: 10, qty: 2 },
+      { region: 'South', amount: 30, qty: 4 },
+      { region: 'East', amount: 20, qty: null }
+    ];
+    const agg = reportService.calculateAggregations(rows);
+
+    assert.strictEqual(agg.amount_sum, 60);
+    assert.strictEqual(agg.amount_avg, 20);
+    assert.strictEqual(agg.amount_min, 10);
+    assert.strictEqual(agg.amount_max, 30);
+    assert.strictEqual(agg.amount_count, 3);
+
+    // Nulls are excluded rather than counted as zero.
+    assert.strictEqual(agg.qty_count, 2);
+    assert.strictEqual(agg.qty_sum, 6);
+
+    // A text column produces no aggregates at all.
+    assert.strictEqual(agg.region_sum, undefined);
+  });
+
+  test('Report aggregations handle an empty result set', () => {
+    assert.deepStrictEqual(reportService.calculateAggregations([]), {});
+    assert.deepStrictEqual(reportService.calculateAggregations(null), {});
+  });
+
+  test('Chart field detection picks a label and a numeric value column', () => {
+    const rows = [{ month: 'Jan', label2: 'x', total: 100 }];
+
+    // Auto: first column labels, first numeric non-label column supplies values.
+    const auto = reportService.resolveChartFields(rows, {});
+    assert.strictEqual(auto.labelField, 'month');
+    assert.strictEqual(auto.valueField, 'total', 'must skip the non-numeric column');
+
+    // Explicit choices win when they name real columns.
+    const explicit = reportService.resolveChartFields(rows, { labelField: 'label2', valueField: 'total' });
+    assert.strictEqual(explicit.labelField, 'label2');
+
+    // A field that is not in the result set falls back to detection.
+    const bogus = reportService.resolveChartFields(rows, { labelField: 'nope' });
+    assert.strictEqual(bogus.labelField, 'month');
+  });
+
+  test('Chart field detection copes with no numeric columns and no rows', () => {
+    const textOnly = reportService.resolveChartFields([{ a: 'x', b: 'y' }], {});
+    assert.strictEqual(textOnly.labelField, 'a');
+    assert.strictEqual(textOnly.valueField, null);
+
+    const empty = reportService.resolveChartFields([], {});
+    assert.strictEqual(empty.labelField, null);
+    assert.strictEqual(empty.valueField, null);
+  });
+
+  test('Report parameter parsing accepts strings, objects and junk', () => {
+    const { parseParams } = require('../services/reportService');
+    assert.deepStrictEqual(parseParams('{"page":2}'), { page: 2 });
+    assert.deepStrictEqual(parseParams({ page: 3 }), { page: 3 });
+    assert.deepStrictEqual(parseParams('not json'), { data: 'not json' });
+    assert.deepStrictEqual(parseParams(null), {});
+    assert.deepStrictEqual(parseParams(''), {});
+  });
+
+  // -------------------------------------------------------------
   // 4d. PAGINATION COERCION TESTS
   // -------------------------------------------------------------
   console.log('\n--- 4d. Pagination Coercion Tests ---');
