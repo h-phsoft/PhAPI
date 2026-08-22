@@ -4,6 +4,7 @@
 
 -- Tables carry their Oracle synonym name; see PORTING-REPORT.md.
 
+SET FOREIGN_KEY_CHECKS = 0;
 USE phsoftme_erp_demo;
 
 
@@ -152,7 +153,7 @@ Create Table Cpy_Token			                                  -- جدول أرقا�
   Period_Id    BIGINT Default 0 NOT NULL,			              -- الفترة المالية
   Status       MEDIUMINT Default 1 NOT NULL,	                  -- الحالة 1 فعال - 2 غير فعال - 3 ملغى
   SDate        DATETIME Default NOW() NOT NULL,                   -- تاريخ ووقت بداية الجلسة
-  EDate        DATETIME Default (NOW()+1) NOT NULL,               -- تاريخ ووقت نهاية الجلسة
+  EDate        DATETIME Default (DATE_ADD(NOW(), INTERVAL 1 DAY)) NOT NULL,               -- تاريخ ووقت نهاية الجلسة
   ADate        DATETIME Default NOW() NOT NULL,                   -- تاريخ ووقت آخر نشاط
   Gender       TINYINT,                                       -- الجنس
   PGrp         MEDIUMINT,                                       -- مجموعة الصلاحيات

@@ -125,6 +125,9 @@ const FUNCTION_RULES = [
   // Columns holding GUIDs are varchar here, so the uuid is cast to text.
   [/\bSYS_GUID\s*\(\s*\)/gi, "replace(gen_random_uuid()::text,'-','')"],
   [/\bSYSTIMESTAMP\b/gi, 'CURRENT_TIMESTAMP'],
+  // Oracle adds plain numbers to a DATE as days. PostgreSQL needs an interval,
+  // so this has to run before the bare SYSDATE rule below.
+  [/\bSYSDATE\s*([+-])\s*([0-9]+(?:\.[0-9]+)?)/gi, "LOCALTIMESTAMP $1 INTERVAL '$2 day'"],
   [/\bSYSDATE\b/gi, 'LOCALTIMESTAMP'],
   [/\bNVL\s*\(/gi, 'COALESCE('],
   [/\bLISTAGG\s*\(/gi, 'STRING_AGG('],

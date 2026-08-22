@@ -204,7 +204,7 @@ Create Table Cpy_Token			                                  -- جدول أرقا�
   Period_Id    BIGINT Default 0 NOT NULL,			              -- الفترة المالية
   Status       INTEGER Default 1 NOT NULL,	                  -- الحالة 1 فعال - 2 غير فعال - 3 ملغى
   SDate        TIMESTAMP Default LOCALTIMESTAMP NOT NULL,                   -- تاريخ ووقت بداية الجلسة
-  EDate        TIMESTAMP Default (LOCALTIMESTAMP+1) NOT NULL,               -- تاريخ ووقت نهاية الجلسة
+  EDate        TIMESTAMP Default (LOCALTIMESTAMP + INTERVAL '1 day') NOT NULL,               -- تاريخ ووقت نهاية الجلسة
   ADate        TIMESTAMP Default LOCALTIMESTAMP NOT NULL,                   -- تاريخ ووقت آخر نشاط
   Gender       SMALLINT,                                       -- الجنس
   PGrp         INTEGER,                                       -- مجموعة الصلاحيات

@@ -1,6 +1,7 @@
 -- Additional Oracle synonyms over an already-renamed table in phsoftme_erp_demo.
 -- Emitted as views: nothing foreign-keys them, so a view is safe.
 
+SET FOREIGN_KEY_CHECKS = 0;
 USE phsoftme_erp_demo;
 
 CREATE OR REPLACE VIEW Emp_VOTime AS SELECT * FROM Emp_VOtime;

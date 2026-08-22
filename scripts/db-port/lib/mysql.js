@@ -135,6 +135,11 @@ const FUNCTION_RULES = [
   // with them. Stripping them keeps new rows in the same shape as the seed data.
   [/\bSYS_GUID\s*\(\s*\)/gi, "(REPLACE(UUID(),'-',''))"],
   [/\bSYSTIMESTAMP\b/gi, 'CURRENT_TIMESTAMP'],
+  // Oracle adds plain numbers to a DATE as days. MySQL would accept NOW() + 1
+  // without complaint but coerce both sides to numbers, silently producing a
+  // meaningless value rather than tomorrow. Must precede the bare SYSDATE rule.
+  [/\bSYSDATE\s*\+\s*([0-9]+(?:\.[0-9]+)?)/gi, 'DATE_ADD(NOW(), INTERVAL $1 DAY)'],
+  [/\bSYSDATE\s*-\s*([0-9]+(?:\.[0-9]+)?)/gi, 'DATE_SUB(NOW(), INTERVAL $1 DAY)'],
   [/\bSYSDATE\b/gi, 'NOW()'],
   [/\bNVL\s*\(/gi, 'IFNULL('],
   [/\bNVL2\s*\(/gi, 'IF('],
@@ -290,8 +295,15 @@ module.exports = {
   // AUTO_INCREMENT replaces the sequences, making those triggers redundant.
   dropSequenceOnlyTriggers: true,
 
-  /** Selects the database a script's statements apply to. */
-  useDatabase: (name) => `USE ${name};\n`,
+  /**
+   * Selects the database a script's statements apply to.
+   *
+   * Foreign key checks are switched off for the session because the scripts are
+   * not in dependency order: a table often carries a foreign key to one created
+   * in a later file, which MySQL refuses outright rather than resolving later.
+   * The setting is per-session, so it has to be repeated in every file.
+   */
+  useDatabase: (name) => `SET FOREIGN_KEY_CHECKS = 0;\nUSE ${name};\n`,
 
   /**
    * Applied to the finished file. MySQL only recognises `--` as a comment when

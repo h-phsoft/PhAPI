@@ -4,5 +4,6 @@
 
 -- Tables carry their Oracle synonym name; see PORTING-REPORT.md.
 
+SET FOREIGN_KEY_CHECKS = 0;
 USE phsoftme_erp_demo;
 
