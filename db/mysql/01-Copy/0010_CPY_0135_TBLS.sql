@@ -20,10 +20,7 @@ Create Table Cpy_Cod_Print_Format                       -- جدول ترميز �
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Cpy_Cod_Print_Format_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Cpy_Cod_Print_Format_UK     UNIQUE      (Grp, Name),
-  CONSTRAINT Cpy_Cod_Print_Format_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Cpy_Cod_Print_Format_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Cpy_Cod_Print_Format_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Cpy_Cod_Print_Format_UK     UNIQUE      (Grp, Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Cpy_Cod_Print_Format (Id, Pkg, Grp, Name, vValue) VALUES (1, 'FIN', 'INV', 'Invoice', ''   );
@@ -47,11 +44,7 @@ Create Table Cpy_FDoc			                   -- أنواع الوثائق الما
   CONSTRAINT Cpy_FinDoc_PK        Primary Key (Id  ),
   CONSTRAINT Cpy_FinDoc_Num_UK    Unique      (Num ),
   CONSTRAINT Cpy_FinDoc_Cod_UK    Unique      (Code),
-  CONSTRAINT Cpy_FinDoc_Nam_UK    Unique      (Name),
-  CONSTRAINT Cpy_FinDoc_DBCR_FK   Foreign Key (Ins_User ) References Phs_Cod_DBCR  (Id),
-  CONSTRAINT Cpy_FinDoc_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Cpy_FinDoc_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Cpy_FinDoc_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Cpy_FinDoc_Nam_UK    Unique      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- TODO(port): other has no automatic equivalent (source line 49).

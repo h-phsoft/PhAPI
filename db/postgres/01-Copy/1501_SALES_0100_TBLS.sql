@@ -21,9 +21,7 @@ Create Table Sal_Cod_Status                               -- جدول ترميز
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Sal_Cod_Status_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Sal_Cod_Status_UK     UNIQUE      (Name),
-  CONSTRAINT Sal_Cod_Status_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Sal_Cod_Status_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Sal_Cod_Status_UK     UNIQUE      (Name)
 );
 
 Insert into Sal_Cod_Status (Id,Name) values (0,'-'     );
@@ -40,9 +38,7 @@ Create Table Sal_Cod_Comm                           -- جدول ترميز ال�
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Sal_Cod_Comm_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Sal_Cod_Comm_UK     UNIQUE      (Name),
-  CONSTRAINT Sal_Cod_Comm_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Sal_Cod_Comm_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Sal_Cod_Comm_UK     UNIQUE      (Name)
 );
 
 Insert into Sal_Cod_Comm (Id,Name) values (0,'-'     );
@@ -77,9 +73,7 @@ Create Table Sal_Price                                -- جدول قوائم ا�
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT Sal_Price_PK      PRIMARY KEY (Id),
-  CONSTRAINT Sal_Price_Uk      Unique      (Name),
-  CONSTRAINT Sal_Price_Ins_FK  Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT Sal_Price_Upd_FK  Foreign Key (Upd_User) References Cpy_User (Id)
+  CONSTRAINT Sal_Price_Uk      Unique      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Sal_Price_Item_Seq
@@ -95,12 +89,7 @@ Create Table Sal_Price_Item                               -- جدول أسعار
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT  Sal_Price_Item_PK      PRIMARY KEY (Id),
-  CONSTRAINT  Sal_Price_Item_Uk      Unique      (Price_Id, Item_Id),
-  CONSTRAINT  Sal_Price_Item_IPrc_FK Foreign Key (Price_Id) References Sal_Price         (Id),
-  CONSTRAINT  Sal_Price_Item_Item_FK Foreign Key (Item_Id ) References Stor_Item         (Id),
-  CONSTRAINT  Sal_Price_Item_Type_FK Foreign Key (Type_Id ) References Sal_Cod_Price_Type(Id),
-  CONSTRAINT  Sal_Price_Item_Ins_FK  Foreign Key (Ins_User) References Cpy_User          (Id),
-  CONSTRAINT  Sal_Price_Item_Upd_FK  Foreign Key (Upd_User) References Cpy_User          (Id)
+  CONSTRAINT  Sal_Price_Item_Uk      Unique      (Price_Id, Item_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Sal_MSal_Seq
@@ -134,19 +123,7 @@ Create Table Sal_MSal                                 -- ترويسة وثائق
   Rem        VARCHAR(100),          				         -- ملاحظات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT Sal_MSal_PK        PRIMARY KEY (Id),
-  CONSTRAINT Sal_MSal_Period_FK Foreign Key (Period_Id) References Cpy_Period    (Id),
-  CONSTRAINT Sal_MSal_Status_FK Foreign Key (Status_Id) References Sal_Cod_Status(Id),
-  CONSTRAINT Sal_MSal_Cont_FK   Foreign Key (Cont_Id  ) References Mng_Cont      (Id),
-  CONSTRAINT Sal_MSal_Curn_FK   Foreign Key (Curn_Id  ) References Mng_Curn      (Id),
-  CONSTRAINT Sal_MSal_BCurn_FK  Foreign Key (BCurn_Id ) References Mng_Curn      (Id),
-  CONSTRAINT Sal_MSal_Regn_FK   Foreign Key (Regn_Id  ) References Mng_Regn      (Id),
-  CONSTRAINT Sal_MSal_Cmt_FK    Foreign Key (Cmt_Id   ) References Sal_Cod_Comm  (Id),
-  CONSTRAINT Sal_MSal_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc       (Id),
-  CONSTRAINT Sal_MSal_Fin_FK    Foreign Key (Fin_Id   ) References Fin_MCrd      (Id),
-  CONSTRAINT Sal_MSal_Doc_FK    Foreign Key (Doc_Id   ) References Cpy_Cod_Doc   (Id),
-  CONSTRAINT Sal_MSal_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Sal_MSal_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Sal_MSal_PK        PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Sal_TSal_Seq
@@ -183,15 +160,7 @@ Create Table Sal_TSal                                 -- بنود وثائق ا�
   Rem        VARCHAR(100),          				         -- ملاحظات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT Sal_TSal_PK       PRIMARY KEY (Id),
-  CONSTRAINT Sal_TSal_Pur_FK   Foreign Key (Mst_Id  ) References Sal_MSal      (Id),
-  CONSTRAINT Sal_TSal_Item_FK  Foreign Key (Item_Id ) References Stor_Item     (Id),
-  CONSTRAINT Sal_TSal_Unit_FK  Foreign Key (Unit_Id ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT Sal_TSal_Model_FK Foreign Key (Model_Id) References Stor_Cod_Model(Id),
-  CONSTRAINT Sal_TSal_Color_FK Foreign Key (Color_Id) References Stor_Cod_Color(Id),
-  CONSTRAINT Sal_TSal_Size_FK  Foreign Key (Size_Id ) References Stor_Cod_Size (Id),
-  CONSTRAINT Sal_TSal_Ins_FK   Foreign Key (Ins_User) References Cpy_User      (Id),
-  CONSTRAINT Sal_TSal_Upd_FK   Foreign Key (Upd_User) References Cpy_User      (Id)
+  CONSTRAINT Sal_TSal_PK       PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Sal_MRet_Seq
@@ -225,19 +194,7 @@ Create Table Sal_MRet                                -- ترويسة مردود 
   Rem        VARCHAR(100),          				         -- ملاحظات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT Sal_MRet_PK      PRIMARY KEY (Id),
-  CONSTRAINT Sal_MRet_Period_FK Foreign Key (Period_Id) References Cpy_Period    (Id),
-  CONSTRAINT Sal_MRet_Status_FK Foreign Key (Status_Id) References Sal_Cod_Status(Id),
-  CONSTRAINT Sal_MRet_Cont_FK   Foreign Key (Cont_Id  ) References Mng_Cont      (Id),
-  CONSTRAINT Sal_MRet_Curn_FK   Foreign Key (Curn_Id  ) References Mng_Curn      (Id),
-  CONSTRAINT Sal_MRet_BCurn_FK  Foreign Key (BCurn_Id ) References Mng_Curn      (Id),
-  CONSTRAINT Sal_MRet_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc       (Id),
-  CONSTRAINT Sal_MRet_Fin_FK    Foreign Key (Fin_Id   ) References Fin_MCrd      (Id),
-  CONSTRAINT Sal_MRet_Doc_FK    Foreign Key (Doc_Id   ) References Cpy_Cod_Doc   (Id),
-  CONSTRAINT Sal_MRet_Regn_FK   Foreign Key (Regn_Id  ) References Mng_Regn      (Id),
-  CONSTRAINT Sal_MRet_Cmt_FK    Foreign Key (Cmt_Id   ) References Sal_Cod_Comm  (Id),
-  CONSTRAINT Sal_MRet_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Sal_MRet_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Sal_MRet_PK      PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Sal_TRet_Seq
@@ -274,13 +231,5 @@ Create Table Sal_TRet                                -- بنود مردود مب
   Rem        VARCHAR(100),          				         -- ملاحظات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT SAL_TRet_PK       PRIMARY KEY (Id),
-  CONSTRAINT SAL_TRet_Pur_FK   Foreign Key (Mst_Id  ) References Sal_MRet      (Id),
-  CONSTRAINT SAL_TRet_Item_FK  Foreign Key (Item_Id ) References Stor_Item     (Id),
-  CONSTRAINT SAL_TRet_Unit_FK  Foreign Key (Unit_Id ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT SAL_TRet_Model_FK Foreign Key (Model_Id) References Stor_Cod_Model(Id),
-  CONSTRAINT SAL_TRet_Color_FK Foreign Key (Color_Id) References Stor_Cod_Color(Id),
-  CONSTRAINT SAL_TRet_Size_FK  Foreign Key (Size_Id ) References Stor_Cod_Size (Id),
-  CONSTRAINT SAL_TRet_Ins_FK   Foreign Key (Ins_User) References Cpy_User      (Id),
-  CONSTRAINT SAL_TRet_Upd_FK   Foreign Key (Upd_User) References Cpy_User      (Id)
+  CONSTRAINT SAL_TRet_PK       PRIMARY KEY (Id)
 );

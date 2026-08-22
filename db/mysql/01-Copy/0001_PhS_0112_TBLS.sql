@@ -17,7 +17,7 @@ Create Table Phs_Log       				                  -- سجل العمليات
   vHost       VARCHAR(64),				              -- الموقع
   vPort       VARCHAR(6),				                -- البوابة
   vRem        VARCHAR(250),			                -- ملاحظات
-  dDate       DATETIME Default NOW(),                   -- التاريخ والوقت
+  dDate       DATETIME DEFAULT (NOW()),                   -- التاريخ والوقت
   CONSTRAINT PhsLog_PK     PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -58,7 +58,7 @@ Create Table Phs_Audit       				                -- سجل العمليات
   nType       TINYINT Default 1,			              -- النوع 1=إضافة, 2=تعديل, 3=حذف
   vTable      VARCHAR(50),				              -- الجدول
   User_Id     BIGINT Default 0,                    -- المستخدم
-  dDate       DATETIME Default NOW(),                   -- التاريخ والوقت
+  dDate       DATETIME DEFAULT (NOW()),                   -- التاريخ والوقت
   vNew        VARCHAR(4000),				            -- القيم الجديدة
   vOld        VARCHAR(4000),				            -- القيم القديمة
   CONSTRAINT PhsAudit_PK PRIMARY KEY (Id)
@@ -70,6 +70,6 @@ Create Table Phs_Log_Exc			                  -- سجل العمليات
   vMEssage    VARCHAR(1024),				            -- النص
   vFunction   VARCHAR(128),				              -- الإجراء
   vCode       VARCHAR(100),				              -- الرمز
-  dDate       DATETIME Default NOW(),                   -- التاريخ والوقت
+  dDate       DATETIME DEFAULT (NOW()),                   -- التاريخ والوقت
   CONSTRAINT Phs_Log_Exc_PK PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

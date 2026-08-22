@@ -19,8 +19,7 @@ Create Table Cpy_Cod_Unit           				        -- جدول ترميز الوح�
   Ins_User   INTEGER,      Ins_Date TIMESTAMP,
   Upd_User   INTEGER,      Upd_Date TIMESTAMP,
   CONSTRAINT Cpy_Cod_Unit_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Cpy_Cod_Unit_UK        UNIQUE      (Name),
-  CONSTRAINT Cpy_Cod_Unit_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id)
+  CONSTRAINT Cpy_Cod_Unit_UK        UNIQUE      (Name)
 );
 
 Insert into Cpy_Cod_Unit (Id,Name) values (0,'Piece');
@@ -39,9 +38,7 @@ Create Table Cpy_Unit_Form                             -- نسب التحويل 
   Rem        VARCHAR(250),                           -- ملاحظات
   Ins_User   INTEGER, Ins_Date TIMESTAMP,
   Upd_User   INTEGER, Upd_Date TIMESTAMP,
-  CONSTRAINT  Cpy_UnitForm_PK       PRIMARY KEY (Id   ),
-  CONSTRAINT  Cpy_UnitForm_FUnit_FK Foreign Key (FUnit_Id) References Cpy_Cod_Unit(Id),
-  CONSTRAINT  Cpy_UnitForm_TUnit_FK Foreign Key (TUnit_Id) References Cpy_Cod_Unit(Id)
+  CONSTRAINT  Cpy_UnitForm_PK       PRIMARY KEY (Id   )
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cpy_Cod_Doc_Seq
@@ -56,8 +53,7 @@ Create Table Cpy_Cod_Doc        				        -- جدول ترميز أنواع ا
   Ins_User   INTEGER, Ins_Date TIMESTAMP,
   Upd_User   INTEGER, Upd_Date TIMESTAMP,
   CONSTRAINT Cpy_Cod_Doc_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Cpy_Cod_Doc_UK        UNIQUE      (Name),
-  CONSTRAINT Cpy_Cod_Doc_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id)
+  CONSTRAINT Cpy_Cod_Doc_UK        UNIQUE      (Name)
 );
 
 Insert into Cpy_Cod_Doc (Id,Name) values (0,'-');
@@ -74,8 +70,7 @@ Create Table Cpy_Cod_PStatus    				        -- جدول ترميز حالات ف
   Ins_User   INTEGER, Ins_Date TIMESTAMP,
   Upd_User   INTEGER, Upd_Date TIMESTAMP,
   CONSTRAINT Cpy_Cod_PStatus_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Cpy_Cod_PStatus_UK        UNIQUE      (Name),
-  CONSTRAINT Cpy_Cod_PStatus_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id)
+  CONSTRAINT Cpy_Cod_PStatus_UK        UNIQUE      (Name)
 );
 
 Insert into Cpy_Cod_PStatus (Id,Name) values (1,'Active'  );

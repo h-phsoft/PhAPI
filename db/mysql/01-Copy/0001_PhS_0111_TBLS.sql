@@ -61,9 +61,7 @@ Create Table Phs_Pref_Struct                    -- جدول بنية التفض�
   Rem        VARCHAR(100),				                  -- ملاحظات
   CONSTRAINT Phs_Pref_Struct_PK         PRIMARY KEY (Id  ),
   CONSTRAINT Phs_Pref_Struct_UK         Unique      (`Key` ),
-  CONSTRAINT Phs_Pref_Struct_Name_UK    Unique      (Name),
-  CONSTRAINT Phs_Pref_Struct_FldType_FK Foreign Key (FldType_Id) References Phs_Cod_FldType(Id),
-  CONSTRAINT Phs_Pref_Struct_Menu_FK    Foreign Key (Menu_Id   ) References Phs_Menu       (Id)
+  CONSTRAINT Phs_Pref_Struct_Name_UK    Unique      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Phs_Pref			                        -- جدول التفضيلات
@@ -118,8 +116,7 @@ Create Table Phs_Cod_Dash_Type                  -- جدول أنماط لوحة 
   Ins_User   MEDIUMINT, Ins_Date     DATETIME,
   Upd_User   MEDIUMINT, Upd_Date     DATETIME,
   CONSTRAINT Phs_Cod_Dash_Type_PK         PRIMARY KEY (Id  ),
-  CONSTRAINT Phs_Cod_Dash_Type_UK         UNIQUE      (Name),
-  CONSTRAINT Phs_Cod_Dash_Type_Status_FK  Foreign Key (Status_Id) References Phs_Cod_Status(Id)
+  CONSTRAINT Phs_Cod_Dash_Type_UK         UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Phs_Cod_Dash_type (Id,Name) values (0,'Block'   );
@@ -140,9 +137,7 @@ Create Table Phs_Cod_Dash_SubType               -- جدول أنواع الأن�
   Ins_User   MEDIUMINT, Ins_Date     DATETIME,
   Upd_User   MEDIUMINT, Upd_Date     DATETIME,
   CONSTRAINT Phs_Cod_Dash_SubType_PK         PRIMARY KEY (Id),
-  CONSTRAINT Phs_Cod_Dash_SubType_UK         UNIQUE      (Name, Mst_id),
-  CONSTRAINT Phs_Cod_Dash_SubType_Mst_FK     Foreign Key (Mst_id)    References Phs_Cod_Dash_Type(Id),
-  CONSTRAINT Phs_Cod_Dash_SubType_Status_FK  Foreign Key (Status_Id) References Phs_Cod_Status   (Id)  
+  CONSTRAINT Phs_Cod_Dash_SubType_UK         UNIQUE      (Name, Mst_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Phs_Cod_Dash_SubType (Id,Mst_id,Name) values (0  ,0,'Block'         );
@@ -179,10 +174,7 @@ Create Table Phs_Dash_Blocks                     -- جدول توصيف لوحة
   Ins_User      MEDIUMINT, Ins_Date     DATETIME,
   Upd_User      MEDIUMINT, Upd_Date     DATETIME,
   CONSTRAINT    Phs_Dash_Blocks_PK           PRIMARY KEY (Id),
-  CONSTRAINT    Phs_Dash_Blocks_UK           UNIQUE      (Menu_Id, Name),
-  CONSTRAINT    Phs_Dash_Blocks_Type_FK      Foreign Key (Type_Id     ) References Phs_Cod_Dash_SubType(Id),
-  CONSTRAINT    Phs_Dash_Blocks_Menu_FK      Foreign Key (Menu_Id     ) References Phs_Menu            (Id),
-  CONSTRAINT    Phs_Dash_Blocks_Customize_FK Foreign Key (Customize_Id) References Phs_Cod_YesNo       (Id)
+  CONSTRAINT    Phs_Dash_Blocks_UK           UNIQUE      (Menu_Id, Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- TODO(port): other has no automatic equivalent (source line 178).

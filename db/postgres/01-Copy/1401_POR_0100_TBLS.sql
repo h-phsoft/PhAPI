@@ -22,10 +22,7 @@ Create Table Por_Cod_Status                              -- جدول ترميز 
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Por_Cod_Status_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Por_Cod_Status_UK        UNIQUE      (Name),
-  CONSTRAINT Por_Cod_Status_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Por_Cod_Status_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Por_Cod_Status_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Por_Cod_Status_UK        UNIQUE      (Name)
 );
 
 Insert into Por_Cod_Status (Id,Name) values (0,'-');
@@ -57,11 +54,7 @@ Create Table Por_MReq                              -- جدول ترويسة ال
   Ins_User    BIGINT, Ins_Date     TIMESTAMP,
   Upd_User    BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT  Por_MReq_PK        PRIMARY KEY (Id ),
-  CONSTRAINT  Por_MReq_UK        UNIQUE      (Num),
-  CONSTRAINT  Por_MReq_Status_FK Foreign Key (Status_Id) References Por_Cod_Status(Id),
-  CONSTRAINT  Por_MReq_User_FK   Foreign Key (User_Id  ) References Cpy_User      (Id),
-  CONSTRAINT  Por_MReq_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Por_MReq_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  Por_MReq_UK        UNIQUE      (Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Por_TReq_Seq
@@ -78,11 +71,7 @@ Create Table Por_TReq                              -- جدول بنود الطل
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Por_TReq_PK         PRIMARY KEY (Id  ),
-  CONSTRAINT Por_TReq_UK         UNIQUE      (Mst_Id, Item_Id),
-  CONSTRAINT Por_TReq_Request_FK Foreign Key (Mst_Id  ) References Por_MReq (Id),
-  CONSTRAINT Por_TReq_Item_FK    Foreign Key (Item_Id ) References Stor_Item(Id),
-  CONSTRAINT Por_TReq_Ins_FK     Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT Por_TReq_Upd_FK     Foreign Key (Upd_User) References Cpy_User (Id)
+  CONSTRAINT Por_TReq_UK         UNIQUE      (Mst_Id, Item_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Por_MPurOrd_Seq
@@ -101,14 +90,7 @@ Create Table Por_MPurOrd                       -- جدول ترويسة أمر �
   Rem        VARCHAR(100),          				        -- ملاحظات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT Por_MPurOrd_PK         PRIMARY KEY (Id),
-  CONSTRAINT Por_MPurOrd_Request_FK Foreign Key (Req_Id   ) References Por_MReq      (Id),
-  CONSTRAINT Por_MPurOrd_Cont_FK    Foreign Key (Cont_Id  ) References Mng_Cont      (Id),
-  CONSTRAINT Por_MPurOrd_User_FK    Foreign Key (User_Id  ) References Cpy_User      (Id),
-  CONSTRAINT Por_MPurOrd_Status_FK  Foreign Key (Status_Id) References Por_Cod_Status(Id),
-  CONSTRAINT Por_MPurOrd_Curn_FK    Foreign Key (Curn_Id  ) References Mng_Curn      (Id),
-  CONSTRAINT Por_MPurOrd_Ins_FK     Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Por_MPurOrd_Upd_FK     Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Por_MPurOrd_PK         PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Por_TPurOrd_Seq
@@ -129,12 +111,7 @@ Create Table Por_TPurOrd                       -- جدول بنود أمر ال�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Por_TPurOrd_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Por_TPurOrd_UK        UNIQUE      (Mst_Id, TReq_Id),
-  CONSTRAINT Por_TPurOrd_POrd_FK   Foreign Key (Mst_Id   ) References Por_MPurOrd(Id),
-  CONSTRAINT Por_TPurOrd_TReq_FK   Foreign Key (TReq_Id  ) References Por_TReq   (Id),
-  CONSTRAINT Por_TPurOrd_Item_FK   Foreign Key (Item_Id  ) References Stor_Item  (Id),
-  CONSTRAINT Por_TPurOrd_Ins_FK    Foreign Key (Ins_User ) References Cpy_User   (Id),
-  CONSTRAINT Por_TPurOrd_Upd_FK    Foreign Key (Upd_User ) References Cpy_User   (Id)
+  CONSTRAINT Por_TPurOrd_UK        UNIQUE      (Mst_Id, TReq_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Por_MDeliv_Seq
@@ -153,13 +130,7 @@ Create Table Por_MDeliv                             -- جدول ترويسة ا�
   Rem        VARCHAR(100),          				        -- ملاحظات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT Por_MDeliv_PK         PRIMARY KEY (Id),
-  CONSTRAINT Por_MDeliv_POrd_FK    Foreign Key (POrd_Id  ) References Por_MPurOrd   (Id),
-  CONSTRAINT Por_MDeliv_Cont_FK    Foreign Key (Cont_Id  ) References Mng_Cont      (Id),
-  CONSTRAINT Por_MDeliv_Status_FK  Foreign Key (Status_Id) References Por_Cod_Status(Id),
-  CONSTRAINT Por_MDeliv_Curn_FK    Foreign Key (Curn_Id  ) References Mng_Curn      (Id),
-  CONSTRAINT Por_MDeliv_Ins_FK     Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Por_MDeliv_Upd_FK     Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Por_MDeliv_PK         PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Por_TDeliv_Seq
@@ -181,12 +152,7 @@ Create Table Por_TDeliv                             -- جدول بنود است�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Por_TDeliv_PK      PRIMARY KEY (Id),
-  CONSTRAINT Por_TDeliv_UK      UNIQUE      (Mst_Id, TOrd_Id),
-  CONSTRAINT Por_TDeliv_Por_FK  Foreign Key (Mst_Id  ) References Por_MDeliv (Id),
-  CONSTRAINT Por_TDeliv_TOrd_FK Foreign Key (TOrd_Id ) References Por_TPurOrd(Id),
-  CONSTRAINT Por_TDeliv_Item_FK Foreign Key (Item_Id ) References Stor_Item  (Id),
-  CONSTRAINT Por_TDeliv_Ins_FK  Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT Por_TDeliv_Upd_FK  Foreign Key (Upd_User) References Cpy_User   (Id)
+  CONSTRAINT Por_TDeliv_UK      UNIQUE      (Mst_Id, TOrd_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Por_MPor_Seq
@@ -204,12 +170,7 @@ Create Table Por_MPur                             -- جدول ترويسة ال�
   Rem        VARCHAR(100),          				        -- ملاحظات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT Por_MPor_PK         PRIMARY KEY (Id),
-  CONSTRAINT Por_MPor_Cont_FK    Foreign Key (Cont_Id  ) References Mng_Cont      (Id),
-  CONSTRAINT Por_MPor_Status_FK  Foreign Key (Status_Id) References Por_Cod_Status(Id),
-  CONSTRAINT Por_MPor_Curn_FK    Foreign Key (Curn_Id  ) References Mng_Curn      (Id),
-  CONSTRAINT Por_MPor_Ins_FK     Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Por_MPor_Upd_FK     Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Por_MPor_PK         PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Por_TPor_Seq
@@ -229,11 +190,7 @@ Create Table Por_TPur                             -- جدول بنود الشر�
   Rem        VARCHAR(100),          				        -- ملاحظات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT Por_TPor_PK      PRIMARY KEY (Id),
-  CONSTRAINT Por_TPor_Por_FK  Foreign Key (Mst_Id  ) References Por_MPur (Id),
-  CONSTRAINT Por_TPor_Item_FK Foreign Key (Item_Id ) References Stor_Item(Id),
-  CONSTRAINT Por_TPor_Ins_FK  Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT Por_TPor_Upd_FK  Foreign Key (Upd_User) References Cpy_User (Id)
+  CONSTRAINT Por_TPor_PK      PRIMARY KEY (Id)
 );
 
 -- TODO(port): other has no automatic equivalent (source line 225).

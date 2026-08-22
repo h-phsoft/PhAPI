@@ -72,9 +72,8 @@ CREATE TRIGGER
   BEFORE INSERT
   ON Fix_OuTrn
   FOR EACH ROW
-DECLARE
-  nPrice    DECIMAL(38,10) := 0;
 BEGIN
+  DECLARE nPrice    DECIMAL(38,10) := 0;
   SELECT Price
     INTO nPrice
     FROM Fix_InTrn
@@ -98,9 +97,8 @@ CREATE TRIGGER
   Fix_TBU_OuTrn
   BEFORE UPDATE ON Fix_OuTrn
   FOR EACH ROW
-DECLARE
-  nPrice    DECIMAL(38,10) := 0;
 BEGIN
+  DECLARE nPrice    DECIMAL(38,10) := 0;
   SELECT Price
     INTO nPrice
     FROM Fix_InTrn

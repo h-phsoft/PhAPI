@@ -22,9 +22,7 @@ Create Table Pur_Cod_Status                        -- جدول ترميز حال
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Pur_Cod_Status_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Pur_Cod_Status_UK     UNIQUE      (Name),
-  CONSTRAINT Pur_Cod_Status_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Pur_Cod_Status_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Pur_Cod_Status_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Pur_Cod_Status (Id,Name) values (0,'-'       );
@@ -53,17 +51,7 @@ Create Table Pur_MPur                             -- جدول ترويسة ال�
   Rem        VARCHAR(100),          				        -- ملاحظات
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT Pur_MPur_PK        PRIMARY KEY (Id),
-  CONSTRAINT Pur_MPur_Period_FK Foreign Key (Period_Id) References Cpy_Period    (Id),
-  CONSTRAINT Pur_MPur_Status_FK Foreign Key (Status_Id) References Pur_Cod_Status(Id),
-  CONSTRAINT Pur_MPur_Cont_FK   Foreign Key (Cont_Id  ) References Mng_Cont      (Id),
-  CONSTRAINT Pur_MPur_Curn_FK   Foreign Key (Curn_Id  ) References Mng_Curn      (Id),
-  CONSTRAINT Pur_MPur_BCurn_FK  Foreign Key (BCurn_Id ) References Mng_Curn      (Id),
-  CONSTRAINT Pur_MPur_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc       (Id),
-  CONSTRAINT Pur_MPur_Fin_FK    Foreign Key (Fin_Id   ) References Fin_MCrd      (Id),
-  CONSTRAINT Pur_MPur_Doc_FK    Foreign Key (Doc_Id   ) References Cpy_Cod_Doc   (Id),
-  CONSTRAINT Pur_MPur_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Pur_MPur_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Pur_MPur_PK        PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Pur_TPur                             -- جدول بنود الشراء
@@ -96,15 +84,7 @@ Create Table Pur_TPur                             -- جدول بنود الشر�
   Rem        VARCHAR(100),          				        -- ملاحظات
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT Pur_TPur_PK       PRIMARY KEY (Id),
-  CONSTRAINT Pur_TPur_Pur_FK   Foreign Key (Mst_Id  ) References Pur_MPur      (Id),
-  CONSTRAINT Pur_TPur_Item_FK  Foreign Key (Item_Id ) References Stor_Item     (Id),
-  CONSTRAINT Pur_TPur_Unit_FK  Foreign Key (Unit_Id ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT Pur_TPur_Model_FK Foreign Key (Model_Id) References Stor_Cod_Model(Id),
-  CONSTRAINT Pur_TPur_Color_FK Foreign Key (Color_Id) References Stor_Cod_Color(Id),
-  CONSTRAINT Pur_TPur_Size_FK  Foreign Key (Size_Id ) References Stor_Cod_Size (Id),
-  CONSTRAINT Pur_TPur_Ins_FK   Foreign Key (Ins_User) References Cpy_User      (Id),
-  CONSTRAINT Pur_TPur_Upd_FK   Foreign Key (Upd_User) References Cpy_User      (Id)
+  CONSTRAINT Pur_TPur_PK       PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Pur_MRet                               -- جدول ترويسة المرتجع
@@ -127,17 +107,7 @@ Create Table Pur_MRet                               -- جدول ترويسة ا�
   Rem        VARCHAR(100),          				        -- ملاحظات
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT Pur_MRet_PK      PRIMARY KEY (Id),
-  CONSTRAINT Pur_MRet_Period_FK Foreign Key (Period_Id) References Cpy_Period    (Id),
-  CONSTRAINT Pur_MRet_Status_FK Foreign Key (Status_Id) References Pur_Cod_Status(Id),
-  CONSTRAINT Pur_MRet_Cont_FK   Foreign Key (Cont_Id  ) References Mng_Cont      (Id),
-  CONSTRAINT Pur_MRet_Curn_FK   Foreign Key (Curn_Id  ) References Mng_Curn      (Id),
-  CONSTRAINT Pur_MRet_BCurn_FK  Foreign Key (BCurn_Id ) References Mng_Curn      (Id),
-  CONSTRAINT Pur_MRet_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc       (Id),
-  CONSTRAINT Pur_MRet_Fin_FK    Foreign Key (Fin_Id   ) References Fin_MCrd      (Id),
-  CONSTRAINT Pur_MRet_Doc_FK    Foreign Key (Doc_Id   ) References Cpy_Cod_Doc   (Id),
-  CONSTRAINT Pur_MRet_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Pur_MRet_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Pur_MRet_PK      PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Pur_TRet                             -- جدول بنود الشراء
@@ -170,15 +140,7 @@ Create Table Pur_TRet                             -- جدول بنود الشر�
   Rem        VARCHAR(100),          				        -- ملاحظات
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT Pur_TRet_PK       PRIMARY KEY (Id),
-  CONSTRAINT Pur_TRet_Pur_FK   Foreign Key (Mst_Id  ) References Pur_MRet      (Id),
-  CONSTRAINT Pur_TRet_Item_FK  Foreign Key (Item_Id ) References Stor_Item     (Id),
-  CONSTRAINT Pur_TRet_Unit_FK  Foreign Key (Unit_Id ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT Pur_TRet_Model_FK Foreign Key (Model_Id) References Stor_Cod_Model(Id),
-  CONSTRAINT Pur_TRet_Color_FK Foreign Key (Color_Id) References Stor_Cod_Color(Id),
-  CONSTRAINT Pur_TRet_Size_FK  Foreign Key (Size_Id ) References Stor_Cod_Size (Id),
-  CONSTRAINT Pur_TRet_Ins_FK   Foreign Key (Ins_User) References Cpy_User      (Id),
-  CONSTRAINT Pur_TRet_Upd_FK   Foreign Key (Upd_User) References Cpy_User      (Id)
+  CONSTRAINT Pur_TRet_PK       PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- TODO(port): other has no automatic equivalent (source line 189).

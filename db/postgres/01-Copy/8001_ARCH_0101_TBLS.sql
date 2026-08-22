@@ -22,9 +22,7 @@ Create Table Arch_Cod_                 -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Arch_Cod__PK PRIMARY KEY (Id  ),
-  CONSTRAINT Arch_Cod__UK UNIQUE      (Name),
-  CONSTRAINT Arch_Cod__Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Arch_Cod__Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Arch_Cod__UK UNIQUE      (Name)
 );
 
 Insert into Arch_Cod_ (Id,Name) values (0,'-');
@@ -38,29 +36,23 @@ Create Table Arch_Fld                               -- جدول توصيف ال�
   Type_id    BIGINT NOT NULL,                      -- نوع الحقل
   Table_id   BIGINT DEFAULT '-1',
   Name       VARCHAR(100) NOT NULL,              -- الاسم
-  Rem        VARCHAR(100),                      -- ملاحظات
-  CONSTRAINT Arch_Field_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Arch_Field_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  Rem        VARCHAR(100)
 );
 
 Create Table Arch_Form                                -- جدول توصيف النماذج
 ( Id         BIGINT NOT NULL,                      -- مفتاح رئيسي
   Name       VARCHAR(100) NOT NULL,             -- الاسم
-  Rem        VARCHAR(100),                      -- ملاحظات
-  CONSTRAINT Arch__Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Arch__Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  Rem        VARCHAR(100)
 );
 
 Create Table Arch_Form_Detail                         -- جدول بنود النماذج
 ( Id          BIGINT NOT NULL,                     -- مفتاح رئيسي
   form_id     INTEGER NOT NULL,
   field_id    INTEGER NOT NULL,
-  required_id tinyint NOT NULL DEFAULT '2',
-  ord         tinyint DEFAULT '1',
-  size        tinyint DEFAULT '2',
-  Rem         VARCHAR(100),                      -- ملاحظات
-  CONSTRAINT  Arch__Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT  Arch__Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  required_id SMALLINT NOT NULL DEFAULT '2',
+  ord         SMALLINT DEFAULT '1',
+  size        SMALLINT DEFAULT '2',
+  Rem         VARCHAR(100)
 );
 
 Create Table Arch_Operation
@@ -68,45 +60,35 @@ Create Table Arch_Operation
   Tree_id    INTEGER NOT NULL,
   Form_Id    INTEGER NOT NULL,
   TIMESTAMP       TIMESTAMP DEFAULT NULL,
-  hour       tinyint DEFAULT '0',
-  min        tinyint DEFAULT '0',
-  CONSTRAINT Arch__Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Arch__Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  hour       SMALLINT DEFAULT '0',
+  min        SMALLINT DEFAULT '0'
 );
 
 Create Table Arch_Operation_Detail
 ( Id           BIGINT NOT NULL,                      -- مفتاح رئيسي
   Operation_Id INTEGER NOT NULL,
   Field_Id     INTEGER NOT NULL,
-  value        VARCHAR(512) NOT NULL,
-  CONSTRAINT Arch__Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Arch__Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  value        VARCHAR(512) NOT NULL
 );
 
 Create Table Arch_Operation_Img
 ( Id           BIGINT NOT NULL,                      -- مفتاح رئيسي
   Operation_Id INTEGER NOT NULL,
   oname        VARCHAR(512) NOT NULL,
-  nname        VARCHAR(512) NOT NULL,
-  CONSTRAINT Arch__Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Arch__Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  nname        VARCHAR(512) NOT NULL
 );
 
 Create Table Arch_Table
 ( Id         BIGINT NOT NULL,                      -- مفتاح رئيسي
   Name       VARCHAR(100) NOT NULL,              -- الاسم
-  Rem        VARCHAR(100),                      -- ملاحظات
-  CONSTRAINT Arch__Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Arch__Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  Rem        VARCHAR(100)
 );
 
 Create Table Arch_Table_Detail
 ( Id         BIGINT NOT NULL,                      -- مفتاح رئيسي
   Table_Id   INTEGER NOT NULL,
   Name       VARCHAR(100) NOT NULL,              -- الاسم
-  Rem        VARCHAR(100),                      -- ملاحظات
-  CONSTRAINT Arch__Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Arch__Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  Rem        VARCHAR(100)
 );
 
 Create Table Arch_Tree
@@ -114,7 +96,5 @@ Create Table Arch_Tree
   Tree_Id    INTEGER NOT NULL,
   Form_Id    INTEGER NOT NULL,
   Name       VARCHAR(100) NOT NULL,              -- الاسم
-  Rem        VARCHAR(100),                      -- ملاحظات
-  CONSTRAINT Arch__Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Arch__Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  Rem        VARCHAR(100)
 );

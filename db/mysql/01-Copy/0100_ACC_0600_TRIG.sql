@@ -124,9 +124,8 @@ CREATE TRIGGER
   Acc_TBU_Acc
   Before UPDATE ON Acc_Acc
   For Each Row
-Declare
-  nCount     DECIMAL(38,10) := 0;
-Begin
+BEGIN
+  DECLARE nCount     DECIMAL(38,10) := 0;
   If NEW.Type_Id=1 AND NEW.Type_Id!=OLD.Type_Id Then
     SELECT Count(*) INTO nCount FROM Acc_Trn WHERE Acc_Id=NEW.Id;
     If IFNULL(nCount,0)>0 Then
@@ -143,9 +142,8 @@ CREATE TRIGGER
   Acc_TBU_Cost
   Before UPDATE ON Acc_Cost
   For Each Row
-Declare
-  nCount     DECIMAL(38,10) := 0;
-Begin
+BEGIN
+  DECLARE nCount     DECIMAL(38,10) := 0;
   If NEW.Type_Id=1 AND NEW.Type_Id!=OLD.Type_Id Then
     SELECT Count(*) INTO nCount FROM Acc_Trn WHERE Cost_Id=NEW.Id;
     If IFNULL(nCount,0)>0 Then

@@ -13,8 +13,7 @@ Create Table Phs_Priv                           -- جدول أنواع الصل�
   Name       VARCHAR(50) NOT NULL,              -- الاسم
   Rem        VARCHAR(100),                      -- ملاحظات
   CONSTRAINT PhsPrv_PK PRIMARY KEY (Id  ),
-  CONSTRAINT PhsPrv_Nam_UK UNIQUE  (Name),
-  CONSTRAINT PhsPrv_Status_FK  Foreign Key (Status_Id) References Phs_Cod_Status(Id)
+  CONSTRAINT PhsPrv_Nam_UK UNIQUE  (Name)
 );
 
 Create Table Phs_SpecPriv                   -- جدول أنواع الصلاحيات الخاصة
@@ -27,8 +26,7 @@ Create Table Phs_SpecPriv                   -- جدول أنواع الصلاح�
   model         VARCHAR(100) NOT NULL,          -- model سيتم استخدامه في Autocomplete
   Rem           VARCHAR(100),                   -- ملاحظات
   CONSTRAINT    PhsSpecPrv_PK         PRIMARY KEY (Id  ),
-  CONSTRAINT    PhsSpecPrv_Name_UK    UNIQUE      (Name),
-  CONSTRAINT    PhsSpecPrv_Status_FK  Foreign Key (Status_Id) References Phs_Cod_Status(Id)
+  CONSTRAINT    PhsSpecPrv_Name_UK    UNIQUE      (Name)
 );
 
 Create Table Phs_Cod_PrgType                    -- جدول أنواع القوائم
@@ -38,8 +36,7 @@ Create Table Phs_Cod_PrgType                    -- جدول أنواع القو�
   Icon       VARCHAR(100),                      -- الرمز
   Rem        VARCHAR(100),                      -- ملاحظات
   CONSTRAINT Phs_Cod_ProgType_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Phs_Cod_ProgType_UK        UNIQUE      (Name),
-  CONSTRAINT Phs_Cod_ProgType_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id)
+  CONSTRAINT Phs_Cod_ProgType_UK        UNIQUE      (Name)
 );
 
 Create Table Phs_Menu                                -- جدول قوائم الخيارات الرئيسة
@@ -50,8 +47,7 @@ Create Table Phs_Menu                                -- جدول قوائم ال
   URL        VARCHAR(256),                      -- الرابط
   Descr      VARCHAR(1024),                     -- الوصف
   CONSTRAINT PhsMenu_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT PhsMenu_UK        UNIQUE      (Name),
-  CONSTRAINT PhsMenu_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id)
+  CONSTRAINT PhsMenu_UK        UNIQUE      (Name)
 );
 
 Create Table Phs_MPrg                        -- جدول برامج قوائم الخيارات
@@ -68,10 +64,7 @@ Create Table Phs_MPrg                        -- جدول برامج قوائم �
   Icon         VARCHAR(50),                     -- الرمز
   Params       VARCHAR(1024),                        -- البارامترات الممكن إرسالها
   CONSTRAINT   PhsPrg_PK         PRIMARY KEY (Id),
-  CONSTRAINT   PhsPrg_MIO_UK     UNIQUE      (Menu_Id,Ord),
-  CONSTRAINT   PhsPrg_Mnu_FK     Foreign Key (Menu_Id  ) References Phs_Menu       (Id),
-  CONSTRAINT   PhsPrg_Type_FK    Foreign Key (Type_Id  ) References Phs_Cod_PrgType(Id),
-  CONSTRAINT   PhsPrg_Status_FK  Foreign Key (Status_Id) References Phs_Cod_Status (Id)
+  CONSTRAINT   PhsPrg_MIO_UK     UNIQUE      (Menu_Id,Ord)
 );
 
 Alter Table Phs_MPrg ADD CONSTRAINT PhsPrg_MPrg_FK Foreign Key (MPrg_Id) References Phs_MPrg(Id);
@@ -82,9 +75,7 @@ Create Table Phs_MPrgPriv                  -- جدول بنود صلاحيات �
   Prv_Id     BIGINT NOT NULL,                      -- الصلاحية
   Status_Id  BIGINT Default 1 NOT NULL,            -- حالة الخيار 1 فعال 2 غير فعال
   CONSTRAINT PhsPrgP_PK      PRIMARY KEY (Id),
-  CONSTRAINT PhsPrgP_UK      UNIQUE      (MPrg_Id, Prv_Id),
-  CONSTRAINT PhsPrgP_MPrg_FK Foreign Key (MPrg_Id) References Phs_MPrg(Id),
-  CONSTRAINT PhsPrgP_Prv_FK  Foreign Key (Prv_Id ) References Phs_Priv(Id)
+  CONSTRAINT PhsPrgP_UK      UNIQUE      (MPrg_Id, Prv_Id)
 );
 
 Create Table Phs_MPrgSPriv              -- جدول بنود صلاحيات البرامج الخاصة
@@ -94,7 +85,5 @@ Create Table Phs_MPrgSPriv              -- جدول بنود صلاحيات ال
   Status_Id  BIGINT Default 1 NOT NULL,            -- حالة الخيار 1 فعال 2 غير فعال
   Cond       VARCHAR(4000),                     -- الشرط
   CONSTRAINT PhsPrgSP_PK      PRIMARY KEY (Id),
-  CONSTRAINT PhsPrgSP_UK      UNIQUE      (MPrg_Id, SPrv_Id),
-  CONSTRAINT PhsPrgSP_MPrg_FK Foreign Key (MPrg_Id) References Phs_MPrg    (Id),
-  CONSTRAINT PhsPrgSP_Prv_FK  Foreign Key (SPrv_Id) References Phs_SpecPriv(Id)
+  CONSTRAINT PhsPrgSP_UK      UNIQUE      (MPrg_Id, SPrv_Id)
 );

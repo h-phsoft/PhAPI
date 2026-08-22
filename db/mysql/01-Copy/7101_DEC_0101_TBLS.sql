@@ -57,9 +57,7 @@ Create Table DStr_Cod_Trt                    -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT DStr_Cod_Trt_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT DStr_Cod_Trt_UK     UNIQUE      (Name),
-  CONSTRAINT DStr_Cod_Trt_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT DStr_Cod_Trt_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT DStr_Cod_Trt_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO DStr_Cod_Trt (Id, Name, Rem) VALUES (100, 'ادخال', '1');
@@ -74,9 +72,7 @@ Create Table DStr_Cod_Doc                            -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT DStr_Cod_Doc_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT DStr_Cod_Doc_UK     UNIQUE      (Name),
-  CONSTRAINT DStr_Cod_Doc_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT DStr_Cod_Doc_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT DStr_Cod_Doc_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO DStr_Cod_Doc (Id,Name,Rem) VALUES (-1, 'افتتاحي', '-1');
@@ -112,9 +108,7 @@ Create Table DStr_Cod_Unit                               -- جدول ترميز 
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT DStr_Cod_Unit_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT DStr_Cod_Unit_UK     UNIQUE      (Name),
-  CONSTRAINT DStr_Cod_Unit_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT DStr_Cod_Unit_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT DStr_Cod_Unit_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO DStr_Cod_Unit (Id, Name, Rem) VALUES (1, 'عدد', 'عدد');
@@ -136,9 +130,7 @@ Create Table DStr_Cod_Spc1                      -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT DStr_Cod_Spc1_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT DStr_Cod_Spc1_UK     UNIQUE      (Name),
-  CONSTRAINT DStr_Cod_Spc1_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT DStr_Cod_Spc1_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT DStr_Cod_Spc1_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO DStr_Cod_Spc1 (Id, Name) VALUES (0, '-');
@@ -156,9 +148,7 @@ Create Table DStr_Cod_Spc2                      -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT DStr_Cod_Spc2_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT DStr_Cod_Spc2_UK     UNIQUE      (Name),
-  CONSTRAINT DStr_Cod_Spc2_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT DStr_Cod_Spc2_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT DStr_Cod_Spc2_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO DStr_Cod_Spc2 (Id, Name) VALUES (0, '-');
@@ -176,9 +166,7 @@ Create Table DStr_Cod_Spc3                      -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT DStr_Cod_Spc3_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT DStr_Cod_Spc3_UK     UNIQUE      (Name),
-  CONSTRAINT DStr_Cod_Spc3_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT DStr_Cod_Spc3_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT DStr_Cod_Spc3_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO DStr_Cod_Spc3 (Id, Name) VALUES (0, '-');
@@ -190,9 +178,7 @@ Create Table DStr_Cod_Spc4                      -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT DStr_Cod_Spc4_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT DStr_Cod_Spc4_UK     UNIQUE      (Name),
-  CONSTRAINT DStr_Cod_Spc4_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT DStr_Cod_Spc4_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT DStr_Cod_Spc4_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO DStr_Cod_Spc4 (Id, Name) VALUES (0, '-');
@@ -204,9 +190,7 @@ Create Table DStr_Cod_Spc5                      -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT DStr_Cod_Spc5_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT DStr_Cod_Spc5_UK     UNIQUE      (Name),
-  CONSTRAINT DStr_Cod_Spc5_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT DStr_Cod_Spc5_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT DStr_Cod_Spc5_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO DStr_Cod_Spc5 (Id, Name) VALUES (0, '-');
@@ -218,9 +202,7 @@ Create Table DStr_Cod_Loc1                           -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT DStr_Cod_Loc1_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT DStr_Cod_Loc1_UK     UNIQUE      (Name),
-  CONSTRAINT DStr_Cod_Loc1_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT DStr_Cod_Loc1_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT DStr_Cod_Loc1_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO DStr_Cod_Loc1 (Id, Name) VALUES (0, '-');
@@ -232,9 +214,7 @@ Create Table DStr_Cod_Loc2                           -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT DStr_Cod_Loc2_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT DStr_Cod_Loc2_UK     UNIQUE      (Name),
-  CONSTRAINT DStr_Cod_Loc2_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT DStr_Cod_Loc2_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT DStr_Cod_Loc2_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO DStr_Cod_Loc2 (Id, Name) VALUES (0, '-');
@@ -246,9 +226,7 @@ Create Table DStr_Cod_Loc3                           -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT DStr_Cod_Loc3_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT DStr_Cod_Loc3_UK     UNIQUE      (Name),
-  CONSTRAINT DStr_Cod_Loc3_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT DStr_Cod_Loc3_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT DStr_Cod_Loc3_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO DStr_Cod_Loc3 (Id, Name) VALUES (0, '-');

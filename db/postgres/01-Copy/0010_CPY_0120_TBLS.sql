@@ -31,8 +31,7 @@ Create Table Cpy_SList	                  -- جدول القوائم الخاصة
   Ins_User   INTEGER,      Ins_Date TIMESTAMP,
   Upd_User   INTEGER,      Upd_Date TIMESTAMP,
   CONSTRAINT CpySList_PK          PRIMARY KEY (Id),
-  CONSTRAINT CpySList_UK          UNIQUE      (SPrv_Id, Name),
-  CONSTRAINT CpySList_SPrv_FK     Foreign Key (SPrv_Id ) References Phs_SpecPriv(Id)
+  CONSTRAINT CpySList_UK          UNIQUE      (SPrv_Id, Name)
 );
 
 INSERT INTO Cpy_SList (Id, SPrv_Id, Name) VALUES (0, 0, '-');
@@ -49,8 +48,7 @@ Create Table Cpy_TList                 -- جدول القوائم الخاصة
   Ins_User   INTEGER,      Ins_Date TIMESTAMP,
   Upd_User   INTEGER,      Upd_Date TIMESTAMP,
   CONSTRAINT CpyTList_PK           PRIMARY KEY (Id),
-  CONSTRAINT CpyTList_UK           UNIQUE      (SList_Id, Rel_Id),
-  CONSTRAINT CpyTList_SList_FK     Foreign Key (SList_Id) References Cpy_SList(Id)
+  CONSTRAINT CpyTList_UK           UNIQUE      (SList_Id, Rel_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cpy_PGrp_Seq
@@ -66,9 +64,7 @@ Create Table Cpy_PGrp			            -- جدول مجموعات الصلاحيا�
   Ins_User    INTEGER,       Ins_Date TIMESTAMP,
   Upd_User    INTEGER,       Upd_Date TIMESTAMP,
   CONSTRAINT  CpyPGrp_PK          PRIMARY KEY (Id  ),
-  CONSTRAINT  CpyPGrp_Name_UK     UNIQUE      (Name),
-  CONSTRAINT  CpyPGrp_PStatus_FK  Foreign Key (PStatus_Id) References Cpy_Cod_PStatus(Id),
-  CONSTRAINT  CpyPGrp_Status_FK   Foreign Key (Status_Id ) References Phs_Cod_Status (Id)
+  CONSTRAINT  CpyPGrp_Name_UK     UNIQUE      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cpy_Perm_Seq
@@ -86,10 +82,7 @@ Create Table Cpy_Perm			                  -- جدول صلاحيات فئات ا
   Ins_User   INTEGER,       Ins_Date TIMESTAMP,
   Upd_User   INTEGER,       Upd_Date TIMESTAMP,
   CONSTRAINT CpyPerm_PK       PRIMARY KEY (Id),
-  CONSTRAINT CpyPerm_UK       UNIQUE      (PGrp_Id, MPrg_Id),
-  CONSTRAINT CpyPerm_PGrp_FK  Foreign Key (PGrp_Id ) References Cpy_PGrp          (Id),
-  CONSTRAINT CpyPerm_MPrg_FK  Foreign Key (MPrg_Id ) References Phs_MPrg          (Id),
-  CONSTRAINT CpyPerm_Range_Fk Foreign Key (Range_Id) References Phs_Cod_Perm_Range(Id)
+  CONSTRAINT CpyPerm_UK       UNIQUE      (PGrp_Id, MPrg_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cpy_PermPriv_Seq
@@ -104,9 +97,7 @@ Create Table Cpy_PermPriv		        -- جدول بنود صلاحيات فئات 
   Ins_User     INTEGER,       Ins_Date TIMESTAMP,
   Upd_User     INTEGER,       Upd_Date TIMESTAMP,
   CONSTRAINT   CpyPPrv_PK        PRIMARY KEY (Id),
-  CONSTRAINT   CpyPPrv_UK        UNIQUE      (Perm_Id, Prv_Id),
-  CONSTRAINT   CpyPPrv_MPrg_FK   Foreign Key (Perm_Id) References Cpy_Perm(Id),
-  CONSTRAINT   CpyPPrv_Priv_FK   Foreign Key (Prv_Id ) References Phs_Priv(Id)
+  CONSTRAINT   CpyPPrv_UK        UNIQUE      (Perm_Id, Prv_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cpy_PermSPriv_Seq
@@ -122,11 +113,7 @@ Create Table Cpy_PermSPriv		    -- جدول بنود صلاحيات فئات ا�
   Ins_User   INTEGER,      Ins_Date TIMESTAMP,
   Upd_User   INTEGER,      Upd_Date TIMESTAMP,
   CONSTRAINT CpyPSPrv_PK        PRIMARY KEY (Id),
-  CONSTRAINT CpyPSPrv_UK        UNIQUE      (Perm_Id, SList_Id, Status_Id),
-  CONSTRAINT CpyPSPrv_Perm_FK   Foreign Key (Perm_Id  ) References Cpy_Perm          (Id),
-  CONSTRAINT CpyPSPrv_SPrv_FK   Foreign Key (SPrv_Id  ) References Phs_SpecPriv      (Id),
-  CONSTRAINT CpyPSPrv_Status_FK Foreign Key (Status_Id) References Phs_Cod_SpecStatus(Id),
-  CONSTRAINT CpyPSPrv_SList_FK  Foreign Key (SList_Id ) References Cpy_SList         (Id)
+  CONSTRAINT CpyPSPrv_UK        UNIQUE      (Perm_Id, SList_Id, Status_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cpy_Dash_Perm_seq
@@ -139,9 +126,7 @@ Create Table Cpy_Dash_Perm		      -- جدول صلاحيات لوحة التحك
   Dashboard_Id BIGINT NOT NULL,			        -- كتلة لوحة التحكم
   OK           SMALLINT Default 1,		          -- السماحية
   CONSTRAINT   CpyDashPerm_PK      PRIMARY KEY (Id),
-  CONSTRAINT   CpyDashPerm_UK      UNIQUE      (PGrp_Id, Dashboard_Id),
-  CONSTRAINT   CpyDashPerm_PGrp_FK Foreign Key (PGrp_Id     ) References Cpy_PGrp       (Id),
-  CONSTRAINT   CpyDashPerm_Dash_FK Foreign Key (Dashboard_Id) References Phs_Dash_Blocks(Id)
+  CONSTRAINT   CpyDashPerm_UK      UNIQUE      (PGrp_Id, Dashboard_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cpy_User_Seq
@@ -165,13 +150,7 @@ Create Table Cpy_User                        -- جدول المستخدمين
   Upd_User    INTEGER, Upd_Date TIMESTAMP,
   CONSTRAINT  CpyUser_PK          PRIMARY KEY (Id    ),
   CONSTRAINT  CpyUser_Logon_UK    UNIQUE      (Logon ),
-  CONSTRAINT  CpyUser_Name_UK     UNIQUE      (Name  ),
---CONSTRAINT  CpyUser_Bran_FK     Foreign Key (Bran_Id    ) References Cpy_Bran       (Id),
-  CONSTRAINT  CpyUser_UGrp_FK     Foreign Key (UGrp_Id    ) References Phs_Cod_UGrp   (Id),
-  CONSTRAINT  CpyUser_Gender_FK   Foreign Key (Gender_Id  ) References Phs_Cod_Gender (Id),
-  CONSTRAINT  CpyUser_Status_FK   Foreign Key (Status_Id  ) References Phs_Cod_Status (Id),
-  CONSTRAINT  CpyUser_Verified_FK Foreign Key (Verified_Id) References Phs_Cod_YesNo  (Id),
-  CONSTRAINT  CpyUser_PGrp_FK     Foreign Key (PGrp_Id    ) References Cpy_PGrp       (Id)
+  CONSTRAINT  CpyUser_Name_UK     UNIQUE      (Name  )
 );
 
 Alter Table Cpy_User Add CONSTRAINT CpyUser_Bran_FK Foreign Key (Bran_Id) References Cpy_Bran(Id);
@@ -188,8 +167,7 @@ Create Table Cpy_SpecPerm	                -- جدول صلاحيات خاصة
   Ins_User   INTEGER, Ins_Date TIMESTAMP,
   Upd_User   INTEGER, Upd_Date TIMESTAMP,
   CONSTRAINT CpySpecPerm_PK       PRIMARY KEY (Id),
-  CONSTRAINT CpySpecPerm_UK       UNIQUE      (Perm_Id, Rel_Id),
-  CONSTRAINT CpySpecPerm_Perm_FK  Foreign Key (Perm_Id) References Cpy_Perm(Id)
+  CONSTRAINT CpySpecPerm_UK       UNIQUE      (Perm_Id, Rel_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS CpyToken_Seq
@@ -219,8 +197,7 @@ Create Table Cpy_Token			                                  -- جدول أرقا�
   vPort        VARCHAR(100),                              -- Port
   vHost        VARCHAR(100),                              -- Host
   CONSTRAINT   CpyToken_PK       PRIMARY KEY (Id ),
-  CONSTRAINT   CpyToken_Token_UK UNIQUE      (GId),
-  CONSTRAINT   CpyToken_User_FK  Foreign Key (User_Id) References Cpy_User(Id)
+  CONSTRAINT   CpyToken_Token_UK UNIQUE      (GId)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cpy_UDevice_Seq
@@ -236,8 +213,7 @@ CREATE TABLE Cpy_UDevice                           -- دليل أجهزة مست
   Token      VARCHAR(512) NOT NULL,             -- Token
   Ins_Date   TIMESTAMP Default LOCALTIMESTAMP,
   CONSTRAINT Cpy_UDevice_PK      PRIMARY KEY (Id),
-  CONSTRAINT Cpy_UDevice_UK      UNIQUE      (User_Id, Serial),
-  CONSTRAINT Cpy_UDevice_User_FK Foreign Key (User_Id) References Cpy_User(Id)
+  CONSTRAINT Cpy_UDevice_UK      UNIQUE      (User_Id, Serial)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cpy_RCode_Seq
@@ -249,8 +225,7 @@ CREATE TABLE Cpy_RCode                         -- دليل أكواد استرج
   User_Id    BIGINT NOT NULL,                      -- المستخدم
   Code       VARCHAR(6),          				      -- الرمز
   Ins_Date   TIMESTAMP Default LOCALTIMESTAMP,
-  CONSTRAINT Cpy_RCode_PK      PRIMARY KEY (Id),
-  CONSTRAINT Cpy_RCode_User_FK Foreign Key (User_Id) References Cpy_User(Id)
+  CONSTRAINT Cpy_RCode_PK      PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cpy_Cod_Notif_Seq
@@ -269,10 +244,7 @@ Create Table Cpy_Cod_Notifs
   Upd_User     BIGINT,         Upd_Date TIMESTAMP,
   
   CONSTRAINT Cpy_Cod_Notif_PK        PRIMARY KEY (Id),
-  CONSTRAINT Cpy_Cod_Notif_Code_UK   UNIQUE (Code),
-  CONSTRAINT Cpy_Cod_Notif_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Cpy_Cod_Notif_Ins_FK    Foreign Key (Ins_User)  References Cpy_User(Id),
-  CONSTRAINT Cpy_Cod_Notif_Upd_FK    Foreign Key (Upd_User)  References Cpy_User(Id)
+  CONSTRAINT Cpy_Cod_Notif_Code_UK   UNIQUE (Code)
 );
 
 Insert into Cpy_Cod_Notifs (Id,Status_Id,Code,Iname,Lname) values (1,1,'POINTS_ADDED'   ,'Points Added'   ,'إضافة نقاط');
@@ -294,10 +266,5 @@ Create Table Cpy_User_Notif
   Upd_User       BIGINT,     Upd_Date TIMESTAMP,
   
   CONSTRAINT Cpy_User_Notif_Pref_PK     PRIMARY KEY (Id),
-  CONSTRAINT Cpy_User_Notif_Pref_UK     UNIQUE (User_Id, Notif_Id),
-  CONSTRAINT Cpy_User_Notif_User_FK     Foreign Key (User_Id)   References Cpy_User(Id),
-  CONSTRAINT Cpy_User_Notif_Status_FK   Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Cpy_User_Notif_Notif_FK    Foreign Key (Notif_Id)  References Cpy_Cod_Notifs(Id),
-  CONSTRAINT Cpy_User_Notif_Ins_FK      Foreign Key (Ins_User)  References Cpy_User(Id),
-  CONSTRAINT Cpy_User_Notif_Upd_FK      Foreign Key (Upd_User)  References Cpy_User(Id)
+  CONSTRAINT Cpy_User_Notif_Pref_UK     UNIQUE (User_Id, Notif_Id)
 );

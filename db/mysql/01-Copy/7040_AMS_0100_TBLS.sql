@@ -16,10 +16,7 @@ Create Table Ams_Cod_Nat                          -- جدول ترميز الج�
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Cod_Nat_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Ams_Cod_Nat_UK        UNIQUE      (Name),
-  CONSTRAINT Ams_Cod_Nat_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Cod_Nat_Ins_FK    Foreign Key (Ins_User)  References Cpy_User       (Id),
-  CONSTRAINT Ams_Cod_Nat_Upd_FK    Foreign Key (Upd_User)  References Cpy_User       (Id)
+  CONSTRAINT Ams_Cod_Nat_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Ams_Cod_nat (Id, Name, Rem) values (1, 'عربي سوري', NULL);
@@ -58,10 +55,7 @@ Create Table Ams_Cod_Order_Type                          -- جدول ترميز 
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Cod_Order_Type_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Ams_Cod_Order_Type_UK        UNIQUE      (Name),
-  CONSTRAINT Ams_Cod_Order_Type_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Cod_Order_Type_Ins_FK    Foreign Key (Ins_User)  References Cpy_User       (Id),
-  CONSTRAINT Ams_Cod_Order_Type_Upd_FK    Foreign Key (Upd_User)  References Cpy_User       (Id)
+  CONSTRAINT Ams_Cod_Order_Type_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Ams_Cod_Order_Type (Id, Name, Rem) values (0, '-', NULL);
@@ -82,10 +76,7 @@ Create Table Ams_Cod_AStatus                      -- جدول ترميز الح�
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Cod_AStatus_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Ams_Cod_AStatus_UK        UNIQUE      (Name),
-  CONSTRAINT Ams_Cod_AStatus_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Cod_AStatus_Ins_FK    Foreign Key (Ins_User)  References Cpy_User       (Id),
-  CONSTRAINT Ams_Cod_AStatus_Upd_FK    Foreign Key (Upd_User)  References Cpy_User       (Id)
+  CONSTRAINT Ams_Cod_AStatus_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Ams_Cod_AStatus (Id, Name, Rem) values (0, '-', NULL);
@@ -120,10 +111,7 @@ Create Table Ams_Cod_Mark_Type                            -- جدول ترميز
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Cod_Mark_Type_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Ams_Cod_Mark_Type_UK        UNIQUE      (Name),
-  CONSTRAINT Ams_Cod_Mark_Type_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Cod_Mark_Type_Ins_FK    Foreign Key (Ins_User)  References Cpy_User       (Id),
-  CONSTRAINT Ams_Cod_Mark_Type_Upd_FK    Foreign Key (Upd_User)  References Cpy_User       (Id)
+  CONSTRAINT Ams_Cod_Mark_Type_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Ams_Cod_Mark_Type (Id, Name, Rem) values (1, '1st Exam', NULL);
@@ -144,10 +132,7 @@ Create Table Ams_Cod_Fee_Type                             -- جدول ترميز
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Cod_Fee_Type_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Ams_Cod_Fee_Type_UK        UNIQUE      (Name),
-  CONSTRAINT Ams_Cod_Fee_Type_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Cod_Fee_Type_Ins_FK    Foreign Key (Ins_User)  References Cpy_User       (Id),
-  CONSTRAINT Ams_Cod_Fee_Type_Upd_FK    Foreign Key (Upd_User)  References Cpy_User       (Id)
+  CONSTRAINT Ams_Cod_Fee_Type_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Ams_Cod_Fee_Type (Id, Name, Rem) values (1, 'Fee', NULL);
@@ -162,10 +147,7 @@ Create Table Ams_Cod_Collection_Type                  -- جدول عدد مرا�
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Cod_Collection_Type_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Ams_Cod_Collection_Type_UK        UNIQUE      (Name),
-  CONSTRAINT Ams_Cod_Collection_Type_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Cod_Collection_Type_Ins_FK    Foreign Key (Ins_User)  References Cpy_User       (Id),
-  CONSTRAINT Ams_Cod_Collection_Type_Upd_FK    Foreign Key (Upd_User)  References Cpy_User       (Id)
+  CONSTRAINT Ams_Cod_Collection_Type_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Ams_Cod_Collection_Type (Id, Name, Rem) values (1, 'One Time', NULL);
@@ -190,10 +172,7 @@ Create Table Ams_Cod_Item_Force                           -- جدول انواع
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Cod_Item_Force_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Ams_Cod_Item_Force_UK        UNIQUE      (Name),
-  CONSTRAINT Ams_Cod_Item_Force_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Cod_Item_Force_Ins_FK    Foreign Key (Ins_User)  References Cpy_User       (Id),
-  CONSTRAINT Ams_Cod_Item_Force_Upd_FK    Foreign Key (Upd_User)  References Cpy_User       (Id)
+  CONSTRAINT Ams_Cod_Item_Force_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Ams_Cod_Item_Force (Id, Name, Rem) values (1, 'اجباري', NULL);
@@ -210,10 +189,7 @@ Create Table Ams_Cod_Item_Kind                            -- جدول انواع
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Cod_Item_Kind_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Ams_Cod_Item_Kind_UK        UNIQUE      (Name),
-  CONSTRAINT Ams_Cod_Item_Kind_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Cod_Item_Kind_Ins_FK    Foreign Key (Ins_User)  References Cpy_User       (Id),
-  CONSTRAINT Ams_Cod_Item_Kind_Upd_FK    Foreign Key (Upd_User)  References Cpy_User       (Id)
+  CONSTRAINT Ams_Cod_Item_Kind_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Ams_Cod_Item_Kind (Id, Name, Rem) values (1, 'عادي', NULL);
@@ -228,10 +204,7 @@ Create Table Ams_Cod_Item_Order_Type                      -- جدول انواع
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Cod_Item_Order_Type_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Ams_Cod_Item_Order_Type_UK        UNIQUE      (Name),
-  CONSTRAINT Ams_Cod_Item_Order_Type_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Cod_Item_Order_Type_Ins_FK    Foreign Key (Ins_User)  References Cpy_User       (Id),
-  CONSTRAINT Ams_Cod_Item_Order_Type_Upd_FK    Foreign Key (Upd_User)  References Cpy_User       (Id)
+  CONSTRAINT Ams_Cod_Item_Order_Type_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Ams_Cod_Item_Order_Type (Id, Name, Rem) values (1, 'عادي', NULL);
@@ -246,10 +219,7 @@ Create Table Ams_Cod_NExam_Status                 -- جدول حالة الام�
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Cod_NExam_Status_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Ams_Cod_NExam_Status_UK        UNIQUE      (Name),
-  CONSTRAINT Ams_Cod_NExam_Status_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Cod_NExam_Status_Ins_FK    Foreign Key (Ins_User)  References Cpy_User       (Id),
-  CONSTRAINT Ams_Cod_NExam_Status_Upd_FK    Foreign Key (Upd_User)  References Cpy_User       (Id)
+  CONSTRAINT Ams_Cod_NExam_Status_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Ams_Cod_NExam_Status (Id, Name, Rem) values (1, 'لايوجد', NULL);
@@ -266,10 +236,7 @@ Create Table Ams_Cod_Stud_Classif               -- جدول تصنيف الطل�
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Cod_Stud_Classif_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Ams_Cod_Stud_Classif_UK        UNIQUE      (Name),
-  CONSTRAINT Ams_Cod_Stud_Classif_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Cod_Stud_Classif_Ins_FK    Foreign Key (Ins_User)  References Cpy_User       (Id),
-  CONSTRAINT Ams_Cod_Stud_Classif_Upd_FK    Foreign Key (Upd_User)  References Cpy_User       (Id)
+  CONSTRAINT Ams_Cod_Stud_Classif_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Ams_Cod_Stud_Classif (Id, Name, Rem) values (1, 'سوري مقيم', NULL);
@@ -286,10 +253,7 @@ Create Table Ams_Cod_Stud_Adjc                -- جدول صفة الطلاب
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Cod_Stud_Adjc_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Ams_Cod_Stud_Adjc_UK        UNIQUE      (Name),
-  CONSTRAINT Ams_Cod_Stud_Adjc_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Cod_Stud_Adjc_Ins_FK    Foreign Key (Ins_User)  References Cpy_User       (Id),
-  CONSTRAINT Ams_Cod_Stud_Adjc_Upd_FK    Foreign Key (Upd_User)  References Cpy_User       (Id)
+  CONSTRAINT Ams_Cod_Stud_Adjc_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Ams_Cod_Stud_Adjc (Id, Name, Rem) values (1, 'منتظم', '');
@@ -310,10 +274,7 @@ Create Table Ams_Cod_City                         -- جدول المدن
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Cod_City_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Ams_Cod_City_UK        UNIQUE      (Name),
-  CONSTRAINT Ams_Cod_City_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Cod_City_Ins_FK    Foreign Key (Ins_User)  References Cpy_User       (Id),
-  CONSTRAINT Ams_Cod_City_Upd_FK    Foreign Key (Upd_User)  References Cpy_User       (Id)
+  CONSTRAINT Ams_Cod_City_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Ams_Cod_City (Id, Name, Rem) values (1, 'دمشق', NULL);
@@ -370,10 +331,7 @@ Create Table Ams_Cod_Country                      -- جدول الدول
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Cod_Country_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Ams_Cod_Country_UK        UNIQUE      (Name),
-  CONSTRAINT Ams_Cod_Country_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Cod_Country_Ins_FK    Foreign Key (Ins_User)  References Cpy_User       (Id),
-  CONSTRAINT Ams_Cod_Country_Upd_FK    Foreign Key (Upd_User)  References Cpy_User       (Id)
+  CONSTRAINT Ams_Cod_Country_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Ams_Cod_Country (Id, Name, Rem) values (1, 'الجمهورية العربية السورية', NULL);
@@ -414,10 +372,7 @@ Create Table Ams_Lib_Cod_Type                         -- جدول انواع ا�
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Lib_Cod_Type_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Ams_Lib_Cod_Type_UK        UNIQUE      (Name),
-  CONSTRAINT Ams_Lib_Cod_Type_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Lib_Cod_Type_Ins_FK    Foreign Key (Ins_User)  References Cpy_User       (Id),
-  CONSTRAINT Ams_Lib_Cod_Type_Upd_FK    Foreign Key (Upd_User)  References Cpy_User       (Id)
+  CONSTRAINT Ams_Lib_Cod_Type_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- TODO(port): other has no automatic equivalent (source line 408).

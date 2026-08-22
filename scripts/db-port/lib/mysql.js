@@ -36,6 +36,23 @@ BEGIN
   RETURN CAST(p_val AS DECIMAL(38,10));
 END $$
 
+-- Oracle TO_CHAR(number, '0000') zero-pads to the width of the format model.
+-- The triggers use it to build composite keys, so the padding must be exact.
+DROP FUNCTION IF EXISTS To_Char $$
+CREATE FUNCTION To_Char(p_val DECIMAL(38,10), p_fmt VARCHAR(64))
+RETURNS VARCHAR(128)
+DETERMINISTIC
+BEGIN
+  IF p_fmt IS NULL THEN
+    RETURN CAST(p_val AS CHAR);
+  END IF;
+  -- A model of all zeros/nines is a fixed-width numeric pad.
+  IF p_fmt REGEXP '^[09]+$' THEN
+    RETURN LPAD(CAST(FLOOR(p_val) AS CHAR), CHAR_LENGTH(p_fmt), '0');
+  END IF;
+  RETURN CAST(p_val AS CHAR);
+END $$
+
 DELIMITER ;
 `;
 
@@ -82,6 +99,22 @@ function mapType({ name, args }) {
     case 'INTEGER':
     case 'INT':
       return 'INT';
+    // Not Oracle types, but present in a few of these scripts.
+    case 'TINYINT':
+      return 'TINYINT';
+    case 'SMALLINT':
+      return 'SMALLINT';
+    case 'MEDIUMINT':
+      return 'MEDIUMINT';
+    case 'BIGINT':
+      return 'BIGINT';
+    case 'DOUBLE':
+      return 'DOUBLE';
+    case 'DATETIME':
+      return 'DATETIME';
+    case 'TEXT':
+    case 'LONGTEXT':
+      return 'LONGTEXT';
     case 'FLOAT':
     case 'BINARY_FLOAT':
       return 'FLOAT';
@@ -156,6 +189,8 @@ const FUNCTION_RULES = [
 
 /** Oracle date format models differ from MySQL's strftime-style ones. */
 const DATE_FORMAT_MAP = [
+  [/'DD-MM-YYYY'/gi, "'%d-%m-%Y'"],
+  [/'DD-MM-RRRR'/gi, "'%d-%m-%Y'"],
   [/'DD\/MM\/RR'/gi, "'%d/%m/%y'"],
   [/'DD\/MM\/RRRR'/gi, "'%d/%m/%Y'"],
   [/'DD\/MM\/YYYY'/gi, "'%d/%m/%Y'"],
@@ -167,7 +202,10 @@ const DATE_FORMAT_MAP = [
 ];
 
 function translateTable(sql) {
-  let out = forceIdIntegers(sql);
+  // Column defaults can carry a date format model, and those live inside string
+  // literals that applyRules cannot see.
+  let out = applyRawRules(sql, DATE_FORMAT_MAP);
+  out = forceIdIntegers(out);
   const keyed = ensureIdPrimaryKey(out);
   out = keyed.sql;
 
@@ -181,6 +219,14 @@ function translateTable(sql) {
     [/\bENABLE\b/gi, ''],
     [/\bORGANIZATION\s+INDEX\b/gi, '']
   ]);
+
+  // MySQL rejects a bare function call as a column default; from 8.0.13 an
+  // expression default is legal only when wrapped in parentheses. Literals and
+  // CURRENT_TIMESTAMP are left alone.
+  out = out.replace(
+    /\bDEFAULT\s+(?!\()(?!CURRENT_TIMESTAMP\b)([A-Za-z_][A-Za-z0-9_]*\s*\((?:[^()']|'(?:[^']|'')*')*\))/gi,
+    (match, expression) => `DEFAULT (${expression})`
+  );
 
   // The key column carries the generator, replacing the Oracle sequence. Only
   // applied when Id is genuinely the primary key, since MySQL requires an
@@ -210,6 +256,8 @@ function translateView(sql) {
   // Date format models live inside string literals, so they are rewritten on
   // the raw text before applyRules hides those literals from its rules.
   let out = applyRawRules(sql, DATE_FORMAT_MAP);
+  // Views carry casts such as CAST(x AS NUMBER), so they need type mapping too.
+  out = mapTypes(out, mapType);
   out = applyRules(out, [
     ...RESERVED_RULES,
     ...FUNCTION_RULES,
@@ -258,8 +306,17 @@ function translateTrigger(sql) {
 
   out = mapTypes(out, mapType);
 
-  // Oracle allows an empty DECLARE section; MySQL does not have one at all.
-  out = out.replace(/\bDECLARE\s*\n(\s*)BEGIN\b/gi, 'BEGIN');
+  // Oracle puts its declarations between DECLARE and BEGIN; MySQL requires each
+  // one inside the block, individually prefixed with DECLARE.
+  out = out.replace(/\bDECLARE\b([\s\S]*?)\bBEGIN\b/i, (match, section) => {
+    const declarations = section
+      .split(';')
+      .map((entry) => entry.replace(/--[^\n]*/g, '').trim())
+      .filter(Boolean)
+      .map((entry) => `  DECLARE ${entry};`);
+
+    return declarations.length === 0 ? 'BEGIN' : `BEGIN\n${declarations.join('\n')}`;
+  });
   out = out.replace(/\bCREATE\s+OR\s+REPLACE\s+TRIGGER\b/gi, 'CREATE TRIGGER');
   // End <name>;  ->  END
   out = out.replace(/\bEND\s+[A-Za-z0-9_$#]+\s*;\s*$/i, 'END');

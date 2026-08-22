@@ -22,10 +22,7 @@ Create Table PMS_Cod_Status                              -- جدول ترميز 
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT PMS_Cod_Status_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT PMS_Cod_Status_UK        UNIQUE      (Name),
-  CONSTRAINT PMS_Cod_Status_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT PMS_Cod_Status_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT PMS_Cod_Status_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT PMS_Cod_Status_UK        UNIQUE      (Name)
 );
 
 Insert into PMS_Cod_Status (Id,Name) values (0,'-');
@@ -57,11 +54,7 @@ Create Table PMS_MReq                              -- جدول ترويسة ال
   Ins_User    BIGINT, Ins_Date     TIMESTAMP,
   Upd_User    BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT  PMS_MReq_PK        PRIMARY KEY (Id ),
-  CONSTRAINT  PMS_MReq_UK        UNIQUE      (Num),
-  CONSTRAINT  PMS_MReq_Status_FK Foreign Key (Status_Id) References PMS_Cod_Status(Id),
-  CONSTRAINT  PMS_MReq_User_FK   Foreign Key (User_Id  ) References Cpy_User      (Id),
-  CONSTRAINT  PMS_MReq_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  PMS_MReq_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  PMS_MReq_UK        UNIQUE      (Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS PMS_TReq_Seq
@@ -78,11 +71,7 @@ Create Table PMS_TReq                              -- جدول بنود الطل
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT PMS_TReq_PK         PRIMARY KEY (Id  ),
-  CONSTRAINT PMS_TReq_UK         UNIQUE      (Mst_Id, Item_Id),
-  CONSTRAINT PMS_TReq_Request_FK Foreign Key (Mst_Id  ) References PMS_MReq (Id),
-  CONSTRAINT PMS_TReq_Item_FK    Foreign Key (Item_Id ) References Stor_Item(Id),
-  CONSTRAINT PMS_TReq_Ins_FK     Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT PMS_TReq_Upd_FK     Foreign Key (Upd_User) References Cpy_User (Id)
+  CONSTRAINT PMS_TReq_UK         UNIQUE      (Mst_Id, Item_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS PMS_MPurOrd_Seq
@@ -101,14 +90,7 @@ Create Table PMS_MPurOrd                       -- جدول ترويسة أمر �
   Rem        VARCHAR(100),          				        -- ملاحظات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT PMS_MPurOrd_PK         PRIMARY KEY (Id),
-  CONSTRAINT PMS_MPurOrd_Request_FK Foreign Key (Req_Id   ) References PMS_MReq      (Id),
-  CONSTRAINT PMS_MPurOrd_Cont_FK    Foreign Key (Cont_Id  ) References Mng_Cont      (Id),
-  CONSTRAINT PMS_MPurOrd_User_FK    Foreign Key (User_Id  ) References Cpy_User      (Id),
-  CONSTRAINT PMS_MPurOrd_Status_FK  Foreign Key (Status_Id) References PMS_Cod_Status(Id),
-  CONSTRAINT PMS_MPurOrd_Curn_FK    Foreign Key (Curn_Id  ) References Mng_Curn      (Id),
-  CONSTRAINT PMS_MPurOrd_Ins_FK     Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT PMS_MPurOrd_Upd_FK     Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT PMS_MPurOrd_PK         PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS PMS_TPurOrd_Seq
@@ -127,12 +109,7 @@ Create Table PMS_TPurOrd                       -- جدول بنود أمر ال�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT PMS_TPurOrd_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT PMS_TPurOrd_UK        UNIQUE      (Mst_Id, TReq_Id),
-  CONSTRAINT PMS_TPurOrd_POrd_FK   Foreign Key (Mst_Id   ) References PMS_MPurOrd(Id),
-  CONSTRAINT PMS_TPurOrd_TReq_FK   Foreign Key (TReq_Id  ) References PMS_TReq   (Id),
-  CONSTRAINT PMS_TPurOrd_Item_FK   Foreign Key (Item_Id  ) References Stor_Item  (Id),
-  CONSTRAINT PMS_TPurOrd_Ins_FK    Foreign Key (Ins_User ) References Cpy_User   (Id),
-  CONSTRAINT PMS_TPurOrd_Upd_FK    Foreign Key (Upd_User ) References Cpy_User   (Id)
+  CONSTRAINT PMS_TPurOrd_UK        UNIQUE      (Mst_Id, TReq_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS PMS_MDeliv_Seq
@@ -151,13 +128,7 @@ Create Table PMS_MDeliv                             -- جدول ترويسة ا�
   Rem        VARCHAR(100),          				        -- ملاحظات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT PMS_MDeliv_PK         PRIMARY KEY (Id),
-  CONSTRAINT PMS_MDeliv_POrd_FK    Foreign Key (POrd_Id  ) References PMS_MPurOrd   (Id),
-  CONSTRAINT PMS_MDeliv_Cont_FK    Foreign Key (Cont_Id  ) References Mng_Cont      (Id),
-  CONSTRAINT PMS_MDeliv_Status_FK  Foreign Key (Status_Id) References PMS_Cod_Status(Id),
-  CONSTRAINT PMS_MDeliv_Curn_FK    Foreign Key (Curn_Id  ) References Mng_Curn      (Id),
-  CONSTRAINT PMS_MDeliv_Ins_FK     Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT PMS_MDeliv_Upd_FK     Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT PMS_MDeliv_PK         PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS PMS_TDeliv_Seq
@@ -179,12 +150,7 @@ Create Table PMS_TDeliv                             -- جدول بنود است�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT PMS_TDeliv_PK      PRIMARY KEY (Id),
-  CONSTRAINT PMS_TDeliv_UK      UNIQUE      (Mst_Id, TOrd_Id),
-  CONSTRAINT PMS_TDeliv_PMS_FK  Foreign Key (Mst_Id  ) References PMS_MDeliv (Id),
-  CONSTRAINT PMS_TDeliv_TOrd_FK Foreign Key (TOrd_Id ) References PMS_TPurOrd(Id),
-  CONSTRAINT PMS_TDeliv_Item_FK Foreign Key (Item_Id ) References Stor_Item  (Id),
-  CONSTRAINT PMS_TDeliv_Ins_FK  Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT PMS_TDeliv_Upd_FK  Foreign Key (Upd_User) References Cpy_User   (Id)
+  CONSTRAINT PMS_TDeliv_UK      UNIQUE      (Mst_Id, TOrd_Id)
 );
 
 -- TODO(port): other has no automatic equivalent (source line 176).

@@ -27,10 +27,7 @@ Create Table MKM_Cod_Cntry                             -- جدول البلدا�
   Ins_User       BIGINT, Ins_Date     TIMESTAMP,
   Upd_User       BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT MKM_Cod_Cntry_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT MKM_Cod_Cntry_UK     UNIQUE      (Name),
-  CONSTRAINT MKM_Cod_Cntry_FK     Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT MKM_Cod_Cntry_Ins_FK Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT MKM_Cod_Cntry_Upd_FK Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT MKM_Cod_Cntry_UK     UNIQUE      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS MKM_Cod_City_Seq
@@ -47,11 +44,7 @@ Create Table MKM_Cod_City                                 -- جدول المدن
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT MKM_Cod_City_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT MKM_Cod_City_UK        UNIQUE      (Cntry_Id, Code),
-  CONSTRAINT MKM_Cod_City_FK        Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT MKM_Cod_City_Cntry_FK  Foreign Key (Cntry_Id ) References MKM_Cod_Cntry (Id),
-  CONSTRAINT MKM_Cod_City_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT MKM_Cod_City_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT MKM_Cod_City_UK        UNIQUE      (Cntry_Id, Code)
 );
 
 CREATE SEQUENCE IF NOT EXISTS MKM_Cod_TStatus_Seq
@@ -66,10 +59,7 @@ CREATE TABLE MKM_Cod_TStatus                        -- ترميز حالات ا�
   Ins_User   BIGINT, Ins_Date TIMESTAMP,
   Upd_User   BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT MKM_Code_TStatus_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT MKM_Code_TStatus_UK        UNIQUE      (Name),
-  CONSTRAINT MKM_Code_TStatus_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT MKM_Code_TStatus_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT MKM_Code_TStatus_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT MKM_Code_TStatus_UK        UNIQUE      (Name)
 );
 
 INSERT INTO MKM_Cod_TStatus (Id, Name) VALUES (1, 'جديد');
@@ -92,10 +82,7 @@ CREATE TABLE MKM_Cod_ReqStatus
   Ins_User  BIGINT, Ins_Date TIMESTAMP,
   Upd_User  BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT MKM_Cod_ReqStatus_PK PRIMARY KEY (Id),
-  CONSTRAINT MKM_Cod_ReqStatus_UK UNIQUE (Name),
-  CONSTRAINT MKM_Code_ReqStatus_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT MKM_Code_ReqStatus_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT MKM_Code_ReqStatus_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT MKM_Cod_ReqStatus_UK UNIQUE (Name)
 );
 
 INSERT INTO MKM_Cod_ReqStatus (Id, Name) VALUES (1, 'قيد المتابعة');
@@ -116,10 +103,7 @@ CREATE TABLE MKM_Cod_IStatus                   -- ترميز حالات التر
   Ins_User   BIGINT, Ins_Date TIMESTAMP,
   Upd_User   BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT MKM_Code_IStatus_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT MKM_Code_IStatus_UK        UNIQUE      (Name),
-  CONSTRAINT MKM_Code_IStatus_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT MKM_Code_IStatus_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT MKM_Code_IStatus_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT MKM_Code_IStatus_UK        UNIQUE      (Name)
 );
 
 INSERT INTO MKM_Cod_IStatus (Id, Name) VALUES (0, '-');
@@ -142,10 +126,7 @@ Create Table MKM_Brand                                  -- جدول المارك
   Image      VARCHAR(512),                         -- الشعار
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT MKM_Brand_PK        PRIMARY KEY (Id),
-  CONSTRAINT MKM_Brand_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT MKM_Brand_Ins_FK    Foreign Key (Ins_User ) References Cpy_User        (Id),
-  CONSTRAINT MKM_Brand_Upd_FK    Foreign Key (Upd_User ) References Cpy_User        (Id)
+  CONSTRAINT MKM_Brand_PK        PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS MKM_Cat_Seq
@@ -166,10 +147,7 @@ Create Table MKM_Cat                              -- جدول الفئات
   Image      VARCHAR(512),                         -- الصورة
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT MKM_Cat_PK        PRIMARY KEY (Id),
-  CONSTRAINT MKM_Cat_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT MKM_Cat_Ins_FK    Foreign Key (Ins_User ) References Cpy_User        (Id),
-  CONSTRAINT MKM_Cat_Upd_FK    Foreign Key (Upd_User ) References Cpy_User        (Id)
+  CONSTRAINT MKM_Cat_PK        PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS MKM_Product_Seq
@@ -195,12 +173,7 @@ Create Table MKM_Product                                 -- جدول المنت�
   Image      VARCHAR(512),                         -- الصورة
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT MKM_Product_PK         PRIMARY KEY (Id),
-  CONSTRAINT MKM_Product_Brand_FK   Foreign Key (Brand_Id ) References MKM_Brand        (Id),
-  CONSTRAINT MKM_Product_Cat_FK     Foreign Key (Cat_Id   ) References MKM_Cat          (Id),
-  CONSTRAINT MKM_Product_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status  (Id),
-  CONSTRAINT MKM_Product_Ins_FK     Foreign Key (Ins_User ) References Cpy_User         (Id),
-  CONSTRAINT MKM_Product_Upd_FK     Foreign Key (Upd_User ) References Cpy_User         (Id)
+  CONSTRAINT MKM_Product_PK         PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS MKM_Prod_Spec_Seq
@@ -216,10 +189,7 @@ Create Table MKM_Prod_Spec                       -- مواصفات المواد
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT MKM_Prod_Spec_PK        PRIMARY KEY (Id),
-  CONSTRAINT MKM_Prod_Spec_UK        Unique      (Prod_Id, vTitle),
-  CONSTRAINT MKM_Prod_Spec_Prod_FK  Foreign Key (Prod_Id ) References MKM_Product(Id),
-  CONSTRAINT MKM_Prod_Spec_Ins_FK   Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT MKM_Prod_Spec_Upd_FK   Foreign Key (Upd_User) References Cpy_User   (Id)
+  CONSTRAINT MKM_Prod_Spec_UK        Unique      (Prod_Id, vTitle)
 );
 
 CREATE SEQUENCE IF NOT EXISTS MKM_Prod_Serial_Seq
@@ -236,10 +206,7 @@ Create Table MKM_Prod_Serial                             -- جدول الأرق�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT MKM_Prod_Serial_PK       PRIMARY KEY (Id),
-  CONSTRAINT MKM_Prod_Serial_UK       UNIQUE      (Serial  ),
-  CONSTRAINT MKM_Prod_Serial_Prod_FK  Foreign Key (Prod_Id ) References MKM_Product (Id),
-  CONSTRAINT MKM_Prod_Serial_Ins_FK   Foreign Key (Ins_User) References Cpy_User    (Id),
-  CONSTRAINT MKM_Prod_Serial_Upd_FK   Foreign Key (Upd_User) References Cpy_User    (Id)
+  CONSTRAINT MKM_Prod_Serial_UK       UNIQUE      (Serial  )
 );
 
 CREATE SEQUENCE IF NOT EXISTS MKM_Sale_Seq
@@ -256,10 +223,7 @@ Create Table MKM_Sale                                    -- جدول المبي�
   Mobile     VARCHAR(50),                          -- رقم الموبايل
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT MKM_Sale_PK      PRIMARY KEY (Id),
-  CONSTRAINT MKM_Sale_User_FK Foreign Key (User_Id ) References Cpy_User (Id),
-  CONSTRAINT MKM_Sale_Ins_FK  Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT MKM_Sale_Upd_FK  Foreign Key (Upd_User) References Cpy_User (Id)
+  CONSTRAINT MKM_Sale_PK      PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS MKM_Sales_Item_Seq
@@ -276,11 +240,7 @@ Create Table MKM_Sales_Item                              -- جدول تفاصي�
   Edate      TIMESTAMP,                                       -- تاريخ الانتهاء
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT MKM_Sales_Item_PK        PRIMARY KEY (Id),
-  CONSTRAINT MKM_Sales_Item_Sales_FK  Foreign Key (Sales_Id) References MKM_Sale    (Id),
-  CONSTRAINT MKM_Sales_Item_Prod_FK   Foreign Key (Prod_Id ) References MKM_Product (Id),
-  CONSTRAINT MKM_Sales_Item_Ins_FK    Foreign Key (Ins_User) References Cpy_User    (Id),
-  CONSTRAINT MKM_Sales_Item_Upd_FK    Foreign Key (Upd_User) References Cpy_User    (Id)
+  CONSTRAINT MKM_Sales_Item_PK        PRIMARY KEY (Id)
 );
 
 Create Index MKM_Idx_Sales_Item_Serial ON MKM_Sales_Item (Serial);
@@ -301,11 +261,7 @@ Create Table MKM_Sale_Upd                                 -- جدول طلبات
   mobile     VARCHAR(50),                                  -- رقم الموبايل
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT MKM_Sale_Upd_PK         PRIMARY KEY (Id),
-  CONSTRAINT MKM_Sale_Upd_User_FK    Foreign Key (User_Id) References Cpy_User (Id),
-  CONSTRAINT MKM_Sale_Upd_RStatus_FK Foreign Key (rStatus) References MKM_Cod_ReqStatus(Id),
-  CONSTRAINT MKM_Sale_Upd_Ins_FK     Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT MKM_Sale_Upd_Upd_FK     Foreign Key (Upd_User) References Cpy_User (Id)
+  CONSTRAINT MKM_Sale_Upd_PK         PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS MKM_Sales_Item_Upd_Seq
@@ -322,11 +278,7 @@ Create Table MKM_Sales_Item_Upd                       -- جدول تفاصيل �
   Edate      TIMESTAMP,                                         -- تاريخ الانتهاء
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT MKM_Sales_Item_Upd_PK        PRIMARY KEY (Id),
-  CONSTRAINT MKM_Sales_Item_Upd_Sales_FK Foreign Key (Sales_Id) References MKM_Sale_Upd (Id),
-  CONSTRAINT MKM_Sales_Item_Upd_Prod_FK  Foreign Key (Prod_Id ) References MKM_Product  (Id),
-  CONSTRAINT MKM_Sales_Item_Upd_Ins_FK   Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT MKM_Sales_Item_Upd_Upd_FK   Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT MKM_Sales_Item_Upd_PK        PRIMARY KEY (Id)
 );
 
 Create Index MKM_Idx_Sales_Item_Upd_Serial ON MKM_Sales_Item_Upd (Serial);
@@ -347,11 +299,7 @@ Create Table MKM_Sale_Del                                -- جدول طلبات 
   mobile    VARCHAR(50),                                  -- رقم الموبايل
   Ins_User  BIGINT, Ins_Date TIMESTAMP,                           -- المستخدم وتاريخ الإدخال
   Upd_User  BIGINT, Upd_Date TIMESTAMP,                           -- المستخدم وتاريخ التعديل
-  CONSTRAINT MKM_Sale_Del_PK         PRIMARY KEY (Id),
-  CONSTRAINT MKM_Sale_Del_User_FK    Foreign Key (User_Id) References Cpy_User (Id),
-  CONSTRAINT MKM_Sale_Del_RStatus_FK Foreign Key (rStatus) References MKM_Cod_ReqStatus(Id),
-  CONSTRAINT MKM_Sale_Del_Ins_FK     Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT MKM_Sale_Del_Upd_FK     Foreign Key (Upd_User) References Cpy_User (Id)
+  CONSTRAINT MKM_Sale_Del_PK         PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS MKM_Sales_Item_Del_Seq
@@ -368,11 +316,7 @@ Create Table MKM_Sales_Item_Del                               -- جدول تفا
   Edate     TIMESTAMP,                                               -- تاريخ الانتهاء
   Ins_User  BIGINT, Ins_Date TIMESTAMP,                           -- المستخدم وتاريخ الإدخال
   Upd_User  BIGINT, Upd_Date TIMESTAMP,                           -- المستخدم وتاريخ التعديل
-  CONSTRAINT MKM_Sales_Item_Del_PK PRIMARY KEY (Id),
-  CONSTRAINT MKM_Sales_Item_Del_Sales_FK Foreign Key (Sales_Id) References MKM_Sale_Del (Id),
-  CONSTRAINT MKM_Sales_Item_Del_Prod_FK  Foreign Key (Prod_Id ) References MKM_Product  (Id),
-  CONSTRAINT MKM_Sales_Item_Del_Ins_FK   Foreign Key (Ins_User) References Cpy_User    (Id),
-  CONSTRAINT MKM_Sales_Item_Del_Upd_FK   Foreign Key (Upd_User) References Cpy_User    (Id)
+  CONSTRAINT MKM_Sales_Item_Del_PK PRIMARY KEY (Id)
 );
 
 Create Index MKM_Idx_Sales_Item_Del_Serial ON MKM_Sales_Item_Del (Serial);
@@ -395,13 +339,7 @@ Create Table MKM_Ticket                                     -- جدول تذاك
   Support_Text   VARCHAR(2048),                         -- وصف الدعم
   Ins_User       BIGINT, Ins_Date     TIMESTAMP,
   Upd_User       BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT MKM_Ticket_PK        PRIMARY KEY (Id),
-  CONSTRAINT MKM_Ticket_Sale_FK   Foreign Key (Sale_Id  ) References MKM_Sale        (Id),
-  CONSTRAINT MKM_Ticket_Prod_FK   Foreign Key (Prod_Id  ) References MKM_Product    (Id),
-  CONSTRAINT MKM_Ticket_Status_FK Foreign Key (Status_Id) References MKM_Cod_TStatus(Id),
-  CONSTRAINT MKM_Ticket_User_FK   Foreign Key (User_Id  ) References Cpy_User        (Id),
-  CONSTRAINT MKM_Ticket_Ins_FK    Foreign Key (Ins_User ) References Cpy_User        (Id),
-  CONSTRAINT MKM_Ticket_Upd_FK    Foreign Key (Upd_User ) References Cpy_User        (Id)
+  CONSTRAINT MKM_Ticket_PK        PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS MKM_Member_Seq
@@ -428,14 +366,7 @@ CREATE TABLE MKM_Member                                   -- دليل الأعض
   Upd_User   BIGINT, Upd_Date TIMESTAMP,
   Ins_User   BIGINT, Ins_Date TIMESTAMP,
   CONSTRAINT MKM_Member_PK          PRIMARY KEY (Id        ),
-  CONSTRAINT MKM_Member_UK          UNIQUE      (Mobile    ),
-  CONSTRAINT MKM_Member_UGrp_FK     Foreign Key (UGrp_Id   ) References Phs_Cod_UGrp      (Id),
-  CONSTRAINT MKM_Member_Country_FK Foreign Key (Country_Id) References MKM_Cod_Cntry     (Id),
-  CONSTRAINT MKM_Member_City_FK     Foreign Key (City_Id   ) References MKM_Cod_City      (Id),
-  CONSTRAINT MKM_Member_Status_FK  Foreign Key (Status_Id ) References Phs_Cod_Status    (Id),
-  CONSTRAINT MKM_Member_User_FK     Foreign Key (User_Id   ) References Cpy_User          (Id),
-  CONSTRAINT MKM_Member_Ins_FK      Foreign Key (Ins_User  ) References Cpy_User          (Id),
-  CONSTRAINT MKM_Member_Upd_FK      Foreign Key (Upd_User  ) References Cpy_User          (Id)
+  CONSTRAINT MKM_Member_UK          UNIQUE      (Mobile    )
 );
 
 CREATE SEQUENCE IF NOT EXISTS MKM_MInstallment_Seq
@@ -453,11 +384,7 @@ CREATE TABLE MKM_MInstallment                       -- التركيبات
   Rem        VARCHAR(100),              				-- ملاحظات
   Ins_User   BIGINT, Ins_Date TIMESTAMP,
   Upd_User   BIGINT, Upd_Date TIMESTAMP,
-  CONSTRAINT MKM_MInstallment_PK          PRIMARY KEY (Id),
-  CONSTRAINT MKM_MInstallment_Member_FK   Foreign Key (User_Id   ) References Cpy_User        (Id),
-  CONSTRAINT MKM_MInstallment_Status_FK   Foreign Key (Status_Id ) References MKM_Cod_IStatus(Id),
-  CONSTRAINT MKM_MInstallment_Ins_FK      Foreign Key (Ins_User  ) References Cpy_User        (Id),
-  CONSTRAINT MKM_MInstallment_Upd_FK      Foreign Key (Upd_User  ) References Cpy_User        (Id)
+  CONSTRAINT MKM_MInstallment_PK          PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS MKM_Inst_Items_Seq
@@ -472,11 +399,7 @@ Create Table MKM_Inst_Items                        -- تفاصيل التركي�
   Points     BIGINT Default 0,                        -- النقاط
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT MKM_Install_Item_PK        PRIMARY KEY (Id),
-  CONSTRAINT MKM_Install_Item_Sales_FK  Foreign Key (Inst_Id) References MKM_MInstallment    (Id),
-  CONSTRAINT MKM_Install_Item_Prod_FK   Foreign Key (Prod_Id ) References MKM_Product (Id),
-  CONSTRAINT MKM_Install_Item_Ins_FK    Foreign Key (Ins_User) References Cpy_User    (Id),
-  CONSTRAINT MKM_Install_Item_Upd_FK    Foreign Key (Upd_User) References Cpy_User    (Id)
+  CONSTRAINT MKM_Install_Item_PK        PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS MKM_Inst_Upd_Seq
@@ -496,11 +419,7 @@ Create Table MKM_Inst_Upd                                  -- جدول طلبا�
   Image      VARCHAR(500),                                 -- صورة التركيب
   Ins_User   BIGINT, Ins_Date TIMESTAMP,                           -- المستخدم وتاريخ الإدخال
   Upd_User   BIGINT, Upd_Date TIMESTAMP,                           -- المستخدم وتاريخ التعديل
-  CONSTRAINT MKM_Inst_Upd_PK           PRIMARY KEY (Id),
-  CONSTRAINT MKM_Inst_Upd_User_FK    Foreign Key (User_Id) References Cpy_User (Id),
-  CONSTRAINT MKM_Inst_Upd_RStatus_FK Foreign Key (rStatus) References MKM_Cod_ReqStatus(Id),
-  CONSTRAINT MKM_Inst_Upd_Ins_FK     Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT MKM_Inst_Upd_Upd_FK     Foreign Key (Upd_User) References Cpy_User (Id)
+  CONSTRAINT MKM_Inst_Upd_PK           PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS MKM_Inst_Item_Upd_Seq
@@ -515,11 +434,7 @@ Create Table MKM_Inst_Item_Upd                 -- جدول تفاصيل طلبا
   Points     BIGINT Default 0,                         -- النقاط
   Ins_User   BIGINT, Ins_Date TIMESTAMP,
   Upd_User   BIGINT, Upd_Date TIMESTAMP,
-  CONSTRAINT MKM_Inst_Item_Upd_PK PRIMARY KEY (Id),
-  CONSTRAINT MKM_Inst_Item_Upd_Inst_FK Foreign Key (Inst_Id) References MKM_Inst_Upd (Id),
-  CONSTRAINT MKM_Inst_Item_Upd_Prod_FK Foreign Key (Prod_Id) References MKM_Product (Id),
-  CONSTRAINT MKM_Inst_Item_Upd_Ins_FK  Foreign Key (Ins_User) References Cpy_User  (Id),
-  CONSTRAINT MKM_Inst_Item_Upd_Upd_FK  Foreign Key (Upd_User) References Cpy_User  (Id)
+  CONSTRAINT MKM_Inst_Item_Upd_PK PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS MKM_Inst_Del_Seq
@@ -539,11 +454,7 @@ Create Table MKM_Inst_Del                                  -- جدول طلبا�
   Image      VARCHAR(500),                                 -- صورة التركيب
   Ins_User   BIGINT, Ins_Date TIMESTAMP,                           -- المستخدم وتاريخ الإدخال
   Upd_User   BIGINT, Upd_Date TIMESTAMP,                           -- المستخدم وتاريخ التعديل
-  CONSTRAINT MKM_Inst_Del_PK           PRIMARY KEY (Id),
-  CONSTRAINT MKM_Inst_Del_User_FK    Foreign Key (User_Id) References Cpy_User (Id),
-  CONSTRAINT MKM_Inst_Del_RStatus_FK Foreign Key (rStatus) References MKM_Cod_ReqStatus(Id),
-  CONSTRAINT MKM_Inst_Del_Ins_FK     Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT MKM_Inst_Del_Upd_FK     Foreign Key (Upd_User) References Cpy_User (Id)
+  CONSTRAINT MKM_Inst_Del_PK           PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS MKM_Inst_Item_Del_Seq
@@ -558,9 +469,5 @@ Create Table MKM_Inst_Item_Del                 -- جدول تفاصيل طلبا
   Points     BIGINT Default 0,                               -- النقاط
   Ins_User   BIGINT, Ins_Date TIMESTAMP,
   Upd_User   BIGINT, Upd_Date TIMESTAMP,
-  CONSTRAINT MKM_Inst_Item_Del_PK PRIMARY KEY (Id),
-  CONSTRAINT MKM_Inst_Item_Del_Inst_FK Foreign Key (Inst_Id) References MKM_Inst_Del (Id),
-  CONSTRAINT MKM_Inst_Item_Del_Prod_FK Foreign Key (Prod_Id) References MKM_Product (Id),
-  CONSTRAINT MKM_Inst_Item_Del_Ins_FK  Foreign Key (Ins_User) References Cpy_User  (Id),
-  CONSTRAINT MKM_Inst_Item_Del_Upd_FK  Foreign Key (Upd_User) References Cpy_User  (Id)
+  CONSTRAINT MKM_Inst_Item_Del_PK PRIMARY KEY (Id)
 );

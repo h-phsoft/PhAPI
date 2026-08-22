@@ -16,10 +16,7 @@ Create Table Acc_Cod_Doc                             -- جدول ترميز أن
   Ins_User   BIGINT,       Ins_Date DATETIME,
   Upd_User   BIGINT,       Upd_Date DATETIME,
   CONSTRAINT Acc_Cod_Doc_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Acc_Cod_Doc_UK        UNIQUE      (Name),
-  CONSTRAINT Acc_Cod_Doc_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Acc_Cod_Doc_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Acc_Cod_Doc_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Acc_Cod_Doc_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Acc_Cod_Doc (Id,Name) values (0,'-');
@@ -33,9 +30,7 @@ Create Table Acc_Cod_LineType                            -- جدول ترميز 
   Ins_User   BIGINT,       Ins_Date DATETIME,
   Upd_User   BIGINT,       Upd_Date DATETIME,
   CONSTRAINT AccCod_LineType_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT AccCod_LineType_UK     UNIQUE      (Name),
-  CONSTRAINT AccCod_LineType_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT AccCod_LineType_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT AccCod_LineType_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Acc_Cod_LineType (Id,Name) values (1,'Account');
@@ -53,9 +48,7 @@ Create Table Acc_Cod_AmtSide                          -- جدول ترميز ج�
   Ins_User   BIGINT,       Ins_Date DATETIME,
   Upd_User   BIGINT,       Upd_Date DATETIME,
   CONSTRAINT AccCod_AmtSide_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT AccCod_AmtSide_UK     UNIQUE      (Name),
-  CONSTRAINT AccCod_AmtSide_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT AccCod_AmtSide_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT AccCod_AmtSide_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Acc_Cod_AmtSide (Id,Name) values (1,'As Kind');
@@ -75,9 +68,7 @@ Create Table Acc_Cod_RepAmt                        -- جدول ترميز الم
   Ins_User   BIGINT,       Ins_Date DATETIME,
   Upd_User   BIGINT,       Upd_Date DATETIME,
   CONSTRAINT AccCod_RepAmt_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT AccCod_RepAmt_UK     UNIQUE      (Name),
-  CONSTRAINT AccCod_RepAmt_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT AccCod_RepAmt_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT AccCod_RepAmt_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Acc_Cod_RepAmt (Id,Name) values (1,'Balance');
@@ -94,9 +85,7 @@ Create Table Acc_Close                             -- جدول ترميز حسا
   Ins_User   BIGINT,       Ins_Date DATETIME,
   Upd_User   BIGINT,       Upd_Date DATETIME,
   CONSTRAINT Acc_Close_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Acc_Close_UK     UNIQUE      (Name),
-  CONSTRAINT Acc_Close_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Acc_Close_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Acc_Close_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Acc_Close (Id,Ord,Name) values (0,90,'Balance Sheet');
@@ -118,11 +107,7 @@ Create Table Acc_Cost                              -- دليل مراكز الك
   Ins_User    BIGINT,       Ins_Date DATETIME,
   Upd_User    BIGINT,       Upd_Date DATETIME,
   CONSTRAINT  Acc_Cost_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Acc_Cost_UK        UNIQUE      (Num),
-  CONSTRAINT  Acc_Cost_Type_FK   Foreign Key (Type_Id  ) References Phs_Cod_Type  (Id),
-  CONSTRAINT  Acc_Cost_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT  Acc_Cost_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Acc_Cost_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  Acc_Cost_UK        UNIQUE      (Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Acc_Acc                                   -- دليل الحسابات
@@ -139,13 +124,7 @@ Create Table Acc_Acc                                   -- دليل الحساب�
   Ins_User    BIGINT,       Ins_Date DATETIME,
   Upd_User    BIGINT,       Upd_Date DATETIME,
   CONSTRAINT  Acc_Acc_PK        PRIMARY KEY (Id ),
-  CONSTRAINT  Acc_Acc_UK        UNIQUE      (Num),
-  CONSTRAINT  Acc_Acc_Type_FK   Foreign Key (Type_Id  ) References Phs_Cod_Type  (Id),
-  CONSTRAINT  Acc_Acc_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT  Acc_Acc_DBCR_FK   Foreign Key (DBCR_Id  ) References Phs_Cod_DBCR  (Id),
-  CONSTRAINT  Acc_Acc_Close_FK  Foreign Key (Close_Id ) References Acc_Close     (Id),
-  CONSTRAINT  Acc_Acc_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Acc_Acc_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  Acc_Acc_UK        UNIQUE      (Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Acc_GrantAcc                             -- دليل الحسابات
@@ -156,11 +135,7 @@ Create Table Acc_GrantAcc                             -- دليل الحسابا
   Ins_User    BIGINT,       Ins_Date DATETIME,
   Upd_User    BIGINT,       Upd_Date DATETIME,
   CONSTRAINT  Acc_GrantAcc_PK        PRIMARY KEY (Id ),
-  CONSTRAINT  Acc_GrantAcc_UK        UNIQUE      (System_Id, Acc_Id),
-  CONSTRAINT  Acc_GrantAcc_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc       (Id),
-  CONSTRAINT  Acc_GrantAcc_System_FK Foreign Key (System_Id) References Phs_Cod_System(Id),
-  CONSTRAINT  Acc_GrantAcc_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Acc_GrantAcc_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  Acc_GrantAcc_UK        UNIQUE      (System_Id, Acc_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Acc_BudMst                             -- ترويسة الموازنة
@@ -172,9 +147,7 @@ Create Table Acc_BudMst                             -- ترويسة المواز
   Ins_User    BIGINT, Ins_Date DATETIME,
   Upd_User    BIGINT, Upd_Date DATETIME,
   CONSTRAINT  Acc_BudMst_PK      Primary Key (Id ),
-  CONSTRAINT  Acc_BudMst_UK      Unique      (Num),
-  CONSTRAINT  Acc_BudMst_Ins_FK  Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT  Acc_BudMst_Upd_FK  Foreign Key (Upd_User) References Cpy_User   (Id)
+  CONSTRAINT  Acc_BudMst_UK      Unique      (Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Acc_BudTrn                        -- بنود الموازنة
@@ -187,12 +160,7 @@ Create Table Acc_BudTrn                        -- بنود الموازنة
   Rem        VARCHAR(100),                           -- البيان
   Ins_User   BIGINT,  Ins_Date  DATETIME,
   Upd_User   BIGINT,  Upd_Date  DATETIME,
-  CONSTRAINT Acc_BudTrn_PK      PRIMARY KEY (Id),
-  CONSTRAINT Acc_BudTrn_Mst_FK  Foreign Key (Mst_Id  ) References Acc_BudMst(Id),
-  CONSTRAINT Acc_BudTrn_Acc_FK  Foreign Key (Acc_Id  ) References Acc_Acc   (Id),
-  CONSTRAINT Acc_BudTrn_Cost_FK Foreign Key (Cost_Id ) References Acc_Cost  (Id),
-  CONSTRAINT Acc_BudTrn_Ins_FK  Foreign Key (Ins_User) References Cpy_User  (Id),
-  CONSTRAINT Acc_BudTrn_Upd_FK  Foreign Key (Upd_User) References Cpy_User  (Id)
+  CONSTRAINT Acc_BudTrn_PK      PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Acc_Mst                                    -- ترويسة سندات القيد
@@ -211,14 +179,7 @@ Create Table Acc_Mst                                    -- ترويسة سندا
   Ins_User    BIGINT, Ins_Date DATETIME,
   Upd_User    BIGINT, Upd_Date DATETIME,
   CONSTRAINT  Acc_Mst_PK        Primary Key (Id ),
-  CONSTRAINT  Acc_Mst_UK        Unique      (Bran_Id,Period_Id,Num),
-  CONSTRAINT  Acc_Mst_Period_FK Foreign Key (Period_Id) References Cpy_Period    (Id),
-  CONSTRAINT  Acc_Mst_Bran_FK   Foreign Key (Bran_Id  ) References Cpy_Bran      (Id),
-  CONSTRAINT  Acc_Mst_Commit_FK Foreign Key (Commit_Id) References Phs_Cod_Commit(Id),
-  CONSTRAINT  Acc_Mst_Doc_FK    Foreign Key (Doc_Id   ) References Cpy_Cod_Doc   (Id),
-  CONSTRAINT  Acc_Mst_Src_FK    Foreign Key (Src_Id   ) References Phs_Cod_Src   (Id),
-  CONSTRAINT  Acc_Mst_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Acc_Mst_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  Acc_Mst_UK        Unique      (Bran_Id,Period_Id,Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Acc_Trn                               -- بنود سندات القيد
@@ -242,15 +203,7 @@ Create Table Acc_Trn                               -- بنود سندات الق
   SRem       VARCHAR(100),                           -- ملاحظات النظام عند الترحيل
   Ins_User   BIGINT,  Ins_Date  DATETIME,
   Upd_User   BIGINT,  Upd_Date  DATETIME,
-  CONSTRAINT Acc_Trn_PK      PRIMARY KEY (Id),
-  CONSTRAINT Acc_Trn_Mst_FK  Foreign Key (Mst_Id  ) References Acc_Mst    (Id),
-  CONSTRAINT Acc_Trn_Acc_FK  Foreign Key (Acc_Id  ) References Acc_Acc    (Id),
-  CONSTRAINT Acc_Trn_Cost_FK Foreign Key (Cost_Id ) References Acc_Cost   (Id),
-  CONSTRAINT Acc_Trn_RAcc_FK Foreign Key (Acc_RId ) References Acc_Acc    (Id),
-  CONSTRAINT Acc_Trn_Doc_FK  Foreign Key (TDoc_Id ) References Acc_Cod_Doc(Id),
-  CONSTRAINT Acc_Trn_Curn_FK Foreign Key (Curn_Id ) References Mng_Curn   (Id),
-  CONSTRAINT Acc_Trn_Ins_FK  Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT Acc_Trn_Upd_FK  Foreign Key (Upd_User) References Cpy_User   (Id)
+  CONSTRAINT Acc_Trn_PK      PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Acc_Bank_Mst                               -- ترويسة جدول المطابقة المصرفية
@@ -264,12 +217,7 @@ Create Table Acc_Bank_Mst                               -- ترويسة جدول
   Ins_User    BIGINT, Ins_Date DATETIME,
   Upd_User    BIGINT, Upd_Date DATETIME,
   CONSTRAINT  Acc_Bank_Mst_PK        Primary Key (Id ),
-  CONSTRAINT  Acc_Bank_Mst_UK        Unique      (Bran_Id,Period_Id,Num),
-  CONSTRAINT  Acc_Bank_Mst_Period_FK Foreign Key (Period_Id) References Cpy_Period    (Id),
-  CONSTRAINT  Acc_Bank_Mst_Bran_FK   Foreign Key (Bran_Id  ) References Cpy_Bran      (Id),
-  CONSTRAINT  Acc_Bank_Mst_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc       (Id),
-  CONSTRAINT  Acc_Bank_Mst_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Acc_Bank_Mst_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  Acc_Bank_Mst_UK        Unique      (Bran_Id,Period_Id,Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Acc_Bank_Trn                          -- بنود سندات القيد
@@ -288,12 +236,7 @@ Create Table Acc_Bank_Trn                          -- بنود سندات الق
   Rem        VARCHAR(250),                           -- البيان
   Ins_User   BIGINT,  Ins_Date  DATETIME,
   Upd_User   BIGINT,  Upd_Date  DATETIME,
-  CONSTRAINT Acc_Bank_Trn_PK      PRIMARY KEY (Id),
-  CONSTRAINT Acc_Bank_Trn_Mst_FK  Foreign Key (Mst_Id  ) References Acc_Bank_Mst(Id),
-  CONSTRAINT Acc_Bank_Trn_Doc_FK  Foreign Key (TDoc_Id ) References Acc_Cod_Doc (Id),
-  CONSTRAINT Acc_Bank_Trn_Curn_FK Foreign Key (Curn_Id ) References Mng_Curn    (Id),
-  CONSTRAINT Acc_Bank_Trn_Ins_FK  Foreign Key (Ins_User) References Cpy_User    (Id),
-  CONSTRAINT Acc_Bank_Trn_Upd_FK  Foreign Key (Upd_User) References Cpy_User    (Id)
+  CONSTRAINT Acc_Bank_Trn_PK      PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Acc_Tot                                     -- دليل مجمع الحسابات
@@ -304,9 +247,7 @@ Create Table Acc_Tot                                     -- دليل مجمع ا
   Ins_User   BIGINT, Ins_Date DATETIME,
   Upd_User   BIGINT, Upd_Date DATETIME,
   CONSTRAINT Acc_Tot_PK        PRIMARY KEY (Id ),
-  CONSTRAINT Acc_Tot_UK        UNIQUE      (Num),
-  CONSTRAINT Acc_Tot_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Acc_Tot_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Acc_Tot_UK        UNIQUE      (Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Acc_TotAcc                            -- دليل بنود مجمع الحسابات
@@ -321,14 +262,7 @@ Create Table Acc_TotAcc                            -- دليل بنود مجمع
   Ins_User   BIGINT, Ins_Date DATETIME,
   Upd_User   BIGINT, Upd_Date DATETIME,
   CONSTRAINT Acc_TotAcc_PK        PRIMARY KEY (Id),
-  CONSTRAINT Acc_TotAcc_UK        UNIQUE      (Tot_Id, Cost_Id, Acc_Id),
-  CONSTRAINT Acc_TotAcc_Tot_FK    Foreign Key (Tot_Id   ) References Acc_Tot       (Id),
-  CONSTRAINT Acc_TotAcc_Cost_FK   Foreign Key (Cost_Id  ) References Acc_Cost      (Id),
-  CONSTRAINT Acc_TotAcc_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc       (Id),
-  CONSTRAINT Acc_TotAcc_AmtTyp_FK Foreign Key (AmtTyp_Id) References Acc_Cod_RepAmt(Id),
-  CONSTRAINT Acc_TotAcc_Sign_FK   Foreign Key (Sign_Id  ) References Phs_Cod_Sign  (Id),
-  CONSTRAINT Acc_TotAcc_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Acc_TotAcc_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Acc_TotAcc_UK        UNIQUE      (Tot_Id, Cost_Id, Acc_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Acc_Rep                                    -- دليل ترويسة قوالب التقارير
@@ -338,9 +272,7 @@ Create Table Acc_Rep                                    -- دليل ترويسة
   Ins_User    BIGINT, Ins_Date DATETIME,
   Upd_User    BIGINT, Upd_Date DATETIME,
   CONSTRAINT  Acc_Rep_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT  Acc_Rep_UK        UNIQUE      (Name),
-  CONSTRAINT  Acc_Rep_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Acc_Rep_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  Acc_Rep_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Acc_RepItm                              -- دليل بنود قوالب التقارير
@@ -358,16 +290,7 @@ Create Table Acc_RepItm                              -- دليل بنود قوا
   Rem         VARCHAR(250),                          -- ملاحظات
   Ins_User    BIGINT, Ins_Date DATETIME,
   Upd_User    BIGINT, Upd_Date DATETIME,
-  CONSTRAINT Acc_RepItm_PK        PRIMARY KEY (Id),
-  CONSTRAINT Acc_RepItm_FK        Foreign Key (Rep_Id     ) References Acc_Rep         (Id),
-  CONSTRAINT Acc_RepItm_Acc_FK    Foreign Key (Acc_Id     ) References Acc_Acc         (Id),
-  CONSTRAINT Acc_RepItm_Tot_FK    Foreign Key (Tot_Id     ) References Acc_Tot         (Id),
-  CONSTRAINT Acc_RepItm_Cost_FK   Foreign Key (Cost_Id    ) References Acc_Cost        (Id),
-  CONSTRAINT Acc_RepItm_LinTyp_FK Foreign Key (LineType_Id) References Acc_Cod_LineType(Id),
-  CONSTRAINT Acc_RepItm_AmtSid_FK Foreign Key (AmtSide_Id ) References Acc_Cod_AmtSide (Id),
-  CONSTRAINT Acc_RepItm_AmtTyp_FK Foreign Key (AmtTyp_Id  ) References Acc_Cod_RepAmt  (Id),
-  CONSTRAINT Acc_RepItm_Ins_FK    Foreign Key (Ins_User   ) References Cpy_User        (Id),
-  CONSTRAINT Acc_RepItm_Upd_FK    Foreign Key (Upd_User   ) References Cpy_User        (Id)
+  CONSTRAINT Acc_RepItm_PK        PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Acc_GenRep                          -- جدول تنفيذ التقارير يستخدم لحظة التنفيذ

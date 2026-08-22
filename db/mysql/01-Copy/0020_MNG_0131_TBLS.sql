@@ -15,9 +15,7 @@ Create Table Mng_Regn                                   -- المناطق
   Ins_User   BIGINT, Ins_Date DATETIME,
   Upd_User   BIGINT, Upd_Date DATETIME,
   CONSTRAINT Mng_Regn_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Mng_Regn_Nam_UK UNIQUE      (Name),
-  CONSTRAINT Mng_Regn_Ins_FK Foreign Key (Ins_User  ) References Cpy_User(Id),
-  CONSTRAINT Mng_Regn_Upd_FK Foreign Key (Upd_User  ) References Cpy_User(Id)
+  CONSTRAINT Mng_Regn_Nam_UK UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Mng_Regn (Id, P_Id, Name) VALUES (0, 0, '-');
@@ -32,9 +30,7 @@ Create Table Mng_Cntry                                 -- البلدان
   Upd_User   BIGINT, Upd_Date DATETIME,
   CONSTRAINT Mng_Cntry_PK     PRIMARY KEY (Id  ),
   CONSTRAINT Mng_Cntry_Num_UK UNIQUE      (Num ),
-  CONSTRAINT Mng_Cntry_Nam_UK UNIQUE      (Name),
-  CONSTRAINT Mng_Cntry_Ins_FK Foreign Key (Ins_User  ) References Cpy_User(Id),
-  CONSTRAINT Mng_Cntry_Upd_FK Foreign Key (Upd_User  ) References Cpy_User(Id)
+  CONSTRAINT Mng_Cntry_Nam_UK UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Mng_Cntry (Id, Num, Name) VALUES (0, 0, '-');
@@ -48,10 +44,7 @@ Create Table Mng_State                                    -- المحافظات\
   Upd_User   BIGINT, Upd_Date DATETIME,
   CONSTRAINT Mng_State_PK     PRIMARY KEY (Id),
   CONSTRAINT Mng_State_Num_UK UNIQUE      (Cntry_Id, Num ),
-  CONSTRAINT Mng_State_Nam_UK UNIQUE      (Cntry_Id, Name),
-  CONSTRAINT Mng_State_FK     Foreign Key (Cntry_Id) References Mng_Cntry(Id),
-  CONSTRAINT Mng_State_Ins_FK Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT Mng_State_Upd_FK Foreign Key (Upd_User) References Cpy_User (Id)
+  CONSTRAINT Mng_State_Nam_UK UNIQUE      (Cntry_Id, Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Mng_State (Id, Cntry_Id, Num, Name) VALUES (0, 0, 0, '-');
@@ -65,10 +58,7 @@ Create Table Mng_City                                    -- المدن
   Upd_User   BIGINT, Upd_Date DATETIME,
   CONSTRAINT Mng_City_PK     PRIMARY KEY (Id),
   CONSTRAINT Mng_City_Num_UK UNIQUE      (State_Id, Num ),
-  CONSTRAINT Mng_City_Nam_UK UNIQUE      (State_Id, Name),
-  CONSTRAINT Mng_City_FK     Foreign Key (State_Id) References Mng_State(Id),
-  CONSTRAINT Mng_City_Ins_FK Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT Mng_City_Upd_FK Foreign Key (Upd_User) References Cpy_User (Id)
+  CONSTRAINT Mng_City_Nam_UK UNIQUE      (State_Id, Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Mng_City (Id, State_Id, Num, Name) VALUES (0, 0, 0, '-');
@@ -82,10 +72,7 @@ Create Table Mng_Street                                   -- الأحياء\ال
   Upd_User   BIGINT, Upd_Date DATETIME,
   CONSTRAINT Mng_Street_PK     PRIMARY KEY (Id),
   CONSTRAINT Mng_Street_Num_UK UNIQUE      (City_Id, Num ),
-  CONSTRAINT Mng_Street_Nam_UK UNIQUE      (City_Id, Name),
-  CONSTRAINT Mng_Street_FK     Foreign Key (City_Id ) References Mng_City(Id),
-  CONSTRAINT Mng_Street_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Mng_Street_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Mng_Street_Nam_UK UNIQUE      (City_Id, Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Mng_Street (Id, City_Id, Num, Name) VALUES (0, 0, 0, '-');
@@ -104,9 +91,7 @@ Create Table Mng_Serv                                  -- الخدمات
   Upd_User   BIGINT, Upd_Date DATETIME,
   CONSTRAINT Mng_Serv_PK      Primary Key (Id  ),
   CONSTRAINT Mng_Serv_Cod_UK  Unique      (Code),
-  CONSTRAINT Mng_Serv_Nam_UK  Unique      (Name),
-  CONSTRAINT Mng_Serv_Ins_FK  Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Mng_Serv_Upd_FK  Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Mng_Serv_Nam_UK  Unique      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- TODO(port): other has no automatic equivalent (source line 119).

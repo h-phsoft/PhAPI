@@ -17,16 +17,11 @@ Create Table Pos_MDOrd                      -- جدول الأوامر المح�
   Disc       DECIMAL(10,2) Default 0,                       -- الحسم
   User_DId   BIGINT NOT NULL,                           -- المستخدم الذي حذف الأمر
   Reason     VARCHAR(100),                           -- السبب
-  Deleted_At DATETIME Default NOW(),                         -- تاريخ ووقت الحذف
+  Deleted_At DATETIME DEFAULT (NOW()),                         -- تاريخ ووقت الحذف
   Rem        VARCHAR(100),                           -- ملاحظات
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
-  CONSTRAINT Pos_MDOrd_PK       PRIMARY KEY (Id  ),
-  CONSTRAINT Pos_MDOrd_Stor_FK  Foreign Key (Stor_Id ) References Stor_Store(Id),
-  CONSTRAINT Pos_MDOrd_User_FK  Foreign Key (User_Id ) References Cpy_User  (Id),
-  CONSTRAINT Pos_MDOrd_DUser_FK Foreign Key (User_DId) References Cpy_User  (Id),
-  CONSTRAINT Pos_MDOrd_Ins_FK   Foreign Key (Ins_User) References Cpy_User  (Id),
-  CONSTRAINT Pos_MDOrd_Upd_FK   Foreign Key (Upd_User) References Cpy_User  (Id)
+  CONSTRAINT Pos_MDOrd_PK       PRIMARY KEY (Id  )
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Pos_TDOrd
@@ -40,11 +35,7 @@ Create Table Pos_TDOrd
   Rem        VARCHAR(100),                           -- ملاحظات
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
-  CONSTRAINT Pos_TDOrd_PK      PRIMARY KEY (Id  ),
-  CONSTRAINT Pos_TDOrd_Mst_FK  Foreign Key (Mst_Id  ) References Pos_MDOrd(Id),
-  CONSTRAINT Pos_TDOrd_Item_FK Foreign Key (Item_Id ) References Stor_Item(Id),
-  CONSTRAINT Pos_TDOrd_Ins_FK  Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT Pos_TDOrd_Upd_FK  Foreign Key (Upd_User) References Cpy_User (Id)
+  CONSTRAINT Pos_TDOrd_PK      PRIMARY KEY (Id  )
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Pos_MOrd                              -- أمر المبيع
@@ -58,11 +49,7 @@ Create Table Pos_MOrd                              -- أمر المبيع
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Pos_MOrd_PK      PRIMARY KEY (Id  ),
-  CONSTRAINT Pos_MOrd_UK      UNIQUE      (Num),
-  CONSTRAINT Pos_MOrd_Stor_FK Foreign Key (Stor_Id ) References Stor_Store(Id),
-  CONSTRAINT Pos_MOrd_User_FK Foreign Key (User_Id ) References Cpy_User  (Id),
-  CONSTRAINT Pos_MOrd_Ins_FK  Foreign Key (Ins_User) References Cpy_User  (Id),
-  CONSTRAINT Pos_MOrd_Upd_FK  Foreign Key (Upd_User) References Cpy_User  (Id)
+  CONSTRAINT Pos_MOrd_UK      UNIQUE      (Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Pos_TOrd
@@ -76,9 +63,5 @@ Create Table Pos_TOrd
   Rem        VARCHAR(100),                           -- ملاحظات
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
-  CONSTRAINT Pos_TOrd_PK      PRIMARY KEY (Id  ),
-  CONSTRAINT Pos_TOrd_Mst_FK  Foreign Key (Mst_Id  ) References Pos_MOrd (Id),
-  CONSTRAINT Pos_TOrd_Item_FK Foreign Key (Item_Id ) References Stor_Item(Id),
-  CONSTRAINT Pos_TOrd_Ins_FK  Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT Pos_TOrd_Upd_FK  Foreign Key (Upd_User) References Cpy_User (Id)
+  CONSTRAINT Pos_TOrd_PK      PRIMARY KEY (Id  )
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

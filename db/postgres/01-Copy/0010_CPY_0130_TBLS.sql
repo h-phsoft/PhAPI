@@ -19,10 +19,7 @@ Create Table Cpy_Cod_Status                              -- جدول ترميز 
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Cpy_Cod_Status_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Cpy_Cod_Status_UK     UNIQUE      (Name),
-  CONSTRAINT Cpy_Cod_Status_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Cpy_Cod_Status_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Cpy_Cod_Status_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Cpy_Cod_Status_UK     UNIQUE      (Name)
 );
 
 Insert into Cpy_Cod_Status (Id,Name) values (0,'-');
@@ -40,11 +37,7 @@ Create Table Cpy_Dept				                       -- جدول النشاطات\ا�
   Ins_User    BIGINT, Ins_Date TIMESTAMP,
   Upd_User    BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT Cpy_Dept_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Cpy_Dept_Nam_UK    UNIQUE      (Name),
-  CONSTRAINT Cpy_Dept_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Cpy_Dept_User_FK   Foreign Key (User_Id  ) References Cpy_User      (Id),
-  CONSTRAINT Cpy_Dept_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Cpy_Dept_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Cpy_Dept_Nam_UK    UNIQUE      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cpy_Unit_Seq
@@ -62,12 +55,7 @@ Create Table Cpy_Unit			                     -- جدول وحدات دائرة
   Ins_User    BIGINT, Ins_Date TIMESTAMP,
   Upd_User    BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT Cpy_Unit_PK        PRIMARY KEY (Id),
-  CONSTRAINT Cpy_Unit_Nam_UK    UNIQUE      (Dept_Id,Name),
-  CONSTRAINT Cpy_Unit_Dept_FK   Foreign Key (Dept_Id  ) References Cpy_Dept      (Id),
-  CONSTRAINT Cpy_Unit_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Cpy_Unit_User_FK   Foreign Key (User_Id  ) References Cpy_User      (Id),
-  CONSTRAINT Cpy_Unit_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Cpy_Unit_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Cpy_Unit_Nam_UK    UNIQUE      (Dept_Id,Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cpy_Oper_Seq
@@ -83,11 +71,7 @@ Create Table Cpy_Oper			                     -- جدول أنواع حركات �
   Ins_User   BIGINT, Ins_Date TIMESTAMP,
   Upd_User   BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT Cpy_UnitOper_PK        PRIMARY KEY (Id),
-  CONSTRAINT Cpy_UnitOper_Nam_UK    UNIQUE      (Unit_Id,Name),
-  CONSTRAINT Cpy_UnitOper_Unit_FK   Foreign Key (Unit_Id  ) References Cpy_Unit      (Id),
-  CONSTRAINT Cpy_UnitOper_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Cpy_UnitOper_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Cpy_UnitOper_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Cpy_UnitOper_Nam_UK    UNIQUE      (Unit_Id,Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cpy_Unit_Rec_Status_Seq
@@ -106,14 +90,7 @@ Create Table Cpy_Unit_Rec_Status                      -- جدول ترميز ا�
   Ins_User      BIGINT, Ins_Date     TIMESTAMP,
   Upd_User      BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT    Cpy_URStatus_PK            PRIMARY KEY (Id),
-  CONSTRAINT    Cpy_URStatus_UK            UNIQUE      (Unit_Id, RStatus_Id),
-  Constraint    Cpy_URStatus_Status_Fk     Foreign Key (Status_Id    ) References Phs_Cod_Status(Id),
-  Constraint    Cpy_URStatus_Head_Fk       Foreign Key (Head_Id      ) References Phs_Cod_YesNo (Id),
-  Constraint    Cpy_URStatus_ForceClose_Fk Foreign Key (ForceClose_Id) References Phs_Cod_YesNo (Id),
-  CONSTRAINT    Cpy_URStatus_Unit_FK       Foreign Key (Unit_Id      ) References Cpy_Unit      (Id),
-  CONSTRAINT    Cpy_URStatus_ReqStatus_FK  Foreign Key (RStatus_Id   ) References Cpy_Cod_Status(Id),
-  CONSTRAINT    Cpy_URStatus_Ins_FK        Foreign Key (Ins_User     ) References Cpy_User      (Id),
-  CONSTRAINT    Cpy_URStatus_Upd_FK        Foreign Key (Upd_User     ) References Cpy_User      (Id)
+  CONSTRAINT    Cpy_URStatus_UK            UNIQUE      (Unit_Id, RStatus_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cpy_Unit_Frwrd_Status_Seq
@@ -129,12 +106,7 @@ Create Table Cpy_Unit_Frwrd_Status                      -- جدول ترميز �
   Ins_User     BIGINT, Ins_Date     TIMESTAMP,
   Upd_User     BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT   Cpy_UFStatus_PK           PRIMARY KEY (Id),
-  CONSTRAINT   Cpy_UFStatus_UK           UNIQUE      (URStatusR_Id, URStatusF_Id),
-  Constraint   Cpy_UFStatus_Status_Fk    Foreign Key (Status_Id   ) References Phs_Cod_Status     (Id),
-  CONSTRAINT   Cpy_UFStatus_URStatusR_FK Foreign Key (URStatusR_Id) References Cpy_Unit_Rec_Status(Id),
-  CONSTRAINT   Cpy_UFStatus_URStatusF_FK Foreign Key (URStatusF_Id) References Cpy_Unit_Rec_Status(Id),
-  CONSTRAINT   Cpy_UFStatus_Ins_FK       Foreign Key (Ins_User    ) References Cpy_User           (Id),
-  CONSTRAINT   Cpy_UFStatus_Upd_FK       Foreign Key (Upd_User    ) References Cpy_User           (Id)
+  CONSTRAINT   Cpy_UFStatus_UK           UNIQUE      (URStatusR_Id, URStatusF_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cpy_Status_Grp_Seq
@@ -149,9 +121,7 @@ Create Table Cpy_MStatus_Grp                         -- جدول مجموعات 
   Ins_User      BIGINT, Ins_Date     TIMESTAMP,
   Upd_User      BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT    Cpy_MStatus_Grp_PK     PRIMARY KEY (Id),
-  CONSTRAINT    Cpy_MStatus_Grp_UK     UNIQUE      (Name),
-  CONSTRAINT    Cpy_MStatus_Grp_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT    Cpy_MStatus_Grp_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT    Cpy_MStatus_Grp_UK     UNIQUE      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cpy_TStatus_Grp_Seq
@@ -166,11 +136,7 @@ Create Table Cpy_TStatus_Grp                         -- جدول بنود مجم
   Ins_User      BIGINT, Ins_Date     TIMESTAMP,
   Upd_User      BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT    Cpy_TStatus_Grp_PK        PRIMARY KEY (Id),
-  CONSTRAINT    Cpy_TStatus_Grp_UK        UNIQUE      (Mst_Id, Status_Id),
-  CONSTRAINT    Cpy_TStatus_Grp_Mst_Fk    Foreign Key (Mst_Id   ) References Cpy_MStatus_Grp    (Id),
-  CONSTRAINT    Cpy_TStatus_Grp_Status_FK Foreign Key (Status_Id) References Cpy_Unit_Rec_Status(Id),
-  CONSTRAINT    Cpy_TStatus_Grp_Ins_FK    Foreign Key (Ins_User ) References Cpy_User           (Id),
-  CONSTRAINT    Cpy_TStatus_Grp_Upd_FK    Foreign Key (Upd_User ) References Cpy_User           (Id)
+  CONSTRAINT    Cpy_TStatus_Grp_UK        UNIQUE      (Mst_Id, Status_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cpy_User_Unit_Seq
@@ -186,12 +152,7 @@ Create Table Cpy_User_Unit	                             -- وحدات مستخد
   Ins_User   BIGINT, Ins_Date TIMESTAMP,
   Upd_User   BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT CpyUser_Unit_PK          PRIMARY KEY (Id),
-  CONSTRAINT CpyUser_Unit_UK      UNIQUE      (User_Id, Unit_Id),
-  CONSTRAINT CpyUser_Dept_FK      Foreign Key (Dept_Id ) References Cpy_Dept(Id),
-  CONSTRAINT CpyUser_Unit_FK      Foreign Key (Unit_Id ) References Cpy_Unit(Id),
-  CONSTRAINT CpyUser_Unit_User_Fk Foreign Key (User_Id ) References Cpy_User(Id),
-  CONSTRAINT CpyUser_Unit_Ins_FK  Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT CpyUser_Unit_Upd_FK  Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT CpyUser_Unit_UK      UNIQUE      (User_Id, Unit_Id)
 );
 
 -- TODO(port): other has no automatic equivalent (source line 186).

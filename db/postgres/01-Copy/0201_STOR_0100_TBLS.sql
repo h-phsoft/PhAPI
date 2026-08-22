@@ -19,10 +19,7 @@ Create Table Stor_Cod_Unit           				        -- جدول ترميز الوح
   Ins_User   BIGINT,      Ins_Date TIMESTAMP,
   Upd_User   BIGINT,      Upd_Date TIMESTAMP,
   CONSTRAINT Stor_Cod_Unit_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Unit_UK        UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Unit_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Stor_Cod_Unit_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Stor_Cod_Unit_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Stor_Cod_Unit_UK        UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Unit (Id,Name) values (0,'Piece');
@@ -39,11 +36,7 @@ Create Table Stor_Unit_Form                             -- نسب التحويل
   Rem        VARCHAR(250),                           -- ملاحظات
   Ins_User   BIGINT, Ins_Date TIMESTAMP,
   Upd_User   BIGINT, Upd_Date TIMESTAMP,
-  CONSTRAINT Stor_Unit_Form_PK       PRIMARY KEY (Id),
-  CONSTRAINT Stor_Unit_Form_FUnit_FK Foreign Key (FUnit_Id) References Stor_Cod_Unit(Id),
-  CONSTRAINT Stor_Unit_Form_TUnit_FK Foreign Key (TUnit_Id) References Stor_Cod_Unit(Id),
-  CONSTRAINT Stor_Unit_Form_Ins_FK   Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Stor_Unit_Form_Upd_FK   Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Stor_Unit_Form_PK       PRIMARY KEY (Id)
 );
 
 ----------------------------------------------------------------------------------------------------
@@ -55,9 +48,7 @@ Create Table Stor_Cod_Ord_Status                        -- جدول ترميز �
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Ord_Status_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Ord_Status_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Ord_Status_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Cod_Ord_Status_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Cod_Ord_Status_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Ord_Status (Id,Name) values (0,'-'       );
@@ -77,9 +68,7 @@ Create Table Stor_Cod_Type                                -- جدول ترميز
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Type_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Type_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Type_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Cod_Type_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Cod_Type_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Type (Id,Name) values (1,'Normal'      );
@@ -110,20 +99,7 @@ Create Table Stor_Cod_Method                              -- جدول ترميز
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Method_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Method_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Barcode_FK    Foreign Key (Barcode_Id) References Phs_Cod_YesNo(Id),
-  CONSTRAINT Stor_Cod_Model_FK      Foreign Key (Model_Id  ) References Phs_Cod_YesNo(Id),
-  CONSTRAINT Stor_Cod_Size_FK       Foreign Key (Size_Id   ) References Phs_Cod_YesNo(Id),
-  CONSTRAINT Stor_Cod_Color_FK      Foreign Key (Color_Id  ) References Phs_Cod_YesNo(Id),
-  CONSTRAINT Stor_Cod_Lot_FK        Foreign Key (Lot_Id    ) References Phs_Cod_YesNo(Id),
-  CONSTRAINT Stor_Cod_Ser_FK        Foreign Key (Ser_Id    ) References Phs_Cod_YesNo(Id),
-  CONSTRAINT Stor_Cod_SDate_FK      Foreign Key (SDate_Id  ) References Phs_Cod_YesNo(Id),
-  CONSTRAINT Stor_Cod_EDate_FK      Foreign Key (EDate_Id  ) References Phs_Cod_YesNo(Id),
-  CONSTRAINT Stor_Cod_Length_FK     Foreign Key (Length_Id ) References Phs_Cod_YesNo(Id),
-  CONSTRAINT Stor_Cod_Width_FK      Foreign Key (Width_Id  ) References Phs_Cod_YesNo(Id),
-  CONSTRAINT Stor_Cod_Height_FK     Foreign Key (Height_Id ) References Phs_Cod_YesNo(Id),
-  CONSTRAINT Stor_Cod_Method_Ins_FK Foreign Key (Ins_User  ) References Cpy_User     (Id),
-  CONSTRAINT Stor_Cod_Method_Upd_FK Foreign Key (Upd_User  ) References Cpy_User     (Id)
+  CONSTRAINT Stor_Cod_Method_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Method (Id,Name, Barcode_Id, Model_Id, Size_Id, Color_Id, Lot_Id, Ser_Id, SDate_Id, EDate_Id, Length_Id, Width_Id, Height_Id) values (1,'Normal', 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1);
@@ -147,9 +123,7 @@ Create Table Stor_Cod_Cost                                -- جدول ترميز
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Cost_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Cost_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Cost_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Cod_Cost_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Cod_Cost_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Cost (Id,Name) values (1,'Average'  );
@@ -165,9 +139,7 @@ Create Table Stor_Cod_Own                                 -- جدول ترميز
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Own_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Own_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Own_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Cod_Own_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Cod_Own_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Own (Id,Name) values (1,'Own');
@@ -186,9 +158,7 @@ Create Table Stor_Cod_Model                               -- جدول ترميز
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Model_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Model_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Model_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Cod_Model_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Cod_Model_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Model (Id,Name) values (0,'-');
@@ -205,9 +175,7 @@ Create Table Stor_Cod_Color                               -- جدول الألو
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Color_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Color_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Color_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Cod_Color_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Cod_Color_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Color (Id,Name) values (0,'-');
@@ -224,9 +192,7 @@ Create Table Stor_Cod_Size                                -- جدول ترميز
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Size_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Size_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Size_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Cod_Size_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Cod_Size_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Size (Id,Name) values (0,'-');
@@ -243,9 +209,7 @@ Create Table Stor_Cod_Doc                            -- جدول ترميز نو
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Doc_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Doc_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Doc_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Cod_Doc_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Cod_Doc_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Doc (Id,Name) values (0,'-');
@@ -259,9 +223,7 @@ Create Table Stor_Cod_TrnTyp                    -- جدول ترميز أنوا�
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_TrnTyp_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_TrnTyp_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_TrnTyp_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Cod_TrnTyp_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Cod_TrnTyp_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_TrnTyp (Id,Name) values (100, 'Inbound'                       );
@@ -326,10 +288,7 @@ Create Table Stor_Cod_Grp                               -- جدول ترميز �
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Grp_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Grp_UK        UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Grp_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Stor_Cod_Grp_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Stor_Cod_Grp_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Stor_Cod_Grp_UK        UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Grp (Id,Name) values (0,'-');
@@ -347,11 +306,7 @@ Create Table Stor_Cod_Itm                                -- جدول ترميز 
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Itm_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Itm_UK        UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Itm_Group_Fk  Foreign Key (Grp_Id   ) References Stor_Cod_Grp  (Id),
-  CONSTRAINT Stor_Cod_Itm_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Stor_Cod_Itm_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Stor_Cod_Itm_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Stor_Cod_Itm_UK        UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Itm (Id,Grp_Id,Name) values (0,0,'-');
@@ -368,9 +323,7 @@ Create Table Stor_Cod_Spec1                  -- جدول ترميز التصني
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Spec1_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Spec1_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Spec1_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Cod_Spec1_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Cod_Spec1_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Spec1 (Id,Name) values (0,'-');
@@ -387,9 +340,7 @@ Create Table Stor_Cod_Spec2                  -- جدول ترميز التصني
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Spec2_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Spec2_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Spec2_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Cod_Spec2_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Cod_Spec2_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Spec2 (Id,Name) values (0,'-');
@@ -406,9 +357,7 @@ Create Table Stor_Cod_Spec3                  -- جدول ترميز التصني
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Spec3_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Spec3_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Spec3_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Cod_Spec3_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Cod_Spec3_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Spec3 (Id,Name) values (0,'-');
@@ -425,9 +374,7 @@ Create Table Stor_Cod_Spec4                  -- جدول ترميز التصني
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Spec4_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Spec4_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Spec4_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Cod_Spec4_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Cod_Spec4_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Spec4 (Id,Name) values (0,'-');
@@ -444,9 +391,7 @@ Create Table Stor_Cod_Spec5                  -- جدول ترميز التصني
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Spec5_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Spec5_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Spec5_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Cod_Spec5_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Cod_Spec5_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Spec5 (Id,Name) values (0,'-');
@@ -463,9 +408,7 @@ Create Table Stor_Cod_Spec6                  -- جدول ترميز التصني
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Spec6_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Spec6_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Spec6_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Cod_Spec6_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Cod_Spec6_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Spec6 (Id,Name) values (0,'-');
@@ -482,9 +425,7 @@ Create Table Stor_Cod_Spec7                  -- جدول ترميز التصني
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Spec7_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Spec7_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Spec7_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Cod_Spec7_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Cod_Spec7_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Spec7 (Id,Name) values (0,'-');
@@ -501,9 +442,7 @@ Create Table Stor_Cod_Spec8                  -- جدول ترميز التصني
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Spec8_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Spec8_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Spec8_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Cod_Spec8_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Cod_Spec8_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Spec8 (Id,Name) values (0,'-');
@@ -520,9 +459,7 @@ Create Table Stor_Cod_Spec9                  -- جدول ترميز التصني
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Spec9_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Spec9_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Spec9_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Cod_Spec9_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Cod_Spec9_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Spec9 (Id,Name) values (0,'-');
@@ -539,9 +476,7 @@ Create Table Stor_Cod_Spec0                  -- جدول ترميز التصني
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Spec0_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Spec0_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Spec0_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Cod_Spec0_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Cod_Spec0_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Spec0 (Id,Name) values (0,'-');
@@ -558,9 +493,7 @@ Create Table Stor_Cod_Loc1                           -- جدول ترميز ال
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Loc1_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Loc1_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Loc1_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Cod_Loc1_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Cod_Loc1_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Loc1 (Id,Name) values (0,'-');
@@ -577,9 +510,7 @@ Create Table Stor_Cod_Loc2                           -- جدول ترميز ال
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Loc2_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Loc2_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Loc2_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Cod_Loc2_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Cod_Loc2_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Loc2 (Id,Name) values (0,'-');
@@ -596,9 +527,7 @@ Create Table Stor_Cod_Loc3                           -- جدول ترميز ال
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Stor_Cod_Loc3_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Cod_Loc3_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Cod_Loc3_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Cod_Loc3_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Cod_Loc3_UK     UNIQUE      (Name)
 );
 
 Insert into Stor_Cod_Loc3 (Id,Name) values (0,'-');

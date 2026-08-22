@@ -21,9 +21,7 @@ Create Table Prd_Cod_Status                               -- جدول ترميز
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Prd_Cod_Status_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Prd_Cod_Status_UK     UNIQUE      (Name),
-  CONSTRAINT Prd_Cod_Status_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Prd_Cod_Status_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Prd_Cod_Status_UK     UNIQUE      (Name)
 );
 
 Insert into Prd_Cod_Status (Id,Name) values (0,'-'     );
@@ -146,9 +144,7 @@ Create Table Prd_Cod_Mchine_Cat                     -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Prd_Cod_Mchine_Cat_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Prd_Cod_Mchine_Cat_UK        UNIQUE      (Name),
-  CONSTRAINT Prd_Cod_Mchine_Cat_Ins_FK    Foreign Key (Ins_User ) References Cpy_User(Id),
-  CONSTRAINT Prd_Cod_Mchine_Cat_Upd_FK    Foreign Key (Upd_User ) References Cpy_User(Id)
+  CONSTRAINT Prd_Cod_Mchine_Cat_UK        UNIQUE      (Name)
 );
 
 Insert Into Prd_Cod_Mchine_Cat (Id,Name) Values (0,'-');
@@ -173,11 +169,7 @@ Create Table Prd_QA_Fld                   -- حقول الجودة
   Rem        VARCHAR(250),                           -- ملاحظات
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
-  CONSTRAINT Prd_QA_Fld_PK        PRIMARY KEY (Id),
-  CONSTRAINT Prd_QA_Fld_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status  (Id),
-  CONSTRAINT Prd_QA_Fld_FType_FK  Foreign Key (FType_Id ) References Prd_Cod_Fld_Type(Id),
-  CONSTRAINT Prd_QA_Fld_Ins_FK    Foreign Key (Ins_User ) References Cpy_User        (Id),
-  CONSTRAINT Prd_QA_Fld_Upd_FK    Foreign Key (Upd_User ) References Cpy_User        (Id)
+  CONSTRAINT Prd_QA_Fld_PK        PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_QA_Fld_Vals_Seq
@@ -195,11 +187,7 @@ Create Table Prd_QA_Fld_Vals            -- قيم حقول الجودة
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Prd_QA_Fld_Vals_PK        PRIMARY KEY (Id),
   CONSTRAINT Prd_QA_Fld_Vals_Name_UK   UNIQUE      (Fld_Id, Name  ),
-  CONSTRAINT Prd_QA_Fld_Vals_Value_UK  UNIQUE      (Fld_Id, FValue),
-  CONSTRAINT Prd_QA_Fld_Vals_Fld_FK    Foreign Key (Fld_Id  ) References Prd_QA_Fld   (Id),
-  CONSTRAINT Prd_QA_Fld_Vals_IsOk_FK   Foreign Key (Ok_Id   ) References Phs_Cod_YesNo(Id),
-  CONSTRAINT Prd_QA_Fld_Vals_Ins_FK    Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Prd_QA_Fld_Vals_Upd_FK    Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Prd_QA_Fld_Vals_Value_UK  UNIQUE      (Fld_Id, FValue)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_QA_Checklist_Seq
@@ -217,10 +205,7 @@ Create Table Prd_QA_Checklist               -- قوائم تدقيق الجود�
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Prd_QA_Checklist_PK        PRIMARY KEY (Id),
   CONSTRAINT Prd_QA_Checklist_UK        UNIQUE      (Name, Version),
-  CONSTRAINT Prd_QA_Checklist_Code_UK   UNIQUE      (Code),
-  CONSTRAINT Prd_QA_Checklist_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Prd_QA_Checklist_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Prd_QA_Checklist_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Prd_QA_Checklist_Code_UK   UNIQUE      (Code)
 );
 
 Insert Into Prd_QA_Checklist (Id,Name,Code) Values (0,'-','-');
@@ -243,12 +228,7 @@ Create Table Prd_QA_Item          -- بنود قوائم تدقيق الجودة
   Rem         VARCHAR(250),                         -- ملاحظات
   Ins_User    BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User    BIGINT,  Upd_Date    TIMESTAMP,
-  CONSTRAINT Prd_QA_Item_PK          PRIMARY KEY (Id),
-  CONSTRAINT Prd_QA_Item_List_FK     Foreign Key (List_Id    ) References Prd_QA_Checklist(Id),
-  CONSTRAINT Prd_QA_Item_Fld_FK      Foreign Key (Fld_Id     ) References Prd_QA_Fld      (Id),
-  CONSTRAINT Prd_QA_Item_Required_FK Foreign Key (Required_Id) References Phs_Cod_YesNo   (Id),
-  CONSTRAINT Prd_QA_Item_Ins_FK      Foreign Key (Ins_User   ) References Cpy_User        (Id),
-  CONSTRAINT Prd_QA_Item_Upd_FK      Foreign Key (Upd_User   ) References Cpy_User        (Id)
+  CONSTRAINT Prd_QA_Item_PK          PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_Machine_Seq
@@ -269,12 +249,7 @@ CREATE TABLE Prd_Machine                                   -- دليل الآل�
   Ins_User    BIGINT, Ins_Date     TIMESTAMP,
   Upd_User    BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT  Prd_Machine_PK        PRIMARY KEY (Id   ),
-  CONSTRAINT  Prd_Machine_Name_Uk   Unique      (IName),
-  CONSTRAINT  Prd_Machine_Cat_FK    Foreign Key (Cat_Id   ) References Prd_Cod_Mchine_Cat (Id),
-  CONSTRAINT  Prd_Machine_Acc_FK    Foreign Key (Acc_Id   ) References Acc_acc            (Id),
-  CONSTRAINT  Prd_Machine_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status     (Id),
-  CONSTRAINT  Prd_Machine_Ins_FK    Foreign Key (Ins_User ) References Cpy_User           (Id),
-  CONSTRAINT  Prd_Machine_Upd_FK    Foreign Key (Upd_User ) References Cpy_User           (Id)
+  CONSTRAINT  Prd_Machine_Name_Uk   Unique      (IName)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_Expense_Seq
@@ -291,11 +266,7 @@ CREATE TABLE Prd_Expense                                   -- دليل الآل�
   Ins_User    BIGINT, Ins_Date     TIMESTAMP,
   Upd_User    BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT  Prd_Expense_PK        PRIMARY KEY (Id   ),
-  CONSTRAINT  Prd_Expense_Name_Uk   Unique      (IName),
-  CONSTRAINT  Prd_Expense_Acc_FK    Foreign Key (Acc_Id   ) References Acc_acc            (Id),
-  CONSTRAINT  Prd_Expense_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status     (Id),
-  CONSTRAINT  Prd_Expense_Ins_FK    Foreign Key (Ins_User ) References Cpy_User           (Id),
-  CONSTRAINT  Prd_Expense_Upd_FK    Foreign Key (Upd_User ) References Cpy_User           (Id)
+  CONSTRAINT  Prd_Expense_Name_Uk   Unique      (IName)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_Form_Seq
@@ -318,14 +289,7 @@ Create Table
   Upd_User    BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT  Prd_Form_PK          PRIMARY KEY (Id  ),
   CONSTRAINT  Prd_Form_Num_Uk      Unique      (Num ),
-  CONSTRAINT  Prd_Form_Name_Uk     Unique      (Name),
-  CONSTRAINT  Prd_Form_Item_FK     Foreign Key (Item_Id    ) References Stor_Item        (Id),
-  CONSTRAINT  Prd_Form_List_FK     Foreign Key (List_Id    ) References Prd_QA_Checklist (Id),
-  CONSTRAINT  Prd_Form_ExecTime_FK Foreign Key (ExecTime_Id) References Prd_Cod_Exec_Time(Id),
-  CONSTRAINT  Prd_Form_Required_FK Foreign Key (Required_Id) References Phs_Cod_YesNo    (Id),
-  CONSTRAINT  Prd_Form_Status_FK   Foreign Key (Status_Id  ) References Phs_Cod_Status   (Id),
-  CONSTRAINT  Prd_Form_Ins_FK      Foreign Key (Ins_User   ) References Cpy_User         (Id),
-  CONSTRAINT  Prd_Form_Upd_FK      Foreign Key (Upd_User   ) References Cpy_User         (Id)
+  CONSTRAINT  Prd_Form_Name_Uk     Unique      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_Stage_Seq
@@ -350,16 +314,7 @@ Create Table Prd_Stage                          -- دليل مراحل الإن�
   Upd_User    BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT  Prd_Stage_PK          PRIMARY KEY (Id),
   CONSTRAINT  Prd_Stage_Num_Uk      Unique      (Form_Id, Num ),
-  CONSTRAINT  Prd_Stage_Name_Uk     Unique      (Form_Id, Name),
-  CONSTRAINT  Prd_Stage_Form_FK     Foreign Key (Form_Id    ) References Prd_Form         (Id),
-  CONSTRAINT  Prd_Stage_MAcc_FK     Foreign Key (Macc_Id    ) References Acc_Acc          (Id),
-  CONSTRAINT  Prd_Stage_EAcc_FK     Foreign Key (EAcc_Id    ) References Acc_Acc          (Id),
-  CONSTRAINT  Prd_Stage_Stor_FK     Foreign Key (Stor_Id    ) References Stor_Store       (Id),
-  CONSTRAINT  Prd_Stage_List_FK     Foreign Key (List_Id    ) References Prd_QA_Checklist (Id),
-  CONSTRAINT  Prd_Stage_ExecTime_FK Foreign Key (ExecTime_Id) References Prd_Cod_Exec_Time(Id),
-  CONSTRAINT  Prd_Stage_Required_FK Foreign Key (Required_Id) References Phs_Cod_YesNo    (Id),
-  CONSTRAINT  Prd_Stage_Ins_FK      Foreign Key (Ins_User   ) References Cpy_User         (Id),
-  CONSTRAINT  Prd_Stage_Upd_FK      Foreign Key (Upd_User   ) References Cpy_User         (Id)
+  CONSTRAINT  Prd_Stage_Name_Uk     Unique      (Form_Id, Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_Prod_Stage_Raw_Seq
@@ -379,14 +334,7 @@ Create Table Prd_Prod_Stage_Raw              -- بنود مراحل الإنتا
   Rem          VARCHAR(250),                         -- ملاحظات
   Ins_User     BIGINT, Ins_Date     TIMESTAMP,
   Upd_User     BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT   Prd_Prod_Stage_Raw_PK       PRIMARY KEY (Id),
-  CONSTRAINT   Prd_Prod_Stage_Raw_Stage_FK Foreign Key (Stage_Id ) References Prd_Stage (Id),
-  CONSTRAINT   Prd_Prod_Stage_Raw_Stor_FK  Foreign Key (Stor_Id  ) References Stor_Store(Id),
-  CONSTRAINT   Prd_Prod_Stage_Raw_Item_FK  Foreign Key (Item_Id  ) References Stor_Item (Id),
-  CONSTRAINT   Prd_Prod_Stage_Raw_Cost_FK  Foreign Key (Cost_Id  ) References Acc_Cost  (Id),
-  CONSTRAINT   Prd_Prod_Stage_Raw_Acc_FK   Foreign Key (Acc_Id   ) References Acc_Acc   (Id),
-  CONSTRAINT   Prd_Prod_Stage_Raw_Ins_FK   Foreign Key (Ins_User ) References Cpy_User  (Id),
-  CONSTRAINT   Prd_Prod_Stage_Raw_Upd_FK   Foreign Key (Upd_User ) References Cpy_User  (Id)
+  CONSTRAINT   Prd_Prod_Stage_Raw_PK       PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_Prod_Stage_Prd_Seq
@@ -406,13 +354,7 @@ Create Table Prd_Prod_Stage_Prd                  -- بنود مراحل الإن
   Rem          VARCHAR(250),                         -- ملاحظات
   Ins_User     BIGINT, Ins_Date     TIMESTAMP,
   Upd_User     BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT   Prd_Prod_Stage_Prd_PK       PRIMARY KEY (Id),
-  CONSTRAINT   Prd_Prod_Stage_Prd_Stage_FK Foreign Key (Stage_Id ) References Prd_Stage(Id),
-  CONSTRAINT   Prd_Prod_Stage_Prd_Item_FK  Foreign Key (Item_Id  ) References Stor_Item(Id),
-  CONSTRAINT   Prd_Prod_Stage_Prd_Cost_FK  Foreign Key (Cost_Id  ) References Acc_Cost (Id),
-  CONSTRAINT   Prd_Prod_Stage_Prd_Acc_FK   Foreign Key (Acc_Id   ) References Acc_Acc  (Id),
-  CONSTRAINT   Prd_Prod_Stage_Prd_Ins_FK   Foreign Key (Ins_User ) References Cpy_User (Id),
-  CONSTRAINT   Prd_Prod_Stage_Prd_Upd_FK   Foreign Key (Upd_User ) References Cpy_User (Id)
+  CONSTRAINT   Prd_Prod_Stage_Prd_PK       PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_Prod_Stage_Exp_Seq
@@ -431,12 +373,7 @@ Create Table Prd_Prod_Stage_Exp                 -- بنود مراحل الإن�
   Rem          VARCHAR(250),                         -- ملاحظات
   Ins_User     BIGINT, Ins_Date     TIMESTAMP,
   Upd_User     BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT   Prd_Prod_Stage_Exp_PK       PRIMARY KEY (Id),
-  CONSTRAINT   Prd_Prod_Stage_Exp_Stage_FK Foreign Key (Stage_Id ) References Prd_Stage(Id),
-  CONSTRAINT   Prd_Prod_Stage_Exp_AccR_FK  Foreign Key (Acc_RId  ) References Acc_Acc  (Id),
-  CONSTRAINT   Prd_Prod_Stage_Exp_AccE_FK  Foreign Key (Acc_EId  ) References Acc_Acc  (Id),
-  CONSTRAINT   Prd_Prod_Stage_Exp_Ins_FK   Foreign Key (Ins_User ) References Cpy_User (Id),
-  CONSTRAINT   Prd_Prod_Stage_Exp_Upd_FK   Foreign Key (Upd_User ) References Cpy_User (Id)
+  CONSTRAINT   Prd_Prod_Stage_Exp_PK       PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_Prod_Stage_ISemi_Seq
@@ -453,12 +390,8 @@ Create Table Prd_Prod_Stage_ISemi            -- بنود مراحل الإنتا
 	  Rem          VARCHAR(250),                         -- ملاحظات
 	  Ins_User     BIGINT, Ins_Date     TIMESTAMP,
 	  Upd_User     BIGINT, Upd_Date     TIMESTAMP,
-	  CONSTRAINT   Prd_Prod_Stage_ISemi_PK       PRIMARY KEY (Id),
-	  CONSTRAINT   Prd_Prod_Stage_ISemi_Stage_FK Foreign Key (Stage_Id ) References Prd_Stage(Id),
-	  CONSTRAINT   Prd_Prod_Stage_ISemi_Item_FK  Foreign Key (Item_Id  ) References Stor_Item(Id),
-	  CONSTRAINT   Prd_Prod_Stage_ISemi_Ins_FK   Foreign Key (Ins_User ) References Cpy_User (Id),
-	  CONSTRAINT   Prd_Prod_Stage_ISemi_Upd_FK   Foreign Key (Upd_User ) References Cpy_User (Id)
-	);
+	  CONSTRAINT   Prd_Prod_Stage_ISemi_PK       PRIMARY KEY (Id)
+);
 
 CREATE SEQUENCE IF NOT EXISTS Prd_Prod_Stage_OSemi_Seq
   INCREMENT BY 1
@@ -475,12 +408,8 @@ Create Table Prd_Prod_Stage_OSemi            -- بنود مراحل الإنتا
 	  Rem          VARCHAR(250),                         -- ملاحظات
 	  Ins_User     BIGINT, Ins_Date     TIMESTAMP,
 	  Upd_User     BIGINT, Upd_Date     TIMESTAMP,
-	  CONSTRAINT   Prd_Prod_Stage_OSemi_PK       PRIMARY KEY (Id),
-	  CONSTRAINT   Prd_Prod_Stage_OSemi_Stage_FK Foreign Key (Stage_Id ) References Prd_Stage(Id),
-	  CONSTRAINT   Prd_Prod_Stage_OSemi_Item_FK  Foreign Key (Item_Id  ) References Stor_Item(Id),
-	  CONSTRAINT   Prd_Prod_Stage_OSemi_Ins_FK   Foreign Key (Ins_User ) References Cpy_User (Id),
-	  CONSTRAINT   Prd_Prod_Stage_OSemi_Upd_FK   Foreign Key (Upd_User ) References Cpy_User (Id)
-	);
+	  CONSTRAINT   Prd_Prod_Stage_OSemi_PK       PRIMARY KEY (Id)
+);
 
 CREATE SEQUENCE IF NOT EXISTS Prd_Prod_Stage_Mach_Cat_Seq
   INCREMENT BY 1
@@ -496,11 +425,7 @@ Create Table Prd_Prod_Stage_Mach_Cat         -- بنود مراحل الإنتا
   Rem          VARCHAR(250),                         -- ملاحظات
   Ins_User     BIGINT, Ins_Date     TIMESTAMP,
   Upd_User     BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT   Prd_Prod_Stage_Mach_Cat_PK       PRIMARY KEY (Id),
-  CONSTRAINT   Prd_Prod_Stage_Mach_Cat_Stage_FK Foreign Key (Stage_Id ) References Prd_Stage         (Id),
-  CONSTRAINT   Prd_Prod_Stage_Mach_Cat_Cat_FK   Foreign Key (Cat_Id   ) References Prd_Cod_Mchine_Cat(Id),
-  CONSTRAINT   Prd_Prod_Stage_Mach_Cat_Ins_FK   Foreign Key (Ins_User ) References Cpy_User          (Id),
-  CONSTRAINT   Prd_Prod_Stage_Mach_Cat_Upd_FK   Foreign Key (Upd_User ) References Cpy_User          (Id)
+  CONSTRAINT   Prd_Prod_Stage_Mach_Cat_PK       PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_Prod_Stage_Emp_Job_Seq
@@ -517,11 +442,7 @@ Create Table Prd_Prod_Stage_Emp_Job             -- بنود مراحل الإن�
   Rem          VARCHAR(250),                         -- ملاحظات
   Ins_User     BIGINT, Ins_Date     TIMESTAMP,
   Upd_User     BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT   Prd_Prod_Stage_Emp_Job_PK       PRIMARY KEY (Id),
-  CONSTRAINT   Prd_Prod_Stage_Emp_Job_Stage_FK Foreign Key (Stage_Id ) References Prd_Stage  (Id),
-  CONSTRAINT   Prd_Prod_Stage_Emp_Job_Job_FK   Foreign Key (Job_Id   ) References Emp_Cod_Job(Id),
-  CONSTRAINT   Prd_Prod_Stage_Emp_Job_Ins_FK   Foreign Key (Ins_User ) References Cpy_User   (Id),
-  CONSTRAINT   Prd_Prod_Stage_Emp_Job_Upd_FK   Foreign Key (Upd_User ) References Cpy_User   (Id)
+  CONSTRAINT   Prd_Prod_Stage_Emp_Job_PK       PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_MPLan_Seq
@@ -536,9 +457,7 @@ Create Table Prd_MPlan                                  -- ترويسة الخط
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT  Prd_MPlan_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Prd_MPlan_UK        Unique      (Num),
-  CONSTRAINT  Prd_MPlan_Ins_FK    Foreign Key (Ins_User ) References Cpy_User   (Id),
-  CONSTRAINT  Prd_MPlan_Upd_FK    Foreign Key (Upd_User ) References Cpy_User   (Id)
+  CONSTRAINT  Prd_MPlan_UK        Unique      (Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_TPLan_Seq
@@ -555,12 +474,7 @@ Create Table Prd_TPlan                                  -- بنود الخطط
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT  Prd_TPlan_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Prd_TPlan_UK        Unique      (Plan_Id, Item_Id, Form_Id),
-  CONSTRAINT  Prd_TPlan_Plan_FK   Foreign Key (Plan_Id  ) References Prd_MPlan  (Id),
-  CONSTRAINT  Prd_TPlan_Form_FK   Foreign Key (Form_Id  ) References Prd_Form   (Id),
-  CONSTRAINT  Prd_TPlan_Item_FK   Foreign Key (Item_Id  ) References Stor_Item  (Id),
-  CONSTRAINT  Prd_TPlan_Ins_FK    Foreign Key (Ins_User ) References Cpy_User   (Id),
-  CONSTRAINT  Prd_TPlan_Upd_FK    Foreign Key (Upd_User ) References Cpy_User   (Id)
+  CONSTRAINT  Prd_TPlan_UK        Unique      (Plan_Id, Item_Id, Form_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_MOrder_Seq
@@ -576,10 +490,7 @@ Create Table Prd_MOrder                                 -- ترويسة أوام
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT  Prd_MOrder_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Prd_MOrder_UK        Unique      (Num),
-  CONSTRAINT  Prd_MOrder_Period_FK Foreign Key (Period_Id) References Cpy_Period (Id),
-  CONSTRAINT  Prd_MOrder_Ins_FK    Foreign Key (Ins_User ) References Cpy_User   (Id),
-  CONSTRAINT  Prd_MOrder_Upd_FK    Foreign Key (Upd_User ) References Cpy_User   (Id)
+  CONSTRAINT  Prd_MOrder_UK        Unique      (Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_TOrder_Seq
@@ -598,13 +509,7 @@ Create Table Prd_TOrder                                 -- بنود أوامر �
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT  Prd_TOrder_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Prd_TOrder_UK        Unique      (MOrd_Id, Item_Id, Form_Id),
-  CONSTRAINT  Prd_TOrder_Order_FK  Foreign Key (MOrd_Id  ) References Prd_MOrder         (Id),
-  CONSTRAINT  Prd_TOrder_Item_FK   Foreign Key (Item_Id  ) References Stor_Item          (Id),
-  CONSTRAINT  Prd_TOrder_Form_FK   Foreign Key (Form_Id  ) References Prd_Form           (Id),
-  CONSTRAINT  Prd_TOrder_Status_FK Foreign Key (Status_Id) References Prd_Cod_Prod_Status(Id),
-  CONSTRAINT  Prd_TOrder_Ins_FK    Foreign Key (Ins_User ) References Cpy_User           (Id),
-  CONSTRAINT  Prd_TOrder_Upd_FK    Foreign Key (Upd_User ) References Cpy_User           (Id)
+  CONSTRAINT  Prd_TOrder_UK        Unique      (MOrd_Id, Item_Id, Form_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_Order_Exp_Seq
@@ -634,18 +539,7 @@ Create Table Prd_Order_Exp                             -- مصاريف أوام�
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT Prd_Order_Exp_PK        PRIMARY KEY (Id),
-  CONSTRAINT Prd_Order_Exp_UK        UNIQUE      (Period_Id, Num),
-  CONSTRAINT Prd_Order_Exp_Period_FK Foreign Key (Period_Id) References Cpy_Period (Id),
-  CONSTRAINT Prd_Order_Exp_MOrder_FK Foreign Key (MOrd_Id  ) References Prd_MOrder (Id),
-  CONSTRAINT Prd_Order_Exp_TOrder_FK Foreign Key (TOrd_Id  ) References Prd_TOrder (Id),
-  CONSTRAINT Prd_Order_Exp_Exp_FK    Foreign Key (Exp_Id   ) References Prd_Expense(Id),
-  CONSTRAINT Prd_Order_Exp_Curn_FK   Foreign Key (Curn_Id  ) References Mng_Curn   (Id),
-  CONSTRAINT Prd_Order_Exp_FCost_FK  Foreign Key (Cost_FId ) References Acc_Cost   (Id),
-  CONSTRAINT Prd_Order_Exp_TCost_FK  Foreign Key (Cost_TId ) References Acc_Cost   (Id),
-  CONSTRAINT Prd_Order_Exp_FAcc_FK   Foreign Key (Acc_FId  ) References Acc_Acc    (Id),
-  CONSTRAINT Prd_Order_Exp_TAcc_FK   Foreign Key (Acc_TId  ) References Acc_Acc    (Id),
-  CONSTRAINT Prd_Order_Exp_Ins_FK    Foreign Key (Ins_User ) References Cpy_User   (Id),
-  CONSTRAINT Prd_Order_Exp_Upd_FK    Foreign Key (Upd_User ) References Cpy_User   (Id)
+  CONSTRAINT Prd_Order_Exp_UK        UNIQUE      (Period_Id, Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_OMachine_WTime_Seq
@@ -665,13 +559,7 @@ Create Table Prd_OMachine_WTime                  -- ساعات عمل الآلا
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   Constraint Prd_OMachine_WTime_PK         Primary Key (Id),
-  Constraint Prd_OMachine_WTime_EIWT_UK    UNIQUE      (MOrd_Id, TOrd_Id, Machine_Id, dDate),
-  CONSTRAINT Prd_OMachine_WTime_MOrder_FK  Foreign Key (MOrd_Id   ) References Prd_MOrder (Id),
-  CONSTRAINT Prd_OMachine_WTime_TOrder_FK  Foreign Key (TOrd_Id   ) References Prd_TOrder (Id),
-  CONSTRAINT Prd_OMachine_WTime_Stage_FK   Foreign Key (Stage_Id  ) REFERENCES Prd_Stage  (Id),
-  CONSTRAINT Prd_OMachine_WTime_Machine_FK Foreign Key (Machine_Id) References Prd_Machine(Id),
-  CONSTRAINT Prd_OMachine_WTime_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User   (Id),
-  CONSTRAINT Prd_OMachine_WTime_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User   (Id)
+  Constraint Prd_OMachine_WTime_EIWT_UK    UNIQUE      (MOrd_Id, TOrd_Id, Machine_Id, dDate)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_OEmp_WTime_Seq
@@ -691,13 +579,7 @@ Create Table Prd_OEmp_WTime                  -- ساعات عمل الآلات �
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   Constraint Prd_OEmp_WTime_PK         Primary Key (Id),
-  Constraint Prd_OEmp_WTime_EIWT_UK    UNIQUE      (MOrd_Id, TOrd_Id, Emp_Id, dDate),
-  CONSTRAINT Prd_OEmp_WTime_MOrder_FK  Foreign Key (MOrd_Id ) References Prd_MOrder (Id),
-  CONSTRAINT Prd_OEmp_WTime_TOrder_FK  Foreign Key (TOrd_Id ) References Prd_TOrder (Id),
-  CONSTRAINT Prd_OEmp_WTime_Stage_FK   Foreign Key (Stage_Id) REFERENCES Prd_Stage  (Id),
-  CONSTRAINT Prd_OEmp_WTime_Emp_FK     Foreign Key (Emp_Id  ) References Emp_Emp    (Id),
-  CONSTRAINT Prd_OEmp_WTime_Ins_FK     Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT Prd_OEmp_WTime_Upd_FK     Foreign Key (Upd_User) References Cpy_User   (Id)
+  Constraint Prd_OEmp_WTime_EIWT_UK    UNIQUE      (MOrd_Id, TOrd_Id, Emp_Id, dDate)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_OExec_Stage_Seq
@@ -716,13 +598,7 @@ Create Table Prd_OExec_Stage                     -- تنفيذ مراحل امر
   Rem             VARCHAR(500),
   Ins_User        BIGINT, Ins_Date TIMESTAMP,
   Upd_User        BIGINT, Upd_Date TIMESTAMP,
-  CONSTRAINT Prd_Oexec_Stage_Pk          Primary Key (Id),
-  CONSTRAINT Prd_Oexec_Stage_Torder_Fk   Foreign Key (Torder_Id) References Prd_Torder         (Id),
-  CONSTRAINT Prd_Oexec_Stage_Stage_Fk    Foreign Key (Stage_Id ) References Prd_Stage          (Id),
-  CONSTRAINT Prd_Oexec_Stage_Status_Fk   Foreign Key (Status_Id) References Prd_Cod_Prod_Status(Id),
-  CONSTRAINT Prd_Oexec_Stage_Super_Fk    Foreign Key (Emp_Id   ) References Emp_Emp            (Id),
-  CONSTRAINT Prd_Oexec_Stage_Ins_Fk      Foreign Key (Ins_User ) References Cpy_User           (Id),
-  CONSTRAINT Prd_Oexec_Stage_Upd_Fk      Foreign Key (Upd_User ) References Cpy_User           (Id)
+  CONSTRAINT Prd_Oexec_Stage_Pk          Primary Key (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_OExec_Stage_Raw_Seq
@@ -744,14 +620,7 @@ Create Table Prd_OExec_Stage_Raw         -- بنود مراحل الإنتاج -
   Rem          VARCHAR(250),                         -- ملاحظات
   Ins_User     BIGINT, Ins_Date     TIMESTAMP,
   Upd_User     BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT   Prd_OExec_Stage_Raw_PK       PRIMARY KEY (Id),
-  CONSTRAINT   Prd_OExec_Stage_Raw_Stage_FK Foreign Key (OExec_Id ) References Prd_OExec_Stage (Id),
-  CONSTRAINT   Prd_OExec_Stage_Raw_Stor_FK  Foreign Key (Stor_Id  ) References Stor_Store(Id),
-  CONSTRAINT   Prd_OExec_Stage_Raw_Item_FK  Foreign Key (Item_Id  ) References Stor_Item (Id),
-  CONSTRAINT   Prd_OExec_Stage_Raw_Cost_FK  Foreign Key (Cost_Id  ) References Acc_Cost  (Id),
-  CONSTRAINT   Prd_OExec_Stage_Raw_Acc_FK   Foreign Key (Acc_Id   ) References Acc_Acc   (Id),
-  CONSTRAINT   Prd_OExec_Stage_Raw_Ins_FK   Foreign Key (Ins_User ) References Cpy_User  (Id),
-  CONSTRAINT   Prd_OExec_Stage_Raw_Upd_FK   Foreign Key (Upd_User ) References Cpy_User  (Id)
+  CONSTRAINT   Prd_OExec_Stage_Raw_PK       PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_OExec_Stage_Prd_Seq
@@ -773,13 +642,7 @@ Create Table Prd_OExec_Stage_Prd             -- بنود مراحل الإنتا
   Rem          VARCHAR(250),                         -- ملاحظات
   Ins_User     BIGINT, Ins_Date     TIMESTAMP,
   Upd_User     BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT   Prd_OExec_Stage_Prd_PK       PRIMARY KEY (Id),
-  CONSTRAINT   Prd_OExec_Stage_Prd_Stage_FK Foreign Key (OExec_Id ) References Prd_OExec_Stage(Id),
-  CONSTRAINT   Prd_OExec_Stage_Prd_Item_FK  Foreign Key (Item_Id  ) References Stor_Item(Id),
-  CONSTRAINT   Prd_OExec_Stage_Prd_Cost_FK  Foreign Key (Cost_Id  ) References Acc_Cost (Id),
-  CONSTRAINT   Prd_OExec_Stage_Prd_Acc_FK   Foreign Key (Acc_Id   ) References Acc_Acc  (Id),
-  CONSTRAINT   Prd_OExec_Stage_Prd_Ins_FK   Foreign Key (Ins_User ) References Cpy_User (Id),
-  CONSTRAINT   Prd_OExec_Stage_Prd_Upd_FK   Foreign Key (Upd_User ) References Cpy_User (Id)
+  CONSTRAINT   Prd_OExec_Stage_Prd_PK       PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_OExec_Stage_Exp_Seq
@@ -799,12 +662,7 @@ Create Table Prd_OExec_Stage_Exp            -- بنود مراحل الإنتا�
   Rem          VARCHAR(250),                         -- ملاحظات
   Ins_User     BIGINT, Ins_Date     TIMESTAMP,
   Upd_User     BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT   Prd_OExec_Stage_Exp_PK       PRIMARY KEY (Id),
-  CONSTRAINT   Prd_OExec_Stage_Exp_Stage_FK Foreign Key (OExec_Id ) References Prd_OExec_Stage(Id),
-  CONSTRAINT   Prd_OExec_Stage_Exp_AccR_FK  Foreign Key (Acc_RId  ) References Acc_Acc  (Id),
-  CONSTRAINT   Prd_OExec_Stage_Exp_AccE_FK  Foreign Key (Acc_EId  ) References Acc_Acc  (Id),
-  CONSTRAINT   Prd_OExec_Stage_Exp_Ins_FK   Foreign Key (Ins_User ) References Cpy_User (Id),
-  CONSTRAINT   Prd_OExec_Stage_Exp_Upd_FK   Foreign Key (Upd_User ) References Cpy_User (Id)
+  CONSTRAINT   Prd_OExec_Stage_Exp_PK       PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_OExec_Stage_ISemi_Seq
@@ -823,11 +681,7 @@ Create Table Prd_OExec_Stage_ISemi       -- بنود مراحل الإنتاج -
   Rem          VARCHAR(250),                         -- ملاحظات
   Ins_User     BIGINT, Ins_Date     TIMESTAMP,
   Upd_User     BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT   Prd_OExec_Stage_ISemi_PK       PRIMARY KEY (Id),
-  CONSTRAINT   Prd_OExec_Stage_ISemi_Stage_FK Foreign Key (OExec_Id ) References Prd_OExec_Stage(Id),
-  CONSTRAINT   Prd_OExec_Stage_ISemi_Item_FK  Foreign Key (Item_Id  ) References Stor_Item(Id),
-  CONSTRAINT   Prd_OExec_Stage_ISemi_Ins_FK   Foreign Key (Ins_User ) References Cpy_User (Id),
-  CONSTRAINT   Prd_OExec_Stage_ISemi_Upd_FK   Foreign Key (Upd_User ) References Cpy_User (Id)
+  CONSTRAINT   Prd_OExec_Stage_ISemi_PK       PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_OExec_Stage_OSemi_Seq
@@ -847,11 +701,7 @@ Create Table Prd_OExec_Stage_ISemi       -- بنود مراحل الإنتاج -
   Rem          VARCHAR(250),                         -- ملاحظات
   Ins_User     BIGINT, Ins_Date     TIMESTAMP,
   Upd_User     BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT   Prd_OExec_Stage_OSemi_PK       PRIMARY KEY (Id),
-  CONSTRAINT   Prd_OExec_Stage_OSemi_Stage_FK Foreign Key (OExec_Id ) References Prd_OExec_Stage(Id),
-  CONSTRAINT   Prd_OExec_Stage_OSemi_Item_FK  Foreign Key (Item_Id  ) References Stor_Item(Id),
-  CONSTRAINT   Prd_OExec_Stage_OSemi_Ins_FK   Foreign Key (Ins_User ) References Cpy_User (Id),
-  CONSTRAINT   Prd_OExec_Stage_OSemi_Upd_FK   Foreign Key (Upd_User ) References Cpy_User (Id)
+  CONSTRAINT   Prd_OExec_Stage_OSemi_PK       PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_OExec_Stage_Mach_Cat_Seq
@@ -871,11 +721,7 @@ Create Table Prd_OExec_Stage_Mach_Cat    -- بنود مراحل الإنتاج -
   Rem          VARCHAR(250),                         -- ملاحظات
   Ins_User     BIGINT, Ins_Date     TIMESTAMP,
   Upd_User     BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT   Prd_OExec_Stage_Mach_Cat_PK       PRIMARY KEY (Id),
-  CONSTRAINT   Prd_OExec_Stage_Mach_Cat_Stage_FK Foreign Key (OExec_Id ) References Prd_OExec_Stage   (Id),
-  CONSTRAINT   Prd_OExec_Stage_Mach_Cat_Cat_FK   Foreign Key (Cat_Id   ) References Prd_Cod_Mchine_Cat(Id),
-  CONSTRAINT   Prd_OExec_Stage_Mach_Cat_Ins_FK   Foreign Key (Ins_User ) References Cpy_User          (Id),
-  CONSTRAINT   Prd_OExec_Stage_Mach_Cat_Upd_FK   Foreign Key (Upd_User ) References Cpy_User          (Id)
+  CONSTRAINT   Prd_OExec_Stage_Mach_Cat_PK       PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_OExec_Stage_Emp_Job_Seq
@@ -894,11 +740,7 @@ Create Table Prd_OExec_Stage_Emp_Job        -- بنود مراحل الإنتا�
   Rem          VARCHAR(250),                         -- ملاحظات
   Ins_User     BIGINT, Ins_Date     TIMESTAMP,
   Upd_User     BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT   Prd_OExec_Stage_Emp_Job_PK       PRIMARY KEY (Id),
-  CONSTRAINT   Prd_OExec_Stage_Emp_Job_Stage_FK Foreign Key (OExec_Id ) References Prd_OExec_Stage  (Id),
-  CONSTRAINT   Prd_OExec_Stage_Emp_Job_Job_FK   Foreign Key (Job_Id   ) References Emp_Cod_Job(Id),
-  CONSTRAINT   Prd_OExec_Stage_Emp_Job_Ins_FK   Foreign Key (Ins_User ) References Cpy_User   (Id),
-  CONSTRAINT   Prd_OExec_Stage_Emp_Job_Upd_FK   Foreign Key (Upd_User ) References Cpy_User   (Id)
+  CONSTRAINT   Prd_OExec_Stage_Emp_Job_PK       PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_OExec_Stage_QA_Seq
@@ -916,12 +758,7 @@ Create Table Prd_OExec_Stage_QA                  -- بنود مراحل الإن
   Rem          VARCHAR(250),                         -- ملاحظات
   Ins_User     BIGINT, Ins_Date     TIMESTAMP,
   Upd_User     BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT   Prd_OExec_Stage_QA_PK        PRIMARY KEY (Id),
-  CONSTRAINT   Prd_OExec_Stage_QA_Stage_FK  Foreign Key (OExec_Id ) References Prd_OExec_Stage  (Id),
-  CONSTRAINT   Prd_OExec_Stage_QA_List_FK   Foreign Key (List_Id  ) References Prd_QA_Checklist (Id),
-  CONSTRAINT   Prd_OExec_Stage_QA_Result_FK Foreign Key (Result_Id) References Prd_Cod_QA_Result(Id),
-  CONSTRAINT   Prd_OExec_Stage_QA_Ins_FK    Foreign Key (Ins_User ) References Cpy_User         (Id),
-  CONSTRAINT   Prd_OExec_Stage_QA_Upd_FK    Foreign Key (Upd_User ) References Cpy_User         (Id)
+  CONSTRAINT   Prd_OExec_Stage_QA_PK        PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_TExec_Stage_QA_Item_Seq
@@ -944,14 +781,7 @@ Create Table Prd_TExec_Item            -- بنود قوائم تدقيق الج�
   Rem         VARCHAR(250),                         -- ملاحظات
   Ins_User    BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User    BIGINT,  Upd_Date    TIMESTAMP,
-  CONSTRAINT  Prd_TExec_Stage_QA_Item_PK          PRIMARY KEY (Id),
-  CONSTRAINT  Prd_TExec_Stage_QA_Item_List_FK     Foreign Key (TExec_Id   ) References Prd_OExec_Stage_QA(Id),
-  CONSTRAINT  Prd_TExec_Stage_QA_Item_Item_FK     Foreign Key (TList_Id   ) References Prd_QA_Item       (Id),
-  CONSTRAINT  Prd_TExec_Stage_QA_Item_Fld_FK      Foreign Key (Fld_Id     ) References Prd_QA_Fld        (Id),
-  CONSTRAINT  Prd_TExec_Stage_QA_Item_Required_FK Foreign Key (Required_Id) References Phs_Cod_YesNo     (Id),
-  CONSTRAINT  Prd_TExec_Stage_QA_Item_Ok_FK       Foreign Key (Ok_Id      ) References Phs_Cod_YesNo     (Id),
-  CONSTRAINT  Prd_TExec_Stage_QA_Item_Ins_FK      Foreign Key (Ins_User   ) References Cpy_User          (Id),
-  CONSTRAINT  Prd_TExec_Stage_QA_Item_Upd_FK      Foreign Key (Upd_User   ) References Cpy_User          (Id)
+  CONSTRAINT  Prd_TExec_Stage_QA_Item_PK          PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_InMst_Seq
@@ -977,16 +807,7 @@ Create Table Prd_InMst                              -- جدول ترويسة ا�
   Rem        VARCHAR(100),          				        -- ملاحظات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT Prd_InMst_PK        PRIMARY KEY (Id),
-  CONSTRAINT Prd_InMst_Period_FK Foreign Key (Period_Id) References Cpy_Period    (Id),
-  CONSTRAINT Prd_InMst_Status_FK Foreign Key (Status_Id) References Prd_Cod_Status(Id),
-  CONSTRAINT Prd_InMst_Curn_FK   Foreign Key (Curn_Id  ) References Mng_Curn      (Id),
-  CONSTRAINT Prd_InMst_BCurn_FK  Foreign Key (BCurn_Id ) References Mng_Curn      (Id),
-  CONSTRAINT Prd_InMst_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc       (Id),
-  CONSTRAINT Prd_InMst_Fin_FK    Foreign Key (Fin_Id   ) References Fin_MCrd      (Id),
-  CONSTRAINT Prd_InMst_Doc_FK    Foreign Key (Doc_Id   ) References Cpy_Cod_Doc   (Id),
-  CONSTRAINT Prd_InMst_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Prd_InMst_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Prd_InMst_PK        PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_InTrn_Seq
@@ -1023,15 +844,7 @@ Create Table Prd_InTrn                              -- جدول بنود الإ�
   Rem        VARCHAR(100),          				        -- ملاحظات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT Prd_InTrn_PK       PRIMARY KEY (Id),
-  CONSTRAINT Prd_InTrn_Prd_FK   Foreign Key (Mst_Id  ) References Prd_InMst      (Id),
-  CONSTRAINT Prd_InTrn_Item_FK  Foreign Key (Item_Id ) References Stor_Item     (Id),
-  CONSTRAINT Prd_InTrn_Unit_FK  Foreign Key (Unit_Id ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT Prd_InTrn_Model_FK Foreign Key (Model_Id) References Stor_Cod_Model(Id),
-  CONSTRAINT Prd_InTrn_Color_FK Foreign Key (Color_Id) References Stor_Cod_Color(Id),
-  CONSTRAINT Prd_InTrn_Size_FK  Foreign Key (Size_Id ) References Stor_Cod_Size (Id),
-  CONSTRAINT Prd_InTrn_Ins_FK   Foreign Key (Ins_User) References Cpy_User      (Id),
-  CONSTRAINT Prd_InTrn_Upd_FK   Foreign Key (Upd_User) References Cpy_User      (Id)
+  CONSTRAINT Prd_InTrn_PK       PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_RiMst_Seq
@@ -1057,16 +870,7 @@ Create Table Prd_RiMst                       -- جدول ترويسة مردود
   Rem        VARCHAR(100),          				        -- ملاحظات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT Prd_RiMst_PK      PRIMARY KEY (Id),
-  CONSTRAINT Prd_RiMst_Period_FK Foreign Key (Period_Id) References Cpy_Period    (Id),
-  CONSTRAINT Prd_RiMst_Status_FK Foreign Key (Status_Id) References Prd_Cod_Status(Id),
-  CONSTRAINT Prd_RiMst_Curn_FK   Foreign Key (Curn_Id  ) References Mng_Curn      (Id),
-  CONSTRAINT Prd_RiMst_BCurn_FK  Foreign Key (BCurn_Id ) References Mng_Curn      (Id),
-  CONSTRAINT Prd_RiMst_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc       (Id),
-  CONSTRAINT Prd_RiMst_Fin_FK    Foreign Key (Fin_Id   ) References Fin_MCrd      (Id),
-  CONSTRAINT Prd_RiMst_Doc_FK    Foreign Key (Doc_Id   ) References Cpy_Cod_Doc   (Id),
-  CONSTRAINT Prd_RiMst_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Prd_RiMst_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Prd_RiMst_PK      PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_RiTrn_Seq
@@ -1103,15 +907,7 @@ Create Table Prd_RiTrn                       -- جدول بنود مردود ا�
   Rem        VARCHAR(100),          				        -- ملاحظات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT Prd_RiTrn_PK       PRIMARY KEY (Id),
-  CONSTRAINT Prd_RiTrn_Prd_FK   Foreign Key (Mst_Id  ) References Prd_RiMst     (Id),
-  CONSTRAINT Prd_RiTrn_Item_FK  Foreign Key (Item_Id ) References Stor_Item     (Id),
-  CONSTRAINT Prd_RiTrn_Unit_FK  Foreign Key (Unit_Id ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT Prd_RiTrn_Model_FK Foreign Key (Model_Id) References Stor_Cod_Model(Id),
-  CONSTRAINT Prd_RiTrn_Color_FK Foreign Key (Color_Id) References Stor_Cod_Color(Id),
-  CONSTRAINT Prd_RiTrn_Size_FK  Foreign Key (Size_Id ) References Stor_Cod_Size (Id),
-  CONSTRAINT Prd_RiTrn_Ins_FK   Foreign Key (Ins_User) References Cpy_User      (Id),
-  CONSTRAINT Prd_RiTrn_Upd_FK   Foreign Key (Upd_User) References Cpy_User      (Id)
+  CONSTRAINT Prd_RiTrn_PK       PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_OuMst_Seq
@@ -1137,16 +933,7 @@ Create Table Prd_OuMst                             -- جدول ترويسة ال
   Rem        VARCHAR(100),          				        -- ملاحظات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT Prd_OuMst_PK        PRIMARY KEY (Id),
-  CONSTRAINT Prd_OuMst_Period_FK Foreign Key (Period_Id) References Cpy_Period    (Id),
-  CONSTRAINT Prd_OuMst_Status_FK Foreign Key (Status_Id) References Prd_Cod_Status(Id),
-  CONSTRAINT Prd_OuMst_Curn_FK   Foreign Key (Curn_Id  ) References Mng_Curn      (Id),
-  CONSTRAINT Prd_OuMst_BCurn_FK  Foreign Key (BCurn_Id ) References Mng_Curn      (Id),
-  CONSTRAINT Prd_OuMst_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc       (Id),
-  CONSTRAINT Prd_OuMst_Fin_FK    Foreign Key (Fin_Id   ) References Fin_MCrd      (Id),
-  CONSTRAINT Prd_OuMst_Doc_FK    Foreign Key (Doc_Id   ) References Cpy_Cod_Doc   (Id),
-  CONSTRAINT Prd_OuMst_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Prd_OuMst_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Prd_OuMst_PK        PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_OuTrn_Seq
@@ -1183,15 +970,7 @@ Create Table Prd_OuTrn                             -- جدول بنود الإخ
   Rem        VARCHAR(100),          				        -- ملاحظات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT Prd_OuTrn_PK       PRIMARY KEY (Id),
-  CONSTRAINT Prd_OuTrn_Prd_FK   Foreign Key (Mst_Id  ) References Prd_OuMst      (Id),
-  CONSTRAINT Prd_OuTrn_Item_FK  Foreign Key (Item_Id ) References Stor_Item     (Id),
-  CONSTRAINT Prd_OuTrn_Unit_FK  Foreign Key (Unit_Id ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT Prd_OuTrn_Model_FK Foreign Key (Model_Id) References Stor_Cod_Model(Id),
-  CONSTRAINT Prd_OuTrn_Color_FK Foreign Key (Color_Id) References Stor_Cod_Color(Id),
-  CONSTRAINT Prd_OuTrn_Size_FK  Foreign Key (Size_Id ) References Stor_Cod_Size (Id),
-  CONSTRAINT Prd_OuTrn_Ins_FK   Foreign Key (Ins_User) References Cpy_User      (Id),
-  CONSTRAINT Prd_OuTrn_Upd_FK   Foreign Key (Upd_User) References Cpy_User      (Id)
+  CONSTRAINT Prd_OuTrn_PK       PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_RoMst_Seq
@@ -1217,16 +996,7 @@ Create Table Prd_RoMst                      -- جدول ترويسة مردود 
   Rem        VARCHAR(100),          				        -- ملاحظات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT Prd_RoMst_PK      PRIMARY KEY (Id),
-  CONSTRAINT Prd_RoMst_Period_FK Foreign Key (Period_Id) References Cpy_Period    (Id),
-  CONSTRAINT Prd_RoMst_Status_FK Foreign Key (Status_Id) References Prd_Cod_Status(Id),
-  CONSTRAINT Prd_RoMst_Curn_FK   Foreign Key (Curn_Id  ) References Mng_Curn      (Id),
-  CONSTRAINT Prd_RoMst_BCurn_FK  Foreign Key (BCurn_Id ) References Mng_Curn      (Id),
-  CONSTRAINT Prd_RoMst_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc       (Id),
-  CONSTRAINT Prd_RoMst_Fin_FK    Foreign Key (Fin_Id   ) References Fin_MCrd      (Id),
-  CONSTRAINT Prd_RoMst_Doc_FK    Foreign Key (Doc_Id   ) References Cpy_Cod_Doc   (Id),
-  CONSTRAINT Prd_RoMst_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Prd_RoMst_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Prd_RoMst_PK      PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Prd_RoTrn_Seq
@@ -1263,15 +1033,7 @@ Create Table Prd_RoTrn                      -- جدول بنود مردود ال
   Rem        VARCHAR(100),          				        -- ملاحظات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT Prd_RoTrn_PK       PRIMARY KEY (Id),
-  CONSTRAINT Prd_RoTrn_Prd_FK   Foreign Key (Mst_Id  ) References Prd_RoMst     (Id),
-  CONSTRAINT Prd_RoTrn_Item_FK  Foreign Key (Item_Id ) References Stor_Item     (Id),
-  CONSTRAINT Prd_RoTrn_Unit_FK  Foreign Key (Unit_Id ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT Prd_RoTrn_Model_FK Foreign Key (Model_Id) References Stor_Cod_Model(Id),
-  CONSTRAINT Prd_RoTrn_Color_FK Foreign Key (Color_Id) References Stor_Cod_Color(Id),
-  CONSTRAINT Prd_RoTrn_Size_FK  Foreign Key (Size_Id ) References Stor_Cod_Size (Id),
-  CONSTRAINT Prd_RoTrn_Ins_FK   Foreign Key (Ins_User) References Cpy_User      (Id),
-  CONSTRAINT Prd_RoTrn_Upd_FK   Foreign Key (Upd_User) References Cpy_User      (Id)
+  CONSTRAINT Prd_RoTrn_PK       PRIMARY KEY (Id)
 );
 
 -- TODO(port): other has no automatic equivalent (source line 1246).

@@ -25,16 +25,7 @@ Create Table DStr_Item                                    -- دليل الموا
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Str_Item_PK        PRIMARY KEY (Id       ),
   CONSTRAINT Str_Item_Num_UK    Unique      (Num      ),
-  CONSTRAINT Str_Item_Name_UK   Unique      (Name     ),
-  CONSTRAINT Str_Item_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Str_Item_Unit_FK   Foreign Key (Unit_Id  ) References DStr_Cod_Unit (Id),
-  CONSTRAINT Str_Item_Spc1_FK   Foreign Key (Spc1_Id  ) References DStr_Cod_Spc1 (Id),
-  CONSTRAINT Str_Item_Spc2_FK   Foreign Key (Spc2_Id  ) References DStr_Cod_Spc2 (Id),
-  CONSTRAINT Str_Item_Spc3_FK   Foreign Key (Spc3_Id  ) References DStr_Cod_Spc3 (Id),
-  CONSTRAINT Str_Item_Spc4_FK   Foreign Key (Spc4_Id  ) References DStr_Cod_Spc4 (Id),
-  CONSTRAINT Str_Item_Spc5_FK   Foreign Key (Spc5_Id  ) References DStr_Cod_Spc5 (Id),
-  CONSTRAINT Str_Item_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Str_Item_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Str_Item_Name_UK   Unique      (Name     )
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table DStr_Store                                   -- دليل المخازن
@@ -49,12 +40,7 @@ Create Table DStr_Store                                   -- دليل المخا
   Upd_User    BIGINT, Upd_Date     DATETIME,
   CONSTRAINT  DStr_Store_PK        PRIMARY KEY (Id  ),
   CONSTRAINT  DStr_Store_Num_UK    Unique      (Num),
-  CONSTRAINT  DStr_Store_Name_UK   Unique      (Name),
-  CONSTRAINT  DStr_Store_Acc_Id_FK Foreign Key (Acc_Id   ) References Acc_Acc       (Id),
-  CONSTRAINT  DStr_Store_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT  DStr_Store_User_FK   Foreign Key (User_Id  ) References Cpy_User      (Id),
-  CONSTRAINT  DStr_Store_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  DStr_Store_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  DStr_Store_Name_UK   Unique      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table DStr_StrItem                              -- دليل مواد مستودع
@@ -76,15 +62,7 @@ Create Table DStr_StrItem                              -- دليل مواد مس
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT DStr_StrItem_PK         PRIMARY KEY (Id),
-  CONSTRAINT DStr_StrItem_UK         Unique      (Stor_Id, Item_Id),
-  CONSTRAINT DStr_StrItem_Stor_FK    Foreign Key (Stor_Id  ) References DStr_Store    (Id),
-  CONSTRAINT DStr_StrItem_Item_FK    Foreign Key (Item_Id  ) References DStr_Item     (Id),
-  CONSTRAINT DStr_StrItem_Status_FK  Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT DStr_StrItem_Loc1_FK    Foreign Key (Loc1_Id  ) References DStr_Cod_Loc1 (Id),
-  CONSTRAINT DStr_StrItem_Loc2_FK    Foreign Key (Loc2_Id  ) References DStr_Cod_Loc2 (Id),
-  CONSTRAINT DStr_StrItem_Loc3_FK    Foreign Key (Loc3_Id  ) References DStr_Cod_Loc3 (Id),
-  CONSTRAINT DStr_StrItem_Ins_FK     Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT DStr_StrItem_Upd_FK     Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT DStr_StrItem_UK         Unique      (Stor_Id, Item_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table DStr_InMst1                          -- ترويسة حركات الإدخال 
@@ -107,15 +85,7 @@ Create Table DStr_InMst1                          -- ترويسة حركات ا�
   Ins_User   BIGINT, Ins_Date   DATETIME,
   Upd_User   BIGINT, Upd_Date   DATETIME,
   CONSTRAINT DStr_InMst1_PK        PRIMARY KEY (Id),
-  CONSTRAINT DStr_InMst1_UK        Unique      (Period_Id, Stor_Id, MNum),
-  CONSTRAINT DStr_InMst1_Period_FK Foreign Key (Period_Id) References Cpy_Period  (Id),
-  CONSTRAINT DStr_InMst1_Trt_FK    Foreign Key (Trt_Id   ) References DStr_Cod_Trt(Id),
-  CONSTRAINT DStr_InMst1_Stor_FK   Foreign Key (Stor_Id  ) References DStr_Store  (Id),
-  CONSTRAINT DStr_InMst1_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc     (Id),
-  CONSTRAINT DStr_InMst1_Cost_FK   Foreign Key (Cost_Id  ) References Acc_cost    (Id),
-  CONSTRAINT DStr_InMst1_Doc_FK    Foreign Key (Doc_Id   ) References DStr_Cod_Doc(Id),
-  CONSTRAINT DStr_InMst1_Ins_FK    Foreign Key (Ins_User ) References Cpy_User    (Id),
-  CONSTRAINT DStr_InMst1_Upd_FK    Foreign Key (Upd_User ) References Cpy_User    (Id)
+  CONSTRAINT DStr_InMst1_UK        Unique      (Period_Id, Stor_Id, MNum)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table DStr_InTrn1                     -- ترويسة حركات الإدخال 
@@ -126,11 +96,7 @@ Create Table DStr_InTrn1                     -- ترويسة حركات الإد
   Rem        VARCHAR(250),                           -- ملاحظات
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT DStr_InTrn1_PK      PRIMARY KEY (Id),
-  CONSTRAINT DStr_InTrn1_Mst_FK  Foreign Key (Mst_Id  ) References DStr_InMst1(Id),
-  CONSTRAINT DStr_InTrn1_Item_FK Foreign Key (Item_Id ) References DStr_Item  (Id),
-  CONSTRAINT DStr_InTrn1_Ins_FK  Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT DStr_InTrn1_Upd_FK  Foreign Key (Upd_User) References Cpy_User   (Id)
+  CONSTRAINT DStr_InTrn1_PK      PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table DStr_InMst2                          -- ترويسة حركات الإدخال 
@@ -153,15 +119,7 @@ Create Table DStr_InMst2                          -- ترويسة حركات ا�
   Ins_User   BIGINT, Ins_Date   DATETIME,
   Upd_User   BIGINT, Upd_Date   DATETIME,
   CONSTRAINT DStr_InMst2_PK        PRIMARY KEY (Id),
-  CONSTRAINT DStr_InMst2_UK        Unique      (Period_Id, Stor_Id, MNum),
-  CONSTRAINT DStr_InMst2_Period_FK Foreign Key (Period_Id) References Cpy_Period  (Id),
-  CONSTRAINT DStr_InMst2_Trt_FK    Foreign Key (Trt_Id   ) References DStr_Cod_Trt(Id),
-  CONSTRAINT DStr_InMst2_Stor_FK   Foreign Key (Stor_Id  ) References DStr_Store  (Id),
-  CONSTRAINT DStr_InMst2_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc     (Id),
-  CONSTRAINT DStr_InMst2_Cost_FK   Foreign Key (Cost_Id  ) References Acc_cost    (Id),
-  CONSTRAINT DStr_InMst2_Doc_FK    Foreign Key (Doc_Id   ) References DStr_Cod_Doc(Id),
-  CONSTRAINT DStr_InMst2_Ins_FK    Foreign Key (Ins_User ) References Cpy_User    (Id),
-  CONSTRAINT DStr_InMst2_Upd_FK    Foreign Key (Upd_User ) References Cpy_User    (Id)
+  CONSTRAINT DStr_InMst2_UK        Unique      (Period_Id, Stor_Id, MNum)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table DStr_InTrn2                     -- ترويسة حركات الإدخال 
@@ -172,11 +130,7 @@ Create Table DStr_InTrn2                     -- ترويسة حركات الإد
   Rem        VARCHAR(250),                           -- ملاحظات
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT DStr_InTrn2_PK      PRIMARY KEY (Id),
-  CONSTRAINT DStr_InTrn2_Mst_FK  Foreign Key (Mst_Id  ) References DStr_InMst1(Id),
-  CONSTRAINT DStr_InTrn2_Item_FK Foreign Key (Item_Id ) References DStr_Item  (Id),
-  CONSTRAINT DStr_InTrn2_Ins_FK  Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT DStr_InTrn2_Upd_FK  Foreign Key (Upd_User) References Cpy_User   (Id)
+  CONSTRAINT DStr_InTrn2_PK      PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table DStr_InMst3                          -- ترويسة حركات الإدخال 
@@ -199,15 +153,7 @@ Create Table DStr_InMst3                          -- ترويسة حركات ا�
   Ins_User   BIGINT, Ins_Date   DATETIME,
   Upd_User   BIGINT, Upd_Date   DATETIME,
   CONSTRAINT DStr_InMst3_PK        PRIMARY KEY (Id),
-  CONSTRAINT DStr_InMst3_UK        Unique      (Period_Id, Stor_Id, MNum),
-  CONSTRAINT DStr_InMst3_Period_FK Foreign Key (Period_Id) References Cpy_Period  (Id),
-  CONSTRAINT DStr_InMst3_Trt_FK    Foreign Key (Trt_Id   ) References DStr_Cod_Trt(Id),
-  CONSTRAINT DStr_InMst3_Stor_FK   Foreign Key (Stor_Id  ) References DStr_Store  (Id),
-  CONSTRAINT DStr_InMst3_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc     (Id),
-  CONSTRAINT DStr_InMst3_Cost_FK   Foreign Key (Cost_Id  ) References Acc_cost    (Id),
-  CONSTRAINT DStr_InMst3_Doc_FK    Foreign Key (Doc_Id   ) References DStr_Cod_Doc(Id),
-  CONSTRAINT DStr_InMst3_Ins_FK    Foreign Key (Ins_User ) References Cpy_User    (Id),
-  CONSTRAINT DStr_InMst3_Upd_FK    Foreign Key (Upd_User ) References Cpy_User    (Id)
+  CONSTRAINT DStr_InMst3_UK        Unique      (Period_Id, Stor_Id, MNum)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table DStr_InTrn3                     -- ترويسة حركات الإدخال 
@@ -222,12 +168,7 @@ Create Table DStr_InTrn3                     -- ترويسة حركات الإد
   Rem        VARCHAR(250),                           -- ملاحظات
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT DStr_InTrn3_PK        PRIMARY KEY (Id),
-  CONSTRAINT DStr_InTrn3_Mst_FK    Foreign Key (Mst_Id   ) References DStr_InMst1   (Id),
-  CONSTRAINT DStr_InTrn3_Item_FK   Foreign Key (Item_Id  ) References DStr_Item     (Id),
-  CONSTRAINT DStr_InTrn3_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT DStr_InTrn3_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT DStr_InTrn3_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT DStr_InTrn3_PK        PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table DStr_OuMst1                         -- ترويسة حركات الإدخال 
@@ -250,15 +191,7 @@ Create Table DStr_OuMst1                         -- ترويسة حركات ال
   Ins_User   BIGINT, Ins_Date   DATETIME,
   Upd_User   BIGINT, Upd_Date   DATETIME,
   CONSTRAINT DStr_OuMst1_PK        PRIMARY KEY (Id),
-  CONSTRAINT DStr_OuMst1_UK        Unique      (Period_Id, Stor_Id, MNum),
-  CONSTRAINT DStr_OuMst1_Period_FK Foreign Key (Period_Id) References Cpy_Period  (Id),
-  CONSTRAINT DStr_OuMst1_Trt_FK    Foreign Key (Trt_Id   ) References DStr_Cod_Trt(Id),
-  CONSTRAINT DStr_OuMst1_Stor_FK   Foreign Key (Stor_Id  ) References DStr_Store  (Id),
-  CONSTRAINT DStr_OuMst1_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc     (Id),
-  CONSTRAINT DStr_OuMst1_Cost_FK   Foreign Key (Cost_Id  ) References Acc_cost    (Id),
-  CONSTRAINT DStr_OuMst1_Doc_FK    Foreign Key (Doc_Id   ) References DStr_Cod_Doc(Id),
-  CONSTRAINT DStr_OuMst1_Ins_FK    Foreign Key (Ins_User ) References Cpy_User    (Id),
-  CONSTRAINT DStr_OuMst1_Upd_FK    Foreign Key (Upd_User ) References Cpy_User    (Id)
+  CONSTRAINT DStr_OuMst1_UK        Unique      (Period_Id, Stor_Id, MNum)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table DStr_OuTrn1                    -- ترويسة حركات الإدخال 
@@ -269,11 +202,7 @@ Create Table DStr_OuTrn1                    -- ترويسة حركات الإد�
   Rem        VARCHAR(250),                           -- ملاحظات
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT DStr_OuTrn1_PK      PRIMARY KEY (Id),
-  CONSTRAINT DStr_OuTrn1_Mst_FK  Foreign Key (Mst_Id  ) References DStr_OuMst1(Id),
-  CONSTRAINT DStr_OuTrn1_Item_FK Foreign Key (Item_Id ) References DStr_Item  (Id),
-  CONSTRAINT DStr_OuTrn1_Ins_FK  Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT DStr_OuTrn1_Upd_FK  Foreign Key (Upd_User) References Cpy_User   (Id)
+  CONSTRAINT DStr_OuTrn1_PK      PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table DStr_OuMst2                         -- ترويسة حركات الإدخال 
@@ -296,15 +225,7 @@ Create Table DStr_OuMst2                         -- ترويسة حركات ال
   Ins_User   BIGINT, Ins_Date   DATETIME,
   Upd_User   BIGINT, Upd_Date   DATETIME,
   CONSTRAINT DStr_OuMst2_PK        PRIMARY KEY (Id),
-  CONSTRAINT DStr_OuMst2_UK        Unique      (Period_Id, Stor_Id, MNum),
-  CONSTRAINT DStr_OuMst2_Period_FK Foreign Key (Period_Id) References Cpy_Period  (Id),
-  CONSTRAINT DStr_OuMst2_Trt_FK    Foreign Key (Trt_Id   ) References DStr_Cod_Trt(Id),
-  CONSTRAINT DStr_OuMst2_Stor_FK   Foreign Key (Stor_Id  ) References DStr_Store  (Id),
-  CONSTRAINT DStr_OuMst2_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc     (Id),
-  CONSTRAINT DStr_OuMst2_Cost_FK   Foreign Key (Cost_Id  ) References Acc_cost    (Id),
-  CONSTRAINT DStr_OuMst2_Doc_FK    Foreign Key (Doc_Id   ) References DStr_Cod_Doc(Id),
-  CONSTRAINT DStr_OuMst2_Ins_FK    Foreign Key (Ins_User ) References Cpy_User    (Id),
-  CONSTRAINT DStr_OuMst2_Upd_FK    Foreign Key (Upd_User ) References Cpy_User    (Id)
+  CONSTRAINT DStr_OuMst2_UK        Unique      (Period_Id, Stor_Id, MNum)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table DStr_OuTrn2                    -- ترويسة حركات الإدخال 
@@ -315,11 +236,7 @@ Create Table DStr_OuTrn2                    -- ترويسة حركات الإد�
   Rem        VARCHAR(250),                           -- ملاحظات
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT DStr_OuTrn2_PK      PRIMARY KEY (Id),
-  CONSTRAINT DStr_OuTrn2_Mst_FK  Foreign Key (Mst_Id  ) References DStr_OuMst1(Id),
-  CONSTRAINT DStr_OuTrn2_Item_FK Foreign Key (Item_Id ) References DStr_Item  (Id),
-  CONSTRAINT DStr_OuTrn2_Ins_FK  Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT DStr_OuTrn2_Upd_FK  Foreign Key (Upd_User) References Cpy_User   (Id)
+  CONSTRAINT DStr_OuTrn2_PK      PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table DStr_OuMst3                         -- ترويسة حركات الإدخال 
@@ -342,15 +259,7 @@ Create Table DStr_OuMst3                         -- ترويسة حركات ال
   Ins_User   BIGINT, Ins_Date   DATETIME,
   Upd_User   BIGINT, Upd_Date   DATETIME,
   CONSTRAINT DStr_OuMst3_PK        PRIMARY KEY (Id),
-  CONSTRAINT DStr_OuMst3_UK        Unique      (Period_Id, Stor_Id, MNum),
-  CONSTRAINT DStr_OuMst3_Period_FK Foreign Key (Period_Id) References Cpy_Period  (Id),
-  CONSTRAINT DStr_OuMst3_Trt_FK    Foreign Key (Trt_Id   ) References DStr_Cod_Trt(Id),
-  CONSTRAINT DStr_OuMst3_Stor_FK   Foreign Key (Stor_Id  ) References DStr_Store  (Id),
-  CONSTRAINT DStr_OuMst3_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc     (Id),
-  CONSTRAINT DStr_OuMst3_Cost_FK   Foreign Key (Cost_Id  ) References Acc_cost    (Id),
-  CONSTRAINT DStr_OuMst3_Doc_FK    Foreign Key (Doc_Id   ) References DStr_Cod_Doc(Id),
-  CONSTRAINT DStr_OuMst3_Ins_FK    Foreign Key (Ins_User ) References Cpy_User    (Id),
-  CONSTRAINT DStr_OuMst3_Upd_FK    Foreign Key (Upd_User ) References Cpy_User    (Id)
+  CONSTRAINT DStr_OuMst3_UK        Unique      (Period_Id, Stor_Id, MNum)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table DStr_OuTrn3                    -- ترويسة حركات الإدخال 
@@ -365,10 +274,5 @@ Create Table DStr_OuTrn3                    -- ترويسة حركات الإد�
   Rem        VARCHAR(250),                           -- ملاحظات
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT DStr_OuTrn3_PK        PRIMARY KEY (Id),
-  CONSTRAINT DStr_OuTrn3_Mst_FK    Foreign Key (Mst_Id   ) References DStr_OuMst1   (Id),
-  CONSTRAINT DStr_OuTrn3_Item_FK   Foreign Key (Item_Id  ) References DStr_Item     (Id),
-  CONSTRAINT DStr_OuTrn3_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT DStr_OuTrn3_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT DStr_OuTrn3_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT DStr_OuTrn3_PK        PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

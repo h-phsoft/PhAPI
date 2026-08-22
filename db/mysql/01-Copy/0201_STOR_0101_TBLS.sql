@@ -18,9 +18,7 @@ Create Table Stor_Item_Cat                            -- جدول تصانيف �
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Stor_Item_Cat_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Stor_Item_Cat_UK     UNIQUE      (Name),
-  CONSTRAINT Stor_Item_Cat_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Stor_Item_Cat_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Stor_Item_Cat_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Stor_Item_Cat (Id,Name) values (0,'-');
@@ -79,27 +77,7 @@ Create Table Stor_Item                                    -- دليل الموا
   CONSTRAINT Stor_Item_PK           PRIMARY KEY (Id       ),
   CONSTRAINT Stor_Item_Num_UK       Unique      (Num      ),
   CONSTRAINT Stor_Item_LName_UK     Unique      (LName    ),
-  CONSTRAINT Stor_Item_IName_UK     Unique      (IName    ),
-  CONSTRAINT Stor_Item_Unit_FK      Foreign Key (Unit_Id  ) References Cpy_Cod_Unit   (Id),
-  CONSTRAINT Stor_Item_InSale_FK    Foreign Key (InSale_id) References Phs_Cod_YesNo  (Id),
-  CONSTRAINT Stor_Item_Season_FK    Foreign Key (Season_Id) References Phs_Cod_YesNo  (Id),
-  CONSTRAINT Stor_Item_Status_FK    Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Stor_Item_Type_FK      Foreign Key (Type_Id  ) References Stor_Cod_Type  (Id),
-  CONSTRAINT Stor_Item_Method_FK    Foreign Key (Method_Id) References Stor_Cod_Method(Id),
-  CONSTRAINT Stor_Item_MCost_FK     Foreign Key (MCost_Id ) References Stor_Cod_Cost  (Id),
-  CONSTRAINT Stor_Item_Cat_FK       Foreign Key (Cat_Id   ) References Stor_Item_Cat  (Id),
-  CONSTRAINT Stor_Item_Spc1_FK      Foreign Key (Spc1_Id  ) References Stor_Cod_Spec1 (Id),
-  CONSTRAINT Stor_Item_Spc2_FK      Foreign Key (Spc2_Id  ) References Stor_Cod_Spec2 (Id),
-  CONSTRAINT Stor_Item_Spc3_FK      Foreign Key (Spc3_Id  ) References Stor_Cod_Spec3 (Id),
-  CONSTRAINT Stor_Item_Spc4_FK      Foreign Key (Spc4_Id  ) References Stor_Cod_Spec4 (Id),
-  CONSTRAINT Stor_Item_Spc5_FK      Foreign Key (Spc5_Id  ) References Stor_Cod_Spec5 (Id),
-  CONSTRAINT Stor_Item_Spc6_FK      Foreign Key (Spc6_Id  ) References Stor_Cod_Spec6 (Id),
-  CONSTRAINT Stor_Item_Spc7_FK      Foreign Key (Spc7_Id  ) References Stor_Cod_Spec7 (Id),
-  CONSTRAINT Stor_Item_Spc8_FK      Foreign Key (Spc8_Id  ) References Stor_Cod_Spec8 (Id),
-  CONSTRAINT Stor_Item_Spc9_FK      Foreign Key (Spc9_Id  ) References Stor_Cod_Spec9 (Id),
-  CONSTRAINT Stor_Item_Spc0_FK      Foreign Key (Spc0_Id  ) References Stor_Cod_Spec0 (Id),
-  CONSTRAINT Stor_Item_Ins_FK       Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Stor_Item_Upd_FK       Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Stor_Item_IName_UK     Unique      (IName    )
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Stor_Item_Class                             -- تصانيف المواد
@@ -111,12 +89,7 @@ Create Table Stor_Item_Class                             -- تصانيف الم�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Stor_Item_Class_PK       PRIMARY KEY (Id),
-  CONSTRAINT Stor_Item_Class_UK       Unique      (Item_Id, Grp_Id, Itm_Id),
-  CONSTRAINT Stor_Item_Class_Item_FK  Foreign Key (Item_Id ) References Stor_Item   (Id),
-  CONSTRAINT Stor_Item_Class_Group_FK Foreign Key (Grp_Id  ) References Stor_Cod_Grp(Id),
-  CONSTRAINT Stor_Item_Class_CItem_FK Foreign Key (Itm_Id  ) References Stor_Cod_Itm(Id),
-  CONSTRAINT Stor_Item_Class_Ins_FK   Foreign Key (Ins_User) References Cpy_User    (Id),
-  CONSTRAINT Stor_Item_Class_Upd_FK   Foreign Key (Upd_User) References Cpy_User    (Id)
+  CONSTRAINT Stor_Item_Class_UK       Unique      (Item_Id, Grp_Id, Itm_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Stor_Itm_Form                             -- دليل تركيب المواد
@@ -128,11 +101,7 @@ Create Table Stor_Itm_Form                             -- دليل تركيب ا
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Stor_Itm_Form_PK       PRIMARY KEY (Id),
-  CONSTRAINT Stor_Itm_Form_Num_UK   Unique      (Item_Id, Item_RId),
-  CONSTRAINT Stor_Itm_Form_Item_FK  Foreign Key (Item_Id ) References Stor_Item(Id),
-  CONSTRAINT Stor_Itm_Form_RItem_FK Foreign Key (Item_RId) References Stor_Item(Id),
-  CONSTRAINT Stor_Itm_Form_Ins_FK   Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT Stor_Itm_Form_Upd_FK   Foreign Key (Upd_User) References Cpy_User (Id)
+  CONSTRAINT Stor_Itm_Form_Num_UK   Unique      (Item_Id, Item_RId)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Stor_Item_Spec                       -- مواصفات المواد
@@ -144,10 +113,7 @@ Create Table Stor_Item_Spec                       -- مواصفات المواد
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Stor_Item_Spec_PK       PRIMARY KEY (Id),
-  CONSTRAINT Stor_Item_Spec_UK       Unique      (Item_Id, vTitle),
-  CONSTRAINT Stor_Item_Spec_Item_FK  Foreign Key (Item_Id ) References Stor_Item   (Id),
-  CONSTRAINT Stor_Item_Spec_Ins_FK   Foreign Key (Ins_User) References Cpy_User    (Id),
-  CONSTRAINT Stor_Item_Spec_Upd_FK   Foreign Key (Upd_User) References Cpy_User    (Id)
+  CONSTRAINT Stor_Item_Spec_UK       Unique      (Item_Id, vTitle)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Stor_Store                                   -- دليل المخازن
@@ -174,19 +140,7 @@ Create Table Stor_Store                                   -- دليل المخا
   Upd_User    BIGINT, Upd_Date     DATETIME,
   CONSTRAINT  Stor_Store_PK         PRIMARY KEY (Id),
   CONSTRAINT  Stor_Store_LName_UK   Unique      (LName     ),
-  CONSTRAINT  Stor_Store_IName_UK   Unique      (IName     ),
-  CONSTRAINT  Stor_Store_Cost_FK    Foreign Key (Cost_Id   ) References Acc_Cost      (Id),
-  CONSTRAINT  Stor_Store_Acc_FK     Foreign Key (Acc_Id    ) References Acc_Acc       (Id),
-  CONSTRAINT  Stor_Store_CstAcc_FK  FOREIGN KEY (CstAcc_Id ) REFERENCES Acc_Acc       (Id),
-  CONSTRAINT  Stor_Store_RevAcc_FK  FOREIGN KEY (RevAcc_Id ) REFERENCES Acc_Acc       (Id),
-  CONSTRAINT  Stor_Store_PVatAcc_FK FOREIGN KEY (PVatAcc_Id) REFERENCES Acc_Acc       (Id),
-  CONSTRAINT  Stor_Store_SVatAcc_FK FOREIGN KEY (SVatAcc_Id) REFERENCES Acc_Acc       (Id),
-  CONSTRAINT  Stor_Store_Status_FK  Foreign Key (Status_Id ) References Phs_Cod_Status(Id),
-  CONSTRAINT  Stor_Store_Type_FK    Foreign Key (Type_Id   ) References Phs_Cod_Type  (Id),
-  CONSTRAINT  Stor_Store_Own_FK     Foreign Key (Own_Id    ) References Stor_Cod_Own  (Id),
-  CONSTRAINT  Stor_Store_Sale_FK    Foreign Key (Sale_Id   ) References Phs_Cod_YesNo (Id),
-  CONSTRAINT  Stor_Store_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User      (Id),
-  CONSTRAINT  Stor_Store_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User      (Id)
+  CONSTRAINT  Stor_Store_IName_UK   Unique      (IName     )
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Stor_SMat                        -- دليل مواد مخزن
@@ -209,15 +163,7 @@ Create Table Stor_SMat                        -- دليل مواد مخزن
   Ins_User     BIGINT, Ins_Date     DATETIME,
   Upd_User     BIGINT, Upd_Date     DATETIME,
   CONSTRAINT   Stor_SMat_PK         PRIMARY KEY (Id),
-  CONSTRAINT   Stor_SMat_UK         Unique      (Stor_Id, Item_Id),
-  CONSTRAINT   Stor_SMat_Stor_FK    Foreign Key (Stor_Id  ) References Stor_Store    (Id),
-  CONSTRAINT   Stor_SMat_Item_FK    Foreign Key (Item_Id  ) References Stor_Item     (Id),
-  CONSTRAINT   Stor_SMat_Status_FK  Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT   Stor_SMat_Loc1_FK    Foreign Key (Loc1_Id  ) References Stor_Cod_Loc1 (Id),
-  CONSTRAINT   Stor_SMat_Loc2_FK    Foreign Key (Loc2_Id  ) References Stor_Cod_Loc2 (Id),
-  CONSTRAINT   Stor_SMat_Loc3_FK    Foreign Key (Loc3_Id  ) References Stor_Cod_Loc3 (Id),
-  CONSTRAINT   Stor_SMat_Ins_FK     Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT   Stor_SMat_Upd_FK     Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT   Stor_SMat_UK         Unique      (Stor_Id, Item_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Stor_Acc                                 -- الحسابات الافتراضية
@@ -233,16 +179,7 @@ Create Table Stor_Acc                                 -- الحسابات الا
   Ins_User    BIGINT, Ins_Date     DATETIME,
   Upd_User    BIGINT, Upd_Date     DATETIME,
   CONSTRAINT  Stor_Acc_PK         PRIMARY KEY (Id  ),
-  CONSTRAINT  Stor_Acc_UK         Unique      (TrnTyp_Id ),
-  CONSTRAINT  Stor_Acc_TrnTyp_FK  Foreign Key (TrnTyp_Id ) References Stor_Cod_TrnTyp(Id),
-  CONSTRAINT  Stor_Acc_CstAcc_FK  Foreign Key (CstAcc_Id ) References Acc_Acc        (Id),
-  CONSTRAINT  Stor_Acc_RevAcc_FK  Foreign Key (RevAcc_Id ) References Acc_Acc        (Id),
-  CONSTRAINT  Stor_Acc_ComAcc_FK  Foreign Key (ComAcc_Id ) References Acc_Acc        (Id),
-  CONSTRAINT  Stor_Acc_DisAcc_FK  Foreign Key (DisAcc_Id ) References Acc_Acc        (Id),
-  CONSTRAINT  Stor_Acc_PVatAcc_FK FOREIGN KEY (PVatAcc_Id) REFERENCES Acc_Acc        (Id),
-  CONSTRAINT  Stor_Acc_SVatAcc_FK FOREIGN KEY (SVatAcc_Id) REFERENCES Acc_Acc        (Id),
-  CONSTRAINT  Stor_Acc_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User       (Id),
-  CONSTRAINT  Stor_Acc_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User       (Id)
+  CONSTRAINT  Stor_Acc_UK         Unique      (TrnTyp_Id )
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Stor_Str_Acc                           -- حسابات مستودع
@@ -259,17 +196,7 @@ Create Table Stor_Str_Acc                           -- حسابات مستودع
   Ins_User    BIGINT, Ins_Date     DATETIME,
   Upd_User    BIGINT, Upd_Date     DATETIME,
   CONSTRAINT  Stor_Str_Acc_PK         PRIMARY KEY (Id  ),
-  CONSTRAINT  Stor_Str_Acc_UK         Unique      (Stor_Id, TrnTyp_Id),
-  CONSTRAINT  Stor_Str_Acc_Stor_FK    Foreign Key (Stor_Id   ) References Stor_Store     (Id),
-  CONSTRAINT  Stor_Str_Acc_TrnTyp_FK  Foreign Key (TrnTyp_Id ) References Stor_Cod_TrnTyp(Id),
-  CONSTRAINT  Stor_Str_Acc_CstAcc_FK  Foreign Key (CstAcc_Id ) References Acc_Acc        (Id),
-  CONSTRAINT  Stor_Str_Acc_RevAcc_FK  Foreign Key (RevAcc_Id ) References Acc_Acc        (Id),
-  CONSTRAINT  Stor_Str_Acc_ComAcc_FK  Foreign Key (ComAcc_Id ) References Acc_Acc        (Id),
-  CONSTRAINT  Stor_Str_Acc_DisAcc_FK  Foreign Key (DisAcc_Id ) References Acc_Acc        (Id),
-  CONSTRAINT  Stor_Str_Acc_PVatAcc_FK FOREIGN KEY (PVatAcc_Id) REFERENCES Acc_Acc        (Id),
-  CONSTRAINT  Stor_Str_Acc_SVatAcc_FK FOREIGN KEY (SVatAcc_Id) REFERENCES Acc_Acc        (Id),
-  CONSTRAINT  Stor_Str_Acc_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User       (Id),
-  CONSTRAINT  Stor_Str_Acc_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User       (Id)
+  CONSTRAINT  Stor_Str_Acc_UK         Unique      (Stor_Id, TrnTyp_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Stor_Cat_Acc                      -- حسابات التصانيف
@@ -286,17 +213,7 @@ Create Table Stor_Cat_Acc                      -- حسابات التصانيف
   Ins_User    BIGINT, Ins_Date     DATETIME,
   Upd_User    BIGINT, Upd_Date     DATETIME,
   CONSTRAINT  Stor_Cat_Acc_PK         PRIMARY KEY (Id),
-  CONSTRAINT  Stor_Cat_Acc_UK         Unique      (Cat_Id, TrnTyp_Id),
-  CONSTRAINT  Stor_Cat_Acc_Cat_FK     Foreign Key (Cat_Id    ) References Stor_Item_Cat  (Id),
-  CONSTRAINT  Stor_Cat_Acc_TrnTyp_FK  Foreign Key (TrnTyp_Id ) References Stor_Cod_TrnTyp(Id),
-  CONSTRAINT  Stor_Cat_Acc_CstAcc_FK  Foreign Key (CstAcc_Id ) References Acc_Acc        (Id),
-  CONSTRAINT  Stor_Cat_Acc_RevAcc_FK  Foreign Key (RevAcc_Id ) References Acc_Acc        (Id),
-  CONSTRAINT  Stor_Cat_Acc_ComAcc_FK  Foreign Key (ComAcc_Id ) References Acc_Acc        (Id),
-  CONSTRAINT  Stor_Cat_Acc_DisAcc_FK  Foreign Key (DisAcc_Id ) References Acc_Acc        (Id),
-  CONSTRAINT  Stor_Cat_Acc_PVatAcc_FK FOREIGN KEY (PVatAcc_Id) REFERENCES Acc_Acc        (Id),
-  CONSTRAINT  Stor_Cat_Acc_SVatAcc_FK FOREIGN KEY (SVatAcc_Id) REFERENCES Acc_Acc        (Id),
-  CONSTRAINT  Stor_Cat_Acc_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User       (Id),
-  CONSTRAINT  Stor_Cat_Acc_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User       (Id)
+  CONSTRAINT  Stor_Cat_Acc_UK         Unique      (Cat_Id, TrnTyp_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Stor_SMat_Acc               -- حسابات مادة في مخزن
@@ -314,18 +231,7 @@ Create Table Stor_SMat_Acc               -- حسابات مادة في مخزن
   Ins_User    BIGINT, Ins_Date     DATETIME,
   Upd_User    BIGINT, Upd_Date     DATETIME,
   CONSTRAINT  Stor_SMat_Acc_PK         PRIMARY KEY (Id  ),
-  CONSTRAINT  Stor_SMat_Acc_UK         Unique      (Stor_Id, Item_Id, TrnTyp_Id),
-  CONSTRAINT  Stor_SMat_Acc_Stor_FK    Foreign Key (Stor_Id   ) References Stor_Store     (Id),
-  CONSTRAINT  Stor_SMat_Acc_Item_FK    Foreign Key (Item_Id   ) References Stor_Item      (Id),
-  CONSTRAINT  Stor_SMat_Acc_TrnTyp_FK  Foreign Key (TrnTyp_Id ) References Stor_Cod_TrnTyp(Id),
-  CONSTRAINT  Stor_SMat_Acc_CstAcc_FK  Foreign Key (CstAcc_Id ) References Acc_Acc        (Id),
-  CONSTRAINT  Stor_SMat_Acc_RevAcc_FK  Foreign Key (RevAcc_Id ) References Acc_Acc        (Id),
-  CONSTRAINT  Stor_SMat_Acc_ComAcc_FK  Foreign Key (ComAcc_Id ) References Acc_Acc        (Id),
-  CONSTRAINT  Stor_SMat_Acc_DisAcc_FK  Foreign Key (DisAcc_Id ) References Acc_Acc        (Id),
-  CONSTRAINT  Stor_SMat_Acc_PVatAcc_FK FOREIGN KEY (PVatAcc_Id) REFERENCES Acc_Acc        (Id),
-  CONSTRAINT  Stor_SMat_Acc_SVatAcc_FK FOREIGN KEY (SVatAcc_Id) REFERENCES Acc_Acc        (Id),
-  CONSTRAINT  Stor_SMat_Acc_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User       (Id),
-  CONSTRAINT  Stor_SMat_Acc_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User       (Id)
+  CONSTRAINT  Stor_SMat_Acc_UK         Unique      (Stor_Id, Item_Id, TrnTyp_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Stor_ICS                      -- دليل الباركود - تصنيف المواد
@@ -356,20 +262,13 @@ Create Table Stor_ICS                      -- دليل الباركود - تصن
   MPrice      DECIMAL(25,2) Default 0 NOT NULL,             -- Media السعر في مواقع التواصل الاجتماعي
   Barcode     VARCHAR(50),                           -- مسطرة الترميز
   LotSer      VARCHAR(50) Default '_',               -- طبخة/مسلسل
-  SDate       DATETIME Default STR_TO_DATE('01-01-1900', 'DD-MM-YYYY') NOT NULL,-- تاريخ بداية
-  EDate       DATETIME Default STR_TO_DATE('01-01-1900', 'DD-MM-YYYY') NOT NULL,-- تاريخ نهاية
+  SDate       DATETIME DEFAULT (STR_TO_DATE('01-01-1900', '%d-%m-%Y')) NOT NULL,-- تاريخ بداية
+  EDate       DATETIME DEFAULT (STR_TO_DATE('01-01-1900', '%d-%m-%Y')) NOT NULL,-- تاريخ نهاية
   Ins_User    BIGINT, Ins_Date   DATETIME,
   Upd_User    BIGINT, Upd_Date   DATETIME,
   CONSTRAINT  Stor_ICS_PK       PRIMARY KEY (Id),
   CONSTRAINT  Stor_ICS_UK       UNIQUE      (Barcode),
-  CONSTRAINT  Stor_ICS_ICS_UK   UNIQUE      (Item_Id, LotSer, Unit_Id, Model_Id, Size_Id, Color_Id, nLength, nWidth, nHeight),
-  CONSTRAINT  Stor_ICS_Item_FK  Foreign Key (Item_Id  ) References Stor_Item     (Id),
-  CONSTRAINT  Stor_ICS_Unit_FK  Foreign Key (Unit_Id  ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT  Stor_ICS_Model_FK Foreign Key (Model_Id ) References Stor_Cod_Model(Id),
-  CONSTRAINT  Stor_ICS_Color_FK Foreign Key (Color_Id ) References Stor_Cod_Color(Id),
-  CONSTRAINT  Stor_ICS_Size_FK  Foreign Key (Size_Id  ) References Stor_Cod_Size (Id),
-  CONSTRAINT  Stor_ICS_Ins_FK   Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Stor_ICS_Upd_FK   Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  Stor_ICS_ICS_UK   UNIQUE      (Item_Id, LotSer, Unit_Id, Model_Id, Size_Id, Color_Id, nLength, nWidth, nHeight)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Stor_SICS                 -- دليل تصنيف مواد مستودع
@@ -399,15 +298,7 @@ Create Table Stor_SICS                 -- دليل تصنيف مواد مستو�
   Ins_User    BIGINT, Ins_Date   DATETIME,
   Upd_User    BIGINT, Upd_Date   DATETIME,
   CONSTRAINT  Stor_SICS_PK       PRIMARY KEY (Id  ),
-  CONSTRAINT  Stor_SICS_SICS_UK  UNIQUE      (Stor_Id, Item_Id, ICS_Id),
-  CONSTRAINT  Stor_SICS_Stor_FK  Foreign Key (Stor_Id ) References Stor_Store   (Id),
-  CONSTRAINT  Stor_SICS_Item_FK  Foreign Key (Item_Id ) References Stor_Item    (Id),
-  CONSTRAINT  Stor_SICS_ICS_FK   Foreign Key (ICS_Id  ) References Stor_ICS     (Id),
-  CONSTRAINT  Stor_SICS_Loc1_FK  Foreign Key (Loc1_Id ) References Stor_Cod_Loc1(Id),
-  CONSTRAINT  Stor_SICS_Loc2_FK  Foreign Key (Loc2_Id ) References Stor_Cod_Loc2(Id),
-  CONSTRAINT  Stor_SICS_Loc3_FK  Foreign Key (Loc3_Id ) References Stor_Cod_Loc3(Id),
-  CONSTRAINT  Stor_SICS_Ins_FK   Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT  Stor_SICS_Upd_FK   Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT  Stor_SICS_SICS_UK  UNIQUE      (Stor_Id, Item_Id, ICS_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Stor_ActMst                            -- ترويسة الجرد الفعلي
@@ -424,12 +315,7 @@ Create Table Stor_ActMst                            -- ترويسة الجرد �
   Ins_User    BIGINT, Ins_Date   DATETIME,
   Upd_User    BIGINT, Upd_Date   DATETIME,
   CONSTRAINT  Stor_ActMst_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Stor_ActMst_UK        Unique      (Period_Id, Stor_Id, Num),
-  CONSTRAINT  Stor_ActMst_Period_FK Foreign Key (Period_Id) References Cpy_Period (Id),
-  CONSTRAINT  Stor_ActMst_Stor_FK   Foreign Key (Stor_Id  ) References Stor_Store (Id),
-  CONSTRAINT  Stor_ActMst_Doc_FK    Foreign Key (Doc_Id   ) References Cpy_Cod_Doc(Id),
-  CONSTRAINT  Stor_ActMst_Ins_FK    Foreign Key (Ins_User ) References Cpy_User   (Id),
-  CONSTRAINT  Stor_ActMst_Upd_FK    Foreign Key (Upd_User ) References Cpy_User   (Id)
+  CONSTRAINT  Stor_ActMst_UK        Unique      (Period_Id, Stor_Id, Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Stor_ActTrn                             -- بنود الجرد الفعلي
@@ -450,20 +336,12 @@ Create Table Stor_ActTrn                             -- بنود الجرد ال
   nHeight     DECIMAL(25,2) Default 0,                      -- الارتفاع
   Barcode     VARCHAR(50),                           -- مسطرة الترميز
   LotSer      VARCHAR(50) Default '_',               -- طبخة/مسلسل
-  SDate       DATETIME Default STR_TO_DATE('01-01-1900', 'DD-MM-YYYY') NOT NULL,-- تاريخ بداية
-  EDate       DATETIME Default STR_TO_DATE('01-01-1900', 'DD-MM-YYYY') NOT NULL,-- تاريخ نهاية
+  SDate       DATETIME DEFAULT (STR_TO_DATE('01-01-1900', '%d-%m-%Y')) NOT NULL,-- تاريخ بداية
+  EDate       DATETIME DEFAULT (STR_TO_DATE('01-01-1900', '%d-%m-%Y')) NOT NULL,-- تاريخ نهاية
   Rem         VARCHAR(250),                          -- ملاحظات
   Ins_User    BIGINT,  Ins_Date    DATETIME,
   Upd_User    BIGINT,  Upd_Date    DATETIME,
-  CONSTRAINT  Stor_ActTrn_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Stor_ActTrn_Mst_FK    Foreign Key (Mst_Id  ) References Stor_ActMst   (Id),
-  CONSTRAINT  Stor_ActTrn_Item_FK   Foreign Key (Item_Id ) References Stor_Item     (Id),
-  CONSTRAINT  Stor_ActTrn_Unit_FK   Foreign Key (Unit_Id ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT  Stor_ActTrn_Model_FK  Foreign Key (Model_Id) References Stor_Cod_Model(Id),
-  CONSTRAINT  Stor_ActTrn_Color_FK  Foreign Key (Color_Id) References Stor_Cod_Color(Id),
-  CONSTRAINT  Stor_ActTrn_Size_FK   Foreign Key (Size_Id ) References Stor_Cod_Size (Id),
-  CONSTRAINT  Stor_ActTrn_Ins_FK    Foreign Key (Ins_User) References Cpy_User      (Id),
-  CONSTRAINT  Stor_ActTrn_Upd_FK    Foreign Key (Upd_User) References Cpy_User      (Id)
+  CONSTRAINT  Stor_ActTrn_PK        PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Stor_InOrdMst                     -- ترويسة أوامر الادخال
@@ -489,18 +367,7 @@ Create Table Stor_InOrdMst                     -- ترويسة أوامر الا
   Ins_User   BIGINT, Ins_Date   DATETIME,
   Upd_User   BIGINT, Upd_Date   DATETIME,
   CONSTRAINT Stor_InOrdMst_PK        PRIMARY KEY (Id),
-  CONSTRAINT Stor_InOrdMst_UK        Unique      (Period_Id, Stor_Id, TrnTyp_Id, Num),
-  CONSTRAINT Stor_InOrdMst_Source_FK Foreign Key (Src_Id   ) References Phs_Cod_Src        (Id),
-  CONSTRAINT Stor_InOrdMst_Period_FK Foreign Key (Period_Id) References Cpy_Period         (Id),
-  CONSTRAINT Stor_InOrdMst_Stor_FK   Foreign Key (Stor_Id  ) References Stor_Store         (Id),
-  CONSTRAINT Stor_InOrdMst_Status_FK Foreign Key (Status_Id) References Stor_Cod_Ord_Status(Id),
-  CONSTRAINT Stor_InOrdMst_TrnTyp_FK Foreign Key (TrnTyp_Id) References Stor_Cod_TrnTyp    (Id),
-  CONSTRAINT Stor_InOrdMst_Cont_FK   Foreign Key (Cont_Id  ) References Mng_Cont           (Id),
-  CONSTRAINT Stor_InOrdMst_Curn_FK   Foreign Key (Curn_Id  ) References Mng_Curn           (Id),
-  CONSTRAINT Stor_InOrdMst_BCurn_FK  Foreign Key (BCurn_Id ) References Mng_Curn           (Id),
-  CONSTRAINT Stor_InOrdMst_Doc_FK    Foreign Key (Doc_Id   ) References Stor_Cod_Doc       (Id),
-  CONSTRAINT Stor_InOrdMst_Ins_FK    Foreign Key (Ins_User ) References Cpy_User           (Id),
-  CONSTRAINT Stor_InOrdMst_Upd_FK    Foreign Key (Upd_User ) References Cpy_User           (Id)
+  CONSTRAINT Stor_InOrdMst_UK        Unique      (Period_Id, Stor_Id, TrnTyp_Id, Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Alter Table Stor_InOrdMst Add CONSTRAINT Stor_InOrdMst_Fin_FK Foreign Key (Fin_Id) References Fin_MCrd(Id);
@@ -534,20 +401,12 @@ Create Table Stor_InOrdTrn                      -- بنود أوامر الاد�
   nHeight     DECIMAL(25,2) Default 0,                      -- الارتفاع
   Barcode     VARCHAR(50),                           -- مسطرة الترميز
   LotSer      VARCHAR(50) Default '_',               -- طبخة/مسلسل
-  SDate       DATETIME Default STR_TO_DATE('01-01-1900', 'DD-MM-YYYY') NOT NULL,-- تاريخ بداية
-  EDate       DATETIME Default STR_TO_DATE('01-01-1900', 'DD-MM-YYYY') NOT NULL,-- تاريخ نهاية
+  SDate       DATETIME DEFAULT (STR_TO_DATE('01-01-1900', '%d-%m-%Y')) NOT NULL,-- تاريخ بداية
+  EDate       DATETIME DEFAULT (STR_TO_DATE('01-01-1900', '%d-%m-%Y')) NOT NULL,-- تاريخ نهاية
   Rem         VARCHAR(250),                          -- ملاحظات
   Ins_User    BIGINT,  Ins_Date    DATETIME,
   Upd_User    BIGINT,  Upd_Date    DATETIME,
-  CONSTRAINT  Stor_InOrdTrn_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Stor_InOrdTrn_Mst_FK    Foreign Key (Mst_Id  ) References Stor_InOrdMst (Id),
-  CONSTRAINT  Stor_InOrdTrn_Item_FK   Foreign Key (Item_Id ) References Stor_Item     (Id),
-  CONSTRAINT  Stor_InOrdTrn_Unit_FK   Foreign Key (Unit_Id ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT  Stor_InOrdTrn_Model_FK  Foreign Key (Model_Id) References Stor_Cod_Model(Id),
-  CONSTRAINT  Stor_InOrdTrn_Color_FK  Foreign Key (Color_Id) References Stor_Cod_Color(Id),
-  CONSTRAINT  Stor_InOrdTrn_Size_FK   Foreign Key (Size_Id ) References Stor_Cod_Size (Id),
-  CONSTRAINT  Stor_InOrdTrn_Ins_FK    Foreign Key (Ins_User) References Cpy_User      (Id),
-  CONSTRAINT  Stor_InOrdTrn_Upd_FK    Foreign Key (Upd_User) References Cpy_User      (Id)
+  CONSTRAINT  Stor_InOrdTrn_PK        PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Stor_OuOrdMst                    -- ترويسة أوامر الاخراج
@@ -573,18 +432,7 @@ Create Table Stor_OuOrdMst                    -- ترويسة أوامر الا�
   Ins_User   BIGINT, Ins_Date   DATETIME,
   Upd_User   BIGINT, Upd_Date   DATETIME,
   CONSTRAINT Stor_OuOrdMst_PK        PRIMARY KEY (Id),
-  CONSTRAINT Stor_OuOrdMst_UK        Unique      (Period_Id, Stor_Id, TrnTyp_Id, Num),
-  CONSTRAINT Stor_OuOrdMst_Source_FK Foreign Key (Src_Id   ) References Phs_Cod_Src        (Id),
-  CONSTRAINT Stor_OuOrdMst_Period_FK Foreign Key (Period_Id) References Cpy_Period         (Id),
-  CONSTRAINT Stor_OuOrdMst_Stor_FK   Foreign Key (Stor_Id  ) References Stor_Store         (Id),
-  CONSTRAINT Stor_OuOrdMst_TrnTyp_FK Foreign Key (TrnTyp_Id) References Stor_Cod_TrnTyp    (Id),
-  CONSTRAINT Stor_OuOrdMst_Status_FK Foreign Key (Status_Id) References Stor_Cod_Ord_Status(Id),
-  CONSTRAINT Stor_OuOrdMst_Cont_FK   Foreign Key (Cont_Id  ) References Mng_Cont           (Id),
-  CONSTRAINT Stor_OuOrdMst_Curn_FK   Foreign Key (Curn_Id  ) References Mng_Curn           (Id),
-  CONSTRAINT Stor_OuOrdMst_BCurn_FK  Foreign Key (BCurn_Id ) References Mng_Curn           (Id),
-  CONSTRAINT Stor_OuOrdMst_Doc_FK    Foreign Key (Doc_Id   ) References Stor_Cod_Doc       (Id),
-  CONSTRAINT Stor_OuOrdMst_Ins_FK    Foreign Key (Ins_User ) References Cpy_User           (Id),
-  CONSTRAINT Stor_OuOrdMst_Upd_FK    Foreign Key (Upd_User ) References Cpy_User           (Id)
+  CONSTRAINT Stor_OuOrdMst_UK        Unique      (Period_Id, Stor_Id, TrnTyp_Id, Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Alter Table Stor_OuOrdMst Add CONSTRAINT Stor_OuOrdMst_Fin_FK Foreign Key (Fin_Id) References Fin_MDbt(Id);
@@ -618,20 +466,12 @@ Create Table Stor_OuOrdTrn                     -- بنود أوامر الإخر
   nHeight     DECIMAL(25,2) Default 0,                      -- الارتفاع
   Barcode     VARCHAR(50),                           -- مسطرة الترميز
   LotSer      VARCHAR(50) Default '_',               -- طبخة/مسلسل
-  SDate       DATETIME Default STR_TO_DATE('01-01-1900', 'DD-MM-YYYY') NOT NULL,-- تاريخ بداية
-  EDate       DATETIME Default STR_TO_DATE('01-01-1900', 'DD-MM-YYYY') NOT NULL,-- تاريخ نهاية
+  SDate       DATETIME DEFAULT (STR_TO_DATE('01-01-1900', '%d-%m-%Y')) NOT NULL,-- تاريخ بداية
+  EDate       DATETIME DEFAULT (STR_TO_DATE('01-01-1900', '%d-%m-%Y')) NOT NULL,-- تاريخ نهاية
   Rem         VARCHAR(250),                          -- ملاحظات
   Ins_User    BIGINT,  Ins_Date    DATETIME,
   Upd_User    BIGINT,  Upd_Date    DATETIME,
-  CONSTRAINT  Stor_OuOrdTrn_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Stor_OuOrdTrn_Mst_FK    Foreign Key (Mst_Id  ) References Stor_OuOrdMst (Id),
-  CONSTRAINT  Stor_OuOrdTrn_Item_FK   Foreign Key (Item_Id ) References Stor_Item     (Id),
-  CONSTRAINT  Stor_OuOrdTrn_Unit_FK   Foreign Key (Unit_Id ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT  Stor_OuOrdTrn_Model_FK  Foreign Key (Model_Id) References Stor_Cod_Model(Id),
-  CONSTRAINT  Stor_OuOrdTrn_Color_FK  Foreign Key (Color_Id) References Stor_Cod_Color(Id),
-  CONSTRAINT  Stor_OuOrdTrn_Size_FK   Foreign Key (Size_Id ) References Stor_Cod_Size (Id),
-  CONSTRAINT  Stor_OuOrdTrn_Ins_FK    Foreign Key (Ins_User) References Cpy_User      (Id),
-  CONSTRAINT  Stor_OuOrdTrn_Upd_FK    Foreign Key (Upd_User) References Cpy_User      (Id)
+  CONSTRAINT  Stor_OuOrdTrn_PK        PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Stor_EIMst                   -- ترويسة الادخال
@@ -656,18 +496,7 @@ Create Table Stor_EIMst                   -- ترويسة الادخال
   Ins_User   BIGINT, Ins_Date   DATETIME,
   Upd_User   BIGINT, Upd_Date   DATETIME,
   CONSTRAINT Stor_EIMst_PK        PRIMARY KEY (Id),
-  CONSTRAINT Stor_EIMst_UK        Unique      (Period_Id, Stor_Id, TrnTyp_Id, Num),
-  CONSTRAINT Stor_EIMst_Period_FK Foreign Key (Period_Id) References Cpy_Period         (Id),
-  CONSTRAINT Stor_EIMst_TrnTyp_FK Foreign Key (TrnTyp_Id) References Stor_Cod_TrnTyp    (Id),
-  CONSTRAINT Stor_EIMst_Ord_FK    Foreign Key (Ord_Id   ) References Stor_InOrdMst      (Id),
-  CONSTRAINT Stor_EIMst_Status_FK Foreign Key (Status_Id) References Stor_Cod_Ord_Status(Id),
-  CONSTRAINT Stor_EIMst_Stor_FK   Foreign Key (Stor_Id  ) References Stor_Store         (Id),
-  CONSTRAINT Stor_EIMst_Cont_FK   Foreign Key (Cont_Id  ) References Mng_Cont           (Id),
-  CONSTRAINT Stor_EIMst_Curn_FK   Foreign Key (Curn_Id  ) References Mng_Curn           (Id),
-  CONSTRAINT Stor_EIMst_BCurn_FK  Foreign Key (BCurn_Id ) References Mng_Curn           (Id),
-  CONSTRAINT Stor_EIMst_Doc_FK    Foreign Key (Doc_Id   ) References Stor_Cod_Doc       (Id),
-  CONSTRAINT Stor_EIMst_Ins_FK    Foreign Key (Ins_User ) References Cpy_User           (Id),
-  CONSTRAINT Stor_EIMst_Upd_FK    Foreign Key (Upd_User ) References Cpy_User           (Id)
+  CONSTRAINT Stor_EIMst_UK        Unique      (Period_Id, Stor_Id, TrnTyp_Id, Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Alter Table Stor_EIMst Add CONSTRAINT Stor_EIMst_Fin_FK Foreign Key (Fin_Id) References Fin_MCrd(Id);
@@ -701,23 +530,12 @@ Create Table Stor_EITrn                    -- بنود الادخال
   nHeight     DECIMAL(25,2) Default 0,                      -- الارتفاع
   Barcode     VARCHAR(50),                           -- مسطرة الترميز
   LotSer      VARCHAR(50) Default '_',               -- طبخة/مسلسل
-  SDate       DATETIME Default STR_TO_DATE('01-01-1900', 'DD-MM-YYYY') NOT NULL,-- تاريخ بداية
-  EDate       DATETIME Default STR_TO_DATE('01-01-1900', 'DD-MM-YYYY') NOT NULL,-- تاريخ نهاية
+  SDate       DATETIME DEFAULT (STR_TO_DATE('01-01-1900', '%d-%m-%Y')) NOT NULL,-- تاريخ بداية
+  EDate       DATETIME DEFAULT (STR_TO_DATE('01-01-1900', '%d-%m-%Y')) NOT NULL,-- تاريخ نهاية
   Rem         VARCHAR(250),                          -- ملاحظات
   Ins_User    BIGINT,  Ins_Date    DATETIME,
   Upd_User    BIGINT,  Upd_Date    DATETIME,
-  CONSTRAINT  Stor_EITrn_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Stor_EITrn_Mst_FK    Foreign Key (Mst_Id  ) References Stor_EIMst    (Id),
-  CONSTRAINT  Stor_EITrn_Ord_FK    Foreign Key (TOrd_Id ) References Stor_InOrdTrn (Id),
-  CONSTRAINT  Stor_EITrn_Item_FK   Foreign Key (Item_Id ) References Stor_Item     (Id),
-  CONSTRAINT  Stor_EITrn_ICS_FK    Foreign Key (ICS_Id  ) References Stor_ICS      (Id),
-  CONSTRAINT  Stor_EITrn_Sics_FK   Foreign Key (Sics_Id ) References Stor_Sics     (Id),
-  CONSTRAINT  Stor_EITrn_Unit_FK   Foreign Key (Unit_Id ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT  Stor_EITrn_Model_FK  Foreign Key (Model_Id) References Stor_Cod_Model(Id),
-  CONSTRAINT  Stor_EITrn_Color_FK  Foreign Key (Color_Id) References Stor_Cod_Color(Id),
-  CONSTRAINT  Stor_EITrn_Size_FK   Foreign Key (Size_Id ) References Stor_Cod_Size (Id),
-  CONSTRAINT  Stor_EITrn_Ins_FK    Foreign Key (Ins_User) References Cpy_User      (Id),
-  CONSTRAINT  Stor_EITrn_Upd_FK    Foreign Key (Upd_User) References Cpy_User      (Id)
+  CONSTRAINT  Stor_EITrn_PK        PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Stor_EOMst                  -- ترويسة الاخراج
@@ -742,18 +560,7 @@ Create Table Stor_EOMst                  -- ترويسة الاخراج
   Ins_User   BIGINT, Ins_Date   DATETIME,
   Upd_User   BIGINT, Upd_Date   DATETIME,
   CONSTRAINT Stor_EOMst_PK        PRIMARY KEY (Id),
-  CONSTRAINT Stor_EOMst_UK        Unique      (Period_Id, TrnTyp_Id, Stor_Id, Num),
-  CONSTRAINT Stor_EOMst_Period_FK Foreign Key (Period_Id) References Cpy_Period         (Id),
-  CONSTRAINT Stor_EOMst_TrnTyp_FK Foreign Key (TrnTyp_Id) References Stor_Cod_TrnTyp    (Id),
-  CONSTRAINT Stor_EOMst_Ord_FK    Foreign Key (Ord_Id   ) References Stor_OuOrdMst      (Id),
-  CONSTRAINT Stor_EOMst_Status_FK Foreign Key (Status_Id) References Stor_Cod_Ord_Status(Id),
-  CONSTRAINT Stor_EOMst_Stor_FK   Foreign Key (Stor_Id  ) References Stor_Store         (Id),
-  CONSTRAINT Stor_EOMst_Cont_FK   Foreign Key (Cont_Id  ) References Mng_Cont           (Id),
-  CONSTRAINT Stor_EOMst_Curn_FK   Foreign Key (Curn_Id  ) References Mng_Curn           (Id),
-  CONSTRAINT Stor_EOMst_BCurn_FK  Foreign Key (BCurn_Id ) References Mng_Curn           (Id),
-  CONSTRAINT Stor_EOMst_Doc_FK    Foreign Key (Doc_Id   ) References Stor_Cod_Doc       (Id),
-  CONSTRAINT Stor_EOMst_Ins_FK    Foreign Key (Ins_User ) References Cpy_User           (Id),
-  CONSTRAINT Stor_EOMst_Upd_FK    Foreign Key (Upd_User ) References Cpy_User           (Id)
+  CONSTRAINT Stor_EOMst_UK        Unique      (Period_Id, TrnTyp_Id, Stor_Id, Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Alter Table Stor_EOMst Add CONSTRAINT Stor_EOMst_Fin_FK Foreign Key (Fin_Id) References Fin_MDbt(Id);
@@ -787,23 +594,12 @@ Create Table Stor_EOTrn                   -- بنود الإخراج
   nHeight     DECIMAL(25,2) Default 0,                      -- الارتفاع
   Barcode     VARCHAR(50),                           -- مسطرة الترميز
   LotSer      VARCHAR(50) Default '_',               -- طبخة/مسلسل
-  SDate       DATETIME Default STR_TO_DATE('01-01-1900', 'DD-MM-YYYY') NOT NULL,-- تاريخ بداية
-  EDate       DATETIME Default STR_TO_DATE('01-01-1900', 'DD-MM-YYYY') NOT NULL,-- تاريخ نهاية
+  SDate       DATETIME DEFAULT (STR_TO_DATE('01-01-1900', '%d-%m-%Y')) NOT NULL,-- تاريخ بداية
+  EDate       DATETIME DEFAULT (STR_TO_DATE('01-01-1900', '%d-%m-%Y')) NOT NULL,-- تاريخ نهاية
   Rem         VARCHAR(250),                          -- ملاحظات
   Ins_User    BIGINT,  Ins_Date    DATETIME,
   Upd_User    BIGINT,  Upd_Date    DATETIME,
-  CONSTRAINT  Stor_EOTrn_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Stor_EOTrn_Mst_FK    Foreign Key (Mst_Id  ) References Stor_EOMst    (Id),
-  CONSTRAINT  Stor_EOTrn_Ord_FK    Foreign Key (TOrd_Id ) References Stor_OuOrdTrn (Id),
-  CONSTRAINT  Stor_EOTrn_Item_FK   Foreign Key (Item_Id ) References Stor_Item     (Id),
-  CONSTRAINT  Stor_EOTrn_ICS_FK    Foreign Key (ICS_Id  ) References Stor_ICS      (Id),
-  CONSTRAINT  Stor_EOTrn_Sics_FK   Foreign Key (Sics_Id ) References Stor_Sics     (Id),
-  CONSTRAINT  Stor_EOTrn_Unit_FK   Foreign Key (Unit_Id ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT  Stor_EOTrn_Model_FK  Foreign Key (Model_Id) References Stor_Cod_Model(Id),
-  CONSTRAINT  Stor_EOTrn_Color_FK  Foreign Key (Color_Id) References Stor_Cod_Color(Id),
-  CONSTRAINT  Stor_EOTrn_Size_FK   Foreign Key (Size_Id ) References Stor_Cod_Size (Id),
-  CONSTRAINT  Stor_EOTrn_Ins_FK    Foreign Key (Ins_User) References Cpy_User      (Id),
-  CONSTRAINT  Stor_EOTrn_Upd_FK    Foreign Key (Upd_User) References Cpy_User      (Id)
+  CONSTRAINT  Stor_EOTrn_PK        PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Stor_InMst                           -- ترويسة الادخال
@@ -826,16 +622,7 @@ Create Table Stor_InMst                           -- ترويسة الادخال
   Ins_User   BIGINT, Ins_Date   DATETIME,
   Upd_User   BIGINT, Upd_Date   DATETIME,
   CONSTRAINT Stor_InMst_PK        PRIMARY KEY (Id),
-  CONSTRAINT Stor_InMst_UK        Unique      (Period_Id, Stor_Id, TrnTyp_Id, Num),
-  CONSTRAINT Stor_InMst_Period_FK Foreign Key (Period_Id) References Cpy_Period         (Id),
-  CONSTRAINT Stor_InMst_TrnTyp_FK Foreign Key (TrnTyp_Id) References Stor_Cod_TrnTyp    (Id),
-  CONSTRAINT Stor_InMst_Stor_FK   Foreign Key (Stor_Id  ) References Stor_Store         (Id),
-  CONSTRAINT Stor_InMst_Cont_FK   Foreign Key (Cont_Id  ) References Mng_Cont           (Id),
-  CONSTRAINT Stor_InMst_Curn_FK   Foreign Key (Curn_Id  ) References Mng_Curn           (Id),
-  CONSTRAINT Stor_InMst_BCurn_FK  Foreign Key (BCurn_Id ) References Mng_Curn           (Id),
-  CONSTRAINT Stor_InMst_Doc_FK    Foreign Key (Doc_Id   ) References Stor_Cod_Doc       (Id),
-  CONSTRAINT Stor_InMst_Ins_FK    Foreign Key (Ins_User ) References Cpy_User           (Id),
-  CONSTRAINT Stor_InMst_Upd_FK    Foreign Key (Upd_User ) References Cpy_User           (Id)
+  CONSTRAINT Stor_InMst_UK        Unique      (Period_Id, Stor_Id, TrnTyp_Id, Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Alter Table Stor_InMst Add CONSTRAINT Stor_InMst_Fin_FK Foreign Key (Fin_Id) References Fin_MCrd(Id);
@@ -868,22 +655,12 @@ Create Table Stor_InTrn                            -- بنود الادخال
   nHeight     DECIMAL(25,2) Default 0,                      -- الارتفاع
   Barcode     VARCHAR(50),                           -- مسطرة الترميز
   LotSer      VARCHAR(50) Default '_',               -- طبخة/مسلسل
-  SDate       DATETIME Default STR_TO_DATE('01-01-1900', 'DD-MM-YYYY') NOT NULL,-- تاريخ بداية
-  EDate       DATETIME Default STR_TO_DATE('01-01-1900', 'DD-MM-YYYY') NOT NULL,-- تاريخ نهاية
+  SDate       DATETIME DEFAULT (STR_TO_DATE('01-01-1900', '%d-%m-%Y')) NOT NULL,-- تاريخ بداية
+  EDate       DATETIME DEFAULT (STR_TO_DATE('01-01-1900', '%d-%m-%Y')) NOT NULL,-- تاريخ نهاية
   Rem         VARCHAR(250),                          -- ملاحظات
   Ins_User    BIGINT,  Ins_Date    DATETIME,
   Upd_User    BIGINT,  Upd_Date    DATETIME,
-  CONSTRAINT  Stor_InTrn_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Stor_InTrn_Mst_FK    Foreign Key (Mst_Id  ) References Stor_InMst    (Id),
-  CONSTRAINT  Stor_InTrn_Item_FK   Foreign Key (Item_Id ) References Stor_Item     (Id),
-  CONSTRAINT  Stor_InTrn_ICS_FK    Foreign Key (ICS_Id  ) References Stor_ICS      (Id),
-  CONSTRAINT  Stor_InTrn_Sics_FK   Foreign Key (Sics_Id ) References Stor_Sics     (Id),
-  CONSTRAINT  Stor_InTrn_Unit_FK   Foreign Key (Unit_Id ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT  Stor_InTrn_Model_FK  Foreign Key (Model_Id) References Stor_Cod_Model(Id),
-  CONSTRAINT  Stor_InTrn_Color_FK  Foreign Key (Color_Id) References Stor_Cod_Color(Id),
-  CONSTRAINT  Stor_InTrn_Size_FK   Foreign Key (Size_Id ) References Stor_Cod_Size (Id),
-  CONSTRAINT  Stor_InTrn_Ins_FK    Foreign Key (Ins_User) References Cpy_User      (Id),
-  CONSTRAINT  Stor_InTrn_Upd_FK    Foreign Key (Upd_User) References Cpy_User      (Id)
+  CONSTRAINT  Stor_InTrn_PK        PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Stor_OuMst                          -- ترويسة الاخراج
@@ -907,16 +684,7 @@ Create Table Stor_OuMst                          -- ترويسة الاخراج
   Ins_User   BIGINT, Ins_Date   DATETIME,
   Upd_User   BIGINT, Upd_Date   DATETIME,
   CONSTRAINT Stor_OuMst_PK        PRIMARY KEY (Id),
-  CONSTRAINT Stor_OuMst_UK        Unique      (Period_Id, Stor_Id, TrnTyp_Id, Num),
-  CONSTRAINT Stor_OuMst_Period_FK Foreign Key (Period_Id) References Cpy_Period         (Id),
-  CONSTRAINT Stor_OuMst_TrnTyp_FK Foreign Key (TrnTyp_Id) References Stor_Cod_TrnTyp    (Id),
-  CONSTRAINT Stor_OuMst_Stor_FK   Foreign Key (Stor_Id  ) References Stor_Store         (Id),
-  CONSTRAINT Stor_OuMst_Cont_FK   Foreign Key (Cont_Id  ) References Mng_Cont           (Id),
-  CONSTRAINT Stor_OuMst_Curn_FK   Foreign Key (Curn_Id  ) References Mng_Curn           (Id),
-  CONSTRAINT Stor_OuMst_BCurn_FK  Foreign Key (BCurn_Id ) References Mng_Curn           (Id),
-  CONSTRAINT Stor_OuMst_Doc_FK    Foreign Key (Doc_Id   ) References Stor_Cod_Doc       (Id),
-  CONSTRAINT Stor_OuMst_Ins_FK    Foreign Key (Ins_User ) References Cpy_User           (Id),
-  CONSTRAINT Stor_OuMst_Upd_FK    Foreign Key (Upd_User ) References Cpy_User           (Id)
+  CONSTRAINT Stor_OuMst_UK        Unique      (Period_Id, Stor_Id, TrnTyp_Id, Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Alter Table Stor_OuMst Add CONSTRAINT Stor_OuMst_Fin_FK Foreign Key (Fin_Id) References Fin_MDbt(Id);
@@ -949,22 +717,12 @@ Create Table Stor_OuTrn                           -- بنود الإخراج
   nHeight     DECIMAL(25,2) Default 0,                      -- الارتفاع
   Barcode     VARCHAR(50),                           -- مسطرة الترميز
   LotSer      VARCHAR(50) Default '_',               -- طبخة/مسلسل
-  SDate       DATETIME Default STR_TO_DATE('01-01-1900', 'DD-MM-YYYY') NOT NULL,-- تاريخ بداية
-  EDate       DATETIME Default STR_TO_DATE('01-01-1900', 'DD-MM-YYYY') NOT NULL,-- تاريخ نهاية
+  SDate       DATETIME DEFAULT (STR_TO_DATE('01-01-1900', '%d-%m-%Y')) NOT NULL,-- تاريخ بداية
+  EDate       DATETIME DEFAULT (STR_TO_DATE('01-01-1900', '%d-%m-%Y')) NOT NULL,-- تاريخ نهاية
   Rem         VARCHAR(250),                          -- ملاحظات
   Ins_User    BIGINT,  Ins_Date    DATETIME,
   Upd_User    BIGINT,  Upd_Date    DATETIME,
-  CONSTRAINT  Stor_OuTrn_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Stor_OuTrn_Mst_FK    Foreign Key (Mst_Id  ) References Stor_OuMst    (Id),
-  CONSTRAINT  Stor_OuTrn_Item_FK   Foreign Key (Item_Id ) References Stor_Item     (Id),
-  CONSTRAINT  Stor_OuTrn_ICS_FK    Foreign Key (ICS_Id  ) References Stor_ICS      (Id),
-  CONSTRAINT  Stor_OuTrn_Sics_FK   Foreign Key (Sics_Id ) References Stor_Sics     (Id),
-  CONSTRAINT  Stor_OuTrn_Unit_FK   Foreign Key (Unit_Id ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT  Stor_OuTrn_Model_FK  Foreign Key (Model_Id) References Stor_Cod_Model(Id),
-  CONSTRAINT  Stor_OuTrn_Color_FK  Foreign Key (Color_Id) References Stor_Cod_Color(Id),
-  CONSTRAINT  Stor_OuTrn_Size_FK   Foreign Key (Size_Id ) References Stor_Cod_Size (Id),
-  CONSTRAINT  Stor_OuTrn_Ins_FK    Foreign Key (Ins_User) References Cpy_User      (Id),
-  CONSTRAINT  Stor_OuTrn_Upd_FK    Foreign Key (Upd_User) References Cpy_User      (Id)
+  CONSTRAINT  Stor_OuTrn_PK        PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Stor_TrMst                          -- ترويسة الترحيل
@@ -988,15 +746,7 @@ Create Table Stor_TrMst                          -- ترويسة الترحيل
   Ins_User   BIGINT, Ins_Date   DATETIME,
   Upd_User   BIGINT, Upd_Date   DATETIME,
   CONSTRAINT Stor_TrMst_PK         PRIMARY KEY (Id),
-  CONSTRAINT Stor_TrMst_UK         Unique      (Period_Id, StorF_Id, Num),
-  CONSTRAINT Stor_TrMst_Period_FK  Foreign Key (Period_Id ) References Cpy_Period     (Id),
-  CONSTRAINT Stor_InMst_TrnTypF_FK Foreign Key (TrnTypF_Id) References Stor_Cod_TrnTyp(Id),
-  CONSTRAINT Stor_InMst_TrnTypT_FK Foreign Key (TrnTypT_Id) References Stor_Cod_TrnTyp(Id),
-  CONSTRAINT Stor_TrMst_StorF_FK   Foreign Key (StorF_Id  ) References Stor_Store     (Id),
-  CONSTRAINT Stor_TrMst_StorT_FK   Foreign Key (StorT_Id  ) References Stor_Store     (Id),
-  CONSTRAINT Stor_TrMst_Doc_FK     Foreign Key (Doc_Id    ) References Cpy_Cod_Doc    (Id),
-  CONSTRAINT Stor_TrMst_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User       (Id),
-  CONSTRAINT Stor_TrMst_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User       (Id)
+  CONSTRAINT Stor_TrMst_UK         Unique      (Period_Id, StorF_Id, Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Alter Table Stor_TrMst Add CONSTRAINT Stor_TrMst_Fin_FK Foreign Key (Fin_Id) References Fin_MDbt(Id);
@@ -1032,23 +782,12 @@ Create Table Stor_TrTrn                           -- بنود الترحيل
   nHeight     DECIMAL(25,2) Default 0,                      -- الارتفاع
   Barcode     VARCHAR(50),                           -- مسطرة الترميز
   LotSer      VARCHAR(50) Default '_',               -- طبخة/مسلسل
-  SDate       DATETIME Default STR_TO_DATE('01-01-1900', 'DD-MM-YYYY') NOT NULL,-- تاريخ بداية
-  EDate       DATETIME Default STR_TO_DATE('01-01-1900', 'DD-MM-YYYY') NOT NULL,-- تاريخ نهاية
+  SDate       DATETIME DEFAULT (STR_TO_DATE('01-01-1900', '%d-%m-%Y')) NOT NULL,-- تاريخ بداية
+  EDate       DATETIME DEFAULT (STR_TO_DATE('01-01-1900', '%d-%m-%Y')) NOT NULL,-- تاريخ نهاية
   Rem         VARCHAR(250),                          -- ملاحظات
   Ins_User    BIGINT,  Ins_Date    DATETIME,
   Upd_User    BIGINT,  Upd_Date    DATETIME,
-  CONSTRAINT  Stor_TrTrn_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Stor_TrTrn_Mst_FK    Foreign Key (Mst_Id  ) References Stor_TrMst    (Id),
-  CONSTRAINT  Stor_TrTrn_Item_FK   Foreign Key (Item_Id ) References Stor_Item     (Id),
-  CONSTRAINT  Stor_TrTrn_ICS_FK    Foreign Key (ICS_Id  ) References Stor_ICS      (Id),
-  CONSTRAINT  Stor_TrTrn_FSics_FK  Foreign Key (Sics_FId) References Stor_Sics     (Id),
-  CONSTRAINT  Stor_TrTrn_TSics_FK  Foreign Key (Sics_TId) References Stor_Sics     (Id),
-  CONSTRAINT  Stor_TrTrn_Unit_FK   Foreign Key (Unit_Id ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT  Stor_TrTrn_Model_FK  Foreign Key (Model_Id) References Stor_Cod_Model(Id),
-  CONSTRAINT  Stor_TrTrn_Color_FK  Foreign Key (Color_Id) References Stor_Cod_Color(Id),
-  CONSTRAINT  Stor_TrTrn_Size_FK   Foreign Key (Size_Id ) References Stor_Cod_Size (Id),
-  CONSTRAINT  Stor_TrTrn_Ins_FK    Foreign Key (Ins_User) References Cpy_User      (Id),
-  CONSTRAINT  Stor_TrTrn_Upd_FK    Foreign Key (Upd_User) References Cpy_User      (Id)
+  CONSTRAINT  Stor_TrTrn_PK        PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Stor_ChLocMst                   -- ترويسة تعديل موقع مادة في مستودع
@@ -1064,12 +803,7 @@ Create Table Stor_ChLocMst                   -- ترويسة تعديل موقع
   Ins_User   BIGINT, Ins_Date   DATETIME,
   Upd_User   BIGINT, Upd_Date   DATETIME,
   Constraint Stor_ChLocMst_PK        Primary Key (Id),
-  Constraint Stor_ChLocMst_Uk        Unique      (Period_Id, Stor_Id, Num),
-  Constraint Stor_ChLocMst_Period_FK Foreign Key (Period_Id) References Cpy_Period  (Id),
-  Constraint Stor_ChLocMst_Stor_FK   Foreign Key (Stor_Id  ) References Stor_Store (Id),
-  Constraint Stor_ChLocMst_Doc_FK    Foreign Key (Doc_Id   ) References Cpy_Cod_Doc(Id),
-  Constraint Stor_ChLocMst_Ins_FK    Foreign Key (Ins_User ) References Cpy_User   (Id),
-  Constraint Stor_ChLocMst_Upd_FK    Foreign Key (Upd_User ) References Cpy_User   (Id)
+  Constraint Stor_ChLocMst_Uk        Unique      (Period_Id, Stor_Id, Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Stor_ChLocTrn                    -- بنود تعديل موقع مادة في مستودع
@@ -1087,16 +821,5 @@ Create Table Stor_ChLocTrn                    -- بنود تعديل موقع م
   Rem         VARCHAR(250),                          -- ملاحظات
   Ins_User    BIGINT,  Ins_Date    DATETIME,
   Upd_User    BIGINT,  Upd_Date    DATETIME,
-  Constraint  Stor_ChLocTrn_PK       Primary Key (Id),
-  Constraint  Stor_ChLocTrn_Mst_FK   Foreign Key (Mst_Id  ) References Stor_ChLocMst(Id),
-  Constraint  Stor_ChLocTrn_Item_FK  Foreign Key (Item_Id ) References Stor_Item    (Id),
-  Constraint  Stor_ChLocTrn_Sics_FK  Foreign Key (Sics_Id ) References Stor_Sics    (Id),
-  Constraint  Stor_ChLocTrn_OLoc1_FK Foreign Key (oLoc1_Id) References Stor_Cod_Loc1(Id),
-  Constraint  Stor_ChLocTrn_OLoc2_FK Foreign Key (oLoc2_Id) References Stor_Cod_Loc2(Id),
-  Constraint  Stor_ChLocTrn_OLoc3_FK Foreign Key (oLoc3_Id) References Stor_Cod_Loc3(Id),
-  Constraint  Stor_ChLocTrn_NLoc1_FK Foreign Key (nLoc1_Id) References Stor_Cod_Loc1(Id),
-  Constraint  Stor_ChLocTrn_NLoc2_FK Foreign Key (nLoc2_Id) References Stor_Cod_Loc2(Id),
-  Constraint  Stor_ChLocTrn_NLoc3_FK Foreign Key (nLoc3_Id) References Stor_Cod_Loc3(Id),
-  Constraint  Stor_ChLocTrn_Ins_FK   Foreign Key (Ins_User) References Cpy_User     (Id),
-  Constraint  Stor_ChLocTrn_Upd_FK   Foreign Key (Upd_User) References Cpy_User     (Id)
+  Constraint  Stor_ChLocTrn_PK       Primary Key (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

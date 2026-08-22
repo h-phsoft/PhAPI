@@ -18,12 +18,7 @@ Create Table Ams_SItem_Status                   -- جدول رموز حالة ا
   Ins_User       BIGINT,  Ins_Date    DATETIME,
   Upd_User       BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_SItem_Status_PK              PRIMARY KEY (Id), 
-  CONSTRAINT Ams_SItem_Status_UK              UNIQUE      (Name),
-  CONSTRAINT Ams_SItem_Status_Status_FK       Foreign Key (Status_Id)      References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_SItem_Status_IsCalculate_FK  Foreign Key (IsCalculate_Id) References Phs_Cod_YesNo  (Id),
-  CONSTRAINT Ams_SItem_Status_IsPass_FK       Foreign Key (IsPass_Id)      References Phs_Cod_YesNo  (Id),
-  CONSTRAINT Ams_SItem_Status_Ins_FK          Foreign Key (Ins_User)       References Cpy_User       (Id),
-  CONSTRAINT Ams_SItem_Status_Upd_FK          Foreign Key (Upd_User)       References Cpy_User       (Id)
+  CONSTRAINT Ams_SItem_Status_UK              UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Ams_SItem_Status (Id, Name, IsCalculate_Id, IsPass_Id, Rem) VALUES(1 , 'N' , 2, 2, '-');
@@ -73,10 +68,7 @@ Create Table Ams_Bran                          -- جدول الفروع
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Bran_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Bran_UK         UNIQUE      (AR_Name),
-  CONSTRAINT Ams_Bran_Status_FK  Foreign Key (Status_Id)  References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Bran_Ins_FK     Foreign Key (Ins_User)   References Cpy_User       (Id),
-  CONSTRAINT Ams_Bran_Upd_FK     Foreign Key (Upd_User)   References Cpy_User       (Id)
+  CONSTRAINT Ams_Bran_UK         UNIQUE      (AR_Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Colge                            -- جدول الكليات
@@ -91,11 +83,7 @@ Create Table Ams_Colge                            -- جدول الكليات
   Ins_User        BIGINT,  Ins_Date    DATETIME,
   Upd_User        BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Colge_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Colge_UK         UNIQUE      (AR_Name),
-  CONSTRAINT Ams_Colge_Branch_FK  Foreign Key (Branch_Id)  References Ams_Bran       (Id),
-  CONSTRAINT Ams_Colge_Status_FK  Foreign Key (Status_Id)  References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Colge_Ins_FK     Foreign Key (Ins_User)   References Cpy_User       (Id),
-  CONSTRAINT Ams_Colge_Upd_FK     Foreign Key (Upd_User)   References Cpy_User       (Id)
+  CONSTRAINT Ams_Colge_UK         UNIQUE      (AR_Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Sec                       -- جدول الاقسام
@@ -108,11 +96,7 @@ Create Table Ams_Sec                       -- جدول الاقسام
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Sec_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Sec_UK         UNIQUE      (AR_Name),
-  CONSTRAINT Ams_Sec_College_FK  Foreign Key (College_Id) References Ams_Colge     (Id),
-  CONSTRAINT Ams_Sec_Status_FK  Foreign Key (Status_Id)  References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Sec_Ins_FK     Foreign Key (Ins_User)   References Cpy_User       (Id),
-  CONSTRAINT Ams_Sec_Upd_FK     Foreign Key (Upd_User)   References Cpy_User       (Id)
+  CONSTRAINT Ams_Sec_UK         UNIQUE      (AR_Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Spec                    -- جدول التخصصات
@@ -125,11 +109,7 @@ Create Table Ams_Spec                    -- جدول التخصصات
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Spec_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Spec_UK         UNIQUE      (AR_Name),
-  CONSTRAINT Ams_Spec_Section_FK  Foreign Key (Section_Id) References Ams_Sec     (Id),
-  CONSTRAINT Ams_Spec_Status_FK  Foreign Key (Status_Id)  References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Spec_Ins_FK     Foreign Key (Ins_User)   References Cpy_User       (Id),
-  CONSTRAINT Ams_Spec_Upd_FK     Foreign Key (Upd_User)   References Cpy_User       (Id)
+  CONSTRAINT Ams_Spec_UK         UNIQUE      (AR_Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Cert                    -- جدول الشهادات
@@ -140,10 +120,7 @@ Create Table Ams_Cert                    -- جدول الشهادات
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Cert_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Cert_UK         UNIQUE      (Name),
-  CONSTRAINT Ams_Cert_Status_FK  Foreign Key (Status_Id)  References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Cert_Ins_FK     Foreign Key (Ins_User)   References Cpy_User       (Id),
-  CONSTRAINT Ams_Cert_Upd_FK     Foreign Key (Upd_User)   References Cpy_User       (Id)
+  CONSTRAINT Ams_Cert_UK         UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Dis                       -- جدول الخصومات
@@ -154,10 +131,7 @@ Create Table Ams_Dis                       -- جدول الخصومات
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Dis_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Dis_UK         UNIQUE      (Name),
-  CONSTRAINT Ams_Dis_Status_FK  Foreign Key (Status_Id)  References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Dis_Ins_FK     Foreign Key (Ins_User)   References Cpy_User       (Id),
-  CONSTRAINT Ams_Dis_Upd_FK     Foreign Key (Upd_User)   References Cpy_User       (Id)
+  CONSTRAINT Ams_Dis_UK         UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Fee                           -- جدول الرسوم
@@ -168,10 +142,7 @@ Create Table Ams_Fee                           -- جدول الرسوم
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Fee_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Fee_UK         UNIQUE      (Name),
-  CONSTRAINT Ams_Fee_Status_FK  Foreign Key (Status_Id)  References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Fee_Ins_FK     Foreign Key (Ins_User)   References Cpy_User       (Id),
-  CONSTRAINT Ams_Fee_Upd_FK     Foreign Key (Upd_User)   References Cpy_User       (Id)
+  CONSTRAINT Ams_Fee_UK         UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Item_Typ                      -- جدول انواع المواد
@@ -182,10 +153,7 @@ Create Table Ams_Item_Typ                      -- جدول انواع الموا
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Item_Typ_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Item_Typ_UK         UNIQUE      (Name),
-  CONSTRAINT Ams_Item_Typ_Status_FK  Foreign Key (Status_Id)  References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Item_Typ_Ins_FK     Foreign Key (Ins_User)   References Cpy_User       (Id),
-  CONSTRAINT Ams_Item_Typ_Upd_FK     Foreign Key (Upd_User)   References Cpy_User       (Id)
+  CONSTRAINT Ams_Item_Typ_UK         UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Year                        -- جدول السنوات
@@ -196,10 +164,7 @@ Create Table Ams_Year                        -- جدول السنوات
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Year_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Year_UK         UNIQUE      (Name),
-  CONSTRAINT Ams_Year_Status_FK  Foreign Key (Status_Id)  References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Year_Ins_FK     Foreign Key (Ins_User)   References Cpy_User       (Id),
-  CONSTRAINT Ams_Year_Upd_FK     Foreign Key (Upd_User)   References Cpy_User       (Id)
+  CONSTRAINT Ams_Year_UK         UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Term                          -- جدول الفصول
@@ -211,10 +176,7 @@ Create Table Ams_Term                          -- جدول الفصول
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Term_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Term_UK         UNIQUE      (AR_Name),
-  CONSTRAINT Ams_Term_Status_FK  Foreign Key (Status_Id)  References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Term_Ins_FK     Foreign Key (Ins_User)   References Cpy_User       (Id),
-  CONSTRAINT Ams_Term_Upd_FK     Foreign Key (Upd_User)   References Cpy_User       (Id)
+  CONSTRAINT Ams_Term_UK         UNIQUE      (AR_Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Item                        -- جدول المواد
@@ -227,10 +189,7 @@ Create Table Ams_Item                        -- جدول المواد
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Item_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Item_UK         UNIQUE      (Code),
-  CONSTRAINT Ams_Item_Status_FK  Foreign Key (Status_Id)  References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Item_Ins_FK     Foreign Key (Ins_User)   References Cpy_User       (Id),
-  CONSTRAINT Ams_Item_Upd_FK     Foreign Key (Upd_User)   References Cpy_User       (Id)
+  CONSTRAINT Ams_Item_UK         UNIQUE      (Code)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Teacher                        -- جدول المدرسين
@@ -241,10 +200,7 @@ Create Table Ams_Teacher                        -- جدول المدرسين
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Teacher_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Teacher_UK         UNIQUE      (Name),
-  CONSTRAINT Ams_Teacher_Status_FK  Foreign Key (Status_Id)  References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Teacher_Ins_FK     Foreign Key (Ins_User)   References Cpy_User       (Id),
-  CONSTRAINT Ams_Teacher_Upd_FK     Foreign Key (Upd_User)   References Cpy_User       (Id)
+  CONSTRAINT Ams_Teacher_UK         UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_AYear                   -- جدول السنوات الاكادمية
@@ -255,10 +211,7 @@ Create Table Ams_AYear                   -- جدول السنوات الاكاد
   Ins_User  BIGINT,  Ins_Date    DATETIME,
   Upd_User  BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_AYear_PK              PRIMARY KEY (Id), 
-  CONSTRAINT Ams_AYear_UK              UNIQUE      (Name),
-  CONSTRAINT Ams_AYear_Status_FK       Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_AYear_Ins_FK          Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Ams_AYear_Upd_FK          Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Ams_AYear_UK              UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_ATerm                 -- جدول الفصول الاكادمية
@@ -274,11 +227,7 @@ Create Table Ams_ATerm                 -- جدول الفصول الاكادمي
   Ins_User        BIGINT,  Ins_Date    DATETIME,
   Upd_User        BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_ATerm_PK       PRIMARY KEY (Id), 
-  CONSTRAINT Ams_ATerm_UK       UNIQUE      (AYear_Id, Term_Id),
-  CONSTRAINT Ams_ATerm_AYear_FK Foreign Key (AYear_Id) References Ams_AYear (Id),
-  CONSTRAINT Ams_ATerm_Term_FK  Foreign Key (Term_Id ) References Ams_Term  (Id),
-  CONSTRAINT Ams_ATerm_Ins_FK   Foreign Key (Ins_User) References Cpy_User  (Id),
-  CONSTRAINT Ams_ATerm_Upd_FK   Foreign Key (Upd_User) References Cpy_User  (Id)
+  CONSTRAINT Ams_ATerm_UK       UNIQUE      (AYear_Id, Term_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Degree_Lmt                    -- جدول حدود الدرجات
@@ -289,10 +238,7 @@ Create Table Ams_Degree_Lmt                    -- جدول حدود الدرجا
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Degree_Lmt_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Degree_Lmt_UK         UNIQUE      (Name),
-  CONSTRAINT Ams_Degree_Lmt_Status_FK  Foreign Key (Status_Id)  References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Degree_Lmt_Ins_FK     Foreign Key (Ins_User)   References Cpy_User       (Id),
-  CONSTRAINT Ams_Degree_Lmt_Upd_FK     Foreign Key (Upd_User)   References Cpy_User       (Id)
+  CONSTRAINT Ams_Degree_Lmt_UK         UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Degree_Lmt_Trn                 -- جدول بنود حدود الدرجات
@@ -309,13 +255,7 @@ Create Table Ams_Degree_Lmt_Trn                 -- جدول بنود حدود ا
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Degree_Lmt_Trn_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Degree_Lmt_Trn_UK         UNIQUE      (Mst_Id, Code_Id),
-  CONSTRAINT Ams_Degree_Lmt_Trn_Mst_FK     Foreign Key (Mst_Id)    References Ams_Degree_Lmt   (Id),
-  CONSTRAINT Ams_Degree_Lmt_Trn_Code_FK    Foreign Key (Code_Id)   References Ams_SItem_Status (Id),
-  CONSTRAINT Ams_Degree_Lmt_Trn_IsPass_FK  Foreign Key (IsPass_Id) References Phs_Cod_YesNo    (Id),
-  CONSTRAINT Ams_Degree_Lmt_Trn_IsCalc_FK  Foreign Key (IsCalc_Id) References Phs_Cod_YesNo    (Id),
-  CONSTRAINT Ams_Degree_Lmt_Trn_Ins_FK     Foreign Key (Ins_User)  References Cpy_User         (Id),
-  CONSTRAINT Ams_Degree_Lmt_Trn_Upd_FK     Foreign Key (Upd_User)  References Cpy_User         (Id)
+  CONSTRAINT Ams_Degree_Lmt_Trn_UK         UNIQUE      (Mst_Id, Code_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Exam_Lmt                      -- جدول حدود سقوف الاختبار
@@ -326,10 +266,7 @@ Create Table Ams_Exam_Lmt                      -- جدول حدود سقوف ا�
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Exam_Lmt_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Exam_Lmt_UK         UNIQUE      (Name),
-  CONSTRAINT Ams_Exam_Lmt_Status_FK  Foreign Key (Status_Id)  References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Exam_Lmt_Ins_FK     Foreign Key (Ins_User)   References Cpy_User       (Id),
-  CONSTRAINT Ams_Exam_Lmt_Upd_FK     Foreign Key (Upd_User)   References Cpy_User       (Id)
+  CONSTRAINT Ams_Exam_Lmt_UK         UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Exam_Lmt_Trn                      -- جدول بنود حدود سقوف الاختبار
@@ -353,11 +290,7 @@ Create Table Ams_Exam_Lmt_Trn                      -- جدول بنود حدود
   Ins_User        BIGINT,  Ins_Date DATETIME,
   Upd_User        BIGINT,  Upd_Date DATETIME,
   CONSTRAINT Ams_Exam_Lmt_Trn_PK      PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Exam_Lmt_Trn_UK      UNIQUE      (Mst_Id, Type_Id),
-  CONSTRAINT Ams_Exam_Lmt_Trn_Mst_FK  Foreign Key (Mst_Id)    References Ams_Exam_Lmt  (Id),
-  CONSTRAINT Ams_Exam_Lmt_Trn_Type_FK Foreign Key (Type_Id)   References Ams_Item_Typ (Id),
-  CONSTRAINT Ams_Exam_Lmt_Trn_Ins_FK  Foreign Key (Ins_User)  References Cpy_User      (Id),
-  CONSTRAINT Ams_Exam_Lmt_Trn_Upd_FK  Foreign Key (Upd_User)  References Cpy_User      (Id)
+  CONSTRAINT Ams_Exam_Lmt_Trn_UK      UNIQUE      (Mst_Id, Type_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Exam_Lmt_Active                       -- جدول تفعيل سقف الاختبار   
@@ -365,16 +298,12 @@ Create Table Ams_Exam_Lmt_Active                       -- جدول تفعيل س
   ATerm_Id      BIGINT NOT NULL,                      -- الفصل الاكاديمي
   ExamLmt_Id    BIGINT NOT NULL,                      -- سقف الاختبار
   Num           VARCHAR(100),                      -- الرفم
-  dDate         DATETIME Default NOW(),                    -- التاريخ
+  dDate         DATETIME DEFAULT (NOW()),                    -- التاريخ
   Rem           VARCHAR(100),                      -- ملاحظات
   Ins_User      BIGINT,  Ins_Date    DATETIME,
   Upd_User      BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Exam_Lmt_Active_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Exam_Lmt_Active_UK         UNIQUE      (Num, ATerm_Id),
-  CONSTRAINT Ams_Exam_Lmt_Active_ATerm_FK   Foreign Key (ATerm_Id)    References Ams_ATerm    (Id),
-  CONSTRAINT Ams_Exam_Lmt_Active_ExamLmt_FK Foreign Key (ExamLmt_Id ) References Ams_Exam_Lmt (Id),
-  CONSTRAINT Ams_Exam_Lmt_Active_Ins_FK     Foreign Key (Ins_User)    References Cpy_User     (Id),
-  CONSTRAINT Ams_Exam_Lmt_Active_Upd_FK     Foreign Key (Upd_User)    References Cpy_User     (Id)
+  CONSTRAINT Ams_Exam_Lmt_Active_UK         UNIQUE      (Num, ATerm_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_GPA_Lmt                       -- جدول حدودالعبئ الدراسي
@@ -385,10 +314,7 @@ Create Table Ams_GPA_Lmt                       -- جدول حدودالعبئ ا
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_GPA_Lmt_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_GPA_Lmt_UK         UNIQUE      (Name),
-  CONSTRAINT Ams_GPA_Lmt_Status_FK  Foreign Key (Status_Id)  References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_GPA_Lmt_Ins_FK     Foreign Key (Ins_User)   References Cpy_User       (Id),
-  CONSTRAINT Ams_GPA_Lmt_Upd_FK     Foreign Key (Upd_User)   References Cpy_User       (Id)
+  CONSTRAINT Ams_GPA_Lmt_UK         UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_GPA_Lmt_Trn                  -- جدول بنود حدودالعبئ الدراسي
@@ -407,11 +333,7 @@ Create Table Ams_GPA_Lmt_Trn                  -- جدول بنود حدودال�
   Ins_User  BIGINT,  Ins_Date DATETIME,
   Upd_User  BIGINT,  Upd_Date DATETIME,
   CONSTRAINT Ams_GPA_Lmt_Trn_PK      PRIMARY KEY (Id), 
-  CONSTRAINT Ams_GPA_Lmt_Trn_UK      UNIQUE      (Mst_Id, Term_Id),
-  CONSTRAINT Ams_GPA_Lmt_Trn_Mst_FK  Foreign Key (Mst_Id)    References Ams_GPA_Lmt  (Id),
-  CONSTRAINT Ams_GPA_Lmt_Trn_Term_FK Foreign Key (Term_Id)   References Ams_Term     (Id),
-  CONSTRAINT Ams_GPA_Lmt_Trn_Ins_FK  Foreign Key (Ins_User)  References Cpy_User      (Id),
-  CONSTRAINT Ams_GPA_Lmt_Trn_Upd_FK  Foreign Key (Upd_User)  References Cpy_User      (Id)
+  CONSTRAINT Ams_GPA_Lmt_Trn_UK      UNIQUE      (Mst_Id, Term_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Grad_Level_Lmt          -- جدول حدو درجات التخرج
@@ -422,10 +344,7 @@ Create Table Ams_Grad_Level_Lmt          -- جدول حدو درجات التخ�
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Grad_Level_Lmt_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Grad_Level_Lmt_UK         UNIQUE      (Name),
-  CONSTRAINT Ams_Grad_Level_Lmt_Status_FK  Foreign Key (Status_Id)  References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Grad_Level_Lmt_Ins_FK     Foreign Key (Ins_User)   References Cpy_User       (Id),
-  CONSTRAINT Ams_Grad_Level_Lmt_Upd_FK     Foreign Key (Upd_User)   References Cpy_User       (Id)
+  CONSTRAINT Ams_Grad_Level_Lmt_UK         UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Grad_Level_Lmt_Trn     -- جدول بنود حدود درجات التخرج
@@ -438,10 +357,7 @@ Create Table Ams_Grad_Level_Lmt_Trn     -- جدول بنود حدود درجات
   Ins_User BIGINT,  Ins_Date DATETIME,
   Upd_User BIGINT,  Upd_Date DATETIME,
   CONSTRAINT Ams_Grad_Level_Lmt_Trn_PK      PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Grad_Level_Lmt_Trn_UK      UNIQUE      (Mst_Id,Name),
-  CONSTRAINT Ams_Grad_Level_Lmt_Trn_Mst_FK  Foreign Key (Mst_Id)   References Ams_Grad_Level_Lmt (Id),
-  CONSTRAINT Ams_Grad_Level_Lmt_Trn_Ins_FK  Foreign Key (Ins_User) References Cpy_User           (Id),
-  CONSTRAINT Ams_Grad_Level_Lmt_Trn_Upd_FK  Foreign Key (Upd_User) References Cpy_User           (Id)
+  CONSTRAINT Ams_Grad_Level_Lmt_Trn_UK      UNIQUE      (Mst_Id,Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Year_Lmt                  -- جدول حدود السنوات الدراسية
@@ -452,10 +368,7 @@ Create Table Ams_Year_Lmt                  -- جدول حدود السنوات �
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Year_Lmt_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Year_Lmt_UK         UNIQUE      (Name),
-  CONSTRAINT Ams_Year_Lmt_Status_FK  Foreign Key (Status_Id)  References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Year_Lmt_Ins_FK     Foreign Key (Ins_User)   References Cpy_User       (Id),
-  CONSTRAINT Ams_Year_Lmt_Upd_FK     Foreign Key (Upd_User)   References Cpy_User       (Id)
+  CONSTRAINT Ams_Year_Lmt_UK         UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Year_Lmt_Trn                 -- جدول بنود حدود السنوات الدراسية
@@ -468,11 +381,7 @@ Create Table Ams_Year_Lmt_Trn                 -- جدول بنود حدود ال
   Ins_User BIGINT,  Ins_Date DATETIME,
   Upd_User BIGINT,  Upd_Date DATETIME,
   CONSTRAINT Ams_Year_Lmt_Trn_PK      PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Year_Lmt_Trn_UK      UNIQUE      (Mst_Id,Year_Id),
-  CONSTRAINT Ams_Year_Lmt_Trn_Mst_FK  Foreign Key (Mst_Id)   References Ams_Year_Lmt (Id),
-  CONSTRAINT Ams_Year_Lmt_Trn_Year_FK Foreign Key (Year_Id)  References Ams_Year     (Id),
-  CONSTRAINT Ams_Year_Lmt_Trn_Ins_FK  Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Ams_Year_Lmt_Trn_Upd_FK  Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Ams_Year_Lmt_Trn_UK      UNIQUE      (Mst_Id,Year_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Price                      -- جدول قوائم الاسعار
@@ -483,10 +392,7 @@ Create Table Ams_Price                      -- جدول قوائم الاسعا�
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Price_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Price_UK         UNIQUE      (Name),
-  CONSTRAINT Ams_Price_Status_FK  Foreign Key (Status_Id)  References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Price_Ins_FK     Foreign Key (Ins_User)   References Cpy_User       (Id),
-  CONSTRAINT Ams_Price_Upd_FK     Foreign Key (Upd_User)   References Cpy_User       (Id)
+  CONSTRAINT Ams_Price_UK         UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Plan                              -- جدول الخطط الدراسية
@@ -507,18 +413,7 @@ Create Table Ams_Plan                              -- جدول الخطط الد
   Ins_User            BIGINT,  Ins_Date    DATETIME,
   Upd_User            BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Plan_PK               PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Plan_UK               UNIQUE      (AR_Name),
-  CONSTRAINT Ams_Plan_Branch_FK        Foreign Key (Branch_Id)          References Ams_Bran             (Id),
-  CONSTRAINT Ams_Plan_ExamLmt_FK       Foreign Key (ExamLmt_Id)         References Ams_Exam_Lmt         (Id),
-  CONSTRAINT Ams_Plan_Degreelmt_FK     Foreign Key (Degreelmt_Id)       References Ams_Degree_Lmt       (Id),
-  CONSTRAINT Ams_Plan_Gpalmt_FK        Foreign Key (Gpalmt_Id)          References Ams_GPA_Lmt          (Id),
-  CONSTRAINT Ams_Plan_Yearlmt_FK       Foreign Key (Yearlmt_Id)         References Ams_Year_Lmt         (Id),
-  CONSTRAINT Ams_Plan_Gradlevellmt_FK  Foreign Key (Gradlevellmt_Id)    References Ams_Grad_Level_Lmt   (Id),
-  CONSTRAINT Ams_Plan_Price_FK         Foreign Key (Price_Id)           References Ams_Price            (Id),
-  CONSTRAINT Ams_Plan_isNational_FK    Foreign Key (isNational_Exam_Id) References Ams_Cod_NExam_Status (Id),
-  CONSTRAINT Ams_Plan_Status_FK        Foreign Key (Status_Id)          References Phs_Cod_Status       (Id),
-  CONSTRAINT Ams_Plan_Ins_FK           Foreign Key (Ins_User)           References Cpy_User             (Id),
-  CONSTRAINT Ams_Plan_Upd_FK           Foreign Key (Upd_User)           References Cpy_User             (Id)
+  CONSTRAINT Ams_Plan_UK               UNIQUE      (AR_Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Plan_Edit                         -- جدول تعديل الخطط الدراسية
@@ -540,28 +435,11 @@ Create Table Ams_Plan_Edit                         -- جدول تعديل الخ
   New_isNational_Exam_Id  BIGINT Default 1,           -- هل يوجد امتحان وطني جديد
   Status_Id               BIGINT Default 1,           -- حالة 
   Num                     VARCHAR(128) NOT NULL,   -- رقم
-  dDate                   DATETIME Default NOW(),          -- التاريخ
+  dDate                   DATETIME DEFAULT (NOW()),          -- التاريخ
   Rem                     VARCHAR(100),            -- ملاحظات
   Ins_User                BIGINT,  Ins_Date    DATETIME,
   Upd_User                BIGINT,  Upd_Date    DATETIME,
-  CONSTRAINT Ams_Plan_Edit_PK                   PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Plan_Edit_Old_ExamLmt_FK       Foreign Key (Old_ExamLmt_Id)         References Ams_Exam_Lmt         (Id),
-  CONSTRAINT Ams_Plan_Edit_Old_Degreelmt_FK     Foreign Key (Old_Degreelmt_Id)       References Ams_Degree_Lmt       (Id),
-  CONSTRAINT Ams_Plan_Edit_Old_Gpalmt_FK        Foreign Key (Old_Gpalmt_Id)          References Ams_GPA_Lmt          (Id),
-  CONSTRAINT Ams_Plan_Edit_Old_Yearlmt_FK       Foreign Key (Old_Yearlmt_Id)         References Ams_Year_Lmt         (Id),
-  CONSTRAINT Ams_Plan_Edit_Old_Gradlevellmt_FK  Foreign Key (Old_Gradlevellmt_Id)    References Ams_Grad_Level_Lmt   (Id),
-  CONSTRAINT Ams_Plan_Edit_Old_Price_FK         Foreign Key (Old_Price_Id)           References Ams_Price            (Id),
-  CONSTRAINT Ams_Plan_Edit_Old_isNational_FK    Foreign Key (Old_isNational_Exam_Id) References Ams_Cod_NExam_Status (Id),
-  CONSTRAINT Ams_Plan_Edit_New_ExamLmt_FK       Foreign Key (New_ExamLmt_Id)         References Ams_Exam_Lmt         (Id),
-  CONSTRAINT Ams_Plan_Edit_New_Degreelmt_FK     Foreign Key (New_Degreelmt_Id)       References Ams_Degree_Lmt       (Id),
-  CONSTRAINT Ams_Plan_Edit_New_Gpalmt_FK        Foreign Key (New_Gpalmt_Id)          References Ams_GPA_Lmt          (Id),
-  CONSTRAINT Ams_Plan_Edit_New_Yearlmt_FK       Foreign Key (New_Yearlmt_Id)         References Ams_Year_Lmt         (Id),
-  CONSTRAINT Ams_Plan_Edit_New_Gradlevellmt_FK  Foreign Key (New_Gradlevellmt_Id)    References Ams_Grad_Level_Lmt   (Id),
-  CONSTRAINT Ams_Plan_Edit_New_Price_FK         Foreign Key (New_Price_Id)           References Ams_Price            (Id),
-  CONSTRAINT Ams_Plan_Edit_New_isNational_FK    Foreign Key (New_isNational_Exam_Id) References Ams_Cod_NExam_Status (Id),
-  CONSTRAINT Ams_Plan_Edit_Status_FK            Foreign Key (Status_Id)              References Phs_Cod_Status       (Id),
-  CONSTRAINT Ams_Plan_Edit_Ins_FK               Foreign Key (Ins_User)               References Cpy_User             (Id),
-  CONSTRAINT Ams_Plan_Edit_Upd_FK               Foreign Key (Upd_User)               References Cpy_User             (Id)
+  CONSTRAINT Ams_Plan_Edit_PK                   PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_PItem                   -- جدول مواد الخطة الدراسية
@@ -584,20 +462,7 @@ Create Table Ams_PItem                   -- جدول مواد الخطة الد�
   Ins_User      BIGINT,  Ins_Date    DATETIME,
   Upd_User      BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_PItem_PK             PRIMARY KEY (Id), 
-  CONSTRAINT Ams_PItem_UK             UNIQUE      (Plan_Id,Colleg_Id,Section_Id,Speciality_Id,Year_Id,Term_Id,Item_Id),
-  CONSTRAINT Ams_PItem_Plan_FK        Foreign Key (Plan_Id )      References Ams_Plan           (Id),
-  CONSTRAINT Ams_PItem_Colleg_FK      Foreign Key (Colleg_Id)     References Ams_Colge        (Id),
-  CONSTRAINT Ams_PItem_Section_FK     Foreign Key (Section_Id)    References Ams_Sec            (Id),
-  CONSTRAINT Ams_PItem_Speciality_FK  Foreign Key (Speciality_Id) References Ams_Spec           (Id),
-  CONSTRAINT Ams_PItem_Item_Type_FK   Foreign Key (Item_Type_Id)  References Ams_Item_Typ       (Id),
-  CONSTRAINT Ams_PItem_Year_FK        Foreign Key (Year_Id)       References Ams_Year           (Id),
-  CONSTRAINT Ams_PItem_Term_FK        Foreign Key (Term_Id)       References Ams_Term           (Id),
-  CONSTRAINT Ams_PItem_Item_FK        Foreign Key (Item_Id)       References Ams_Item           (Id), 
-  CONSTRAINT Ams_PItem_Force_FK       Foreign Key (Force_Id)      References Ams_Cod_Item_Force (Id),
-  CONSTRAINT Ams_PItem_Kind_FK        Foreign Key (Kind_Id)       References Ams_Cod_Item_Kind  (Id),
-  CONSTRAINT Ams_PItem_Status_FK      Foreign Key (Status_Id)     References Phs_Cod_Status     (Id),
-  CONSTRAINT Ams_PItem_Ins_FK         Foreign Key (Ins_User)      References Cpy_User           (Id),
-  CONSTRAINT Ams_PItem_Upd_FK         Foreign Key (Upd_User)      References Cpy_User           (Id)
+  CONSTRAINT Ams_PItem_UK             UNIQUE      (Plan_Id,Colleg_Id,Section_Id,Speciality_Id,Year_Id,Term_Id,Item_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_PItem_Ord             -- جدول المتطلب السابق لمواد الخطة الدراسية
@@ -608,11 +473,7 @@ Create Table Ams_PItem_Ord             -- جدول المتطلب السابق �
   Ins_User        BIGINT,  Ins_Date    DATETIME,
   Upd_User        BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_PItem_Ord_PK        PRIMARY KEY (Id), 
-  CONSTRAINT Ams_PItem_Ord_UK        UNIQUE      (PItem_Id, OPItem_Id),
-  CONSTRAINT Ams_PItem_Ord_PItem_FK  Foreign Key (PItem_Id)  References Ams_PItem (Id),
-  CONSTRAINT Ams_PItem_Ord_OPItem_FK Foreign Key (OPItem_Id) References Ams_PItem (Id),
-  CONSTRAINT Ams_PItem_Ord_Ins_FK    Foreign Key (Ins_User)  References Cpy_User      (Id),
-  CONSTRAINT Ams_PItem_Ord_Upd_FK    Foreign Key (Upd_User)  References Cpy_User      (Id)
+  CONSTRAINT Ams_PItem_Ord_UK        UNIQUE      (PItem_Id, OPItem_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE Ams_Stud (                           -- جدول الطلاب
@@ -646,7 +507,7 @@ CREATE TABLE Ams_Stud (                           -- جدول الطلاب
   En_Father         VARCHAR(100) DEFAULT NULL, -- Father Name English
   En_Mother         VARCHAR(100) DEFAULT NULL, -- Mother Name English
   EN_Lname          VARCHAR(100) DEFAULT NULL, -- Last Name English'
-  DOB               DATETIME Default NOW(),            -- 'Date Of Birth',
+  DOB               DATETIME DEFAULT (NOW()),            -- 'Date Of Birth',
   AR_POB            VARCHAR(100) DEFAULT NULL, -- Birth Place
   EN_POB            VARCHAR(100) DEFAULT NULL, -- Birth Place English
   Address1          VARCHAR(100) DEFAULT NULL, -- Address1
@@ -659,7 +520,7 @@ CREATE TABLE Ams_Stud (                           -- جدول الطلاب
   NKaied            VARCHAR(100) DEFAULT NULL, -- Kaied Number
   Military          VARCHAR(100) DEFAULT NULL, -- Military
   Military_Num      BIGINT DEFAULT NULL,
-  RDate             DATETIME Default NOW(),            -- Registration Date
+  RDate             DATETIME DEFAULT (NOW()),            -- Registration Date
   Cert_Avg          DECIMAL(5,2) DEFAULT NULL,        -- Certification Avg
   Cert_Avg_Clear    DECIMAL(5,2) DEFAULT NULL,
   Cert_City         VARCHAR(100) DEFAULT NULL, -- FK Certification  City 
@@ -672,34 +533,14 @@ CREATE TABLE Ams_Stud (                           -- جدول الطلاب
   sImage            VARCHAR(512) DEFAULT NULL, -- Image
   NatExam_Mark      DECIMAL(5,2) DEFAULT NULL,        -- National Exam Mark
   Grad_Ord_Num      VARCHAR(100) DEFAULT NULL, -- Grad Order Number
-  Grad_Ord_Date     DATETIME Default NOW(),            -- Grad Order Date
+  Grad_Ord_Date     DATETIME DEFAULT (NOW()),            -- Grad Order Date
   Grad_Gpa          DECIMAL(5,2) DEFAULT NULL,        -- Grad GPA
   Grad_Avg          DECIMAL(5,2) DEFAULT NULL,        -- Grad Avg
   Rem               VARCHAR(100),              -- ملاحظات
   Ins_User          BIGINT,  Ins_Date    DATETIME,
   Upd_User          BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Stud_PK                 PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Stud_UK                 UNIQUE      (ANum),
-  CONSTRAINT Ams_Stud_Nat_FK             Foreign Key (Nat_Id)            References Ams_Cod_Nat            (Id),
-  CONSTRAINT Ams_Stud_Country_FK         Foreign Key (Country_Id)        References Ams_Cod_City           (Id),
-  CONSTRAINT Ams_Stud_City_FK            Foreign Key (City_Id)           References Ams_Cod_Country        (Id),
-  CONSTRAINT Ams_Stud_Martial_FK         Foreign Key (Martial_Id)        References Phs_Cod_Marital        (Id),
-  CONSTRAINT Ams_Stud_Gender_FK          Foreign Key (Gender_Id)         References Phs_Cod_Gender         (Id),
-  CONSTRAINT Ams_Stud_AYear_FK           Foreign Key (AYear_Id)          References Ams_AYear              (Id),
-  CONSTRAINT Ams_Stud_Term_FK            Foreign Key (Term_Id)           References Ams_Term               (Id),
-  CONSTRAINT Ams_Stud_Year_FK            Foreign Key (Year_Id)           References Ams_Year               (Id),
-  CONSTRAINT Ams_Stud_Plan_FK            Foreign Key (Plan_Id)           References Ams_Plan               (Id),
-  CONSTRAINT Ams_Stud_AStatus_FK         Foreign Key (AStatus_Id)        References Ams_Cod_AStatus        (Id),
-  CONSTRAINT Ams_Stud_Teacher_FK         Foreign Key (Teacher_Id)        References Ams_Teacher            (Id),
-  CONSTRAINT Ams_Stud_Status_FK          Foreign Key (Status_Id)         References Phs_Cod_Status         (Id),
-  CONSTRAINT Ams_Stud_Cert_FK            Foreign Key (Certif_Id)         References Ams_Cert               (Id), 
-  CONSTRAINT Ams_Stud_Adjec_FK           Foreign Key (Adjec_Id)          References Ams_Cert               (Id),          
-  CONSTRAINT Ams_Stud_Classf_FK          Foreign Key (Classf_Id)         References Ams_Cert               (Id),         
-  CONSTRAINT Ams_Stud_NatExam_Status_FK  Foreign Key (NatExam_Status_Id) References Ams_Cod_NExam_Status   (Id), 
-  CONSTRAINT Ams_Stud_Grad_Level_FK      Foreign Key (Trn_Grad_Level_Id) References Ams_Grad_Level_Lmt_Trn (Id),     
-  CONSTRAINT Ams_Stud_Grad_ATerm_FK      Foreign Key (Grad_ATerm_Id)     References Ams_ATerm              (Id),
-  CONSTRAINT Ams_Stud_Ins_FK             Foreign Key (Ins_User)          References Cpy_User               (Id),
-  CONSTRAINT Ams_Stud_Upd_FK             Foreign Key (Upd_User)          References Cpy_User               (Id)     
+  CONSTRAINT Ams_Stud_UK                 UNIQUE      (ANum)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Stud_Plan                        -- جدول مواد الخطة الدراسية
@@ -720,21 +561,7 @@ Create Table Ams_Stud_Plan                        -- جدول مواد الخط�
   Ins_User           BIGINT,  Ins_Date    DATETIME,
   Upd_User           BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Stud_Plan_PK              PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Stud_Plan_UK              UNIQUE      (Plan_Id,Stud_Id,Speciality_Id),
-  CONSTRAINT Ams_Stud_Plan_Plan_FK         Foreign Key (Plan_Id )           References Ams_Plan             (Id),
-  CONSTRAINT Ams_Stud_Plan_Stud_FK         Foreign Key (Stud_Id)            References Ams_Stud             (Id), 
-  CONSTRAINT Ams_Stud_Plan_Colleg_FK       Foreign Key (Colleg_Id)          References Ams_Colge          (Id),
-  CONSTRAINT Ams_Stud_Plan_Section_FK      Foreign Key (Section_Id)         References Ams_Sec              (Id),
-  CONSTRAINT Ams_Stud_Plan_Speciality_FK   Foreign Key (Speciality_Id)      References Ams_Spec             (Id),
-  CONSTRAINT Ams_Stud_Plan_ExamLmt_FK      Foreign Key (ExamLmt_Id)         References Ams_Exam_Lmt         (Id),
-  CONSTRAINT Ams_Stud_Plan_Degreelmt_FK    Foreign Key (Degreelmt_Id)       References Ams_Degree_Lmt       (Id),
-  CONSTRAINT Ams_Stud_Plan_Gpalmt_FK       Foreign Key (Gpalmt_Id)          References Ams_GPA_Lmt          (Id),
-  CONSTRAINT Ams_Stud_Plan_Yearlmt_FK      Foreign Key (Yearlmt_Id)         References Ams_Year_Lmt         (Id),
-  CONSTRAINT Ams_Stud_Plan_Gradlevellmt_FK Foreign Key (Gradlevellmt_Id)    References Ams_Grad_Level_Lmt   (Id),
-  CONSTRAINT Ams_Stud_Plan_Price_FK        Foreign Key (Price_Id)           References Ams_Price            (Id),
-  CONSTRAINT Ams_Stud_Plan_isNational_FK   Foreign Key (isNational_Exam_Id) References Ams_Cod_NExam_Status (Id),
-  CONSTRAINT Ams_Stud_Plan_Ins_FK          Foreign Key (Ins_User)           References Cpy_User             (Id),
-  CONSTRAINT Ams_Stud_Plan_Upd_FK          Foreign Key (Upd_User)           References Cpy_User             (Id)
+  CONSTRAINT Ams_Stud_Plan_UK              UNIQUE      (Plan_Id,Stud_Id,Speciality_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Room                           -- جدول القعات
@@ -748,10 +575,7 @@ Create Table Ams_Room                           -- جدول القعات
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Room_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Room_UK         UNIQUE      (Num),
-  CONSTRAINT Ams_Room_Status_FK  Foreign Key (Status_Id)  References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Room_Ins_FK     Foreign Key (Ins_User)   References Cpy_User       (Id),
-  CONSTRAINT Ams_Room_Upd_FK     Foreign Key (Upd_User)   References Cpy_User       (Id)
+  CONSTRAINT Ams_Room_UK         UNIQUE      (Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_AClass                  -- جدول الشعب الدراسية
@@ -766,13 +590,7 @@ Create Table Ams_AClass                  -- جدول الشعب الدراسية
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_AClass_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_AClass_UK         UNIQUE      (Name, aTerm_Id, Item_Id),
-  CONSTRAINT Ams_AClass_aTerm_FK   Foreign Key (aTerm_Id)   References Ams_ATerm      (Id),
-  CONSTRAINT Ams_AClass_Teacher_FK Foreign Key (Teacher_Id) References Ams_Teacher    (Id),
-  CONSTRAINT Ams_AClass_Item_FK    Foreign Key (Item_Id)    References Ams_Item       (Id),
-  CONSTRAINT Ams_AClass_Status_FK  Foreign Key (Status_Id)  References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_AClass_Ins_FK     Foreign Key (Ins_User)   References Cpy_User       (Id),
-  CONSTRAINT Ams_AClass_Upd_FK     Foreign Key (Upd_User)   References Cpy_User       (Id)
+  CONSTRAINT Ams_AClass_UK         UNIQUE      (Name, aTerm_Id, Item_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_AClass_Day           -- جدول أيام الشعب الدراسية
@@ -788,26 +606,18 @@ Create Table Ams_AClass_Day           -- جدول أيام الشعب الدرا
   Ins_User BIGINT,  Ins_Date    DATETIME,
   Upd_User BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_AClass_Day_PK       PRIMARY KEY (Id), 
-  CONSTRAINT Ams_AClass_Day_UK       UNIQUE      (Mst_Id, Day_Id),
-  CONSTRAINT Ams_AClass_Day_Class_FK Foreign Key (Mst_Id)   References Ams_AClass   (Id),
-  CONSTRAINT Ams_AClass_Day_Day_FK   Foreign Key (Day_Id)   References Phs_Cod_WDay (Id),
-  CONSTRAINT Ams_AClass_Day_Room_FK  Foreign Key (Room_Id)  References Ams_Room     (Id),
-  CONSTRAINT Ams_AClass_Day_Ins_FK   Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Ams_AClass_Day_Upd_FK   Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Ams_AClass_Day_UK       UNIQUE      (Mst_Id, Day_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_AClass_Attend        -- جدول حضور الشعب الدراسية
 ( Id         BIGINT NOT NULL AUTO_INCREMENT,               -- مفتاح رئيسي
   aClass_Id  BIGINT NOT NULL,               -- الشعبة الدراسية
-  dDate      DATETIME Default NOW(),              -- التاريخ
+  dDate      DATETIME DEFAULT (NOW()),              -- التاريخ
   Rem        VARCHAR(100),                -- ملاحظات
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_AClass_Attend_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_AClass_Attend_UK         UNIQUE      (dDate, aClass_Id),
-  CONSTRAINT Ams_AClass_Attend_AClass_FK  Foreign Key (aClass_Id)  References Ams_AClass (Id),
-  CONSTRAINT Ams_AClass_Attend_Ins_FK     Foreign Key (Ins_User)   References Cpy_User   (Id),
-  CONSTRAINT Ams_AClass_Attend_Upd_FK     Foreign Key (Upd_User)   References Cpy_User   (Id)
+  CONSTRAINT Ams_AClass_Attend_UK         UNIQUE      (dDate, aClass_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_AClass_Attend_Trn         -- جدول بنود حضور الشعب الدراسية
@@ -820,27 +630,19 @@ Create Table Ams_AClass_Attend_Trn         -- جدول بنود حضور الش�
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_AClass_Attend_Trn_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_AClass_Attend_Trn_UK         UNIQUE      (Mst_Id, Stud_Id),
-  CONSTRAINT Ams_AClass_Attend_Trn_Mst_FK     Foreign Key (Mst_Id)    References Ams_AClass_Attend  (Id),
-  CONSTRAINT Ams_AClass_Attend_Trn_Teacher_FK Foreign Key (Stud_Id)   References Ams_Stud           (Id),
-  CONSTRAINT Ams_AClass_Attend_Trn_Status_FK  Foreign Key (Status_Id) References Phs_Cod_YesNo      (Id),
-  CONSTRAINT Ams_AClass_Attend_Trn_Ins_FK     Foreign Key (Ins_User)  References Cpy_User           (Id),
-  CONSTRAINT Ams_AClass_Attend_Trn_Upd_FK     Foreign Key (Upd_User)  References Cpy_User           (Id)
+  CONSTRAINT Ams_AClass_Attend_Trn_UK         UNIQUE      (Mst_Id, Stud_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_AClass_Dep     -- جدول حرمان الشعب الدراسية
 ( Id         BIGINT NOT NULL AUTO_INCREMENT,               -- مفتاح رئيسي
   aClass_Id  BIGINT NOT NULL,               -- الشعبة الدراسية
   Num        VARCHAR(100),                -- الرفم
-  dDate      DATETIME Default NOW(),              -- التاريخ
+  dDate      DATETIME DEFAULT (NOW()),              -- التاريخ
   Rem        VARCHAR(100),                -- ملاحظات
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_AClass_Dep_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_AClass_Dep_UK         UNIQUE      (Num, aClass_Id),
-  CONSTRAINT Ams_AClass_Dep_AClass_FK  Foreign Key (aClass_Id)  References Ams_AClass     (Id),
-  CONSTRAINT Ams_AClass_Dep_Ins_FK     Foreign Key (Ins_User)   References Cpy_User       (Id),
-  CONSTRAINT Ams_AClass_Dep_Upd_FK     Foreign Key (Upd_User)   References Cpy_User       (Id)
+  CONSTRAINT Ams_AClass_Dep_UK         UNIQUE      (Num, aClass_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_AClass_Dep_Trn      -- جدول بنود حرمان الشعب الدراسية
@@ -852,26 +654,19 @@ Create Table Ams_AClass_Dep_Trn      -- جدول بنود حرمان الشعب 
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_AClass_Dep_Trn_PK      PRIMARY KEY (Id), 
-  CONSTRAINT Ams_AClass_Dep_Trn_UK      UNIQUE      (Mst_Id, Stud_Id),
-  CONSTRAINT Ams_AClass_Dep_Trn_Mst_FK  Foreign Key (Mst_Id)   References Ams_AClass_Attend  (Id),
-  CONSTRAINT Ams_AClass_Dep_Trn_Stud_FK Foreign Key (Stud_Id)  References Ams_Stud           (Id),
-  CONSTRAINT Ams_AClass_Dep_Trn_Ins_FK  Foreign Key (Ins_User) References Cpy_User           (Id),
-  CONSTRAINT Ams_AClass_Dep_Trn_Upd_FK  Foreign Key (Upd_User) References Cpy_User           (Id)
+  CONSTRAINT Ams_AClass_Dep_Trn_UK      UNIQUE      (Mst_Id, Stud_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_AClass_Nomination      -- جدول الترشيح للامتحان
 ( Id         BIGINT NOT NULL AUTO_INCREMENT,               -- مفتاح رئيسي
   aClass_Id  BIGINT NOT NULL,               -- الشعبة الدراسية
-  dDate      DATETIME Default NOW(),              -- التاريخ
+  dDate      DATETIME DEFAULT (NOW()),              -- التاريخ
   Mark4_Min  DECIMAL(6,2) DEFAULT 0.00 NOT NULL, -- Mark 4 Minimum Required Percentage
   Rem        VARCHAR(100),                -- ملاحظات
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_AClass_Nomination_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_AClass_Nomination_UK         UNIQUE      (aClass_Id),
-  CONSTRAINT Ams_AClass_Nomination_AClass_FK  Foreign Key (aClass_Id)  References Ams_AClass (Id),
-  CONSTRAINT Ams_AClass_Nomination_Ins_FK     Foreign Key (Ins_User)   References Cpy_User   (Id),
-  CONSTRAINT Ams_AClass_Nomination_Upd_FK     Foreign Key (Upd_User)   References Cpy_User   (Id)
+  CONSTRAINT Ams_AClass_Nomination_UK         UNIQUE      (aClass_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_AClass_Nomination_Trn    -- جدول بنود لترشيح للامتحان
@@ -888,12 +683,7 @@ Create Table Ams_AClass_Nomination_Trn    -- جدول بنود لترشيح لل
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_AClass_Nomination_Trn_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_AClass_Nomination_Trn_UK         UNIQUE      (Mst_Id, Stud_Id),
-  CONSTRAINT Ams_AClass_Nomination_Trn_Mst_FK     Foreign Key (Mst_Id)    References Ams_AClass_Attend  (Id),
-  CONSTRAINT Ams_AClass_Nomination_Trn_Teacher_FK Foreign Key (Stud_Id)   References Ams_Stud           (Id),
-  CONSTRAINT Ams_AClass_Nomination_Trn_Status_FK  Foreign Key (Status_Id) References Phs_Cod_YesNo      (Id),
-  CONSTRAINT Ams_AClass_Nomination_Trn_Ins_FK     Foreign Key (Ins_User)  References Cpy_User           (Id),
-  CONSTRAINT Ams_AClass_Nomination_Trn_Upd_FK     Foreign Key (Upd_User)  References Cpy_User           (Id)
+  CONSTRAINT Ams_AClass_Nomination_Trn_UK         UNIQUE      (Mst_Id, Stud_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Stud_Trans_Item          -- جدول المواد المعادلة
@@ -902,17 +692,12 @@ Create Table Ams_Stud_Trans_Item          -- جدول المواد المعاد�
   Stud_Id   BIGINT NOT NULL,                 -- الطالب 
   PItem_Id  BIGINT NOT NULL,                 -- مادة خطة
   Num       VARCHAR(100),                  -- الرفم
-  dDate     DATETIME Default NOW(),                -- التاريخ
+  dDate     DATETIME DEFAULT (NOW()),                -- التاريخ
   Rem       VARCHAR(100),                  -- ملاحظات
   Ins_User  BIGINT,  Ins_Date    DATETIME,
   Upd_User  BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Stud_Trans_Item_PK           PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Stud_Trans_Item_UK           UNIQUE      (Stud_Id, PItem_Id),
-  CONSTRAINT Ams_Stud_Trans_Item_Term_FK      Foreign Key (ATerm_Id) References Ams_ATerm   (Id),
-  CONSTRAINT Ams_Stud_Trans_Item_Stud_FK      Foreign Key (Stud_Id)  References Ams_Stud    (Id),
-  CONSTRAINT Ams_Stud_Trans_Item_Plan_Item_FK Foreign Key (PItem_Id) References Ams_PItem   (Id),
-  CONSTRAINT Ams_Stud_Trans_Item_Ins_FK       Foreign Key (Ins_User) References Cpy_User    (Id),
-  CONSTRAINT Ams_Stud_Trans_Item_Upd_FK       Foreign Key (Upd_User) References Cpy_User    (Id)
+  CONSTRAINT Ams_Stud_Trans_Item_UK           UNIQUE      (Stud_Id, PItem_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Stud_Withdraw            -- جدول المواد المعادلة
@@ -921,32 +706,24 @@ Create Table Ams_Stud_Withdraw            -- جدول المواد المعاد�
   Stud_Id   BIGINT NOT NULL,                  -- الطالب 
   AClass_Id BIGINT NOT NULL,                  -- الصف الدراسي
   Num       VARCHAR(100),                   -- الرفم
-  dDate     DATETIME Default NOW(),                 -- التاريخ
+  dDate     DATETIME DEFAULT (NOW()),                 -- التاريخ
   Rem       VARCHAR(100),                   -- ملاحظات
   Ins_User  BIGINT,  Ins_Date    DATETIME,
   Upd_User  BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Stud_Withdraw_PK        PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Stud_Withdraw_UK        UNIQUE      (Stud_Id, AClass_Id),
-  CONSTRAINT Ams_Stud_Withdraw_Term_FK   Foreign Key (ATerm_Id)  References Ams_ATerm      (Id),
-  CONSTRAINT Ams_Stud_Withdraw_Stud_FK   Foreign Key (Stud_Id)   References Ams_Stud       (Id),
-  CONSTRAINT Ams_Stud_Withdraw_AClass_FK Foreign Key (AClass_Id) References Ams_AClass_Day (Id),
-  CONSTRAINT Ams_Stud_Withdraw_Ins_FK    Foreign Key (Ins_User)  References Cpy_User       (Id),
-  CONSTRAINT Ams_Stud_Withdraw_Upd_FK    Foreign Key (Upd_User)  References Cpy_User       (Id)
+  CONSTRAINT Ams_Stud_Withdraw_UK        UNIQUE      (Stud_Id, AClass_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Grad_Ord                 -- جدول قرارات التخرج
 ( Id            BIGINT NOT NULL AUTO_INCREMENT,              -- مفتاح رئيسي
   ATerm_Id      BIGINT NOT NULL,               -- الفصل الاكاديمي
   Num           VARCHAR(100),               -- الرفم
-  dDate         DATETIME Default NOW(),             -- التاريخ
+  dDate         DATETIME DEFAULT (NOW()),             -- التاريخ
   Rem           VARCHAR(100),               -- ملاحظات
   Ins_User      BIGINT,  Ins_Date    DATETIME,
   Upd_User      BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Grad_Ord_PK           PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Grad_Ord_UK           UNIQUE      (Num, ATerm_Id),
-  CONSTRAINT Ams_Grad_Ord_ATerm_FK     Foreign Key (ATerm_Id)     References Ams_ATerm   (Id),
-  CONSTRAINT Ams_Grad_Ord_Ins_FK       Foreign Key (Ins_User)     References Cpy_User    (Id),
-  CONSTRAINT Ams_Grad_Ord_Upd_FK       Foreign Key (Upd_User)     References Cpy_User    (Id)
+  CONSTRAINT Ams_Grad_Ord_UK           UNIQUE      (Num, ATerm_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Grad_Ord_Trn             -- جدول بنود قرارات التخرج
@@ -960,12 +737,7 @@ Create Table Ams_Grad_Ord_Trn             -- جدول بنود قرارات ال
   Ins_User       BIGINT,  Ins_Date DATETIME,
   Upd_User       BIGINT,  Upd_Date DATETIME,
   CONSTRAINT Ams_Grad_Ord_Trn_PK       PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Grad_Ord_Trn_UK       UNIQUE      (Stud_Id),
-  CONSTRAINT Ams_Grad_Ord_Trn_Mst_FK   Foreign Key (Mst_Id)       References Ams_Grad_Ord           (Id),
-  CONSTRAINT Ams_Grad_Ord_Trn_Stud_FK  Foreign Key (Stud_Id)      References Ams_Stud               (Id),
-  CONSTRAINT Ams_Grad_Ord_Trn_Level_FK Foreign Key (Trn_Level_Id) References Ams_Grad_Level_Lmt_Trn (Id),
-  CONSTRAINT Ams_Grad_Ord_Trn_Ins_FK   Foreign Key (Ins_User)     References Cpy_User               (Id),
-  CONSTRAINT Ams_Grad_Ord_Trn_Upd_FK   Foreign Key (Upd_User)     References Cpy_User               (Id)
+  CONSTRAINT Ams_Grad_Ord_Trn_UK       UNIQUE      (Stud_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Ord                            -- جدول القرارات الإدارية
@@ -973,16 +745,12 @@ Create Table Ams_Ord                            -- جدول القرارات ا�
   ATerm_Id      BIGINT NOT NULL,               -- الفصل الاكاديمي
   Type_Id       BIGINT NOT NULL,               -- نوع القرار
   Num           VARCHAR(100),               -- الرفم
-  dDate         DATETIME Default NOW(),             -- التاريخ
+  dDate         DATETIME DEFAULT (NOW()),             -- التاريخ
   Rem           VARCHAR(100),               -- ملاحظات
   Ins_User      BIGINT,  Ins_Date    DATETIME,
   Upd_User      BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Ord_PK       PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Ord_UK       UNIQUE      (Num, ATerm_Id),
-  CONSTRAINT Ams_Ord_ATerm_FK Foreign Key (ATerm_Id) References Ams_ATerm          (Id),
-  CONSTRAINT Ams_Ord_Type_FK  Foreign Key (Type_Id ) References Ams_Cod_Order_Type (Id),
-  CONSTRAINT Ams_Ord_Ins_FK   Foreign Key (Ins_User) References Cpy_User           (Id),
-  CONSTRAINT Ams_Ord_Upd_FK   Foreign Key (Upd_User) References Cpy_User           (Id)
+  CONSTRAINT Ams_Ord_UK       UNIQUE      (Num, ATerm_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Ord_Trn                  -- جدول بنود القرارات الإدارية
@@ -994,11 +762,7 @@ Create Table Ams_Ord_Trn                  -- جدول بنود القرارات 
   Ins_User   BIGINT,  Ins_Date DATETIME,
   Upd_User   BIGINT,  Upd_Date DATETIME,
   CONSTRAINT Ams_Ord_Trn_PK      PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Ord_Trn_UK      UNIQUE      (Stud_Id),
-  CONSTRAINT Ams_Ord_Trn_Mst_FK  Foreign Key (Mst_Id)   References Ams_Ord  (Id),
-  CONSTRAINT Ams_Ord_Trn_Stud_FK Foreign Key (Stud_Id)  References Ams_Stud (Id),
-  CONSTRAINT Ams_Ord_Trn_Ins_FK  Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT Ams_Ord_Trn_Upd_FK  Foreign Key (Upd_User) References Cpy_User (Id)
+  CONSTRAINT Ams_Ord_Trn_UK      UNIQUE      (Stud_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Stud_Reg               -- جدول تسجيل الطلاب
@@ -1010,18 +774,13 @@ Create Table Ams_Stud_Reg               -- جدول تسجيل الطلاب
   Status_Id  BIGINT DEFAULT 1 NOT NULL,         -- Status, 1 New, 2 Finished, 3 Conditional
   Term_Gpa   DECIMAL(5,2) DEFAULT 0.00 NOT NULL,     -- المعدل الفصلي
   Total_Gpa  DECIMAL(5,2) DEFAULT 0.00 NOT NULL,     -- المعدل التراكمي
-  dDate      DATETIME Default NOW(),                  -- التاريخ
+  dDate      DATETIME DEFAULT (NOW()),                  -- التاريخ
   SRem       VARCHAR(100),                    -- ملاحظات الطالب
   Rem        VARCHAR(100),                    -- ملاحظات
   Ins_User   BIGINT,  Ins_Date DATETIME,
   Upd_User   BIGINT,  Upd_Date DATETIME,
   CONSTRAINT Ams_Stud_Reg_PK       PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Stud_Reg_UK       UNIQUE      (ATerm_Id,Stud_Id),
-  CONSTRAINT Ams_Stud_Reg_ATerm_FK Foreign Key (ATerm_Id) References Ams_ATerm (Id),
-  CONSTRAINT Ams_Stud_Reg_Stud_FK  Foreign Key (Stud_Id)  References Ams_Stud  (Id),
-  CONSTRAINT Ams_Stud_Reg_Price_FK Foreign Key (Price_Id) References Ams_Price (Id),
-  CONSTRAINT Ams_Stud_Reg_Ins_FK   Foreign Key (Ins_User) References Cpy_User  (Id),
-  CONSTRAINT Ams_Stud_Reg_Upd_FK   Foreign Key (Upd_User) References Cpy_User  (Id)
+  CONSTRAINT Ams_Stud_Reg_UK       UNIQUE      (ATerm_Id,Stud_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Stud_Reg_Item          -- جدول تسجيل الطلاب
@@ -1039,13 +798,7 @@ Create Table Ams_Stud_Reg_Item          -- جدول تسجيل الطلاب
   Ins_User      BIGINT,  Ins_Date DATETIME,
   Upd_User      BIGINT,  Upd_Date DATETIME,
   CONSTRAINT Ams_Stud_Reg_Item_PK           PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Stud_Reg_Item_UK           UNIQUE      (Mst_Id,PItem_Id),
-  CONSTRAINT Ams_Stud_Reg_Item_Reg_FK       Foreign Key (Mst_Id)       References Ams_Stud_Reg       (Id),
-  CONSTRAINT Ams_Stud_Reg_Item_Plan_Item_FK Foreign Key (PItem_Id)     References Ams_PItem          (Id),
-  CONSTRAINT Ams_Stud_Reg_Item_AClass_FK    Foreign Key (AClass_Id)    References Ams_AClass         (Id),
-  CONSTRAINT Ams_Stud_Reg_Item_TrnDegree_FK Foreign Key (TrnDegree_Id) References Ams_Degree_Lmt_Trn (Id),
-  CONSTRAINT Ams_Stud_Reg_Item_Ins_FK       Foreign Key (Ins_User)     References Cpy_User           (Id),
-  CONSTRAINT Ams_Stud_Reg_Item_Upd_FK       Foreign Key (Upd_User)     References Cpy_User           (Id)
+  CONSTRAINT Ams_Stud_Reg_Item_UK           UNIQUE      (Mst_Id,PItem_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Lib_Author                           -- جدول المؤلفون
@@ -1056,10 +809,7 @@ Create Table Ams_Lib_Author                           -- جدول المؤلفو
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Lib_Author_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Ams_Lib_Author_UK        UNIQUE      (Name),
-  CONSTRAINT Ams_Lib_Author_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Lib_Author_Ins_FK    Foreign Key (Ins_User)  References Cpy_User       (Id),
-  CONSTRAINT Ams_Lib_Author_Upd_FK    Foreign Key (Upd_User)  References Cpy_User       (Id)
+  CONSTRAINT Ams_Lib_Author_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Lib_Category                        -- جدول الفئات
@@ -1070,10 +820,7 @@ Create Table Ams_Lib_Category                        -- جدول الفئات
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Lib_Category_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Ams_Lib_Category_UK        UNIQUE      (Name),
-  CONSTRAINT Ams_Lib_Category_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Ams_Lib_Category_Ins_FK    Foreign Key (Ins_User)  References Cpy_User       (Id),
-  CONSTRAINT Ams_Lib_Category_Upd_FK    Foreign Key (Upd_User)  References Cpy_User       (Id)
+  CONSTRAINT Ams_Lib_Category_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Lib_Publisher                   -- جدول الناشرون
@@ -1084,10 +831,7 @@ Create Table Ams_Lib_Publisher                   -- جدول الناشرون
   Ins_User  BIGINT,  Ins_Date    DATETIME,
   Upd_User  BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Ams_Lib_Publisher_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Lib_Publisher_UK         UNIQUE      (Name),
-  CONSTRAINT Ams_Lib_Publisher_Status_FK  Foreign Key (Status_Id) References Phs_Cod_Status (Id), 
-  CONSTRAINT Ams_Lib_Publisher_Ins_FK     Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Ams_Lib_Publisher_Upd_FK     Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Ams_Lib_Publisher_UK         UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Ams_Lib_Document                        -- جدول الكتب
@@ -1105,14 +849,5 @@ Create Table Ams_Lib_Document                        -- جدول الكتب
   Rem          VARCHAR(100),                        -- ملاحظات
   Ins_User     BIGINT,  Ins_Date    DATETIME,
   Upd_User     BIGINT,  Upd_Date    DATETIME,
-  CONSTRAINT Ams_Lib_Document_PK           PRIMARY KEY (Id), 
-  CONSTRAINT Ams_Lib_Document_Status_FK    Foreign Key (Status_Id)    References Phs_Cod_Status    (Id),
-  CONSTRAINT Ams_Lib_Document_Publisher_FK Foreign Key (Publisher_Id) References Ams_Lib_Publisher (Id),
-  CONSTRAINT Ams_Lib_Document_Author_FK    Foreign Key (Author_Id)    References Ams_Lib_Author    (Id),
-  CONSTRAINT Ams_Lib_Document_Type_FK      Foreign Key (Type_id)      References Ams_Lib_Cod_Type  (Id),
-  CONSTRAINT Ams_Lib_Document_Category_FK  Foreign Key (Category_Id)  References Ams_Lib_Category  (Id),
-  CONSTRAINT Ams_Lib_Document_IsEbook_FK   Foreign Key (IsEbook_Id)   References Phs_Cod_YesNo     (Id),
-  CONSTRAINT Ams_Lib_Document_IsHbook_FK   Foreign Key (IsHbook_Id)   References Phs_Cod_YesNo     (Id),
-  CONSTRAINT Ams_Lib_Document_Ins_FK       Foreign Key (Ins_User)     References Cpy_User          (Id),
-  CONSTRAINT Ams_Lib_Document_Upd_FK       Foreign Key (Upd_User)     References Cpy_User          (Id)
+  CONSTRAINT Ams_Lib_Document_PK           PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

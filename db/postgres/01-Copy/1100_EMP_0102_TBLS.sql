@@ -149,9 +149,7 @@ Create Table Emp_Recr                         -- التوظيف
   PrefQlfy   VARCHAR(1024),                    -- Preferred Qualifications المؤهلات المفضلة
   Ins_User   BIGINT, Ins_Date TIMESTAMP,
   Upd_User   BIGINT, Upd_Date TIMESTAMP,
-  CONSTRAINT Emp_Recr_PK        PRIMARY KEY (Id),
-  CONSTRAINT Emp_Recr_Ins_FK    Foreign Key (Ins_User) References Cpy_User  (Id),
-  CONSTRAINT Emp_Recr_Upd_FK    Foreign Key (Upd_User) References Cpy_User  (Id)
+  CONSTRAINT Emp_Recr_PK        PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_APPL_seq
@@ -189,20 +187,7 @@ Create Table Emp_Appl                         -- طلبات التوظيف
   Ins_User     BIGINT, Ins_Date TIMESTAMP,
   Upd_User     BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT Emp_App_PK           PRIMARY KEY (Id),
-  CONSTRAINT Emp_App_Num          UNIQUE      (Num),
-  CONSTRAINT Emp_App_Recr_FK      Foreign Key (Recr_Id     ) References Emp_Recr          (Id),
-  CONSTRAINT Emp_App_Gender_FK    Foreign Key (Gender_Id   ) References Phs_Cod_Gender    (Id),
-  CONSTRAINT Emp_App_Military_FK  Foreign Key (Military_Id ) References Phs_Cod_Military  (Id),
-  CONSTRAINT Emp_App_Martial_FK   Foreign Key (Martial_Id  ) References Phs_Cod_Marital   (Id),
-  CONSTRAINT Emp_App_Nat_FK       Foreign Key (Nat_Id      ) References Emp_Cod_Nat       (Id),
-  CONSTRAINT Emp_App_Status_FK    Foreign Key (Status_Id   ) References Emp_Cod_App_Status(Id),
-  CONSTRAINT Emp_App_Result_FK    Foreign Key (Result_Id   ) References Emp_Cod_App_Result(Id),
-  CONSTRAINT Emp_App_Language_FK  Foreign Key (Language_Id ) References Emp_Cod_AppTest   (Id),
-  CONSTRAINT Emp_App_Computer_FK  Foreign Key (Computer_Id ) References Emp_Cod_AppTest   (Id),
-  CONSTRAINT Emp_App_Techbical_FK Foreign Key (Technical_Id) References Emp_Cod_AppTest   (Id),
-  CONSTRAINT Emp_App_Interview_FK Foreign Key (Interview_Id) References Emp_Cod_AppTest   (Id),
-  CONSTRAINT Emp_App_Ins_FK       Foreign Key (Ins_User    ) References Cpy_User          (Id),
-  CONSTRAINT Emp_App_Upd_FK       Foreign Key (Upd_User    ) References Cpy_User          (Id)
+  CONSTRAINT Emp_App_Num          UNIQUE      (Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_APPLANG_seq
@@ -219,14 +204,7 @@ Create Table Emp_AppLang                -- طلبات التوظيف - اللغ�
   Rem            VARCHAR(250),                 -- ملاحظات
   Ins_User       BIGINT, Ins_Date TIMESTAMP,
   Upd_User       BIGINT, Upd_Date TIMESTAMP,
-  CONSTRAINT     Emp_AppLang_PK        PRIMARY KEY (Id      ),
-  CONSTRAINT     Emp_AppLang_Appl_FK   Foreign Key (MApp_Id ) References Emp_Appl        (Id),
-  CONSTRAINT     Emp_AppLang_Lang_FK   Foreign Key (Lang_Id ) References Emp_Cod_Lang    (Id),
-  CONSTRAINT     Emp_AppLang_Read_FK   Foreign Key (Read_Id ) References Emp_Cod_TestMark(Id),
-  CONSTRAINT     Emp_AppLang_Write_FK  Foreign Key (Write_Id) References Emp_Cod_TestMark(Id),
-  CONSTRAINT     Emp_AppLang_Speak_FK  Foreign Key (Speak_Id) References Emp_Cod_TestMark(Id),
-  CONSTRAINT     Emp_AppLang_Ins_FK    Foreign Key (Ins_User) References Cpy_User        (Id),
-  CONSTRAINT     Emp_AppLang_Upd_FK    Foreign Key (Upd_User) References Cpy_User        (Id)
+  CONSTRAINT     Emp_AppLang_PK        PRIMARY KEY (Id      )
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_APPEDUC_seq
@@ -242,11 +220,7 @@ Create Table Emp_AppEduc               -- طلبات التوظيف - الشها
   Rem            VARCHAR(250),                 -- الوصف
   Ins_User       BIGINT, Ins_Date TIMESTAMP,
   Upd_User       BIGINT, Upd_Date TIMESTAMP,
-  CONSTRAINT     Emp_AppEduc_PK        PRIMARY KEY (Id       ),
-  CONSTRAINT     Emp_AppEduc_Appl_FK   Foreign Key (MApp_Id  ) References Emp_Appl   (Id),
-  CONSTRAINT     Emp_AppEduc_Educ_FK   Foreign Key (Edu_Id   ) References Emp_Cod_Edu(Id),
-  CONSTRAINT     Emp_AppEduc_Ins_FK    Foreign Key (Ins_User ) References Cpy_User   (Id),
-  CONSTRAINT     Emp_AppEduc_Upd_FK    Foreign Key (Upd_User ) References Cpy_User   (Id)
+  CONSTRAINT     Emp_AppEduc_PK        PRIMARY KEY (Id       )
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_APPCOURSE_seq
@@ -263,10 +237,7 @@ Create Table Emp_AppCourse                  -- طلبات التوظيف - ال�
   Rem            VARCHAR(250),                 -- الوصف
   Ins_User       BIGINT, Ins_Date TIMESTAMP,
   Upd_User       BIGINT, Upd_Date TIMESTAMP,
-  CONSTRAINT     Emp_AppCourse_PK        PRIMARY KEY (Id      ),
-  CONSTRAINT     Emp_AppCourse_Appl_FK   Foreign Key (MApp_Id ) References Emp_Appl(Id),
-  CONSTRAINT     Emp_AppCourse_Ins_FK    Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT     Emp_AppCourse_Upd_FK    Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT     Emp_AppCourse_PK        PRIMARY KEY (Id      )
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_APPJOB_seq
@@ -285,10 +256,7 @@ Create Table Emp_AppJob                     -- طلبات التوظيف - ال�
   Rem            VARCHAR(250),                 -- الوصف
   Ins_User       BIGINT, Ins_Date TIMESTAMP,
   Upd_User       BIGINT, Upd_Date TIMESTAMP,
-  CONSTRAINT     Emp_AppJob_PK        PRIMARY KEY (Id      ),
-  CONSTRAINT     Emp_AppJob_Appl_FK   Foreign Key (MApp_Id ) References Emp_Appl(Id),
-  CONSTRAINT     Emp_AppJob_Ins_FK    Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT     Emp_AppJob_Upd_FK    Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT     Emp_AppJob_PK        PRIMARY KEY (Id      )
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_APPHRNOTE_seq
@@ -301,10 +269,7 @@ Create Table Emp_AppHRNote                  -- طلبات التوظيف - مل�
   Note           VARCHAR(250),                 -- الوصف
   Ins_User       BIGINT, Ins_Date TIMESTAMP,
   Upd_User       BIGINT, Upd_Date TIMESTAMP,
-  CONSTRAINT     Emp_AppHRNote_PK        PRIMARY KEY (Id      ),
-  CONSTRAINT     Emp_AppHRNote_Appl_FK   Foreign Key (MApp_Id ) References Emp_Appl(Id),
-  CONSTRAINT     Emp_AppHRNote_Ins_FK    Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT     Emp_AppHRNote_Upd_FK    Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT     Emp_AppHRNote_PK        PRIMARY KEY (Id      )
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_APPVIEWER_seq
@@ -319,10 +284,7 @@ Create Table Emp_AppViewer             -- طلبات التوظيف - الذين
   Rem            VARCHAR(250),                 -- الملاحظات
   Ins_User       BIGINT, Ins_Date TIMESTAMP,
   Upd_User       BIGINT, Upd_Date TIMESTAMP,
-  CONSTRAINT     Emp_AppViewer_PK        PRIMARY KEY (Id      ),
-  CONSTRAINT     Emp_AppViewer_Appl_FK   Foreign Key (MApp_Id ) References Emp_Appl  (Id),
-  CONSTRAINT     Emp_AppViewer_Ins_FK    Foreign Key (Ins_User) References Cpy_User  (Id),
-  CONSTRAINT     Emp_AppViewer_Upd_FK    Foreign Key (Upd_User) References Cpy_User  (Id)
+  CONSTRAINT     Emp_AppViewer_PK        PRIMARY KEY (Id      )
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_APPFOR_seq
@@ -336,10 +298,7 @@ Create Table Emp_AppFor              -- طلبات التوظيف - الوظيف
   Rem            VARCHAR(250),                 -- الملاحظات
   Ins_User       BIGINT, Ins_Date TIMESTAMP,
   Upd_User       BIGINT, Upd_Date TIMESTAMP,
-  CONSTRAINT     Emp_AppFor_PK        PRIMARY KEY (Id      ),
-  CONSTRAINT     Emp_AppFor_Appl_FK   Foreign Key (MApp_Id ) References Emp_Appl  (Id),
-  CONSTRAINT     Emp_AppFor_Ins_FK    Foreign Key (Ins_User) References Cpy_User  (Id),
-  CONSTRAINT     Emp_AppFor_Upd_FK    Foreign Key (Upd_User) References Cpy_User  (Id)
+  CONSTRAINT     Emp_AppFor_PK        PRIMARY KEY (Id      )
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_APPFIT_seq
@@ -353,10 +312,7 @@ Create Table Emp_AppFit                  -- طلبات التوظيف - الوظ
   Rem            VARCHAR(250),                 -- الملاحظات
   Ins_User       BIGINT, Ins_Date TIMESTAMP,
   Upd_User       BIGINT, Upd_Date TIMESTAMP,
-  CONSTRAINT     Emp_AppFit_PK        PRIMARY KEY (Id      ),
-  CONSTRAINT     Emp_AppFit_Appl_FK   Foreign Key (MApp_Id ) References Emp_Appl  (Id),
-  CONSTRAINT     Emp_AppFit_Ins_FK    Foreign Key (Ins_User) References Cpy_User  (Id),
-  CONSTRAINT     Emp_AppFit_Upd_FK    Foreign Key (Upd_User) References Cpy_User  (Id)
+  CONSTRAINT     Emp_AppFit_PK        PRIMARY KEY (Id      )
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_APPVIA_seq
@@ -370,10 +326,7 @@ Create Table Emp_AppVia              -- طلبات التوظيف - عن طري�
   Rem            VARCHAR(250),                 -- ملاحظات
   Ins_User       BIGINT, Ins_Date TIMESTAMP,
   Upd_User       BIGINT, Upd_Date TIMESTAMP,
-  CONSTRAINT     Emp_AppVia_PK        PRIMARY KEY (Id      ),
-  CONSTRAINT     Emp_AppVia_Appl_FK   Foreign Key (MApp_Id ) References Emp_Appl  (Id),
-  CONSTRAINT     Emp_AppVia_Ins_FK    Foreign Key (Ins_User) References Cpy_User  (Id),
-  CONSTRAINT     Emp_AppVia_Upd_FK    Foreign Key (Upd_User) References Cpy_User  (Id)
+  CONSTRAINT     Emp_AppVia_PK        PRIMARY KEY (Id      )
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_APPREF_seq
@@ -389,10 +342,7 @@ Create Table Emp_AppRef              -- طلبات التوظيف - المراج
   Rem            VARCHAR(250),                 -- ملاحظات
   Ins_User       BIGINT, Ins_Date TIMESTAMP,
   Upd_User       BIGINT, Upd_Date TIMESTAMP,
-  CONSTRAINT     Emp_AppRef_PK        PRIMARY KEY (Id       ),
-  CONSTRAINT     Emp_AppRef_Appl_FK   Foreign Key (MApp_Id  ) References Emp_Appl  (Id),
-  CONSTRAINT     Emp_AppRef_Ins_FK    Foreign Key (Ins_User ) References Cpy_User  (Id),
-  CONSTRAINT     Emp_AppRef_Upd_FK    Foreign Key (Upd_User ) References Cpy_User  (Id)
+  CONSTRAINT     Emp_AppRef_PK        PRIMARY KEY (Id       )
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_ACR_seq
@@ -406,9 +356,7 @@ Create Table Emp_Acr                          -- دليل معتمدي الرو�
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
   Constraint  Emp_Acr_PK      Primary Key (Id  ),
-  Constraint  Emp_Acr_Nam_UK  UNIQUE      (Name),
-  CONSTRAINT  Emp_Acr_Ins_FK  Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT  Emp_Acr_Upd_FK  Foreign Key (Upd_User) References Cpy_User (Id)
+  Constraint  Emp_Acr_Nam_UK  UNIQUE      (Name)
 );
 
 INSERT INTO Emp_Acr (Id, Name) VALUES ('0', '-');
@@ -429,9 +377,7 @@ Create Table Emp_TaxBrkt                 -- دليل الشرائح الضريب
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   Constraint Emp_TaxBrkt_PK      Primary Key (Id  ),
   Constraint Emp_TaxBrkt_Num_UK  UNIQUE      (Num ),
-  Constraint Emp_TaxBrkt_Nam_UK  UNIQUE      (Name),
-  CONSTRAINT Emp_TaxBrkt_Ins_FK  Foreign Key (Ins_User ) References Cpy_User (Id),
-  CONSTRAINT Emp_TaxBrkt_Upd_FK  Foreign Key (Upd_User ) References Cpy_User (Id)
+  Constraint Emp_TaxBrkt_Nam_UK  UNIQUE      (Name)
 );
 
 INSERT INTO Emp_TaxBrkt (Id, Num, Name) VALUES ('0', '0', '-');
@@ -450,11 +396,7 @@ Create Table Emp_TTaxBrkt                  -- تفصيل شرائح الضريب
   Rem        VARCHAR(250),                     -- ملاحظات
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
-  Constraint Emp_TTaxBrkt_PK      Primary Key (Id      ),
-  Constraint Emp_TTaxBrkt_Brkt_FK Foreign Key (Brkt_Id ) REFERENCES Emp_TaxBrkt    (Id),
-  Constraint Emp_TTaxBrkt_Type_FK Foreign Key (Type_Id ) REFERENCES Phs_Cod_AmtType(Id),
-  CONSTRAINT Emp_TTaxBrkt_Ins_FK  Foreign Key (Ins_User) References Cpy_User       (Id),
-  CONSTRAINT Emp_TTaxBrkt_Upd_FK  Foreign Key (Upd_User) References Cpy_User       (Id)
+  Constraint Emp_TTaxBrkt_PK      Primary Key (Id      )
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_COM_seq
@@ -478,16 +420,7 @@ Create Table Emp_Com                        -- دليل التعويضات ال�
   Upd_User     BIGINT, Upd_Date TIMESTAMP,
   Constraint   Emp_Com_PK           Primary Key (Id  ),
   Constraint   Emp_Com_Num_UK       Unique      (Num ),
-  Constraint   Emp_Com_Nam_UK       UNIQUE      (Name),
-  Constraint   Emp_Com_Brkt_FK      Foreign Key (Brkt_Id     ) REFERENCES Emp_TaxBrkt    (Id),
-  Constraint   Emp_Com_Kind_FK      Foreign Key (ComType_Id  ) REFERENCES Emp_Cod_ComType(Id),
-  Constraint   Emp_Com_Tax_FK       Foreign Key (TaxPay_Id   ) REFERENCES Emp_Cod_TaxPay (Id),
-  Constraint   Emp_Com_Type_FK      Foreign Key (Type_Id     ) REFERENCES Phs_Cod_AmtType(Id),
-  Constraint   Emp_Com_IsDed_FK     Foreign Key (IsDed_Id    ) REFERENCES Phs_Cod_YesNo  (Id),
-  CONSTRAINT   Emp_Com_MaxSalTyp_FK Foreign Key (MaxSalTyp_Id) REFERENCES Emp_Cod_AffSal (Id),
-  CONSTRAINT   Emp_Com_MaxType_FK   Foreign Key (MaxType_Id  ) REFERENCES Phs_Cod_AmtType(Id),
-  CONSTRAINT   Emp_Com_Ins_FK       Foreign Key (Ins_User    ) References Cpy_User       (Id),
-  CONSTRAINT   Emp_Com_Upd_FK       Foreign Key (Upd_User    ) References Cpy_User       (Id)
+  Constraint   Emp_Com_Nam_UK       UNIQUE      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_DED_seq
@@ -506,12 +439,7 @@ Create Table Emp_Ded                            -- دليل الحسميات
   Upd_User   BIGINT, Upd_Date TIMESTAMP,
   Constraint Emp_Ded_PK      Primary Key (Id  ),
   Constraint Emp_Ded_Num_UK  Unique      (Num ),
-  Constraint Emp_Ded_Nam_UK  UNIQUE      (Name),
-  Constraint Emp_Ded_Type_FK Foreign Key (Type_Id  ) REFERENCES Phs_Cod_AmtType(Id),
-  Constraint Emp_Ded_Brkt_FK Foreign Key (Brkt_Id  ) REFERENCES Emp_TaxBrkt    (Id),
-  Constraint Emp_Ded_Tax_FK  Foreign Key (TaxPay_Id) REFERENCES Emp_Cod_TaxPay (Id),
-  CONSTRAINT Emp_Ded_Ins_FK  Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Emp_Ded_Upd_FK  Foreign Key (Upd_User ) References Cpy_User       (Id)
+  Constraint Emp_Ded_Nam_UK  UNIQUE      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_WRKGRP_seq
@@ -527,10 +455,7 @@ Create Table Emp_WrkGrp                         -- دليل مجموعات ال�
   Upd_User      BIGINT, Upd_Date   TIMESTAMP,
   Constraint    Emp_WGrp_PK      Primary Key (Id  ),
   Constraint    Emp_WGrp_Num_UK  UNIQUE      (Num ),
-  Constraint    Emp_WGrp_Nam_UK  UNIQUE      (Name),
-  Constraint    Emp_WGrp_Type_FK Foreign Key (Type_Id ) REFERENCES Emp_Cod_WGrp_Type(Id),
-  CONSTRAINT    Emp_WGrp_Ins_FK  Foreign Key (Ins_User) References Cpy_User         (Id),
-  CONSTRAINT    Emp_WGrp_Upd_FK  Foreign Key (Upd_User) References Cpy_User         (Id)
+  Constraint    Emp_WGrp_Nam_UK  UNIQUE      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_DWRKGRP_seq
@@ -579,16 +504,7 @@ Create Table Emp_DWrkGrp                      -- أيام مجموعات الع�
   Ins_User       BIGINT, Ins_Date   TIMESTAMP,
   Upd_User       BIGINT, Upd_Date   TIMESTAMP,
   Constraint     Emp_DWGrp_PK              Primary Key (Id ),
-  Constraint     Emp_DWGrp_Num_UK          UNIQUE      (WGrp_Id, Day  ),
-  Constraint     Emp_DWGrp_WGrp_FK         Foreign Key (WGrp_Id       ) References Emp_WrkGrp      (Id),
-  CONSTRAINT     Emp_DWGrp_Com_FK          Foreign Key (Com_Id        ) References Emp_Com         (Id),
-  CONSTRAINT     Emp_DWGrp_Shift_FK        Foreign Key (Shift_Id      ) References Phs_Cod_YesNo   (Id),
-  CONSTRAINT     Emp_DWGrp_Execuse_FK      Foreign Key (Excuse_Id     ) References Phs_Cod_YesNo   (Id),
-  CONSTRAINT     Emp_DWGrp_CrosDays_FK     Foreign Key (CrosDays_Id   ) References Phs_Cod_YesNo   (Id),
-  CONSTRAINT     Emp_DWGrp_OTimeStatus_FK  Foreign Key (OTimeStatus_Id) References Emp_Cod_Overtime(Id),
-  CONSTRAINT     Emp_DWGrp_ComPer_FK       Foreign Key (ComPer_Id     ) References Emp_Cod_Com_Per (Id),
-  CONSTRAINT     Emp_DWGrp_Ins_FK          Foreign Key (Ins_User      ) References Cpy_User        (Id),
-  CONSTRAINT     Emp_DWGrp_Upd_FK          Foreign Key (Upd_User      ) References Cpy_User        (Id)
+  Constraint     Emp_DWGrp_Num_UK          UNIQUE      (WGrp_Id, Day  )
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_SALGRP_seq
@@ -616,14 +532,7 @@ Create Table Emp_SalGrp                        -- دليل مجموعات الر
   Ins_User        BIGINT, Ins_Date   TIMESTAMP,
   Upd_User        BIGINT, Upd_Date   TIMESTAMP,
   Constraint      Emp_SGrp_PK            Primary Key (Id  ),
-  Constraint      Emp_SGrp_Nam_UK        UNIQUE      (Name),
-  Constraint      Emp_SGrp_TaxBrkt_FK    Foreign Key (Brkt_Id     ) REFERENCES Emp_TaxBrkt   (Id),
-  Constraint      Emp_SGrp_TaxPay_FK     Foreign Key (GTaxPay_Id  ) REFERENCES Emp_Cod_TaxPay(Id),
-  Constraint      Emp_SGrp_TamPay_FK     Foreign Key (GTamPay_Id  ) REFERENCES Emp_Cod_TaxPay(Id),
-  Constraint      Emp_SGrp_SalStatus_FK  Foreign Key (SalStatus_Id) REFERENCES Phs_Cod_YesNo (Id),
-  Constraint      Emp_SGrp_AddStatus_FK  Foreign Key (AddStatus_Id) REFERENCES Phs_Cod_YesNo (Id),
-  CONSTRAINT      Emp_SGrp_Ins_FK        Foreign Key (Ins_User    ) References Cpy_User      (Id),
-  CONSTRAINT      Emp_SGrp_Upd_FK        Foreign Key (Upd_User    ) References Cpy_User      (Id)
+  Constraint      Emp_SGrp_Nam_UK        UNIQUE      (Name)
 );
 
 INSERT INTO Emp_SalGrp
@@ -644,10 +553,7 @@ Create Table Emp_GradMst                  -- قوالب الدرجات الوظ�
   Upd_User     BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT   Emp_MGradTemp_PK           PRIMARY KEY (Id  ),
   CONSTRAINT   Emp_MGradTemp_Num          UNIQUE      (Num ),
-  CONSTRAINT   Emp_MGradTemp_Nam          UNIQUE      (Name),
-  CONSTRAINT   Emp_MGradTemp_isDefault_FK Foreign Key (isDefault_Id ) References Phs_Cod_YesNo(Id),
-  CONSTRAINT   Emp_MGradTemp_Ins_FK       Foreign Key (Ins_User     ) References Cpy_User     (Id),
-  CONSTRAINT   Emp_MGradTemp_Upd_FK       Foreign Key (Upd_User     ) References Cpy_User     (Id)
+  CONSTRAINT   Emp_MGradTemp_Nam          UNIQUE      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_GRADTRN_seq
@@ -666,12 +572,7 @@ Create Table Emp_GradTrn                  -- بنود قوالب الدرجات 
   Ins_User    BIGINT, Ins_Date TIMESTAMP,
   Upd_User    BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT  Emp_TGradTemp_PK      PRIMARY KEY (Id),
-  CONSTRAINT  Emp_TGradTemp_UK      UNIQUE      (Grad_Id, Grp_Id, Degree_Id),
-  CONSTRAINT  Emp_TGradTemp_FK      Foreign Key (Grad_Id  ) References Emp_GradMst       (Id),
-  CONSTRAINT  Emp_TGradTemp_Grp_FK  Foreign Key (Grp_Id   ) References Emp_Cod_GradGrp   (Id),
-  CONSTRAINT  Emp_TGradTemp_Deg_FK  Foreign Key (Degree_Id) References Emp_Cod_GradDegree(Id),
-  CONSTRAINT  Emp_TGradTemp_Ins_FK  Foreign Key (Ins_User ) References Cpy_User          (Id),
-  CONSTRAINT  Emp_TGradTemp_Upd_FK  Foreign Key (Upd_User ) References Cpy_User          (Id)
+  CONSTRAINT  Emp_TGradTemp_UK      UNIQUE      (Grad_Id, Grp_Id, Degree_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_APPRMST_seq
@@ -687,9 +588,7 @@ Create Table Emp_ApprMst              -- قوالب التقييم
   Upd_User   BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT Emp_MApprTemp_PK        PRIMARY KEY (Id  ),
   CONSTRAINT Emp_MApprTemp_Num       UNIQUE      (Num ),
-  CONSTRAINT Emp_MApprTemp_Nam       UNIQUE      (Name),
-  CONSTRAINT Emp_MApprTemp_Ins_FK    Foreign Key (Ins_User ) References Cpy_User(Id),
-  CONSTRAINT Emp_MApprTemp_Upd_FK    Foreign Key (Upd_User ) References Cpy_User(Id)
+  CONSTRAINT Emp_MApprTemp_Nam       UNIQUE      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_APPRTRN_seq
@@ -706,12 +605,7 @@ Create Table Emp_ApprTrn              -- بنود التقييم
   Ins_User    BIGINT, Ins_Date TIMESTAMP,
   Upd_User    BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT  Emp_TApprTemp_PK      PRIMARY KEY (Id),
-  CONSTRAINT  Emp_TApprTemp_UK      UNIQUE      (Appr_Id, ApprGrp_Id, ApprItm_Id),
-  CONSTRAINT  Emp_TApprTemp_FK      Foreign Key (Appr_Id   ) References Emp_ApprMst           (Id),
-  CONSTRAINT  Emp_TApprTemp_Grp_FK  Foreign Key (ApprGrp_Id) References Emp_Cod_Appraisal_Grp (Id),
-  CONSTRAINT  Emp_TApprTemp_Item_FK Foreign Key (ApprItm_Id) References Emp_Cod_Appraisal_Item(Id),
-  CONSTRAINT  Emp_TApprTemp_Ins_FK  Foreign Key (Ins_User  ) References Cpy_User              (Id),
-  CONSTRAINT  Emp_TApprTemp_Upd_FK  Foreign Key (Upd_User  ) References Cpy_User              (Id)
+  CONSTRAINT  Emp_TApprTemp_UK      UNIQUE      (Appr_Id, ApprGrp_Id, ApprItm_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_APPREVAL_seq
@@ -729,10 +623,7 @@ Create Table Emp_ApprEval                 -- قواعد التقييم
   Ins_User    BIGINT, Ins_Date TIMESTAMP,
   Upd_User    BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT  Emp_ApprEval_PK     PRIMARY KEY (Id ),
-  CONSTRAINT  Emp_ApprEval_UK     UNIQUE      (Appr_Id, Eval),
-  CONSTRAINT  Emp_ApprEval_FK     Foreign Key (Appr_Id  ) References Emp_ApprMst(Id),
-  CONSTRAINT  Emp_ApprEval_Ins_FK Foreign Key (Ins_User ) References Cpy_User   (Id),
-  CONSTRAINT  Emp_ApprEval_Upd_FK Foreign Key (Upd_User ) References Cpy_User   (Id)
+  CONSTRAINT  Emp_ApprEval_UK     UNIQUE      (Appr_Id, Eval)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_EMP_seq
@@ -831,37 +722,7 @@ Create Table Emp_Emp                             -- دليل العاملين
   CONSTRAINT     Emp_Emp_PNum          UNIQUE      (PNum),
   CONSTRAINT     Emp_Emp_INum          UNIQUE      (INum),
   CONSTRAINT     Emp_Emp_AttNum        UNIQUE      (AttNum),
-  CONSTRAINT     Emp_Emp_NFM           UNIQUE      (Name, Father, Mother),
-  CONSTRAINT     Emp_Emp_User_FK       Foreign Key (User_Id      ) References Cpy_User          (Id),
-  CONSTRAINT     Emp_Emp_Acr_FK        Foreign Key (Acr_Id       ) References Emp_Acr           (Id),
-  CONSTRAINT     Emp_Emp_WGrp_FK       Foreign Key (WGrp_Id      ) References Emp_WrkGrp        (Id),
-  CONSTRAINT     Emp_Emp_SGrp_FK       Foreign Key (SGrp_Id      ) References Emp_SalGrp        (Id),
-  CONSTRAINT     Emp_Emp_Appr_FK       Foreign Key (Appr_Id      ) References Emp_ApprMst       (Id),
-  CONSTRAINT     Emp_Emp_Grad_FK       Foreign Key (TGrad_Id     ) References Emp_GradTrn       (Id),
-  CONSTRAINT     Emp_Emp_BankStatus_FK Foreign Key (BankStatus_Id) References Phs_Cod_YesNo     (Id),
-  CONSTRAINT     Emp_Emp_Status_FK     Foreign Key (Status_Id    ) References Emp_Cod_Status    (Id),
-  CONSTRAINT     Emp_Emp_WStatus_FK    Foreign Key (WStatus_Id   ) References Phs_Cod_YesNo     (Id),
-  CONSTRAINT     Emp_Emp_Military_FK   Foreign Key (Military_Id  ) References Phs_Cod_Military  (Id),
-  CONSTRAINT     Emp_Emp_isOwner_FK    Foreign Key (isOwner_Id   ) References Phs_Cod_YesNo     (Id),
-  CONSTRAINT     Emp_Emp_Lang_FK       Foreign Key (Lang_Id      ) References Emp_Cod_Lang      (Id),
-  CONSTRAINT     Emp_Emp_Educat_FK     Foreign Key (Educat_Id    ) References Emp_Cod_Edu       (Id),
-  CONSTRAINT     Emp_Emp_Job_FK        Foreign Key (Job_Id       ) References Emp_Cod_Job       (Id),
-  CONSTRAINT     Emp_Emp_Dept_FK       Foreign Key (Dept_Id      ) References Emp_Cod_Department(Id),
-  CONSTRAINT     Emp_Emp_Sect_FK       Foreign Key (Sect_Id      ) References Emp_Cod_Section   (Id),
-  CONSTRAINT     Emp_Emp_Level_FK      Foreign Key (Level_Id     ) References Emp_Cod_Level     (Id),
-  CONSTRAINT     Emp_Emp_Loc_FK        Foreign Key (Loc_Id       ) References Emp_Cod_Location  (Id),
-  CONSTRAINT     Emp_Emp_Spc1_FK       Foreign Key (Spc1_Id      ) References Emp_Cod_Spec1     (Id),
-  CONSTRAINT     Emp_Emp_Spc2_FK       Foreign Key (Spc2_Id      ) References Emp_Cod_Spec2     (Id),
-  CONSTRAINT     Emp_Emp_Spc3_FK       Foreign Key (Spc3_Id      ) References Emp_Cod_Spec3     (Id),
-  CONSTRAINT     Emp_Emp_Spc4_FK       Foreign Key (Spc4_Id      ) References Emp_Cod_Spec4     (Id),
-  CONSTRAINT     Emp_Emp_Gender_FK     Foreign Key (Gender_Id    ) References Phs_Cod_Gender    (Id),
-  CONSTRAINT     Emp_Emp_Nat_FK        Foreign Key (Nat_Id       ) References Emp_Cod_Nat       (Id),
-  CONSTRAINT     Emp_Emp_Martial_FK    Foreign Key (Martial_Id   ) References Phs_Cod_Marital   (Id),
-  CONSTRAINT     Emp_Emp_Wife_FK       Foreign Key (Wife_Id      ) References Phs_Cod_YesNo     (Id),
-  CONSTRAINT     Emp_Emp_IFamily_FK    Foreign Key (IFamily_Id   ) References Phs_Cod_YesNo     (Id),
-  CONSTRAINT     Emp_Emp_IHelth_FK     Foreign Key (IHelth_Id    ) References Phs_Cod_YesNo     (Id),
-  CONSTRAINT     Emp_Emp_Ins_FK        Foreign Key (Ins_User     ) References Cpy_User          (Id),
-  CONSTRAINT     Emp_Emp_Upd_FK        Foreign Key (Upd_User     ) References Cpy_User          (Id)
+  CONSTRAINT     Emp_Emp_NFM           UNIQUE      (Name, Father, Mother)
 );
 
 Alter Table Emp_Emp ADD CONSTRAINT     Emp_Emp_DEmp_FK    Foreign Key (Director_Id  ) References Emp_Emp(Id),
@@ -884,11 +745,7 @@ Create Table Emp_EmpHist                      -- السيرة الوظيفية
   Ins_User     BIGINT, Ins_Date TIMESTAMP,
   Upd_User     BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT   Emp_EmpHist_PK      PRIMARY KEY (Id ),
-  CONSTRAINT   Emp_EmpHist_Num     UNIQUE      (Num),
-  CONSTRAINT   Emp_EmpHist_Emp_FK  Foreign Key (Emp_Id  ) REFERENCES Emp_Emp     (Id),
-  CONSTRAINT   Emp_EmpHist_Hist_FK Foreign Key (Type_Id ) REFERENCES Emp_Cod_Hist(Id),
-  CONSTRAINT   Emp_EmpHist_Ins_FK  Foreign Key (Ins_User) References Cpy_User    (Id),
-  CONSTRAINT   Emp_EmpHist_Upd_FK  Foreign Key (Upd_User) References Cpy_User    (Id)
+  CONSTRAINT   Emp_EmpHist_Num     UNIQUE      (Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_ChGrade_seq
@@ -908,12 +765,7 @@ Create Table Emp_ChGrade                         -- تعديل الدرجة ال
   Ins_User    BIGINT, Ins_Date TIMESTAMP,
   Upd_User    BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT  Emp_ChGrad_PK       PRIMARY KEY (Id ),
-  CONSTRAINT  Emp_ChGrad_UK       UNIQUE      (Num),
-  CONSTRAINT  Emp_ChGrad_Emp_FK   Foreign Key (Emp_Id   ) REFERENCES Emp_Emp    (Id),
-  CONSTRAINT  Emp_ChGrad_OGrad_FK Foreign Key (TGrad_OId) REFERENCES Emp_GradTrn(Id),
-  CONSTRAINT  Emp_ChGrad_NGrad_FK Foreign Key (TGrad_NId) REFERENCES Emp_GradTrn(Id),
-  CONSTRAINT  Emp_ChGrad_Ins_FK   Foreign Key (Ins_User ) References Cpy_User   (Id),
-  CONSTRAINT  Emp_ChGrad_Upd_FK   Foreign Key (Upd_User ) References Cpy_User   (Id)
+  CONSTRAINT  Emp_ChGrad_UK       UNIQUE      (Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_MADMCON_seq
@@ -929,10 +781,7 @@ Create Table Emp_MAdmCon              -- ترويسة المكافآت الإد�
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   Constraint Emp_MAdmCon_PK      Primary Key (Id ),
-  Constraint Emp_MAdmCon_Num_UK  Unique      (Num),
-  CONSTRAINT Emp_MAdmCon_Type_FK Foreign Key (Type_Id ) References Emp_Cod_Cons(Id),
-  CONSTRAINT Emp_MAdmCon_Ins_FK  Foreign Key (Ins_User) References Cpy_User    (Id),
-  CONSTRAINT Emp_MAdmCon_Upd_FK  Foreign Key (Upd_User) References Cpy_User    (Id)
+  Constraint Emp_MAdmCon_Num_UK  Unique      (Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_TADMCON_seq
@@ -951,13 +800,7 @@ Create Table Emp_TAdmCon              -- بنود المكافآت الإدار�
   Ins_User     BIGINT, Ins_Date   TIMESTAMP,
   Upd_User     BIGINT, Upd_Date   TIMESTAMP,
   Constraint   Emp_TAdmCon_PK      Primary Key (Id),
-  Constraint   Emp_TAdmCon_UK      Unique      (MACon_Id, Emp_Id),
-  Constraint   Emp_TAdmCon_FK      Foreign Key (MACon_Id  ) REFERENCES Emp_MAdmCon           (Id),
-  Constraint   Emp_TAdmCon_Emp_FK  Foreign Key (Emp_Id    ) REFERENCES Emp_Emp               (Id),
-  CONSTRAINT   Emp_TAdmCon_Grp_FK  Foreign Key (ApprGrp_Id) References Emp_Cod_Appraisal_Grp (Id),
-  CONSTRAINT   Emp_TAdmCon_Item_FK Foreign Key (ApprItm_Id) References Emp_Cod_Appraisal_Item(Id),
-  CONSTRAINT   Emp_TAdmCon_Ins_FK  Foreign Key (Ins_User  ) References Cpy_User              (Id),
-  CONSTRAINT   Emp_TAdmCon_Upd_FK  Foreign Key (Upd_User  ) References Cpy_User              (Id)
+  Constraint   Emp_TAdmCon_UK      Unique      (MACon_Id, Emp_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_MADMPUN_seq
@@ -973,10 +816,7 @@ Create Table Emp_MAdmPun                 -- العقوبات الإدارية
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   Constraint Emp_MAdmPun_PK      Primary Key (Id ),
-  Constraint Emp_MAdmPun_Num_UK  Unique      (Num),
-  CONSTRAINT Emp_MAdmPun_Type_FK Foreign Key (Type_Id ) References Emp_Cod_Pun(Id),
-  CONSTRAINT Emp_MAdmPun_Ins_FK  Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT Emp_MAdmPun_Upd_FK  Foreign Key (Upd_User) References Cpy_User   (Id)
+  Constraint Emp_MAdmPun_Num_UK  Unique      (Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_TADMPUN_seq
@@ -995,13 +835,7 @@ Create Table Emp_TAdmPun                 -- العقوبات الإدارية
   Ins_User     BIGINT, Ins_Date   TIMESTAMP,
   Upd_User     BIGINT, Upd_Date   TIMESTAMP,
   Constraint   Emp_TAdmPun_PK      Primary Key (Id),
-  Constraint   Emp_TAdmPun_UK      Unique      (MAPun_Id,Emp_Id),
-  Constraint   Emp_TAdmPun_FK      Foreign Key (MAPun_Id  ) REFERENCES Emp_MAdmPun           (Id),
-  Constraint   Emp_TAdmPun_Emp_FK  Foreign Key (Emp_Id    ) REFERENCES Emp_Emp               (Id),
-  CONSTRAINT   Emp_TAdmPun_Grp_FK  Foreign Key (ApprGrp_Id) References Emp_Cod_Appraisal_Grp (Id),
-  CONSTRAINT   Emp_TAdmPun_Item_FK Foreign Key (ApprItm_Id) References Emp_Cod_Appraisal_Item(Id),
-  CONSTRAINT   Emp_TAdmPun_Ins_FK  Foreign Key (Ins_User  ) References Cpy_User              (Id),
-  CONSTRAINT   Emp_TAdmPun_Upd_FK  Foreign Key (Upd_User  ) References Cpy_User              (Id)
+  Constraint   Emp_TAdmPun_UK      Unique      (MAPun_Id,Emp_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_APPRNOTE_seq
@@ -1021,13 +855,7 @@ Create Table Emp_ApprNote                      -- ملاحظات التقييم
   Ins_User     BIGINT, Ins_Date TIMESTAMP,
   Upd_User     BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT   Emp_ApprNote_PK      PRIMARY KEY (Id ),
-  CONSTRAINT   Emp_ApprNote_Num     UNIQUE      (Num),
-  CONSTRAINT   Emp_ApprNote_Emp_FK  Foreign Key (Emp_Id    ) REFERENCES Emp_Emp               (Id),
-  CONSTRAINT   Emp_ApprNote_Type_FK Foreign Key (Type_Id   ) References Phs_Cod_Sign          (Id),
-  CONSTRAINT   Emp_ApprNote_Grp_FK  Foreign Key (ApprGrp_Id) References Emp_Cod_Appraisal_Grp (Id),
-  CONSTRAINT   Emp_ApprNote_Item_FK Foreign Key (ApprItm_Id) References Emp_Cod_Appraisal_Item(Id),
-  CONSTRAINT   Emp_ApprNote_Ins_FK  Foreign Key (Ins_User  ) References Cpy_User              (Id),
-  CONSTRAINT   Emp_ApprNote_Upd_FK  Foreign Key (Upd_User  ) References Cpy_User              (Id)
+  CONSTRAINT   Emp_ApprNote_Num     UNIQUE      (Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_APPREMPMST_seq
@@ -1046,11 +874,7 @@ Create Table Emp_ApprEmpMst               -- تقييم العاملين
   Ins_User   BIGINT, Ins_Date TIMESTAMP,
   Upd_User   BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT Emp_MApprEmp_PK      PRIMARY KEY (Id ),
-  CONSTRAINT Emp_MApprEmp_Num     UNIQUE      (Num),
-  CONSTRAINT Emp_MApprEmp_Appr_FK Foreign Key (Appr_Id  ) REFERENCES Emp_ApprMst(Id),
-  CONSTRAINT Emp_MApprEmp_Emp_FK  Foreign Key (Emp_Id   ) REFERENCES Emp_Emp    (Id),
-  CONSTRAINT Emp_MApprEmp_Ins_FK  Foreign Key (Ins_User ) References Cpy_User   (Id),
-  CONSTRAINT Emp_MApprEmp_Upd_FK  Foreign Key (Upd_User ) References Cpy_User   (Id)
+  CONSTRAINT Emp_MApprEmp_Num     UNIQUE      (Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_APPREMPTRN_seq
@@ -1065,11 +889,7 @@ Create Table Emp_ApprEmpTrn               -- بنود التقييم
   Rem         VARCHAR(250),                     -- ملاحظات
   Ins_User    BIGINT, Ins_Date TIMESTAMP,
   Upd_User    BIGINT, Upd_Date TIMESTAMP,
-  CONSTRAINT  Emp_TApprEmp_PK       PRIMARY KEY (Id),
-  CONSTRAINT  Emp_TApprEmp_FK       Foreign Key (AEmp_Id  ) References Emp_ApprEmpMst(Id),
-  CONSTRAINT  Emp_TApprEmp_TAppr_FK Foreign Key (TAppr_Id ) REFERENCES Emp_ApprTrn   (Id),
-  CONSTRAINT  Emp_TApprEmp_Ins_FK   Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Emp_TApprEmp_Upd_FK   Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  Emp_TApprEmp_PK       PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_ECOM_seq
@@ -1089,12 +909,7 @@ Create Table Emp_ECom                -- تعويضات العاملين الدا
   Ins_User   BIGINT, Ins_Date TIMESTAMP,
   Upd_User   BIGINT, Upd_Date TIMESTAMP,
   Constraint Emp_ECom_PK        Primary Key (Id ),
-  Constraint Emp_ECom_ENum_UK   Unique      (Emp_Id, Com_Id),
-  CONSTRAINT Emp_ECom_Status_Fk FOREIGN KEY (Status_Id) REFERENCES Phs_Cod_Status (Id),
-  Constraint Emp_ECom_Emp_FK    Foreign Key (Emp_Id   ) REFERENCES Emp_Emp        (Id),
-  Constraint Emp_ECom_Com_FK    Foreign Key (Com_Id   ) REFERENCES Emp_Com        (Id),
-  CONSTRAINT Emp_ECom_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Emp_ECom_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  Constraint Emp_ECom_ENum_UK   Unique      (Emp_Id, Com_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_EDED_seq
@@ -1113,12 +928,7 @@ Create Table Emp_EDed                   -- حسميات العاملين الد�
   Ins_User   BIGINT, Ins_Date TIMESTAMP,
   Upd_User   BIGINT, Upd_Date TIMESTAMP,
   Constraint Emp_EDed_PK        Primary Key (Id),
-  Constraint Emp_EDed_ENum_UK   Unique      (Emp_Id, Ded_Id),
-  CONSTRAINT Emp_EDed_Status_Fk FOREIGN KEY (Status_Id) REFERENCES Phs_Cod_Status (Id),
-  Constraint Emp_EDed_Emp_FK    Foreign Key (Emp_Id   ) REFERENCES Emp_Emp        (Id),
-  Constraint Emp_EDed_Ded_FK    Foreign Key (Ded_Id   ) REFERENCES Emp_Ded        (Id),
-  CONSTRAINT Emp_EDed_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Emp_EDed_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  Constraint Emp_EDed_ENum_UK   Unique      (Emp_Id, Ded_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_MCHSALBRKT_seq
@@ -1133,9 +943,7 @@ Create Table Emp_MChSalBrkt            -- دليل الشرائح تعديل ا�
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   Constraint Emp_MChSalBrkt_PK      Primary Key (Id  ),
-  Constraint Emp_MChSalBrkt_Nam_UK  UNIQUE      (Name),
-  CONSTRAINT Emp_MChSalBrkt_Ins_FK  Foreign Key (Ins_User ) References Cpy_User (Id),
-  CONSTRAINT Emp_MChSalBrkt_Upd_FK  Foreign Key (Upd_User ) References Cpy_User (Id)
+  Constraint Emp_MChSalBrkt_Nam_UK  UNIQUE      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_TCHSALBRKT_seq
@@ -1152,11 +960,7 @@ Create Table Emp_TChSalBrkt            -- تفصيل شرائح تعديل ال�
   Rem        VARCHAR(250),                      -- ملاحظات
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
-  Constraint Emp_TChSalBrkt_PK      Primary Key (Id),
-  Constraint Emp_TChSalBrkt_Brkt_FK Foreign Key (Brkt_Id ) REFERENCES Emp_MChSalBrkt (Id),
-  Constraint Emp_TChSalBrkt_Type_FK Foreign Key (Type_Id ) REFERENCES Phs_Cod_AmtType(Id),
-  CONSTRAINT Emp_TChSalBrkt_Ins_FK  Foreign Key (Ins_User) References Cpy_User       (Id),
-  CONSTRAINT Emp_TChSalBrkt_Upd_FK  Foreign Key (Upd_User) References Cpy_User       (Id)
+  Constraint Emp_TChSalBrkt_PK      Primary Key (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_CSAL_seq
@@ -1180,13 +984,7 @@ Create Table Emp_CSal                        -- تعديلات الرواتب
   Rem          VARCHAR(100),                    -- ملاحظات
   Ins_User     BIGINT, Ins_Date   TIMESTAMP,
   Upd_User     BIGINT, Upd_Date   TIMESTAMP,
-  Constraint   Emp_CSal_PK        Primary Key (Id),
-  CONSTRAINT   Emp_CSal_Status_Fk FOREIGN KEY (Status_Id) REFERENCES Phs_Cod_Status  (Id),
-  CONSTRAINT   Emp_CSal_Brkt_FK   Foreign Key (Brkt_Id  ) References Emp_MChSalBrkt  (Id),
-  CONSTRAINT   Emp_CSal_SalTyp_FK Foreign Key (SalTyp_Id) References Emp_Cod_AffSal  (Id),
-  CONSTRAINT   Emp_CSal_Type_FK   Foreign Key (Type_Id  ) References Emp_Cod_ChngType(Id),
-  CONSTRAINT   Emp_CSal_Ins_FK    Foreign Key (Ins_User ) References Cpy_User        (Id),
-  CONSTRAINT   Emp_CSal_Upd_FK    Foreign Key (Upd_User ) References Cpy_User        (Id)
+  Constraint   Emp_CSal_PK        Primary Key (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_CSALEMP_seq
@@ -1204,11 +1002,7 @@ Create Table Emp_CSalEmp              -- العمال في تعديل الروا
   Ins_User         BIGINT, Ins_Date   TIMESTAMP,
   Upd_User         BIGINT, Upd_Date   TIMESTAMP,
   Constraint       Emp_CSalEmp_PK      Primary Key (Id),
-  Constraint       Emp_CSalEmp_UK      Unique      (CSal_Id, Emp_Id),
-  CONSTRAINT       Emp_CSalEmp_CSal_FK Foreign Key (CSal_Id ) References Emp_CSal(Id),
-  CONSTRAINT       Emp_CSalEmp_Emp_FK  Foreign Key (Emp_Id  ) References Emp_Emp (Id),
-  CONSTRAINT       Emp_CSalEmp_Ins_FK  Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT       Emp_CSalEmp_Upd_FK  Foreign Key (Upd_User) References Cpy_User(Id)
+  Constraint       Emp_CSalEmp_UK      Unique      (CSal_Id, Emp_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_AOSAL_seq
@@ -1234,13 +1028,7 @@ Create Table Emp_AOSal                         -- إضافة على الراتب
   Rem         VARCHAR(100),                     -- ملاحظات
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
-  Constraint  Emp_ASal_PK        Primary Key (Id),
-  Constraint  Emp_ASal_Tax_FK    Foreign Key (Brkt_Id  ) References Emp_TaxBrkt     (Id),
-  CONSTRAINT  Emp_ASal_AddTo_FK  Foreign Key (AddTo_Id ) References Emp_Cod_Aff     (Id),
-  CONSTRAINT  Emp_ASal_SalTyp_FK Foreign Key (SalTyp_Id) References Emp_Cod_AffSal  (Id),
-  CONSTRAINT  Emp_ASal_Type_FK   Foreign Key (Type_Id  ) References Emp_Cod_ChngType(Id),
-  CONSTRAINT  Emp_ASal_Ins_FK    Foreign Key (Ins_User ) References Cpy_User        (Id),
-  CONSTRAINT  Emp_ASal_Upd_FK    Foreign Key (Upd_User ) References Cpy_User        (Id)
+  Constraint  Emp_ASal_PK        Primary Key (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_AOSALEMP_seq
@@ -1257,11 +1045,7 @@ Create Table Emp_AOSalEmp               -- العمال في إضافة على �
   Ins_User     BIGINT, Ins_Date   TIMESTAMP,
   Upd_User     BIGINT, Upd_Date   TIMESTAMP,
   Constraint   Emp_ASalEmp_PK      Primary Key (Id),
-  Constraint   Emp_ASalEmp_UK      Unique      (ASal_Id, Emp_Id),
-  CONSTRAINT   Emp_ASalEmp_CSal_FK Foreign Key (ASal_Id ) References Emp_AOSal(Id),
-  CONSTRAINT   Emp_ASalEmp_Emp_FK  Foreign Key (Emp_Id  ) References Emp_Emp  (Id),
-  CONSTRAINT   Emp_ASalEmp_Ins_FK  Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT   Emp_ASalEmp_Upd_FK  Foreign Key (Upd_User) References Cpy_User (Id)
+  Constraint   Emp_ASalEmp_UK      Unique      (ASal_Id, Emp_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_SFSAL_seq
@@ -1286,12 +1070,7 @@ Create Table Emp_SFSal                       -- حسم على الراتب
   Rem          VARCHAR(100),                    -- ملاحظات
   Ins_User     BIGINT, Ins_Date   TIMESTAMP,
   Upd_User     BIGINT, Upd_Date   TIMESTAMP,
-  Constraint   Emp_SSal_PK        Primary Key (Id),
-  CONSTRAINT   Emp_SSal_AddTo_FK  Foreign Key (SubFrom_Id) References Emp_Cod_Aff     (Id),
-  CONSTRAINT   Emp_SSal_SalTyp_FK Foreign Key (SalTyp_Id ) References Emp_Cod_AffSal  (Id),
-  CONSTRAINT   Emp_SSal_Type_FK   Foreign Key (Type_Id   ) References Emp_Cod_ChngType(Id),
-  CONSTRAINT   Emp_SSal_Ins_FK    Foreign Key (Ins_User  ) References Cpy_User        (Id),
-  CONSTRAINT   Emp_SSal_Upd_FK    Foreign Key (Upd_User  ) References Cpy_User        (Id)
+  Constraint   Emp_SSal_PK        Primary Key (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_SFSALEMP_seq
@@ -1308,11 +1087,7 @@ Create Table Emp_SFSalEmp             -- العمال في حسم على الر�
   Ins_User     BIGINT, Ins_Date   TIMESTAMP,
   Upd_User     BIGINT, Upd_Date   TIMESTAMP,
   Constraint   Emp_SSalEmp_PK      Primary Key (Id),
-  Constraint   Emp_SSalEmp_UK      Unique      (SSal_Id, Emp_Id),
-  CONSTRAINT   Emp_SSalEmp_CSal_FK Foreign Key (SSal_Id ) References Emp_SFSal(Id),
-  CONSTRAINT   Emp_SSalEmp_Emp_FK  Foreign Key (Emp_Id  ) References Emp_Emp  (Id),
-  CONSTRAINT   Emp_SSalEmp_Ins_FK  Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT   Emp_SSalEmp_Upd_FK  Foreign Key (Upd_User) References Cpy_User (Id)
+  Constraint   Emp_SSalEmp_UK      Unique      (SSal_Id, Emp_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_MSNREQ_seq
@@ -1336,12 +1111,7 @@ Create Table Emp_MsnReq                     -- طلب مهمة
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   Constraint Emp_MsnReq_PK         Primary Key (Id ),
-  Constraint Emp_MsnReq_Num_UK     Unique      (Num),
-  Constraint Emp_MsnReq_Emp_FK     Foreign Key (Emp_Id    ) REFERENCES Emp_Emp        (Id),
-  Constraint Emp_MsnReq_Type_FK    Foreign Key (Type_Id   ) REFERENCES Emp_Cod_Msn    (Id),
-  Constraint Emp_MsnReq_Approve_FK Foreign Key (Approve_Id) REFERENCES Phs_Cod_Approve(Id),
-  CONSTRAINT Emp_MsnReq_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User       (Id),
-  CONSTRAINT Emp_MsnReq_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User       (Id)
+  Constraint Emp_MsnReq_Num_UK     Unique      (Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_LEAVEREQ_seq
@@ -1367,12 +1137,7 @@ Create Table Emp_LeaveReq                        -- طلب أجازة
   Constraint Emp_LeaveReq_PK         Primary Key (Id ),
   Constraint Emp_LeaveReq_Num_UK     Unique      (Num),
   Constraint Emp_LeaveReq_SDate_UK   Unique      (Emp_Id, SDate),
-  Constraint Emp_LeaveReq_EDate_UK   Unique      (Emp_Id, EDate),
-  Constraint Emp_LeaveReq_Emp_FK     Foreign Key (Emp_Id    ) REFERENCES Emp_Emp        (Id),
-  Constraint Emp_LeaveReq_Type_FK    Foreign Key (Type_Id   ) REFERENCES Emp_Cod_Leave  (Id),
-  Constraint Emp_LeaveReq_Approve_FK Foreign Key (Approve_Id) REFERENCES Phs_Cod_Approve(Id),
-  CONSTRAINT Emp_LeaveReq_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User       (Id),
-  CONSTRAINT Emp_LeaveReq_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User       (Id)
+  Constraint Emp_LeaveReq_EDate_UK   Unique      (Emp_Id, EDate)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_OTIMEREQ_seq
@@ -1398,12 +1163,7 @@ Create Table Emp_OTimeReq                     -- طلب إضافي
   Constraint  Emp_OTimeReq_PK         Primary Key (Id ),
   Constraint  Emp_OTimeReq_Num_UK     Unique      (Num),
   Constraint  Emp_OTimeReq_SDate_UK   Unique      (Emp_Id, SDate),
-  Constraint  Emp_OTimeReq_EDate_UK   Unique      (Emp_Id, EDate),
-  Constraint  Emp_OTimeReq_Emp_FK     Foreign Key (Emp_Id    ) REFERENCES Emp_Emp         (Id),
-  Constraint  Emp_OTimeReq_Type_FK    Foreign Key (Type_Id   ) REFERENCES Emp_Cod_Overtime(Id),
-  Constraint  Emp_OTimeReq_Approve_FK Foreign Key (Approve_Id) REFERENCES Phs_Cod_Approve (Id),
-  CONSTRAINT  Emp_OTimeReq_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User        (Id),
-  CONSTRAINT  Emp_OTimeReq_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User        (Id)
+  Constraint  Emp_OTimeReq_EDate_UK   Unique      (Emp_Id, EDate)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_MSN_seq
@@ -1427,12 +1187,7 @@ Create Table Emp_Msn                             -- مهام العاملين
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
   Constraint  Emp_Msn_PK       Primary Key (Id  ),
-  Constraint  Emp_Msn_Num_UK   Unique      (Num ),
-  Constraint  Emp_Msn_Emp_FK   Foreign Key (Emp_Id  ) REFERENCES Emp_Emp     (Id),
-  Constraint  Emp_Msn_Type_FK  Foreign Key (Type_Id ) REFERENCES Emp_Cod_Msn (Id),
-  Constraint  Emp_Msn_Req_FK   Foreign Key (Req_Id  ) REFERENCES Emp_MsnReq  (Id),
-  CONSTRAINT  Emp_Msn_Ins_FK   Foreign Key (Ins_User) References Cpy_User    (Id),
-  CONSTRAINT  Emp_Msn_Upd_FK   Foreign Key (Upd_User) References Cpy_User    (Id)
+  Constraint  Emp_Msn_Num_UK   Unique      (Num )
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_LEAVE_seq
@@ -1458,12 +1213,7 @@ Create Table Emp_Leave                               -- الإجازات
   Constraint  Emp_Leave_PK       Primary Key (Id ),
   Constraint  Emp_Leave_Num_UK   Unique      (Num),
   Constraint  Emp_Leave_SDate_UK Unique      (Emp_Id, SDate),
-  Constraint  Emp_Leave_EDate_UK Unique      (Emp_Id, EDate),
-  Constraint  Emp_Leave_Emp_FK   Foreign Key (Emp_Id  ) REFERENCES Emp_Emp      (Id),
-  Constraint  Emp_Leave_Type_FK  Foreign Key (Type_Id ) REFERENCES Emp_Cod_Leave(Id),
-  Constraint  Emp_Leave_Req_FK   Foreign Key (Req_Id  ) REFERENCES Emp_LeaveReq (Id),
-  CONSTRAINT  Emp_Leave_Ins_FK   Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT  Emp_Leave_Upd_FK   Foreign Key (Upd_User) References Cpy_User     (Id)
+  Constraint  Emp_Leave_EDate_UK Unique      (Emp_Id, EDate)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_OTIME_seq
@@ -1487,12 +1237,7 @@ Create Table Emp_OTime                            -- إضافي العاملين
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
   Constraint  Emp_OTime_PK       Primary Key (Id ),
-  Constraint  Emp_OTime_Num_UK   Unique      (Num),
-  Constraint  Emp_OTime_Emp_FK   Foreign Key (Emp_Id  ) REFERENCES Emp_Emp         (Id),
-  Constraint  Emp_OTime_Type_FK  Foreign Key (Type_Id ) REFERENCES Emp_Cod_Overtime(Id),
-  Constraint  Emp_OTime_Req_FK   Foreign Key (Req_Id  ) REFERENCES Emp_OTimeReq    (Id),
-  CONSTRAINT  Emp_OTime_Ins_FK   Foreign Key (Ins_User) References Cpy_User        (Id),
-  CONSTRAINT  Emp_OTime_Upd_FK   Foreign Key (Upd_User) References Cpy_User        (Id)
+  Constraint  Emp_OTime_Num_UK   Unique      (Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_DBT_seq
@@ -1510,10 +1255,7 @@ Create Table Emp_Dbt                                -- الاستجرارات
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
   Constraint  Emp_Dbt_PK      Primary Key (Id),
   Constraint  Emp_Dbt_Num_UK  Unique      (Num),
-  Constraint  Emp_Dbt_Date_UK Unique      (Emp_Id, dDate),
-  Constraint  Emp_Dbt_Emp_FK  Foreign Key (Emp_Id  ) REFERENCES Emp_Emp (Id),
-  CONSTRAINT  Emp_Dbt_Ins_FK  Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT  Emp_Dbt_Upd_FK  Foreign Key (Upd_User) References Cpy_User(Id)
+  Constraint  Emp_Dbt_Date_UK Unique      (Emp_Id, dDate)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_LOAN_seq
@@ -1538,12 +1280,7 @@ Create Table Emp_Loan                                -- سلف العاملين
   Constraint  Emp_Loan_PK        Primary Key (Id ),
   Constraint  Emp_Loan_Num_UK    Unique      (Num),
   Constraint  Emp_Loan_SDate_UK  Unique      (Emp_Id, SDate),
-  Constraint  Emp_Loan_EDate_UK  Unique      (Emp_Id, EDate),
-  Constraint  Emp_Loan_Emp_FK    Foreign Key (Emp_Id   ) REFERENCES Emp_Emp       (Id),
-  Constraint  Emp_Loan_Status_FK Foreign Key (Status_Id) REFERENCES Phs_Cod_Status(Id),
-  Constraint  Emp_Loan_PFlg_FK   Foreign Key (PFlg_Id  ) REFERENCES Phs_Cod_YesNo (Id),
-  CONSTRAINT  Emp_Loan_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Emp_Loan_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  Constraint  Emp_Loan_EDate_UK  Unique      (Emp_Id, EDate)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Emp_PLoan_Seq
@@ -1562,10 +1299,7 @@ Create Table Emp_PLoan                        -- تسديدات سلف العا�
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
   Constraint  Emp_PLoan_PK       Primary Key (Id ),
-  Constraint  Emp_PLoan_Num_UK   Unique      (Num),
-  Constraint  Emp_PLoan_Loan_FK  Foreign Key (Loan_Id ) REFERENCES Emp_Loan(Id),
-  CONSTRAINT  Emp_PLoan_Ins_FK   Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT  Emp_PLoan_Upd_FK   Foreign Key (Upd_User) References Cpy_User(Id)
+  Constraint  Emp_PLoan_Num_UK   Unique      (Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Emp_Sal_Seq
@@ -1581,10 +1315,7 @@ Create Table Emp_Sal                 -- احتساب الرواتب
   Ins_User    BIGINT, Ins_Date TIMESTAMP,
   Upd_User    BIGINT, Upd_Date TIMESTAMP,
   Constraint  Emp_Sal_PK        Primary Key (Id),
-  Constraint  Emp_Sal_UK        UNIQUE      (nYear, nMonth),
-  Constraint  Emp_Sal_Status_FK Foreign Key (Status_Id) References Emp_Cod_CalcSal(Id),
-  Constraint  Emp_Sal_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  Constraint  Emp_Sal_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  Constraint  Emp_Sal_UK        UNIQUE      (nYear, nMonth)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_SALATT_seq
@@ -1609,10 +1340,7 @@ Create Table Emp_SalAtt                    -- ملخص الدوام
   Ins_User      BIGINT, Ins_Date TIMESTAMP,
   Upd_User      BIGINT, Upd_Date TIMESTAMP,
   Constraint    Emp_SalAtt_PK     Primary Key (Id),
-  Constraint    Emp_SalAtt_Emp_UK UNIQUE      (Sal_Id, Emp_Id),
-  Constraint    Emp_SalAtt_FK     Foreign Key (Sal_Id  ) References Emp_Sal (Id),
-  Constraint    Emp_SalAtt_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  Constraint    Emp_SalAtt_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  Constraint    Emp_SalAtt_Emp_UK UNIQUE      (Sal_Id, Emp_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS emp_SalCalc_seq
@@ -1689,11 +1417,7 @@ Create Table Emp_SalCalc                    -- جدول احتساب الروا�
   Ins_User        BIGINT, Ins_Date   TIMESTAMP,
   Upd_User        BIGINT, Upd_Date   TIMESTAMP,
   Constraint      Emp_SalCalc_PK      Primary Key (Id),
-  Constraint      Emp_SalCalc_UK      UNIQUE      (Sal_Id, Session_Id, Emp_Id),
-  Constraint      Emp_SalCalc_FK      Foreign Key (Sal_Id  ) References Emp_Sal (Id),
-  Constraint      Emp_SalCalc_Emp_FK  Foreign Key (Emp_Id  ) REFERENCES Emp_Emp (Id),
-  CONSTRAINT      Emp_SalCalc_Ins_FK  Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT      Emp_SalCalc_Upd_FK  Foreign Key (Upd_User) References Cpy_User(Id)
+  Constraint      Emp_SalCalc_UK      UNIQUE      (Sal_Id, Session_Id, Emp_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_SALCALCDBT_seq
@@ -1710,10 +1434,7 @@ Create Table Emp_SalCalcDbt                        -- استجرارات رات�
   Rem         VARCHAR(100),                     -- ملاحظات
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
-  Constraint  Emp_SalCalcDbt_PK      Primary Key (Id ),
-  CONSTRAINT  Emp_SalCalcDbt_TSal_FK Foreign Key (TSal_Id ) References Emp_SalCalc(Id),
-  CONSTRAINT  Emp_SalCalcDbt_Ins_FK  Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT  Emp_SalCalcDbt_Upd_FK  Foreign Key (Upd_User) References Cpy_User   (Id)
+  Constraint  Emp_SalCalcDbt_PK      Primary Key (Id )
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_SALCALCLOAN_seq
@@ -1729,10 +1450,7 @@ Create Table Emp_SalCalcLoan                        -- سلف راتب
   BAmt       NUMERIC(25,3) Default 0,                  -- رصيد السلفة
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
-  Constraint Emp_SalCalcLoan_PK      Primary Key (Id),
-  CONSTRAINT Emp_SalCalcLoan_TSal_FK Foreign Key (TSal_Id ) References Emp_SalCalc(Id),
-  CONSTRAINT Emp_SalCalcLoan_Ins_FK  Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT Emp_SalCalcLoan_Upd_FK  Foreign Key (Upd_User) References Cpy_User   (Id)
+  Constraint Emp_SalCalcLoan_PK      Primary Key (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_SALCALCCON_seq
@@ -1751,10 +1469,7 @@ Create Table Emp_SalCalcCon                -- مكافآت راتب
   Minutes      INTEGER Default 0,                   -- الدقائق
   Ins_User     BIGINT, Ins_Date   TIMESTAMP,
   Upd_User     BIGINT, Upd_Date   TIMESTAMP,
-  Constraint   Emp_SalCalcCon_PK      Primary Key (Id),
-  CONSTRAINT   Emp_SalCalcCon_TSal_FK Foreign Key (TSal_Id ) References Emp_SalCalc(Id),
-  CONSTRAINT   Emp_SalCalcCon_Ins_FK  Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT   Emp_SalCalcCon_Upd_FK  Foreign Key (Upd_User) References Cpy_User   (Id)
+  Constraint   Emp_SalCalcCon_PK      Primary Key (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_SALCALCPUN_seq
@@ -1774,10 +1489,7 @@ Create Table Emp_SalCalcPun                   -- عقوبات راتب
   Rem          VARCHAR(100),                    -- ملاحظات
   Ins_User     BIGINT, Ins_Date   TIMESTAMP,
   Upd_User     BIGINT, Upd_Date   TIMESTAMP,
-  Constraint   Emp_SalCalcPun_PK      Primary Key (Id),
-  CONSTRAINT   Emp_SalCalcPun_TSal_FK Foreign Key (TSal_Id ) References Emp_SalCalc(Id),
-  CONSTRAINT   Emp_SalCalcPun_Ins_FK  Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT   Emp_SalCalcPun_Upd_FK  Foreign Key (Upd_User) References Cpy_User   (Id)
+  Constraint   Emp_SalCalcPun_PK      Primary Key (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_SALCALCCOMP_seq
@@ -1796,10 +1508,7 @@ Create Table Emp_SalCalcComp                 -- تعويضات راتب
   Rem        VARCHAR(100),                      -- ملاحظات
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
-  Constraint Emp_SalCalcCom_PK      Primary Key (Id),
-  CONSTRAINT Emp_SalCalcCom_TSal_FK Foreign Key (TSal_Id ) References Emp_SalCalc(Id),
-  CONSTRAINT Emp_SalCalcCom_Ins_FK  Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT Emp_SalCalcCom_Upd_FK  Foreign Key (Upd_User) References Cpy_User   (Id)
+  Constraint Emp_SalCalcCom_PK      Primary Key (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_SALCALCDED_seq
@@ -1818,10 +1527,7 @@ Create Table Emp_SalCalcDed                    -- حسميات راتب
   Rem        VARCHAR(100),                      -- ملاحظات
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
-  Constraint Emp_SalCalcDed_PK      Primary Key (Id),
-  CONSTRAINT Emp_SalCalcDed_TSal_FK Foreign Key (TSal_Id ) References Emp_SalCalc(Id),
-  CONSTRAINT Emp_SalCalcDed_Ins_FK  Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT Emp_SalCalcDed_Upd_FK  Foreign Key (Upd_User) References Cpy_User   (Id)
+  Constraint Emp_SalCalcDed_PK      Primary Key (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_SALCALCAOSAL_seq
@@ -1836,10 +1542,7 @@ Create Table Emp_SalCalcAOSal                       -- الإضافات على �
   Rem         VARCHAR(100),                    -- ملاحظات
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
-  Constraint  Emp_CalcSalAdd_PK      Primary Key (Id),
-  CONSTRAINT  Emp_CalcSalAdd_TSal_FK Foreign Key (TSal_Id ) References Emp_SalCalc(Id),
-  CONSTRAINT  Emp_CalcSalAdd_Ins_FK  Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT  Emp_CalcSalAdd_Upd_FK  Foreign Key (Upd_User) References Cpy_User   (Id)
+  Constraint  Emp_CalcSalAdd_PK      Primary Key (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_SALCALCSFSAL_seq
@@ -1854,10 +1557,7 @@ Create Table Emp_SalCalcSFSal                      -- طرح من راتب
   Rem         VARCHAR(100),                     -- ملاحظات
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
-  Constraint  Emp_SalCalcSub_PK      Primary Key (Id),
-  CONSTRAINT  Emp_SalCalcSub_TSal_FK Foreign Key (TSal_Id ) References Emp_SalCalc(Id),
-  CONSTRAINT  Emp_SalCalcSub_Ins_FK  Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT  Emp_SalCalcSub_Upd_FK  Foreign Key (Upd_User) References Cpy_User   (Id)
+  Constraint  Emp_SalCalcSub_PK      Primary Key (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_TMPVACREP_seq
@@ -1872,8 +1572,7 @@ Create Table Emp_TmpVacRep               -- تقرير أرصدة الإجازا
   Done        NUMERIC(7,2),                            -- عدد ساعات الإجازات المأخوذة
   Blnc        NUMERIC(7,2),                            -- عدد ساعات الإجازات المأخوذة
   Amt         NUMERIC(25,3) Default 0,                 -- قيمة الرصيد المتبقي حسب أجر العامل
-  Rem         VARCHAR(100),                     -- ملاحظات
-  CONSTRAINT  Emp_TmpVacRep_Emp_FK Foreign Key (Emp_Id) References Emp_Emp(Id)
+  Rem         VARCHAR(100)
 );
 
 CREATE SEQUENCE IF NOT EXISTS EMP_TMPSALDLYREP_seq

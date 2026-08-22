@@ -16,10 +16,7 @@ Create Table Cpy_Cod_Task_Action                         -- جدول ترميز 
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Cpy_Cod_Task_Action_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Cpy_Cod_Task_Action_UK     UNIQUE      (Name),
-  CONSTRAINT Cpy_Cod_Task_Action_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Cpy_Cod_Task_Action_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Cpy_Cod_Task_Action_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Cpy_Cod_Task_Action_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Cpy_Cod_Task_Action (Id,Name) values (0,'-');
@@ -37,9 +34,7 @@ Create Table Cpy_Cod_Rate                              -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Cpy_Cod_Rate_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Cpy_Cod_Rate_UK     UNIQUE      (Name),
-  CONSTRAINT Cpy_Cod_Rate_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Cpy_Cod_Rate_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Cpy_Cod_Rate_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Cpy_Cod_Rate (Id,Name) values (0,'-');
@@ -65,10 +60,7 @@ Create Table Cpy_Cod_Task_Status                         -- جدول ترميز 
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Cpy_Cod_Task_Status_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Cpy_Cod_Task_Status_UK     UNIQUE      (Name),
-  CONSTRAINT Cpy_Cod_Task_Status_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Cpy_Cod_Task_Status_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Cpy_Cod_Task_Status_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Cpy_Cod_Task_Status_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Cpy_Cod_Task_Status (Id,Name) values (0,'-');
@@ -89,10 +81,7 @@ Create Table Cpy_Cod_Task_Priority                       -- جدول ترميز 
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Cpy_Cod_Task_Priority_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Cpy_Cod_Task_Priority_UK     UNIQUE      (Name),
-  CONSTRAINT Cpy_Cod_Task_Priority_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Cpy_Cod_Task_Priority_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Cpy_Cod_Task_Priority_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Cpy_Cod_Task_Priority_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Cpy_Cod_Task_Priority (Id,Name) values (0,'-');
@@ -111,9 +100,7 @@ Create Table Cpy_Cod_Task_Privacy                        -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Cpy_Cod_Task_Privacy_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Cpy_Cod_Task_Privacy_UK     UNIQUE      (Name),
-  CONSTRAINT Cpy_Cod_Task_Privacy_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Cpy_Cod_Task_Privacy_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Cpy_Cod_Task_Privacy_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Cpy_Cod_Task_Privacy (Id,Name,Icon) values (0,'-','');
@@ -137,8 +124,8 @@ Create Table Cpy_Task              		                   -- المهام
   Comp_Perc   SMALLINT Default 0,                         -- نسبة الإنجاز
   Reminder_Id BIGINT Default 1,			                   -- التذكير
   RemindDays  SMALLINT Default 1,                         -- أيام تكرار التنبيه
-  RemindDate  DATETIME Default NOW(),                        -- تاريخ التذكير
-  SDate       DATETIME Default NOW(),                        -- تاريخ البداية المتوقع
+  RemindDate  DATETIME DEFAULT (NOW()),                        -- تاريخ التذكير
+  SDate       DATETIME DEFAULT (NOW()),                        -- تاريخ البداية المتوقع
   EDate       DATETIME NOT NULL,                               -- تاريخ النهاية المتوقع
   ASDate      DATETIME,                                        -- تاريخ البداية الفعلي
   AEDate      DATETIME,                                        -- تاريخ النهاية الفعلي
@@ -146,16 +133,7 @@ Create Table Cpy_Task              		                   -- المهام
   Rem         VARCHAR(250),			                     -- ملاحظات
   Ins_User    BIGINT, Ins_Date DATETIME,
   Upd_User    BIGINT, Upd_Date DATETIME,
-  CONSTRAINT  Cpy_Task_PK          Primary Key (Id),
-  CONSTRAINT  Cpy_Task_Status_FK   Foreign Key (Status_Id  ) References Cpy_Cod_Task_Status  (Id),
-  CONSTRAINT  Cpy_Task_Priority_FK Foreign Key (Priority_Id) References Cpy_Cod_Task_Priority(Id),
-  CONSTRAINT  Cpy_Task_Privacy_FK  Foreign Key (Privacy_Id ) References Cpy_Cod_Task_Privacy (Id),
-  CONSTRAINT  Cpy_Task_Reminder_FK Foreign Key (Reminder_Id) References Phs_Cod_YesNo        (Id),
-  CONSTRAINT  Cpy_Task_Dept_FK     Foreign Key (Dept_Id    ) References Cpy_Dept             (Id),
-  CONSTRAINT  Cpy_Task_Unit_FK     Foreign Key (Unit_Id    ) References Cpy_Unit             (Id),
-  CONSTRAINT  Cpy_Task_User_FK     Foreign Key (User_Id    ) References Cpy_User             (Id),
-  CONSTRAINT  Cpy_Task_Ins_FK      Foreign Key (Ins_User   ) References Cpy_User             (Id),
-  CONSTRAINT  Cpy_Task_Upd_FK      Foreign Key (Upd_User   ) References Cpy_User             (Id)
+  CONSTRAINT  Cpy_Task_PK          Primary Key (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- INSERT INTO Cpy_Task (Id, Task_Id, User_Id, Name, EDate) VALUES (0, 0, 0, '-', To_Date('31-12-2999','DD-MM-YYYY'));
@@ -168,15 +146,10 @@ Create Table Cpy_Task_Status        		                   -- جدول تبدل ح
   User_Id     BIGINT NOT NULL,				                   -- الموظف الذي غير الحالة
   oStatus_Id  BIGINT Default 0,                         -- الحالة القديمة
   nStatus_Id  BIGINT Default 0,                         -- الحالة الحالية
-  Status_Date DATETIME Default NOW(),                        -- تاريخ الحالة الحالية
+  Status_Date DATETIME DEFAULT (NOW()),                        -- تاريخ الحالة الحالية
   Ins_User    BIGINT, Ins_Date DATETIME,
   Upd_User    BIGINT, Upd_Date DATETIME,
-  CONSTRAINT  Cpy_Task_Status_PK          Primary Key (Id),
-  CONSTRAINT  Cpy_Task_Status_OStatus_FK  Foreign Key (oStatus_Id) References Cpy_Cod_Task_Status(Id),
-  CONSTRAINT  Cpy_Task_Status_NStatus_FK  Foreign Key (nStatus_Id) References Cpy_Cod_Task_Status(Id),
-  CONSTRAINT  Cpy_Task_Status_User_FK     Foreign Key (User_Id   ) References Cpy_User           (Id),
-  CONSTRAINT  Cpy_Task_Status_Ins_FK      Foreign Key (Ins_User  ) References Cpy_User           (Id),
-  CONSTRAINT  Cpy_Task_Status_Upd_FK      Foreign Key (Upd_User  ) References Cpy_User           (Id)
+  CONSTRAINT  Cpy_Task_Status_PK          Primary Key (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE Cpy_Task_RateMst
@@ -187,10 +160,7 @@ CREATE TABLE Cpy_Task_RateMst
   Rem        VARCHAR(100),                           -- Remarks
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT Cpy_Task_RateMst_PK          PRIMARY KEY (Id),
-  CONSTRAINT Cpy_Task_RateMst_Task_FK     Foreign Key (Task_Id    )References Cpy_Task       (Id),
-  CONSTRAINT Cpy_Task_RateMst_Ins_FK      Foreign Key (Ins_User   )References Cpy_User       (Id),
-  CONSTRAINT Cpy_Task_RateMst_Upd_FK      Foreign Key (Upd_User   )References Cpy_User       (Id)
+  CONSTRAINT Cpy_Task_RateMst_PK          PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE Cpy_Task_RateTrn
@@ -201,11 +171,7 @@ CREATE TABLE Cpy_Task_RateTrn
   Rem        VARCHAR(100),                          -- Remarks
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT Cpy_Task_RateTrn_PK          PRIMARY KEY (Id),
-  CONSTRAINT Cpy_Task_RateTrn_Mst_FK      Foreign Key (Mst_Id     )References Cpy_Task_RateMst (Id),
-  CONSTRAINT Cpy_Task_RateTrn_Rate_FK     Foreign Key (Rate_Id    )References Cpy_Cod_Rate     (Id),
-  CONSTRAINT Cpy_Task_RateTrn_Ins_FK      Foreign Key (Ins_User   )References Cpy_User         (Id),
-  CONSTRAINT Cpy_Task_RateTrn_Upd_FK      Foreign Key (Upd_User   )References Cpy_User         (Id)
+  CONSTRAINT Cpy_Task_RateTrn_PK          PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Cpy_Task_User         		                   -- مستخدمي مهمة
@@ -217,12 +183,7 @@ Create Table Cpy_Task_User         		                   -- مستخدمي مهم
   Ins_User    BIGINT, Ins_Date DATETIME,
   Upd_User    BIGINT, Upd_Date DATETIME,
   CONSTRAINT  Cpy_Task_User_PK          Primary Key (Id  ),
-  CONSTRAINT  Cpy_Task_User_UK          UNIQUE      (Task_Id, User_Id),
-  CONSTRAINT  Cpy_Task_User_Status_FK   Foreign Key (Status_Id  ) References Phs_Cod_Status(Id),
-  CONSTRAINT  Cpy_Task_User_Task_FK     Foreign Key (Task_Id    ) References Cpy_Task      (Id),
-  CONSTRAINT  Cpy_Task_User_User_FK     Foreign Key (User_Id    ) References Cpy_User      (Id),
-  CONSTRAINT  Cpy_Task_User_Ins_FK      Foreign Key (Ins_User   ) References Cpy_User      (Id),
-  CONSTRAINT  Cpy_Task_User_Upd_FK      Foreign Key (Upd_User   ) References Cpy_User      (Id)
+  CONSTRAINT  Cpy_Task_User_UK          UNIQUE      (Task_Id, User_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Cpy_Task_Action      		                   -- إجراءات مهمة
@@ -236,13 +197,7 @@ Create Table Cpy_Task_Action      		                   -- إجراءات مهم�
   Rem         VARCHAR(250),			                     -- ملاحظات
   Ins_User    BIGINT, Ins_Date DATETIME,
   Upd_User    BIGINT, Upd_Date DATETIME,
-  CONSTRAINT  Cpy_Task_Action_PK        Primary Key (Id),
-  CONSTRAINT  Cpy_Task_Action_Task_FK   Foreign Key (Task_Id  ) References Cpy_Task           (Id),
-  CONSTRAINT  Cpy_Task_Action_Action_FK Foreign Key (Action_Id) References Cpy_Cod_Task_Action(Id),
-  CONSTRAINT  Cpy_Task_Action_Status_FK Foreign Key (Status_Id) References Cpy_Cod_Task_Status(Id),
-  CONSTRAINT  Cpy_Task_Action_User_FK   Foreign Key (User_Id  ) References Cpy_User           (Id),
-  CONSTRAINT  Cpy_Task_Action_Ins_FK    Foreign Key (Ins_User ) References Cpy_User           (Id),
-  CONSTRAINT  Cpy_Task_Action_Upd_FK    Foreign Key (Upd_User ) References Cpy_User           (Id)
+  CONSTRAINT  Cpy_Task_Action_PK        Primary Key (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------------------------------------------------
@@ -254,10 +209,7 @@ Create Table Cpy_Cod_NotifType                     -- جدول ترميز أنو
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Cpy_Cod_NotifType_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Cpy_Cod_NotifType_UK     UNIQUE      (Name),
-  CONSTRAINT Cpy_Cod_NotifType_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Cpy_Cod_NotifType_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Cpy_Cod_NotifType_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Cpy_Cod_NotifType_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Cpy_Cod_NotifType (Id,Name) values (0,'-');
@@ -271,10 +223,7 @@ Create Table Cpy_Cod_NotifStatus                   -- جدول ترميز حال
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Cpy_Cod_NotifStatus_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Cpy_Cod_NotifStatus_UK     UNIQUE      (Name),
-  CONSTRAINT Cpy_Cod_NotifStatus_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Cpy_Cod_NotifStatus_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Cpy_Cod_NotifStatus_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Cpy_Cod_NotifStatus_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Cpy_Cod_NotifStatus (Id,Name) values (0,'جديد');
@@ -290,12 +239,7 @@ Create Table Cpy_Notification         		                 -- التنبيهات
   Rem         VARCHAR(250),			                     -- ملاحظات
   Ins_User    BIGINT, Ins_Date DATETIME,
   Upd_User    BIGINT, Upd_Date DATETIME,
-  CONSTRAINT  Cpy_Notification_PK        Primary Key (Id),
-  CONSTRAINT  Cpy_Notification_User_FK   Foreign Key (User_Id  ) References Cpy_User           (Id),
-  CONSTRAINT  Cpy_Notification_Type_FK   Foreign Key (Type_Id  ) References Cpy_Cod_NotifType  (Id),
-  CONSTRAINT  Cpy_Notification_Status_FK Foreign Key (Status_Id) References Cpy_Cod_NotifStatus(Id),
-  CONSTRAINT  Cpy_Notification_Ins_FK    Foreign Key (Ins_User ) References Cpy_User           (Id),
-  CONSTRAINT  Cpy_Notification_Upd_FK    Foreign Key (Upd_User ) References Cpy_User           (Id)
+  CONSTRAINT  Cpy_Notification_PK        Primary Key (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Cpy_Alert                                   -- جدول ترميز جداول الإشعارات
@@ -309,10 +253,7 @@ Create Table Cpy_Alert                                   -- جدول ترميز 
   Rem        VARCHAR(250),			                     -- ملاحظات
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT Cpy_Alert_PK      PRIMARY KEY (Id),
-  CONSTRAINT Cpy_Alert_User_FK Foreign Key (User_Id ) References Cpy_User(Id),
-  CONSTRAINT Cpy_Alert_Ins_FK  Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Cpy_Alert_Upd_FK  Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Cpy_Alert_PK      PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert Into  Cpy_Alert 

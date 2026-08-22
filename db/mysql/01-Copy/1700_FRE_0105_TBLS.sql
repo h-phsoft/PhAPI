@@ -20,7 +20,7 @@ Create Table Fre_CLR_Job                 -- ملفات العمل للتخليص
   Curn_Rate    DECIMAL(25,9) Default 1,           -- سعر الصرف
   Mode_Id      BIGINT Default 2,              -- Is Consolidate mode, 0 normal, 1 consolidate تجميع
   Num          BIGINT Default 0,             -- رقم
-  dDate        DATETIME Default NOW(),             -- تاريخ
+  dDate        DATETIME DEFAULT (NOW()),             -- تاريخ
   Descr        VARCHAR(100),               -- اسم ملف العمل أو وصفه
   ITerm_Id     BIGINT Default 0,              -- Inco Term
   PTerm_Id     BIGINT Default 0,              -- Payment Term
@@ -102,9 +102,7 @@ Create Table Fre_CLR_Job                 -- ملفات العمل للتخليص
   Ins_User     BIGINT, Ins_Date     DATETIME,
   Upd_User     BIGINT, Upd_Date     DATETIME,
   CONSTRAINT   Fre_CLR_Job_PK             Primary Key (Id),
-  CONSTRAINT   Fre_CLR_Job_UK             Unique      (Dept_Id, Unit_Id, Period_Id, Num),
-  CONSTRAINT   Fre_CLR_Job_Ins_FK         Foreign Key (Ins_User   ) References Cpy_User           (Id),
-  CONSTRAINT   Fre_CLR_Job_Upd_FK         Foreign Key (Upd_User   ) References Cpy_User           (Id)
+  CONSTRAINT   Fre_CLR_Job_UK             Unique      (Dept_Id, Unit_Id, Period_Id, Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Alter Table Fre_CLR_Job Add CONSTRAINT   Fre_CLR_Job_WPer_FK        Foreign Key (Period_Id  ) References Cpy_Period         (Id);
@@ -206,25 +204,7 @@ Create Table Fre_CLR_DBCR                  -- الوثائق المدينة
   Waybill     VARCHAR(25),                      -- Waybill
   Ins_User    BIGINT, Ins_Date     DATETIME,
   Upd_User    BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT  Fre_CLR_DBCR_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Fre_CLR_DBCR_Job_FK    Foreign Key (Job_Id   ) References Fre_CLR_Job  (Id),
-  CONSTRAINT  Fre_CLR_DBCR_Period_FK Foreign Key (Period_Id) References Cpy_Period   (Id),
-  CONSTRAINT  Fre_CLR_DBCR_Trt_FK    Foreign Key (Trt_Id   ) References Fin_Cod_Trt  (Id),
-  CONSTRAINT  Fre_CLR_DBCR_Cont_FK   Foreign Key (Cont_Id  ) References Mng_Cont     (Id),
-  CONSTRAINT  Fre_CLR_DBCR_Curn_FK   Foreign Key (Curn_Id  ) References Mng_Curn     (Id),
-  CONSTRAINT  Fre_CLR_DBCR_Serv_FK   Foreign Key (Serv_Id  ) References Mng_Serv     (Id),
-  CONSTRAINT  Fre_CLR_DBCR_RDept_FK  Foreign Key (Dept_RId ) References Cpy_Dept     (Id),
-  CONSTRAINT  Fre_CLR_DBCR_RUnit_FK  Foreign Key (Unit_RId ) References Cpy_Unit     (Id),
-  CONSTRAINT  Fre_CLR_DBCR_CLRe_FK   Foreign Key (IFre_Id  ) References Fin_TInv     (Id),
-  CONSTRAINT  Fre_CLR_DBCR_DFre_FK   Foreign Key (DFre_Id  ) References Fin_TDbt     (Id),
-  CONSTRAINT  Fre_CLR_DBCR_CFre_FK   Foreign Key (CFre_Id  ) References Fin_TCrd     (Id),
-  CONSTRAINT  Fre_CLR_DBCR_Ord_FK    Foreign Key (Ord_Id   ) References Cash_APOrd   (Id),
-  CONSTRAINT  Fre_CLR_DBCR_LOC_FK    Foreign Key (Loc_Id   ) References Fre_Cod_Loc  (Id),
-  CONSTRAINT  Fre_CLR_DBCR_Item_FK   Foreign Key (Item_Id  ) References Stor_Item    (Id),
-  CONSTRAINT  Fre_CLR_DBCR_Unit_FK   Foreign Key (Unit_Id  ) References Cpy_Cod_Unit (Id),
-  CONSTRAINT  Fre_CLR_DBCR_Status_FK Foreign Key (Status_Id) References Phs_Cod_YesNo(Id),
-  CONSTRAINT  Fre_CLR_DBCR_Ins_FK    Foreign Key (Ins_User ) References Cpy_User     (Id),
-  CONSTRAINT  Fre_CLR_DBCR_Upd_FK    Foreign Key (Upd_User ) References Cpy_User     (Id)
+  CONSTRAINT  Fre_CLR_DBCR_PK        PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fre_CLR_TJob                    -- بنود الشحنات
@@ -255,13 +235,7 @@ Create Table Fre_CLR_TJob                    -- بنود الشحنات
   TRem       VARCHAR(250),                 -- ملاحظات
   Ins_User   BIGINT, Ins_Date DATETIME,
   Upd_User   BIGINT, Upd_Date DATETIME,
-  CONSTRAINT Fre_CLR_TJob_PK       Primary Key (Id),
-  CONSTRAINT Fre_CLR_TJob_FK       Foreign Key (Job_Id   ) References Fre_CLR_Job         (Id),
-  CONSTRAINT Fre_CLR_TJob_Curn_FK  Foreign Key (Curn_Id  ) References Mng_Curn            (Id),
-  CONSTRAINT Fre_CLR_TJob_nComd_FK Foreign Key (Comod_Id ) References Fre_Cod_Comod       (Id),
-  CONSTRAINT Fre_CLR_TJob_Unit_FK  Foreign Key (Unit_Id  ) References Cpy_Cod_Unit        (Id),
-  CONSTRAINT Fre_CLR_TJob_Ins_FK   Foreign Key (Ins_User ) References Cpy_User            (Id),
-  CONSTRAINT Fre_CLR_TJob_Upd_FK   Foreign Key (Upd_User ) References Cpy_User            (Id)
+  CONSTRAINT Fre_CLR_TJob_PK       Primary Key (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- TODO(port): other has no automatic equivalent (source line 237).

@@ -22,10 +22,7 @@ Create Table Cash_Cod_Status                         -- جدول ترميز حا
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Cash_Cod_Status_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Cash_Cod_Status_UK     UNIQUE      (Name),
-  CONSTRAINT Cash_Cod_Status_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Cash_Cod_Status_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Cash_Cod_Status_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Cash_Cod_Status_UK     UNIQUE      (Name)
 );
 
 INSERT INTO Cash_Cod_Status (Id, Name) VALUES (0 , '-');
@@ -47,11 +44,8 @@ Create Table Cash_Cod_Method                           -- جدول ترميز ا
     Ins_User   BIGINT, Ins_Date     TIMESTAMP,
     Upd_User   BIGINT, Upd_Date     TIMESTAMP,
     CONSTRAINT Cash_Cod_Method_PK     PRIMARY KEY (Id  ),
-    CONSTRAINT Cash_Cod_Method_UK     UNIQUE      (Name),
-    CONSTRAINT Cash_Cod_Method_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-    CONSTRAINT Cash_Cod_Method_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-    CONSTRAINT Cash_Cod_Method_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
-  );
+    CONSTRAINT Cash_Cod_Method_UK     UNIQUE      (Name)
+);
 
 INSERT INTO Cash_Cod_Method (Id, Name) VALUES (0  , '-');
 
@@ -64,10 +58,7 @@ Create Table Cash_Cod_Trt                            -- جدول ترميز أن
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Cash_Cod_Trt_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Cash_Cod_Trt_UK     UNIQUE      (Name),
-  CONSTRAINT Cash_Cod_Trt_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Cash_Cod_Trt_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Cash_Cod_Trt_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Cash_Cod_Trt_UK     UNIQUE      (Name)
 );
 
 INSERT INTO Cash_Cod_Trt (Id, Name, Rem) VALUES (0 , '-'  , '-');
@@ -95,10 +86,7 @@ Create Table Cash_Cod_City                           -- جدول ترميز ال
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Cash_Cod_City_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Cash_Cod_City_UK     UNIQUE      (Name),
-  CONSTRAINT Cash_Cod_City_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Cash_Cod_City_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Cash_Cod_City_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Cash_Cod_City_UK     UNIQUE      (Name)
 );
 
 INSERT INTO Cash_Cod_City (Id, Name, Rem) VALUES (0,'-','-');
@@ -112,10 +100,7 @@ Create Table Cash_Cod_PhnBy                          -- جدول ترميز شر
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Cash_Cod_PhnBy_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Cash_Cod_PhnBy_UK     UNIQUE      (Name),
-  CONSTRAINT Cash_Cod_PhnBy_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Cash_Cod_PhnBy_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Cash_Cod_PhnBy_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Cash_Cod_PhnBy_UK     UNIQUE      (Name)
 );
 
 INSERT INTO Cash_Cod_PhnBy (Id, Name, Rem) VALUES (0,'-','-');
@@ -136,12 +121,7 @@ Create Table Cash_Cash                            -- دليل أمناء الص�
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT Cash_Cash_PK      Primary Key (Id  ),
   CONSTRAINT Cash_Cash_Num_UK  Unique      (Num ),
-  CONSTRAINT Cash_Cash_Name_UK Unique      (Name),
-  CONSTRAINT Cash_Cash_Cost_FK Foreign Key (Cost_Id ) References Acc_Cost(Id),
-  CONSTRAINT Cash_Cash_Acc_FK  Foreign Key (Acc_Id  ) References Acc_Acc (Id),
-  CONSTRAINT Cash_Cash_User_FK Foreign Key (User_Id ) References Cpy_User(Id),
-  CONSTRAINT Cash_Cash_Ins_FK  Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Cash_Cash_Upd_FK  Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Cash_Cash_Name_UK Unique      (Name)
 );
 
 INSERT INTO Cash_Cash(ID,NUM,NAME,USER_ID) VALUES(0,0,'-',0);
@@ -166,16 +146,7 @@ Create Table Cash_Box                               -- دليل الصناديق
   Upd_User    BIGINT, Upd_Date   TIMESTAMP, 
   CONSTRAINT  Cash_Box_PK        Primary Key (Id  ),
   CONSTRAINT  Cash_Box_Num_UK    Unique      (Num ),
-  CONSTRAINT  Cash_Box_Name_UK   Unique      (Name),
-  CONSTRAINT  Cash_Box_Cash_FK   Foreign Key (Cash_Id  ) References Cash_Cash      (Id),
---CONSTRAINT  Cash_Box_User_FK   Foreign Key (User_Id  ) References Cpy_User       (Id),
-  CONSTRAINT  Cash_Box_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT  Cash_Box_Cost_FK   Foreign Key (Cost_Id  ) References Acc_Cost       (Id),
-  CONSTRAINT  Cash_Box_AccC_FK   Foreign Key (Acc_CId  ) References Acc_Acc        (Id),
-  CONSTRAINT  Cash_Box_AccO_FK   Foreign Key (Acc_OId  ) References Acc_Acc        (Id),
-  CONSTRAINT  Cahs_Box_Curn_FK   Foreign Key (Curn_Id  ) References Mng_Curn       (Id),
-  CONSTRAINT  Cash_Box_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT  Cash_Box_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT  Cash_Box_Name_UK   Unique      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cash_COrd_Seq
@@ -228,27 +199,7 @@ Create Table Cash_COrd                    -- أوامر القبض
   Ins_User       BIGINT, Ins_Date   TIMESTAMP,
   Upd_User       BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT     Cash_COrd_PK         Primary Key (Id),
-  CONSTRAINT     Cash_COrd_Num_UK     Unique      (Dept_Id, Unit_Id, Period_Id, Num),
-  CONSTRAINT     Cash_COrd_Trt_FK     Foreign Key (Trt_Id    ) References Cash_Cod_Trt    (Id),
-  CONSTRAINT     Cash_COrd_Dept_FK    Foreign Key (Dept_Id   ) References Cpy_Dept        (Id),
-  CONSTRAINT     Cash_COrd_Unit_FK    Foreign Key (Unit_Id   ) References Cpy_Unit        (Id),
-  CONSTRAINT     Cash_COrd_Oper_FK    Foreign Key (Oper_Id   ) References Cpy_Oper        (Id),
-  CONSTRAINT     Cash_COrd_Period_FK  Foreign Key (Period_Id ) References Cpy_Period      (Id),
-  CONSTRAINT     Cash_COrd_Status_FK  Foreign Key (Status_Id ) References Cash_Cod_Status (Id),
-  CONSTRAINT     Cash_COrd_DStatus_FK Foreign Key (DStatus_Id) References Phs_Cod_YesNo   (Id),
-  CONSTRAINT     Cash_COrd_Box_FK     Foreign Key (CBox_Id   ) References Cash_Box        (Id),
-  CONSTRAINT     Cash_COrd_Cash_FK    Foreign Key (Cash_Id   ) References Cash_Cash       (Id),
-  CONSTRAINT     Cash_COrd_Method_FK  Foreign Key (Method_Id ) References Cash_Cod_Method (Id),
-  CONSTRAINT     Cash_COrd_City_FK    Foreign Key (City_Id   ) References Cash_Cod_City   (Id),
-  CONSTRAINT     Cash_COrd_PhnBy_FK   Foreign Key (PhnBy_Id  ) References Cash_Cod_PhnBy  (Id),
-  CONSTRAINT     Cash_COrd_Cont_FK    Foreign Key (Cont_Id   ) References Mng_Cont        (Id),
-  CONSTRAINT     Cash_COrd_Serv_FK    Foreign Key (Serv_Id   ) References Mng_Serv        (Id),
-  CONSTRAINT     Cash_COrd_Curn_FK    Foreign Key (Curn_Id   ) References Mng_Curn        (Id),
-  CONSTRAINT     Cash_COrd_Vhr_FK     Foreign Key (Vhr_Id    ) References Acc_Mst         (Id),
-  CONSTRAINT     Cash_COrd_VhrD_FK    Foreign Key (Vhr_DId   ) References Acc_Mst         (Id),
-  CONSTRAINT     Cash_COrd_User_FK    Foreign Key (User_Id   ) References Cpy_User        (Id),
-  CONSTRAINT     Cash_COrd_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User        (Id),
-  CONSTRAINT     Cash_COrd_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User        (Id)
+  CONSTRAINT     Cash_COrd_Num_UK     Unique      (Dept_Id, Unit_Id, Period_Id, Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cash_COrdStatus_Seq
@@ -263,11 +214,7 @@ Create Table Cash_COrdStatus                       -- جدول تبدل حالا
   Rem        VARCHAR(250),                      -- البيان
   Ins_User   BIGINT,  Ins_Date  TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date  TIMESTAMP,
-  CONSTRAINT Cash_COrdStatus_PK        Primary Key (Id),
-  CONSTRAINT Cash_COrdStatus_FK        Foreign Key (Ord_Id   ) References Cash_COrd      (Id),
-  CONSTRAINT Cash_COrdStatus_Status_FK Foreign Key (Status_Id) References Cash_Cod_Status(Id),
-  CONSTRAINT Cash_COrdStatus_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Cash_COrdStatus_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Cash_COrdStatus_PK        Primary Key (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cash_COrdFin_Seq
@@ -290,11 +237,7 @@ Create Table Cash_COrdFin                      -- وثائق المالية ال
   Rem        VARCHAR(250),                      -- البيان
   Ins_User   BIGINT,  Ins_Date  TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date  TIMESTAMP,
-  CONSTRAINT Cash_COrdFin_PK      Primary Key (Id),
-  CONSTRAINT Cash_COrdFin_FK      Foreign Key (Ord_Id  ) References Cash_COrd(Id),
-  CONSTRAINT Cash_COrdFin_Curn_FK Foreign Key (Curn_Id ) References Mng_Curn (Id),
-  CONSTRAINT Cash_COrdFin_Ins_FK  Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT Cash_COrdFin_Upd_FK  Foreign Key (Upd_User) References Cpy_User (Id)
+  CONSTRAINT Cash_COrdFin_PK      Primary Key (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cash_COrdAPV_Seq
@@ -313,11 +256,7 @@ Create Table Cash_COrdAPV                         -- أوام الدفع الم�
   Rem        VARCHAR(250),                      -- البيان
   Ins_User   BIGINT,  Ins_Date  TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date  TIMESTAMP,
-  CONSTRAINT Cash_COrdAPV_PK      Primary Key (Id ),
-  CONSTRAINT Cash_COrdAPV_FK      Foreign Key (Ord_Id  ) References Cash_COrd(Id),
-  CONSTRAINT Cash_COrdAPV_Curn_FK Foreign Key (Curn_Id ) References Mng_Curn (Id),
-  CONSTRAINT Cash_COrdAPV_Ins_FK  Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT Cash_COrdAPV_Upd_FK  Foreign Key (Upd_User) References Cpy_User (Id)
+  CONSTRAINT Cash_COrdAPV_PK      Primary Key (Id )
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cash_APOrd_Seq
@@ -370,27 +309,7 @@ Create Table Cash_APOrd              -- أوامر السلف
   Ins_User       BIGINT, Ins_Date   TIMESTAMP,
   Upd_User       BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT     Cash_APOrd_PK         Primary Key (Id),
-  CONSTRAINT     Cash_APOrd_Num_UK     Unique      (Dept_Id, Unit_Id, Period_Id, Num),
-  CONSTRAINT     Cash_APOrd_Trt_FK     Foreign Key (Trt_Id    ) References Cash_Cod_Trt   (Id),
-  CONSTRAINT     Cash_APOrd_Dept_FK    Foreign Key (Dept_Id   ) References Cpy_Dept       (Id),
-  CONSTRAINT     Cash_APOrd_Unit_FK    Foreign Key (Unit_Id   ) References Cpy_Unit       (Id),
-  CONSTRAINT     Cash_APOrd_Oper_FK    Foreign Key (Oper_Id   ) References Cpy_Oper       (Id),
-  CONSTRAINT     Cash_APOrd_Period_FK  Foreign Key (Period_Id ) References Cpy_Period     (Id),
-  CONSTRAINT     Cash_APOrd_Status_FK  Foreign Key (Status_Id ) References Cash_Cod_Status(Id),
-  CONSTRAINT     Cash_APOrd_DStatus_FK Foreign Key (DStatus_Id) References Phs_Cod_YesNo  (Id),
-  CONSTRAINT     Cash_APOrd_Box_FK     Foreign Key (CBox_Id   ) References Cash_Box       (Id),
-  CONSTRAINT     Cash_APOrd_Cash_FK    Foreign Key (Cash_Id   ) References Cash_Cash      (Id),
-  CONSTRAINT     Cash_APOrd_Method_FK  Foreign Key (Method_Id ) References Cash_Cod_Method(Id),
-  CONSTRAINT     Cash_APOrd_City_FK    Foreign Key (City_Id   ) References Cash_Cod_City  (Id),
-  CONSTRAINT     Cash_APOrd_PhnBy_FK   Foreign Key (PhnBy_Id  ) References Cash_Cod_PhnBy (Id),
-  CONSTRAINT     Cash_APOrd_Cont_FK    Foreign Key (Cont_Id   ) References Mng_Cont       (Id),
-  CONSTRAINT     Cash_APOrd_Serv_FK    Foreign Key (Serv_Id   ) References Mng_Serv       (Id),
-  CONSTRAINT     Cash_APOrd_Curn_FK    Foreign Key (Curn_Id   ) References Mng_Curn       (Id),
-  CONSTRAINT     Cash_APOrd_Vhr_FK     Foreign Key (Vhr_Id    ) References Acc_Mst        (Id),
-  CONSTRAINT     Cash_APOrd_VhrD_FK    Foreign Key (Vhr_DId   ) References Acc_Mst        (Id),
-  CONSTRAINT     Cash_APOrd_User_FK    Foreign Key (User_Id   ) References Cpy_User       (Id),
-  CONSTRAINT     Cash_APOrd_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User       (Id),
-  CONSTRAINT     Cash_APOrd_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User       (Id)
+  CONSTRAINT     Cash_APOrd_Num_UK     Unique      (Dept_Id, Unit_Id, Period_Id, Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cash_APOrdStatus_Seq
@@ -405,11 +324,7 @@ Create Table Cash_APOrdStatus                      -- جدول تبدل حالا
   Rem        VARCHAR(250),                      -- البيان
   Ins_User   BIGINT,  Ins_Date  TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date  TIMESTAMP,
-  CONSTRAINT Cash_APOrdStatus_PK        Primary Key (Id),
-  CONSTRAINT Cash_APOrdStatus_FK        Foreign Key (Ord_Id   ) References Cash_APOrd     (Id),
-  CONSTRAINT Cash_APOrdStatus_Status_FK Foreign Key (Status_Id) References Cash_Cod_Status(Id),
-  CONSTRAINT Cash_APOrdStatus_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Cash_APOrdStatus_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Cash_APOrdStatus_PK        Primary Key (Id)
 );
 
 Create Table Cash_APJobs                        -- ملفات العمل المرتبطة بالأمر
@@ -428,11 +343,7 @@ Create Table Cash_APJobs                        -- ملفات العمل الم�
   Rem         VARCHAR(250),                     -- البيان
   Ins_User    BIGINT,  Ins_Date  TIMESTAMP,
   Upd_User    BIGINT,  Upd_Date  TIMESTAMP,
-  CONSTRAINT  Cash_APJob_PK      Primary Key (Id),
-  CONSTRAINT  Cash_APJob_FK      Foreign Key (Ord_Id  ) References Cash_APOrd(Id),
-  CONSTRAINT  Cash_APJob_Curn_FK Foreign Key (Curn_Id ) References Mng_Curn  (Id),
-  CONSTRAINT  Cash_APJob_Ins_FK  Foreign Key (Ins_User) References Cpy_User  (Id),
-  CONSTRAINT  Cash_APJob_Upd_FK  Foreign Key (Upd_User) References Cpy_User  (Id)
+  CONSTRAINT  Cash_APJob_PK      Primary Key (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cash_POrd_Seq
@@ -485,27 +396,7 @@ Create Table Cash_POrd                       -- أوامر الصرف\الدفع
   Ins_User       BIGINT, Ins_Date   TIMESTAMP,
   Upd_User       BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT     Cash_POrd_PK         Primary Key (Id),
-  CONSTRAINT     Cash_POrd_Num_UK     Unique      (Dept_Id, Unit_Id, Period_Id, Num),
-  CONSTRAINT     Cash_POrd_Trt_FK     Foreign Key (Trt_Id    ) References Cash_Cod_Trt   (Id),
-  CONSTRAINT     Cash_POrd_Dept_FK    Foreign Key (Dept_Id   ) References Cpy_Dept       (Id),
-  CONSTRAINT     Cash_POrd_Unit_FK    Foreign Key (Unit_Id   ) References Cpy_Unit       (Id),
-  CONSTRAINT     Cash_POrd_Oper_FK    Foreign Key (Oper_Id   ) References Cpy_Oper       (Id),
-  CONSTRAINT     Cash_POrd_Period_FK  Foreign Key (Period_Id ) References Cpy_Period     (Id),
-  CONSTRAINT     Cash_POrd_Status_FK  Foreign Key (Status_Id ) References Cash_Cod_Status(Id),
-  CONSTRAINT     Cash_POrd_DStatus_FK Foreign Key (DStatus_Id) References Phs_Cod_YesNo  (Id),
-  CONSTRAINT     Cash_POrd_Box_FK     Foreign Key (CBox_Id   ) References Cash_Box       (Id),
-  CONSTRAINT     Cash_POrd_Cash_FK    Foreign Key (Cash_Id   ) References Cash_Cash      (Id),
-  CONSTRAINT     Cash_POrd_Method_FK  Foreign Key (Method_Id ) References Cash_Cod_Method(Id),
-  CONSTRAINT     Cash_POrd_City_FK    Foreign Key (City_Id   ) References Cash_Cod_City  (Id),
-  CONSTRAINT     Cash_POrd_PhnBy_FK   Foreign Key (PhnBy_Id  ) References Cash_Cod_PhnBy (Id),
-  CONSTRAINT     Cash_POrd_Cont_FK    Foreign Key (Cont_Id   ) References Mng_Cont       (Id),
-  CONSTRAINT     Cash_POrd_Serv_FK    Foreign Key (Serv_Id   ) References Mng_Serv       (Id),
-  CONSTRAINT     Cash_POrd_Curn_FK    Foreign Key (Curn_Id   ) References Mng_Curn       (Id),
-  CONSTRAINT     Cash_POrd_Vhr_FK     Foreign Key (Vhr_Id    ) References Acc_Mst        (Id),
-  CONSTRAINT     Cash_POrd_VhrD_FK    Foreign Key (Vhr_DId   ) References Acc_Mst        (Id),
-  CONSTRAINT     Cash_POrd_User_FK    Foreign Key (User_Id   ) References Cpy_User       (Id),
-  CONSTRAINT     Cash_POrd_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User       (Id),
-  CONSTRAINT     Cash_POrd_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User       (Id)
+  CONSTRAINT     Cash_POrd_Num_UK     Unique      (Dept_Id, Unit_Id, Period_Id, Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cash_POrdStatus_Seq
@@ -520,11 +411,7 @@ Create Table Cash_POrdStatus                       -- جدول تبدل حالا
   Rem        VARCHAR(250),                      -- البيان
   Ins_User   BIGINT,  Ins_Date  TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date  TIMESTAMP,
-  CONSTRAINT Cash_POrdStatus_PK        Primary Key (Id),
-  CONSTRAINT Cash_POrdStatus_FK        Foreign Key (Ord_Id   ) References Cash_POrd      (Id),
-  CONSTRAINT Cash_POrdStatus_Status_FK Foreign Key (Status_Id) References Cash_Cod_Status(Id),
-  CONSTRAINT Cash_POrdStatus_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Cash_POrdStatus_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Cash_POrdStatus_PK        Primary Key (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cash_POrdFin_Seq
@@ -547,11 +434,7 @@ Create Table Cash_POrdFin                      -- وثائق المالية ال
   Rem        VARCHAR(250),                      -- البيان
   Ins_User   BIGINT,  Ins_Date  TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date  TIMESTAMP,
-  CONSTRAINT Cash_POrdFin_PK      Primary Key (Id),
-  CONSTRAINT Cash_POrdFin_FK      Foreign Key (Ord_Id  ) References Cash_POrd(Id),
-  CONSTRAINT Cash_POrdFin_Curn_FK Foreign Key (Curn_Id ) References Mng_Curn (Id),
-  CONSTRAINT Cash_POrdFin_Ins_FK  Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT Cash_POrdFin_Upd_FK  Foreign Key (Upd_User) References Cpy_User (Id)
+  CONSTRAINT Cash_POrdFin_PK      Primary Key (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cash_POrdAPV_Seq
@@ -570,11 +453,7 @@ Create Table Cash_POrdAPV                         -- أوام الدفع الم�
   Rem        VARCHAR(250),                      -- البيان
   Ins_User   BIGINT,  Ins_Date  TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date  TIMESTAMP,
-  CONSTRAINT Cash_POrdAPV_PK      Primary Key (Id ),
-  CONSTRAINT Cash_POrdAPV_FK      Foreign Key (Ord_Id  ) References Cash_POrd(Id),
-  CONSTRAINT Cash_POrdAPV_Curn_FK Foreign Key (Curn_Id ) References Mng_Curn (Id),
-  CONSTRAINT Cash_POrdAPV_Ins_FK  Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT Cash_POrdAPV_Upd_FK  Foreign Key (Upd_User) References Cpy_User (Id)
+  CONSTRAINT Cash_POrdAPV_PK      Primary Key (Id )
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cash_TOrd_Seq
@@ -632,30 +511,7 @@ Create Table Cash_TOrd                      -- أوامر تبديل قطع
   Ins_User       BIGINT, Ins_Date   TIMESTAMP,
   Upd_User       BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT     Cash_TOrd_PK         Primary Key (Id),
-  CONSTRAINT     Cash_TOrd_Num_UK     Unique      (Dept_Id, Unit_Id, Period_Id, Num),
-  CONSTRAINT     Cash_TOrd_FTrt_FK    Foreign Key (Trt_IId   ) References Cash_Cod_Trt   (Id),
-  CONSTRAINT     Cash_TOrd_TTrt_FK    Foreign Key (Trt_TId   ) References Cash_Cod_Trt   (Id),
-  CONSTRAINT     Cash_TOrd_Dept_FK    Foreign Key (Dept_Id   ) References Cpy_Dept       (Id),
-  CONSTRAINT     Cash_TOrd_Unit_FK    Foreign Key (Unit_Id   ) References Cpy_Unit       (Id),
-  CONSTRAINT     Cash_TOrd_Oper_FK    Foreign Key (Oper_Id   ) References Cpy_Oper       (Id),
-  CONSTRAINT     Cash_TOrd_Period_FK  Foreign Key (Period_Id ) References Cpy_Period     (Id),
-  CONSTRAINT     Cash_TOrd_Status_FK  Foreign Key (Status_Id ) References Cash_Cod_Status(Id),
-  CONSTRAINT     Cash_TOrd_FBox_FK    Foreign Key (CBox_FId  ) References Cash_Box       (Id),
-  CONSTRAINT     Cash_TOrd_TBox_FK    Foreign Key (CBox_TId  ) References Cash_Box       (Id),
-  CONSTRAINT     Cash_TOrd_FCash_FK   Foreign Key (Cash_FId  ) References Cash_Cash      (Id),
-  CONSTRAINT     Cash_TOrd_TCash_FK   Foreign Key (Cash_TId  ) References Cash_Cash      (Id),
-  CONSTRAINT     Cash_TOrd_Method_FK  Foreign Key (Method_Id ) References Cash_Cod_Method(Id),
-  CONSTRAINT     Cash_TOrd_City_FK    Foreign Key (City_Id   ) References Cash_Cod_City  (Id),
-  CONSTRAINT     Cash_TOrd_PhnBy_FK   Foreign Key (PhnBy_Id  ) References Cash_Cod_PhnBy (Id),
-  CONSTRAINT     Cash_TOrd_Cont_FK    Foreign Key (Cont_Id   ) References Mng_Cont       (Id),
-  CONSTRAINT     Cash_TOrd_Serv_FK    Foreign Key (Serv_Id   ) References Mng_Serv       (Id),
-  CONSTRAINT     Cash_TOrd_CurnF_FK   Foreign Key (Curn_FId  ) References Mng_Curn       (Id),
-  CONSTRAINT     Cash_TOrd_CurnT_FK   Foreign Key (Curn_TId  ) References Mng_Curn       (Id),
-  CONSTRAINT     Cash_TOrd_Vhr_FK     Foreign Key (Vhr_Id    ) References Acc_Mst        (Id),
-  CONSTRAINT     Cash_TOrd_VhrD_FK    Foreign Key (Vhr_DId   ) References Acc_Mst        (Id),
-  CONSTRAINT     Cash_TOrd_User_FK    Foreign Key (User_Id   ) References Cpy_User       (Id),
-  CONSTRAINT     Cash_TOrd_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User       (Id),
-  CONSTRAINT     Cash_TOrd_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User       (Id)
+  CONSTRAINT     Cash_TOrd_Num_UK     Unique      (Dept_Id, Unit_Id, Period_Id, Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Cash_TOrdStatus_Seq
@@ -670,11 +526,7 @@ Create Table Cash_TOrdStatus                       -- جدول تبدل حالا
   Rem        VARCHAR(250),                      -- البيان
   Ins_User   BIGINT,  Ins_Date  TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date  TIMESTAMP,
-  CONSTRAINT Cash_TOrdStatus_PK        Primary Key (Id),
-  CONSTRAINT Cash_TOrdStatus_FK        Foreign Key (Ord_Id   ) References Cash_TOrd      (Id),
-  CONSTRAINT Cash_TOrdStatus_Status_FK Foreign Key (Status_Id) References Cash_Cod_Status(Id),
-  CONSTRAINT Cash_TOrdStatus_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Cash_TOrdStatus_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Cash_TOrdStatus_PK        Primary Key (Id)
 );
 
 -- TODO(port): other has no automatic equivalent (source line 666).

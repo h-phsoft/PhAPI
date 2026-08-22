@@ -30,7 +30,7 @@ Create Table Emp_FngrPrnt                         -- حركات الأجهزة
   OMODE        INT,                             -- نمط الخروج
   IOMODE       INT,                             -- حالة الدخول أو الخروج 1 دخول\2 خروج\3 مطعم
   vTIME        VARCHAR(100),                    -- الوقت
-  dDate        DATETIME Default NOW(),                  -- التاريخ
+  dDate        DATETIME DEFAULT (NOW()),                  -- التاريخ
   nHour        TINYINT Default 0,                   -- الساعة
   nMinute      TINYINT Default 0,                   -- الدقيقة
   Constraint   Emp_Fngr_PK Primary Key (Id)
@@ -45,7 +45,7 @@ Create Table Emp_FPrint                     -- حركات الأجهزة
   OMode         INT Default 0,                  -- نمط الخروج
   IOMode        INT Default 0,                  -- الحالة 0 غير محدد\1 دخول\2 خروج\3 مطعم
   vTime         VARCHAR(100),                   -- الوقت
-  dDate         DATETIME Default NOW(),                 -- التاريخ
+  dDate         DATETIME DEFAULT (NOW()),                 -- التاريخ
   nHour         TINYINT Default 0,                  -- الساعة
   nMinute       TINYINT Default 0,                  -- الدقيقة
   Constraint    Emp_FPrint_PK Primary Key (Id)
@@ -53,14 +53,12 @@ Create Table Emp_FPrint                     -- حركات الأجهزة
 
 Create Table Emp_Day                                -- دليل الأيام
 ( Id          BIGINT AUTO_INCREMENT,                             -- مفتاح رئيسي
-  dDate       DATETIME Default NOW(),                   -- التاريخ
+  dDate       DATETIME DEFAULT (NOW()),                   -- التاريخ
   Commit_Id   BIGINT Default 0,                    -- حالة التثبيت
   Rem         VARCHAR(100),                     -- ملاحظات
   Ins_User    BIGINT, Ins_Date   DATETIME,
   Upd_User    BIGINT, Upd_Date   DATETIME,
-  Constraint  Emp_Day_PK      Primary Key (Id),
-  CONSTRAINT  Emp_Day_Ins_FK  Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT  Emp_Day_Upd_FK  Foreign Key (Upd_User) References Cpy_User(Id)
+  Constraint  Emp_Day_PK      Primary Key (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Emp_DayAttFile                  -- ملفات الدوام
@@ -73,10 +71,7 @@ Create Table Emp_DayAttFile                  -- ملفات الدوام
   Upd_User    BIGINT, Upd_Date   DATETIME,
   Constraint  Emp_DayAtt_PK      Primary Key (Id  ),
   Constraint  Emp_DayAtt_Name_UK Unique      (Day_Id, Name ),
-  Constraint  Emp_DayAtt_File_UK Unique      (Day_Id, vFile),
-  Constraint  Emp_DayAtt_Day_FK  Foreign Key (Day_Id  ) REFERENCES Emp_Day (Id),
-  CONSTRAINT  Emp_DayAtt_Ins_FK  Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT  Emp_DayAtt_Upd_FK  Foreign Key (Upd_User) References Cpy_User(Id)
+  Constraint  Emp_DayAtt_File_UK Unique      (Day_Id, vFile)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Emp_Ent                             -- ساعات الدخول ليوم
@@ -89,11 +84,7 @@ Create Table Emp_Ent                             -- ساعات الدخول لي
   Ins_User    BIGINT, Ins_Date   DATETIME,
   Upd_User    BIGINT, Upd_Date   DATETIME,
   Constraint  Emp_Ent_PK      Primary Key (Id),
-  Constraint  Emp_Ent_Time_UK Unique      (Day_Id, Emp_Id, nHour, nMinute ),
-  Constraint  Emp_Ent_Day_FK  Foreign Key (Day_Id  ) REFERENCES Emp_Day (Id),
-  Constraint  Emp_Ent_Emp_FK  Foreign Key (Emp_Id  ) REFERENCES Emp_Emp (Id),
-  CONSTRAINT  Emp_Ent_Ins_FK  Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT  Emp_Ent_Upd_FK  Foreign Key (Upd_User) References Cpy_User(Id)
+  Constraint  Emp_Ent_Time_UK Unique      (Day_Id, Emp_Id, nHour, nMinute )
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Emp_Out                             -- ساعات الخروج ليوم
@@ -106,11 +97,7 @@ Create Table Emp_Out                             -- ساعات الخروج لي
   Ins_User    BIGINT, Ins_Date   DATETIME,
   Upd_User    BIGINT, Upd_Date   DATETIME,
   Constraint  Emp_Out_PK      Primary Key (Id),
-  Constraint  Emp_Out_Time_UK Unique      (Day_Id, Emp_Id, nHour, nMinute),
-  Constraint  Emp_Out_Day_FK  Foreign Key (Day_Id  ) REFERENCES Emp_Day (Id),
-  Constraint  Emp_Out_Emp_FK  Foreign Key (Emp_Id  ) REFERENCES Emp_Emp (Id),
-  CONSTRAINT  Emp_Out_Ins_FK  Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT  Emp_Out_Upd_FK  Foreign Key (Upd_User) References Cpy_User(Id)
+  Constraint  Emp_Out_Time_UK Unique      (Day_Id, Emp_Id, nHour, nMinute)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Emp_EDEO               -- ساعات الدخول و الخروج ليوم
@@ -147,21 +134,7 @@ Create Table Emp_EDEO               -- ساعات الدخول و الخروج �
   ARem          VARCHAR(100),                   -- ملاحظات البرنامج
   Ins_User      BIGINT, Ins_Date   DATETIME,
   Upd_User      BIGINT, Upd_Date   DATETIME,
-  Constraint    Emp_EDeo_PK          Primary Key (Id),
-  Constraint    Emp_EDeo_Day_FK      Foreign Key (Day_Id    ) References Emp_Day      (Id),
-  Constraint    Emp_EDeo_Emp_FK      Foreign Key (Emp_Id    ) References Emp_Emp      (Id),
-  Constraint    Emp_EDeo_WGrp_FK     Foreign Key (WGrp_Id   ) References Emp_WrkGrp   (Id),
-  Constraint    Emp_EDeo_Audit_FK    Foreign Key (Audit_Id  ) References Phs_Cod_YesNo(Id),
-  Constraint    Emp_EDeo_Execuse_FK  Foreign Key (Excuse_Id ) References Phs_Cod_YesNo(Id),
-  Constraint    Emp_EDeo_Weekend_FK  Foreign Key (WeekEnd_Id) References Phs_Cod_YesNo(Id),
-  Constraint    Emp_EDeo_Hollyday_FK Foreign Key (HolyDay_Id) References Phs_Cod_YesNo(Id),
-  Constraint    Emp_EDeo_Off_FK      Foreign Key (Off_Id    ) References Phs_Cod_YesNo(Id),
-  Constraint    Emp_EDeo_Sick_FK     Foreign Key (Sick_Id   ) References Phs_Cod_YesNo(Id),
-  Constraint    Emp_EDeo_Vac_FK      Foreign Key (Vac_Id    ) References Phs_Cod_YesNo(Id),
-  Constraint    Emp_EDeo_NPay_FK     Foreign Key (NPay_Id   ) References Phs_Cod_YesNo(Id),
-  Constraint    Emp_EDeo_VPay_FK     Foreign Key (VPar_Id   ) References Phs_Cod_YesNo(Id),
-  Constraint    Emp_EDeo_Ins_FK      Foreign Key (Ins_User  ) References Cpy_User     (Id),
-  Constraint    Emp_EDeo_Upd_FK      Foreign Key (Upd_User  ) References Cpy_User     (Id)
+  Constraint    Emp_EDeo_PK          Primary Key (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Emp_EDEOF             -- ساعات الدخول و الخروج ليوم
@@ -174,11 +147,7 @@ Create Table Emp_EDEOF             -- ساعات الدخول و الخروج ل
   Ins_User      BIGINT, Ins_Date   DATETIME,
   Upd_User      BIGINT, Upd_Date   DATETIME,
   Constraint    Emp_EDeoF_PK         Primary Key (Id),
-  Constraint    Emp_EDeoF_ETime_UK   Unique      (EDeo_Id, nHour, nMinute),
-  Constraint    Emp_EDeoF_EDeo_FK    Foreign Key (EDeo_Id ) References Emp_EDEO       (Id),
-  Constraint    Emp_EDeoF_AttTyep_FK Foreign Key (EDeo_Id ) References Emp_Cod_AttType(Id),
-  Constraint    Emp_EDeoF_Ins_FK     Foreign Key (Ins_User) References Cpy_User       (Id),
-  Constraint    Emp_EDeoF_Upd_FK     Foreign Key (Upd_User) References Cpy_User       (Id)
+  Constraint    Emp_EDeoF_ETime_UK   Unique      (EDeo_Id, nHour, nMinute)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Emp_EDEOM                   -- ساعات الدخول و الخروج ليوم
@@ -196,11 +165,7 @@ Create Table Emp_EDEOM                   -- ساعات الدخول و الخر�
   Upd_User      BIGINT, Upd_Date   DATETIME,
   Constraint    Emp_EDeoM_PK        Primary Key (Id),
   Constraint    Emp_EDeoM_ETime_UK  Unique      (EDeo_Id, EH, EM),
-  Constraint    Emp_EDeoM_OTime_UK  Unique      (EDeo_Id, OH, OM),
-  Constraint    Emp_EDeoM_EDeo_FK   Foreign Key (EDeo_Id ) References Emp_EDEO     (Id),
-  Constraint    Emp_EDeoM_Audit_FK  Foreign Key (Audit_Id) References Phs_Cod_YesNo(Id),
-  Constraint    Emp_EDeoM_Ins_FK    Foreign Key (Ins_User) References Cpy_User     (Id),
-  Constraint    Emp_EDeoM_Upd_FK    Foreign Key (Upd_User) References Cpy_User     (Id)
+  Constraint    Emp_EDeoM_OTime_UK  Unique      (EDeo_Id, OH, OM)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Emp_DEO                         -- ساعات الدخول و الخروج ليوم
@@ -270,10 +235,5 @@ Create Table Emp_DEO                         -- ساعات الدخول و ال�
   Constraint    Emp_DEO_ETime1_UK Unique      (Day_Id, Emp_Id, E1Hour, E1Minute),
   Constraint    Emp_DEO_ETime2_UK Unique      (Day_Id, Emp_Id, E2Hour, E2Minute),
   Constraint    Emp_DEO_OTime1_UK Unique      (Day_Id, Emp_Id, O1Hour, O1Minute),
-  Constraint    Emp_DEO_OTime2_UK Unique      (Day_Id, Emp_Id, O2Hour, O2Minute),
-  Constraint    Emp_DEO_Day_FK    Foreign Key (Day_Id  ) REFERENCES Emp_Day   (Id),
-  Constraint    Emp_DEO_Emp_FK    Foreign Key (Emp_Id  ) REFERENCES Emp_Emp   (Id),
-  CONSTRAINT    Emp_DEO_WGrp_FK   Foreign Key (WGrp_Id ) References Emp_WrkGrp(Id),
-  CONSTRAINT    Emp_DEO_Ins_FK    Foreign Key (Ins_User) References Cpy_User  (Id),
-  CONSTRAINT    Emp_DEO_Upd_FK    Foreign Key (Upd_User) References Cpy_User  (Id)
+  Constraint    Emp_DEO_OTime2_UK Unique      (Day_Id, Emp_Id, O2Hour, O2Minute)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

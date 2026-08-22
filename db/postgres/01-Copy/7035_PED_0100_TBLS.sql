@@ -19,10 +19,7 @@ Create Table PED_Cod_Pregnancy_Type                        -- جدول ترمي�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT  PED_Cod_Pregnancy_Type_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT  PED_Cod_Pregnancy_Type_UK        UNIQUE      (Name),
-  CONSTRAINT  PED_Cod_Pregnancy_Type_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT  PED_Cod_Pregnancy_Type_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT  PED_Cod_Pregnancy_Type_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT  PED_Cod_Pregnancy_Type_UK        UNIQUE      (Name)
 );
 
 Insert into PED_Cod_Pregnancy_Type (Id,Name) values (1,'طبيعي');
@@ -41,10 +38,7 @@ Create Table PED_Cod_Pregnancy_Condition                  -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT  PED_Cod_Pregnancy_Condition_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT  PED_Cod_Pregnancy_Condition_UK        UNIQUE      (Name),
-  CONSTRAINT  PED_Cod_Pregnancy_Condition_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT  PED_Cod_Pregnancy_Condition_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT  PED_Cod_Pregnancy_Condition_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT  PED_Cod_Pregnancy_Condition_UK        UNIQUE      (Name)
 );
 
 Insert into PED_Cod_Pregnancy_Condition (Id,Name) values (1,'طبيعية');
@@ -63,10 +57,7 @@ Create Table PED_Cod_Birth_Type                            -- جدول ترمي�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT  PED_Cod_Birth_Type_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT  PED_Cod_Birth_Type_UK        UNIQUE      (Name),
-  CONSTRAINT  PED_Cod_Birth_Type_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT  PED_Cod_Birth_Type_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT  PED_Cod_Birth_Type_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT  PED_Cod_Birth_Type_UK        UNIQUE      (Name)
 );
 
 Insert into PED_Cod_Birth_Type (Id,Name) values (1,'طبيعية');
@@ -85,10 +76,7 @@ Create Table PED_Cod_Quality_Perf                   -- جدول ترميز ال�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT PED_Cod_Quality_Perf_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT PED_Cod_Quality_Perf_UK        UNIQUE      (Name),
-  CONSTRAINT PED_Cod_Quality_Perf_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT PED_Cod_Quality_Perf_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT PED_Cod_Quality_Perf_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT PED_Cod_Quality_Perf_UK        UNIQUE      (Name)
 );
 
 Insert into PED_Cod_Quality_Perf (Id,Name) values (1,'ايجابية');
@@ -110,10 +98,7 @@ Create Table PED_Cats                                 -- جدول الفئات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT PED_Cats_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT PED_Cats_UK        UNIQUE      (Name),
-  CONSTRAINT PED_Cats_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT PED_Cats_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT PED_Cats_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT PED_Cats_UK        UNIQUE      (Name)
 );
 
 INSERT INTO PED_Cats (Id, Symbol, Name, Rem) VALUES (1 , 'A', 'معارضة (عند)', 'مشكلة');
@@ -157,10 +142,7 @@ Create Table PED_Test                                      -- جدول الاخ�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT PED_Test_PK        PRIMARY KEY (Id),
-  CONSTRAINT PED_Test_UK        UNIQUE      (Name),
-  CONSTRAINT PED_Test_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT PED_Test_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT PED_Test_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT PED_Test_UK        UNIQUE      (Name)
 );
 
 INSERT INTO PED_Test (Id, Status_Id, Name, Version, Rem) VALUES (0,1,'corner','0.0.1','');
@@ -178,12 +160,7 @@ Create Table PED_Test_Cats                        -- جدول فئات اختب�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT PED_Test_Cats_PK        PRIMARY KEY (Id),
-  CONSTRAINT PED_Test_Cats_UK        UNIQUE      (Test_Id, Cat_Id),
-  CONSTRAINT PED_Test_Cats_Test_Fk   Foreign Key (Test_Id  ) References PED_Test      (Id),
-  CONSTRAINT PED_Test_Cats_Cat_Fk    Foreign Key (Cat_Id   ) References PED_Cats      (Id),
-  CONSTRAINT PED_Test_Cats_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT PED_Test_Cats_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT PED_Test_Cats_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT PED_Test_Cats_UK        UNIQUE      (Test_Id, Cat_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS PED_Test_Cats_Trn_Seq
@@ -195,14 +172,11 @@ Create Table PED_Test_Cats_Trn                        -- جدول فئات اخ�
   Mst_Id     BIGINT NOT NULL,                            -- الحالة
   Cat_From   INTEGER NOT NULL,                            -- الاختبار
   Cat_To     INTEGER NOT NULL,                            -- الفئة
-  Text       VARCHAR(100),                            -- النص
+  TEXT       VARCHAR(100),                            -- النص
   Rem        VARCHAR(100),                            -- ملاحظات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT PED_Test_Cats_Trn_PK        PRIMARY KEY (Id),
-  CONSTRAINT PED_Test_Cats_Trn_Test_Fk   Foreign Key (Mst_Id   ) References PED_Test_Cats (Id),
-  CONSTRAINT PED_Test_Cats_Trn_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT PED_Test_Cats_Trn_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT PED_Test_Cats_Trn_PK        PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS PED_Test_Question_Seq
@@ -232,11 +206,7 @@ Create Table PED_Test_Question                             -- أسئلة اخت�
   Rem        VARCHAR(100),
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT PED_Test_Question_PK        PRIMARY KEY (Id),
-  CONSTRAINT PED_Test_Question_Test_Fk   Foreign Key (Test_Id  ) References PED_Test      (Id),
-  CONSTRAINT PED_Test_Question_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT PED_Test_Question_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT PED_Test_Question_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT PED_Test_Question_PK        PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS PED_Ques_Ans_Seq
@@ -251,10 +221,7 @@ Create Table PED_Ques_Ans                          -- جدول أجوبة الأ
   Rem        VARCHAR(100),
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT PED_Ques_Ans_PK        PRIMARY KEY (Id),
-  CONSTRAINT PED_Ques_Ans_Test_Fk   Foreign Key (Test_Id  ) References PED_Test      (Id),
-  CONSTRAINT PED_Ques_Ans_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT PED_Ques_Ans_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT PED_Ques_Ans_PK        PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS PED_Test_Keys_Seq
@@ -301,11 +268,7 @@ Create Table PED_Test_Key                                  -- جدول مفات�
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT PED_Test_Key_PK        PRIMARY KEY (Id),
   CONSTRAINT PED_Test_Key_Age_Chk   CHECK       (Age_From <= Age_To),
-  CONSTRAINT PED_Test_Key_UK        UNIQUE      (Gender_Id, Age_From, Age_To, Degree),
-  CONSTRAINT PED_Test_Key_Test_Fk   Foreign Key (Test_Id  ) References PED_Test      (Id),
-  CONSTRAINT PED_Test_Key_Gender_Fk Foreign Key (Gender_Id) References Phs_Cod_Gender(Id),
-  CONSTRAINT PED_Test_Key_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT PED_Test_Key_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT PED_Test_Key_UK        UNIQUE      (Gender_Id, Age_From, Age_To, Degree)
 );
 
 CREATE SEQUENCE IF NOT EXISTS PED_Prog_Seq
@@ -320,10 +283,7 @@ Create Table PED_Prog                                   -- البرامج
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT PED_Prog_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT PED_Prog_UK        UNIQUE      (Name),
-  CONSTRAINT PED_Prog_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT PED_Prog_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT PED_Prog_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT PED_Prog_UK        UNIQUE      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS PED_App_Seq
@@ -433,56 +393,7 @@ Create Table PED_App                                                            
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT PED_App_PK                                           PRIMARY KEY (Id),
-  CONSTRAINT PED_App_UK                                           UNIQUE      (Name, Appointment_Date),                
-  CONSTRAINT PED_App_FK                                           Foreign Key (Gender_Id)                                                    REFERENCES Phs_Cod_Gender              (Id),
-  CONSTRAINT PED_App_Pathological_Allergies_Fk                    Foreign Key (Pathological_Allergies_Id)                                    REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_General_Medical_Weakness_Fk                  Foreign Key (General_Medical_Weakness_Id)                                  REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Academic_Performance_Weakness_Fk             Foreign Key (Academic_Performance_Weakness_Id)                             REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Speech_Problems_Fk                           Foreign Key (Speech_Problems_Id)                                           REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Wear_Glasses_Fk                              Foreign Key (Wear_Glasses_Id)                                              REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Wear_Hearing_Aid_Fk                          Foreign Key (Wear_Hearing_Aid_Id)                                          REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Use_Crutch_Fk                                Foreign Key (Use_Crutch_Id)                                                REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Is_Mother_Smoke_Before_Pregnancy_FK          Foreign Key (Is_Mother_Smoke_Before_Pregnancy_Id)                          REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Is_Mother_Smoke_During_Pregnancy_FK          Foreign Key (Is_Mother_Smoke_During_Pregnancy_Id)                          REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Is_Mother_Smoke_After_Pregnancy_FK           Foreign Key (Is_Mother_Smoke_After_Pregnancy_Id)                           REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Is_Mother_Non_Smoker_FK                      Foreign Key (Is_Mother_Non_Smoker_Id)                                      REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Mother_Receive_Radiation_Therapy_FK          Foreign Key (Mother_Receive_Radiation_Therapy_During_Pregnancy_Id)         REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Mother_Receive_Chemotherapy_FK               Foreign Key (Mother_Receive_Chemotherapy_During_Pregnancy_Id)              REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Mother_Use_Hair_Dye_FK                       Foreign Key (Mother_Use_Hair_Dye_During_Pregnancy_Id)                      REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Mother_Use_LightFillings_During_Pregnancy_FK Foreign Key (Mother_Use_LightFillings_During_Pregnancy_Id)                 REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Mother_Experience_Psychological_Problems_FK  Foreign Key (Mother_Experience_Psychological_Problems_During_Pregnancy_Id) REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Enter_Incubator_FK                           Foreign Key (Enter_Incubator_Id)                                           REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Breast_Feeding_FK                            Foreign Key (Breast_Feeding_Id)                                            REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Artificial_Feeding_FK                        Foreign Key (Artificial_Feeding_Id)                                        REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Medical_Resonant_Image_FK                    Foreign Key (Medical_Resonant_Image_Id)                                    REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Medical_Brain_Mapping_Image_FK               Foreign Key (Medical_Brain_Mapping_Image_Id)                               REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Medical_Blood_Test_FK                        Foreign Key (Medical_Blood_Test_Id)                                        REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Medical_Food_Allergy_Test_FK                 Foreign Key (Medical_Food_Allergy_Test_Id)                                 REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Medical_Previous_Reports_FK                  Foreign Key (Medical_Previous_Report_Id)                                   REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_AppChild_Involved_Accidents_FK                   Foreign Key (Child_Involved_Accidents_Id)                                  REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_AppChild_Involved_Experience_Fever_FK            Foreign Key (Child_Involved_Experience_Fever_Id)                           REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_AppChild_Involved_Seizures_FK                    Foreign Key (Child_Involved_Seizures_Id)                                   REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_AppChild_PS_Factors_Shyness_FK                   Foreign Key (Personal_Social_Factor_Shyness_Id)                            REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_AppChild_PS_Factors_Introversion_FK              Foreign Key (Personal_Social_Factor_Introversion_Id)                       REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_AppChild_PS_Factors_Withdrawal_FK                Foreign Key (Personal_Social_Factor_Withdrawal_Id)                         REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_AppChild_PS_Factors_Depression_FK                Foreign Key (Personal_Social_Factor_Depression_Id)                         REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_AppChild_PS_Factors_Anxiety_FK                   Foreign Key (Personal_Social_Factor_Anxiety_Id)                            REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_AppChild_PS_Factors_Absentmindedness_FK          Foreign Key (Personal_Social_Factor_Absentmindedness_Id)                   REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_AppChild_PS_Factors_Hyperactivity_FK             Foreign Key (Personal_Social_Factor_Hyperactivity_Id)                      REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_AppChild_PS_Factors_Excessive_Inactivity_FK      Foreign Key (Personal_Social_Factor_Excessive_Inactivity_Id)               REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_AppChild_PS_Factors_Achievement_Motivation_FK    Foreign Key (Personal_Social_Factor_Achievement_Motivation_Id)             REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_AppChild_PS_Factors_Impulsiveness_FK             Foreign Key (Personal_Social_Factor_Impulsiveness_Id)                      REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_AppChild_Child_Entered_Kindergarten_FK           Foreign Key (Child_Entered_Kindergarten_Id)                                REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_AppChild_Received_Special_Assistance_In_Past_FK  Foreign Key (Received_Special_Assistance_In_Past_Id)                       REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_AppChild_Bring_Back_Classes_FK                   Foreign Key (Bring_Back_Classes_Id)                                        REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_AppChild_Drop_Out_School_FK                      Foreign Key (Drop_Out_School_Id)                                           REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_AppChild_School_Teacher_Changed_FK               Foreign Key (School_Teacher_Changed_Id)                                    REFERENCES Phs_Cod_YesNo               (Id),
-  CONSTRAINT PED_App_Pregnancy_Type_FK                            Foreign Key (Pregnancy_Type_Id)                                            References PED_Cod_Pregnancy_Type      (Id),
-  CONSTRAINT PED_App_Pregnancy_Condition_FK                       Foreign Key (Pregnancy_Condition_Id)                                       References PED_Cod_Pregnancy_Condition (Id),
-  CONSTRAINT PED_App_Birth_Type_FK                                Foreign Key (Birth_Type_Id)                                                References PED_Cod_Birth_Type          (Id),
-  CONSTRAINT PED_App_Quality_Perf_FK                              Foreign Key (Quality_Teacher_Report_Perf_Id)                               References PED_Cod_Quality_Perf        (Id),
-  CONSTRAINT PED_App_Ins_FK                                       Foreign Key (Ins_User )                                                    References Cpy_User                    (Id),
-  CONSTRAINT PED_App_Upd_FK                                       Foreign Key (Upd_User )                                                    References Cpy_User                    (Id)
+  CONSTRAINT PED_App_UK                                           UNIQUE      (Name, Appointment_Date)
 );
 
 CREATE SEQUENCE IF NOT EXISTS PED_App_Test_Seq
@@ -496,11 +407,7 @@ Create Table PED_App_Test                           -- جدول اختبارات
   Rem        VARCHAR(100),                             -- ملاحظات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT  PED_App_Test_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT  PED_App_Test_Prog_FK   Foreign Key (App_Id   ) References PED_App    (Id),
-  CONSTRAINT  PED_App_Test_Test_Fk   Foreign Key (Test_Id  ) References PED_Test   (Id),
-  CONSTRAINT  PED_App_Test_Ins_FK    Foreign Key (Ins_User ) References Cpy_User   (Id),
-  CONSTRAINT  PED_App_Test_Upd_FK    Foreign Key (Upd_User ) References Cpy_User   (Id)
+  CONSTRAINT  PED_App_Test_PK        PRIMARY KEY (Id  )
 );
 
 CREATE SEQUENCE IF NOT EXISTS PED_Cod_Grp_Seq
@@ -515,10 +422,7 @@ Create Table PED_Cod_Grp                                 -- جدول ترميز 
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT  PED_Cod_Grp_Type_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT  PED_Cod_Grp_Type_UK        UNIQUE      (Name),
-  CONSTRAINT  PED_Cod_Grp_Type_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT  PED_Cod_Grp_Type_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT  PED_Cod_Grp_Type_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT  PED_Cod_Grp_Type_UK        UNIQUE      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS PED_Prog_Itm_Seq
@@ -535,11 +439,7 @@ Create Table PED_Prog_Itm                               -- جدول بنود ا�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT  PED_Prog_Itm_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT  PED_Prog_Itm_UK        UNIQUE      (Name),
-  CONSTRAINT  PED_Prog_Itm_Prog_FK   Foreign Key (Prog_Id  ) References PED_Prog    (Id),
-  CONSTRAINT  PED_Prog_Itm_Grp_FK    Foreign Key (Grp_Id   ) References PED_Cod_Grp (Id),
-  CONSTRAINT  PED_Prog_Itm_Ins_FK    Foreign Key (Ins_User ) References Cpy_User    (Id),
-  CONSTRAINT  PED_Prog_Itm_Upd_FK    Foreign Key (Upd_User ) References Cpy_User    (Id)
+  CONSTRAINT  PED_Prog_Itm_UK        UNIQUE      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS PED_APP_Quest_Seq
@@ -555,12 +455,7 @@ Create Table PED_APP_Quest                  -- جدول تسجيل بنود اخ
   Rem         VARCHAR(100) ,                            -- ملاحظات
   Ins_User    BIGINT, Ins_Date     TIMESTAMP,
   Upd_User    BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT  PED_APP_Quest_PK       PRIMARY KEY (Id  ),
-  CONSTRAINT  PED_APP_Quest_App_FK   Foreign Key (App_Test_Id) References PED_App_Test      (Id),
-  CONSTRAINT  PED_APP_Quest_Quest_FK Foreign Key (Quest_Id   ) References PED_Test_Question (Id),
-  CONSTRAINT  PED_APP_Quest_Ans_FK   Foreign Key (Answer_Id  ) References PED_Ques_Ans      (Id),
-  CONSTRAINT  PED_APP_Quest_Ins_FK   Foreign Key (Ins_User   ) References Cpy_User          (Id),
-  CONSTRAINT  PED_APP_Quest_Upd_FK   Foreign Key (Upd_User   ) References Cpy_User          (Id)
+  CONSTRAINT  PED_APP_Quest_PK       PRIMARY KEY (Id  )
 );
 
 CREATE SEQUENCE IF NOT EXISTS PED_App_Res_Seq
@@ -577,11 +472,7 @@ Create Table PED_App_Res                            -- جدول تقييم اخ�
   Rem           VARCHAR(100),                            -- ملاحظات
   Ins_User      BIGINT, Ins_Date     TIMESTAMP,
   Upd_User      BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT  PED_App_Res_PK       PRIMARY KEY (Id  ),
-  CONSTRAINT  PED_App_Res_App_FK   Foreign Key (App_Test_Id) References PED_App_Test    (Id),
-  CONSTRAINT  PED_App_Res_Cat_FK   Foreign Key (Cat_Id   ) References PED_Cats          (Id),
-  CONSTRAINT  PED_App_Res_Ins_FK   Foreign Key (Ins_User ) References Cpy_User          (Id),
-  CONSTRAINT  PED_App_Res_Upd_FK   Foreign Key (Upd_User ) References Cpy_User          (Id)
+  CONSTRAINT  PED_App_Res_PK       PRIMARY KEY (Id  )
 );
 
 CREATE SEQUENCE IF NOT EXISTS PED_Lect_Seq
@@ -599,11 +490,7 @@ Create Table PED_Lect (
   Rem          VARCHAR(100),
   Ins_User     BIGINT, Ins_Date     TIMESTAMP,
   Upd_User     BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT PED_Lect_PK        PRIMARY KEY (Id),
-  CONSTRAINT PED_Lect_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT PED_Lect_Gender_Fk Foreign Key (Gender_Id) References Phs_Cod_Gender(Id),
-  CONSTRAINT PED_Lect_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT PED_Lect_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT PED_Lect_PK        PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS PED_Lect_Prog_Seq
@@ -618,12 +505,7 @@ Create Table PED_Lect_Prog (
   Rem          VARCHAR(100),
   Ins_User     BIGINT, Ins_Date     TIMESTAMP,
   Upd_User     BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT PED_Lect_Prog_PK         PRIMARY KEY (Id),
-  CONSTRAINT PED_Lect_Prog_Gender_Fk  Foreign Key (Lect_Id)    References PED_Lect       (Id),
-  CONSTRAINT PED_Lect_Prog_Prog_Id_Fk Foreign Key (Prog_Id  )  References PED_Prog       (Id),
-  CONSTRAINT PED_Lect_Prog_Status_Fk  Foreign Key (Status_Id)  References Phs_Cod_Status (Id),
-  CONSTRAINT PED_Lect_Prog_Ins_FK     Foreign Key (Ins_User )  References Cpy_User       (Id),
-  CONSTRAINT PED_Lect_Prog_Upd_FK     Foreign Key (Upd_User )  References Cpy_User       (Id)
+  CONSTRAINT PED_Lect_Prog_PK         PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS PED_Std_Seq
@@ -640,12 +522,7 @@ Create Table PED_Std_Lect (
   Rem        VARCHAR(100),
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT PED_PED_Std_Lect_PK          PRIMARY KEY (Id), 
-  CONSTRAINT PED_PED_Std_Lect_App_FK      Foreign Key (App_Id   ) References PED_App  (Id),
-  CONSTRAINT PED_PED_Std_Lect_Prog_Fk     Foreign Key (Prog_Id  ) References PED_Prog (Id),
-  CONSTRAINT PED_PED_Std_Lect_Lect_Fk     Foreign Key (Lect_Id  ) References PED_Lect (Id),
-  CONSTRAINT PED_PED_Std_Lect_Ins_FK      Foreign Key (Ins_User ) References Cpy_User (Id),
-  CONSTRAINT PED_PED_Std_Lect_Upd_FK      Foreign Key (Upd_User ) References Cpy_User (Id)
+  CONSTRAINT PED_PED_Std_Lect_PK          PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS PED_Std_Sched_Seq
@@ -664,10 +541,7 @@ Create Table PED_Std_Sched (
   Rem            VARCHAR(100),
   Ins_User       BIGINT, Ins_Date   TIMESTAMP,
   Upd_User       BIGINT, Upd_Date   TIMESTAMP,
-  CONSTRAINT PED_Std_Sched_PK      PRIMARY KEY (Id),
-  CONSTRAINT PED_Std_Sched_LP_FK   Foreign Key (Mst_Id   ) References PED_Std_Lect (Id),
-  CONSTRAINT PED_Std_Sched_Ins_FK  Foreign Key (Ins_User ) References Cpy_User     (Id),
-  CONSTRAINT PED_Std_Sched_Upd_FK  Foreign Key (Upd_User ) References Cpy_User     (Id)
+  CONSTRAINT PED_Std_Sched_PK      PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS PED_Sched_Seq
@@ -686,11 +560,7 @@ Create Table PED_Sched (
   Rem            VARCHAR(100),
   Ins_User       BIGINT, Ins_Date   TIMESTAMP,
   Upd_User       BIGINT, Upd_Date   TIMESTAMP,
-  CONSTRAINT PED_Sched_PK      PRIMARY KEY (Id),
-  CONSTRAINT PED_Sched_Std_Fk  Foreign Key (App_Id   ) References PED_App  (Id),
-  CONSTRAINT PED_Sched_Fk      Foreign Key (Lect_Id  ) References PED_Lect (Id),
-  CONSTRAINT PED_Sched_Ins_FK  Foreign Key (Ins_User ) References Cpy_User (Id),
-  CONSTRAINT PED_Sched_Upd_FK  Foreign Key (Upd_User ) References Cpy_User (Id)
+  CONSTRAINT PED_Sched_PK      PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS PED_Special_Seq
@@ -705,10 +575,7 @@ Create Table PED_Special                                                        
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT PED_Special_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT PED_Special_UK        UNIQUE      (Name),
-  CONSTRAINT PED_Special_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT PED_Special_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT PED_Special_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT PED_Special_UK        UNIQUE      (Name)
 );
 
 Insert into PED_Special (Id,Name) values (0,'ALL');
@@ -734,12 +601,7 @@ CREATE TABLE PED_Doct                                                           
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT PED_Doctor_PK         PRIMARY KEY (Id    ),
-  CONSTRAINT PED_Doctor_Mobile_UK  UNIQUE      (Mobile),
-  CONSTRAINT PED_Doctor_Status_FK  Foreign Key (Status_id ) References Phs_Cod_Status (Id),
-  CONSTRAINT PED_Doctor_Gender_FK  Foreign Key (Gender_Id ) References Phs_Cod_Gender (Id),
-  CONSTRAINT PED_Doctor_Special_FK Foreign Key (Special_Id) References PED_Special    (Id),
-  CONSTRAINT PED_Doctor_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User       (Id),
-  CONSTRAINT PED_Doctor_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User       (Id)
+  CONSTRAINT PED_Doctor_Mobile_UK  UNIQUE      (Mobile)
 );
 
 ----------------------------------------------------------------------------------------------------
@@ -751,9 +613,7 @@ CREATE TABLE PED_App_Status                                                     
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT PED_App_Status_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT PED_App_Status_UK     UNIQUE      (Name),
-  CONSTRAINT PED_App_Status_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT PED_App_Status_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT PED_App_Status_UK     UNIQUE      (Name)
 );
 
 Insert into PED_App_Status (Id,Name,BG,FG) values (0,'New','#CCC','#000');
@@ -783,9 +643,7 @@ CREATE TABLE PED_App_Type                                                       
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT PED_App_Type_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT PED_App_Type_UK     UNIQUE      (Name),
-  CONSTRAINT PED_App_Type_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT PED_App_Type_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT PED_App_Type_UK     UNIQUE      (Name)
 );
 
 Insert into PED_App_Type (Id,Name) values (0,'-');
@@ -810,13 +668,7 @@ CREATE TABLE PED_App_Sched                                                      
   Ins_User      BIGINT, Ins_Date   TIMESTAMP,
   Upd_User      BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT  PED_App_Sched_PK         PRIMARY KEY (Id),
-  CONSTRAINT  PED_App_Sched_UK         UNIQUE      (Doctor_Id, dDate, nHour, nMinute),
-  CONSTRAINT  PED_App_Sched_Doctor_FK  Foreign Key (Doctor_Id ) References PED_Doct       (Id),
-  CONSTRAINT  PED_App_Sched_Status_FK  Foreign Key (Status_Id ) References PED_App_Status(Id),
-  CONSTRAINT  PED_App_Sched_Type_FK    Foreign Key (Type_Id   ) References PED_App_Type  (Id),
-  CONSTRAINT  PED_App_Sched_Special_FK Foreign Key (Special_Id) References PED_Special   (Id),
-  CONSTRAINT  PED_App_Sched_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User       (Id),
-  CONSTRAINT  PED_App_Sched_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User       (Id)
+  CONSTRAINT  PED_App_Sched_UK         UNIQUE      (Doctor_Id, dDate, nHour, nMinute)
 );
 
 CREATE SEQUENCE IF NOT EXISTS PED_App_Change_Seq
@@ -831,9 +683,5 @@ CREATE TABLE PED_App_Change                                                     
   Reason     VARCHAR(256),                                                                   -- Reason
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP, 
-  CONSTRAINT  PED_App_Change_PK        PRIMARY KEY (Id),
-  CONSTRAINT  PED_App_Change_App_FK    Foreign Key (App_Id   ) References PED_App       (Id),
-  CONSTRAINT  PED_App_Change_Status_FK Foreign Key (Status_Id) References PED_App_Status(Id),
-  CONSTRAINT  PED_App_Change_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT  PED_App_Change_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT  PED_App_Change_PK        PRIMARY KEY (Id)
 );

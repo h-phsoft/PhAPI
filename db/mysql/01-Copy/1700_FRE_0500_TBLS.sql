@@ -14,8 +14,8 @@ Create Table Fre_HAWB                -- HAWB
   Unit_Id       BIGINT Default 0,          -- القسم
   Type_Code     VARCHAR(2),              -- Type
   Num           BIGINT Default 0,          -- Doc No.
-  dDate         DATETIME Default NOW(),          -- Flight/Day
-  DExec         DATETIME Default NOW(),          -- Exec Date
+  dDate         DATETIME DEFAULT (NOW()),          -- Flight/Day
+  DExec         DATETIME DEFAULT (NOW()),          -- Exec Date
   DHLNo         VARCHAR(30),             -- DHL GF Tariff
   DHLGNo        VARCHAR(30),             -- DHL Global Forwarding Number
   Orig_Id       BIGINT Default 0,          -- المصدر
@@ -42,16 +42,5 @@ Create Table Fre_HAWB                -- HAWB
   Ins_User      BIGINT, Ins_Date     DATETIME,
   Upd_User      BIGINT, Upd_Date     DATETIME,
   CONSTRAINT    Fre_HAWB_PK       Primary Key (Id),
-  CONSTRAINT    Fre_HAWB_UK       Unique      (Dept_Id, Unit_Id, Num),
-  CONSTRAINT    Fre_HAWB_Dept_FK  Foreign Key (Dept_Id ) References Cpy_Dept         (Id),
-  CONSTRAINT    Fre_HAWB_Unit_FK  Foreign Key (Unit_Id ) References Cpy_Unit         (Id),
-  CONSTRAINT    Fre_HAWB_ITerm_FK Foreign Key (ITerm_Id) References Fre_Cod_Inco_Term(Id),
-  CONSTRAINT    Fre_HAWB_PTerm_FK Foreign Key (PTerm_Id) References Fre_Cod_Pay_Term (Id),
-  CONSTRAINT    Fre_HAWB_Orig_FK  Foreign Key (Orig_Id ) References Fre_Cod_Cntry    (Id),
-  CONSTRAINT    Fre_HAWB_OPort_FK Foreign Key (OPort_Id) References Fre_Cod_City     (Id),
-  CONSTRAINT    Fre_HAWB_Dest_FK  Foreign Key (Dest_Id ) References Fre_Cod_Cntry    (Id),
-  CONSTRAINT    Fre_HAWB_DPort_FK Foreign Key (DPort_Id) References Fre_Cod_City     (Id),
-  CONSTRAINT    Fre_HAWB_Loc_FK   Foreign Key (Comod_Id) References Fre_Cod_Comod    (Id),
-  CONSTRAINT    Fre_HAWB_Ins_FK   Foreign Key (Ins_User) References Cpy_User         (Id),
-  CONSTRAINT    Fre_HAWB_Upd_FK   Foreign Key (Upd_User) References Cpy_User         (Id)
+  CONSTRAINT    Fre_HAWB_UK       Unique      (Dept_Id, Unit_Id, Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

@@ -254,7 +254,9 @@ function applyRules(sql, rules) {
 function mapTypes(sql, mapper) {
   return mapCodeSegments(sql, (code) =>
     code.replace(
-      /\b(VARCHAR2|NVARCHAR2|VARCHAR|NCHAR|CHAR|NUMBER|NUMERIC|DECIMAL|INTEGER|INT|FLOAT|BINARY_FLOAT|BINARY_DOUBLE|DATE|TIMESTAMP|CLOB|NCLOB|BLOB|LONG|RAW|ROWID)\b(\s*\(\s*([^)]*)\s*\))?/gi,
+      // TINYINT/DATETIME/TEXT are not Oracle types, but a few of these scripts
+      // use them anyway, so they are normalised for the target as well.
+      /\b(VARCHAR2|NVARCHAR2|VARCHAR|NCHAR|CHAR|NUMBER|NUMERIC|DECIMAL|INTEGER|INT|TINYINT|SMALLINT|MEDIUMINT|BIGINT|FLOAT|DOUBLE|BINARY_FLOAT|BINARY_DOUBLE|DATE|DATETIME|TIMESTAMP|CLOB|NCLOB|BLOB|LONGTEXT|LONG|TEXT|RAW|ROWID)\b(\s*\(\s*([^)]*)\s*\))?/gi,
       (match, name, _parens, args, offset, whole) => {
         const mapped = mapper({ name: name.toUpperCase(), args: args ? args.trim() : null, raw: match });
         if (mapped === null || mapped === undefined) {
@@ -401,6 +403,97 @@ function extractSequenceBinding(sql) {
 }
 
 /**
+ * Splits a column-list body into top-level items, ignoring commas nested in
+ * parentheses, string literals or comments.
+ *
+ * @param {string} body Text between the outer parentheses of a CREATE TABLE
+ * @returns {string[]}
+ */
+function splitTopLevel(body) {
+  const items = [];
+  let current = '';
+  let depth = 0;
+  let inString = false;
+  let inComment = false;
+
+  for (let i = 0; i < body.length; i++) {
+    const ch = body[i];
+
+    if (inComment) {
+      current += ch;
+      if (ch === '\n') inComment = false;
+      continue;
+    }
+    if (inString) {
+      current += ch;
+      if (ch === "'") {
+        if (body[i + 1] === "'") { current += body[++i]; } else { inString = false; }
+      }
+      continue;
+    }
+    if (ch === '-' && body[i + 1] === '-') { inComment = true; current += ch; continue; }
+    if (ch === "'") { inString = true; current += ch; continue; }
+    if (ch === '(') depth++;
+    if (ch === ')') depth--;
+
+    if (ch === ',' && depth === 0) {
+      items.push(current);
+      current = '';
+      continue;
+    }
+    current += ch;
+  }
+
+  if (current.trim()) items.push(current);
+  return items;
+}
+
+/**
+ * Lifts inline FOREIGN KEY clauses out of a CREATE TABLE.
+ *
+ * The Oracle scripts are not in dependency order: a table routinely references
+ * one that a later file creates. Declared inline, that makes the whole CREATE
+ * TABLE fail, and every table depending on it fails in turn — differently on
+ * each engine, which is why the two targets drifted apart. Adding the keys
+ * afterwards, once every table exists, removes the ordering problem entirely
+ * and makes the result identical on both.
+ *
+ * @param {string} sql CREATE TABLE statement
+ * @param {string} tableName
+ * @returns {{sql: string, foreignKeys: string[]}}
+ */
+function extractForeignKeys(sql, tableName) {
+  const open = sql.indexOf('(');
+  const close = sql.lastIndexOf(')');
+  if (open === -1 || close === -1 || close < open) {
+    return { sql, foreignKeys: [] };
+  }
+
+  const head = sql.slice(0, open + 1);
+  const body = sql.slice(open + 1, close);
+  const tail = sql.slice(close);
+
+  const keep = [];
+  const foreignKeys = [];
+
+  for (const item of splitTopLevel(body)) {
+    const bare = item.replace(/--[^\n]*/g, '').trim();
+
+    if (/^(CONSTRAINT\s+[A-Za-z0-9_$#"]+\s+)?FOREIGN\s+KEY\b/i.test(bare)) {
+      foreignKeys.push(`ALTER TABLE ${tableName} ADD ${bare.replace(/,\s*$/, '')};`);
+    } else {
+      keep.push(item);
+    }
+  }
+
+  if (foreignKeys.length === 0) {
+    return { sql, foreignKeys: [] };
+  }
+
+  return { sql: `${head}${keep.join(',')}\n${tail}`, foreignKeys };
+}
+
+/**
  * Reports whether a CREATE TABLE already declares a primary key.
  * @param {string} sql
  * @returns {boolean}
@@ -446,5 +539,7 @@ module.exports = {
   hasPrimaryKey,
   ensureIdPrimaryKey,
   isSequenceOnlyTrigger,
-  extractSequenceBinding
+  extractSequenceBinding,
+  extractForeignKeys,
+  splitTopLevel
 };

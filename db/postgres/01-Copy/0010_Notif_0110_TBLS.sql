@@ -19,10 +19,7 @@ Create Table Notif_Cod_Type                               -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Notif_Cod_Type_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Notif_Cod_Type_UK        UNIQUE      (Name),
-  CONSTRAINT Notif_Cod_Type_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Notif_Cod_Type_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Notif_Cod_Type_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Notif_Cod_Type_UK        UNIQUE      (Name)
 );
 
 Insert into Notif_Cod_Type (Id,Name) values (1,'System');
@@ -41,10 +38,7 @@ Create Table Notif_Cod_fld_Kind                        -- جدول ترميز أ
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Notif_Cod_fld_Kind_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Notif_Cod_fld_Kind_UK        UNIQUE      (Name),
-  CONSTRAINT Notif_Cod_fld_Kind_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Notif_Cod_fld_Kind_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Notif_Cod_fld_Kind_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Notif_Cod_fld_Kind_UK        UNIQUE      (Name)
 );
 
 Insert into Notif_Cod_fld_Kind (Id,Name) values (1,'String');
@@ -63,10 +57,7 @@ Create Table Notif_Cod_Event                             -- جدول ترميز 
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Notif_Cod_Event_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Notif_Cod_Event_UK        UNIQUE      (Name),
-  CONSTRAINT Notif_Cod_Event_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Notif_Cod_Event_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Notif_Cod_Event_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Notif_Cod_Event_UK        UNIQUE      (Name)
 );
 
 Insert into Notif_Cod_Event (Id,Name) values (1,'insert');
@@ -87,10 +78,7 @@ Create Table Notif_Cod_Cont_Type                       -- جدول ترميز ن
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Notif_Cod_Cont_Type_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Notif_Cod_Cont_Type_UK        UNIQUE      (Name),
-  CONSTRAINT Notif_Cod_Cont_Type_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Notif_Cod_Cont_Type_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Notif_Cod_Cont_Type_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Notif_Cod_Cont_Type_UK        UNIQUE      (Name)
 );
 
 Insert into Notif_Cod_Cont_Type (Id,Name) values (1,'value');
@@ -109,10 +97,7 @@ Create Table Notif_Cod_Dest_Type                   -- جدول ترميز جها
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Notif_Cod_Dest_Type_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Notif_Cod_Dest_Type_UK        UNIQUE      (Name),
-  CONSTRAINT Notif_Cod_Dest_Type_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Notif_Cod_Dest_Type_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Notif_Cod_Dest_Type_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Notif_Cod_Dest_Type_UK        UNIQUE      (Name)
 );
 
 Insert into Notif_Cod_Dest_Type (Id,Name) values (1,'user');
@@ -138,10 +123,7 @@ Create Table Notif_Table                                                        
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Notif_Table_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Notif_Table_UK        UNIQUE      (Name),
-  CONSTRAINT Notif_Table_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Notif_Table_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Notif_Table_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Notif_Table_UK        UNIQUE      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Notif_Table_fld_Seq
@@ -158,11 +140,7 @@ Create Table Notif_Table_Fld                                                    
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Notif_Table_fld_PK       PRIMARY KEY (Id  ),
-  CONSTRAINT Notif_Table_fld_UK       UNIQUE      (table_Id, Name),
-  CONSTRAINT Notif_Table_fld_Table_FK Foreign Key (table_Id) References Notif_Table        (Id),
-  CONSTRAINT Notif_Table_fld_kind_FK  Foreign Key (kind_Id ) References Notif_Cod_Fld_Kind (Id),
-  CONSTRAINT Notif_Table_fld_Ins_FK   Foreign Key (Ins_User) References Cpy_User           (Id),
-  CONSTRAINT Notif_Table_fld_Upd_FK   Foreign Key (Upd_User) References Cpy_User           (Id)
+  CONSTRAINT Notif_Table_fld_UK       UNIQUE      (table_Id, Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Notif_Table_Evnt_Seq
@@ -182,13 +160,7 @@ Create Table Notif_Table_Eevnt                                                  
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Notif_Table_Event_PK        PRIMARY KEY (Id),
-  CONSTRAINT Notif_Table_Event_UK        UNIQUE      (table_Id, Event_Id),
-  CONSTRAINT Notif_Table_Event_table_FK  Foreign Key (table_Id ) References Notif_Table    (Id),
-  CONSTRAINT Notif_Table_Event_event_FK  Foreign Key (event_Id ) References Notif_Cod_Event(Id),
-  CONSTRAINT Notif_Table_Event_type_FK   Foreign Key (type_Id  ) References Notif_Cod_Type (Id),
-  CONSTRAINT Notif_Table_Event_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Notif_Table_Event_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Notif_Table_Event_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Notif_Table_Event_UK        UNIQUE      (table_Id, Event_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Notif_Table_Event_Descr_Seq
@@ -205,12 +177,7 @@ Create Table Notif_Table_Event_Descr                                            
   Rem        VARCHAR(100),                                                                   -- ملاحظات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT Notif_Table_Event_Descr_PK       PRIMARY KEY (Id),  
-  CONSTRAINT Notif_Table_Event_Descr_Notif_FK Foreign Key (TEvent_Id) References Notif_Table_Eevnt   (Id),
-  CONSTRAINT Notif_Table_Event_Descr_Field_FK Foreign Key (Field_Id ) References Notif_Table_Fld    (Id),
-  CONSTRAINT Notif_Table_Event_Descr_Type_FK  Foreign Key (Type_Id  ) References Notif_Cod_Cont_Type(Id),
-  CONSTRAINT Notif_Table_Event_Descr_Ins_FK   Foreign Key (Ins_User ) References Cpy_User           (Id),
-  CONSTRAINT Notif_Table_Event_Descr_Upd_FK   Foreign Key (Upd_User ) References Cpy_User           (Id)
+  CONSTRAINT Notif_Table_Event_Descr_PK       PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Notif_Table_Event_Recip_Seq
@@ -228,15 +195,7 @@ Create Table Notif_Table_Event_Recip                                            
   Rem        VARCHAR(100),                                                                   -- ملاحظات
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP, 
-  CONSTRAINT Notif_Table_Event_Recip_PK       PRIMARY KEY (Id),
-  CONSTRAINT Notif_Table_Event_Recip_Notif_FK Foreign Key (TEvent_Id) References Notif_Table_Eevnt  (Id),
-  CONSTRAINT Notif_Table_Event_Recip_Dest_FK  Foreign Key (Type_Id  ) References Notif_Cod_Dest_Type(Id),
-  CONSTRAINT Notif_Table_Event_Recip_user_FK  Foreign Key (User_Id  ) References Cpy_User           (Id),
-  CONSTRAINT Notif_Table_Event_Recip_Dept_FK  Foreign Key (Dept_Id  ) References Cpy_Dept           (Id),
-  CONSTRAINT Notif_Table_Event_Recip_Unit_FK  Foreign Key (Unit_Id  ) References Cpy_Unit           (Id),
-  CONSTRAINT Notif_Table_Event_Recip_PGrp_FK  Foreign Key (PGrp_Id  ) References Cpy_PGrp           (Id),
-  CONSTRAINT Notif_Table_Event_Recip_Ins_FK   Foreign Key (Ins_User ) References Cpy_User           (Id),
-  CONSTRAINT Notif_Table_Event_Recip_Upd_FK   Foreign Key (Upd_User ) References Cpy_User           (Id)
+  CONSTRAINT Notif_Table_Event_Recip_PK       PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Notif_Table_Event_Action_Seq
@@ -255,11 +214,7 @@ Create Table Notif_Table_Event_Action                                           
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP, 
   CONSTRAINT Notif_Table_Event_Action_PK       PRIMARY KEY (Id),
-  CONSTRAINT Notif_Table_Event_Action_UK       UNIQUE      (TEvent_Id, Name),
-  CONSTRAINT Notif_Table_Event_Action_Def_FK   Foreign Key (TEvent_Id) References Notif_Table_Eevnt(Id),
-  CONSTRAINT Notif_Table_Event_Action_Field_FK Foreign Key (Field_Id ) References Notif_Table_Fld  (Id),
-  CONSTRAINT Notif_Table_Event_Action_Ins_FK   Foreign Key (Ins_User ) References Cpy_User         (Id),
-  CONSTRAINT Notif_Table_Event_Action_Upd_FK   Foreign Key (Upd_User ) References Cpy_User         (Id)
+  CONSTRAINT Notif_Table_Event_Action_UK       UNIQUE      (TEvent_Id, Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Notif_Notif_Seq
@@ -282,12 +237,7 @@ Create Table Notif_Notif                                                        
   Rem          VARCHAR(100),                                                                -- ملاحظات
   Ins_User     BIGINT, Ins_Date     TIMESTAMP,
   Upd_User     BIGINT, Upd_Date     TIMESTAMP, 
-  CONSTRAINT Notif_Notif_PK       PRIMARY KEY (Id),
-  CONSTRAINT Notif_Notif_Event_FK Foreign Key (TEvent_Id) References Notif_Table_Eevnt(Id),
-  CONSTRAINT Notif_Notif_User_FK  Foreign Key (User_Id  ) References Cpy_User         (Id),
-  CONSTRAINT Notif_Notif_Seen_FK  Foreign Key (Seen_Id  ) References Phs_Cod_YesNo    (Id),
-  CONSTRAINT Notif_Notif_Ins_FK   Foreign Key (Ins_User ) References Cpy_User         (Id),
-  CONSTRAINT Notif_Notif_Upd_FK   Foreign Key (Upd_User ) References Cpy_User         (Id)
+  CONSTRAINT Notif_Notif_PK       PRIMARY KEY (Id)
 );
 
 -- TODO(port): other has no automatic equivalent (source line 275).

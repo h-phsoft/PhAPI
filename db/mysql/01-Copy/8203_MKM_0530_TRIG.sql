@@ -29,11 +29,10 @@ DELIMITER $$
 CREATE TRIGGER MKM_TBI_Sales_Item
   BEFORE INSERT ON MKM_Sales_Item
   FOR EACH ROW
-DECLARE
-  dDate   DATETIME   := NOW();
-  nCatId  DECIMAL(38,10) := 0;
-  nUserId DECIMAL(38,10);
 BEGIN
+  DECLARE dDate   DATETIME   := NOW();
+  DECLARE nCatId  DECIMAL(38,10) := 0;
+  DECLARE nUserId DECIMAL(38,10);
   SELECT Mdate, User_Id
     INTO dDate, nUserId
     FROM MKM_Sale
@@ -70,9 +69,8 @@ CREATE TRIGGER
   Before Delete
   On MKM_Sales_Item
   For Each Row
-Declare
-  nUserId  DECIMAL(38,10);
-Begin
+BEGIN
+  DECLARE nUserId  DECIMAL(38,10);
   Select User_Id
     Into nUserId
     From MKM_Sale
@@ -93,11 +91,10 @@ CREATE TRIGGER
   Before Insert
   On MKM_Inst_Items
   For Each Row
-Declare
-  nSaleId  DECIMAL(38,10);
-  nCatId   DECIMAL(38,10) := 0;
-  nUserId  DECIMAL(38,10);
-Begin
+BEGIN
+  DECLARE nSaleId  DECIMAL(38,10);
+  DECLARE nCatId   DECIMAL(38,10) := 0;
+  DECLARE nUserId  DECIMAL(38,10);
   Begin
     Select Sales_Id
       Into nSaleId
@@ -145,9 +142,8 @@ CREATE TRIGGER
   Before Delete
   On MKM_Inst_Items
   For Each Row
-Declare
-  nUserId  DECIMAL(38,10);
-Begin
+BEGIN
+  DECLARE nUserId  DECIMAL(38,10);
   Select User_Id
     Into nUserId
     From MKM_MInstallment
@@ -166,9 +162,8 @@ DELIMITER $$
 CREATE TRIGGER TBI_MKM_Sale
 Before Insert On MKM_Sale
 For Each Row
-Declare
-  nId DECIMAL(38,10);
-Begin
+BEGIN
+  DECLARE nId DECIMAL(38,10);
   Begin
     Select Id Into nId From Mng_Cont Where Mobile = NEW.Mobile;
   Exception

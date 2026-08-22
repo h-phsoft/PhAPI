@@ -307,9 +307,8 @@ CREATE TRIGGER
   Before Insert
   On Emp_TCGrad
   For Each Row
-Declare
-  nODegree   DECIMAL(38,10);
-Begin
+BEGIN
+  DECLARE nODegree   DECIMAL(38,10);
   SELECT TGrad_Id INTO nODegree FROM Emp_Emp WHERE Emp_Id=NEW.Emp_Id;
   SET NEW.TGrad_OId = nODegree;
   UPDATE Emp_Emp Set
@@ -333,9 +332,8 @@ CREATE TRIGGER
   Before Update
   On Emp_TCGrad
   For Each Row
-Declare
-  nODegree   DECIMAL(38,10);
-Begin
+BEGIN
+  DECLARE nODegree   DECIMAL(38,10);
   IF NEW.Emp_Id!=OLD.Emp_Id Then
     UPDATE Emp_Emp Set
            TGrad_Id = OLD.TGrad_OId

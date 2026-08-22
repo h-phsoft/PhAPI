@@ -22,9 +22,7 @@ Create Table Emp_Cod_CalcSal                      -- جدول ترميز حال�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_CalcSal_PK PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_CalcSal_UK UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_CalcSal_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_CalcSal_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_CalcSal_UK UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_CalcSal (Id,Name) values (0,'قيد التحضير');
@@ -45,9 +43,7 @@ Create Table Emp_Cod_Status                          -- جدول ترميز حا
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Status_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Status_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Status_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Status_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Status_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Status (Id,Name) values (1,'عادي');
@@ -69,9 +65,7 @@ Create Table Emp_Cod_AttType                     -- جدول ترميز نوع �
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_AttType_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_AttType_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_AttType_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_AttType_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_AttType_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_AttType (Id,Name) values (1,'دخول');
@@ -87,9 +81,7 @@ Create Table Emp_Cod_AffSal                 -- جدول ترميز الراتب 
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_AffSal_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_AffSal_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_AffSal_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_AffSal_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_AffSal_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_AffSal (Id,Name) values (1,'الراتب المقطوع' );
@@ -107,9 +99,7 @@ Create Table Emp_Cod_Aff                        -- جدول ترميز الكش�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Aff_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Aff_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Aff_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Aff_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Aff_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Aff (Id,Name) values (1,'الراتب');
@@ -125,9 +115,7 @@ Create Table Emp_Cod_ChngType                     -- جدول ترميز نمط 
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_ChngType_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_ChngType_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_ChngType_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_ChngType_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_ChngType_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_ChngType (Id,Name) values (1,'نسبة');
@@ -151,9 +139,7 @@ Create Table Emp_Cod_Wgrp_Shift                      -- جدول ترميز فت
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Wgrp_Shift_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Wgrp_Shift_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Wgrp_Shift_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Wgrp_Shift_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Wgrp_Shift_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Wgrp_Shift (Id,Name) values (1,'1 Shift');
@@ -169,9 +155,7 @@ Create Table Emp_Cod_Overtime                        -- جدول ترميز ال
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Overtime_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Overtime_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Overtime_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Overtime_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Overtime_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Overtime (Id,Name) values (0,'دون إضافي');
@@ -191,9 +175,7 @@ Create Table Emp_Cod_Com_Per                         -- جدول ترميز حا
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Com_Per_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Com_Per_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Com_Per_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Com_Per_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Com_Per_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Com_Per (Id,Name) values (0,'دون تعويض');
@@ -211,9 +193,7 @@ Create Table Emp_Cod_WGrp_Type                       -- جدول ترميز أن
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_WGrp_Type_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_WGrp_Type_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_WGrp_Type_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_WGrp_Type_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_WGrp_Type_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_WGrp_Type (Id,Name) values (1,'يومي');
@@ -231,9 +211,7 @@ Create Table Emp_Cod_Leave                           -- جدول ترميز ال
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Leave_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Leave_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Leave_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Leave_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Leave_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Leave (Id,Name) values (100,'إدارية');
@@ -309,9 +287,7 @@ Create Table Emp_Cod_AppTest                         -- جدول ترميز نت
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_AppTest_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_AppTest_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_AppTest_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_AppTest_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_AppTest_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_AppTest (Id,Name) values (0,'-');
@@ -337,9 +313,7 @@ Create Table Emp_Cod_App_Status                      -- جدول ترميز حا
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_App_Status_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_App_Status_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_App_Status_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_App_Status_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_App_Status_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_App_Status (Id,Name) values (0,'-');
@@ -359,9 +333,7 @@ Create Table Emp_Cod_App_Result                      -- جدول ترميز نت
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_App_Result_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_App_Result_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_App_Result_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_App_Result_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_App_Result_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_App_Result (Id,Name) values (0,'-');
@@ -381,9 +353,7 @@ Create Table Emp_Cod_ComType                         -- جدول ترميز نو
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_ComType_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_ComType_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_ComType_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_ComType_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_ComType_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_ComType (Id,Name) values (1,'تعويض');
@@ -401,9 +371,7 @@ Create Table Emp_Cod_TaxPay                          -- جدول ترميز دف
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_TaxPay_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_TaxPay_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_TaxPay_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_TaxPay_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_TaxPay_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_TaxPay (Id,Name) values (1,'العامل');
@@ -422,9 +390,7 @@ Create Table Emp_Cod_Nat                     -- جدول ترميز الجنسي
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Nat_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Nat_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Nat_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Nat_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Nat_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Nat (Id,Name) values (0,'-');
@@ -441,9 +407,7 @@ Create Table Emp_Cod_Lang                        -- جدول ترميز اللغ
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Code_Lang_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Code_Lang_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Code_Lang_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Code_Lang_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Code_Lang_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Lang (Id,Name) values (0,'-');
@@ -460,9 +424,7 @@ Create Table Emp_Cod_TestMark                       -- جدول ترميز در�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_TestMark_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_TestMark_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_TestMark_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_TestMark_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_TestMark_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_TestMark (Id,Name) values (0,'-');
@@ -489,9 +451,7 @@ Create Table Emp_Cod_Edu                       -- جدول ترميز الحال
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Edu_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Edu_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Edu_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Edu_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Edu_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Edu (Id,Name) values (0,'-');
@@ -508,9 +468,7 @@ Create Table Emp_Cod_GradGrp                         -- جدول ترميز مج
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_GradGrp_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_GradGrp_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_GradGrp_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_GradGrp_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_GradGrp_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_GradGrp (Id,Name) values (0,'-');
@@ -527,9 +485,7 @@ Create Table Emp_Cod_GradDegree                      -- جدول ترميز ال
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_GradDegree_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_GradDegree_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_GradDegree_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_GradDegree_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_GradDegree_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_GradDegree (Id,Name) values (0,'-');
@@ -546,9 +502,7 @@ Create Table Emp_Cod_Appraisal_Grp                   -- جدول ترميز مج
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Appraisal_Grp_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Appraisal_Grp_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Appraisal_Grp_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Appraisal_Grp_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Appraisal_Grp_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Appraisal_Grp (Id,Name) values (0,'-');
@@ -565,9 +519,7 @@ Create Table Emp_Cod_Appraisal_Item                  -- جدول ترميز بن
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Appraisal_Item_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Appraisal_Item_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Appraisal_Item_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Appraisal_Item_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Appraisal_Item_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Appraisal_Item (Id,Name) values (0,'-');
@@ -584,9 +536,7 @@ Create Table Emp_Cod_Job                             -- جدول ترميز ال
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Job_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Job_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Job_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Job_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Job_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Job (Id,Name) values (0,'-');
@@ -603,9 +553,7 @@ Create Table Emp_Cod_Department                      -- جدول ترميز ال
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Department_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Department_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Department_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Department_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Department_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Department (Id,Name) values (0,'-');
@@ -622,9 +570,7 @@ Create Table Emp_Cod_Section                         -- جدول ترميز ال
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Section_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Section_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Section_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Section_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Section_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Section (Id,Name) values (0,'-');
@@ -641,9 +587,7 @@ Create Table Emp_Cod_Level                           -- جدول ترميز ال
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Level_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Level_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Level_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Level_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Level_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Level (Id,Name) values (0,'-');
@@ -660,9 +604,7 @@ Create Table Emp_Cod_Location                        -- جدول ترميز ال
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Location_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Location_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Location_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Location_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Location_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Location (Id,Name) values (0,'-');
@@ -679,9 +621,7 @@ Create Table Emp_Cod_Spec1                  -- جدول ترميز التصني�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Spec1_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Spec1_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Spec1_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Spec1_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Spec1_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Spec1 (Id,Name) values (0,'-');
@@ -698,9 +638,7 @@ Create Table Emp_Cod_Spec2                  -- جدول ترميز التصني�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Spec2_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Spec2_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Spec2_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Spec2_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Spec2_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Spec2 (Id,Name) values (0,'-');
@@ -717,9 +655,7 @@ Create Table Emp_Cod_Spec3                  -- جدول ترميز التصني�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Spec3_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Spec3_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Spec3_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Spec3_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Spec3_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Spec3 (Id,Name) values (0,'-');
@@ -736,9 +672,7 @@ Create Table Emp_Cod_Spec4                  -- جدول ترميز التصني�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Spec4_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Spec4_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Spec4_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Spec4_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Spec4_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Spec4 (Id,Name) values (0,'-');
@@ -755,9 +689,7 @@ Create Table Emp_Cod_Hist                         -- جدول ترميز أنو�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Hist_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Hist_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Hist_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Hist_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Hist_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Hist (Id,Name) values (0,'-');
@@ -774,9 +706,7 @@ Create Table Emp_Cod_Cons                   -- جدول ترميز المكاف�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Cons_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Cons_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Cons_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Cons_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Cons_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Cons (Id,Name) values (0,'-');
@@ -793,9 +723,7 @@ Create Table Emp_Cod_Pun                      -- جدول ترميز العقو�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Pun_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Pun_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Pun_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Pun_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Pun_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Pun (Id,Name) values (0,'-');
@@ -812,9 +740,7 @@ Create Table Emp_Cod_Msn                         -- جدول ترميز المه
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Emp_Cod_Msn_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Emp_Cod_Msn_UK     UNIQUE      (Name),
-  CONSTRAINT Emp_Cod_Msn_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Emp_Cod_Msn_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Emp_Cod_Msn_UK     UNIQUE      (Name)
 );
 
 Insert into Emp_Cod_Msn (Id,Name) values (0,'-');

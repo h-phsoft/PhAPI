@@ -23,10 +23,7 @@ Create Table SDesk_Cod_Conv_Type                  -- جدول تراميز حا�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT SDesk_Cod_Conv_Type_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT SDesk_Cod_Conv_Type_UK     UNIQUE      (Name),
-  CONSTRAINT SDesk_Cod_Conv_Type_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT SDesk_Cod_Conv_Type_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT SDesk_Cod_Conv_Type_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT SDesk_Cod_Conv_Type_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into SDesk_Cod_Conv_Type (Id,Name) values (1,'Msg');
@@ -49,10 +46,7 @@ Create Table SDesk_Cod_Rating                             -- جدول ترامي
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT SDesk_Cod_Rating_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT SDesk_Cod_Rating_UK     UNIQUE      (Name),
-  CONSTRAINT SDesk_Cod_Rating_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT SDesk_Cod_Rating_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT SDesk_Cod_Rating_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT SDesk_Cod_Rating_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into SDesk_Cod_Rating (Id,Name) values (0,'-'        );
@@ -75,10 +69,7 @@ Create Table SDesk_Cod_Side                               -- جدول ترامي
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT SDesk_Cod_Side_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT SDesk_Cod_Side_UK        UNIQUE      (Name),
-  CONSTRAINT SDesk_Cod_Side_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT SDesk_Cod_Side_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT SDesk_Cod_Side_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT SDesk_Cod_Side_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into SDesk_Cod_Side (Id,Name) values (1,'Customer');
@@ -93,10 +84,7 @@ Create Table SDesk_Cod_Unit                               -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT SDesk_Cod_Unit_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT SDesk_Cod_Unit_UK        UNIQUE      (Name),
-  CONSTRAINT SDesk_Cod_Unit_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT SDesk_Cod_Unit_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT SDesk_Cod_Unit_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT SDesk_Cod_Unit_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into SDesk_Cod_Unit (Id,Name) values (1,'Hour');
@@ -111,9 +99,7 @@ Create Table SDesk_Cod_Auto_Conv                  -- جدول رميز الرس�
   Ins_User   BIGINT, Ins_Date     DATETIME,                 -- تاريخ التغيير
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT SDesk_Cod_Auto_Conv_PK     PRIMARY KEY (Id),
-  CONSTRAINT SDesk_Cod_Auto_Conv_UK     UNIQUE      (`Key`),
-  CONSTRAINT SDesk_Cod_Auto_Conv_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT SDesk_Cod_Auto_Conv_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT SDesk_Cod_Auto_Conv_UK     UNIQUE      (`Key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table SDesk_Cod_Tckt_Status                      -- جدول حالات الطلب
@@ -126,10 +112,7 @@ Create Table SDesk_Cod_Tckt_Status                      -- جدول حالات �
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT SDesk_Cod_Tckt_Status_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT SDesk_Cod_Tckt_Status_UK     UNIQUE      (Name),
-  CONSTRAINT SDesk_Cod_Tckt_Status_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT SDesk_Cod_Tckt_Status_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT SDesk_Cod_Tckt_Status_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT SDesk_Cod_Tckt_Status_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table SDesk_Cod_SLA                                -- جدول تراميز أولوية الخدمات حسب الاتفاقيات
@@ -141,10 +124,7 @@ Create Table SDesk_Cod_SLA                                -- جدول ترامي
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT SDesk_Cod_SLA_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT SDesk_Cod_SLA_UK        UNIQUE      (Name),
-  CONSTRAINT SDesk_Cod_SLA_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT SDesk_Cod_SLA_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT SDesk_Cod_SLA_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT SDesk_Cod_SLA_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table SDesk_Serv                                 -- جدول الخدمات
@@ -158,10 +138,7 @@ Create Table SDesk_Serv                                 -- جدول الخدما
   Upd_User    BIGINT, Upd_Date     DATETIME,
   CONSTRAINT SDesk_Serv_PK        PRIMARY KEY (Id  ),
   CONSTRAINT SDesk_Serv_Num_UK    UNIQUE      (Num ),
-  CONSTRAINT SDesk_Serv_Nam_UK    UNIQUE      (Name),
-  CONSTRAINT SDesk_Serv_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT SDesk_Serv_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT SDesk_Serv_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT SDesk_Serv_Nam_UK    UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table SDesk_Cat                              -- جدول التصانيف الأساسية
@@ -175,10 +152,7 @@ Create Table SDesk_Cat                              -- جدول التصانيف
   Upd_User    BIGINT, Upd_Date     DATETIME,
   CONSTRAINT SDesk_Cat_PK        PRIMARY KEY (Id  ),
   CONSTRAINT SDesk_Cat_Num_UK    UNIQUE      (Num),
-  CONSTRAINT SDesk_Cat_Name_UK   UNIQUE      (Name),
-  CONSTRAINT SDesk_Cat_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT SDesk_Cat_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT SDesk_Cat_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT SDesk_Cat_Name_UK   UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table SDesk_SubCat                           -- جدول التصانيف الفرعية
@@ -193,11 +167,7 @@ Create Table SDesk_SubCat                           -- جدول التصانيف
   Upd_User    BIGINT, Upd_Date     DATETIME,
   CONSTRAINT  SDesk_SubCat_PK        PRIMARY KEY (Id),
   CONSTRAINT  SDesk_SubCat_Num_UK    UNIQUE      (Cat_Id, Num ),
-  CONSTRAINT  SDesk_SubCat_Nam_UK    UNIQUE      (Cat_Id, Name),
-  CONSTRAINT  SDesk_SubCat_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT  SDesk_SubCat_Cat_FK    Foreign Key (Cat_Id   ) References SDesk_Cat     (Id),
-  CONSTRAINT  SDesk_SubCat_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  SDesk_SubCat_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  SDesk_SubCat_Nam_UK    UNIQUE      (Cat_Id, Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table SDesk_Cat_Serv                        -- جدول تصنيف خدمة
@@ -209,12 +179,7 @@ Create Table SDesk_Cat_Serv                        -- جدول تصنيف خدم
   Ins_User    BIGINT, Ins_Date     DATETIME,
   Upd_User    BIGINT, Upd_Date     DATETIME,
   CONSTRAINT SDesk_Cat_Serv_PK        PRIMARY KEY (Id),
-  CONSTRAINT SDesk_Cat_Serv_UK        UNIQUE      (Serv_Id, Cat_Id),
-  CONSTRAINT SDesk_Cat_Serv_Cat_FK    Foreign Key (Cat_Id   ) References SDesk_Cat     (Id),
-  CONSTRAINT SDesk_Cat_Serv_Serv_FK   Foreign Key (Serv_Id  ) References SDesk_Serv    (Id),
-  CONSTRAINT SDesk_Cat_Serv_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT SDesk_Cat_Serv_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT SDesk_Cat_Serv_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT SDesk_Cat_Serv_UK        UNIQUE      (Serv_Id, Cat_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table SDesk_Cust_Serv                        -- جدول  خدمات زبون
@@ -222,7 +187,7 @@ Create Table SDesk_Cust_Serv                        -- جدول  خدمات زب
   Serv_Id      BIGINT NOT NULL,                         -- الخدمة
   Cont_Id      BIGINT NOT NULL,                         -- الزبون
   Status_Id    BIGINT Default 1,                        -- حالة
-  SDate        DATETIME Default NOW() NOT NULL,              -- تاريخ البداية
+  SDate        DATETIME DEFAULT (NOW()) NOT NULL,              -- تاريخ البداية
   EDate        DATETIME NOT NULL,                              -- تاريخ النهاية
   RenewalDate  DATETIME NOT NULL,                              -- تاريخ التجديد
   Description  VARCHAR(1024),                        -- الوصف
@@ -230,12 +195,7 @@ Create Table SDesk_Cust_Serv                        -- جدول  خدمات زب
   Ins_User     BIGINT, Ins_Date     DATETIME,
   Upd_User     BIGINT, Upd_Date     DATETIME,
   CONSTRAINT SDesk_Cust_Serv_PK         PRIMARY KEY (Id),
-  CONSTRAINT SDesk_Cust_Serv_UK         UNIQUE      (Cont_Id, Serv_Id),
-  CONSTRAINT SDesk_Cust_Serv_Serv_FK    Foreign Key (Serv_Id  ) References SDesk_Serv    (Id),
-  CONSTRAINT SDesk_Cust_Serv_Cont_Id_FK Foreign Key (Cont_Id  ) References Mng_Cont      (Id),
-  CONSTRAINT SDesk_Cust_Serv_Status_FK  Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT SDesk_Cust_Serv_Ins_FK     Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT SDesk_Cust_Serv_Upd_FK     Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT SDesk_Cust_Serv_UK         UNIQUE      (Cont_Id, Serv_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table SDesk_Cust_User                           -- جدول مستخدمين زبائن
@@ -247,27 +207,19 @@ Create Table SDesk_Cust_User                           -- جدول مستخدم�
   Ins_User    BIGINT, Ins_Date     DATETIME,
   Upd_User    BIGINT, Upd_Date     DATETIME,
   CONSTRAINT SDesk_Cust_User_User_PK   PRIMARY KEY (Id),
-  CONSTRAINT SDesk_Cust_User_UK        UNIQUE      (Cont_Id, User_Id),
-  CONSTRAINT SDesk_Cust_User_User_FK   Foreign Key (User_Id  ) References Cpy_User      (Id),
-  CONSTRAINT SDesk_Cust_User_cont_FK   Foreign Key (Cont_Id  ) References Mng_Cont      (Id),
-  CONSTRAINT SDesk_Cust_User_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT SDesk_Cust_User_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT SDesk_Cust_User_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT SDesk_Cust_User_UK        UNIQUE      (Cont_Id, User_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table SDesk_Cust_SLA                            -- جدول  اتفاقية مستوى الخدمة
 ( Id           BIGINT NOT NULL AUTO_INCREMENT,                         -- مفتاح رئيسي
   Cont_Id      BIGINT NOT NULL,                         -- الزبون
-  SDate        DATETIME Default NOW() NOT NULL,              -- تاريخ البداية
+  SDate        DATETIME DEFAULT (NOW()) NOT NULL,              -- تاريخ البداية
   EDate        DATETIME NOT NULL,                              -- تاريخ النهاية
   renewalDate  DATETIME NOT NULL,                              -- تاريخ التجديد
   Rem          VARCHAR(100),                         -- ملاحظات
   Ins_User     BIGINT, Ins_Date     DATETIME,  
   Upd_User     BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT SDesk_Cust_SLA_PK      PRIMARY KEY (Id),
-  CONSTRAINT SDesk_Cust_SLA_cont_FK Foreign Key (Cont_Id ) References Mng_Cont(Id),
-  CONSTRAINT SDesk_Cust_SLA_Ins_FK  Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT SDesk_Cust_SLA_Upd_FK  Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT SDesk_Cust_SLA_PK      PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table SDesk_Cust_SLA_Mtrx                     -- جدول  المصفوفة الخاصة بزمن الاستجابة
@@ -285,14 +237,7 @@ Create Table SDesk_Cust_SLA_Mtrx                     -- جدول  المصفوف
   Ins_User         BIGINT, Ins_Date     DATETIME,  
   Upd_User         BIGINT, Upd_Date     DATETIME,
   CONSTRAINT SDesk_Cust_SLA_Mtrx_PK          PRIMARY KEY (Id),
-  CONSTRAINT SDesk_Cust_SLA_Mtrx_UK          UNIQUE      (Mst_Id, SLA_Id),
-  CONSTRAINT SDesk_Cust_SLA_Mtrx_FK          Foreign Key (Mst_Id         ) References SDesk_Cust_SLA(Id),
-  CONSTRAINT SDesk_Cust_SLA_Mtrx_SLA_FK      Foreign Key (SLA_Id         ) References SDesk_Cod_SLA (Id),
-  CONSTRAINT SDesk_Cust_SLA_Mtrx_RespUnit_FK Foreign Key (responseUnit_Id) References SDesk_Cod_Unit(Id),
-  CONSTRAINT SDesk_Cust_SLA_Mtrx_RestUnit_FK Foreign Key (restoreUnit_Id ) References SDesk_Cod_Unit(Id),
-  CONSTRAINT SDesk_Cust_SLA_Mtrx_ResoUnitFK  Foreign Key (resolveUnit_Id ) References SDesk_Cod_Unit(Id),
-  CONSTRAINT SDesk_Cust_SLA_Mtrx_Ins_FK      Foreign Key (Ins_User       ) References Cpy_User      (Id),
-  CONSTRAINT SDesk_Cust_SLA_Mtrx_Upd_FK      Foreign Key (Upd_User       ) References Cpy_User      (Id)
+  CONSTRAINT SDesk_Cust_SLA_Mtrx_UK          UNIQUE      (Mst_Id, SLA_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table SDesk_Cust_SLA_Serv                    -- جدول  خدمات اتفاقية زبون
@@ -304,11 +249,7 @@ Create Table SDesk_Cust_SLA_Serv                    -- جدول  خدمات ات
   Ins_User     BIGINT, Ins_Date     DATETIME,  
   Upd_User     BIGINT, Upd_Date     DATETIME,
   CONSTRAINT SDesk_Cust_SLA_Serv_PK      PRIMARY KEY (Id),
-  CONSTRAINT SDesk_Cust_SLA_Serv_UK      UNIQUE      (Mst_Id, Serv_Id),
-  CONSTRAINT SDesk_Cust_SLA_Serv_Mst_FK  Foreign Key (Mst_Id  ) References SDesk_Cust_SLA(Id),
-  CONSTRAINT SDesk_Cust_SLA_Serv_Serv_FK Foreign Key (Serv_Id ) References SDesk_Serv    (Id),
-  CONSTRAINT SDesk_Cust_SLA_Serv_Ins_FK  Foreign Key (Ins_User) References Cpy_User      (Id),
-  CONSTRAINT SDesk_Cust_SLA_Serv_Upd_FK  Foreign Key (Upd_User) References Cpy_User      (Id)
+  CONSTRAINT SDesk_Cust_SLA_Serv_UK      UNIQUE      (Mst_Id, Serv_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table SDesk_Staff                           -- دليل فريق الدعم
@@ -320,12 +261,7 @@ Create Table SDesk_Staff                           -- دليل فريق الدع
   Ins_User    BIGINT, Ins_Date     DATETIME,
   Upd_User    BIGINT, Upd_Date     DATETIME,
   CONSTRAINT SDesk_Staff_PK        Primary Key (Id),
-  CONSTRAINT SDesk_Staff_Nam_UK    Unique      (Emp_Id, User_Id),
-  CONSTRAINT SDesk_Staff_Emp_FK    Foreign Key (Emp_Id   ) References Emp_Emp       (Id),
-  CONSTRAINT SDesk_Staff_User_FK   Foreign Key (User_Id  ) References Cpy_User      (Id),
-  CONSTRAINT SDesk_Staff_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT SDesk_Staff_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT SDesk_Staff_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT SDesk_Staff_Nam_UK    Unique      (Emp_Id, User_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table SDesk_Staff_Serv                           -- جدول  خدمات موظف
@@ -337,12 +273,7 @@ Create Table SDesk_Staff_Serv                           -- جدول  خدمات 
   Ins_User     BIGINT, Ins_Date     DATETIME,
   Upd_User     BIGINT, Upd_Date     DATETIME,
   CONSTRAINT SDesk_Staff_Serv_PK          PRIMARY KEY (Id),
-  CONSTRAINT SDesk_Staff_Serv_UK          UNIQUE      (Staff_Id, Serv_Id),
-  CONSTRAINT SDesk_Staff_Serv_Serv_FK     Foreign Key (Serv_Id  ) References SDesk_Serv    (Id),
-  CONSTRAINT SDesk_Staff_Serv_customer_FK Foreign Key (Staff_Id ) References SDesk_Staff   (Id),
-  CONSTRAINT SDesk_Staff_Serv_Status_FK   Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT SDesk_Staff_Serv_Ins_FK      Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT SDesk_Staff_Serv_Upd_FK      Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT SDesk_Staff_Serv_UK          UNIQUE      (Staff_Id, Serv_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table SDesk_Tckt                                  -- جدول الطلبات
@@ -359,27 +290,16 @@ Create Table SDesk_Tckt                                  -- جدول الطلب�
   SUser_Id    BIGINT,                                   -- الموظف المتابع
   SUser_Date  DATETIME,                                        -- خر تاريخ لاستلام الموظف المتابع
   Status_Id   BIGINT Default 1,                         -- الحالة
-  Status_Date DATETIME Default NOW(),                        -- تاريخ الحالة
+  Status_Date DATETIME DEFAULT (NOW()),                        -- تاريخ الحالة
   Subject     VARCHAR(255) NOT NULL,                 -- العنوان
   Description VARCHAR(4000),                         -- المشكلة سبب فتح الطلب
-  dDate       DATETIME Default NOW(),                        -- تاريخ فتح الطلب
-  SDate       DATETIME Default NOW(),                        -- تاريخ قبول الطلب
+  dDate       DATETIME DEFAULT (NOW()),                        -- تاريخ فتح الطلب
+  SDate       DATETIME DEFAULT (NOW()),                        -- تاريخ قبول الطلب
   EDate       DATETIME,                                        -- تاريخ إنهاء الطلب
   Rem         VARCHAR(250),                          -- البيان
   Ins_User    BIGINT, Ins_Date DATETIME,
   Upd_User    BIGINT, Upd_Date DATETIME,
-  CONSTRAINT  SDesk_Tckt_PK         PRIMARY KEY (Id),
-  CONSTRAINT  SDesk_Tckt_Cont_FK    FOREIGN KEY (Cont_Id   ) References Mng_Cont             (Id),
-  CONSTRAINT  SDesk_Tckt_Serv_FK    Foreign Key (Serv_Id   ) References SDesk_Serv           (Id),
-  CONSTRAINT  SDesk_Tckt_Cat_FK     FOREIGN KEY (Cat_Id    ) References SDesk_Cat            (Id),
-  CONSTRAINT  SDesk_Tckt_SubCate_FK FOREIGN KEY (SubCate_Id) References SDesk_SubCat         (Id),
-  CONSTRAINT  SDesk_Tckt_SLA_FK     FOREIGN KEY (SLA_Id    ) References SDesk_Cod_SLA        (Id),
-  CONSTRAINT  SDesk_Tckt_CUser_FK   Foreign Key (CUser_Id  ) References Cpy_User             (Id),
-  CONSTRAINT  SDesk_Tckt_RUser_FK   FOREIGN KEY (RUser_Id  ) References Cpy_User             (Id),
-  CONSTRAINT  SDesk_Tckt_SUser_FK   FOREIGN KEY (SUser_Id  ) References Cpy_User             (Id),
-  CONSTRAINT  SDesk_Tckt_Status_FK  FOREIGN KEY (Status_Id ) References SDesk_Cod_Tckt_Status(Id),
-  CONSTRAINT  SDesk_Tckt_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User             (Id),
-  CONSTRAINT  SDesk_Tckt_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User             (Id)
+  CONSTRAINT  SDesk_Tckt_PK         PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table SDesk_Tckt_Conv                     -- جدول  المحادثة
@@ -388,18 +308,12 @@ Create Table SDesk_Tckt_Conv                     -- جدول  المحادثة
   Type_Id      BIGINT Default 0,                        -- نوع بند المحادثة
   User_Id      BIGINT NOT NULL,                         -- المستخدم
   Side_Id      BIGINT NOT NULL,                         -- الجهة التي كتبت الرسالة الزبون /الموظف
-  MsgDate      DATETIME Default NOW(),                       -- تاريخ  الإرسال
+  MsgDate      DATETIME DEFAULT (NOW()),                       -- تاريخ  الإرسال
   RecDate      DATETIME,                                       -- تاريخ الاستقبال
   Msg          VARCHAR(4000),                        -- نص الرسالة
   Ins_User     BIGINT, Ins_Date     DATETIME,               -- تاريخ الإرسال
   Upd_User     BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT SDesk_Tckt_Conv_PK      PRIMARY KEY (Id),
-  CONSTRAINT SDesk_Tckt_Conv_Tckt_FK Foreign Key (Tckt_Id ) References SDesk_Tckt         (Id),
-  CONSTRAINT SDesk_Tckt_Type_FK      Foreign Key (Type_Id ) References SDesk_Cod_Conv_Type(Id),
-  CONSTRAINT SDesk_Tckt_Conv_User_FK Foreign Key (User_Id ) References Cpy_User           (Id),
-  CONSTRAINT SDesk_Tckt_Conv_Side_FK Foreign Key (Side_Id ) References SDesk_Cod_Side     (Id),
-  CONSTRAINT SDesk_Tckt_Conv_Ins_FK  Foreign Key (Ins_User) References Cpy_User           (Id),
-  CONSTRAINT SDesk_Tckt_Conv_Upd_FK  Foreign Key (Upd_User) References Cpy_User           (Id)
+  CONSTRAINT SDesk_Tckt_Conv_PK      PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table SDesk_Tckt_SLA_Chng                     -- جدول تبدل تغيير أولوية الطلب 
@@ -410,20 +324,12 @@ Create Table SDesk_Tckt_SLA_Chng                     -- جدول تبدل تغي
   Side_Id     BIGINT NOT NULL,                          -- الجهة التي قامت بالتعديل
   Conv_Id     BIGINT,                                  -- المحادثة
   User_Id     BIGINT,                                   -- موظف الدعم
-  dDate       DATETIME Default NOW(),                        -- تاريخ  
+  dDate       DATETIME DEFAULT (NOW()),                        -- تاريخ  
   Reason      VARCHAR(1024),                         -- سبب التغيير
   Rem         VARCHAR(512),                          -- الملاحظات
   Ins_User    BIGINT, Ins_Date     DATETIME,                -- تاريخ التغيير
   Upd_User    BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT  SDesk_Tckt_SLA_Chng_PK        PRIMARY KEY (Id),
-  CONSTRAINT  SDesk_Tckt_SLA_Chng_Ticket_FK Foreign Key (Tckt_Id ) References SDesk_Tckt     (Id),
-  CONSTRAINT  SDesk_Tckt_SLA_Chng_Conv_FK   Foreign Key (Conv_Id ) References SDesk_Tckt_Conv(Id),
-  CONSTRAINT  SDesk_Tckt_SLA_Chng_oSLA_FK   Foreign Key (oSLA_Id ) References SDesk_Cod_SLA  (Id),
-  CONSTRAINT  SDesk_Tckt_SLA_Chng_nSLA_FK   Foreign Key (nSLA_Id ) References SDesk_Cod_SLA  (Id),
-  CONSTRAINT  SDesk_Tckt_SLA_Chng_User_FK   Foreign Key (User_Id ) References Cpy_User       (Id),
-  CONSTRAINT  SDesk_Tckt_SLA_Chng_Side_FK   Foreign Key (Side_Id ) References SDesk_Cod_Side (Id),
-  CONSTRAINT  SDesk_Tckt_SLA_Chng_Ins_FK    Foreign Key (Ins_User) References Cpy_User       (Id),
-  CONSTRAINT  SDesk_Tckt_SLA_Chng_Upd_FK    Foreign Key (Upd_User) References Cpy_User       (Id)
+  CONSTRAINT  SDesk_Tckt_SLA_Chng_PK        PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table SDesk_Tckt_User_Chng                    -- جدول تبدل تغيير أولوية الطلب 
@@ -433,19 +339,12 @@ Create Table SDesk_Tckt_User_Chng                    -- جدول تبدل تغي
   oUser_Id     BIGINT,                                  -- المستخدم القديم
   nUser_Id     BIGINT,                                  -- المستخدم الجديد
   User_Id      BIGINT,                                  -- موظف الدعم
-  dDate        DATETIME Default NOW(),                       -- تاريخ  
+  dDate        DATETIME DEFAULT (NOW()),                       -- تاريخ  
   reason       VARCHAR(1024),                        -- سبب التغيير
   Rem          VARCHAR(512),                         -- الملاحظات
   Ins_User     BIGINT, Ins_Date     DATETIME,               -- تاريخ التغيير
   Upd_User     BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT   SDesk_Tckt_User_Chng_PK       PRIMARY KEY (Id),
-  CONSTRAINT   SDesk_Tckt_User_Chng_Conv_FK  Foreign Key (Conv_Id ) References SDesk_Tckt_Conv(Id),
-  CONSTRAINT   SDesk_Tckt_User_Chng_Tckt_FK  Foreign Key (Tckt_Id ) References SDesk_Tckt     (Id),
-  CONSTRAINT   SDesk_Tckt_User_Chng_oUser_FK Foreign Key (oUser_Id) References Cpy_User       (Id),
-  CONSTRAINT   SDesk_Tckt_User_Chng_nUser_FK Foreign Key (nUser_Id) References Cpy_User       (Id),
-  CONSTRAINT   SDesk_Tckt_User_Chng_User_FK  Foreign Key (User_Id ) References Cpy_User       (Id),
-  CONSTRAINT   SDesk_Tckt_User_Chng_Ins_FK   Foreign Key (Ins_User) References Cpy_User       (Id),
-  CONSTRAINT   SDesk_Tckt_User_Chng_Upd_FK   Foreign Key (Upd_User) References Cpy_User       (Id)
+  CONSTRAINT   SDesk_Tckt_User_Chng_PK       PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table SDesk_Tckt_Chng_Status                    -- جدول تبدل حالات طلب
@@ -453,24 +352,16 @@ Create Table SDesk_Tckt_Chng_Status                    -- جدول تبدل حا
   Tckt_Id      BIGINT NOT NULL,                         -- الطلب
   Conv_Id      BIGINT,                                 -- المحادثة
   oStatus_Id   BIGINT NOT NULL,                         -- الحالة
-  oStatus_Date DATETIME Default NOW(),                       -- تاريخ الحالة
+  oStatus_Date DATETIME DEFAULT (NOW()),                       -- تاريخ الحالة
   oUser_Id     BIGINT,                                  -- الموظف 
   nStatus_Id   BIGINT NOT NULL,                         -- الحالة
-  nStatus_Date DATETIME Default NOW(),                       -- تاريخ الحالة
+  nStatus_Date DATETIME DEFAULT (NOW()),                       -- تاريخ الحالة
   nUser_Id     BIGINT,                                  -- الموظف 
   nDays        SMALLINT Default 1,                        -- الأيام التي يجب أن تنتهي بها هذه الحالة
   Rem          VARCHAR(512),                         -- الملاحظات
   Ins_User     BIGINT, Ins_Date     DATETIME,
   Upd_User     BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT   SDesk_Tckt_Chng_Status_PK          PRIMARY KEY (Id),
-  CONSTRAINT   SDesk_Tckt_Chng_Status_Tckt_FK     Foreign Key (Tckt_Id   ) References SDesk_Tckt           (Id),
-  CONSTRAINT   SDesk_Tckt_Chng_Status_oStatus_FK  Foreign Key (oStatus_Id) References SDesk_Cod_Tckt_Status(Id),
-  CONSTRAINT   SDesk_Tckt_Chng_Status_oUser_FK    Foreign Key (oUser_Id  ) References Cpy_User             (Id),
-  CONSTRAINT   SDesk_Tckt_Chng_Status_nStatus_FK  Foreign Key (nStatus_Id) References SDesk_Cod_Tckt_Status(Id),
-  CONSTRAINT   SDesk_Tckt_Chng_Status_nUser_FK    Foreign Key (nUser_Id  ) References Cpy_User             (Id),
-  CONSTRAINT   SDesk_Tckt_Chng_Status_Conv_Fk     Foreign Key (Conv_Id   ) References SDesk_Tckt_Conv      (Id),
-  CONSTRAINT   SDesk_Tckt_Chng_Status_Ins_FK      Foreign Key (Ins_User  ) References Cpy_User             (Id),
-  CONSTRAINT   SDesk_Tckt_Chng_Status_Upd_FK      Foreign Key (Upd_User  ) References Cpy_User             (Id)
+  CONSTRAINT   SDesk_Tckt_Chng_Status_PK          PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table SDesk_Attach                          -- الملفات المرفقة
@@ -484,11 +375,7 @@ Create Table SDesk_Attach                          -- الملفات المرف�
   Rem        VARCHAR(250),                           -- البيان
   Ins_User   BIGINT, Ins_Date DATETIME,
   Upd_User   BIGINT, Upd_Date DATETIME,
-  CONSTRAINT SDesk_Attach_PK      PRIMARY KEY (Id),
-  CONSTRAINT SDesk_Attach_User_Fk Foreign Key (User_Id ) References Cpy_User       (Id),
-  CONSTRAINT SDesk_Attach_Conv_Fk Foreign Key (Conv_Id ) References SDesk_Tckt_Conv(Id),
-  CONSTRAINT SDesk_Attach_Ins_FK  Foreign Key (Ins_User) References Cpy_User       (Id),
-  CONSTRAINT SDesk_Attach_Upd_FK  Foreign Key (Upd_User) References Cpy_User       (Id)
+  CONSTRAINT SDesk_Attach_PK      PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table SDesk_Cust_Rate                         -- جدول  تقييم الزبون للخدمة
@@ -500,10 +387,5 @@ Create Table SDesk_Cust_Rate                         -- جدول  تقييم ا�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT SDesk_Cust_Rate_PK      PRIMARY KEY (Id),
-  CONSTRAINT SDesk_Cust_Rate_UK      UNIQUE      (Tckt_Id, Rate_Id),
-  CONSTRAINT SDesk_Cust_Rate_Tckt_FK Foreign Key (Tckt_Id ) References SDesk_Tckt      (Id),
-  CONSTRAINT SDesk_Cust_Rate_User_FK Foreign Key (User_Id ) References Cpy_User        (Id),
-  CONSTRAINT SDesk_Cust_Rate_Rate_FK Foreign Key (Rate_Id ) References SDesk_Cod_Rating(Id),
-  CONSTRAINT SDesk_Cust_Rate_Ins_FK  Foreign Key (Ins_User) References Cpy_User        (Id),
-  CONSTRAINT SDesk_Cust_Rate_Upd_FK  Foreign Key (Upd_User) References Cpy_User        (Id)
+  CONSTRAINT SDesk_Cust_Rate_UK      UNIQUE      (Tckt_Id, Rate_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

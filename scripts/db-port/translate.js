@@ -22,7 +22,13 @@ const fs = require('fs');
 const path = require('path');
 
 const { splitStatements, classify, objectName, parseSynonym } = require('./lib/parse');
-const { renameIdentifiers, isSequenceOnlyTrigger, extractSequenceBinding } = require('./lib/rewrite');
+const {
+  renameIdentifiers,
+  isSequenceOnlyTrigger,
+  extractSequenceBinding,
+  extractForeignKeys,
+  forceIdIntegers
+} = require('./lib/rewrite');
 const mysql = require('./lib/mysql');
 const postgres = require('./lib/postgres');
 
@@ -119,7 +125,18 @@ function buildSynonymMap(dir) {
 function renderStatement(dialect, kind, sql, name) {
   try {
     switch (kind) {
-      case 'table': return { sql: dialect.translateTable(sql) };
+      case 'table': {
+        // Key columns are widened first, while the inline FOREIGN KEY clauses
+        // are still present: that is what tells forceIdIntegers which columns
+        // are key sources. Removing them first would hide Ins_User and friends
+        // and leave them too narrow for the key they point at.
+        const typed = forceIdIntegers(sql);
+
+        // Foreign keys are then lifted out and applied once every table exists,
+        // so a reference to a table created in a later file cannot fail.
+        const { sql: withoutFks, foreignKeys } = extractForeignKeys(typed, name);
+        return { sql: dialect.translateTable(withoutFks), foreignKeys };
+      }
       case 'sequence': {
         const out = dialect.translateSequence(sql, name);
         // MySQL returns null: AUTO_INCREMENT replaces sequences entirely.
@@ -207,6 +224,7 @@ function main() {
 
       // Each database resolves synonyms with its own map.
       const { renameMap, extraViews } = maps[dir];
+      const deferredForeignKeys = [];
 
       for (const file of sqlFiles(dir)) {
         const source = fs.readFileSync(path.join(DB_DIR, dir, file), 'utf8');
@@ -262,6 +280,9 @@ function main() {
             chunks.push(`-- REVIEW(port): trigger translated mechanically; verify before use.`);
             stats.review++;
           }
+          if (result.foreignKeys && result.foreignKeys.length > 0) {
+            deferredForeignKeys.push(...result.foreignKeys);
+          }
           chunks.push(result.sql);
           stats.translated++;
         }
@@ -273,6 +294,21 @@ function main() {
 
         fs.writeFileSync(path.join(outDir, file.replace(/\.SQL$/i, '.sql')), content, 'utf8');
         stats.files++;
+      }
+
+      // Applied once every table in this database exists, and after the seed
+      // data, so neither table order nor row order can break a constraint.
+      if (deferredForeignKeys.length > 0) {
+        fs.writeFileSync(
+          path.join(outDir, 'zzy_foreign_keys.sql'),
+          `-- Foreign keys for ${DATABASES[dir]}, lifted out of their CREATE TABLE.\n` +
+          `-- The Oracle scripts are not in dependency order, so declaring these\n` +
+          `-- inline made table creation depend on file order. Run this last.\n` +
+          `-- ${deferredForeignKeys.length} constraints.\n\n` +
+          `${dialect.useDatabase(DATABASES[dir])}\n${deferredForeignKeys.join('\n')}\n`,
+          'utf8'
+        );
+        stats.deferredFks = deferredForeignKeys.length;
       }
 
       // Aliases that lost the rename race become views over the canonical

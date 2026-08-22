@@ -114,7 +114,7 @@ SELECT
 CREATE OR REPLACE VIEW Emp_VApprNote AS
 SELECT
        ANote_Id   , ANote_Num  , ANote_Points, ANote_Rem,
-       STR_TO_DATE(To_Char(ANote_Date,'DD-MM-YYYY'),'DD-MM-YYYY') ANote_Date,
+       STR_TO_DATE(To_Char(ANote_Date,'%d-%m-%Y'),'%d-%m-%Y') ANote_Date,
        EE.Emp_Id  , EE.Emp_Num , EE.Emp_Name,
        ANote_Type , TP.CITM_Name  Type_Name , TP.Lang_Id  ,
        ANote_Grp  , CG.CItm_Name  Grp_Name  , CG.CItm_Sign  Grp_Sign ,
@@ -854,7 +854,7 @@ SELECT
        MM.Loan_ID    , MM.Loan_Num , MM.Loan_Date, MM.Loan_SDate ,
        MM.Loan_EDate , MM.Loan_TAmt, MM.Loan_MAmt, MM.Loan_BAmt  ,
        MM.Loan_Rem   ,
-       EE.Emp_Name||' ['||To_Char(MM.Loan_SDate,'DD-MM-YYYY')||'-'||To_Char(MM.Loan_EDate,'DD-MM-YYYY')||'] {'||MM.Loan_TAmt||'-'||MM.Loan_MAmt||'}' Loan_Name,
+       EE.Emp_Name||' ['||To_Char(MM.Loan_SDate,'%d-%m-%Y')||'-'||To_Char(MM.Loan_EDate,'%d-%m-%Y')||'] {'||MM.Loan_TAmt||'-'||MM.Loan_MAmt||'}' Loan_Name,
        MM.Loan_Status, ST.CITM_Name  Status_Name , ST.Lang_Id    ,
        MM.Loan_PFlg  , FL.CITM_Name  Flag_Name   ,
        MM.Ins_User   , MM.Ins_Date , MM.Upd_User , MM.Upd_Date

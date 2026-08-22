@@ -23,9 +23,7 @@ Create Table Arch_Cod_                 -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Arch_Cod__PK PRIMARY KEY (Id  ),
-  CONSTRAINT Arch_Cod__UK UNIQUE      (Name),
-  CONSTRAINT Arch_Cod__Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Arch_Cod__Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Arch_Cod__UK UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Arch_Cod_ (Id,Name) values (0,'-');
@@ -35,29 +33,23 @@ Create Table Arch_Fld                               -- جدول توصيف ال�
   Type_id    BIGINT NOT NULL,                      -- نوع الحقل
   Table_id   BIGINT DEFAULT '-1' COMMENT 'Fk Table',
   Name       VARCHAR(100) NOT NULL,              -- الاسم
-  Rem        VARCHAR(100),                      -- ملاحظات
-  CONSTRAINT Arch_Field_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Arch_Field_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  Rem        VARCHAR(100)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Arch_Form                                -- جدول توصيف النماذج
 ( Id         BIGINT NOT NULL,                      -- مفتاح رئيسي
   Name       VARCHAR(100) NOT NULL,             -- الاسم
-  Rem        VARCHAR(100),                      -- ملاحظات
-  CONSTRAINT Arch__Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Arch__Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  Rem        VARCHAR(100)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Arch_Form_Detail                         -- جدول بنود النماذج
 ( Id          BIGINT NOT NULL,                     -- مفتاح رئيسي
   form_id     INT NOT NULL COMMENT 'FK Form',
   field_id    INT NOT NULL COMMENT 'FK Field',
-  required_id tinyint NOT NULL DEFAULT '2' COMMENT 'YES NO',
-  ord         tinyint DEFAULT '1' COMMENT 'Order',
-  size        tinyint DEFAULT '2' COMMENT 'Size',
-  Rem         VARCHAR(100),                      -- ملاحظات
-  CONSTRAINT  Arch__Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT  Arch__Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  required_id TINYINT NOT NULL DEFAULT '2' COMMENT 'YES NO',
+  ord         TINYINT DEFAULT '1' COMMENT 'Order',
+  size        TINYINT DEFAULT '2' COMMENT 'Size',
+  Rem         VARCHAR(100)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Arch_Operation
@@ -65,45 +57,35 @@ Create Table Arch_Operation
   Tree_id    INT NOT NULL COMMENT 'FK Node',
   Form_Id    INT NOT NULL COMMENT 'FK Form',
   DATETIME       DATETIME DEFAULT NULL COMMENT 'Date',
-  hour       tinyint DEFAULT '0' COMMENT 'Hour',
-  min        tinyint DEFAULT '0' COMMENT 'Minut',
-  CONSTRAINT Arch__Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Arch__Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  hour       TINYINT DEFAULT '0' COMMENT 'Hour',
+  min        TINYINT DEFAULT '0' COMMENT 'Minut'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Arch_Operation_Detail
 ( Id           BIGINT NOT NULL,                      -- مفتاح رئيسي
   Operation_Id INT NOT NULL COMMENT 'FK Operation',
   Field_Id     INT NOT NULL COMMENT 'FK Field',
-  value        VARCHAR(512) NOT NULL COMMENT 'Value',
-  CONSTRAINT Arch__Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Arch__Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  value        VARCHAR(512) NOT NULL COMMENT 'Value'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Arch_Operation_Img
 ( Id           BIGINT NOT NULL,                      -- مفتاح رئيسي
   Operation_Id INT NOT NULL COMMENT 'FK Operation',
   oname        VARCHAR(512) NOT NULL COMMENT 'File Name',
-  nname        VARCHAR(512) NOT NULL COMMENT 'File Name New',
-  CONSTRAINT Arch__Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Arch__Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  nname        VARCHAR(512) NOT NULL COMMENT 'File Name New'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Arch_Table
 ( Id         BIGINT NOT NULL,                      -- مفتاح رئيسي
   Name       VARCHAR(100) NOT NULL,              -- الاسم
-  Rem        VARCHAR(100),                      -- ملاحظات
-  CONSTRAINT Arch__Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Arch__Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  Rem        VARCHAR(100)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Arch_Table_Detail
 ( Id         BIGINT NOT NULL,                      -- مفتاح رئيسي
   Table_Id   INT NOT NULL COMMENT 'PK',
   Name       VARCHAR(100) NOT NULL,              -- الاسم
-  Rem        VARCHAR(100),                      -- ملاحظات
-  CONSTRAINT Arch__Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Arch__Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  Rem        VARCHAR(100)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Arch_Tree
@@ -111,7 +93,5 @@ Create Table Arch_Tree
   Tree_Id    INT NOT NULL COMMENT 'FK Tree',
   Form_Id    INT NOT NULL COMMENT 'FK Form',
   Name       VARCHAR(100) NOT NULL,              -- الاسم
-  Rem        VARCHAR(100),                      -- ملاحظات
-  CONSTRAINT Arch__Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Arch__Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  Rem        VARCHAR(100)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

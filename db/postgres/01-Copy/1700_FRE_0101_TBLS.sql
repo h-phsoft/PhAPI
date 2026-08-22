@@ -26,11 +26,7 @@ Create Table Fre_Driv                                   -- Drivers
   Ins_User   BIGINT, Ins_Date TIMESTAMP,
   Upd_User   BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT Fre_Driv_PK      PRIMARY KEY (Id   ),
-  CONSTRAINT Fre_Driv_UK      UNIQUE      (NatId),
-  CONSTRAINT Fre_Driv_Kind_FK Foreign Key (Kind_Id ) References Fre_Cod_Kind (Id),
-  CONSTRAINT Fre_Driv_List_FK Foreign Key (List_Id ) References Fre_Cod_List (Id),
-  CONSTRAINT Fre_Driv_Ins_FK  Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Fre_Driv_Upd_FK  Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Fre_Driv_UK      UNIQUE      (NatId)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Fre_Truk_Seq
@@ -49,10 +45,7 @@ Create Table Fre_Truk                                    -- Trucks
   Ins_User   BIGINT, Ins_Date TIMESTAMP,
   Upd_User   BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT Fre_Truk_PK      PRIMARY KEY (Id ),
-  CONSTRAINT Fre_Truk_UK      UNIQUE      (Num),
-  CONSTRAINT Fre_Truk_List_FK Foreign Key (List_Id ) References Fre_Cod_List (Id),
-  CONSTRAINT Fre_Truk_Ins_FK  Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Fre_Truk_Upd_FK  Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Fre_Truk_UK      UNIQUE      (Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Fre_Cont_Comod_Seq
@@ -68,11 +61,7 @@ Create Table Fre_Cont_Comod                          -- دليل بضائع ال
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Fre_Cont_Comod_PK       PRIMARY KEY (Id),
-  CONSTRAINT Fre_Cont_Comod_UK       Unique      (Cont_Id, Comod_Id),
-  CONSTRAINT Fre_Cont_Comod_Cont_FK  Foreign Key (Cont_Id ) References Mng_Cont     (Id),
-  CONSTRAINT Fre_Cont_Comod_Comod_FK Foreign Key (Comod_Id) References Fre_Cod_Comod(Id),
-  CONSTRAINT Fre_Cont_Comod_Ins_FK   Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Fre_Cont_Comod_Upd_FK   Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Fre_Cont_Comod_UK       Unique      (Cont_Id, Comod_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Fre_DUServ_Seq
@@ -89,13 +78,7 @@ Create Table Fre_DUServ                  -- خدمات الأقسام ضمن ا�
   Ins_User   BIGINT, Ins_Date TIMESTAMP,
   Upd_User   BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT Fre_DUServ_PK        Primary Key (Id),
-  CONSTRAINT Fre_DUServ_UK        Unique      (Unit_Id, Loc_Id, Serv_Id),
-  CONSTRAINT Fre_DUServ_Unit_FK   Foreign Key (Unit_Id  ) References Cpy_Unit       (Id),
-  CONSTRAINT Fre_DUServ_Loc_FK    Foreign Key (Loc_Id   ) References Fre_Cod_Loc    (Id),
-  CONSTRAINT Fre_DUServ_Serv_FK   Foreign Key (Serv_Id  ) References Mng_Serv       (Id),
-  CONSTRAINT Fre_DUServ_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Fre_DUServ_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Fre_DUServ_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Fre_DUServ_UK        Unique      (Unit_Id, Loc_Id, Serv_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Fre_DeptMBud_Seq
@@ -112,9 +95,7 @@ Create Table Fre_DeptMBud                    -- موازنات الأقسام
   Upd_User   BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT Fre_DeptMBud_PK      Primary Key (Id  ),
   CONSTRAINT Fre_DeptMBud_NUM_UK  Unique      (Num ),
-  CONSTRAINT Fre_DeptMBud_Nam_UK  Unique      (Name),
-  CONSTRAINT Fre_DeptMBud_Ins_FK  Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Fre_DeptMBud_Upd_FK  Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Fre_DeptMBud_Nam_UK  Unique      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Fre_DeptTBud_Seq
@@ -135,11 +116,7 @@ Create Table Fre_DeptTBud                    -- بنود موازنات الأق
   Ins_User   BIGINT, Ins_Date TIMESTAMP,
   Upd_User   BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT Fre_DeptTBud_PK      Primary Key (Id),
-  CONSTRAINT Fre_DeptTBud_UK      Unique      (Bud_Id, Dept_Id),
-  CONSTRAINT Fre_DeptTBud_FK      Foreign Key (Bud_Id  ) References Fre_DeptMBud(Id),
-  CONSTRAINT Fre_DeptTBud_Dept_FK Foreign Key (Dept_Id ) References Cpy_Dept    (Id),
-  CONSTRAINT Fre_DeptTBud_Ins_FK  Foreign Key (Ins_User) References Cpy_User    (Id),
-  CONSTRAINT Fre_DeptTBud_Upd_FK  Foreign Key (Upd_User) References Cpy_User    (Id)
+  CONSTRAINT Fre_DeptTBud_UK      Unique      (Bud_Id, Dept_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Fre_MCntrct_Seq
@@ -187,38 +164,7 @@ Create Table Fre_MCntrct                              -- العقود
   Ins_User          BIGINT, Ins_Date TIMESTAMP,
   Upd_User          BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT        Fre_MCntrct_PK              Primary Key (Id ),
-  CONSTRAINT        Fre_MCntrct_UK              Unique      (Num),
-  CONSTRAINT        Fre_MCntrct_Dept_FK         Foreign Key (Dept_Id         ) References Cpy_Dept      (Id),
-  CONSTRAINT        Fre_MCntrct_Unit_FK         Foreign Key (Unit_Id         ) References Cpy_Unit      (Id),
-  CONSTRAINT        Fre_MCntrct_Oper_FK         Foreign Key (Oper_Id         ) References Cpy_Oper      (Id),
-  CONSTRAINT        Fre_MCntrct_Cont_FK         Foreign Key (Cont_Id         ) References Mng_Cont      (Id),
-  CONSTRAINT        Fre_MCntrct_Status_FK       Foreign Key (Status_Id       ) References Phs_Cod_Status(Id),
-  CONSTRAINT        Fre_MCntrct_CurnDmrge_FK    Foreign Key (Dmrge_Curn_ID   ) References Mng_Curn      (Id),
-  CONSTRAINT        Fre_MCntrct_Curnload_FK     Foreign Key (load_Curn_Id    ) References Mng_Curn      (Id),
-  CONSTRAINT        Fre_MCntrct_Curnoffload_FK  Foreign Key (offload_Curn_Id ) References Mng_Curn      (Id),
-  CONSTRAINT        Fre_MCntrct_CurnOverload_FK Foreign Key (Overload_Curn_Id) References Mng_Curn      (Id),
-  CONSTRAINT        Fre_MCntrct_CurnCooling_FK  Foreign Key (Cooling_Curn_Id ) References Mng_Curn      (Id),
-  CONSTRAINT        Fre_MCntrct_CurnCancel_FK   Foreign Key (Cancel_Curn_Id  ) References Mng_Curn      (Id),
-  CONSTRAINT        Fre_MCntrct_CurnOverDist_FK Foreign Key (OverDist_Curn_Id) References Mng_Curn      (Id),
-  CONSTRAINT        Fre_MCntrct_CurnTransMT_FK  Foreign Key (TransMT_Curn_Id ) References Mng_Curn      (Id),
-  CONSTRAINT        Fre_MCntrct_UnitDmrge_FK    Foreign Key (Dmrge_Unit_Id   ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT        Fre_MCntrct_Unitload_FK     Foreign Key (load_Unit_Id    ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT        Fre_MCntrct_Unitoffload_FK  Foreign Key (offload_Unit_Id ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT        Fre_MCntrct_UnitOverload_FK Foreign Key (Overload_Unit_Id) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT        Fre_MCntrct_UnitCooling_FK  Foreign Key (Cooling_Unit_Id ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT        Fre_MCntrct_UnitCancel_FK   Foreign Key (Cancel_Unit_Id  ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT        Fre_MCntrct_UnitOverDist_FK Foreign Key (OverDist_Unit_Id) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT        Fre_MCntrct_UnitTransMT_FK  Foreign Key (TransMT_Unit_Id ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT        Fre_MCntrct_Dmrge_FK        Foreign Key (Dmrge_Serv_Id   ) References Mng_Serv      (Id),
-  CONSTRAINT        Fre_MCntrct_load_FK         Foreign Key (load_Serv_Id    ) References Mng_Serv      (Id),
-  CONSTRAINT        Fre_MCntrct_offload_FK      Foreign Key (offload_Serv_Id ) References Mng_Serv      (Id),
-  CONSTRAINT        Fre_MCntrct_Overload_FK     Foreign Key (Overload_Serv_Id) References Mng_Serv      (Id),
-  CONSTRAINT        Fre_MCntrct_Cooling_FK      Foreign Key (Cooling_Serv_Id ) References Mng_Serv      (Id),
-  CONSTRAINT        Fre_MCntrct_Cancel_FK       Foreign Key (Cancel_Serv_Id  ) References Mng_Serv      (Id),
-  CONSTRAINT        Fre_MCntrct_OverDist_FK     Foreign Key (OverDist_Serv_Id) References Mng_Serv      (Id),
-  CONSTRAINT        Fre_MCntrct_TransMT_FK      Foreign Key (TransMT_Serv_Id ) References Mng_Serv      (Id),
-  CONSTRAINT        Fre_MCntrct_Ins_FK          Foreign Key (Ins_User        ) References Cpy_User      (Id),
-  CONSTRAINT        Fre_MCntrct_Upd_FK          Foreign Key (Upd_User        ) References Cpy_User      (Id)
+  CONSTRAINT        Fre_MCntrct_UK              Unique      (Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Fre_TCntrct_Seq
@@ -257,16 +203,7 @@ Create Table Fre_TCntrct                              -- بنود العقود
   Ins_User   BIGINT, Ins_Date TIMESTAMP,
   Upd_User   BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT Fre_TCntrct_PK       Primary Key (Id),
-  CONSTRAINT Fre_TCntrct_UK       Unique      (Contr_Id, Kind_Id, OCity_Id, DCity_Id, OAddress, DAddress),
-  CONSTRAINT Fre_TCntrct_Contr_FK Foreign Key (Contr_Id ) References Fre_MCntrct       (Id),
-  CONSTRAINT Fre_TCntrct_Kind_FK  Foreign Key (Kind_Id  ) References Fre_Cod_Contr_Kind(Id),
-  CONSTRAINT Fre_TCntrct_Curn_FK  Foreign Key (Curn_Id  ) References Mng_Curn          (Id),
-  CONSTRAINT Fre_TCntrct_Orig_FK  Foreign Key (OCntry_Id) References Fre_Cod_Cntry     (Id),
-  CONSTRAINT Fre_TCntrct_Dest_FK  Foreign Key (DCntry_Id) References Fre_Cod_Cntry     (Id),
-  CONSTRAINT Fre_TCntrct_OCity_FK Foreign Key (OCity_Id ) References Fre_Cod_City      (Id),
-  CONSTRAINT Fre_TCntrct_DCity_FK Foreign Key (DCity_Id ) References Fre_Cod_City      (Id),
-  CONSTRAINT Fre_TCntrct_Ins_FK   Foreign Key (Ins_User ) References Cpy_User          (Id),
-  CONSTRAINT Fre_TCntrct_Upd_FK   Foreign Key (Upd_User ) References Cpy_User          (Id)
+  CONSTRAINT Fre_TCntrct_UK       Unique      (Contr_Id, Kind_Id, OCity_Id, DCity_Id, OAddress, DAddress)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Fre_DCntrct_Seq
@@ -294,10 +231,7 @@ Create Table Fre_DCntrct                         -- بنود العقود
   Ins_User   BIGINT, Ins_Date TIMESTAMP,
   Upd_User   BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT Fre_DCntrct_PK       Primary Key (Id),
-  CONSTRAINT Fre_DCntrct_UK       Unique      (Contr_Id, nFrom, nTo),
-  CONSTRAINT Fre_DCntrct_Contr_FK Foreign Key (Contr_Id ) References Fre_MCntrct(Id),
-  CONSTRAINT Fre_DCntrct_Ins_FK   Foreign Key (Ins_User ) References Cpy_User   (Id),
-  CONSTRAINT Fre_DCntrct_Upd_FK   Foreign Key (Upd_User ) References Cpy_User   (Id)
+  CONSTRAINT Fre_DCntrct_UK       Unique      (Contr_Id, nFrom, nTo)
 );
 
 -- TODO(port): other has no automatic equivalent (source line 294).

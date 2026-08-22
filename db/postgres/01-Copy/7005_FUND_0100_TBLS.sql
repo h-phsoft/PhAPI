@@ -38,10 +38,7 @@ Create Table Fund_Dept                               -- دليل الأقسام
   Ins_User    BIGINT, Ins_Date     TIMESTAMP,
   Upd_User    BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT  Fund_Dept_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT  Fund_Dept_Uk        Unique      (Name),
-  CONSTRAINT  Fund_Dept_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT  Fund_Dept_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Fund_Dept_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  Fund_Dept_Uk        Unique      (Name)
 );
 
 Insert into Fund_Dept (Id,Name) values (0,'-');
@@ -58,10 +55,7 @@ Create Table Fund_Item                                    -- دليل البنو
   Ins_User    BIGINT, Ins_Date     TIMESTAMP,
   Upd_User    BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT  Fund_Item_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT  Fund_Item_Uk        Unique      (Name),
-  CONSTRAINT  Fund_Item_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT  Fund_Item_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Fund_Item_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  Fund_Item_Uk        Unique      (Name)
 );
 
 Insert into Fund_Item (Id,Name) values (0,'-');
@@ -81,13 +75,7 @@ Create Table Fund_Box                                    -- دليل الصنا�
   Ins_User    BIGINT, Ins_Date     TIMESTAMP,
   Upd_User    BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT  Fund_Box_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT  Fund_Box_Uk        Unique      (Name),
-  CONSTRAINT  Fund_Box_Cost_FK   Foreign Key (Cost_Id  ) References Acc_Cost      (Id),
-  CONSTRAINT  Fund_Box_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc       (Id),
-  CONSTRAINT  Fund_Box_User_FK   Foreign Key (User_Id  ) References Cpy_User      (Id),
-  CONSTRAINT  Fund_Box_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT  Fund_Box_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Fund_Box_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  Fund_Box_Uk        Unique      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Fund_Diary_Seq
@@ -112,16 +100,7 @@ Create Table Fund_Diary                                  -- اليوميات
   Attach      VARCHAR(512),                               -- الملف المرفق
   Ins_User    BIGINT, Ins_Date     TIMESTAMP,
   Upd_User    BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT  Fund_Diary_PK      PRIMARY KEY (Id  ),
-  CONSTRAINT  Fund_Diary_Box_FK  Foreign Key (Box_Id  ) References Fund_Box     (Id),
-  CONSTRAINT  Fund_Diary_Type_FK Foreign Key (Type_Id ) References Fund_Cod_Type(Id),
-  CONSTRAINT  Fund_Diary_Cost_FK Foreign Key (Cost_Id ) References Acc_Cost     (Id),
-  CONSTRAINT  Fund_Diary_Acc_FK  Foreign Key (Acc_Id  ) References Acc_Acc      (Id),
-  CONSTRAINT  Fund_Diary_Dept_FK Foreign Key (Dept_Id ) References Fund_Dept    (Id),
-  CONSTRAINT  Fund_Diary_Item_FK Foreign Key (Item_Id ) References Fund_Item    (Id),
-  CONSTRAINT  Fund_Diary_Curn_FK Foreign Key (Curn_Id ) References Mng_Curn     (Id),
-  CONSTRAINT  Fund_Diary_Ins_FK  Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT  Fund_Diary_Upd_FK  Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT  Fund_Diary_PK      PRIMARY KEY (Id  )
 );
 
 -- TODO(port): other has no automatic equivalent (source line 116).

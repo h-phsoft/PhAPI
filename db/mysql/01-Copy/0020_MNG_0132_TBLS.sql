@@ -52,10 +52,7 @@ Create Table Mng_Cod_Spec1                       -- جدول ترميز التص
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Mng_Cod_Spec1_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Mng_Cod_Spec1_UK        UNIQUE      (Name),
-  CONSTRAINT Mng_Cod_Spec1_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Mng_Cod_Spec1_Ins_FK    Foreign Key (Ins_User ) References Cpy_User(Id),
-  CONSTRAINT Mng_Cod_Spec1_Upd_FK    Foreign Key (Upd_User ) References Cpy_User(Id)
+  CONSTRAINT Mng_Cod_Spec1_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Mng_Cod_Spec1 (Id,Name) values (0,'-');
@@ -68,10 +65,7 @@ Create Table Mng_Cod_Spec2                       -- جدول ترميز التص
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Mng_Cod_Spec2_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Mng_Cod_Spec2_UK     UNIQUE      (Name),
-  CONSTRAINT Mng_Cod_Spec2_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Mng_Cod_Spec2_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Mng_Cod_Spec2_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Mng_Cod_Spec2_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Mng_Cod_Spec2 (Id,Name) values (0,'-');
@@ -84,10 +78,7 @@ Create Table Mng_Cod_Spec3                       -- جدول ترميز التص
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Mng_Cod_Spec3_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Mng_Cod_Spec3_UK        UNIQUE      (Name),
-  CONSTRAINT Mng_Cod_Spec3_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Mng_Cod_Spec3_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Mng_Cod_Spec3_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Mng_Cod_Spec3_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Mng_Cod_Spec3 (Id,Name) values (0,'-');
@@ -100,10 +91,7 @@ Create Table Mng_Cod_Spec4                       -- جدول ترميز التص
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Mng_Cod_Spec4_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Mng_Cod_Spec4_UK        UNIQUE      (Name),
-  CONSTRAINT Mng_Cod_Spec4_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Mng_Cod_Spec4_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Mng_Cod_Spec4_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Mng_Cod_Spec4_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Mng_Cod_Spec4 (Id,Name) values (0,'-');
@@ -116,10 +104,7 @@ Create Table Mng_Cod_Spec5                       -- جدول ترميز التص
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Mng_Cod_Spec5_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Mng_Cod_Spec5_UK        UNIQUE      (Name),
-  CONSTRAINT Mng_Cod_Spec5_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Mng_Cod_Spec5_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Mng_Cod_Spec5_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Mng_Cod_Spec5_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Mng_Cod_Spec5 (Id,Name) values (0,'-');
@@ -132,10 +117,7 @@ Create Table Mng_Cod_Spec6                       -- جدول ترميز التص
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Mng_Cod_Spec6_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Mng_Cod_Spec6_UK        UNIQUE      (Name),
-  CONSTRAINT Mng_Cod_Spec6_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Mng_Cod_Spec6_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Mng_Cod_Spec6_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Mng_Cod_Spec6_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Mng_Cod_Spec6 (Id,Name) values (0,'-');
@@ -148,10 +130,7 @@ Create Table Mng_Cod_Spec7                       -- جدول ترميز التص
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Mng_Cod_Spec7_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Mng_Cod_Spec7_UK        UNIQUE      (Name),
-  CONSTRAINT Mng_Cod_Spec7_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Mng_Cod_Spec7_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Mng_Cod_Spec7_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Mng_Cod_Spec7_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Mng_Cod_Spec7 (Id,Name) values (0,'-');
@@ -164,10 +143,7 @@ Create Table Mng_Cod_Spec8                       -- جدول ترميز التص
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Mng_Cod_Spec8_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Mng_Cod_Spec8_UK        UNIQUE      (Name),
-  CONSTRAINT Mng_Cod_Spec8_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Mng_Cod_Spec8_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Mng_Cod_Spec8_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Mng_Cod_Spec8_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Mng_Cod_Spec8 (Id,Name) values (0,'-');
@@ -180,10 +156,7 @@ Create Table Mng_Cod_Spec9                       -- جدول ترميز التص
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Mng_Cod_Spec9_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Mng_Cod_Spec9_UK        UNIQUE      (Name),
-  CONSTRAINT Mng_Cod_Spec9_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Mng_Cod_Spec9_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Mng_Cod_Spec9_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Mng_Cod_Spec9_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Mng_Cod_Spec9 (Id,Name) values (0,'-');
@@ -196,10 +169,7 @@ Create Table Mng_Cod_Spec0                       -- جدول ترميز التص
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT Mng_Cod_Spec0_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Mng_Cod_Spec0_UK        UNIQUE      (Name),
-  CONSTRAINT Mng_Cod_Spec0_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Mng_Cod_Spec0_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Mng_Cod_Spec0_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Mng_Cod_Spec0_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Mng_Cod_Spec0 (Id,Name) values (0,'-');
@@ -249,22 +219,7 @@ Create Table Mng_Cont                                   -- دليل المتعا
   CONSTRAINT Mng_Cont_Name_UK    Unique      (Name),
   CONSTRAINT Mng_Cont_Mobile_UK  Unique      (Mobile ),
   CONSTRAINT Mng_Cont_Cust_UK    Unique      (Cust_Id),
-  CONSTRAINT Mng_Cont_Vend_UK    Unique      (Vend_Id),
-  CONSTRAINT Mng_Cont_Status_FK  Foreign Key (Status_Id) References Phs_Cod_Status  (Id),
-  CONSTRAINT Mng_Cont_BlnMod_FK  Foreign Key (BlnMod_Id) References Mng_Cod_BlncMode(Id),
-  CONSTRAINT Mng_Cont_Type_FK    Foreign Key (Type_Id  ) References Mng_Cod_ContType(Id),
-  CONSTRAINT Mng_Cont_Spc1_FK    Foreign Key (Spc1_Id  ) References Mng_Cod_Spec1   (Id),
-  CONSTRAINT Mng_Cont_Spc2_FK    Foreign Key (Spc2_Id  ) References Mng_Cod_Spec2   (Id),
-  CONSTRAINT Mng_Cont_Spc3_FK    Foreign Key (Spc3_Id  ) References Mng_Cod_Spec3   (Id),
-  CONSTRAINT Mng_Cont_Spc4_FK    Foreign Key (Spc4_Id  ) References Mng_Cod_Spec4   (Id),
-  CONSTRAINT Mng_Cont_Spc5_FK    Foreign Key (Spc5_Id  ) References Mng_Cod_Spec5   (Id),
-  CONSTRAINT Mng_Cont_Spc6_FK    Foreign Key (Spc6_Id  ) References Mng_Cod_Spec6   (Id),
-  CONSTRAINT Mng_Cont_Spc7_FK    Foreign Key (Spc7_Id  ) References Mng_Cod_Spec7   (Id),
-  CONSTRAINT Mng_Cont_Spc8_FK    Foreign Key (Spc8_Id  ) References Mng_Cod_Spec8   (Id),
-  CONSTRAINT Mng_Cont_Spc9_FK    Foreign Key (Spc9_Id  ) References Mng_Cod_Spec9   (Id),
-  CONSTRAINT Mng_Cont_Spc0_FK    Foreign Key (Spc0_Id  ) References Mng_Cod_Spec0   (Id),
-  CONSTRAINT Mng_Cont_Ins_FK     Foreign Key (Ins_User ) References Cpy_User        (Id),
-  CONSTRAINT Mng_Cont_Upd_FK     Foreign Key (Upd_User ) References Cpy_User        (Id)
+  CONSTRAINT Mng_Cont_Vend_UK    Unique      (Vend_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ALTER TABLE Mng_Contact ADD CONSTRAINT Mng_Cont_Cost_FK   Foreign Key (Cost_Id  ) References Acc_Cost(Id);
@@ -288,11 +243,7 @@ Create Table Mng_Cont_Cont                           -- جهات اتصال ال
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Mng_Cont_Cont_PK        PRIMARY KEY (Id),
-  CONSTRAINT Mng_Cont_Cont_Name_UK   Unique      (Cont_Id, Name),
-  CONSTRAINT Mng_Cont_Cont_Cont_FK   Foreign Key (Cont_Id  ) References Mng_Cont      (Id),
-  CONSTRAINT Mng_Cont_Cont_Gender_FK Foreign Key (Gender_Id) References Phs_Cod_Gender(Id),
-  CONSTRAINT Mng_Cont_Cont_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Mnf_Cont_Cont_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Mng_Cont_Cont_Name_UK   Unique      (Cont_Id, Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Mng_Cont_Bran                           -- فروع المتعاملين
@@ -310,8 +261,5 @@ Create Table Mng_Cont_Bran                           -- فروع المتعام�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Mng_Cont_Bran_PK      PRIMARY KEY (Id),
-  CONSTRAINT Mng_Cont_Bran_Name_UK Unique      (Cont_Id, Name),
-  CONSTRAINT Mng_Cont_Bran_Cont_FK Foreign Key (Cont_Id ) References Mng_Cont(Id),
-  CONSTRAINT Mng_Cont_Bran_Ins_FK  Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Mng_Cont_Bran_Upd_FK  Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Mng_Cont_Bran_Name_UK Unique      (Cont_Id, Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

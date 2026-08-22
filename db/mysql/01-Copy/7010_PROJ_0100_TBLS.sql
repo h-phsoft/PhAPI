@@ -21,10 +21,7 @@ Create Table Proj_Fin_Cod_Type                                 -- جدول تر�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Proj_Fin_Cod_Type_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Proj_Fin_Cod_Type_UK     UNIQUE      (Name),
-  CONSTRAINT Proj_Fin_Cod_Type_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Proj_Fin_Cod_Type_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Proj_Fin_Cod_Type_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Proj_Fin_Cod_Type_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Proj_Fin_Cod_Type (Id, Name) VALUES (-1, 'Subtract');
@@ -40,9 +37,7 @@ Create Table Proj_Fin_Cod_Status                               -- جدول تر�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Proj_Fin_Cod_Status_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Proj_Fin_Cod_Status_UK     UNIQUE      (Name),
-  CONSTRAINT Proj_Fin_Cod_Status_Ins_FK Foreign Key (Ins_User) References Cpy_User      (Id),
-  CONSTRAINT Proj_Fin_Cod_Status_Upd_FK Foreign Key (Upd_User) References Cpy_User      (Id)
+  CONSTRAINT Proj_Fin_Cod_Status_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Proj_Fin_Cod_Status (Id,Name) values (0,'Draft');
@@ -57,9 +52,7 @@ Create Table Proj_Cod_Priority                            -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Proj_Cod_Priority_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Proj_Cod_Priority_UK     UNIQUE      (Name),
-  CONSTRAINT Proj_Cod_Priority_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Proj_Cod_Priority_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Proj_Cod_Priority_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Proj_Cod_Priority (Id,Name) values (0,'-');
@@ -72,9 +65,7 @@ Create Table Proj_Cod_Status                              -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Proj_Cod_Status_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Proj_Cod_Status_UK     UNIQUE      (Name),
-  CONSTRAINT Proj_Cod_Status_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Proj_Cod_Status_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Proj_Cod_Status_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Proj_Cod_Status (Id,Name) values (0,'-');
@@ -87,9 +78,7 @@ Create Table Proj_Cod_Type                               -- ترميز أنوا�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Proj_Cod_Types_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Proj_Cod_Types_UK     UNIQUE      (Name),
-  CONSTRAINT Proj_Cod_Types_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Proj_Cod_Types_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Proj_Cod_Types_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Proj_Cod_Type (Id, Name) VALUES (0, '-');
@@ -102,9 +91,7 @@ Create Table Proj_Cod_Cust_Cat                       -- ترميز أنواع ا
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Proj_Cod_Cust_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Proj_Cod_Cust_UK     UNIQUE      (Name),
-  CONSTRAINT Proj_Cod_Cust_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Proj_Cod_Cust_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Proj_Cod_Cust_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Proj_Cod_Cust_Cat (Id,Name) values (0,'-');
@@ -117,9 +104,7 @@ Create Table Proj_Cod_Member_Class1
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Proj_Cod_Member_Class1_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Proj_Cod_Member_Class1_UK     UNIQUE      (Name),
-  CONSTRAINT Proj_Cod_Member_Class1_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Proj_Cod_Member_Class1_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Proj_Cod_Member_Class1_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Proj_Cod_Member_Class1 (Id,Name) values (0,'-');
@@ -132,9 +117,7 @@ Create Table Proj_Cod_Member_Class2
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Proj_Cod_Member_Class2_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Proj_Cod_Member_Class2_UK     UNIQUE      (Name),
-  CONSTRAINT Proj_Cod_Member_Class2_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Proj_Cod_Member_Class2_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Proj_Cod_Member_Class2_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Proj_Cod_Member_Class2 (Id,Name) values (0,'-');
@@ -147,9 +130,7 @@ Create Table Proj_Cod_Member_Class3
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Proj_Cod_Member_Class3_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Proj_Cod_Member_Class3_UK     UNIQUE      (Name),
-  CONSTRAINT Proj_Cod_Member_Class3_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Proj_Cod_Member_Class3_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Proj_Cod_Member_Class3_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Proj_Cod_Member_Class3 (Id,Name) values (0,'-');
@@ -162,9 +143,7 @@ Create Table Proj_Cod_Proj_Class1
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Proj_Cod_Proj_Class1_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Proj_Cod_Proj_Class1_UK     UNIQUE      (Name),
-  CONSTRAINT Proj_Cod_Proj_Class1_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Proj_Cod_Proj_Class1_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Proj_Cod_Proj_Class1_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Proj_Cod_Proj_Class1 (Id,Name) values (0,'-');
@@ -177,9 +156,7 @@ Create Table Proj_Cod_Proj_Class2
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Proj_Cod_Proj_Class2_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Proj_Cod_Proj_Class2_UK     UNIQUE      (Name),
-  CONSTRAINT Proj_Cod_Proj_Class2_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Proj_Cod_Proj_Class2_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Proj_Cod_Proj_Class2_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Proj_Cod_Proj_Class2 (Id,Name) values (0,'-');
@@ -192,9 +169,7 @@ Create Table Proj_Cod_Proj_Class3
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Proj_Cod_Proj_Class3_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Proj_Cod_Proj_Class3_UK     UNIQUE      (Name),
-  CONSTRAINT Proj_Cod_Proj_Class3_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Proj_Cod_Proj_Class3_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Proj_Cod_Proj_Class3_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Proj_Cod_Proj_Class3 (Id,Name) values (0,'-');
@@ -207,9 +182,7 @@ Create Table Proj_Cod_Cust_Class1
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Proj_Cod_Cust_Class1_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Proj_Cod_Cust_Class1_UK     UNIQUE      (Name),
-  CONSTRAINT Proj_Cod_Cust_Class1_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Proj_Cod_Cust_Class1_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Proj_Cod_Cust_Class1_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Proj_Cod_Cust_Class1 (Id,Name) values (0,'-');
@@ -222,9 +195,7 @@ Create Table Proj_Cod_Cust_Class2
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Proj_Cod_Cust_Class2_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Proj_Cod_Cust_Class2_UK     UNIQUE      (Name),
-  CONSTRAINT Proj_Cod_Cust_Class2_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Proj_Cod_Cust_Class2_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Proj_Cod_Cust_Class2_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Proj_Cod_Cust_Class2 (Id,Name) values (0,'-');
@@ -237,9 +208,7 @@ Create Table Proj_Cod_Cust_Class3
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Proj_Cod_Cust_Class3_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Proj_Cod_Cust_Class3_UK     UNIQUE      (Name),
-  CONSTRAINT Proj_Cod_Cust_Class3_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Proj_Cod_Cust_Class3_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Proj_Cod_Cust_Class3_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Proj_Cod_Cust_Class3 (Id,Name) values (0,'-');
@@ -259,15 +228,7 @@ Create Table Proj_Team                             -- فريق العمل
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Proj_Team_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Proj_Team_UK        UNIQUE      (Name),
-  CONSTRAINT Proj_Team_User_FK   Foreign Key (User_Id  ) References Cpy_User              (Id),
-  CONSTRAINT Proj_Team_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status        (Id),
-  CONSTRAINT Proj_Team_Class1_FK Foreign Key (Class1_Id) References Proj_Cod_Member_Class1(Id),
-  CONSTRAINT Proj_Team_Class2_FK Foreign Key (Class2_Id) References Proj_Cod_Member_Class2(Id),
-  CONSTRAINT Proj_Team_Class3_FK Foreign Key (Class3_Id) References Proj_Cod_Member_Class3(Id),
-  CONSTRAINT Proj_Team_Curn_FK   Foreign Key (Curn_Id  ) References Mng_Curn             (Id),
-  CONSTRAINT Proj_Team_Ins_FK    Foreign Key (Ins_User ) References Cpy_User              (Id),
-  CONSTRAINT Proj_Team_Upd_FK    Foreign Key (Upd_User ) References Cpy_User              (Id)
+  CONSTRAINT Proj_Team_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Proj_Cust                                -- الزبائن
@@ -283,14 +244,7 @@ Create Table Proj_Cust                                -- الزبائن
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Proj_Cust_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Proj_Cust_UK        UNIQUE      (Name),
-  CONSTRAINT Proj_Cust_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status         (Id),
-  CONSTRAINT Proj_Cust_Cat_FK    Foreign Key (Cat_Id)    References Proj_Cod_Cust_Cat(Id),
-  CONSTRAINT Proj_Cust_Class1_FK Foreign Key (Class1_Id) References Proj_Cod_Cust_Class1   (Id),
-  CONSTRAINT Proj_Cust_Class2_FK Foreign Key (Class2_Id) References Proj_Cod_Cust_Class2   (Id),
-  CONSTRAINT Proj_Cust_Class3_FK Foreign Key (Class3_Id) References Proj_Cod_Cust_Class3   (Id),
-  CONSTRAINT Proj_Cust_Ins_FK    Foreign Key (Ins_User ) References Cpy_User               (Id),
-  CONSTRAINT Proj_Cust_Upd_FK    Foreign Key (Upd_User ) References Cpy_User               (Id)
+  CONSTRAINT Proj_Cust_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE Proj_Proj                                   -- المشاريع
@@ -315,18 +269,7 @@ CREATE TABLE Proj_Proj                                   -- المشاريع
   Ins_User    BIGINT, Ins_Date     DATETIME,
   Upd_User    BIGINT, Upd_Date     DATETIME,
   CONSTRAINT  Proj_Proj_PK          PRIMARY KEY (Id  ),
-  CONSTRAINT  Proj_Proj_UK          UNIQUE      (Name),
-  CONSTRAINT  Proj_Proj_Cust_FK     Foreign Key (Cust_Id    ) References Proj_Cust           (Id),
-  CONSTRAINT  Proj_Proj_Type_FK     Foreign Key (Type_Id    ) References Proj_Cod_Type       (Id),
-  CONSTRAINT  Proj_Proj_Status_FK   Foreign Key (Status_Id  ) References Proj_Cod_Status     (Id),
-  CONSTRAINT  Proj_Proj_Priority_FK Foreign Key (Priority_Id) References Proj_Cod_Priority   (Id),
-  CONSTRAINT  Proj_Proj_Member_FK   Foreign Key (Member_Id  ) References Proj_Team           (Id),
-  CONSTRAINT  Proj_Proj_Class1_FK   Foreign Key (Class1_Id  ) References Proj_Cod_Proj_Class1(Id),
-  CONSTRAINT  Proj_Proj_Class2_FK   Foreign Key (Class2_Id  ) References Proj_Cod_Proj_Class2(Id),
-  CONSTRAINT  Proj_Proj_Class3_FK   Foreign Key (Class3_Id  ) References Proj_Cod_Proj_Class3(Id),
-  CONSTRAINT  Proj_Proj_Curn_FK     Foreign Key (Curn_Id    ) References Mng_Curn            (Id),
-  CONSTRAINT  Proj_Proj_Ins_FK      Foreign Key (Ins_User   ) References Cpy_User            (Id),
-  CONSTRAINT  Proj_Proj_Upd_FK      Foreign Key (Upd_User   ) References Cpy_User            (Id)
+  CONSTRAINT  Proj_Proj_UK          UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE Proj_Proj_Team                             
@@ -339,12 +282,7 @@ CREATE TABLE Proj_Proj_Team
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Proj_Proj_Team_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Proj_Proj_Team_UK        UNIQUE      (Proj_Id, Team_Id),
-  CONSTRAINT Proj_Proj_Team_Proj_FK   Foreign Key (Proj_Id  ) References Proj_Proj     (Id),
-  CONSTRAINT Proj_Proj_Team_Team_FK   Foreign Key (Team_Id  ) References Proj_Team     (Id),
-  CONSTRAINT Proj_Proj_Team_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Proj_Proj_Team_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Proj_Proj_Team_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Proj_Proj_Team_UK        UNIQUE      (Proj_Id, Team_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Proj_MWItem                             -- جدول مجموعة الأعمال
@@ -354,10 +292,7 @@ Create Table Proj_MWItem                             -- جدول مجموعة ا
   Rem        VARCHAR(250),                           -- ملحظات
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT Proj_MWItem_PK        Primary Key (Id),
-  CONSTRAINT Proj_MWItem_Status_FK Foreign Key (Status_Id ) References Phs_Cod_Status(Id),
-  CONSTRAINT Proj_MWItem_Ins_FK    Foreign Key (Ins_User  ) References Cpy_User      (Id),
-  CONSTRAINT Proj_MWItem_Upd_FK    Foreign Key (Upd_User  ) References Cpy_User      (Id)
+  CONSTRAINT Proj_MWItem_PK        Primary Key (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Proj_TWItem                               -- بنود أعمال
@@ -370,12 +305,7 @@ Create Table Proj_TWItem                               -- بنود أعمال
   Rem         VARCHAR(250),                          -- ملاحظات
   Ins_User    BIGINT,  Ins_Date  DATETIME,
   Upd_User    BIGINT,  Upd_Date  DATETIME,
-  CONSTRAINT  Proj_TWItem_PK          Primary Key (Id),
-  CONSTRAINT  Proj_TWItem_Mst_FK      Foreign Key (Mst_Id     ) References Proj_MWItem   (Id),
-  CONSTRAINT  Proj_TWItem_Status_FK   Foreign Key (Status_Id  ) References Phs_Cod_Status(Id),
-  CONSTRAINT  Proj_TWItem_Billable_FK Foreign Key (Billable_Id) References Phs_Cod_YesNo (Id),
-  CONSTRAINT  Proj_TWItem_Ins_FK      Foreign Key (Ins_User   ) References Cpy_User      (Id),
-  CONSTRAINT  Proj_TWItem_Upd_FK      Foreign Key (Upd_User   ) References Cpy_User      (Id)
+  CONSTRAINT  Proj_TWItem_PK          Primary Key (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE Proj_Proj_TSheet                        -- أعمال مشروع
@@ -384,7 +314,7 @@ CREATE TABLE Proj_Proj_TSheet                        -- أعمال مشروع
   Team_Id    BIGINT NOT NULL,                           -- عضو المشروع
   MWItem_Id  BIGINT NOT NULL,                           -- مجموعة الأعمال
   TWItem_Id  BIGINT NOT NULL,                           -- بنود الأعمال
-  DDate      DATETIME Default NOW() NOT NULL,                -- التاريخ
+  DDate      DATETIME DEFAULT (NOW()) NOT NULL,                -- التاريخ
   Hours      DECIMAL(5,2) Default 0 NOT NULL,               -- عدد الساعات
   SPrice     DECIMAL(25,2) Default 0 NOT NULL,              -- سعر البيع
   CPrice     DECIMAL(25,2) Default 0 NOT NULL,              -- سعر التكلفة
@@ -399,15 +329,7 @@ CREATE TABLE Proj_Proj_TSheet                        -- أعمال مشروع
   Rem        VARCHAR(250),                           -- ملاحظات
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT Proj_Proj_TSheet_PK           PRIMARY KEY (Id),
-  CONSTRAINT Proj_Proj_TSheet_Proj_FK      Foreign Key (Proj_Id  ) References Proj_Proj  (Id),
-  CONSTRAINT Proj_Proj_TSheet_Team_Id_FK   Foreign Key (Team_Id  ) References Proj_Team  (Id),
-  CONSTRAINT Proj_Proj_TSheet_MWItem_Id_FK Foreign Key (MWItem_Id) References Proj_MWItem(Id),
-  CONSTRAINT Proj_Proj_TSheet_TWItem_FK    Foreign Key (TWItem_Id) References Proj_TWItem(Id),
-  CONSTRAINT Proj_Proj_TSheet_SCurn_FK     Foreign Key (SCurn_Id ) References Mng_Curn   (Id),
-  CONSTRAINT Proj_Proj_TSheet_CCurn_FK     Foreign Key (CCurn_Id ) References Mng_Curn   (Id),
-  CONSTRAINT Proj_Proj_TSheet_Ins_FK       Foreign Key (Ins_User ) References Cpy_User   (Id),
-  CONSTRAINT Proj_Proj_TSheet_Upd_FK       Foreign Key (Upd_User ) References Cpy_User   (Id)
+  CONSTRAINT Proj_Proj_TSheet_PK           PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE Proj_Proj_Expense                          -- مصاريف مشروع
@@ -426,14 +348,7 @@ CREATE TABLE Proj_Proj_Expense                          -- مصاريف مشرو
   Rem         VARCHAR(100),                          -- ملاحظات
   Ins_User    BIGINT, Ins_Date     DATETIME,
   Upd_User    BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT  Proj_Proj_Expense_PK          PRIMARY KEY (Id),
-  CONSTRAINT  Proj_Proj_Expense_Proj_FK     Foreign Key (Proj_Id    ) References Proj_Proj    (Id),
-  CONSTRAINT  Proj_Proj_Expense_Serv_FK     Foreign Key (Serv_Id    ) References Mng_Serv     (Id),
-  CONSTRAINT  Proj_Proj_Expense_Curn_FK     Foreign Key (Curn_Id    ) References Mng_Curn     (Id),
-  CONSTRAINT  Proj_Proj_Expense_Billable_FK Foreign Key (Billable_Id) References Phs_Cod_YesNo(Id),
-  CONSTRAINT  Proj_Proj_Expense_Billed_FK   Foreign Key (Billed_Id  ) References Phs_Cod_YesNo(Id),
-  CONSTRAINT  Proj_Proj_Expense_Ins_FK      Foreign Key (Ins_User   ) References Cpy_User     (Id),
-  CONSTRAINT  Proj_Proj_Expense_Upd_FK      Foreign Key (Upd_User   ) References Cpy_User     (Id)
+  CONSTRAINT  Proj_Proj_Expense_PK          PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Proj_MInv                               -- فواتير القضية
@@ -442,7 +357,7 @@ Create Table Proj_MInv                               -- فواتير القضي�
   Status_Id  BIGINT Default 0,                          -- حالة الفاتورة
   Cust_Id    BIGINT Default 0,                          -- الزبون (يؤخذ من القضية عادة)
   Num        BIGINT Default 0,                         -- الرقم
-  dDate      DATETIME Default NOW(),                         -- التاريخ
+  dDate      DATETIME DEFAULT (NOW()),                         -- التاريخ
   DueDate    DATETIME,                                         -- تاريخ الاستحقاق
   Paid_Id    BIGINT Default 0 NOT NULL,                 -- حالة الدفع
   Paid_Amt   DECIMAL(25,2) Default 0 NOT NULL,              -- المبلغ المدفوع
@@ -451,13 +366,7 @@ Create Table Proj_MInv                               -- فواتير القضي�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Proj_Inv_PK        Primary Key (Id),
-  CONSTRAINT Proj_Inv_UK        Unique      (Period_Id, Num),
-  CONSTRAINT Proj_Inv_WPer_FK   Foreign Key (Period_Id) References Cpy_Period         (Id),
-  CONSTRAINT Proj_Inv_Cont_FK   Foreign Key (Cust_Id  ) References Proj_Cust          (Id),
-  CONSTRAINT Proj_Inv_Status_FK Foreign Key (Status_Id) References Proj_Fin_Cod_Status(Id),
-  CONSTRAINT Proj_Inv_Paid_FK   Foreign Key (Paid_Id  ) References Phs_Cod_YesNo      (Id), 
-  CONSTRAINT Proj_Inv_Ins_FK    Foreign Key (Ins_User ) References Cpy_User           (Id),
-  CONSTRAINT Proj_Inv_Upd_FK    Foreign Key (Upd_User ) References Cpy_User           (Id)
+  CONSTRAINT Proj_Inv_UK        Unique      (Period_Id, Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Proj_TInv                               -- بنود فاتورة القضية
@@ -477,13 +386,5 @@ Create Table Proj_TInv                               -- بنود فاتورة ا
   Rem          VARCHAR(250),                         -- ملاحظات
   Ins_User     BIGINT,  Ins_Date  DATETIME,
   Upd_User     BIGINT,  Upd_Date  DATETIME,
-  CONSTRAINT Proj_TInv_PK        Primary Key (Id),
-  CONSTRAINT Proj_TInv_MInv_FK   Foreign Key (Mst_Id   ) References Proj_MInv        (Id),
-  CONSTRAINT Proj_TInv_Proj_FK   Foreign Key (Proj_Id  ) References Proj_Proj        (Id),
-  CONSTRAINT Proj_TInv_TSheet_FK Foreign Key (TSheet_Id) References Proj_Proj_TSheet (Id), 
-  CONSTRAINT Proj_TInv_Curn_FK   Foreign Key (Curn_Id  ) References Mng_Curn         (Id),
-  CONSTRAINT Proj_TInv_Type_FK   Foreign Key (Type_Id  ) References Proj_Fin_Cod_Type(Id),
-  CONSTRAINT Proj_TInv_Unit_FK   Foreign Key (Unit_Id  ) References Cpy_Unit         (Id),
-  CONSTRAINT Proj_TInv_Ins_FK    Foreign Key (Ins_User ) References Cpy_User         (Id),
-  CONSTRAINT Proj_TInv_Upd_FK    Foreign Key (Upd_User ) References Cpy_User         (Id)
+  CONSTRAINT Proj_TInv_PK        Primary Key (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

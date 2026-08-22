@@ -16,10 +16,7 @@ Create Table Fre_Cod_KDocType                         -- جدول ترميز أ�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_KDocType_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_KDocType_UK     UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_KDocType_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Fre_Cod_KDocType_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Fre_Cod_KDocType_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Fre_Cod_KDocType_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Fre_Cod_KDocType (Id, Name) VALUES (0, '-');
@@ -32,10 +29,7 @@ Create Table Fre_Cod_IDocType                         -- جدول ترميز ن�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_IDocType_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_IDocType_UK     UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_IDocType_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Fre_Cod_IDocType_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Fre_Cod_IDocType_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Fre_Cod_IDocType_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Fre_Cod_IDocType (Id, Name) VALUES (0, '-');
@@ -48,10 +42,7 @@ Create Table Fre_Cod_ODocType                         -- جدول ترميز ن�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_ODocType_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_ODocType_UK     UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_ODocType_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Fre_Cod_ODocType_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Fre_Cod_ODocType_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Fre_Cod_ODocType_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Fre_Cod_ODocType (Id, Name) VALUES (0, '-');
@@ -64,10 +55,7 @@ Create Table Fre_Cod_Track                           -- جدول ترميز Trac
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_Track_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_Track_UK     UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_Track_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Fre_Cod_Track_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Fre_Cod_Track_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Fre_Cod_Track_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Fre_Cod_Track (Id, Name) VALUES (0, '-');
@@ -94,10 +82,7 @@ Create Table Fre_Cod_TLType                          -- جدول ترميز TL
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_TLType_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_TLType_UK     UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_TLType_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Fre_Cod_TLType_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Fre_Cod_TLType_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Fre_Cod_TLType_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Fre_Cod_TLType (Id, Name) VALUES (0, '-');
@@ -110,10 +95,7 @@ Create Table Fre_Cod_CLType                          -- جدول ترميز CL
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_CLType_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_CLType_UK     UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_CLType_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Fre_Cod_CLType_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Fre_Cod_CLType_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Fre_Cod_CLType_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Fre_Cod_CLType (Id, Name) VALUES (0, '-');
@@ -126,10 +108,7 @@ Create Table Fre_Cod_Shipline                            -- جدول خطوط ا
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_Shipline_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_Shipline_UK     UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_Shipline_FK     Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Fre_Cod_Shipline_Ins_FK Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Fre_Cod_Shipline_Upd_FK Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Fre_Cod_Shipline_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert Into Fre_Cod_Shipline (Id,Name) Values(0,'-');
@@ -142,10 +121,7 @@ Create Table Fre_Cod_Airline                             -- جدول شركات 
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_Airline_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_Airline_UK     UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_Airline_FK     Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Fre_Cod_Airline_Ins_FK Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Fre_Cod_Airline_Upd_FK Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Fre_Cod_Airline_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fre_Cod_Roadline                            -- جدول خطوط النقل البري
@@ -156,10 +132,7 @@ Create Table Fre_Cod_Roadline                            -- جدول خطوط ا
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_Roadline_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_Roadline_UK     UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_Roadline_FK     Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Fre_Cod_Roadline_Ins_FK Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Fre_Cod_Roadline_Upd_FK Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Fre_Cod_Roadline_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fre_Cod_Cntry                                  -- جدول البلدان
@@ -178,10 +151,7 @@ Create Table Fre_Cod_Cntry                                  -- جدول البل
   Ins_User       BIGINT, Ins_Date     DATETIME,
   Upd_User       BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_Cntry_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_Cntry_UK     UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_Cntry_FK     Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Fre_Cod_Cntry_Ins_FK Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Fre_Cod_Cntry_Upd_FK Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Fre_Cod_Cntry_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fre_Cod_AirPort                             -- جدول المطارات
@@ -195,11 +165,7 @@ Create Table Fre_Cod_AirPort                             -- جدول المطا�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_AirPort_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_AirPort_UK        UNIQUE      (Cntry_Id, Code),
-  CONSTRAINT Fre_Cod_AirPort_FK        Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Fre_Cod_AirPort_Cntry_FK  Foreign Key (Cntry_Id ) References Fre_Cod_Cntry (Id),
-  CONSTRAINT Fre_Cod_AirPort_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Fre_Cod_AirPort_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Fre_Cod_AirPort_UK        UNIQUE      (Cntry_Id, Code)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fre_Cod_City                                 -- جدول المدن
@@ -212,11 +178,7 @@ Create Table Fre_Cod_City                                 -- جدول المدن
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_City_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_City_UK        UNIQUE      (Cntry_Id, Code),
-  CONSTRAINT Fre_Cod_City_FK        Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Fre_Cod_City_Cntry_FK  Foreign Key (Cntry_Id ) References Fre_Cod_Cntry (Id),
-  CONSTRAINT Fre_Cod_City_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Fre_Cod_City_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Fre_Cod_City_UK        UNIQUE      (Cntry_Id, Code)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fre_Cod_Lang                             -- جدول اللغات
@@ -229,10 +191,7 @@ Create Table Fre_Cod_Lang                             -- جدول اللغات
   Ins_User   MEDIUMINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_Lang_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_Lang_UK        UNIQUE      (Cntry_Id, Code),
-  CONSTRAINT Fre_Cod_Lang_FK        Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Fre_Cod_Lang_Cntry_FK  Foreign Key (Cntry_Id ) References Cpy_User      (Id),
-  CONSTRAINT Fre_Cod_Lang_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Fre_Cod_Lang_UK        UNIQUE      (Cntry_Id, Code)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fre_Cod_Nat                          -- جدول الجنسيات
@@ -247,11 +206,7 @@ Create Table Fre_Cod_Nat                          -- جدول الجنسيات
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_Nat_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_Nat_UK        UNIQUE      (Cntry_Id, Code),
-  CONSTRAINT Fre_Cod_Nat_FK        Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Fre_Cod_Nat_Cntry_FK  Foreign Key (Cntry_Id ) References Fre_Cod_Cntry (Id),
-  CONSTRAINT Fre_Cod_Nat_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Fre_Cod_Nat_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Fre_Cod_Nat_UK        UNIQUE      (Cntry_Id, Code)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fre_Cod_SeaPort                             -- جدول الموانئ
@@ -264,11 +219,7 @@ Create Table Fre_Cod_SeaPort                             -- جدول الموا�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_SeaPort_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_SeaPort_UK        UNIQUE      (Cntry_Id, Code),
-  CONSTRAINT Fre_Cod_SeaPort_FK        Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Fre_Cod_SeaPort_Cntry_FK  Foreign Key (Cntry_Id ) References Fre_Cod_Cntry (Id),
-  CONSTRAINT Fre_Cod_SeaPort_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Fre_Cod_SeaPort_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Fre_Cod_SeaPort_UK        UNIQUE      (Cntry_Id, Code)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------------------------------------------------
@@ -298,10 +249,7 @@ Create Table Fre_Cod_Contr_Kind                        -- أنواع بنود ا
   Ins_User   BIGINT, Ins_Date DATETIME,
   Upd_User   BIGINT, Upd_Date DATETIME,
   CONSTRAINT Fre_Cod_Contract_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_Contract_UK     UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_Contract_FK     Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Fre_Cod_Contract_Ins_FK Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Fre_Cod_Contract_Upd_FK Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Fre_Cod_Contract_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Fre_Cod_Contr_Kind (Id,Name) values (0,'-'          );
@@ -321,10 +269,7 @@ Create Table Fre_Cod_CL_Type                  -- جدول نوع تعبئة ال
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_CL_Type_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_CL_Type_UK        UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_CL_Type_FK        Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Fre_Cod_CL_Type_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Fre_Cod_CL_Type_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Fre_Cod_CL_Type_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Fre_Cod_CL_Type (Id,Name) values (0,'-');
@@ -338,10 +283,7 @@ Create Table Fre_Cod_TL_Type                      -- جدول نوع تعبئة 
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_TL_Type_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_TL_Type_UK        UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_TL_Type_FK        Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Fre_Cod_TL_Type_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Fre_Cod_TL_Type_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Fre_Cod_TL_Type_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Fre_Cod_TL_Type (Id,Name) values (0,'-');
@@ -355,10 +297,7 @@ Create Table Fre_Cod_Truck_Type                           -- جدول أنواع
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_Truck_Type_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_Truck_Type_UK        UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_Truck_Type_FK        Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Fre_Cod_Truck_Type_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Fre_Cod_Truck_Type_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Fre_Cod_Truck_Type_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Fre_Cod_Truck_Type (Id,Name) values (0,'-');
@@ -372,10 +311,7 @@ Create Table Fre_Cod_Type                                 -- جدول أنواع
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_Type_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_Type_UK        UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_Type_FK        Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Fre_Cod_Type_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Fre_Cod_Type_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Fre_Cod_Type_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Fre_Cod_Type (Id,Name) values (1,'Demurrage'          ); -- غرامة التأخير;
@@ -403,10 +339,7 @@ Create Table Fre_Cod_Kind                                 -- جدول أنواع
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_Kind_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_Kind_UK        UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_Kind_FK        Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Fre_Cod_Kind_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Fre_Cod_Kind_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Fre_Cod_Kind_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Fre_Cod_Kind (Id,Name) values (1,'Driver'   );
@@ -422,10 +355,7 @@ Create Table Fre_Cod_List                                 -- جدول القوا
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_List_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_List_UK        UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_List_FK        Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Fre_Cod_List_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Fre_Cod_List_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Fre_Cod_List_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Fre_Cod_List (Id,Name) values (0,'Normal'    );
@@ -443,10 +373,7 @@ Create Table Fre_Cod_Loc                             -- جدول ترميز مك
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_Loc_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_Loc_UK        UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_Loc_FK        Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Fre_Cod_Loc_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Fre_Cod_Loc_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Fre_Cod_Loc_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Fre_Cod_Loc (Id,Name) values (1,'Origin');
@@ -463,10 +390,7 @@ Create Table Fre_Cod_Inco_Term                            -- جدول أنواع
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_Inco_Term_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_Inco_Term_UK     UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_Inco_Term_FK     Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Fre_Cod_Inco_Term_Ins_FK Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Fre_Cod_Inco_Term_Upd_FK Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Fre_Cod_Inco_Term_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Fre_Cod_Inco_Term (Id,Name) values (0,'-');
@@ -479,10 +403,7 @@ Create Table Fre_Cod_Pay_Term                         -- جدول أنواع Pay
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_Pay_Term_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_Pay_Term_UK     UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_Pay_Term_FK     Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Fre_Cod_Pay_Term_Ins_FK Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Fre_Cod_Pay_Term_Upd_FK Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Fre_Cod_Pay_Term_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Fre_Cod_Pay_Term (Id,Name) values (0,'-');
@@ -495,10 +416,7 @@ Create Table Fre_Cod_Comod                            -- جدول أنواع ا�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_Comod_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_Comod_UK        UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_Comod_FK        Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Fre_Cod_Comod_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Fre_Cod_Comod_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Fre_Cod_Comod_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Fre_Cod_Comod (Id,Name) values (0,'-');
@@ -511,10 +429,7 @@ Create Table Fre_Cod_Pack                                 -- جدول أنواع
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_Pack_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_Pack_UK        UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_Pack_FK        Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Fre_Cod_Pack_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Fre_Cod_Pack_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Fre_Cod_Pack_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Fre_Cod_Pack (Id,Name) values (0,'-');
@@ -571,10 +486,7 @@ Create Table Fre_Cod_Trt                                  -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fre_Cod_Trt_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fre_Cod_Trt_UK     UNIQUE      (Name),
-  CONSTRAINT Fre_Cod_Trt_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Fre_Cod_Trt_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Fre_Cod_Trt_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Fre_Cod_Trt_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Fre_Cod_Trt (Id, Name, Rem) VALUES (0 , '-'   , '-');

@@ -106,9 +106,8 @@ CREATE TRIGGER
   Before Insert
   On Str_InTrn
   For Each Row
-Declare
-  nStr     DECIMAL(38,10);
-Begin
+BEGIN
+  DECLARE nStr     DECIMAL(38,10);
   Select Stor_Id
     Into nStr
     From Str_InMst
@@ -133,9 +132,8 @@ CREATE TRIGGER
   Before Update
   On Str_InTrn
   For Each Row
-Declare
-  nStr     DECIMAL(38,10);
-Begin
+BEGIN
+  DECLARE nStr     DECIMAL(38,10);
   Select Stor_Id
     Into nStr
     From Str_InMst
@@ -160,9 +158,8 @@ CREATE TRIGGER
   Before Delete
   On Str_InTrn
   For Each Row
-Declare
-  nStr    DECIMAL(38,10);
-Begin
+BEGIN
+  DECLARE nStr    DECIMAL(38,10);
   Select Stor_Id
     Into nStr
     From Str_InMst
@@ -186,11 +183,10 @@ CREATE TRIGGER
   Before Insert
   On Str_OuTrn
   For Each Row
-Declare
-  nStr    DECIMAL(38,10);
-  nCst    DECIMAL(38,10);
-  nQnt    DECIMAL(38,10);
-Begin
+BEGIN
+  DECLARE nStr    DECIMAL(38,10);
+  DECLARE nCst    DECIMAL(38,10);
+  DECLARE nQnt    DECIMAL(38,10);
   Select Stor_Id
     Into nStr
     From Str_OuMst
@@ -225,11 +221,10 @@ CREATE TRIGGER
   Str_TBU_OuTrn
   Before UPDATE ON Str_OuTrn
   For Each Row
-Declare
-  nStr    DECIMAL(38,10);
-  nCst    DECIMAL(38,10);
-  nQnt    DECIMAL(38,10);
-Begin
+BEGIN
+  DECLARE nStr    DECIMAL(38,10);
+  DECLARE nCst    DECIMAL(38,10);
+  DECLARE nQnt    DECIMAL(38,10);
   Select Stor_Id
     Into nStr
     From Str_OuMst
@@ -265,9 +260,8 @@ CREATE TRIGGER
   Before Delete
   On Str_OuTrn
   For Each Row
-Declare
-  nStr    DECIMAL(38,10);
-Begin
+BEGIN
+  DECLARE nStr    DECIMAL(38,10);
   Select Stor_Id
     Into nStr
     From Str_OuMst
@@ -291,12 +285,11 @@ CREATE TRIGGER
   Before Insert
   On Str_TrTrn
   For Each Row
-Declare
-  nFStr   DECIMAL(38,10);
-  nTStr   DECIMAL(38,10);
-  nCst    DECIMAL(38,10);
-  nQnt    DECIMAL(38,10);
-Begin
+BEGIN
+  DECLARE nFStr   DECIMAL(38,10);
+  DECLARE nTStr   DECIMAL(38,10);
+  DECLARE nCst    DECIMAL(38,10);
+  DECLARE nQnt    DECIMAL(38,10);
   Select StorF_Id, StorT_Id
     Into nFStr   , nTStr
     From Str_TrMst
@@ -336,12 +329,11 @@ CREATE TRIGGER
   Str_TBU_TrTrn
   Before UPDATE ON Str_TrTrn
   For Each Row
-Declare
-  nFStr   DECIMAL(38,10);
-  nTStr   DECIMAL(38,10);
-  nCst    DECIMAL(38,10);
-  nQnt    DECIMAL(38,10);
-Begin
+BEGIN
+  DECLARE nFStr   DECIMAL(38,10);
+  DECLARE nTStr   DECIMAL(38,10);
+  DECLARE nCst    DECIMAL(38,10);
+  DECLARE nQnt    DECIMAL(38,10);
   Select StorF_Id, StorT_Id
     Into nFStr   , nTStr
     From Str_TrMst
@@ -382,10 +374,9 @@ CREATE TRIGGER
   Before Delete
   On Str_TrTrn
   For Each Row
-Declare
-  nFStr   DECIMAL(38,10);
-  nTStr   DECIMAL(38,10);
-Begin
+BEGIN
+  DECLARE nFStr   DECIMAL(38,10);
+  DECLARE nTStr   DECIMAL(38,10);
   Select StorF_Id, StorT_Id
     Into nFStr   , nTStr
     From Str_TrMst

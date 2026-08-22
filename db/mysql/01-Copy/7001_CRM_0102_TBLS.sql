@@ -21,13 +21,7 @@ Create Table CRM_Repr                 -- دليل مندوبي المبيعات
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT CRM_Repr_PK        Primary Key (Id  ),
-  CONSTRAINT CRM_Repr_Nam_UK    Unique      (Name),
-  CONSTRAINT CRM_Repr_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc       (Id),
-  CONSTRAINT CRM_Repr_CAcc_FK   Foreign Key (Acc_CId  ) References Acc_Acc       (Id),
-  CONSTRAINT CRM_Repr_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT CRM_Repr_User_FK   Foreign Key (User_Id  ) References Cpy_User      (Id),
-  CONSTRAINT CRM_Repr_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT CRM_Repr_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT CRM_Repr_Nam_UK    Unique      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert Into CRM_Repr(Id, Name) Values(0, '-');
@@ -64,11 +58,7 @@ Create Table CRM_Cont                                   -- دليل المتعا
   CONSTRAINT CRM_Cont_Name_UK    Unique      (LName    ),
   CONSTRAINT CRM_Cont_Cont_UK    Unique      (Cont_Id  ),
   CONSTRAINT CRM_Cont_Vend_UK    Unique      (Vend_Id  ),
-  CONSTRAINT CRM_Cont_Phone_UK   Unique      (Phone    ),
-  CONSTRAINT CRM_Cont_Status_FK  Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT CRM_Cont_Repr_FK    Foreign Key (Repr_Id  ) References CRM_Repr      (Id),
-  CONSTRAINT CRM_Cont_Ins_FK     Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT CRM_Cont_Upd_FK     Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT CRM_Cont_Phone_UK   Unique      (Phone    )
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO CRM_Cont (Id, Num, LName) VALUES (0, '-', '-');
@@ -82,12 +72,7 @@ Create Table CRM_Cont_Class                    -- تصنيف المتعاملي�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT CRM_Cont_Class_PK       PRIMARY KEY (Id),
-  CONSTRAINT CRM_Cont_Class_UK       Unique      (Cont_Id, Grp_Id, Itm_Id),
-  CONSTRAINT CRM_Cont_Class_Cont_FK  Foreign Key (Cont_Id ) References CRM_Cont   (Id),
-  CONSTRAINT CRM_Cont_Class_Group_FK Foreign Key (Grp_Id  ) References CRM_Cod_Grp(Id),
-  CONSTRAINT CRM_Cont_Class_Item_FK  Foreign Key (Itm_Id  ) References CRM_Cod_Itm(Id),
-  CONSTRAINT CRM_Cont_Class_Ins_FK   Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT CRM_Cont_Class_Upd_FK   Foreign Key (Upd_User) References Cpy_User   (Id)
+  CONSTRAINT CRM_Cont_Class_UK       Unique      (Cont_Id, Grp_Id, Itm_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table CRM_Cont_Cont                           -- جهات اتصال المتعاملين
@@ -106,11 +91,7 @@ Create Table CRM_Cont_Cont                           -- جهات اتصال ال
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT CRM_Cont_Cont_PK        PRIMARY KEY (Id),
-  CONSTRAINT CRM_Cont_Cont_Name_UK   Unique      (Cont_Id, LName),
-  CONSTRAINT CRM_Cont_Cont_Cont_FK   Foreign Key (Cont_Id  ) References CRM_Cont      (Id),
-  CONSTRAINT CRM_Cont_Cont_Gender_FK Foreign Key (Gender_Id) References Phs_Cod_Gender(Id),
-  CONSTRAINT CRM_Cont_Cont_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT CRM_Cont_Cont_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT CRM_Cont_Cont_Name_UK   Unique      (Cont_Id, LName)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table CRM_Cont_Bran                           -- فروع المتعاملين
@@ -129,10 +110,7 @@ Create Table CRM_Cont_Bran                           -- فروع المتعام�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT CRM_Cont_Bran_PK      PRIMARY KEY (Id),
-  CONSTRAINT CRM_Cont_Bran_Name_UK Unique      (Cont_Id, LName),
-  CONSTRAINT CRM_Cont_Bran_Cont_FK Foreign Key (Cont_Id ) References CRM_Cont(Id),
-  CONSTRAINT CRM_Cont_Bran_Ins_FK  Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT CRM_Cont_Bran_Upd_FK  Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT CRM_Cont_Bran_Name_UK Unique      (Cont_Id, LName)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table CRM_MRep                   -- تقارير مندوبي المبيعات
@@ -154,15 +132,7 @@ Create Table CRM_MRep                   -- تقارير مندوبي المبي�
   Rem          VARCHAR(1000),              -- ملاحظات
   Ins_User     BIGINT, Ins_Date DATETIME,
   Upd_User     BIGINT, Upd_Date DATETIME,
-  CONSTRAINT   CRM_MRep_PK           Primary Key (Id),
-  CONSTRAINT   CRM_MRep_Repr_FK      Foreign Key (Repr_Id      ) References CRM_Repr         (Id),
-  CONSTRAINT   CRM_MRep_Cont_FK      Foreign Key (Cont_Id      ) References CRM_Cont         (Id),
-  CONSTRAINT   CRM_MRep_Type_FK      Foreign Key (Type_Id      ) References CRM_Cod_Type     (Id),
-  CONSTRAINT   CRM_MRep_Status_FK    Foreign Key (Status_Id    ) References CRM_Cod_Status   (Id),
-  CONSTRAINT   CRM_MRep_Kind_FK      Foreign Key (Kind_Id      ) References CRM_Cod_Kind     (Id),
-  CONSTRAINT   CRM_MRep_Owner_FK     Foreign Key (Owner_Id     ) References Cpy_User         (Id),
-  CONSTRAINT   CRM_MRep_Ins_FK       Foreign Key (Ins_User     ) References Cpy_User         (Id),
-  CONSTRAINT   CRM_MRep_Upd_FK       Foreign Key (Upd_User     ) References Cpy_User         (Id)
+  CONSTRAINT   CRM_MRep_PK           Primary Key (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table CRM_TRep              -- تقارير مندوبي المبيعات
@@ -193,8 +163,5 @@ Create Table CRM_TRep              -- تقارير مندوبي المبيعات
   TRep_Rem    VARCHAR(250),                -- ملاحظات
   Ins_User    BIGINT,  Ins_Date    DATETIME,
   Upd_User    BIGINT,  Upd_Date    DATETIME,
-  CONSTRAINT  CRM_TRep_PK       Primary Key (Id),
-  CONSTRAINT  CRM_TRep_Rep_FK   Foreign Key (Rep_Id  ) References CRM_MRep(Id),
-  CONSTRAINT  CRM_TRep_Ins_FK   Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT  CRM_TRep_Upd_FK   Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT  CRM_TRep_PK       Primary Key (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

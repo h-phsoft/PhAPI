@@ -70,7 +70,21 @@ function mapType({ name, args }) {
       return numberType(precision, scale);
     case 'INTEGER':
     case 'INT':
+    case 'MEDIUMINT':
       return 'INTEGER';
+    // Not Oracle types, but present in a few of these scripts.
+    case 'TINYINT':
+    case 'SMALLINT':
+      return 'SMALLINT';
+    case 'BIGINT':
+      return 'BIGINT';
+    case 'DOUBLE':
+      return 'DOUBLE PRECISION';
+    case 'DATETIME':
+      return 'TIMESTAMP';
+    case 'TEXT':
+    case 'LONGTEXT':
+      return 'TEXT';
     case 'FLOAT':
     case 'BINARY_FLOAT':
       return 'REAL';
@@ -169,7 +183,9 @@ function translateSequence(sql, name) {
 }
 
 function translateView(sql) {
-  const out = applyRules(sql, [
+  // Views carry casts such as CAST(x AS NUMBER), so they need type mapping too.
+  let out = mapTypes(sql, mapType);
+  out = applyRules(out, [
     ...FUNCTION_RULES,
     [/\bSELECT\s+ALL\b/gi, 'SELECT'],
     [/\bCREATE\s+OR\s+REPLACE\s+FORCE\s+VIEW\b/gi, 'CREATE OR REPLACE VIEW']

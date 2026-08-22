@@ -22,10 +22,7 @@ Create Table Job_Cod_Cols                              -- جدول الأعمد�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Job_Cod_Cols_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Job_Cod_Cols_UK        UNIQUE      (Name),
-  CONSTRAINT Job_Cod_Cols_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Job_Cod_Cols_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Job_Cod_Cols_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Job_Cod_Cols_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Job_Cod_Cols (Id,Name) values (2 ,'Small'  );
@@ -45,9 +42,7 @@ Create Table Job_Cod_Emp_SType          -- جدول أنواع الحقول
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Job_Cod_Emp_SType_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Job_Cod_Emp_SType_UK     UNIQUE      (Name),
-  CONSTRAINT Job_Cod_Emp_SType_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Job_Cod_Emp_SType_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Job_Cod_Emp_SType_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Job_Cod_Emp_SType (Id,Name) values ( 0,'Education'       );
@@ -73,9 +68,7 @@ Create Table Job_Cod_Item_SType              -- جدول أنواع الحقول
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Job_Cod_Item_SType_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Job_Cod_Item_SType_UK     UNIQUE      (Name),
-  CONSTRAINT Job_Cod_Item_SType_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Job_Cod_Item_SType_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Job_Cod_Item_SType_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Job_Cod_Item_SType (Id,Name) values ( 0,'Category');
@@ -109,9 +102,7 @@ Create Table Job_Cod_CType                       -- جدول أنواع الحق
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Job_Cod_CType_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Job_Cod_CType_UK     UNIQUE      (Name),
-  CONSTRAINT Job_Cod_CType_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Job_Cod_CType_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Job_Cod_CType_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Job_Cod_CType (Id,Name) values (0,'-');
@@ -137,9 +128,7 @@ Create Table Job_Cod_DType                        -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Job_Cod_DType_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Job_Cod_DType_UK     UNIQUE      (Name),
-  CONSTRAINT Job_Cod_DType_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Job_Cod_DType_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Job_Cod_DType_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Job_Cod_DType (Id,Name) values (0,'-');
@@ -168,10 +157,7 @@ Create Table Job_Res                                 -- جدول الحقول
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Job_Res_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Job_Res_UK        UNIQUE      (Name),
-  CONSTRAINT Job_Res_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Job_Res_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Job_Res_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Job_Res_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Job_Fld                                     -- جدول الحقول
@@ -187,12 +173,7 @@ Create Table Job_Fld                                     -- جدول الحقو�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Job_Fld_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Job_Fld_UK        UNIQUE      (Name),
-  CONSTRAINT Job_Fld_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Job_Fld_DType_FK  Foreign Key (DType_Id ) References Job_Cod_DType (Id),
-  CONSTRAINT Job_Fld_CType_FK  Foreign Key (CType_Id ) References Job_Cod_CType (Id),
-  CONSTRAINT Job_Fld_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Job_Fld_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Job_Fld_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Job_Fld_Vals                              -- جدول ترميز 
@@ -205,11 +186,7 @@ Create Table Job_Fld_Vals                              -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Job_Fld_Vals_PK        PRIMARY KEY (Id),
-  CONSTRAINT Job_Fld_Vals_UK        UNIQUE      (Fld_Id, Val),
-  CONSTRAINT Job_Fld_Vals_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Job_Fld_Vals_Fld_FK    Foreign Key (Fld_Id   ) References Job_Fld       (Id),
-  CONSTRAINT Job_Fld_Vals_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Job_Fld_Vals_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Job_Fld_Vals_UK        UNIQUE      (Fld_Id, Val)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Job_Desc_Type                                -- جدول أنواع المهام
@@ -220,10 +197,7 @@ Create Table Job_Desc_Type                                -- جدول أنواع
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Job_Desc_Type_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Job_Desc_Type_UK        UNIQUE      (Name),
-  CONSTRAINT Job_Desc_Type_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Job_Desc_Type_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Job_Desc_Type_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Job_Desc_Type_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Job_Desc_Type_Fld                          -- جدول ترميز 
@@ -247,15 +221,7 @@ Create Table Job_Desc_Type_Fld                          -- جدول ترميز
   Ins_User    BIGINT, Ins_Date     DATETIME,
   Upd_User    BIGINT, Upd_Date     DATETIME,
   CONSTRAINT  Job_Desc_Type_Fld_PK          PRIMARY KEY (Id  ),
-  CONSTRAINT  Job_Desc_Type_Fld_UK          UNIQUE      (Job_Id, Fld_Id),
-  CONSTRAINT  Job_Desc_Type_Fld_Job_FK      Foreign Key (Job_Id     ) References Job_Desc_Type (Id),
-  CONSTRAINT  Job_Desc_Type_Fld_Fld_FK      Foreign Key (Fld_Id     ) References Job_Fld       (Id),
-  CONSTRAINT  Job_Desc_Type_Fld_Status_FK   Foreign Key (Status_Id  ) References Phs_Cod_Status(Id),
-  CONSTRAINT  Job_Desc_Type_Fld_Required_FK Foreign Key (Required_Id) References Phs_Cod_YesNo (Id),
-  CONSTRAINT  Job_Desc_Type_Fld_NewLine_FK  Foreign Key (NewLine_Id ) References Phs_Cod_YesNo (Id),
-  CONSTRAINT  Job_Desc_Type_Fld_Cols_FK     Foreign Key (Cols_Id    ) References Job_Cod_Cols  (Id),
-  CONSTRAINT  Job_Desc_Type_Fld_Ins_FK      Foreign Key (Ins_User   ) References Cpy_User      (Id),
-  CONSTRAINT  Job_Desc_Type_Fld_Upd_FK      Foreign Key (Upd_User   ) References Cpy_User      (Id)
+  CONSTRAINT  Job_Desc_Type_Fld_UK          UNIQUE      (Job_Id, Fld_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Job_Desc_Type_ChkList                        -- جدول ترميز 
@@ -267,11 +233,7 @@ Create Table Job_Desc_Type_ChkList                        -- جدول ترميز
   Rem         VARCHAR(100),                           -- ملاحظات
   Ins_User    BIGINT, Ins_Date     DATETIME,
   Upd_User    BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT  Job_Desc_Type_ChkList_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Job_Desc_Type_ChkList_Job_FK    Foreign Key (Job_Id   ) References Job_Desc_Type (Id),
-  CONSTRAINT  Job_Desc_Type_ChkList_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT  Job_Desc_Type_ChkList_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Job_Desc_Type_ChkList_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  Job_Desc_Type_ChkList_PK        PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Job_Desc_Type_Item                          -- جدول مواد نوع مهمة
@@ -284,11 +246,7 @@ Create Table Job_Desc_Type_Item                          -- جدول مواد ن
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Job_Desc_Type_Item_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Job_Desc_Type_Item_UK        UNIQUE      (Job_Id, Name),
-  CONSTRAINT Job_Desc_Type_Item_Job_FK    Foreign Key (Job_Id   ) References Job_Desc_Type (Id),
-  CONSTRAINT Job_Desc_Type_Item_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Job_Desc_Type_Item_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Job_Desc_Type_Item_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Job_Desc_Type_Item_UK        UNIQUE      (Job_Id, Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Job_Desc_Type_Item_Class                    -- جدول تصانيف مادة مهمة
@@ -299,11 +257,7 @@ Create Table Job_Desc_Type_Item_Class                    -- جدول تصاني�
   Rem        VARCHAR(100),                           -- ملاحظات
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT Job_Desc_Type_Item_Class_PK       PRIMARY KEY (Id),
-  CONSTRAINT Job_Desc_Type_Item_Class_JItem_FK Foreign Key (JItem_Id) References Job_Desc_Type_Item(Id),
-  CONSTRAINT Job_Desc_Type_Item_Class_SType_FK Foreign Key (SType_Id) References Job_Cod_Item_SType(Id),
-  CONSTRAINT Job_Desc_Type_Item_Class_Ins_FK   Foreign Key (Ins_User) References Cpy_User          (Id),
-  CONSTRAINT Job_Desc_Type_Item_Class_Upd_FK   Foreign Key (Upd_User) References Cpy_User          (Id)
+  CONSTRAINT Job_Desc_Type_Item_Class_PK       PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Job_Desc_Type_Res                      -- جدول ترميز 
@@ -316,12 +270,7 @@ Create Table Job_Desc_Type_Res                      -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Job_Desc_Type_Res_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Job_Desc_Type_Res_UK        UNIQUE      (Job_Id, Res_Id),
-  CONSTRAINT Job_Desc_Type_Res_Job_FK    Foreign Key (Job_Id   ) References Job_Desc_Type (Id),
-  CONSTRAINT Job_Desc_Type_Res_Res_FK    Foreign Key (Res_Id   ) References Job_Res       (Id),
-  CONSTRAINT Job_Desc_Type_Res_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Job_Desc_Type_Res_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Job_Desc_Type_Res_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Job_Desc_Type_Res_UK        UNIQUE      (Job_Id, Res_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Job_Desc_Type_Emp                       -- جدول موظفي نوع مهمة
@@ -334,11 +283,7 @@ Create Table Job_Desc_Type_Emp                       -- جدول موظفي نو
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Job_Desc_Type_Emp_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Job_Desc_Type_Emp_UK        UNIQUE      (Job_Id, Name),
-  CONSTRAINT Job_Desc_Type_Emp_Job_FK    Foreign Key (Job_Id   ) References Job_Desc_Type (Id),
-  CONSTRAINT Job_Desc_Type_Emp_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Job_Desc_Type_Emp_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Job_Desc_Type_Emp_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Job_Desc_Type_Emp_UK        UNIQUE      (Job_Id, Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Job_Desc_Type_Emp_Class                 -- جدول تصانيف مادة مهمة
@@ -349,11 +294,7 @@ Create Table Job_Desc_Type_Emp_Class                 -- جدول تصانيف م
   Rem        VARCHAR(100),                           -- ملاحظات
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
-  CONSTRAINT Job_Desc_Type_Emp_Class_PK       PRIMARY KEY (Id),
-  CONSTRAINT Job_Desc_Type_Emp_Class_JEmp_FK  Foreign Key (JEmp_Id ) References Job_Desc_Type_Emp(Id),
-  CONSTRAINT Job_Desc_Type_Emp_Class_SType_FK Foreign Key (SType_Id) References Job_Cod_Emp_SType(Id),
-  CONSTRAINT Job_Desc_Type_Emp_Class_Ins_FK   Foreign Key (Ins_User) References Cpy_User         (Id),
-  CONSTRAINT Job_Desc_Type_Emp_Class_Upd_FK   Foreign Key (Upd_User) References Cpy_User         (Id)
+  CONSTRAINT Job_Desc_Type_Emp_Class_PK       PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- TODO(port): other has no automatic equivalent (source line 365).

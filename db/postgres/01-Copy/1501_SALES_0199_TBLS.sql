@@ -37,18 +37,7 @@ Create Table Sal_samMst    -- ترويسة النماذج والهدايا
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT  Sal_SamMst_PK      PRIMARY KEY (Imst_Id ),
-  CONSTRAINT  Sal_SamMst_UK      Unique      (Bran_Id,Imst_Year,Imst_Num),
-  CONSTRAINT  Sal_SamMst_Year_FK Foreign Key (Imst_Year) References Cpy_Year (Year_Year),
-  CONSTRAINT  Sal_SamMst_Bran_FK Foreign Key (Bran_Id  ) References Cpy_Bran (Bran_Id  ),
-  CONSTRAINT  Sal_SamMst_Cust_FK Foreign Key (Cont_Id  ) References Mng_Cont (Cont_Id  ),
-  CONSTRAINT  Sal_SamMst_Repr_FK Foreign Key (Repr_Id  ) References CRM_Repr (Repr_Id  ),
-  CONSTRAINT  Sal_SamMst_Regn_FK Foreign Key (Regn_Id  ) References Mng_Regn (Regn_Id  ),
-  CONSTRAINT  Sal_SamMst_Gacc_FK Foreign Key (Gacc_Id  ) References Acc_Acc  (Gacc_Id  ),
-  CONSTRAINT  Sal_SamMst_Cost_FK Foreign Key (Cost_Id  ) References Acc_Cost (Cost_Id  ),
-  CONSTRAINT  Sal_SamMst_Curn_FK Foreign Key (Curn_Id  ) References Mng_Curn (Curn_Id  ),
-  CONSTRAINT  Sal_SamMst_GMst_FK Foreign Key (GMst_Id  ) References Acc_Mst  (GMst_Id  ),
-  CONSTRAINT  Sal_SamMst_Ins_FK  Foreign Key (Ins_User ) References Cpy_User (User_Id  ),
-  CONSTRAINT  Sal_SamMst_Upd_FK  Foreign Key (Upd_User ) References Cpy_User (User_Id  )
+  CONSTRAINT  Sal_SamMst_UK      Unique      (Bran_Id,Imst_Year,Imst_Num)
 );
 
 Create Table Sal_SamTrn    -- بنود النماذج والهدايا
@@ -80,12 +69,7 @@ Create Table Sal_SamTrn    -- بنود النماذج والهدايا
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Sal_SamTrn_PK      PRIMARY KEY (Itrn_Id ),
-  CONSTRAINT Sal_SamTrn_UK      Unique      (Imst_Id,Itrn_ord),
-  CONSTRAINT Sal_SamTrn_Imst_FK Foreign Key (Imst_Id ) References Sal_SamMst(Imst_Id),
-  CONSTRAINT Sal_SamTrn_Stor_FK Foreign Key (Stor_Id ) References Stor_Store(Stor_Id),
-  CONSTRAINT Sal_SamTrn_Item_FK Foreign Key (Item_Id ) References Stor_Item (Item_Id),
-  CONSTRAINT Sal_SamTrn_Ins_FK  Foreign Key (Ins_User) References Cpy_User  (User_Id),
-  CONSTRAINT Sal_SamTrn_Upd_FK  Foreign Key (Upd_User) References Cpy_User  (User_Id)
+  CONSTRAINT Sal_SamTrn_UK      Unique      (Imst_Id,Itrn_ord)
 );
 
 Create Table Sal_RetSMst  -- ترويسة مردود هدايا وعينات
@@ -120,18 +104,7 @@ Create Table Sal_RetSMst  -- ترويسة مردود هدايا وعينات
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT  Sal_RetSMst_PK      PRIMARY KEY (Imst_Id ),
-  CONSTRAINT  Sal_RetSMst_UK      Unique      (Bran_Id,Imst_Year,Imst_Num),
-  CONSTRAINT  Sal_RetSMst_Year_FK Foreign Key (Imst_Year) References Cpy_Year (Year_Year),
-  CONSTRAINT  Sal_RetSMst_Bran_FK Foreign Key (Bran_Id  ) References Cpy_Bran (Bran_Id  ),
-  CONSTRAINT  Sal_RetSMst_Cust_FK Foreign Key (Cont_Id  ) References Mng_Cont (Cont_Id  ),
-  CONSTRAINT  Sal_RetSMst_Repr_FK Foreign Key (Repr_Id  ) References CRM_Repr (Repr_Id  ),
-  CONSTRAINT  Sal_RetSMst_Gacc_FK Foreign Key (Gacc_Id  ) References Acc_Acc  (Gacc_Id  ),
-  CONSTRAINT  Sal_RetSMst_Cost_FK Foreign Key (Cost_Id  ) References Acc_Cost (Cost_Id  ),
-  CONSTRAINT  Sal_RetSMst_Regn_FK Foreign Key (Regn_Id  ) References Mng_Regn (Regn_Id  ),
-  CONSTRAINT  Sal_RetSMst_GMst_FK Foreign Key (GMst_Id  ) References Acc_Mst  (GMst_Id  ),
-  CONSTRAINT  Sal_RetSMst_Curn_FK Foreign Key (Curn_Id  ) References Mng_Curn (Curn_Id  ),
-  CONSTRAINT  Sal_RetSMst_Ins_FK  Foreign Key (Ins_User ) References Cpy_User (User_Id  ),
-  CONSTRAINT  Sal_RetSMst_Upd_FK  Foreign Key (Upd_User ) References Cpy_User (User_Id  )
+  CONSTRAINT  Sal_RetSMst_UK      Unique      (Bran_Id,Imst_Year,Imst_Num)
 );
 
 Create Table Sal_RetSTrn  -- بنود مردود هدايا وعينات
@@ -163,9 +136,5 @@ Create Table Sal_RetSTrn  -- بنود مردود هدايا وعينات
   Ins_User    BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User    BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT  Sal_RetSTrn_PK      PRIMARY KEY (Itrn_Id ),
-  CONSTRAINT  Sal_RetSTrn_UK      Unique      (Imst_Id,Itrn_ord),
-  CONSTRAINT  Sal_RetSTrn_Imst_FK Foreign Key (Imst_Id ) References Sal_RetSMst(Imst_Id),
-  CONSTRAINT  Sal_RetSTrn_Item_FK Foreign Key (Item_Id ) References Stor_Item  (Item_Id),
-  CONSTRAINT  Sal_RetSTrn_Ins_FK  Foreign Key (Ins_User) References Cpoy_User  (User_Id),
-  CONSTRAINT  Sal_RetSTrn_Upd_FK  Foreign Key (Upd_User) References Cpy_User   (User_Id)
+  CONSTRAINT  Sal_RetSTrn_UK      Unique      (Imst_Id,Itrn_ord)
 );

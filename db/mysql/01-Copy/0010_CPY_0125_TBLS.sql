@@ -21,10 +21,7 @@ Create Table Cpy_Period				                      -- جدول فترات العم
   CONSTRAINT Cpy_Period_PK        PRIMARY KEY (Id ),
   CONSTRAINT Cpy_Period_UK        UNIQUE      (Num ),
   CONSTRAINT Cpy_Period_Name_UK   UNIQUE      (Name),
-  CONSTRAINT Cpy_Period_SEDate_UK UNIQUE      (SDate,EDate),
-  CONSTRAINT Cpy_Period_Status_FK Foreign Key (Status_Id) References Cpy_Cod_PStatus(Id),
-  CONSTRAINT Cpy_Period_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Cpy_Period_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Cpy_Period_SEDate_UK UNIQUE      (SDate,EDate)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Cpy_Bran		                        -- دليل الفروع
@@ -48,10 +45,7 @@ Create Table Cpy_Bran		                        -- دليل الفروع
   Upd_User   BIGINT, Upd_Date   DATETIME,
   CONSTRAINT Cpy_Bran_PK        PRIMARY KEY (Id  ),
   CONSTRAINT Cpy_Bran_Num_UK    Unique      (Num ),
-  CONSTRAINT Cpy_Bran_Name_UK   Unique      (Name),
-  CONSTRAINT Cpy_Bran_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Cpy_Bran_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Cpy_Bran_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Cpy_Bran_Name_UK   Unique      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Alter Table Cpy_User Add CONSTRAINT CpyUser_Bran_FK Foreign Key (Bran_Id) References Cpy_Bran(Id);
@@ -68,10 +62,7 @@ Create Table Cpy_Pref			                    -- جدول التفضيلات
   Upd_User   BIGINT, Upd_Date DATETIME,
   CONSTRAINT Cpy_Pref_PK         PRIMARY KEY (Id  ),
   CONSTRAINT Cpy_Pref_UK         Unique      (`Key` ),
-  CONSTRAINT Cpy_Pref_Name_UK    Unique      (Name),
-  CONSTRAINT Cpy_Pref_Visible_FK Foreign Key (Visible_Id) References Phs_Cod_Visible(Id),
-  CONSTRAINT Cpy_Pref_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User       (Id),
-  CONSTRAINT Cpy_Pref_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User       (Id)
+  CONSTRAINT Cpy_Pref_Name_UK    Unique      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Cpy_BPref   			        -- جدول القيم الإفتراضية للفرع INI
@@ -86,11 +77,7 @@ Create Table Cpy_BPref   			        -- جدول القيم الإفتراضية 
   Ins_User   BIGINT, Ins_Date DATETIME,
   Upd_User   BIGINT, Upd_Date DATETIME,
   CONSTRAINT Cpy_BPrefs_PK         PRIMARY KEY (Id),
-  CONSTRAINT Cpy_BPrefs_UK         Unique      (Bran_Id, `Key`),
-  CONSTRAINT Cpy_BPrefs_Bran_FK    Foreign Key (Bran_Id   ) References Cpy_Bran       (Id),
-  CONSTRAINT Cpy_BPrefs_Visible_FK Foreign Key (Visible_Id) References Phs_Cod_Visible(Id),
-  CONSTRAINT Cpy_BPrefs_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User       (Id),
-  CONSTRAINT Cpy_BPrefs_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User       (Id)
+  CONSTRAINT Cpy_BPrefs_UK         Unique      (Bran_Id, `Key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Cpy_UPref			              -- جدول القيم الإفتراضية للمستخدم INI
@@ -105,11 +92,7 @@ Create Table Cpy_UPref			              -- جدول القيم الإفتراضي
   Ins_User   BIGINT, Ins_Date DATETIME,
   Upd_User   BIGINT, Upd_Date DATETIME,
   CONSTRAINT Cpy_UPrefs_PK         PRIMARY KEY (Id),
-  CONSTRAINT Cpy_UPrefs_UK         Unique      (User_Id, `Key`),
-  CONSTRAINT Cpy_UPrefs_User_FK    Foreign Key (User_Id   ) References Cpy_User       (Id),
-  CONSTRAINT Cpy_UPrefs_Visible_FK Foreign Key (Visible_Id) References Phs_Cod_Visible(Id),
-  CONSTRAINT Cpy_UPrefs_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User       (Id),
-  CONSTRAINT Cpy_UPrefs_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User       (Id)
+  CONSTRAINT Cpy_UPrefs_UK         Unique      (User_Id, `Key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Cpy_Attach  					        -- الملفات المرفقة
@@ -127,11 +110,7 @@ Create Table Cpy_Attach  					        -- الملفات المرفقة
   Rem        VARCHAR(250),					          -- البيان
   Ins_User   BIGINT, Ins_Date DATETIME,
   Upd_User   BIGINT, Upd_Date DATETIME,
-  CONSTRAINT Cpy_Attach_PK      PRIMARY KEY (Id),
-  CONSTRAINT Cpy_Attach_User_Fk Foreign Key (User_Id ) References Cpy_User(Id),
-  CONSTRAINT Cpy_Attach_Mprg_Fk Foreign Key (MPrg_Id ) References Phs_MPrg(Id),
-  CONSTRAINT Cpy_Attach_Ins_FK  Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Cpy_Attach_Upd_FK  Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Cpy_Attach_PK      PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Cpy_UDBoard_List			                 -- جدول القوائم   
@@ -142,9 +121,7 @@ Create Table Cpy_UDBoard_List			                 -- جدول القوائم
   Rem        VARCHAR(250),			                     -- ملاحظات  
   Ins_User   MEDIUMINT, Ins_Date    DATETIME,
   Upd_User   MEDIUMINT, Upd_Date    DATETIME,
-  CONSTRAINT Cpy_UDBoard_List_List_PK        PRIMARY KEY (Id),
-  CONSTRAINT Cpy_UDBoard_List_List_FK        Foreign Key (User_Id  ) References Cpy_User      (Id),
-  CONSTRAINT Cpy_UDBoard_List_List_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id)
+  CONSTRAINT Cpy_UDBoard_List_List_PK        PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Cpy_UDBoard_List_Blks			         -- جدول تخصيص القوائم   
@@ -157,8 +134,5 @@ Create Table Cpy_UDBoard_List_Blks			         -- جدول تخصيص القوا�
   Rem        VARCHAR(250),			                     -- ملاحظات  
   Ins_User   MEDIUMINT, Ins_Date     DATETIME,
   Upd_User   MEDIUMINT, Upd_Date     DATETIME,
-  CONSTRAINT Cpy_UDBoard_List_Blks_PK        PRIMARY KEY (Id),
-  CONSTRAINT Cpy_UDBoard_List_Blks_FK        Foreign Key (List_Id  ) References Cpy_UDBoard_List(Id),
-  CONSTRAINT Cpy_UDBoard_List_Blks_Block_FK  Foreign Key (Block_Id ) References Phs_Dash_Blocks (Id),
-  CONSTRAINT Cpy_UDBoard_List_Blks_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status  (Id)
+  CONSTRAINT Cpy_UDBoard_List_Blks_PK        PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

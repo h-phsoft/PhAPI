@@ -191,9 +191,8 @@ CREATE TRIGGER
   Stor_TBU_SMat
   Before UPDATE ON Stor_SMat
   For Each Row
-Declare
-  enableNegative DECIMAL(38,10) := 0;
-Begin
+BEGIN
+  DECLARE enableNegative DECIMAL(38,10) := 0;
   Begin
     SELECT IFNULL(Value1,0)
       INTO enableNegative
@@ -219,9 +218,8 @@ CREATE TRIGGER
   Stor_TBU_ICS
   Before UPDATE ON Stor_ICS
   For Each Row
-Declare
-  enableNegative DECIMAL(38,10) := 0;
-Begin
+BEGIN
+  DECLARE enableNegative DECIMAL(38,10) := 0;
   Begin
     SELECT IFNULL(Value1,0)
       INTO enableNegative
@@ -247,9 +245,8 @@ CREATE TRIGGER
   Stor_TBU_SICS
   Before UPDATE ON Stor_SICS
   For Each Row
-Declare
-  enableNegative DECIMAL(38,10) := 0;
-Begin
+BEGIN
+  DECLARE enableNegative DECIMAL(38,10) := 0;
   Begin
     SELECT IFNULL(Value1,0)
       INTO enableNegative
@@ -306,21 +303,20 @@ CREATE TRIGGER
   Before Insert
   On Stor_InTrn
   For Each Row
-Declare
-  nStr     DECIMAL(38,10);
-  nBRate   DECIMAL(38,10) := 0;
-  nIcsId   DECIMAL(38,10);
-  nSIcsId  DECIMAL(38,10);
-  bPrices  Boolean := true;
-  nCPrice  DECIMAL(38,10) := 0;
-  nNPrice  DECIMAL(38,10) := 0;
-  nDPrice  DECIMAL(38,10) := 0;
-  nSPrice  DECIMAL(38,10) := 0;
-  nWPrice  DECIMAL(38,10) := 0;
-  nRPrice  DECIMAL(38,10) := 0;
-  nHPrice  DECIMAL(38,10) := 0;
-  nMPrice  DECIMAL(38,10) := 0;
-Begin
+BEGIN
+  DECLARE nStr     DECIMAL(38,10);
+  DECLARE nBRate   DECIMAL(38,10) := 0;
+  DECLARE nIcsId   DECIMAL(38,10);
+  DECLARE nSIcsId  DECIMAL(38,10);
+  DECLARE bPrices  Boolean := true;
+  DECLARE nCPrice  DECIMAL(38,10) := 0;
+  DECLARE nNPrice  DECIMAL(38,10) := 0;
+  DECLARE nDPrice  DECIMAL(38,10) := 0;
+  DECLARE nSPrice  DECIMAL(38,10) := 0;
+  DECLARE nWPrice  DECIMAL(38,10) := 0;
+  DECLARE nRPrice  DECIMAL(38,10) := 0;
+  DECLARE nHPrice  DECIMAL(38,10) := 0;
+  DECLARE nMPrice  DECIMAL(38,10) := 0;
   Select Stor_Id, Decode(Sign(IFNULL(BCurn_Rate,1)), -1,1, 0,1, IFNULL(BCurn_Rate,1))
     Into nStr   , nBRate
     From Stor_InMst
@@ -435,21 +431,20 @@ CREATE TRIGGER
   Before Update
   On Stor_InTrn
   For Each Row
-Declare
-  nStr     DECIMAL(38,10);
-  nIcsId   DECIMAL(38,10);
-  nSIcsId  DECIMAL(38,10);
-  nBRate   DECIMAL(38,10) := 0;
-  bPrices  Boolean := true;
-  nCPrice  DECIMAL(38,10) := 0;
-  nNPrice  DECIMAL(38,10) := 0;
-  nDPrice  DECIMAL(38,10) := 0;
-  nSPrice  DECIMAL(38,10) := 0;
-  nWPrice  DECIMAL(38,10) := 0;
-  nRPrice  DECIMAL(38,10) := 0;
-  nHPrice  DECIMAL(38,10) := 0;
-  nMPrice  DECIMAL(38,10) := 0;
-Begin
+BEGIN
+  DECLARE nStr     DECIMAL(38,10);
+  DECLARE nIcsId   DECIMAL(38,10);
+  DECLARE nSIcsId  DECIMAL(38,10);
+  DECLARE nBRate   DECIMAL(38,10) := 0;
+  DECLARE bPrices  Boolean := true;
+  DECLARE nCPrice  DECIMAL(38,10) := 0;
+  DECLARE nNPrice  DECIMAL(38,10) := 0;
+  DECLARE nDPrice  DECIMAL(38,10) := 0;
+  DECLARE nSPrice  DECIMAL(38,10) := 0;
+  DECLARE nWPrice  DECIMAL(38,10) := 0;
+  DECLARE nRPrice  DECIMAL(38,10) := 0;
+  DECLARE nHPrice  DECIMAL(38,10) := 0;
+  DECLARE nMPrice  DECIMAL(38,10) := 0;
   Select Stor_Id, Decode(Sign(IFNULL(BCurn_Rate,1)), -1,1, 0,1, IFNULL(BCurn_Rate,1))
     Into nStr   , nBRate
     From Stor_InMst
@@ -480,8 +475,8 @@ Begin
      OR IFNULL(NEW.nHeight ,0  )!=IFNULL(OLD.nHeight ,0  )
      OR IFNULL(NEW.Barcode ,'_')!=IFNULL(OLD.Barcode ,'_')
      OR IFNULL(NEW.LotSer  ,'_')!=IFNULL(OLD.LotSer  ,'_')
-     OR IFNULL(NEW.SDate   ,STR_TO_DATE('01-01-1900', 'DD-MM-YYYY'))!=IFNULL(OLD.SDate,STR_TO_DATE('01-01-1900', 'DD-MM-YYYY'))
-     OR IFNULL(NEW.EDate   ,STR_TO_DATE('01-01-1900', 'DD-MM-YYYY'))!=IFNULL(OLD.EDate,STR_TO_DATE('01-01-1900', 'DD-MM-YYYY')) THEN
+     OR IFNULL(NEW.SDate   ,STR_TO_DATE('01-01-1900', '%d-%m-%Y'))!=IFNULL(OLD.SDate,STR_TO_DATE('01-01-1900', '%d-%m-%Y'))
+     OR IFNULL(NEW.EDate   ,STR_TO_DATE('01-01-1900', '%d-%m-%Y'))!=IFNULL(OLD.EDate,STR_TO_DATE('01-01-1900', '%d-%m-%Y')) THEN
     IF OLD.Ics_Id IS NOT NULL Then
       Begin
         UPDATE Stor_ICS SET
@@ -628,9 +623,8 @@ CREATE TRIGGER
   Before Delete
   On Stor_InTrn
   For Each Row
-Declare
-  nStr    DECIMAL(38,10);
-Begin
+BEGIN
+  DECLARE nStr    DECIMAL(38,10);
   Select Stor_Id
     Into nStr
     From Stor_InMst
@@ -711,14 +705,13 @@ CREATE TRIGGER
   Before Insert
   On Stor_OuTrn
   For Each Row
-Declare
-  nStr     DECIMAL(38,10);
-  nIcsId   DECIMAL(38,10);
-  nCst     DECIMAL(38,10);
-  nBCst    DECIMAL(38,10);
-  nQnt     DECIMAL(38,10);
-  nBRate   DECIMAL(38,10) := 0;
-Begin
+BEGIN
+  DECLARE nStr     DECIMAL(38,10);
+  DECLARE nIcsId   DECIMAL(38,10);
+  DECLARE nCst     DECIMAL(38,10);
+  DECLARE nBCst    DECIMAL(38,10);
+  DECLARE nQnt     DECIMAL(38,10);
+  DECLARE nBRate   DECIMAL(38,10) := 0;
   Select Stor_Id, Decode(Sign(IFNULL(BCurn_Rate,1)), -1,1, 0,1, IFNULL(BCurn_Rate,1))
     Into nStr   , nBRate
     From Stor_OuMst
@@ -788,13 +781,12 @@ CREATE TRIGGER
   Stor_TBU_OuTrn
   Before UPDATE ON Stor_OuTrn
   For Each Row
-Declare
-  nStr    DECIMAL(38,10);
-  nCst    DECIMAL(38,10);
-  nBCst   DECIMAL(38,10);
-  nQnt    DECIMAL(38,10);
-  nBRate  DECIMAL(38,10) := 0;
-Begin
+BEGIN
+  DECLARE nStr    DECIMAL(38,10);
+  DECLARE nCst    DECIMAL(38,10);
+  DECLARE nBCst   DECIMAL(38,10);
+  DECLARE nQnt    DECIMAL(38,10);
+  DECLARE nBRate  DECIMAL(38,10) := 0;
   Select Stor_Id, Decode(Sign(IFNULL(BCurn_Rate,1)), -1,1, 0,1, IFNULL(BCurn_Rate,1))
     Into nStr   , nBRate
     From Stor_OuMst
@@ -905,9 +897,8 @@ CREATE TRIGGER
   Before Delete
   On Stor_OuTrn
   For Each Row
-Declare
-  nStr    DECIMAL(38,10);
-Begin
+BEGIN
+  DECLARE nStr    DECIMAL(38,10);
   Select Stor_Id
     Into nStr
     From Stor_OuMst
@@ -984,21 +975,20 @@ CREATE TRIGGER
   Before Insert
   On Stor_EITrn
   For Each Row
-Declare
-  nStr     DECIMAL(38,10);
-  nBRate   DECIMAL(38,10) := 0;
-  nIcsId   DECIMAL(38,10);
-  nSIcsId  DECIMAL(38,10);
-  bPrices  Boolean := true;
-  nCPrice  DECIMAL(38,10) := 0;
-  nNPrice  DECIMAL(38,10) := 0;
-  nDPrice  DECIMAL(38,10) := 0;
-  nSPrice  DECIMAL(38,10) := 0;
-  nWPrice  DECIMAL(38,10) := 0;
-  nRPrice  DECIMAL(38,10) := 0;
-  nHPrice  DECIMAL(38,10) := 0;
-  nMPrice  DECIMAL(38,10) := 0;
-Begin
+BEGIN
+  DECLARE nStr     DECIMAL(38,10);
+  DECLARE nBRate   DECIMAL(38,10) := 0;
+  DECLARE nIcsId   DECIMAL(38,10);
+  DECLARE nSIcsId  DECIMAL(38,10);
+  DECLARE bPrices  Boolean := true;
+  DECLARE nCPrice  DECIMAL(38,10) := 0;
+  DECLARE nNPrice  DECIMAL(38,10) := 0;
+  DECLARE nDPrice  DECIMAL(38,10) := 0;
+  DECLARE nSPrice  DECIMAL(38,10) := 0;
+  DECLARE nWPrice  DECIMAL(38,10) := 0;
+  DECLARE nRPrice  DECIMAL(38,10) := 0;
+  DECLARE nHPrice  DECIMAL(38,10) := 0;
+  DECLARE nMPrice  DECIMAL(38,10) := 0;
   Select Stor_Id, Decode(Sign(IFNULL(BCurn_Rate,1)), -1,1, 0,1, IFNULL(BCurn_Rate,1))
     Into nStr   , nBRate
     From Stor_EIMst
@@ -1030,8 +1020,8 @@ Begin
         AND nLength =IFNULL(NEW.nLength ,0  )
         AND nWidth  =IFNULL(NEW.nWidth  ,0  )
         AND nHeight =IFNULL(NEW.nHeight ,0  )
-        AND SDate   =IFNULL(NEW.SDate,STR_TO_DATE('01-01-1900', 'DD-MM-YYYY'))
-        AND EDate   =IFNULL(NEW.EDate,STR_TO_DATE('01-01-1900', 'DD-MM-YYYY'));
+        AND SDate   =IFNULL(NEW.SDate,STR_TO_DATE('01-01-1900', '%d-%m-%Y'))
+        AND EDate   =IFNULL(NEW.EDate,STR_TO_DATE('01-01-1900', '%d-%m-%Y'));
     SET NEW.Ics_Id = nIcsId;
     Begin
       UPDATE Stor_ICS SET
@@ -1123,21 +1113,20 @@ CREATE TRIGGER
   Before Update
   On Stor_EITrn
   For Each Row
-Declare
-  nStr     DECIMAL(38,10);
-  nIcsId   DECIMAL(38,10);
-  nSIcsId  DECIMAL(38,10);
-  nBRate   DECIMAL(38,10) := 0;
-  bPrices  Boolean := true;
-  nCPrice  DECIMAL(38,10) := 0;
-  nNPrice  DECIMAL(38,10) := 0;
-  nDPrice  DECIMAL(38,10) := 0;
-  nSPrice  DECIMAL(38,10) := 0;
-  nWPrice  DECIMAL(38,10) := 0;
-  nRPrice  DECIMAL(38,10) := 0;
-  nHPrice  DECIMAL(38,10) := 0;
-  nMPrice  DECIMAL(38,10) := 0;
-Begin
+BEGIN
+  DECLARE nStr     DECIMAL(38,10);
+  DECLARE nIcsId   DECIMAL(38,10);
+  DECLARE nSIcsId  DECIMAL(38,10);
+  DECLARE nBRate   DECIMAL(38,10) := 0;
+  DECLARE bPrices  Boolean := true;
+  DECLARE nCPrice  DECIMAL(38,10) := 0;
+  DECLARE nNPrice  DECIMAL(38,10) := 0;
+  DECLARE nDPrice  DECIMAL(38,10) := 0;
+  DECLARE nSPrice  DECIMAL(38,10) := 0;
+  DECLARE nWPrice  DECIMAL(38,10) := 0;
+  DECLARE nRPrice  DECIMAL(38,10) := 0;
+  DECLARE nHPrice  DECIMAL(38,10) := 0;
+  DECLARE nMPrice  DECIMAL(38,10) := 0;
   Select Stor_Id, Decode(Sign(IFNULL(BCurn_Rate,1)), -1,1, 0,1, IFNULL(BCurn_Rate,1))
     Into nStr   , nBRate
     From Stor_EIMst
@@ -1166,8 +1155,8 @@ Begin
      OR IFNULL(NEW.nHeight ,0  )!=IFNULL(OLD.nHeight ,0  )
      OR IFNULL(NEW.Barcode ,'_')!=IFNULL(OLD.Barcode ,'_')
      OR IFNULL(NEW.LotSer  ,'_')!=IFNULL(OLD.LotSer  ,'_')
-     OR IFNULL(NEW.SDate   ,STR_TO_DATE('01-01-1900', 'DD-MM-YYYY'))!=IFNULL(OLD.SDate,STR_TO_DATE('01-01-1900', 'DD-MM-YYYY'))
-     OR IFNULL(NEW.EDate   ,STR_TO_DATE('01-01-1900', 'DD-MM-YYYY'))!=IFNULL(OLD.EDate,STR_TO_DATE('01-01-1900', 'DD-MM-YYYY')) THEN
+     OR IFNULL(NEW.SDate   ,STR_TO_DATE('01-01-1900', '%d-%m-%Y'))!=IFNULL(OLD.SDate,STR_TO_DATE('01-01-1900', '%d-%m-%Y'))
+     OR IFNULL(NEW.EDate   ,STR_TO_DATE('01-01-1900', '%d-%m-%Y'))!=IFNULL(OLD.EDate,STR_TO_DATE('01-01-1900', '%d-%m-%Y')) THEN
     Begin
       Select Id
         Into nIcsId
@@ -1181,8 +1170,8 @@ Begin
           AND nLength =IFNULL(NEW.nLength ,0  )
           AND nWidth  =IFNULL(NEW.nWidth  ,0  )
           AND nHeight =IFNULL(NEW.nHeight ,0  )
-          AND SDate   =IFNULL(NEW.SDate,STR_TO_DATE('01-01-1900', 'DD-MM-YYYY'))
-          AND EDate   =IFNULL(NEW.EDate,STR_TO_DATE('01-01-1900', 'DD-MM-YYYY'));
+          AND SDate   =IFNULL(NEW.SDate,STR_TO_DATE('01-01-1900', '%d-%m-%Y'))
+          AND EDate   =IFNULL(NEW.EDate,STR_TO_DATE('01-01-1900', '%d-%m-%Y'));
       IF OLD.Ics_Id IS NOT NULL Then
         Begin
           UPDATE Stor_ICS SET
@@ -1343,9 +1332,8 @@ CREATE TRIGGER
   Before Delete
   On Stor_EITrn
   For Each Row
-Declare
-  nStr    DECIMAL(38,10);
-Begin
+BEGIN
+  DECLARE nStr    DECIMAL(38,10);
   Select Stor_Id
     Into nStr
     From Stor_EIMst
@@ -1431,13 +1419,12 @@ CREATE TRIGGER
   Before Insert
   On Stor_EOTrn
   For Each Row
-Declare
-  nStr     DECIMAL(38,10);
-  nCst     DECIMAL(38,10);
-  nBCst    DECIMAL(38,10);
-  nQnt     DECIMAL(38,10);
-  nBRate   DECIMAL(38,10) := 0;
-Begin
+BEGIN
+  DECLARE nStr     DECIMAL(38,10);
+  DECLARE nCst     DECIMAL(38,10);
+  DECLARE nBCst    DECIMAL(38,10);
+  DECLARE nQnt     DECIMAL(38,10);
+  DECLARE nBRate   DECIMAL(38,10) := 0;
   Select Stor_Id, BCurn_Rate
     Into nStr   , nBRate
     From Stor_EOMst
@@ -1502,13 +1489,12 @@ CREATE TRIGGER
   Stor_TBU_EOTrn
   Before UPDATE ON Stor_EOTrn
   For Each Row
-Declare
-  nStr    DECIMAL(38,10);
-  nCst    DECIMAL(38,10);
-  nBCst   DECIMAL(38,10);
-  nQnt    DECIMAL(38,10);
-  nBRate  DECIMAL(38,10) := 0;
-Begin
+BEGIN
+  DECLARE nStr    DECIMAL(38,10);
+  DECLARE nCst    DECIMAL(38,10);
+  DECLARE nBCst   DECIMAL(38,10);
+  DECLARE nQnt    DECIMAL(38,10);
+  DECLARE nBRate  DECIMAL(38,10) := 0;
   Select Stor_Id, Decode(Sign(IFNULL(BCurn_Rate,1)), -1,1, 0,1, IFNULL(BCurn_Rate,1))
     Into nStr   , nBRate
     From Stor_EOMst
@@ -1623,9 +1609,8 @@ CREATE TRIGGER
   Before Delete
   On Stor_EOTrn
   For Each Row
-Declare
-  nStr    DECIMAL(38,10);
-Begin
+BEGIN
+  DECLARE nStr    DECIMAL(38,10);
   Select Stor_Id
     Into nStr
     From Stor_EOMst
@@ -1707,14 +1692,13 @@ CREATE TRIGGER
   Before Insert
   On Stor_TrTrn
   For Each Row
-Declare
-  nFStr    DECIMAL(38,10);
-  nTStr    DECIMAL(38,10);
-  nCst     DECIMAL(38,10);
-  nBCst    DECIMAL(38,10);
-  nQnt     DECIMAL(38,10);
-  nBRate   DECIMAL(38,10) := 0;
-Begin
+BEGIN
+  DECLARE nFStr    DECIMAL(38,10);
+  DECLARE nTStr    DECIMAL(38,10);
+  DECLARE nCst     DECIMAL(38,10);
+  DECLARE nBCst    DECIMAL(38,10);
+  DECLARE nQnt     DECIMAL(38,10);
+  DECLARE nBRate   DECIMAL(38,10) := 0;
   Select StorF_Id, StorT_Id, Decode(Sign(IFNULL(BCurn_Rate,1)), -1,1, 0,1, IFNULL(BCurn_Rate,1))
     Into nFStr   , nTStr   , nBRate
     From Stor_TrMst
@@ -1780,14 +1764,13 @@ CREATE TRIGGER
   Stor_TBU_TrTrn
   Before UPDATE ON Stor_TrTrn
   For Each Row
-Declare
-  nFStr   DECIMAL(38,10);
-  nTStr   DECIMAL(38,10);
-  nCst    DECIMAL(38,10);
-  nBCst   DECIMAL(38,10);
-  nQnt    DECIMAL(38,10);
-  nBRate  DECIMAL(38,10) := 0;
-Begin
+BEGIN
+  DECLARE nFStr   DECIMAL(38,10);
+  DECLARE nTStr   DECIMAL(38,10);
+  DECLARE nCst    DECIMAL(38,10);
+  DECLARE nBCst   DECIMAL(38,10);
+  DECLARE nQnt    DECIMAL(38,10);
+  DECLARE nBRate  DECIMAL(38,10) := 0;
   Select StorF_Id, StorT_Id, Decode(Sign(IFNULL(BCurn_Rate,1)), -1,1, 0,1, IFNULL(BCurn_Rate,1))
     Into nFStr   , nTStr   , nBRate
     From Stor_TrMst
@@ -1927,10 +1910,9 @@ CREATE TRIGGER
   Before Delete
   On Stor_TrTrn
   For Each Row
-Declare
-  nFStr    DECIMAL(38,10);
-  nTStr    DECIMAL(38,10);
-Begin
+BEGIN
+  DECLARE nFStr    DECIMAL(38,10);
+  DECLARE nTStr    DECIMAL(38,10);
   Select StorF_Id, StorT_Id
     Into nTStr   , nTStr
     From Stor_TrMst

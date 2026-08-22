@@ -26,8 +26,7 @@ Create Table Phs_Front                                           -- جدول و�
   Rem           VARCHAR(200),                                 -- ملاحظات
   CONSTRAINT    PhsFront_PK        PRIMARY KEY (Id  ),
   CONSTRAINT    PhsFront_GID       UNIQUE      (GId ),
-  CONSTRAINT    PhsFront_Name_UK   UNIQUE      (Name),
-  CONSTRAINT    PhsFront_Status_FK Foreign Key (status_Id) References Phs_Status(Id)
+  CONSTRAINT    PhsFront_Name_UK   UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Phs_Cst         			                            -- جدول الزبائن
@@ -39,8 +38,7 @@ Create Table Phs_Cst         			                            -- جدول الزب
   Rem           VARCHAR(200),		                              -- ملاحظات
   CONSTRAINT    PhsCst_PK        PRIMARY KEY (Id  ),
   CONSTRAINT    PhsCst_GID       UNIQUE      (GId ),
-  CONSTRAINT    PhsCst_UK        UNIQUE      (Name),
-  CONSTRAINT    PhsCst_Status_FK Foreign Key (status_Id) References Phs_Status(Id)
+  CONSTRAINT    PhsCst_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Phs_Cpy	            			                            -- جدول النسخ
@@ -62,9 +60,7 @@ Create Table Phs_Cpy	            			                            -- جدول ال
   CONSTRAINT    PhsCpy_PK        PRIMARY KEY (Id ),
   CONSTRAINT    PhsCpy_GID       UNIQUE      (GId),
   CONSTRAINT    PhsCpy_URL_UK    UNIQUE      (URL),
-  CONSTRAINT    PhsCpy_Name_UK   UNIQUE      (Cst_Id, Name),
-  CONSTRAINT    PhsCpy_Cst_FK    Foreign Key (Cst_Id   ) References Phs_Cst   (Id),
-  CONSTRAINT    PhsCpy_Status_FK Foreign Key (status_Id) References Phs_Status(Id)
+  CONSTRAINT    PhsCpy_Name_UK   UNIQUE      (Cst_Id, Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Phs_CpyFront          			                    -- جدول واجهات تخاطب النسخ
@@ -77,8 +73,5 @@ Create Table Phs_CpyFront          			                    -- جدول واجها
   Rem           VARCHAR(200),		                            -- ملاحظات
   CONSTRAINT    PhsCpyFront_PK        PRIMARY KEY (Id ),
   CONSTRAINT    PhsCpyFront_GID       UNIQUE      (GId),
-  CONSTRAINT    PhsCpyFront_UK        UNIQUE      (Cpy_Id, Front_Id),
-  CONSTRAINT    PhsCpyFront_Cpy_FK    Foreign Key (Cpy_Id   ) References Phs_Cpy   (Id),
-  CONSTRAINT    PhsCpyFront_Front_FK  Foreign Key (Front_Id ) References Phs_Front (Id),
-  CONSTRAINT    PhsCpyFront_Status_FK Foreign Key (status_Id) References Phs_Status(Id)
+  CONSTRAINT    PhsCpyFront_UK        UNIQUE      (Cpy_Id, Front_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

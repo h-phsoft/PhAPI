@@ -90,9 +90,7 @@ Create Table Str_Cod_Doc                        -- جدول ترميز نوع ا
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Str_Cod_Doc_PK      PRIMARY KEY (Id  ),
-  CONSTRAINT Str_Cod_Doc_UK      UNIQUE      (Name),
-  CONSTRAINT Str_Cod_Doc_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Str_Cod_Doc_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Str_Cod_Doc_UK      UNIQUE      (Name)
 );
 
 Insert into Str_Cod_Doc (Id,Name) values (0,'-'          );
@@ -109,9 +107,7 @@ Create Table Str_Cod_TrnTyp                -- جدول ترميز أنواع ا�
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Str_Cod_TrnTyp_PK      PRIMARY KEY (Id  ),
-  CONSTRAINT Str_Cod_TrnTyp_UK      UNIQUE      (Name),
-  CONSTRAINT Str_Cod_TrnTyp_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Str_Cod_TrnTyp_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Str_Cod_TrnTyp_UK      UNIQUE      (Name)
 );
 
 Insert into Str_Cod_TrnTyp (Id,Name) values (100,'Inbound'          );
@@ -136,9 +132,7 @@ Create Table Str_Cod_Spec1                  -- جدول ترميز التصني�
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Str_Cod_Spec1_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Str_Cod_Spec1_UK     UNIQUE      (Name),
-  CONSTRAINT Str_Cod_Spec1_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Str_Cod_Spec1_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Str_Cod_Spec1_UK     UNIQUE      (Name)
 );
 
 Insert into Str_Cod_Spec1 (Id,Name) values (0,'-');
@@ -155,9 +149,7 @@ Create Table Str_Cod_Spec2                  -- جدول ترميز التصني�
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Str_Cod_Spec2_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Str_Cod_Spec2_UK     UNIQUE      (Name),
-  CONSTRAINT Str_Cod_Spec2_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Str_Cod_Spec2_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Str_Cod_Spec2_UK     UNIQUE      (Name)
 );
 
 Insert into Str_Cod_Spec2 (Id,Name) values (0,'-');
@@ -174,9 +166,7 @@ Create Table Str_Cod_Spec3                  -- جدول ترميز التصني�
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Str_Cod_Spec3_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Str_Cod_Spec3_UK     UNIQUE      (Name),
-  CONSTRAINT Str_Cod_Spec3_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Str_Cod_Spec3_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Str_Cod_Spec3_UK     UNIQUE      (Name)
 );
 
 Insert into Str_Cod_Spec3 (Id,Name) values (0,'-');
@@ -193,9 +183,7 @@ Create Table Str_Cod_Spec4                  -- جدول ترميز التصني�
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Str_Cod_Spec4_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Str_Cod_Spec4_UK     UNIQUE      (Name),
-  CONSTRAINT Str_Cod_Spec4_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Str_Cod_Spec4_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Str_Cod_Spec4_UK     UNIQUE      (Name)
 );
 
 Insert into Str_Cod_Spec4 (Id,Name) values (0,'-');
@@ -212,9 +200,7 @@ Create Table Str_Cod_Spec5                  -- جدول ترميز التصني�
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Str_Cod_Spec5_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Str_Cod_Spec5_UK     UNIQUE      (Name),
-  CONSTRAINT Str_Cod_Spec5_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Str_Cod_Spec5_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Str_Cod_Spec5_UK     UNIQUE      (Name)
 );
 
 Insert into Str_Cod_Spec5 (Id,Name) values (0,'-');
@@ -231,9 +217,7 @@ Create Table Str_Cod_Loc1                       -- جدول ترميز المو�
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Str_Cod_Loc1_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Str_Cod_Loc1_UK     UNIQUE      (Name),
-  CONSTRAINT Str_Cod_Loc1_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Str_Cod_Loc1_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Str_Cod_Loc1_UK     UNIQUE      (Name)
 );
 
 Insert into Str_Cod_Loc1 (Id,Name) values (0,'-');
@@ -250,9 +234,7 @@ Create Table Str_Cod_Loc2                       -- جدول ترميز المو�
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Str_Cod_Loc2_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Str_Cod_Loc2_UK     UNIQUE      (Name),
-  CONSTRAINT Str_Cod_Loc2_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Str_Cod_Loc2_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Str_Cod_Loc2_UK     UNIQUE      (Name)
 );
 
 Insert into Str_Cod_Loc2 (Id,Name) values (0,'-');
@@ -269,9 +251,7 @@ Create Table Str_Cod_Loc3                       -- جدول ترميز المو�
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT Str_Cod_Loc3_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Str_Cod_Loc3_UK     UNIQUE      (Name),
-  CONSTRAINT Str_Cod_Loc3_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Str_Cod_Loc3_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Str_Cod_Loc3_UK     UNIQUE      (Name)
 );
 
 Insert into Str_Cod_Loc3 (Id,Name) values (0,'-');
@@ -296,16 +276,7 @@ Create Table Str_Item		                            -- دليل المواد
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Str_Item_PK        PRIMARY KEY (Id       ),
   CONSTRAINT Str_Item_Num_Uk    Unique      (Num      ),
-  CONSTRAINT Str_Item_Name_Uk   Unique      (Name     ),
-  CONSTRAINT Str_Item_Unit_FK   Foreign Key (Unit_Id  ) References Cpy_Cod_Unit  (Id),
-  CONSTRAINT Str_Item_Spc1_FK   Foreign Key (Spc1_Id  ) References Str_Cod_Spec1 (Id),
-  CONSTRAINT Str_Item_Spc2_FK   Foreign Key (Spc2_Id  ) References Str_Cod_Spec2 (Id),
-  CONSTRAINT Str_Item_Spc3_FK   Foreign Key (Spc3_Id  ) References Str_Cod_Spec3 (Id),
-  CONSTRAINT Str_Item_Spc4_FK   Foreign Key (Spc4_Id  ) References Str_Cod_Spec4 (Id),
-  CONSTRAINT Str_Item_Spc5_FK   Foreign Key (Spc5_Id  ) References Str_Cod_Spec5 (Id),
-  CONSTRAINT Str_Item_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Str_Item_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Str_Item_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Str_Item_Name_Uk   Unique      (Name     )
 );
 
 CREATE SEQUENCE IF NOT EXISTS Str_Store_Seq
@@ -325,14 +296,7 @@ Create Table Str_Store		                            -- دليل المخازن
   Ins_User    BIGINT, Ins_Date     TIMESTAMP,
   Upd_User    BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT  Str_Store_PK           PRIMARY KEY (Id  ),
-  CONSTRAINT  Str_Store_Uk           Unique      (Name),
-  CONSTRAINT  Str_Store_Cost_Id_FK   Foreign Key (Cost_Id  ) References Acc_Cost      (Id),
-  CONSTRAINT  Str_Store_Acc_Id_FK    Foreign Key (Acc_Id   ) References Acc_Acc       (Id),
-  CONSTRAINT  Str_Store_CstAcc_Id_FK FOREIGN KEY (CstAcc_Id) REFERENCES Acc_Acc       (Id),
-  CONSTRAINT  Str_Store_RevAcc_Id_FK FOREIGN KEY (RevAcc_Id) REFERENCES Acc_Acc       (Id),
-  CONSTRAINT  Str_Store_Status_FK    Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT  Str_Store_Ins_FK       Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Str_Store_Upd_FK       Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  Str_Store_Uk           Unique      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Str_DefAcc_Seq
@@ -349,13 +313,7 @@ Create Table Str_DefAcc		                  -- دليل الحسابات الاف
   Ins_User    BIGINT, Ins_Date     TIMESTAMP,
   Upd_User    BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT  Str_DefAcc_PK            PRIMARY KEY (Id  ),
-  CONSTRAINT  Str_DefAcc_Uk            Unique      (Stor_Id, TrnTyp_Id),
-  CONSTRAINT  Str_DefAcc_Stor_FK       Foreign Key (Stor_Id  ) References Str_Store     (Id),
-  CONSTRAINT  Str_DefAcc_TrnTyp_FK     Foreign Key (TrnTyp_Id) References Str_Cod_TrnTyp(Id),
-  CONSTRAINT  Str_DefAcc_CstAcc_Id_FK  Foreign Key (CstAcc_Id) References Acc_Acc       (Id),
-  CONSTRAINT  Str_DefAcc_RevAcc_Id_FK  Foreign Key (RevAcc_Id) References Acc_Acc       (Id),
-  CONSTRAINT  Str_DefAcc_Ins_FK        Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Str_DefAcc_Upd_FK        Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  Str_DefAcc_Uk            Unique      (Stor_Id, TrnTyp_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Str_SMat_Seq
@@ -378,15 +336,7 @@ Create Table Str_SMat                    -- دليل مواد مخزن
   Ins_User     BIGINT, Ins_Date     TIMESTAMP,
   Upd_User     BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT   Str_SMat_PK         PRIMARY KEY (Id),
-  CONSTRAINT   Str_SMat_Uk         Unique      (Stor_Id,Item_Id),
-  CONSTRAINT   Str_SMat_Stor_FK    Foreign Key (Stor_Id  ) References Str_Store     (Id),
-  CONSTRAINT   Str_SMat_Item_FK    Foreign Key (Item_Id  ) References Str_Item      (Id),
-  CONSTRAINT   Str_SMat_Loc1_FK    Foreign Key (Loc1_Id  ) References Str_Cod_Loc1  (Id),
-  CONSTRAINT   Str_SMat_Loc2_FK    Foreign Key (Loc2_Id  ) References Str_Cod_Loc2  (Id),
-  CONSTRAINT   Str_SMat_Loc3_FK    Foreign Key (Loc3_Id  ) References Str_Cod_Loc3  (Id),
-  CONSTRAINT   Str_SMat_Status_FK  Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT   Str_SMat_Ins_FK     Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT   Str_SMat_Upd_FK     Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT   Str_SMat_Uk         Unique      (Stor_Id,Item_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Str_InMst_Seq
@@ -408,14 +358,7 @@ Create Table Str_InMst		                      -- ترويسة الادخال
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT Str_InMst_PK        PRIMARY KEY (Id),
-  CONSTRAINT Str_InMst_UK        Unique      (Period_Id, Stor_Id, Num),
-  CONSTRAINT Str_InMst_Period_FK Foreign Key (Period_Id) References Cpy_Period (Id),
-  CONSTRAINT Str_InMst_Stor_FK   Foreign Key (Stor_Id  ) References Str_Store  (Id),
-  CONSTRAINT Str_InMst_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc    (Id),
-  CONSTRAINT Str_InMst_Vhr_FK    Foreign Key (Vhr_Id   ) References Acc_Mst    (Id),
-  CONSTRAINT Str_InMst_Doc_FK    Foreign Key (Doc_Id   ) References Str_Cod_Doc(Id),
-  CONSTRAINT Str_InMst_Ins_FK    Foreign Key (Ins_User ) References Cpy_User   (Id),
-  CONSTRAINT Str_InMst_Upd_FK    Foreign Key (Upd_User ) References Cpy_User   (Id)
+  CONSTRAINT Str_InMst_UK        Unique      (Period_Id, Stor_Id, Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Str_InTrn_Seq
@@ -434,11 +377,7 @@ Create Table Str_InTrn			                    -- بنود الادخال
   Rem         VARCHAR(250),			                -- ملاحظات
   Ins_User    BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User    BIGINT,  Upd_Date    TIMESTAMP,
-  CONSTRAINT  Str_InTrn_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Str_InTrn_Mst_FK    Foreign Key (Mst_Id  ) References Str_InMst (Id),
-  CONSTRAINT  Str_InTrn_Item_FK   Foreign Key (Item_Id ) References Str_Item  (Id),
-  CONSTRAINT  Str_InTrn_Ins_FK    Foreign Key (Ins_User) References Cpy_User  (Id),
-  CONSTRAINT  Str_InTrn_Upd_FK    Foreign Key (Upd_User) References Cpy_User  (Id)
+  CONSTRAINT  Str_InTrn_PK        PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Str_OuMst_Seq
@@ -460,14 +399,7 @@ Create Table Str_OuMst		                    -- ترويسة الاخراج
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT Str_OuMst_PK        PRIMARY KEY (Id),
-  CONSTRAINT Str_OuMst_UK        Unique      (Period_Id, Stor_Id, Num),
-  CONSTRAINT Str_OuMst_Period_FK Foreign Key (Period_Id) References Cpy_Period (Id),
-  CONSTRAINT Str_OuMst_Stor_FK   Foreign Key (Stor_Id  ) References Str_Store  (Id),
-  CONSTRAINT Str_OuMst_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc    (Id),
-  CONSTRAINT Str_OuMst_Vhr_FK    Foreign Key (Vhr_Id   ) References Acc_Mst    (Id),
-  CONSTRAINT Str_OuMst_Doc_FK    Foreign Key (Doc_Id   ) References Str_Cod_Doc(Id),
-  CONSTRAINT Str_OuMst_Ins_FK    Foreign Key (Ins_User ) References Cpy_User   (Id),
-  CONSTRAINT Str_OuMst_Upd_FK    Foreign Key (Upd_User ) References Cpy_User   (Id)
+  CONSTRAINT Str_OuMst_UK        Unique      (Period_Id, Stor_Id, Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Str_OuTrn_Seq
@@ -486,11 +418,7 @@ Create Table Str_OuTrn			                    -- بنود الإخراج
   Rem         VARCHAR(250),			                -- ملاحظات
   Ins_User    BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User    BIGINT,  Upd_Date    TIMESTAMP,
-  CONSTRAINT  Str_OuTrn_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Str_OuTrn_Mst_FK    Foreign Key (Mst_Id  ) References Str_OuMst (Id),
-  CONSTRAINT  Str_OuTrn_Item_FK   Foreign Key (Item_Id ) References Str_Item  (Id),
-  CONSTRAINT  Str_OuTrn_Ins_FK    Foreign Key (Ins_User) References Cpy_User  (Id),
-  CONSTRAINT  Str_OuTrn_Upd_FK    Foreign Key (Upd_User) References Cpy_User  (Id)
+  CONSTRAINT  Str_OuTrn_PK        PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Str_TrMst_Seq
@@ -512,14 +440,7 @@ Create Table Str_TrMst		                  -- ترويسة الترحيل
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT Str_TrMst_PK        PRIMARY KEY (Id),
-  CONSTRAINT Str_TrMst_UK        Unique      (Period_Id, StorF_Id, Num),
-  CONSTRAINT Str_TrMst_WPer_FK   Foreign Key (Period_Id) References Cpy_Period (Id),
-  CONSTRAINT Str_TrMst_StorF_FK  Foreign Key (StorF_Id ) References Str_Store  (Id),
-  CONSTRAINT Str_TrMst_StorT_FK  Foreign Key (StorT_Id ) References Str_Store  (Id),
-  CONSTRAINT Str_TrMst_Vhr_FK    Foreign Key (Vhr_Id   ) References Acc_Mst    (Id),
-  CONSTRAINT Str_TrMst_Doc_FK    Foreign Key (Doc_Id   ) References Str_Cod_Doc(Id),
-  CONSTRAINT Str_TrMst_Ins_FK    Foreign Key (Ins_User ) References Cpy_User   (Id),
-  CONSTRAINT Str_TrMst_Upd_FK    Foreign Key (Upd_User ) References Cpy_User   (Id)
+  CONSTRAINT Str_TrMst_UK        Unique      (Period_Id, StorF_Id, Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Str_TrTrn_Seq
@@ -540,13 +461,7 @@ Create Table Str_TrTrn			                  -- بنود الترحيل
   Rem         VARCHAR(250),			                -- ملاحظات
   Ins_User    BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User    BIGINT,  Upd_Date    TIMESTAMP,
-  CONSTRAINT  Str_TrTrn_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Str_TrTrn_Mst_FK    Foreign Key (Mst_Id  ) References Str_TrMst (Id),
-  CONSTRAINT  Str_TrTrn_Item_FK   Foreign Key (Item_Id ) References Str_Item  (Id),
-  CONSTRAINT  Str_TrTrn_SMatF_FK  Foreign Key (SMat_FId) References Str_SMat  (Id),
-  CONSTRAINT  Str_TrTrn_SMatT_FK  Foreign Key (SMat_TId) References Str_SMat  (Id),
-  CONSTRAINT  Str_TrTrn_Ins_FK    Foreign Key (Ins_User) References Cpy_User  (Id),
-  CONSTRAINT  Str_TrTrn_Upd_FK    Foreign Key (Upd_User) References Cpy_User  (Id)
+  CONSTRAINT  Str_TrTrn_PK        PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Str_ActMst_Seq
@@ -567,12 +482,7 @@ Create Table Str_ActMst		                    -- ترويسة الجرد الفع
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT  Str_ActMst_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Str_ActMst_UK        Unique      (Period_Id, Stor_Id, Num),
-  CONSTRAINT  Str_ActMst_WPer_FK   Foreign Key (Period_Id) References Cpy_Period (Id),
-  CONSTRAINT  Str_ActMst_Stor_FK   Foreign Key (Stor_Id  ) References Str_Store  (Id),
-  CONSTRAINT  Str_ActMst_Doc_FK    Foreign Key (Doc_Id   ) References Str_Cod_Doc(Id),
-  CONSTRAINT  Str_ActMst_Ins_FK    Foreign Key (Ins_User ) References Cpy_User   (Id),
-  CONSTRAINT  Str_ActMst_Upd_FK    Foreign Key (Upd_User ) References Cpy_User   (Id)
+  CONSTRAINT  Str_ActMst_UK        Unique      (Period_Id, Stor_Id, Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Str_ActTrn_Seq
@@ -588,9 +498,5 @@ Create Table Str_ActTrn			                    -- بنود الجرد الفعل�
   Rem         VARCHAR(250),			                -- ملاحظات
   Ins_User    BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User    BIGINT,  Upd_Date    TIMESTAMP,
-  CONSTRAINT  Str_ActTrn_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Str_ActTrn_Mst_FK    Foreign Key (Mst_Id  ) References Str_ActMst(Id),
-  CONSTRAINT  Str_ActTrn_Item_FK   Foreign Key (Item_Id ) References Str_Item  (Id),
-  CONSTRAINT  Str_ActTrn_Ins_FK    Foreign Key (Ins_User) References Cpy_User  (Id),
-  CONSTRAINT  Str_ActTrn_Upd_FK    Foreign Key (Upd_User) References Cpy_User  (Id)
+  CONSTRAINT  Str_ActTrn_PK        PRIMARY KEY (Id)
 );

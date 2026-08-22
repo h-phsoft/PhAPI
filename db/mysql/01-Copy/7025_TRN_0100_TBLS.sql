@@ -25,10 +25,7 @@ Create Table Trn_Cod_Res                     -- ترميز حالة الحجز
   Ins_User   BIGINT,      Ins_Date DATETIME,
   Upd_User   BIGINT,      Upd_Date DATETIME,
   CONSTRAINT Trn_Cod_Res_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Trn_Cod_Res_UK        UNIQUE      (Name),
-  CONSTRAINT Trn_Cod_Res_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Trn_Cod_Res_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Trn_Cod_Res_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Trn_Cod_Res_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Trn_Cod_Res (Id,Name) values (0,'-');
@@ -48,10 +45,7 @@ Create Table Trn_Cod_For                             -- ترميز الرسوم 
   Ins_User   BIGINT,      Ins_Date DATETIME,
   Upd_User   BIGINT,      Upd_Date DATETIME,
   CONSTRAINT Trn_Cod_For_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Trn_Cod_For_UK        UNIQUE      (Name),
-  CONSTRAINT Trn_Cod_For_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Trn_Cod_For_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Trn_Cod_For_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Trn_Cod_For_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Trn_Cod_For (Id,Name) values (1,'الكل');
@@ -69,10 +63,7 @@ Create Table Trn_Cod_PType                         -- ترميز نوع الدف
   Ins_User   BIGINT,      Ins_Date DATETIME,
   Upd_User   BIGINT,      Upd_Date DATETIME,
   CONSTRAINT Trn_Cod_PType_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Trn_Cod_PType_UK        UNIQUE      (Name),
-  CONSTRAINT Trn_Cod_PType_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Trn_Cod_PType_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Trn_Cod_PType_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Trn_Cod_PType_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Trn_Cod_PType (Id,Name) values (1,'رسم');
@@ -88,10 +79,7 @@ Create Table Trn_Cod_Type                            -- ترميز أنواع ا
   Ins_User   BIGINT,      Ins_Date DATETIME,
   Upd_User   BIGINT,      Upd_Date DATETIME,
   CONSTRAINT Trn_Cod_Type_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Trn_Cod_Type_UK        UNIQUE      (Name),
-  CONSTRAINT Trn_Cod_Type_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Trn_Cod_Type_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Trn_Cod_Type_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Trn_Cod_Type_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Trn_Cod_Type (Id,Name) values (1,'ثابت');
@@ -106,10 +94,7 @@ Create Table Trn_Cod_Loc                        -- ترميز المواقع
   Ins_User   BIGINT,      Ins_Date DATETIME,
   Upd_User   BIGINT,      Upd_Date DATETIME,
   CONSTRAINT Trn_Cod_Loc_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Trn_Cod_Loc_UK        UNIQUE      (Name),
-  CONSTRAINT Trn_Cod_Loc_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Trn_Cod_Loc_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Trn_Cod_Loc_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Trn_Cod_Loc_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Trn_Cod_Loc (Id, Name) VALUES (0, '-');
@@ -124,12 +109,7 @@ CREATE TABLE Trn_Bln                              -- القبان
   Ins_User   BIGINT,      Ins_Date DATETIME,
   Upd_User   BIGINT,      Upd_Date DATETIME,
   CONSTRAINT Trn_Bln_PK         PRIMARY KEY (Id ),
-  CONSTRAINT Trn_Bln_UK         UNIQUE      (Name),
-  CONSTRAINT Trn_Bln_Status_FK  Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Trn_Bln_Typ_FK     Foreign Key (Type_Id  ) References Trn_Cod_Type  (Id),
-  CONSTRAINT Trn_Bln_Loc_FK     Foreign Key (Loc_Id   ) References Trn_Cod_Loc   (Id),
-  CONSTRAINT Trn_Bln_Loc_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Trn_Bln_Loc_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Trn_Bln_UK         UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Trn_Bln (Id, Name) VALUES (0, '-');
@@ -142,12 +122,7 @@ Create Table Trn_Bln_User                         -- تسجيل بيانات ت�
   Rem         VARCHAR(100),                     -- ملاحظات
   Ins_User    BIGINT,      Ins_Date DATETIME,
   Upd_User    BIGINT,      Upd_Date DATETIME,
-  CONSTRAINT  Trn_Bln_User_PK         PRIMARY KEY (Id),
-  CONSTRAINT  Trn_Bln_User_Mst_FK     Foreign Key (Mst_Id   ) References Trn_Bln       (Id),
-  CONSTRAINT  Trn_Bln_User_FK         Foreign Key (User_Id  ) References Cpy_User      (Id),
-  CONSTRAINT  Trn_Bln_User_Status_FK  Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT  Trn_Bln_User_Ins_FK     Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Trn_Bln_User_Upd_FK     Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  Trn_Bln_User_PK         PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Trn_ChLoc                      -- تغيير المواقع
@@ -159,12 +134,7 @@ Create Table Trn_ChLoc                      -- تغيير المواقع
   Rem        VARCHAR(100),                      -- ملاحظات
   Ins_User   BIGINT,      Ins_Date DATETIME,
   Upd_User   BIGINT,      Upd_Date DATETIME,
-  CONSTRAINT Trn_ChLoc_PK      PRIMARY KEY (Id),
-  CONSTRAINT Trn_ChLoc_Bln_FK  Foreign Key (Bln_Id  ) References Trn_Bln    (Id),
-  CONSTRAINT Trn_ChLoc_OLoc_FK Foreign Key (OLoc_Id ) References Trn_Cod_Loc(Id),  
-  CONSTRAINT Trn_ChLoc_NLoc_FK Foreign Key (NLoc_Id ) References Trn_Cod_Loc(Id),
-  CONSTRAINT Trn_ChLoc_Ins_FK  Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT Trn_ChLoc_Upd_FK  Foreign Key (Upd_User) References Cpy_User   (Id)
+  CONSTRAINT Trn_ChLoc_PK      PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Trn_Cod_Model                           -- موديل
@@ -178,10 +148,7 @@ Create Table Trn_Cod_Model                           -- موديل
   Ins_User     BIGINT,      Ins_Date DATETIME,
   Upd_User     BIGINT,      Upd_Date DATETIME,
   CONSTRAINT   Trn_Cod_Model_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT   Trn_Cod_Model_UK        UNIQUE      (Name),
-  CONSTRAINT   Trn_Cod_Model_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT   Trn_Cod_Model_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT   Trn_Cod_Model_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT   Trn_Cod_Model_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Trn_Cod_Model (Id, Name) VALUES (0, '-');
@@ -195,10 +162,7 @@ Create Table Trn_Cod_Model_Detail                   -- موديل
   Rem          VARCHAR(100), 
   Ins_User     BIGINT,      Ins_Date DATETIME,
   Upd_User     BIGINT,      Upd_Date DATETIME,
-  CONSTRAINT   Trn_Cod_Model_Detail_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT   Trn_Cod_Model_Detail_Status_FK Foreign Key (Model_Id ) References Trn_Cod_Model (Id),
-  CONSTRAINT   Trn_Cod_Model_Detail_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT   Trn_Cod_Model_Detail_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT   Trn_Cod_Model_Detail_PK        PRIMARY KEY (Id  )
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Trn_Fee                                 -- دليل الرسوم
@@ -212,12 +176,7 @@ Create Table Trn_Fee                                 -- دليل الرسوم
   Ins_User   BIGINT,      Ins_Date DATETIME,
   Upd_User   BIGINT,      Upd_Date DATETIME,
   CONSTRAINT Trn_Fee_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Trn_Fee_Name_UK   UNIQUE      (Name),
-  CONSTRAINT Trn_Fee_Typ_FK    Foreign Key (Type_Id  ) References Phs_Cod_Amttype(Id),
-  CONSTRAINT Trn_Fee_Fr_FK     Foreign Key (For_Id   ) References Trn_Cod_For    (Id),
-  CONSTRAINT Trn_Fee_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Trn_Fee_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Trn_Fee_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Trn_Fee_Name_UK   UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Trn_Penalty                            -- دليل المخالفات
@@ -231,12 +190,7 @@ Create Table Trn_Penalty                            -- دليل المخالفا
   Ins_User   BIGINT,      Ins_Date DATETIME,
   Upd_User   BIGINT,      Upd_Date DATETIME,
   CONSTRAINT Trn_Penalty_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Trn_Penalty_Name_UK   UNIQUE      (Name),
-  CONSTRAINT Trn_Penalty_Typ_FK    Foreign Key (Type_Id  ) References Phs_Cod_Amttype(Id),
-  CONSTRAINT Trn_Penalty_Fr_FK     Foreign Key (For_Id   ) References Trn_Cod_For    (Id),
-  CONSTRAINT Trn_Penalty_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status (Id),
-  CONSTRAINT Trn_Penalty_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Trn_Penalty_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Trn_Penalty_Name_UK   UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Trn_Bln_Mst                       -- تسجيل بيانات توزين
@@ -251,7 +205,7 @@ Create Table Trn_Bln_Mst                       -- تسجيل بيانات توز
   Net        MEDIUMINT Default 0,                     -- الوزن الصافي
   Weight     MEDIUMINT Default 0,                     -- الوزن الكلي
   OverWeight MEDIUMINT Default 0,                     -- الوزن الزائد
-  bDate      DATETIME Default NOW() NOT NULL,           -- تاريخ التوزين
+  bDate      DATETIME DEFAULT (NOW()) NOT NULL,           -- تاريخ التوزين
   PNum       VARCHAR(30) NOT NULL,              -- رقم اللوحة
   RNum       VARCHAR(30),                       -- رقم الحجز
   Doc_Num    VARCHAR(30),                       -- رقم المستند
@@ -265,12 +219,7 @@ Create Table Trn_Bln_Mst                       -- تسجيل بيانات توز
   Ins_User   BIGINT,      Ins_Date DATETIME,
   Upd_User   BIGINT,      Upd_Date DATETIME,
   CONSTRAINT Trn_Bln_Mst_PK        PRIMARY KEY (Id ),
-  CONSTRAINT Trn_Bln_Mst_Num_UK    UNIQUE      (Num),
-  CONSTRAINT Trn_Bln_Mst_Bln_FK    Foreign Key (Bln_Id  ) References Trn_Bln      (Id),
-  CONSTRAINT Trn_Bln_Mst_Model_FK  Foreign Key (Model_Id) References Trn_Cod_Model(Id),
-  CONSTRAINT Trn_Bln_Mst_Rec_FK    Foreign Key (Res_Id  ) References Trn_Cod_Res  (Id),
-  CONSTRAINT Trn_Bln_Mst_Ins_FK    Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Trn_Bln_Mst_Upd_FK    Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Trn_Bln_Mst_Num_UK    UNIQUE      (Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Trn_Bln_Trn                  -- تسجيل بيانات توزين
@@ -286,10 +235,7 @@ Create Table Trn_Bln_Trn                  -- تسجيل بيانات توزين
   Rem         VARCHAR(100),                     -- ملاحظات
   Ins_User    BIGINT,      Ins_Date DATETIME,
   Upd_User    BIGINT,      Upd_Date DATETIME,
-  CONSTRAINT  Trn_Bln_Trn_PK     PRIMARY KEY (Id),
-  CONSTRAINT  Trn_Bln_Trn_Mst_FK Foreign Key (Mst_Id  ) References Trn_Bln_Mst(Id),
-  CONSTRAINT  Trn_Bln_Trn_Ins_FK Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT  Trn_Bln_Trn_Upd_FK Foreign Key (Upd_User) References Cpy_User   (Id)
+  CONSTRAINT  Trn_Bln_Trn_PK     PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Trn_Bln_Fee                         -- تسجيل رسوم توزين
@@ -300,11 +246,7 @@ Create Table Trn_Bln_Fee                         -- تسجيل رسوم توزي
   Rem         VARCHAR(100),                     -- ملاحظات
   Ins_User    BIGINT,      Ins_Date DATETIME,
   Upd_User    BIGINT,      Upd_Date DATETIME,
-  CONSTRAINT  Trn_Bln_Fee_PK     PRIMARY KEY (Id),
-  CONSTRAINT  Trn_Bln_Fee_Mst_FK Foreign Key (Mst_Id  ) References Trn_Bln_Mst(Id),
-  CONSTRAINT  Trn_Bln_Fee_Fee_FK Foreign Key (Fee_Id  ) References Trn_Fee    (Id),
-  CONSTRAINT  Trn_Bln_Fee_Ins_FK Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT  Trn_Bln_Fee_Upd_FK Foreign Key (Upd_User) References Cpy_User   (Id)
+  CONSTRAINT  Trn_Bln_Fee_PK     PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Trn_Bln_Penalty                    -- تسجيل رسوم توزين
@@ -318,28 +260,18 @@ Create Table Trn_Bln_Penalty                    -- تسجيل رسوم توزي�
   Rem        VARCHAR(100),                      -- ملاحظات
   Ins_User   BIGINT,      Ins_Date DATETIME,
   Upd_User   BIGINT,      Upd_Date DATETIME,
-  CONSTRAINT Trn_Bln_Penalty_PK         PRIMARY KEY (Id),
-  CONSTRAINT Trn_Bln_Penalty_Mst_FK     Foreign Key (Mst_Id    ) References Trn_Bln_Mst  (Id),
-  CONSTRAINT Trn_Bln_Penalty_Fee_FK     Foreign Key (Fee_Id    ) References Trn_Fee      (Id),
-  CONSTRAINT Trn_Bln_Penalty_Penalty_FK Foreign Key (Penalty_Id) References Trn_Penalty  (Id),
-  CONSTRAINT Trn_Bln_Penalty_PType_FK   Foreign Key (PType_Id  ) References Trn_Cod_PType(Id),
-  CONSTRAINT Trn_Bln_Penalty_For_FK     Foreign Key (For_Id    ) References Trn_Cod_For  (Id),
-  CONSTRAINT Trn_Bln_Penalty_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User     (Id),
-  CONSTRAINT Trn_Bln_Penalty_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User     (Id)
+  CONSTRAINT Trn_Bln_Penalty_PK         PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Trn_Leak_car                           -- السيارات المتسربة
 ( Id         BIGINT NOT NULL AUTO_INCREMENT,                      -- مفتاح رئيسي
   Bln_Id     BIGINT NOT NULL,                      -- القبان
   PNum       VARCHAR(15) NOT NULL,              -- رقم اللوحة
-  dDate      DATETIME Default NOW() NOT NULL,           -- تاريخ التوزين
+  dDate      DATETIME DEFAULT (NOW()) NOT NULL,           -- تاريخ التوزين
   Rem        VARCHAR(100),                      -- ملاحظات
   Ins_User   BIGINT,      Ins_Date DATETIME,
   Upd_User   BIGINT,      Upd_Date DATETIME,
-  CONSTRAINT Trn_Leak_car_PK     PRIMARY KEY (Id),
-  CONSTRAINT Trn_Leak_car_Bln_FK Foreign Key (Bln_Id  ) References Trn_Bln (Id),
-  CONSTRAINT Trn_Leak_car_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Trn_Leak_car_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Trn_Leak_car_PK     PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- TODO(port): other has no automatic equivalent (source line 381).

@@ -50,30 +50,7 @@ Create Table Fre_MInqry                                -- الطلبات
   Ins_User      BIGINT, Ins_Date DATETIME,
   Upd_User      BIGINT, Upd_Date DATETIME,
   CONSTRAINT Fre_MInqry_PK              Primary Key (Id   ),
-  CONSTRAINT Fre_MInqry_UK              Unique      (Period_Id, Num),
-  CONSTRAINT Fre_MInqry_Period_FK       Foreign Key (Period_Id   ) References Cpy_Period       (Id),
-  CONSTRAINT Fre_MInqry_Dept_FK         Foreign Key (Dept_Id     ) References Cpy_Dept         (Id),
-  CONSTRAINT Fre_MInqry_Unit_FK         Foreign Key (Unit_Id     ) References Cpy_Unit         (Id),
-  CONSTRAINT Fre_MInqry_Oper_FK         Foreign Key (Oper_Id     ) References Cpy_Oper         (Id),
-  CONSTRAINT Fre_MInqry_Cont_FK         Foreign Key (Cont_Id     ) References Mng_Cont         (Id),
-  CONSTRAINT Fre_MInqry_User_FK         Foreign Key (User_Id     ) References Cpy_User         (Id),
-  CONSTRAINT Fre_MInqry_Freight_FK      Foreign Key (Freight_Id  ) References Phs_Cod_YesNo    (Id),
-  CONSTRAINT Fre_MInqry_Transport_FK    Foreign Key (Transport_Id) References Phs_Cod_YesNo    (Id),
-  CONSTRAINT Fre_MInqry_Clearance_FK    Foreign Key (Clearance_Id) References Phs_Cod_YesNo    (Id),
-  CONSTRAINT Fre_MInqry_ITerm_FK        Foreign Key (ITerm_Id    ) References Fre_Cod_Inco_Term(Id),
-  CONSTRAINT Fre_MInqry_PTerm_FK        Foreign Key (PTerm_Id    ) References Fre_Cod_Pay_Term (Id),
-  CONSTRAINT Fre_MInqry_Orig_FK         Foreign Key (OCntry_Id   ) References Fre_Cod_Cntry    (Id),
-  CONSTRAINT Fre_MInqry_OCity_FK        Foreign Key (OCity_Id    ) References Fre_Cod_City     (Id),
-  CONSTRAINT Fre_MInqry_OPort_FK        Foreign Key (OPort_Id    ) References Fre_Cod_City     (Id),
-  CONSTRAINT Fre_MInqry_OSPort_FK       Foreign Key (OSPort_Id   ) References Fre_Cod_SeaPort  (Id),
-  CONSTRAINT Fre_MInqry_OAPort_FK       Foreign Key (OAPort_Id   ) References Fre_Cod_AirPort  (Id),
-  CONSTRAINT Fre_MInqry_Dest_FK         Foreign Key (DCntry_Id   ) References Fre_Cod_Cntry    (Id),
-  CONSTRAINT Fre_MInqry_DCity_FK        Foreign Key (DCity_Id    ) References Fre_Cod_City     (Id),
-  CONSTRAINT Fre_MInqry_DPort_FK        Foreign Key (DPort_Id    ) References Fre_Cod_City     (Id),
-  CONSTRAINT Fre_MInqry_DSPort_FK       Foreign Key (DSPort_Id   ) References Fre_Cod_SeaPort  (Id),
-  CONSTRAINT Fre_MInqry_DAPort_FK       Foreign Key (DAPort_Id   ) References Fre_Cod_AirPort  (Id),
-  CONSTRAINT Fre_MInqry_Ins_FK          Foreign Key (Ins_User    ) References Cpy_User         (Id),
-  CONSTRAINT Fre_MInqry_Upd_FK          Foreign Key (Upd_User    ) References Cpy_User         (Id)
+  CONSTRAINT Fre_MInqry_UK              Unique      (Period_Id, Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fre_TInqry                                -- بنود الطلبات
@@ -98,12 +75,7 @@ Create Table Fre_TInqry                                -- بنود الطلبا�
   Rem        VARCHAR(250),                           -- ملاحظات
   Ins_User   BIGINT, Ins_Date DATETIME,
   Upd_User   BIGINT, Upd_Date DATETIME,
-  CONSTRAINT Fre_TInqry_PK       Primary Key (Id  ),
-  CONSTRAINT Fre_TInqry_FK       Foreign Key (Inqry_Id) References Fre_MInqry   (Id),
-  CONSTRAINT Fre_TInqry_nComd_FK Foreign Key (Comod_Id) References Fre_Cod_Comod(Id),
-  CONSTRAINT Fre_TInqry_Curn_FK  Foreign Key (Curn_Id ) References Mng_Curn     (Id),
-  CONSTRAINT Fre_TInqry_Ins_FK   Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Fre_TInqry_Upd_FK   Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Fre_TInqry_PK       Primary Key (Id  )
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fre_PInqry                                -- خطط الطلبات
@@ -152,19 +124,7 @@ Create Table Fre_PInqry                                -- خطط الطلبات
   Rem         VARCHAR(250),                          -- ملاحظات
   Ins_User    BIGINT, Ins_Date DATETIME,
   Upd_User    BIGINT, Upd_Date DATETIME,
-  CONSTRAINT  Fre_PInqry_PK       Primary Key (Id  ) ,
-  CONSTRAINT  Fre_PInqry_Inqry_FK Foreign Key (Inqry_Id ) References Fre_MInqry        (Id),
-  CONSTRAINT  Fre_PInqry_Orig_FK  Foreign Key (OCntry_Id) References Fre_Cod_Cntry     (Id),
-  CONSTRAINT  Fre_PInqry_Dest_FK  Foreign Key (DCntry_Id) References Fre_Cod_Cntry     (Id),
-  CONSTRAINT  Fre_PInqry_OCity_FK Foreign Key (OCity_Id ) References Fre_Cod_City      (Id),
-  CONSTRAINT  Fre_PInqry_DCity_FK Foreign Key (DCity_Id ) References Fre_Cod_City      (Id),
-  CONSTRAINT  Fre_PInqry_Driv_FK  Foreign Key (Driv_Id  ) References Fre_Driv          (Id),
-  CONSTRAINT  Fre_PInqry_Truk_FK  Foreign Key (Truk_Id  ) References Fre_Truk          (Id),
-  CONSTRAINT  Fre_PInqry_Track_FK Foreign Key (TTYpe_Id ) References Fre_Cod_Truck_Type(Id),
-  CONSTRAINT  Fre_PInqry_Pack_FK  Foreign Key (Pack_Id  ) References Fre_Cod_Pack      (Id),
-  CONSTRAINT  Fre_PInqry_Comd_FK  Foreign Key (Comod_Id ) References Fre_Cod_Comod     (Id),
-  CONSTRAINT  Fre_PInqry_Ins_FK   Foreign Key (Ins_User ) References Cpy_User          (Id),
-  CONSTRAINT  Fre_PInqry_Upd_FK   Foreign Key (Upd_User ) References Cpy_User          (Id)
+  CONSTRAINT  Fre_PInqry_PK       Primary Key (Id  ) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fre_IDBCR                                -- خدمات عرض
@@ -185,16 +145,7 @@ Create Table Fre_IDBCR                                -- خدمات عرض
   Rem         VARCHAR(250),                          -- البيان
   Ins_User    BIGINT,  Ins_Date  DATETIME,
   Upd_User    BIGINT,  Upd_Date  DATETIME,
-  CONSTRAINT  Fre_IDBCR_PK       PRIMARY KEY (Id),
-  CONSTRAINT  Fre_IDBCR_Inqry_FK Foreign Key (Inqry_Id) References Fre_MInqry  (Id),
-  CONSTRAINT  Fre_IDBCR_Cont_FK  Foreign Key (Cont_Id ) References Mng_Cont    (Id),
-  CONSTRAINT  Fre_IDBCR_Serv_FK  Foreign Key (Serv_Id ) References Mng_Serv    (Id),
-  CONSTRAINT  Fre_IDBCR_Curn_FK  Foreign Key (Curn_Id ) References Mng_Curn    (Id),
-  CONSTRAINT  Fre_IDBCR_Item_FK  Foreign Key (Item_Id ) References Stor_Item   (Id),
-  CONSTRAINT  Fre_IDBCR_Unit_FK  Foreign Key (Unit_Id ) References Cpy_Cod_Unit(Id),
-  CONSTRAINT  Fre_IDBCR_LOC_FK   Foreign Key (Loc_Id  ) References Fre_Cod_Loc (Id),
-  CONSTRAINT  Fre_IDBCR_Ins_FK   Foreign Key (Ins_User) References Cpy_User    (Id),
-  CONSTRAINT  Fre_IDBCR_Upd_FK   Foreign Key (Upd_User) References Cpy_User    (Id)
+  CONSTRAINT  Fre_IDBCR_PK       PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fre_MOffer                                   -- العروض
@@ -255,33 +206,7 @@ Create Table Fre_MOffer                                   -- العروض
   Ins_User      BIGINT, Ins_Date DATETIME,
   Upd_User      BIGINT, Upd_Date DATETIME,
   CONSTRAINT    Fre_MOffer_PK              Primary Key (Id),
-  CONSTRAINT    Fre_MOffer_UK              Unique      (Period_Id, Dept_Id, Num),
-  CONSTRAINT    Fre_MOffer_WPer_FK         Foreign Key (Period_Id    ) References Cpy_Period          (Id),
-  CONSTRAINT    Fre_MOffer_Dept_FK         Foreign Key (Dept_Id      ) References Cpy_Dept            (Id),
-  CONSTRAINT    Fre_MOffer_Unit_FK         Foreign Key (Unit_Id      ) References Cpy_Unit            (Id),
-  CONSTRAINT    Fre_MOffer_Oper_FK         Foreign Key (Oper_Id      ) References Cpy_Oper            (Id),
-  CONSTRAINT    Fre_MOffer_Inqry_FK        Foreign Key (Inqry_Id     ) References Fre_MInqry          (Id),
-  CONSTRAINT    Fre_MOffer_Cont_FK         Foreign Key (Cont_Id      ) References Mng_Cont            (Id),
-  CONSTRAINT    Fre_MOffer_Status_FK       Foreign Key (Status_Id    ) References Fre_Cod_Approve     (Id),
-  CONSTRAINT    Fre_MOffer_StatusType_FK   Foreign Key (StatusType_Id) References Fre_Cod_Status_Type (Id),
-  CONSTRAINT    Fre_MOffer_ITerm_FK        Foreign Key (ITerm_Id     ) References Fre_Cod_Inco_Term   (Id),
-  CONSTRAINT    Fre_MOffer_PTerm_FK        Foreign Key (PTerm_Id     ) References Fre_Cod_Pay_Term    (Id),
-  CONSTRAINT    Fre_MOffer_OCntry_FK       Foreign Key (OCntry_Id    ) References Fre_Cod_Cntry       (Id),
-  CONSTRAINT    Fre_MOffer_OCity_FK        Foreign Key (OCity_Id     ) References Fre_Cod_City        (Id),
-  CONSTRAINT    Fre_MOffer_OPort_FK        Foreign Key (OPort_Id     ) References Fre_Cod_City        (Id),
-  CONSTRAINT    Fre_MOffer_OSPort_FK       Foreign Key (OSPort_Id    ) References Fre_Cod_SeaPort     (Id),
-  CONSTRAINT    Fre_MOffer_OAPort_FK       Foreign Key (OAPort_Id    ) References Fre_Cod_AirPort     (Id),
-  CONSTRAINT    Fre_MOffer_DCntry_FK       Foreign Key (DCntry_Id    ) References Fre_Cod_Cntry       (Id),
-  CONSTRAINT    Fre_MOffer_DCity_FK        Foreign Key (DCity_Id     ) References Fre_Cod_City        (Id),
-  CONSTRAINT    Fre_MOffer_DPort_FK        Foreign Key (DPort_Id     ) References Fre_Cod_City        (Id),
-  CONSTRAINT    Fre_MOffer_DSPort_FK       Foreign Key (DSPort_Id    ) References Fre_Cod_SeaPort     (Id),
-  CONSTRAINT    Fre_MOffer_DAPort_FK       Foreign Key (DAPort_Id    ) References Fre_Cod_AirPort     (Id),
-  CONSTRAINT    Fre_MOffer_Curn_FK         Foreign Key (Curn_Id      ) References Mng_Curn            (Id),
-  CONSTRAINT    Fre_MOffer_Freight_FK      Foreign Key (Freight_Id   ) References Phs_Cod_YesNo       (Id),
-  CONSTRAINT    Fre_MOffer_Transport_FK    Foreign Key (Transport_Id ) References Phs_Cod_YesNo       (Id),
-  CONSTRAINT    Fre_MOffer_Clearance_FK    Foreign Key (Clearance_Id ) References Phs_Cod_YesNo       (Id),
-  CONSTRAINT    Fre_MOffer_Ins_FK          Foreign Key (Ins_User     ) References Cpy_User            (Id),
-  CONSTRAINT    Fre_MOffer_Upd_FK          Foreign Key (Upd_User     ) References Cpy_User            (Id)
+  CONSTRAINT    Fre_MOffer_UK              Unique      (Period_Id, Dept_Id, Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fre_TOffer                         -- بنود العرض
@@ -308,14 +233,7 @@ Create Table Fre_TOffer                         -- بنود العرض
   TRem        VARCHAR(250),                -- ملاحظات
   Ins_User    BIGINT, Ins_Date DATETIME,
   Upd_User    BIGINT, Upd_Date DATETIME,
-  CONSTRAINT  Fre_TOfr_PK       Primary Key (Id),
-  CONSTRAINT  Fre_TOfr_FK       Foreign Key (Ofer_Id   ) References Fre_MOffer   (Id),
-  CONSTRAINT  Fre_TOfr_nComd_FK Foreign Key (Comod_Id  ) References Fre_Cod_Comod(Id),
-  CONSTRAINT  Fre_TOfr_Serv_FK  Foreign Key (Serv_Id   ) References Mng_Serv     (Id),
-  CONSTRAINT  Fre_TOfr_Curn_FK  Foreign Key (Curn_Id   ) References Mng_Curn     (Id),
-  CONSTRAINT  Fre_TOfr_Unit_FK  Foreign Key (Unit_Id   ) References Cpy_Cod_Unit (Id),
-  CONSTRAINT  Fre_TOfr_Ins_FK   Foreign Key (Ins_User  ) References Cpy_User     (Id),
-  CONSTRAINT  Fre_TOfr_Upd_FK   Foreign Key (Upd_User  ) References Cpy_User     (Id)
+  CONSTRAINT  Fre_TOfr_PK       Primary Key (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fre_ODBCR                                -- خدمات عرض
@@ -336,16 +254,7 @@ Create Table Fre_ODBCR                                -- خدمات عرض
   Rem         VARCHAR(250),                          -- البيان
   Ins_User    BIGINT,  Ins_Date  DATETIME,
   Upd_User    BIGINT,  Upd_Date  DATETIME,
-  CONSTRAINT  Fre_ODBCR_PK       PRIMARY KEY (Id),
-  CONSTRAINT  Fre_ODBCR_Ofer_FK  Foreign Key (Ofer_Id ) References Fre_MOffer  (Id),
-  CONSTRAINT  Fre_ODBCR_Cont_FK  Foreign Key (Cont_Id ) References Mng_Cont    (Id),
-  CONSTRAINT  Fre_ODBCR_Serv_FK  Foreign Key (Serv_Id ) References Mng_Serv    (Id),
-  CONSTRAINT  Fre_ODBCR_Curn_FK  Foreign Key (Curn_Id ) References Mng_Curn    (Id),
-  CONSTRAINT  Fre_ODBCR_Item_FK  Foreign Key (Item_Id ) References Stor_Item   (Id),
-  CONSTRAINT  Fre_ODBCR_Unit_FK  Foreign Key (Unit_Id ) References Cpy_Cod_Unit(Id),
-  CONSTRAINT  Fre_ODBCR_LOC_FK   Foreign Key (Loc_Id  ) References Fre_Cod_Loc (Id),
-  CONSTRAINT  Fre_ODBCR_Ins_FK   Foreign Key (Ins_User) References Cpy_User    (Id),
-  CONSTRAINT  Fre_ODBCR_Upd_FK   Foreign Key (Upd_User) References Cpy_User    (Id)
+  CONSTRAINT  Fre_ODBCR_PK       PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- TODO(port): other has no automatic equivalent (source line 371).

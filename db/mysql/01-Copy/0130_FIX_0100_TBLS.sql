@@ -27,9 +27,7 @@ Create Table Fix_Cod_Spec1                  -- جدول ترميز مواصفا�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fix_Cod_Spec1_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fix_Cod_Spec1_UK     UNIQUE      (Name),
-  CONSTRAINT Fix_Cod_Spec1_Ins_FK Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Fix_Cod_Spec1_Upd_FK Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Fix_Cod_Spec1_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Fix_Cod_Spec1 (Id,Name) values (0,'-');
@@ -42,9 +40,7 @@ Create Table Fix_Cod_Spec2                  -- جدول ترميز مواصفا�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fix_Cod_Spec2_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fix_Cod_Spec2_UK     UNIQUE      (Name),
-  CONSTRAINT Fix_Cod_Spec2_Ins_FK Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Fix_Cod_Spec2_Upd_FK Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Fix_Cod_Spec2_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Fix_Cod_Spec2 (Id,Name) values (0,'-');
@@ -57,9 +53,7 @@ Create Table Fix_Cod_Spec3                  -- جدول ترميز مواصفا�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fix_Cod_Spec3_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fix_Cod_Spec3_UK     UNIQUE      (Name),
-  CONSTRAINT Fix_Cod_Spec3_Ins_FK Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Fix_Cod_Spec3_Upd_FK Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Fix_Cod_Spec3_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Fix_Cod_Spec3 (Id,Name) values (0,'-');
@@ -72,9 +66,7 @@ Create Table Fix_Cod_Spec4                  -- جدول ترميز مواصفا�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fix_Cod_Spec4_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fix_Cod_Spec4_UK     UNIQUE      (Name),
-  CONSTRAINT Fix_Cod_Spec4_Ins_FK Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Fix_Cod_Spec4_Upd_FK Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Fix_Cod_Spec4_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Fix_Cod_Spec4 (Id,Name) values (0,'-');
@@ -87,9 +79,7 @@ Create Table Fix_Cod_Spec5                  -- جدول ترميز مواصفا�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fix_Cod_Spec5_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fix_Cod_Spec5_UK     UNIQUE      (Name),
-  CONSTRAINT Fix_Cod_Spec5_Ins_FK Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Fix_Cod_Spec5_Upd_FK Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Fix_Cod_Spec5_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Fix_Cod_Spec5 (Id,Name) values (0,'-');
@@ -102,9 +92,7 @@ Create Table Fix_Cod_Status                          -- جدول ترميز ال
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fix_Cod_Status_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fix_Cod_Status_UK     UNIQUE      (Name),
-  CONSTRAINT Fix_Cod_Status_Ins_FK Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Fix_Cod_Status_Upd_FK Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Fix_Cod_Status_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Fix_Cod_Status (Id,Name) values (0,'-');
@@ -117,9 +105,7 @@ Create Table Fix_Cod_Loc1                       -- جدول ترميز موقع 
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fix_Cod_Loc1_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fix_Cod_Loc1_UK     UNIQUE      (Name),
-  CONSTRAINT Fix_Cod_Loc1_Ins_FK Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Fix_Cod_Loc1_Upd_FK Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Fix_Cod_Loc1_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Fix_Cod_Loc1 (Id,Name) values (0,'-');
@@ -132,9 +118,7 @@ Create Table Fix_Cod_Loc2                       -- جدول ترميز موقع 
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fix_Cod_Loc2_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fix_Cod_Loc2_UK     UNIQUE      (Name),
-  CONSTRAINT Fix_Cod_Loc2_Ins_FK Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Fix_Cod_Loc2_Upd_FK Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Fix_Cod_Loc2_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Fix_Cod_Loc2 (Id,Name) values (0,'-');
@@ -147,9 +131,7 @@ Create Table Fix_Cod_Loc3                       -- جدول ترميز موقع 
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fix_Cod_Loc3_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fix_Cod_Loc3_UK     UNIQUE      (Name),
-  CONSTRAINT Fix_Cod_Loc3_Ins_FK Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Fix_Cod_Loc3_Upd_FK Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Fix_Cod_Loc3_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Fix_Cod_Loc3 (Id,Name) values (0,'-');
@@ -174,19 +156,7 @@ Create Table Fix_Fixed					    -- دليل الموجودات الثابتة
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fix_Fixd_PK        PRIMARY KEY (Id),
   CONSTRAINT Fix_Fixd_Num_Uk    Unique      (Num),
-  CONSTRAINT Fix_Fixd_Name_Uk   Unique      (Name),
-  CONSTRAINT Fix_Fixd_Spc1_FK   Foreign Key (Spc1_Id ) References Fix_Cod_Spec1(Id),
-  CONSTRAINT Fix_Fixd_Spc2_FK   Foreign Key (Spc2_Id ) References Fix_Cod_Spec2(Id),
-  CONSTRAINT Fix_Fixd_Spc3_FK   Foreign Key (Spc3_Id ) References Fix_Cod_Spec3(Id),
-  CONSTRAINT Fix_Fixd_Spc4_FK   Foreign Key (Spc4_Id ) References Fix_Cod_Spec4(Id),
-  CONSTRAINT Fix_Fixd_Spc5_FK   Foreign Key (Spc5_Id ) References Fix_Cod_Spec5(Id),
-  CONSTRAINT Fix_Fixd_Unit_FK   Foreign Key (Unit_Id ) References Cpy_Cod_Unit (Id),
-  CONSTRAINT Fix_Fixd_Acc_FK    Foreign Key (Acc_Id  ) References Acc_Acc      (Id),
-  CONSTRAINT Fix_Fixd_Acc_D_FK  Foreign Key (Acc_RId ) References Acc_Acc      (Id),
-  CONSTRAINT Fix_Fixd_Acc_R_FK  Foreign Key (Acc_DId ) References Acc_Acc      (Id),
-  CONSTRAINT Fix_Fixd_Acc_F_FK  Foreign Key (Acc_FId ) References Acc_Acc      (Id),
-  CONSTRAINT Fix_Fixd_Ins_FK    Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Fix_Fixd_Upd_FK    Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Fix_Fixd_Name_Uk   Unique      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fix_InMst					    -- ترويسة حركات الإدخال
@@ -197,18 +167,12 @@ Create Table Fix_InMst					    -- ترويسة حركات الإدخال
   MDoc_Id     BIGINT,						      -- مفتاح الوثيقة المالية
   Commit_Id   BIGINT Default 1,				-- حالة التثبيت
   Acc_Id      BIGINT,         				  -- الحساب
-  dDate       DATETIME Default NOW(),				-- تاريخ
+  dDate       DATETIME DEFAULT (NOW()),				-- تاريخ
   Rem         VARCHAR(100),					-- ملاحظات
   Ins_User    BIGINT, Ins_Date   DATETIME,
   Upd_User    BIGINT, Upd_Date   DATETIME,
   CONSTRAINT  Fix_InMst_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Fix_InMst_UK        Unique      (Period_Id,Num),
-  CONSTRAINT  Fix_InMst_WPer_FK   Foreign Key (Period_Id) References Cpy_Period    (Id),
-  CONSTRAINT  Fix_InMst_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc       (Id),
-  CONSTRAINT  Fix_InMst_AccMst_FK Foreign Key (Vhr_Id   ) References Acc_Mst       (Id),
-  CONSTRAINT  Fix_InMst_Commit_FK Foreign Key (Commit_Id) References Phs_Cod_Commit(Id),
-  CONSTRAINT  Fix_InMst_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Fix_InMst_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  Fix_InMst_UK        Unique      (Period_Id,Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fix_InTrn					      -- بنود حركات الإدخال
@@ -218,8 +182,8 @@ Create Table Fix_InTrn					      -- بنود حركات الإدخال
   Curn_Id     BIGINT,         				    -- العملة
   Curn_Rate   DECIMAL(25,9) Default 1,       -- سعر الصرف
   Ord         MEDIUMINT,						        -- مسلسل
-  SDate       DATETIME Default NOW(),				  -- تاريخ بداية اهتلاك
-  EDate       DATETIME Default NOW(),				  -- تاريخ نهاية اهتلاك
+  SDate       DATETIME DEFAULT (NOW()),				  -- تاريخ بداية اهتلاك
+  EDate       DATETIME DEFAULT (NOW()),				  -- تاريخ نهاية اهتلاك
   Qnt         DECIMAL(25,3) Default 0,				-- الكمية
   CQnt        DECIMAL(25,3) Default 0,				-- الكمية الحالية
   SQnt        DECIMAL(25,3) Default 0,				-- الكمية ضمن المجموعة
@@ -245,21 +209,7 @@ Create Table Fix_InTrn					      -- بنود حركات الإدخال
   Rem         VARCHAR(100),					  -- ملاحظات
   Ins_User    BIGINT,  Ins_Date    DATETIME,
   Upd_User    BIGINT,  Upd_Date    DATETIME,
-  CONSTRAINT  Fix_InTrn_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Fix_InTrn_Mst_FK    Foreign Key (Mst_Id   ) References Fix_InMst     (Id),
-  CONSTRAINT  Fix_InTrn_Fixd_FK   Foreign Key (Fixd_Id  ) References Fix_Fixed     (Id),
-  CONSTRAINT  Fix_InTrn_Curn_FK   Foreign Key (Curn_Id  ) References Mng_Curn      (Id),
-  CONSTRAINT  Fix_InTrn_Loc1_FK   Foreign Key (Loc1_Id  ) References Fix_Cod_Loc1  (Id),
-  CONSTRAINT  Fix_InTrn_Loc2_FK   Foreign Key (Loc2_Id  ) References Fix_Cod_Loc2  (Id),
-  CONSTRAINT  Fix_InTrn_Loc3_FK   Foreign Key (Loc3_Id  ) References Fix_Cod_Loc3  (Id),
-  CONSTRAINT  Fix_InTrn_Status_FK Foreign Key (Status_Id) References Fix_Cod_Status(Id),
-  CONSTRAINT  Fix_InTrn_Spc1_FK   Foreign Key (Spc1_Id  ) References Fix_Cod_Spec1 (Id),
-  CONSTRAINT  Fix_InTrn_Spc2_FK   Foreign Key (Spc2_Id  ) References Fix_Cod_Spec2 (Id),
-  CONSTRAINT  Fix_InTrn_Spc3_FK   Foreign Key (Spc3_Id  ) References Fix_Cod_Spec3 (Id),
-  CONSTRAINT  Fix_InTrn_Spc4_FK   Foreign Key (Spc4_Id  ) References Fix_Cod_Spec4 (Id),
-  CONSTRAINT  Fix_InTrn_Spc5_FK   Foreign Key (Spc5_Id  ) References Fix_Cod_Spec5 (Id),
-  CONSTRAINT  Fix_InTrn_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Fix_InTrn_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  Fix_InTrn_PK        PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fix_OuMst					  -- ترويسة حركات الإخراج
@@ -270,18 +220,12 @@ Create Table Fix_OuMst					  -- ترويسة حركات الإخراج
   Vhr_Id      BIGINT,						      -- مفتاح الوثيقة المالية
   Commit_Id   BIGINT Default 1,				-- حالة التثبيت
   Acc_Id      BIGINT,         				  -- الحساب
-  dDate       DATETIME Default NOW(),				-- تاريخ
+  dDate       DATETIME DEFAULT (NOW()),				-- تاريخ
   Rem         VARCHAR(100),					-- ملاحظات
   Ins_User    BIGINT, Ins_Date   DATETIME,
   Upd_User    BIGINT, Upd_Date   DATETIME,
   CONSTRAINT  Fix_OuMst_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Fix_OuMst_UK        Unique      (Period_Id,Num),
-  CONSTRAINT  Fix_OuMst_WPer_FK   Foreign Key (Period_Id) References Cpy_Period    (Id),
-  CONSTRAINT  Fix_OuMst_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc       (Id),
-  CONSTRAINT  Fix_OuMst_AccMst_FK Foreign Key (Vhr_Id   ) References Acc_Mst       (Id),
-  CONSTRAINT  Fix_OuMst_Commit_FK Foreign Key (Commit_Id) References Phs_Cod_Commit(Id),
-  CONSTRAINT  Fix_OuMst_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Fix_OuMst_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  Fix_OuMst_UK        Unique      (Period_Id,Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fix_OuTrn					      -- بنود حركات الإخراج
@@ -308,14 +252,7 @@ Create Table Fix_OuTrn					      -- بنود حركات الإخراج
   Rem        VARCHAR(100),					  -- ملاحظات
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
-  CONSTRAINT Fix_OuTrn_PK        PRIMARY KEY (Id),
-  CONSTRAINT Fix_OuTrn_FMst_FK   Foreign Key (Mst_Id  ) References Fix_OuMst(Id),
-  CONSTRAINT Fix_OuTrn_Cost_FK   Foreign Key (Cost_Id ) References Acc_Cost (Id),
-  CONSTRAINT Fix_OuTrn_Fixd_FK   Foreign Key (Fixd_Id ) References Fix_Fixed(Id),
-  CONSTRAINT Fix_OuTrn_FInTrn_FK Foreign Key (Trn_Id  ) References Fix_InTrn(Id),
-  CONSTRAINT Fix_OuTrn_Curn_FK   Foreign Key (Curn_Id ) References Mng_Curn (Id),
-  CONSTRAINT Fix_OuTrn_Ins_FK    Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT Fix_OuTrn_Upd_FK    Foreign Key (Upd_User) References Cpy_User (Id)
+  CONSTRAINT Fix_OuTrn_PK        PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fix_ResMst		-- ترويسة حركات العهدة
@@ -324,15 +261,12 @@ Create Table Fix_ResMst		-- ترويسة حركات العهدة
   Period_Id   BIGINT,					        -- السنة
   Emp_Id      BIGINT,					        -- الموظف مستلم العهدة
   Commit_Id   BIGINT Default 1,				-- حالة التثبيت
-  dDate       DATETIME Default NOW(),				-- تاريخ
+  dDate       DATETIME DEFAULT (NOW()),				-- تاريخ
   Rem         VARCHAR(100),					-- ملاحظات
   Ins_User    BIGINT, Ins_Date   DATETIME,
   Upd_User    BIGINT, Upd_Date   DATETIME,
   CONSTRAINT  Fix_ResMst_PK      PRIMARY KEY (Id),
-  CONSTRAINT  Fix_ResMst_UK      Unique      (Period_Id,Num),
-  CONSTRAINT  Fix_ResMst_WPer_FK Foreign Key (Period_Id) References Cpy_Period(Id),
-  CONSTRAINT  Fix_ResMst_Ins_FK  Foreign Key (Ins_User ) References Cpy_User  (Id),
-  CONSTRAINT  Fix_ResMst_Upd_FK  Foreign Key (Upd_User ) References Cpy_User  (Id)
+  CONSTRAINT  Fix_ResMst_UK      Unique      (Period_Id,Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fix_ResTrn				-- بنود حركات العهدة
@@ -345,27 +279,19 @@ Create Table Fix_ResTrn				-- بنود حركات العهدة
   Rem        VARCHAR(100),					  -- ملاحظات
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
-  CONSTRAINT Fix_ResTrn_PK        PRIMARY KEY (Id),
-  CONSTRAINT Fix_ResTrn_FMst_FK   Foreign Key (Mst_Id  ) References Fix_ResMst(Id),
-  CONSTRAINT Fix_ResTrn_FInTrn_FK Foreign Key (FTrn_Id ) References Fix_InTrn (Id),
-  CONSTRAINT Fix_ResTrn_Fixd_FK   Foreign Key (Fixd_Id ) References Fix_Fixed (Id),
-  CONSTRAINT Fix_ResTrn_Ins_FK    Foreign Key (Ins_User) References Cpy_User  (Id),
-  CONSTRAINT Fix_ResTrn_Upd_FK    Foreign Key (Upd_User) References Cpy_User  (Id)
+  CONSTRAINT Fix_ResTrn_PK        PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fix_LocMst		      -- ترويسة حركات الموقع
 ( Id          BIGINT AUTO_INCREMENT,					        -- مفتاح رئيسي
   Num         INT,					        -- رقم الوثيقة
   Period_Id   BIGINT,					        -- السنة
-  dDate       DATETIME Default NOW(),				-- تاريخ
+  dDate       DATETIME DEFAULT (NOW()),				-- تاريخ
   Rem         VARCHAR(100),					-- ملاحظات
   Ins_User    BIGINT, Ins_Date   DATETIME,
   Upd_User    BIGINT, Upd_Date   DATETIME,
   CONSTRAINT  Fix_LocMst_PK      PRIMARY KEY (Id),
-  CONSTRAINT  Fix_LocMst_UK      Unique      (Period_Id,Num),
-  CONSTRAINT  Fix_LocMst_WPer_FK Foreign Key (Period_Id) References Cpy_Period(Id),
-  CONSTRAINT  Fix_LocMst_Ins_FK  Foreign Key (Ins_User ) References Cpy_User  (Id),
-  CONSTRAINT  Fix_LocMst_Upd_FK  Foreign Key (Upd_User ) References Cpy_User  (Id)
+  CONSTRAINT  Fix_LocMst_UK      Unique      (Period_Id,Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fix_LocTrn				      -- بنود حركات الموقع
@@ -383,33 +309,19 @@ Create Table Fix_LocTrn				      -- بنود حركات الموقع
   Rem        VARCHAR(100),					-- ملاحظات
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
-  CONSTRAINT Fix_LocTrn_PK        PRIMARY KEY (Id),
-  CONSTRAINT Fix_LocTrn_FMst_FK   Foreign Key (FMst_Id ) References Fix_LocMst  (Id),
-  CONSTRAINT Fix_LocTrn_FInTrn_FK Foreign Key (FTrn_Id ) References Fix_InTrn   (Id),
-  CONSTRAINT Fix_LocTrn_Fixd_FK   Foreign Key (Fixd_Id ) References Fix_Fixed   (Id),
-  CONSTRAINT Fix_LocTrn_oLoc1_FK  Foreign Key (oLoc1_Id) References Fix_Cod_Loc1(Id),
-  CONSTRAINT Fix_LocTrn_oLoc2_FK  Foreign Key (oLoc2_Id) References Fix_Cod_Loc2(Id),
-  CONSTRAINT Fix_LocTrn_oLoc3_FK  Foreign Key (oLoc3_Id) References Fix_Cod_Loc3(Id),
-  CONSTRAINT Fix_LocTrn_Loc1_FK   Foreign Key (Loc1_Id ) References Fix_Cod_Loc1(Id),
-  CONSTRAINT Fix_LocTrn_Loc2_FK   Foreign Key (Loc2_Id ) References Fix_Cod_Loc2(Id),
-  CONSTRAINT Fix_LocTrn_Loc3_FK   Foreign Key (Loc3_Id ) References Fix_Cod_Loc3(Id),
-  CONSTRAINT Fix_LocTrn_Ins_FK    Foreign Key (Ins_User) References Cpy_User    (Id),
-  CONSTRAINT Fix_LocTrn_Upd_FK    Foreign Key (Upd_User) References Cpy_User    (Id)
+  CONSTRAINT Fix_LocTrn_PK        PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fix_SpcMst		  -- ترويسة حركات المواصفات
 ( Id          BIGINT AUTO_INCREMENT,					        -- مفتاح رئيسي
   Num         INT,					        -- رقم الوثيقة
   Period_Id   BIGINT,					        -- السنة
-  dDate       DATETIME Default NOW(),				-- تاريخ
+  dDate       DATETIME DEFAULT (NOW()),				-- تاريخ
   Rem         VARCHAR(100),					-- ملاحظات
   Ins_User    BIGINT, Ins_Date   DATETIME,
   Upd_User    BIGINT, Upd_Date   DATETIME,
   CONSTRAINT  Fix_SpcMst_PK      PRIMARY KEY (Id),
-  CONSTRAINT  Fix_SpcMst_UK      Unique      (Period_Id,Num),
-  CONSTRAINT  Fix_SpcMst_WPer_FK Foreign Key (Period_Id) References Cpy_Period(Id),
-  CONSTRAINT  Fix_SpcMst_Ins_FK  Foreign Key (Ins_User ) References Cpy_User  (Id),
-  CONSTRAINT  Fix_SpcMst_Upd_FK  Foreign Key (Upd_User ) References Cpy_User  (Id)
+  CONSTRAINT  Fix_SpcMst_UK      Unique      (Period_Id,Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fix_SpcTrn				    -- بنود حركات تعديل المواصفات
@@ -435,24 +347,7 @@ Create Table Fix_SpcTrn				    -- بنود حركات تعديل المواصف�
   Rem          VARCHAR(100),					  -- ملاحظات
   Ins_User     BIGINT,  Ins_Date    DATETIME,
   Upd_User     BIGINT,  Upd_Date    DATETIME,
-  CONSTRAINT   Fix_SpcTrn_PK         PRIMARY KEY (Id),
-  CONSTRAINT   Fix_SpcTrn_FMst_FK    Foreign Key (FMst_Id   ) References Fix_SpcMst    (Id),
-  CONSTRAINT   Fix_SpcTrn_FInTrn_FK  Foreign Key (FTrn_Id   ) References Fix_InTrn     (Id),
-  CONSTRAINT   Fix_SpcTrn_Fixd_FK    Foreign Key (Fixd_Id   ) References Fix_Fixed     (Id),
-  CONSTRAINT   Fix_SpcTrn_oSpc1_FK   Foreign Key (oSpc1_Id  ) References Fix_Cod_Spec1 (Id),
-  CONSTRAINT   Fix_SpcTrn_oSpc2_FK   Foreign Key (oSpc2_Id  ) References Fix_Cod_Spec2 (Id),
-  CONSTRAINT   Fix_SpcTrn_oSpc3_FK   Foreign Key (oSpc3_Id  ) References Fix_Cod_Spec3 (Id),
-  CONSTRAINT   Fix_SpcTrn_oSpc4_FK   Foreign Key (oSpc4_Id  ) References Fix_Cod_Spec4 (Id),
-  CONSTRAINT   Fix_SpcTrn_oSpc5_FK   Foreign Key (oSpc5_Id  ) References Fix_Cod_Spec5 (Id),
-  CONSTRAINT   Fix_SpcTrn_oStatus_FK Foreign Key (oStatus_Id) References Fix_Cod_Status(Id),
-  CONSTRAINT   Fix_SpcTrn_Spc1_FK    Foreign Key (Spc1_Id   ) References Fix_Cod_Spec1 (Id),
-  CONSTRAINT   Fix_SpcTrn_Spc2_FK    Foreign Key (Spc2_Id   ) References Fix_Cod_Spec2 (Id),
-  CONSTRAINT   Fix_SpcTrn_Spc3_FK    Foreign Key (Spc3_Id   ) References Fix_Cod_Spec3 (Id),
-  CONSTRAINT   Fix_SpcTrn_Spc4_FK    Foreign Key (Spc4_Id   ) References Fix_Cod_Spec4 (Id),
-  CONSTRAINT   Fix_SpcTrn_Spc5_FK    Foreign Key (Spc5_Id   ) References Fix_Cod_Spec5 (Id),
-  CONSTRAINT   Fix_SpcTrn_Status_FK  Foreign Key (Status_Id ) References Fix_Cod_Status(Id),
-  CONSTRAINT   Fix_SpcTrn_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User      (Id),
-  CONSTRAINT   Fix_SpcTrn_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User      (Id)
+  CONSTRAINT   Fix_SpcTrn_PK         PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fix_ActMst		        -- ترويسة حركات الجرد
@@ -460,15 +355,12 @@ Create Table Fix_ActMst		        -- ترويسة حركات الجرد
   Num         INT,					        -- رقم الوثيقة
   Period_Id   BIGINT,					        -- السنة
   Status_Id   BIGINT Default 1,				-- حالة التثبيت
-  dDate       DATETIME Default NOW(),				-- تاريخ
+  dDate       DATETIME DEFAULT (NOW()),				-- تاريخ
   Rem         VARCHAR(100),					-- ملاحظات
   Ins_User    BIGINT, Ins_Date   DATETIME,
   Upd_User    BIGINT, Upd_Date   DATETIME,
   CONSTRAINT  Fix_ActMst_PK      PRIMARY KEY (Id),
-  CONSTRAINT  Fix_ActMst_UK      Unique      (Period_Id,Num),
-  CONSTRAINT  Fix_ActMst_WPer_FK Foreign Key (Period_Id) References Cpy_Period(Id),
-  CONSTRAINT  Fix_ActMst_Ins_FK  Foreign Key (Ins_User ) References Cpy_User  (Id),
-  CONSTRAINT  Fix_ActMst_Upd_FK  Foreign Key (Upd_User ) References Cpy_User  (Id)
+  CONSTRAINT  Fix_ActMst_UK      Unique      (Period_Id,Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fix_ActTrn				        -- بنود حركات الجرد
@@ -481,12 +373,7 @@ Create Table Fix_ActTrn				        -- بنود حركات الجرد
   Rem        VARCHAR(100),					  -- ملاحظات
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
-  CONSTRAINT Fix_ActTrn_PK        PRIMARY KEY (Id),
-  CONSTRAINT Fix_ActTrn_FMst_FK   Foreign Key (FMst_Id ) References Fix_ActMst(Id),
-  CONSTRAINT Fix_ActTrn_FInTrn_FK Foreign Key (FTrn_Id ) References Fix_InTrn (Id),
-  CONSTRAINT Fix_ActTrn_Fixd_FK   Foreign Key (Fixd_Id ) References Fix_Fixed (Id),
-  CONSTRAINT Fix_ActTrn_Ins_FK    Foreign Key (Ins_User) References Cpy_User  (Id),
-  CONSTRAINT Fix_ActTrn_Upd_FK    Foreign Key (Upd_User) References Cpy_User  (Id)
+  CONSTRAINT Fix_ActTrn_PK        PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fix_Cmt					        -- جدول حالات تثبيت الاهتلااكات
@@ -499,9 +386,7 @@ Create Table Fix_Cmt					        -- جدول حالات تثبيت الاهتل�
   Ins_User    BIGINT, Ins_Date   DATETIME,
   Upd_User    BIGINT, Upd_Date   DATETIME,
   CONSTRAINT  Fix_Cmt_PK      PRIMARY KEY (Id),
-  CONSTRAINT  Fix_Cmt_UK      Unique      (Year,Month),
-  CONSTRAINT  Fix_Cmt_Ins_FK  Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT  Fix_Cmt_Upd_FK  Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT  Fix_Cmt_UK      Unique      (Year,Month)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fix_Tot					      -- جدول تجميعات الإهتلاك للسنوات المالية
@@ -526,13 +411,7 @@ Create Table Fix_Tot					      -- جدول تجميعات الإهتلاك لل�
   Ins_User   BIGINT, Ins_Date   DATETIME,
   Upd_User   BIGINT, Upd_Date   DATETIME,
   CONSTRAINT Fix_Tot_PK        PRIMARY KEY (Id ),
-  CONSTRAINT Fix_Tot_UK        Unique      (FYear,FMonth,FTrn_Id),
-  CONSTRAINT Fix_Tot_ITrn_FK   Foreign Key (FTrn_Id ) References Fix_InTrn(Id),
-  CONSTRAINT Fix_Tot_Fixd_FK   Foreign Key (Fixd_Id ) References Fix_Fixed(Id),
-  CONSTRAINT Fix_Tot_AccMst_FK Foreign Key (Vhr_Id  ) References Acc_Mst  (Id),
-  CONSTRAINT Fix_Tot_Curn_FK   Foreign Key (Curn_Id ) References Mng_Curn (Id),
-  CONSTRAINT Fix_Tot_Ins_FK    Foreign Key (Ins_User) References Cpy_User (Id),
-  CONSTRAINT Fix_Tot_Upd_FK    Foreign Key (Upd_User) References Cpy_User (Id)
+  CONSTRAINT Fix_Tot_UK        Unique      (FYear,FMonth,FTrn_Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create INDEX Fix_Tot_Year_IDX  ON Fix_Tot(FYear);

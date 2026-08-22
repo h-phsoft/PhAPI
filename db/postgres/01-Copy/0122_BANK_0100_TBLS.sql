@@ -22,10 +22,7 @@ Create Table Bank_Cod_Status                         -- جدول ترميز حا
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Bank_Cod_Status_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Bank_Cod_Status_UK     UNIQUE      (Name),
-  CONSTRAINT Bank_Cod_Status_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Bank_Cod_Status_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Bank_Cod_Status_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Bank_Cod_Status_UK     UNIQUE      (Name)
 );
 
 INSERT INTO Bank_Cod_Status (Id, Name) VALUES (0 , '-');
@@ -47,10 +44,7 @@ Create Table Bank_Cod_Method                           -- جدول ترميز ا
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Bank_Cod_Method_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Bank_Cod_Method_UK     UNIQUE      (Name),
-  CONSTRAINT Bank_Cod_Method_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Bank_Cod_Method_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Bank_Cod_Method_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Bank_Cod_Method_UK     UNIQUE      (Name)
 );
 
 INSERT INTO Bank_Cod_Method (Id, Name) VALUES (0  , '-');
@@ -64,10 +58,7 @@ Create Table Bank_Cod_Trt                            -- جدول ترميز أن
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Bank_Cod_Trt_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Bank_Cod_Trt_UK     UNIQUE      (Name),
-  CONSTRAINT Bank_Cod_Trt_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Bank_Cod_Trt_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Bank_Cod_Trt_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Bank_Cod_Trt_UK     UNIQUE      (Name)
 );
 
 INSERT INTO Bank_Cod_Trt (Id, Name, Rem) VALUES (0 , '-'  , '-'       );
@@ -109,14 +100,7 @@ Create Table Bank_Acc                            -- دليل المصارف
   Upd_User      BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT    Bank_Acc_PK        Primary Key (Id  ),
   CONSTRAINT    Bank_Acc_Cod_UK    Unique      (Code),
-  CONSTRAINT    Bank_Acc_Nam_UK    Unique      (Name),
-  CONSTRAINT    Bank_Acc_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT    Bank_Acc_Cost_FK   Foreign Key (Cost_Id  ) References Acc_Cost      (Id),
-  CONSTRAINT    Bank_Acc_Acc_FK    Foreign Key (Acc_Id   ) References Acc_Acc       (Id),
-  CONSTRAINT    Bank_Acc_CAcc_FK   Foreign Key (Acc_CId  ) References Acc_Acc       (Id),
-  CONSTRAINT    Bank_Acc_Curn_FK    Foreign Key(Curn_Id ) References Mng_Curn      (Id),
-  CONSTRAINT    Bank_Acc_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT    Bank_Acc_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT    Bank_Acc_Nam_UK    Unique      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Bank_COrd_Seq
@@ -171,21 +155,7 @@ Create Table Bank_COrd                       -- أوامر القبض
   Ins_User       BIGINT, Ins_Date   TIMESTAMP,
   Upd_User       BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT     Bank_COrd_PK         Primary Key (Id),
-  CONSTRAINT     Bank_COrd_Num_UK     Unique      (Dept_Id, Unit_Id, Period_Id, Num),
-  CONSTRAINT     Bank_COrd_Dept_FK    Foreign Key (Dept_Id  ) References Cpy_Dept       (Id),
-  CONSTRAINT     Bank_COrd_Unit_FK    Foreign Key (Unit_Id  ) References Cpy_Unit       (Id),
-  CONSTRAINT     Bank_COrd_Oper_FK    Foreign Key (Oper_Id  ) References Cpy_Oper       (Id),
-  CONSTRAINT     Bank_COrd_Period_FK  Foreign Key (Period_Id) References Cpy_Period     (Id),
-  CONSTRAINT     Bank_COrd_Trt_FK     Foreign Key (Trt_Id   ) References Bank_Cod_Trt   (Id),
-  CONSTRAINT     Bank_COrd_Status_FK  Foreign Key (Status_Id) References Bank_Cod_Status(Id),
-  CONSTRAINT     Bank_COrd_Cont_FK    Foreign Key (Cont_Id  ) References Mng_Cont       (Id),
-  CONSTRAINT     Bank_COrd_Serv_FK    Foreign Key (Serv_Id  ) References Mng_Serv       (Id),
-  CONSTRAINT     Bank_COrd_Curn_FK    Foreign Key (Curn_Id  ) References Mng_Curn       (Id),
-  CONSTRAINT     Bank_COrd_Vhr_FK     Foreign Key (Vhr_Id   ) References Acc_Mst        (Id),
-  CONSTRAINT     Bank_COrd_Bank_FK    Foreign Key (Bank_Id  ) References Bank_Acc       (Id),
-  CONSTRAINT     Bank_COrd_User_FK    Foreign Key (User_Id  ) References Cpy_User       (Id),
-  CONSTRAINT     Bank_COrd_Ins_FK     Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT     Bank_COrd_Upd_FK     Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT     Bank_COrd_Num_UK     Unique      (Dept_Id, Unit_Id, Period_Id, Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Bank_COrdStatus_Seq
@@ -200,11 +170,7 @@ Create Table Bank_COrdStatus                       -- جدول تبدل حالا
   Rem        VARCHAR(250),                      -- البيان
   Ins_User   BIGINT,  Ins_Date  TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date  TIMESTAMP,
-  CONSTRAINT Bank_COrdStatus_PK        Primary Key (Id),
-  CONSTRAINT Bank_COrdStatus_FK        Foreign Key (Ord_Id   ) References Bank_COrd      (Id),
-  CONSTRAINT Bank_COrdStatus_Status_FK Foreign Key (Status_Id) References Bank_Cod_Status(Id),
-  CONSTRAINT Bank_COrdStatus_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Bank_COrdStatus_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Bank_COrdStatus_PK        Primary Key (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Bank_DOrd_Seq
@@ -259,21 +225,7 @@ Create Table Bank_DOrd                       -- أوامر الإيداع في �
   Ins_User       BIGINT, Ins_Date   TIMESTAMP,
   Upd_User       BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT     Bank_DOrd_PK         Primary Key (Id),
-  CONSTRAINT     Bank_DOrd_Num_UK     Unique      (Dept_Id, Unit_Id, Period_Id, Num),
-  CONSTRAINT     Bank_DOrd_Dept_FK    Foreign Key (Dept_Id  ) References Cpy_Dept       (Id),
-  CONSTRAINT     Bank_DOrd_Unit_FK    Foreign Key (Unit_Id  ) References Cpy_Unit       (Id),
-  CONSTRAINT     Bank_DOrd_Oper_FK    Foreign Key (Oper_Id  ) References Cpy_Oper       (Id),
-  CONSTRAINT     Bank_DOrd_Period_FK  Foreign Key (Period_Id) References Cpy_Period     (Id),
-  CONSTRAINT     Bank_DOrd_Trt_FK     Foreign Key (Trt_Id   ) References Bank_Cod_Trt   (Id),
-  CONSTRAINT     Bank_DOrd_Status_FK  Foreign Key (Status_Id) References Bank_Cod_Status(Id),
-  CONSTRAINT     Bank_DOrd_Cont_FK    Foreign Key (Cont_Id  ) References Mng_Cont       (Id),
-  CONSTRAINT     Bank_DOrd_Serv_FK    Foreign Key (Serv_Id  ) References Mng_Serv       (Id),
-  CONSTRAINT     Bank_DOrd_Curn_FK    Foreign Key (Curn_Id  ) References Mng_Curn       (Id),
-  CONSTRAINT     Bank_DOrd_Vhr_FK     Foreign Key (Vhr_Id   ) References Acc_Mst        (Id),
-  CONSTRAINT     Bank_DOrd_Bank_FK    Foreign Key (Bank_Id  ) References Bank_Acc       (Id),
-  CONSTRAINT     Bank_DOrd_User_FK    Foreign Key (User_Id  ) References Cpy_User       (Id),
-  CONSTRAINT     Bank_DOrd_Ins_FK     Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT     Bank_DOrd_Upd_FK     Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT     Bank_DOrd_Num_UK     Unique      (Dept_Id, Unit_Id, Period_Id, Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Bank_DOrdStatus_Seq
@@ -288,11 +240,7 @@ Create Table Bank_DOrdStatus                       -- جدول تبدل حالا
   Rem        VARCHAR(250),                      -- البيان
   Ins_User   BIGINT,  Ins_Date  TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date  TIMESTAMP,
-  CONSTRAINT Bank_DOrdStatus_PK        Primary Key (Id),
-  CONSTRAINT Bank_DOrdStatus_FK        Foreign Key (Ord_Id   ) References Bank_DOrd      (Id),
-  CONSTRAINT Bank_DOrdStatus_Status_FK Foreign Key (Status_Id) References Bank_Cod_Status(Id),
-  CONSTRAINT Bank_DOrdStatus_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Bank_DOrdStatus_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Bank_DOrdStatus_PK        Primary Key (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Bank_POrd_Seq
@@ -347,21 +295,7 @@ Create Table Bank_POrd                      -- أوامر السحب من الب
   Ins_User       BIGINT, Ins_Date   TIMESTAMP,
   Upd_User       BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT     Bank_POrd_PK         Primary Key (Id),
-  CONSTRAINT     Bank_POrd_Num_UK     Unique      (Dept_Id, Unit_Id, Period_Id, Num),
-  CONSTRAINT     Bank_POrd_Dept_FK    Foreign Key (Dept_Id  ) References Cpy_Dept       (Id),
-  CONSTRAINT     Bank_POrd_Unit_FK    Foreign Key (Unit_Id  ) References Cpy_Unit       (Id),
-  CONSTRAINT     Bank_POrd_Oper_FK    Foreign Key (Oper_Id  ) References Cpy_Oper       (Id),
-  CONSTRAINT     Bank_POrd_Period_FK  Foreign Key (Period_Id) References Cpy_Period     (Id),
-  CONSTRAINT     Bank_POrd_Trt_FK     Foreign Key (Trt_Id   ) References Bank_Cod_Trt   (Id),
-  CONSTRAINT     Bank_POrd_Status_FK  Foreign Key (Status_Id) References Bank_Cod_Status(Id),
-  CONSTRAINT     Bank_POrd_Cont_FK    Foreign Key (Cont_Id  ) References Mng_Cont       (Id),
-  CONSTRAINT     Bank_POrd_Serv_FK    Foreign Key (Serv_Id  ) References Mng_Serv       (Id),
-  CONSTRAINT     Bank_POrd_Curn_FK    Foreign Key (Curn_Id  ) References Mng_Curn       (Id),
-  CONSTRAINT     Bank_POrd_Vhr_FK     Foreign Key (Vhr_Id   ) References Acc_Mst        (Id),
-  CONSTRAINT     Bank_POrd_Bank_FK    Foreign Key (Bank_Id  ) References Bank_Acc       (Id),
-  CONSTRAINT     Bank_POrd_User_FK    Foreign Key (User_Id  ) References Cpy_User       (Id),
-  CONSTRAINT     Bank_POrd_Ins_FK     Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT     Bank_POrd_Upd_FK     Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT     Bank_POrd_Num_UK     Unique      (Dept_Id, Unit_Id, Period_Id, Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Bank_POrdStatus_Seq
@@ -376,11 +310,7 @@ Create Table Bank_POrdStatus                       -- جدول تبدل حالا
   Rem        VARCHAR(250),                      -- البيان
   Ins_User   BIGINT,  Ins_Date  TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date  TIMESTAMP,
-  CONSTRAINT Bank_POrdStatus_PK        Primary Key (Id),
-  CONSTRAINT Bank_POrdStatus_FK        Foreign Key (Ord_Id   ) References Bank_POrd      (Id),
-  CONSTRAINT Bank_POrdStatus_Status_FK Foreign Key (Status_Id) References Bank_Cod_Status(Id),
-  CONSTRAINT Bank_POrdStatus_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Bank_POrdStatus_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Bank_POrdStatus_PK        Primary Key (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Bank_WOrd_Seq
@@ -435,21 +365,7 @@ Create Table Bank_WOrd                      -- أوامر السحب من الب
   Ins_User       BIGINT, Ins_Date   TIMESTAMP,
   Upd_User       BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT     Bank_WOrd_PK         Primary Key (Id),
-  CONSTRAINT     Bank_WOrd_Num_UK     Unique      (Dept_Id, Unit_Id, Period_Id, Num),
-  CONSTRAINT     Bank_WOrd_Dept_FK    Foreign Key (Dept_Id  ) References Cpy_Dept       (Id),
-  CONSTRAINT     Bank_WOrd_Unit_FK    Foreign Key (Unit_Id  ) References Cpy_Unit       (Id),
-  CONSTRAINT     Bank_WOrd_Oper_FK    Foreign Key (Oper_Id  ) References Cpy_Oper       (Id),
-  CONSTRAINT     Bank_WOrd_Period_FK  Foreign Key (Period_Id) References Cpy_Period     (Id),
-  CONSTRAINT     Bank_WOrd_Trt_FK     Foreign Key (Trt_Id   ) References Bank_Cod_Trt   (Id),
-  CONSTRAINT     Bank_WOrd_Status_FK  Foreign Key (Status_Id) References Bank_Cod_Status(Id),
-  CONSTRAINT     Bank_WOrd_Cont_FK    Foreign Key (Cont_Id  ) References Mng_Cont       (Id),
-  CONSTRAINT     Bank_WOrd_Serv_FK    Foreign Key (Serv_Id  ) References Mng_Serv       (Id),
-  CONSTRAINT     Bank_WOrd_Curn_FK    Foreign Key (Curn_Id  ) References Mng_Curn       (Id),
-  CONSTRAINT     Bank_WOrd_Vhr_FK     Foreign Key (Vhr_Id   ) References Acc_Mst        (Id),
-  CONSTRAINT     Bank_WOrd_Bank_FK    Foreign Key (Bank_Id  ) References Bank_Acc       (Id),
-  CONSTRAINT     Bank_WOrd_User_FK    Foreign Key (User_Id  ) References Cpy_User       (Id),
-  CONSTRAINT     Bank_WOrd_Ins_FK     Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT     Bank_WOrd_Upd_FK     Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT     Bank_WOrd_Num_UK     Unique      (Dept_Id, Unit_Id, Period_Id, Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Bank_WOrdStatus_Seq
@@ -464,11 +380,7 @@ Create Table Bank_WOrdStatus                       -- جدول تبدل حالا
   Rem        VARCHAR(250),                      -- البيان
   Ins_User   BIGINT,  Ins_Date  TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date  TIMESTAMP,
-  CONSTRAINT Bank_WOrdStatus_PK        Primary Key (Id),
-  CONSTRAINT Bank_WOrdStatus_FK        Foreign Key (Ord_Id   ) References Bank_WOrd      (Id),
-  CONSTRAINT Bank_WOrdStatus_Status_FK Foreign Key (Status_Id) References Bank_Cod_Status(Id),
-  CONSTRAINT Bank_WOrdStatus_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Bank_WOrdStatus_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Bank_WOrdStatus_PK        Primary Key (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Bank_TOrd_Seq
@@ -535,25 +447,7 @@ Create Table Bank_TOrd                      -- أوامر تحويل بين ال
   Ins_User       BIGINT, Ins_Date   TIMESTAMP,
   Upd_User       BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT     Bank_TOrd_PK         Primary Key (Id),
-  CONSTRAINT     Bank_TOrd_Num_UK     Unique      (Dept_Id, Unit_Id, Period_Id, Num),
-  CONSTRAINT     Bank_TOrd_Dept_FK    Foreign Key (Dept_Id   ) References Cpy_Dept       (Id),
-  CONSTRAINT     Bank_TOrd_Unit_FK    Foreign Key (Unit_Id   ) References Cpy_Unit       (Id),
-  CONSTRAINT     Bank_TOrd_Oper_FK    Foreign Key (Oper_Id   ) References Cpy_Oper       (Id),
-  CONSTRAINT     Bank_TOrd_Period_FK  Foreign Key (Period_Id ) References Cpy_Period     (Id),
-  CONSTRAINT     Bank_TOrd_TrtI_FK    Foreign Key (Trt_IId   ) References Bank_Cod_Trt   (Id),
-  CONSTRAINT     Bank_TOrd_TrtO_FK    Foreign Key (Trt_OId   ) References Bank_Cod_Trt   (Id),
-  CONSTRAINT     Bank_TOrd_Status_FK  Foreign Key (Status_Id ) References Bank_Cod_Status(Id),
-  CONSTRAINT     Bank_TOrd_Cont_FK    Foreign Key (Cont_Id   ) References Mng_Cont       (Id),
-  CONSTRAINT     Bank_TOrd_Serv_FK    Foreign Key (Serv_Id   ) References Mng_Serv       (Id),
-  CONSTRAINT     Bank_TOrd_TStatus_FK Foreign Key (TStatus_Id) References Phs_Cod_YesNo  (Id),
-  CONSTRAINT     Bank_TOrd_FCurn_FK   Foreign Key (Curn_FId  ) References Mng_Curn       (Id),
-  CONSTRAINT     Bank_TOrd_TCurn_FK   Foreign Key (Curn_TId  ) References Mng_Curn       (Id),
-  CONSTRAINT     Bank_TOrd_Vhr_FK     Foreign Key (Vhr_Id    ) References Acc_Mst        (Id),
-  CONSTRAINT     Bank_TOrd_BankF_FK   Foreign Key (Bank_FId  ) References Bank_Acc       (Id),
-  CONSTRAINT     Bank_TOrd_BankT_FK   Foreign Key (Bank_TId  ) References Bank_Acc       (Id),
-  CONSTRAINT     Bank_TOrd_User_FK    Foreign Key (User_Id   ) References Cpy_User       (Id),
-  CONSTRAINT     Bank_TOrd_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User       (Id),
-  CONSTRAINT     Bank_TOrd_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User       (Id)
+  CONSTRAINT     Bank_TOrd_Num_UK     Unique      (Dept_Id, Unit_Id, Period_Id, Num)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Bank_TOrdStatus_Seq
@@ -568,9 +462,5 @@ Create Table Bank_TOrdStatus                       -- جدول تبدل حالا
   Rem        VARCHAR(250),                      -- البيان
   Ins_User   BIGINT,  Ins_Date  TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date  TIMESTAMP,
-  CONSTRAINT Bank_TOrdStatus_PK        Primary Key (Id),
-  CONSTRAINT Bank_TOrdStatus_FK        Foreign Key (Ord_Id   ) References Bank_TOrd      (Id),
-  CONSTRAINT Bank_TOrdStatus_Status_FK Foreign Key (Status_Id) References Bank_Cod_Status(Id),
-  CONSTRAINT Bank_TOrdStatus_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT Bank_TOrdStatus_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT Bank_TOrdStatus_PK        Primary Key (Id)
 );

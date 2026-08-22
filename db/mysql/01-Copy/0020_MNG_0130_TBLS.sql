@@ -15,16 +15,13 @@ Create Table Mng_Curn				                           -- دليل العملات
   Code        VARCHAR(5) NOT NULL,				           -- رمز العملة
   Rate        DECIMAL(10,3),				                         -- سعر الصرف لليرة
   Status_Id   BIGINT Default 1,  			                 -- حالة الإستخدام \ 1 فعالة \ 0 غير مستخدمة
-  HDate       DATETIME Default NOW(),					               -- التاريخ
+  HDate       DATETIME DEFAULT (NOW()),					               -- التاريخ
   Rem         VARCHAR(250),			                     -- ملاحظات
   Ins_User    BIGINT, Ins_Date DATETIME,
   Upd_User    BIGINT, Upd_Date DATETIME,
   CONSTRAINT  Mng_Curn_PK        PRIMARY KEY (Id  ),
   CONSTRAINT  Mng_Curn_NUM_UK    UNIQUE      (Num ),
-  CONSTRAINT  Mng_Curn_NAM_UK    UNIQUE      (Name),
-  CONSTRAINT  Mng_Curn_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT  Mng_Curn_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Mng_Curn_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  Mng_Curn_NAM_UK    UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Mng_CurnHist			                     -- تبدل أسعار العملات
@@ -36,7 +33,5 @@ Create Table Mng_CurnHist			                     -- تبدل أسعار العم
   nMax        DECIMAL(10,3) Default 1,			                 -- سعر الصرف لليرة الأعلى مركزي
   Rem         VARCHAR(250),			                     -- ملاحظات
   Ins_User    BIGINT, Ins_Date DATETIME,
-  CONSTRAINT  Mng_CHist_PK      PRIMARY KEY (Id),
-  CONSTRAINT  Mng_CHist_Curn_FK Foreign Key (Curn_Id ) References Mng_Curn(Id),
-  CONSTRAINT  Mng_CHist_Ins_FK  Foreign Key (Ins_User) References Cpy_User(Id)
+  CONSTRAINT  Mng_CHist_PK      PRIMARY KEY (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

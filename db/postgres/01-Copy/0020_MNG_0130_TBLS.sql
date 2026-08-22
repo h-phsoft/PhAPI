@@ -28,10 +28,7 @@ Create Table Mng_Curn				                           -- دليل العملات
   Upd_User    BIGINT, Upd_Date TIMESTAMP,
   CONSTRAINT  Mng_Curn_PK        PRIMARY KEY (Id  ),
   CONSTRAINT  Mng_Curn_NUM_UK    UNIQUE      (Num ),
-  CONSTRAINT  Mng_Curn_NAM_UK    UNIQUE      (Name),
-  CONSTRAINT  Mng_Curn_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT  Mng_Curn_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Mng_Curn_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  Mng_Curn_NAM_UK    UNIQUE      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Mng_CurnHist_Seq
@@ -47,7 +44,5 @@ Create Table Mng_CurnHist			                     -- تبدل أسعار العم
   nMax        NUMERIC(10,3) Default 1,			                 -- سعر الصرف لليرة الأعلى مركزي
   Rem         VARCHAR(250),			                     -- ملاحظات
   Ins_User    BIGINT, Ins_Date TIMESTAMP,
-  CONSTRAINT  Mng_CHist_PK      PRIMARY KEY (Id),
-  CONSTRAINT  Mng_CHist_Curn_FK Foreign Key (Curn_Id ) References Mng_Curn(Id),
-  CONSTRAINT  Mng_CHist_Ins_FK  Foreign Key (Ins_User) References Cpy_User(Id)
+  CONSTRAINT  Mng_CHist_PK      PRIMARY KEY (Id)
 );

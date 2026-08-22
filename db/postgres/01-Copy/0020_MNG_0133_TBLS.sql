@@ -21,10 +21,7 @@ Create Table MNG_Cod_Grp                                -- جدول ترميز �
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT MNG_Cod_Grp_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT MNG_Cod_Grp_UK        UNIQUE      (Name),
-  CONSTRAINT MNG_Cod_Grp_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT MNG_Cod_Grp_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT MNG_Cod_Grp_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT MNG_Cod_Grp_UK        UNIQUE      (Name)
 );
 
 Insert into MNG_Cod_Grp (Id,Name) values (0,'-');
@@ -42,11 +39,7 @@ Create Table MNG_Cod_Itm                                 -- جدول ترميز 
   Ins_User   BIGINT,  Ins_Date    TIMESTAMP,
   Upd_User   BIGINT,  Upd_Date    TIMESTAMP,
   CONSTRAINT MNG_Cod_Itm_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT MNG_Cod_Itm_UK        UNIQUE      (Name),
-  CONSTRAINT MNG_Cod_Itm_Group_Fk  Foreign Key (Grp_Id   ) References MNG_Cod_Grp   (Id),
-  CONSTRAINT MNG_Cod_Itm_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT MNG_Cod_Itm_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT MNG_Cod_Itm_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT MNG_Cod_Itm_UK        UNIQUE      (Name)
 );
 
 Insert into MNG_Cod_Itm (Id,Grp_Id,Name) values (0,0,'-');
@@ -83,10 +76,7 @@ Create Table MNG_Supp                                   -- دليل المتعا
   CONSTRAINT MNG_Supp_Num_UK     Unique      (Num),
   CONSTRAINT MNG_Supp_Name_UK    Unique      (LName    ),
   CONSTRAINT MNG_Supp_Cont_UK    Unique      (Cont_Id  ),
-  CONSTRAINT MNG_Supp_Phone_UK   Unique      (Phone    ),
-  CONSTRAINT MNG_Supp_Status_FK  Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT MNG_Supp_Ins_FK     Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT MNG_Supp_Upd_FK     Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT MNG_Supp_Phone_UK   Unique      (Phone    )
 );
 
 INSERT INTO MNG_Supp (Id, Num, LName) VALUES (0, '-', '-');
@@ -104,12 +94,7 @@ Create Table MNG_Supp_Class                    -- تصنيف المتعاملي�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT MNG_Supp_Class_PK       PRIMARY KEY (Id),
-  CONSTRAINT MNG_Supp_Class_UK       Unique      (Supp_Id, Grp_Id, Itm_Id),
-  CONSTRAINT MNG_Supp_Class_Cont_FK  Foreign Key (Supp_Id ) References MNG_Supp   (Id),
-  CONSTRAINT MNG_Supp_Class_Group_FK Foreign Key (Grp_Id  ) References MNG_Cod_Grp(Id),
-  CONSTRAINT MNG_Supp_Class_Item_FK  Foreign Key (Itm_Id  ) References MNG_Cod_Itm(Id),
-  CONSTRAINT MNG_Supp_Class_Ins_FK   Foreign Key (Ins_User) References Cpy_User   (Id),
-  CONSTRAINT MNG_Supp_Class_Upd_FK   Foreign Key (Upd_User) References Cpy_User   (Id)
+  CONSTRAINT MNG_Supp_Class_UK       Unique      (Supp_Id, Grp_Id, Itm_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS MNG_Supp_Cont_Seq
@@ -132,11 +117,7 @@ Create Table MNG_Supp_Cont                           -- جهات اتصال ال
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT MNG_Supp_Cont_PK        PRIMARY KEY (Id),
-  CONSTRAINT MNG_Supp_Cont_Name_UK   Unique      (Supp_Id, LName),
-  CONSTRAINT MNG_Supp_Cont_Cont_FK   Foreign Key (Supp_Id  ) References MNG_Supp      (Id),
-  CONSTRAINT MNG_Supp_Cont_Gender_FK Foreign Key (Gender_Id) References Phs_Cod_Gender(Id),
-  CONSTRAINT MNG_Supp_Cont_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT MNG_Supp_Cont_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT MNG_Supp_Cont_Name_UK   Unique      (Supp_Id, LName)
 );
 
 CREATE SEQUENCE IF NOT EXISTS MNG_Supp_Bran_Seq
@@ -159,8 +140,5 @@ Create Table MNG_Supp_Bran                           -- فروع المتعام�
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT MNG_Supp_Bran_PK      PRIMARY KEY (Id),
-  CONSTRAINT MNG_Supp_Bran_Name_UK Unique      (Supp_Id, LName),
-  CONSTRAINT MNG_Supp_Bran_Cont_FK Foreign Key (Supp_Id ) References MNG_Supp(Id),
-  CONSTRAINT MNG_Supp_Bran_Ins_FK  Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT MNG_Supp_Bran_Upd_FK  Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT MNG_Supp_Bran_Name_UK Unique      (Supp_Id, LName)
 );

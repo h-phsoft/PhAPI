@@ -23,9 +23,7 @@ Create Table CRM_Cod_Status                               -- جدول ترميز
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT CRM_Cod_Status_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT CRM_Cod_Status_UK     UNIQUE      (Name),
-  CONSTRAINT CRM_Cod_Status_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT CRM_Cod_Status_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT CRM_Cod_Status_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into CRM_Cod_Status (Id,Name) values (0,'-'     );
@@ -45,9 +43,7 @@ Create Table CRM_Cod_Type                                 -- جدول ترميز
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT CRM_Cod_Type_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT CRM_Cod_Type_UK     UNIQUE      (Name),
-  CONSTRAINT CRM_Cod_Type_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT CRM_Cod_Type_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT CRM_Cod_Type_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into CRM_Cod_Type (Id,Name) values (0,'-'     );
@@ -67,9 +63,7 @@ Create Table CRM_Cod_Kind                                 -- جدول ترميز
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT CRM_Cod_Kind_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT CRM_Cod_Kind_UK     UNIQUE      (Name),
-  CONSTRAINT CRM_Cod_Kind_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT CRM_Cod_Kind_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT CRM_Cod_Kind_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into CRM_Cod_Kind (Id,Name) values (0,'-'          );
@@ -87,9 +81,7 @@ Create Table CRM_Cod_Clearance                            -- جدول ترميز
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT CRM_Cod_Clearance_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT CRM_Cod_Clearance_UK     UNIQUE      (Name),
-  CONSTRAINT CRM_Cod_Clearance_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT CRM_Cod_Clearance_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT CRM_Cod_Clearance_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into CRM_Cod_Clearance (Id,Name) values (0,'-'  );
@@ -108,10 +100,7 @@ Create Table CRM_Cod_Grp                                -- جدول ترميز �
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT CRM_Cod_Grp_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT CRM_Cod_Grp_UK        UNIQUE      (Name),
-  CONSTRAINT CRM_Cod_Grp_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT CRM_Cod_Grp_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT CRM_Cod_Grp_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT CRM_Cod_Grp_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into CRM_Cod_Grp (Id,Name) values (0,'-');
@@ -125,11 +114,7 @@ Create Table CRM_Cod_Itm                                 -- جدول ترميز 
   Ins_User   BIGINT,  Ins_Date    DATETIME,
   Upd_User   BIGINT,  Upd_Date    DATETIME,
   CONSTRAINT CRM_Cod_Itm_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT CRM_Cod_Itm_UK        UNIQUE      (Name),
-  CONSTRAINT CRM_Cod_Itm_Group_Fk  Foreign Key (Grp_Id   ) References CRM_Cod_Grp   (Id),
-  CONSTRAINT CRM_Cod_Itm_Status_Fk Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT CRM_Cod_Itm_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT CRM_Cod_Itm_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT CRM_Cod_Itm_UK        UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into CRM_Cod_Itm (Id,Grp_Id,Name) values (0,0,'-');

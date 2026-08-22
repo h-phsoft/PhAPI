@@ -19,10 +19,7 @@ Create Table Ams_Bran                           -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT AMS_Bran_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT AMS_Bran_UK        UNIQUE      (Name),
-  CONSTRAINT AMS_Bran_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT AMS_Bran_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT AMS_Bran_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT AMS_Bran_UK        UNIQUE      (Name)
 );
 
 INSERT INTO AMS_Bran (Id, Name) VALUES (0, '-');
@@ -42,10 +39,7 @@ Create Table Ams_Colge                                    -- جدول
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT AMS_Coleg_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT AMS_Coleg_UK        UNIQUE      (Name),
-  CONSTRAINT AMS_Coleg_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT AMS_Coleg_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT AMS_Coleg_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT AMS_Coleg_UK        UNIQUE      (Name)
 );
 
 INSERT INTO AMS_Coleg (Id, Name) VALUES (0, '-');
@@ -64,11 +58,7 @@ Create Table Ams_Sec                                   -- جدول
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT AMS_Sec_PK        PRIMARY KEY (Id),
-  CONSTRAINT AMS_Sec_UK        UNIQUE      (Coleg_Id, Name),
-  CONSTRAINT AMS_Sec_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT AMS_Sec_Coleg_FK  Foreign Key (Coleg_Id ) References AMS_Coleg     (Id),
-  CONSTRAINT AMS_Sec_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT AMS_Sec_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT AMS_Sec_UK        UNIQUE      (Coleg_Id, Name)
 );
 
 INSERT INTO AMS_Sec (Id, Coleg_Id, Name) VALUES (0, 0, '-');
@@ -87,11 +77,7 @@ Create Table Ams_Spec                                -- جدول
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT AMS_Spec_PK        PRIMARY KEY (Id),
-  CONSTRAINT AMS_Spec_UK        UNIQUE      (Sec_Id, Name),
-  CONSTRAINT AMS_Spec_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT AMS_Spec_Coleg_FK  Foreign Key (Coleg_Id ) References AMS_Coleg     (Id),
-  CONSTRAINT AMS_Spec_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT AMS_Spec_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT AMS_Spec_UK        UNIQUE      (Sec_Id, Name)
 );
 
 INSERT INTO AMS_Spec (Id, Sec_Id, Name) VALUES (0, 0, '-');
@@ -108,10 +94,7 @@ Create Table Ams_AYear                                -- جدول
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT AMS_AcYear_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT AMS_AcYear_UK        UNIQUE      (Name),
-  CONSTRAINT AMS_AcYear_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT AMS_AcYear_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT AMS_AcYear_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT AMS_AcYear_UK        UNIQUE      (Name)
 );
 
 INSERT INTO AMS_AcYear (Id, Sec_Id, Name) VALUES (0, 0, '-');
@@ -133,12 +116,7 @@ Create Table Ams_ATerm                             -- جدول
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT AMS_AcTerm_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT AMS_AcTerm_UK        UNIQUE      (AcYear_Id, Term_Id),
-  CONSTRAINT AMS_AcTerm_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT AMS_AcTerm_Term_FK   Foreign Key (Term_Id  ) References AMS_Cod_Term  (Id),
-  CONSTRAINT AMS_AcTerm_AcYear_FK Foreign Key (AcYear_Id) References AMS_AcYear    (Id),
-  CONSTRAINT AMS_AcTerm_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT AMS_AcTerm_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT AMS_AcTerm_UK        UNIQUE      (AcYear_Id, Term_Id)
 );
 
 INSERT INTO AMS_AcTerm (Id, AcYear_Id, SDate, EDate) VALUES (0, 0, To_Date('01-01-2000','DD-MM-YYYY'), To_Date('31-12-2999','DD-MM-YYYY'));
@@ -158,10 +136,7 @@ Create Table AMS_Item                             -- جدول
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT AMS_Item_PK        PRIMARY KEY (Id  ),
   CONSTRAINT AMS_Item_Code_UK   UNIQUE      (Code),
-  CONSTRAINT AMS_Item_NAme_UK   UNIQUE      (Name),
-  CONSTRAINT AMS_Item_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT AMS_Item_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT AMS_Item_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT AMS_Item_NAme_UK   UNIQUE      (Name)
 );
 
 INSERT INTO AMS_Item (Id, Code, Name) VALUES (0, '0', '-');
@@ -178,10 +153,7 @@ Create Table Ams_Price                                    -- جدول
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT AMS_Price_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT AMS_Price_Name_UK   UNIQUE      (Name),
-  CONSTRAINT AMS_Price_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT AMS_Price_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT AMS_Price_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT AMS_Price_Name_UK   UNIQUE      (Name)
 );
 
 INSERT INTO AMS_Price (Id, Name) VALUES (0, '-');
@@ -210,20 +182,7 @@ Create Table AMS_Price_Fee                                -- جدول
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT AMS_Price_Fee_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT AMS_Price_Fee_UK        UNIQUE      (Mst_Id, Bran_Id, Coleg_Id, Sec_Id, Spec_Id, Type_Id, Fee_Id),
-  CONSTRAINT AMS_Price_Fee_Price_FK  Foreign Key (Mst_Id   ) References AMS_Price         (Id),
-  CONSTRAINT AMS_Price_Fee_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status    (Id),
-  CONSTRAINT AMS_Price_Fee_Bran_FK   Foreign Key (Bran_Id  ) References AMS_Bran          (Id),
-  CONSTRAINT AMS_Price_Fee_Coleg_FK  Foreign Key (Coleg_Id ) References AMS_Coleg         (Id),
-  CONSTRAINT AMS_Price_Fee_Sec_FK    Foreign Key (Sec_Id   ) References AMS_Sec           (Id),
-  CONSTRAINT AMS_Price_Fee_Spec_FK   Foreign Key (Spec_Id  ) References AMS_SPec          (Id),
-  CONSTRAINT AMS_Price_Fee_Type_FK   Foreign Key (Type_Id  ) References AMS_Cod_Price_Type(Id),
-  CONSTRAINT AMS_Price_Fee_Fee_FK    Foreign Key (Fee_Id   ) References AMS_Cod_Fee       (Id),
-  CONSTRAINT AMS_Price_Fee_Curn1_FK  Foreign Key (Curn1_Id ) References Mng_Curn          (Id),
-  CONSTRAINT AMS_Price_Fee_Curn2_FK  Foreign Key (Curn2_Id ) References Mng_Curn          (Id),
-  CONSTRAINT AMS_Price_Fee_Curn3_FK  Foreign Key (Curn3_Id ) References Mng_Curn          (Id),
-  CONSTRAINT AMS_Price_Fee_Ins_FK    Foreign Key (Ins_User ) References Cpy_User          (Id),
-  CONSTRAINT AMS_Price_Fee_Upd_FK    Foreign Key (Upd_User ) References Cpy_User          (Id)
+  CONSTRAINT AMS_Price_Fee_UK        UNIQUE      (Mst_Id, Bran_Id, Coleg_Id, Sec_Id, Spec_Id, Type_Id, Fee_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS AMS_Disc_Seq
@@ -238,10 +197,7 @@ Create Table AMS_Disc                                 -- جدول
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT AMS_Disc_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT AMS_Disc_Name_UK   UNIQUE      (Name),
-  CONSTRAINT AMS_Disc_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT AMS_Disc_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT AMS_Disc_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT AMS_Disc_Name_UK   UNIQUE      (Name)
 );
 
 INSERT INTO AMS_Disc (Id, Name) VALUES (0, '-');
@@ -267,17 +223,7 @@ Create Table AMS_Discount_Details                          -- جدول
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT AMS_Disc_Detail_PK         PRIMARY KEY (Id  ),
-  CONSTRAINT AMS_Disc_Detail_UK         UNIQUE      (Mst_Id, Type_Id, Disc_Id),
-  CONSTRAINT AMS_Disc_Detail_Disc_FK    Foreign Key (Mst_Id    ) References AMS_Disc          (Id),
-  CONSTRAINT AMS_Disc_Detail_Status_FK  Foreign Key (Status_Id ) References Phs_Cod_Status    (Id),
-  CONSTRAINT AMS_Disc_Detail_Type_FK    Foreign Key (Type_Id   ) References AMS_Cod_Price_Type(Id),
-  CONSTRAINT AMS_Disc_Detail_Disc_FK    Foreign Key (Disc_Id   ) References AMS_Cod_Disc      (Id),
-  CONSTRAINT AMS_Disc_Detail_AmtType_FK Foreign Key (AmtType_Id) References Phs_Cod_AmtType   (Id),
-  CONSTRAINT AMS_Disc_Detail_Curn1_FK   Foreign Key (Curn1_Id  ) References Mng_Curn          (Id),
-  CONSTRAINT AMS_Disc_Detail_Curn2_FK   Foreign Key (Curn2_Id  ) References Mng_Curn          (Id),
-  CONSTRAINT AMS_Disc_Detail_Curn3_FK   Foreign Key (Curn3_Id  ) References Mng_Curn          (Id),
-  CONSTRAINT AMS_Disc_Detail_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User          (Id),
-  CONSTRAINT AMS_Disc_Detail_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User          (Id)
+  CONSTRAINT AMS_Disc_Detail_UK         UNIQUE      (Mst_Id, Type_Id, Disc_Id)
 );
 
 -- TODO(port): other has no automatic equivalent (source line 270).

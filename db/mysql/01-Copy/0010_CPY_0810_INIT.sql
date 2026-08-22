@@ -18,7 +18,7 @@ Insert Into Cpy_PGrp ( Id, Name ) Values ( 0 , 'ADMINISTRATORS' );
 -- --------------------------------------------------------------------------------------------------
 Insert into Cpy_Bran ( Id, Num, Name, Day1, Day2, Day3, Day4, Day5, Day6, Day7, Curn_Id, Cost_Id ) values (0, 0, '-', 1, 1, 1, 1, 1, 0, 0, 1, 0 );
 
-Insert into Cpy_Period ( Id, Name, Status_Id, SDate, EDate ) values ( 0, 'Open Period', 1, STR_TO_DATE('01-01-1900','DD-MM-YYYY'), STR_TO_DATE('31-12-2099','DD-MM-YYYY') );
+Insert into Cpy_Period ( Id, Name, Status_Id, SDate, EDate ) values ( 0, 'Open Period', 1, STR_TO_DATE('01-01-1900','%d-%m-%Y'), STR_TO_DATE('31-12-2099','%d-%m-%Y') );
 
 -- --------------------------------------------------------------------------------------------------
 Insert Into Cpy_User ( Id, UGrp_Id, PGrp_Id, Name, Logon, Pass ) Values ( -9, -9, -1, 'Guest'        , 'Guest'  , Encode_Pass('changeit') );

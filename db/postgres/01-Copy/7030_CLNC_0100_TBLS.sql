@@ -20,9 +20,7 @@ CREATE TABLE Clnc_WorkTime                                                      
   nMinute    SMALLINT DEfault 0 NOT NULL,                                                         -- Minute
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
-  CONSTRAINT Clnc_WorkTime_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Clnc_WorkTime_Ins_FK Foreign Key (Ins_User ) References Cpy_User(Id),
-  CONSTRAINT Clnc_WorkTime_Upd_FK Foreign Key (Upd_User ) References Cpy_User(Id)
+  CONSTRAINT Clnc_WorkTime_PK     PRIMARY KEY (Id  )
 );
 
 ----------------------------------------------------------------------------------------------------
@@ -33,9 +31,7 @@ CREATE TABLE Clnc_Cod_Vat                                                       
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Clnc_Cod_Vat_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Clnc_Cod_Vat_UK     UNIQUE      (Name),
-  CONSTRAINT Clnc_Cod_Vat_Ins_FK Foreign Key (Ins_User ) References Cpy_User(Id),
-  CONSTRAINT Clnc_Cod_Vat_Upd_FK Foreign Key (Upd_User ) References Cpy_User(Id)
+  CONSTRAINT Clnc_Cod_Vat_UK     UNIQUE      (Name)
 );
 
 Insert into Clnc_Cod_Vat (Id,Name) values (0,'-'      );
@@ -52,9 +48,7 @@ CREATE TABLE Clnc_Cod_Disc                                                      
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Clnc_Cod_Disc_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Clnc_Cod_Disc_UK     UNIQUE      (Name),
-  CONSTRAINT Clnc_Cod_Disc_Ins_FK Foreign Key (Ins_User ) References Cpy_User(Id),
-  CONSTRAINT Clnc_Cod_Disc_Upd_FK Foreign Key (Upd_User ) References Cpy_User(Id)
+  CONSTRAINT Clnc_Cod_Disc_UK     UNIQUE      (Name)
 );
 
 Insert into Clnc_Cod_Disc (Id,Name) values (0,'-'      );
@@ -71,9 +65,7 @@ CREATE TABLE Clnc_Pay_Type                                                      
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Clnc_Pay_Type_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Clnc_Pay_Type_UK     UNIQUE      (Name),
-  CONSTRAINT Clnc_Pay_Type_Ins_FK Foreign Key (Ins_User ) References Cpy_User(Id),
-  CONSTRAINT Clnc_Pay_Type_Upd_FK Foreign Key (Upd_User ) References Cpy_User(Id)
+  CONSTRAINT Clnc_Pay_Type_UK     UNIQUE      (Name)
 );
 
 Insert into Clnc_Pay_Type (Id,Name) values (0,'-'   );
@@ -89,9 +81,7 @@ CREATE TABLE Clnc_App_Status                                                    
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT Clnc_App_Status_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Clnc_App_Status_UK     UNIQUE      (Name),
-  CONSTRAINT Clnc_App_Status_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Clnc_App_Status_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Clnc_App_Status_UK     UNIQUE      (Name)
 );
 
 Insert into Clnc_App_Status (Id,Name,BG,FG) values (0,'New','#CCC','#000');
@@ -115,9 +105,7 @@ CREATE TABLE Clnc_Treat_Status                                                  
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT Clnc_Treat_Status_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Clnc_Treat_Status_UK     UNIQUE      (Name),
-  CONSTRAINT Clnc_Treat_Status_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Clnc_Treat_Status_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Clnc_Treat_Status_UK     UNIQUE      (Name)
 );
 
 Insert into Clnc_Treat_Status (Id,Name,BG,FG) values (0,'New','#CCC','#000');
@@ -134,9 +122,7 @@ CREATE TABLE Clnc_List                                                          
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT Clnc_List_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Clnc_List_UK     UNIQUE      (Name),
-  CONSTRAINT Clnc_List_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Clnc_List_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Clnc_List_UK     UNIQUE      (Name)
 );
 
 Insert into Clnc_List (Id,Name) values (0,'-');
@@ -153,10 +139,7 @@ Create Table Clnc_Cod_Shift                                                     
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Clnc_Cod_Shift_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Clnc_Cod_Shift_UK        UNIQUE      (Name),
-  CONSTRAINT Clnc_Cod_Shift_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Clnc_Cod_Shift_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Clnc_Cod_Shift_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Clnc_Cod_Shift_UK        UNIQUE      (Name)
 );
 
 Insert into Clnc_Cod_Shift (Id,Name) values (0,'-');
@@ -173,10 +156,7 @@ Create Table Clnc_Cod_Nat                                                       
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Clnc_Cod_Nat_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Clnc_Cod_Nat_UK        UNIQUE      (Name),
-  CONSTRAINT Clnc_Cod_Nat_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Clnc_Cod_Nat_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Clnc_Cod_Nat_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Clnc_Cod_Nat_UK        UNIQUE      (Name)
 );
 
 Insert into Clnc_Cod_Nat (Id,Name) values (0,'-');
@@ -193,10 +173,7 @@ Create Table Clnc_Special                                                       
   Ins_User   BIGINT, Ins_Date     TIMESTAMP,
   Upd_User   BIGINT, Upd_Date     TIMESTAMP,
   CONSTRAINT Clnc_Special_PK        PRIMARY KEY (Id  ),
-  CONSTRAINT Clnc_Special_UK        UNIQUE      (Name),
-  CONSTRAINT Clnc_Special_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Clnc_Special_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Clnc_Special_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Clnc_Special_UK        UNIQUE      (Name)
 );
 
 Insert into Clnc_Special (Id,Name) values (0,'ALL');
@@ -220,11 +197,7 @@ CREATE TABLE Clnc_Cat                                                           
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT Clnc_Cat_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Clnc_Cat_UK         UNIQUE      (Name), 
-  CONSTRAINT Clnc_Cat_Status_FK  Foreign Key (Status_Id ) References Phs_Cod_Status(Id),
-  CONSTRAINT Clnc_Cat_Special_FK Foreign Key (Special_Id) References Clnc_Special  (Id),
-  CONSTRAINT Clnc_Cat_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User      (Id),
-  CONSTRAINT Clnc_Cat_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User      (Id)
+  CONSTRAINT Clnc_Cat_UK         UNIQUE      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Clnc_Proc_Seq
@@ -242,11 +215,7 @@ CREATE TABLE Clnc_Proc                                                          
   Ins_User BIGINT, Ins_Date   TIMESTAMP,
   Upd_User BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT Clnc_Proc_PK     PRIMARY KEY (Id),
-  CONSTRAINT Clnc_Proc_UK     UNIQUE      (Code),
-  CONSTRAINT Clnc_Proc_Cat_FK Foreign Key (Cat_Id)   References Clnc_Cat    (Id),
-  CONSTRAINT Clnc_Proc_Vat_FK Foreign Key (Vat_Id)   References Clnc_Cod_Vat(Id),
-  CONSTRAINT Clnc_Proc_Ins_FK Foreign Key (Ins_User) References Cpy_User    (Id),
-  CONSTRAINT Clnc_Proc_Upd_FK Foreign Key (Upd_User) References Cpy_User    (Id)
+  CONSTRAINT Clnc_Proc_UK     UNIQUE      (Code)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Clnc_App_Type_Seq
@@ -264,9 +233,7 @@ CREATE TABLE Clnc_App_Type                                                      
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT Clnc_App_Type_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Clnc_App_Type_UK     UNIQUE      (Name),
-  CONSTRAINT Clnc_App_Type_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT Clnc_App_Type_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT Clnc_App_Type_UK     UNIQUE      (Name)
 );
 
 Insert into Clnc_App_Type (Id,Name) values (0,'-');
@@ -287,10 +254,7 @@ CREATE TABLE Clnc_Clinic                                                        
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT Clnc_Clinic_PK         PRIMARY KEY (Id  ),
-  CONSTRAINT Clnc_Clinic_UK         UNIQUE      (Name),
-  CONSTRAINT Clnc_Clinic_Status_FK  Foreign Key (Status_id) References Phs_Cod_Status(Id),
-  CONSTRAINT Clnc_Clinic_Ins_FK     Foreign Key (Ins_User)  References Cpy_User      (Id),
-  CONSTRAINT Clnc_Clinic_Upd_FK     Foreign Key (Upd_User)  References Cpy_User      (Id)
+  CONSTRAINT Clnc_Clinic_UK         UNIQUE      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Clnc_User_Clinic_Seq
@@ -304,11 +268,7 @@ CREATE TABLE Clnc_User_Clinic                                                   
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT Clnc_User_Clinic_PK        PRIMARY KEY (Id),
-  CONSTRAINT Clnc_User_Clinic_UK        UNIQUE      (User_Id, Clinic_Id),
-  CONSTRAINT Clnc_User_Clinic_User_FK   Foreign Key (User_Id  ) References Cpy_User   (Id),
-  CONSTRAINT Clnc_User_Clinic_Clinic_FK Foreign Key (Clinic_Id) References Clnc_Clinic(Id),
-  CONSTRAINT Clnc_User_Clinic_Ins_FK    Foreign Key (Ins_User ) References Cpy_User   (Id),
-  CONSTRAINT Clnc_User_Clinic_Upd_FK    Foreign Key (Upd_User ) References Cpy_User   (Id)
+  CONSTRAINT Clnc_User_Clinic_UK        UNIQUE      (User_Id, Clinic_Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Clnc_Doctor_Seq
@@ -337,16 +297,7 @@ CREATE TABLE Clnc_Doctor                                                        
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT Clnc_Doctor_PK         PRIMARY KEY (Id    ),
-  CONSTRAINT Clnc_Doctor_Mobile_UK  UNIQUE      (Mobile),
-  CONSTRAINT Clnc_Doctor_Status_FK  Foreign Key (Status_id ) References Phs_Cod_Status (Id),
-  CONSTRAINT Clnc_Doctor_Gender_FK  Foreign Key (Gender_Id ) References Phs_Cod_Gender (Id),
-  CONSTRAINT Clnc_Doctor_IdType_FK  Foreign Key (IdType_Id ) References Phs_Cod_IdType (Id),
-  CONSTRAINT Clnc_Doctor_Martial_FK Foreign Key (Martial_Id) References Phs_Cod_Marital(Id),
-  CONSTRAINT Clnc_Doctor_Nat_FK     Foreign Key (Nat_id    ) References Clnc_Cod_Nat   (Id),
-  CONSTRAINT Clnc_Doctor_Special_FK Foreign Key (Special_Id) References Clnc_Special   (Id),
-  CONSTRAINT Clnc_Doctor_User_FK    Foreign Key (User_id   ) References Cpy_User       (Id),
-  CONSTRAINT Clnc_Doctor_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User       (Id),
-  CONSTRAINT Clnc_Doctor_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User       (Id)
+  CONSTRAINT Clnc_Doctor_Mobile_UK  UNIQUE      (Mobile)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Clnc_Labor_Seq
@@ -366,9 +317,7 @@ CREATE TABLE Clnc_Labor                                                         
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT Clnc_Labor_PK         PRIMARY KEY (Id  ),
-  CONSTRAINT Clnc_Labor_Mobile_UK  UNIQUE      (Name),
-  CONSTRAINT Clnc_Labor_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User(Id),
-  CONSTRAINT Clnc_Labor_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User(Id)
+  CONSTRAINT Clnc_Labor_Mobile_UK  UNIQUE      (Name)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Clnc_Patient_Seq
@@ -397,15 +346,7 @@ CREATE TABLE Clnc_Patient                                                       
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT Clnc_Patient_PK         PRIMARY KEY (Id    ),
-  CONSTRAINT Clnc_Patient_Mobile_UK  UNIQUE      (Mobile),
-  CONSTRAINT Clnc_Patient_Clinic_FK  Foreign Key (Clinic_Id ) References Clnc_Clinic    (Id),
-  CONSTRAINT Clnc_Patient_Gender_FK  Foreign Key (Gender_Id ) References Phs_Cod_Gender (Id),
-  CONSTRAINT Clnc_Patient_IdType_FK  Foreign Key (IdType_Id ) References Phs_Cod_IdType (Id),
-  CONSTRAINT Clnc_Patient_Martial_FK Foreign Key (Martial_Id) References Phs_Cod_Marital(Id),
-  CONSTRAINT Clnc_Patient_Nat_FK     Foreign Key (Nat_id    ) References Clnc_Cod_Nat   (Id),
-  CONSTRAINT Clnc_Patient_List_FK    Foreign Key (List_id   ) References Clnc_List      (Id),
-  CONSTRAINT Clnc_Patient_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User       (Id),
-  CONSTRAINT Clnc_Patient_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User       (Id)
+  CONSTRAINT Clnc_Patient_Mobile_UK  UNIQUE      (Mobile)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Clnc_Pat_Note_Seq
@@ -420,11 +361,7 @@ CREATE TABLE Clnc_Pat_Note                                                      
   Note       VARCHAR(512) NOT NULL,                                                          -- Note
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
-  CONSTRAINT Clnc_Pat_Note_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Clnc_Pat_Note_Doctor_FK  Foreign Key (Doctor_Id ) References clnc_Doctor (Id),
-  CONSTRAINT Clnc_Pat_Note_Patient_FK Foreign Key (Patient_Id) References Clnc_Patient(Id),
-  CONSTRAINT Clnc_Pat_Note_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User    (Id),
-  CONSTRAINT Clnc_Pat_Note_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User    (Id)
+  CONSTRAINT Clnc_Pat_Note_PK         PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Clnc_App_Seq
@@ -448,15 +385,7 @@ CREATE TABLE Clnc_App                                                           
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT  Clnc_App_PK         PRIMARY KEY (Id),
-  CONSTRAINT  Clnc_App_UK         UNIQUE      (Doctor_Id, dDate, nHour, nMinute),
-  CONSTRAINT  Clnc_App_Clinic_FK  Foreign Key (Clinic_Id ) References Clnc_Clinic    (Id),
-  CONSTRAINT  Clnc_App_Doctor_FK  Foreign Key (Doctor_Id ) References Clnc_Doctor    (Id),
-  CONSTRAINT  Clnc_App_Patient_FK Foreign Key (Patient_Id) References Clnc_Patient   (Id),
-  CONSTRAINT  Clnc_App_Status_FK  Foreign Key (Status_Id ) References Clnc_App_Status(Id),
-  CONSTRAINT  Clnc_App_Type_FK    Foreign Key (Type_Id   ) References Clnc_App_Type  (Id),
-  CONSTRAINT  Clnc_App_Special_FK Foreign Key (Special_Id) References Clnc_Special   (Id),
-  CONSTRAINT  Clnc_App_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User       (Id),
-  CONSTRAINT  Clnc_App_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User       (Id)
+  CONSTRAINT  Clnc_App_UK         UNIQUE      (Doctor_Id, dDate, nHour, nMinute)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Clnc_App_Change_Seq
@@ -471,11 +400,7 @@ CREATE TABLE Clnc_App_Change                                                    
   Reason     VARCHAR(256),                                                                   -- Reason
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP, 
-  CONSTRAINT  Clnc_App_Change_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Clnc_App_Change_App_FK    Foreign Key (App_Id   ) References Clnc_App       (Id),
-  CONSTRAINT  Clnc_App_Change_Status_FK Foreign Key (Status_Id) References Clnc_App_Status(Id),
-  CONSTRAINT  Clnc_App_Change_Ins_FK    Foreign Key (Ins_User ) References Cpy_User       (Id),
-  CONSTRAINT  Clnc_App_Change_Upd_FK    Foreign Key (Upd_User ) References Cpy_User       (Id)
+  CONSTRAINT  Clnc_App_Change_PK        PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Clnc_Invoice_Seq
@@ -494,12 +419,7 @@ CREATE TABLE Clnc_Invoice                                                       
   Disc_Reason     VARCHAR(100),                                                              -- Discount Reason
   Ins_User        BIGINT, Ins_Date   TIMESTAMP,
   Upd_User        BIGINT, Upd_Date   TIMESTAMP,
-  CONSTRAINT Clnc_Invoice_PK         PRIMARY KEY (Id),
-  CONSTRAINT Clnc_Invoice_Clinic_FK  Foreign Key (Clinic_Id ) References Clnc_Clinic  (Id),
-  CONSTRAINT Clnc_Invoice_Patient_FK Foreign Key (Patient_Id) References Clnc_Patient (Id),
-  CONSTRAINT Clnc_Invoice_Disc_FK    Foreign Key (Disc_Id   ) References Clnc_Cod_Disc(Id),
-  CONSTRAINT Clnc_Invoice_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User     (Id),
-  CONSTRAINT Clnc_Invoice_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User     (Id)
+  CONSTRAINT Clnc_Invoice_PK         PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Clnc_Treat_Seq
@@ -517,14 +437,7 @@ CREATE TABLE Clnc_Treat                                                         
   Descr      VARCHAR(512),                                                                   -- Description 
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
-  CONSTRAINT Clnc_Treat_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Clnc_Treat_Clinic_FK  Foreign Key (Clinic_Id ) References Clnc_Clinic      (Id),
-  CONSTRAINT Clnc_Treat_Doctor_FK  Foreign Key (Doctor_Id ) References Clnc_Doctor      (Id),
-  CONSTRAINT Clnc_Treat_Patient_FK Foreign Key (Patient_Id) References Clnc_Patient     (Id),
-  CONSTRAINT Clnc_Treat_Invoice_FK Foreign Key (Inv_Id    ) References Clnc_Invoice     (Id),
-  CONSTRAINT Clnc_Treat_Status_FK  Foreign Key (Status_Id ) References Clnc_Treat_Status(Id),
-  CONSTRAINT Clnc_Treat_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User         (Id),
-  CONSTRAINT Clnc_Treat_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User         (Id)
+  CONSTRAINT Clnc_Treat_PK         PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Clnc_Treat_Proc_Seq
@@ -546,12 +459,7 @@ CREATE TABLE Clnc_Treat_Proc                                                    
   Descr       VARCHAR(256),                                                                  -- Description
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
-  CONSTRAINT  Clnc_Treat_Proc_PK        PRIMARY KEY (Id), 
-  CONSTRAINT  Clnc_Treat_Proc_Treat_FK  Foreign Key (Treat_Id) References Clnc_Treat  (Id),
-  CONSTRAINT  Clnc_Treat_Proc_Doctor_FK Foreign Key (Proc_Id ) References Clnc_Proc   (Id),
-  CONSTRAINT  Clnc_Treat_Proc_Vat_FK    Foreign Key (Vat_Id  ) References Clnc_Cod_Vat(Id),  
-  CONSTRAINT  Clnc_Treat_Proc_Ins_FK    Foreign Key (Ins_User) References Cpy_User    (Id),
-  CONSTRAINT  Clnc_Treat_Proc_Upd_FK    Foreign Key (Upd_User) References Cpy_User    (Id)
+  CONSTRAINT  Clnc_Treat_Proc_PK        PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Clnc_Invoice_Treat_Seq
@@ -564,11 +472,7 @@ CREATE TABLE Clnc_Invoice_Treat                                                 
   Treat_Id    BIGINT NOT NULL,                                                                  -- Treatment
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
-  CONSTRAINT  Clnc_Invoice_Treat_PK         PRIMARY KEY (Id), 
-  CONSTRAINT  Clnc_Invoice_Treat_Invoice_FK Foreign Key (Inv_Id  ) References Clnc_Invoice (Id),  
-  CONSTRAINT  Clnc_Invoice_Treat_Treat_FK   Foreign Key (Treat_Id) References Clnc_Treat   (Id),
-  CONSTRAINT  Clnc_Invoice_Treat_Ins_FK     Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT  Clnc_Invoice_Treat_Upd_FK     Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT  Clnc_Invoice_Treat_PK         PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Clnc_Disc_Seq
@@ -584,11 +488,7 @@ CREATE TABLE Clnc_Disc                                                          
   Descr       VARCHAR(256),                                                                  -- Description
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
-  CONSTRAINT  Clnc_Disc_PK         PRIMARY KEY (Id),
-  CONSTRAINT  Clnc_Disc_Clinic_FK  Foreign Key (Clinic_Id ) References Clnc_Clinic (Id),
-  CONSTRAINT  Clnc_Disc_Patient_FK Foreign Key (Patient_Id) References Clnc_Patient(Id),
-  CONSTRAINT  Clnc_Disc_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User    (Id),
-  CONSTRAINT  Clnc_Disc_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User    (Id)
+  CONSTRAINT  Clnc_Disc_PK         PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Clnc_Pay_Seq
@@ -605,12 +505,7 @@ CREATE TABLE Clnc_Pay                                                           
   Descr       VARCHAR(256),                                                                  -- Description
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
-  CONSTRAINT Clnc_Pay_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Clnc_Pay_Clinic_FK  Foreign Key (Clinic_Id ) References Clnc_Clinic  (Id),
-  CONSTRAINT Clnc_Pay_Patient_FK Foreign Key (Patient_Id) References Clnc_Patient (Id),
-  CONSTRAINT Clnc_Pay_Doctor_FK  Foreign Key (Type_id   ) References Clnc_Pay_Type(Id),
-  CONSTRAINT Clnc_Pay_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User     (Id),
-  CONSTRAINT Clnc_Pay_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User     (Id)
+  CONSTRAINT Clnc_Pay_PK         PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Clnc_Refund_Seq
@@ -626,11 +521,7 @@ CREATE TABLE Clnc_Refund                                                        
   Descr       VARCHAR(256),                                                                  -- Description
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
-  CONSTRAINT Clnc_Refund_PK          PRIMARY KEY (Id), 
-  CONSTRAINT Clnc_Refund_Clinic_FK   Foreign Key (Clinic_Id)  References Clnc_Clinic (Id),
-  CONSTRAINT Clnc_Refundt_Patient_FK Foreign Key (Patient_Id) References Clnc_Patient(Id),
-  CONSTRAINT Clnc_Refund_Ins_FK      Foreign Key (Ins_User)   References Cpy_User    (Id),
-  CONSTRAINT Clnc_Refund_Upd_FK      Foreign Key (Upd_User)   References Cpy_User    (Id)
+  CONSTRAINT Clnc_Refund_PK          PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Clnc_Labor_Send_Seq
@@ -649,13 +540,7 @@ CREATE TABLE Clnc_Labor_Send                                                    
   Descr      VARCHAR(512),                                                                   -- Description 
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
-  CONSTRAINT Clnc_Labor_Send_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Clnc_Labor_Send_Clinic_FK  Foreign Key (Clinic_Id ) References Clnc_Clinic (Id),
-  CONSTRAINT Clnc_Labor_Send_Doctor_FK  Foreign Key (Doctor_Id ) References clnc_Doctor (Id),
-  CONSTRAINT Clnc_Labor_Send_Patient_FK Foreign Key (Patient_Id) References Clnc_Patient(Id),
-  CONSTRAINT Clnc_Labor_Send_Labor_FK   Foreign Key (Labor_Id  ) References Clnc_Labor  (Id),
-  CONSTRAINT Clnc_Labor_Send_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User    (Id),
-  CONSTRAINT Clnc_Labor_Send_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User    (Id)
+  CONSTRAINT Clnc_Labor_Send_PK         PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Clnc_Labor_Receive_Seq
@@ -674,14 +559,7 @@ CREATE TABLE Clnc_Labor_Receive                                                 
   Descr      VARCHAR(512),                                                                   -- Description 
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
-  CONSTRAINT Clnc_Labor_Receive_PK         PRIMARY KEY (Id), 
-  CONSTRAINT Clnc_Labor_Receive_Clinic_FK  Foreign Key (Clinic_Id ) References Clnc_Clinic    (Id),
-  CONSTRAINT Clnc_Labor_Receive_Doctor_FK  Foreign Key (Doctor_Id ) References clnc_Doctor    (Id),
-  CONSTRAINT Clnc_Labor_Receive_Patient_FK Foreign Key (Patient_Id) References Clnc_Patient   (Id),
-  CONSTRAINT Clnc_Labor_Receive_Labor_FK   Foreign Key (Labor_Id  ) References Clnc_Labor     (Id),
-  CONSTRAINT Clnc_Labor_Receive_Send_FK    Foreign Key (Send_Id   ) References Clnc_Labor_Send(Id),
-  CONSTRAINT Clnc_Labor_Receive_Ins_FK     Foreign Key (Ins_User  ) References Cpy_User       (Id),
-  CONSTRAINT Clnc_Labor_Receive_Upd_FK     Foreign Key (Upd_User  ) References Cpy_User       (Id)
+  CONSTRAINT Clnc_Labor_Receive_PK         PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Clnc_Offer_Seq
@@ -697,10 +575,7 @@ CREATE TABLE Clnc_Offer                                                         
   Descr       VARCHAR(512),                                                                  -- Description
   Ins_User    BIGINT, Ins_Date   TIMESTAMP,
   Upd_User    BIGINT, Upd_Date   TIMESTAMP,
-  CONSTRAINT  Clnc_Offer_PK        PRIMARY KEY (Id),
-  CONSTRAINT  Clnc_Offer_Status_FK Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT  Clnc_Offer_Ins_FK    Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT  Clnc_Offer_Upd_FK    Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT  Clnc_Offer_PK        PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Clnc_Offer_Clnc_Seq
@@ -714,11 +589,7 @@ CREATE TABLE Clnc_Offer_Clnc                                                    
   Descr      VARCHAR(512),                                                                   -- Description
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
-  CONSTRAINT Clnc_Offer_Clnc_PK        PRIMARY KEY (Id),
-  CONSTRAINT Clnc_Offer_Clnc_Offer_FK  Foreign Key (offer_id)  References Clnc_Offer (Id),
-  CONSTRAINT Clnc_Offer_Clnc_Clinic_FK Foreign Key (Clinic_Id) References Clnc_Clinic(Id),
-  CONSTRAINT Clnc_Offer_Clnc_Ins_FK    Foreign Key (Ins_User)  References Cpy_User   (Id),
-  CONSTRAINT Clnc_Offer_Clnc_Upd_FK    Foreign Key (Upd_User)  References Cpy_User   (Id)
+  CONSTRAINT Clnc_Offer_Clnc_PK        PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Clnc_Offer_Proc_Seq
@@ -733,11 +604,7 @@ CREATE TABLE Clnc_Offer_Proc                                                    
   Descr      VARCHAR(512),                                                                   -- Description
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
-  CONSTRAINT Clnc_Offer_Proc_PK           PRIMARY KEY (Id),
-  CONSTRAINT Clnc_Offer_Proc_Offer_FK     Foreign Key (Offer_Id) References Clnc_Offer(Id),
-  CONSTRAINT Clnc_Offer_Proc_Procedure_FK Foreign Key (Proc_Id ) References Clnc_Proc (Id),
-  CONSTRAINT Clnc_Offer_Proc_Ins_FK       Foreign Key (Ins_User) References Cpy_User  (Id),
-  CONSTRAINT Clnc_Offer_Proc_Upd_FK       Foreign Key (Upd_User) References Cpy_User  (Id)
+  CONSTRAINT Clnc_Offer_Proc_PK           PRIMARY KEY (Id)
 );
 
 CREATE SEQUENCE IF NOT EXISTS Clnc_User_Shift_Seq
@@ -754,9 +621,5 @@ CREATE TABLE Clnc_User_Shift                                                    
   Ins_User   BIGINT, Ins_Date   TIMESTAMP,
   Upd_User   BIGINT, Upd_Date   TIMESTAMP,
   CONSTRAINT Clnc_User_Shift_PK        PRIMARY KEY (Id),
-  CONSTRAINT Clnc_User_Shift_UK        UNIQUE      (dDate, User_Id, Shift_Id),
-  CONSTRAINT Clnc_User_Shift_User_FK   Foreign Key (User_Id ) References Cpy_User      (Id),
-  CONSTRAINT Clnc_User_Shift_Shift_FK  Foreign Key (Shift_Id) References Clnc_Cod_Shift(Id),
-  CONSTRAINT Clnc_User_Shift_Ins_FK    Foreign Key (Ins_User) References Cpy_User      (Id),
-  CONSTRAINT Clnc_User_Shift_Upd_FK    Foreign Key (Upd_User) References Cpy_User      (Id)
+  CONSTRAINT Clnc_User_Shift_UK        UNIQUE      (dDate, User_Id, Shift_Id)
 );

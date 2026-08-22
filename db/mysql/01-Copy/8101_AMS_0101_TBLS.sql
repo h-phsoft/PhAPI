@@ -22,9 +22,7 @@ Create Table AMS_Cod_Year                                -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT AMS_Cod_Year_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT AMS_Cod_Year_UK     UNIQUE      (Name),
-  CONSTRAINT AMS_Cod_Year_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT AMS_Cod_Year_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT AMS_Cod_Year_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO AMS_Cod_Year (Id, Name) VALUES (0, '-');
@@ -47,9 +45,7 @@ Create Table AMS_Cod_Term                                -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT AMS_Cod_Term_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT AMS_Cod_Term_UK     UNIQUE      (Name),
-  CONSTRAINT AMS_Cod_Term_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT AMS_Cod_Term_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT AMS_Cod_Term_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO AMS_Cod_Term (Id, Name) VALUES (0, '-');
@@ -68,9 +64,7 @@ Create Table AMS_Cod_Price_Type                          -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT AMS_Cod_Price_Type_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT AMS_Cod_Price_Type_UK     UNIQUE      (Name),
-  CONSTRAINT AMS_Cod_Price_Type_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT AMS_Cod_Price_Type_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT AMS_Cod_Price_Type_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO AMS_Cod_Price_Type (Id, Name) VALUES (0, '-');
@@ -88,9 +82,7 @@ Create Table AMS_Cod_Fee                                 -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT AMS_Cod_Fee_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT AMS_Cod_Fee_UK     UNIQUE      (Name),
-  CONSTRAINT AMS_Cod_Fee_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT AMS_Cod_Fee_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT AMS_Cod_Fee_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO AMS_Cod_Fee (Id, Name) VALUES (0, '-');
@@ -108,9 +100,7 @@ Create Table AMS_Cod_Disc                            -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT AMS_Cod_Disc_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT AMS_Cod_Disc_UK     UNIQUE      (Name),
-  CONSTRAINT AMS_Cod_Disc_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT AMS_Cod_Disc_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT AMS_Cod_Disc_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO AMS_Cod_Disc (Id, Name) VALUES (0, '-');
@@ -128,9 +118,7 @@ Create Table AMS_Cod_Cert                          -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT AMS_Cod_Cert_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT AMS_Cod_Cert_UK     UNIQUE      (Name),
-  CONSTRAINT AMS_Cod_Cert_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT AMS_Cod_Cert_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT AMS_Cod_Cert_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO AMS_Cod_Cert (Id, Name) VALUES (0, '-');
@@ -142,9 +130,7 @@ Create Table AMS_Cod_Country                            -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT AMS_Cod_Country_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT AMS_Cod_Country_UK     UNIQUE      (Name),
-  CONSTRAINT AMS_Cod_Country_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT AMS_Cod_Country_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT AMS_Cod_Country_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO AMS_Cod_Country (Id, Name) VALUES (0, '-');
@@ -156,9 +142,7 @@ Create Table AMS_Cod_City                               -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT AMS_Cod_City_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT AMS_Cod_City_UK     UNIQUE      (Name),
-  CONSTRAINT AMS_Cod_City_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT AMS_Cod_City_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT AMS_Cod_City_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO AMS_Cod_City (Id, Name) VALUES (0, '-');
@@ -170,9 +154,7 @@ Create Table AMS_Cod_Stud_Kind                         -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT AMS_Cod_Stud_Kind_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT AMS_Cod_Stud_Kind_UK     UNIQUE      (Name),
-  CONSTRAINT AMS_Cod_Stud_Kind_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT AMS_Cod_Stud_Kind_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT AMS_Cod_Stud_Kind_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO AMS_Cod_Stud_Kind (Id, Name) VALUES (0, '-');
@@ -184,9 +166,7 @@ Create Table AMS_Cod_Nat                           -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT AMS_Cod_Nat_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT AMS_Cod_Nat_UK     UNIQUE      (Name),
-  CONSTRAINT AMS_Cod_Nat_Ins_FK Foreign Key (Ins_User) References Cpy_User(Id),
-  CONSTRAINT AMS_Cod_Nat_Upd_FK Foreign Key (Upd_User) References Cpy_User(Id)
+  CONSTRAINT AMS_Cod_Nat_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO AMS_Cod_Nat (Id, Name) VALUES (0, '-');

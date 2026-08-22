@@ -22,10 +22,7 @@ Create Table Fin_Cod_Type                                 -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fin_Cod_Type_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fin_Cod_Type_UK     UNIQUE      (Name),
-  CONSTRAINT Fin_Cod_Type_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Fin_Cod_Type_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Fin_Cod_Type_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Fin_Cod_Type_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Fin_Cod_Type (Id, Name) VALUES (-1, 'Subtract');
@@ -41,10 +38,7 @@ Create Table Fin_Cod_Trt                                  -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fin_Cod_Trt_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fin_Cod_Trt_UK     UNIQUE      (Name),
-  CONSTRAINT Fin_Cod_Trt_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Fin_Cod_Trt_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Fin_Cod_Trt_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Fin_Cod_Trt_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Fin_Cod_Trt (Id, Name, Rem) VALUES (0 , '-'   , '-');
@@ -78,9 +72,7 @@ Create Table Fin_Cod_Status                               -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fin_Cod_Status_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fin_Cod_Status_UK     UNIQUE      (Name),
-  CONSTRAINT Fin_Cod_Status_Ins_FK Foreign Key (Ins_User) References Cpy_User      (Id),
-  CONSTRAINT Fin_Cod_Status_Upd_FK Foreign Key (Upd_User) References Cpy_User      (Id)
+  CONSTRAINT Fin_Cod_Status_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Insert into Fin_Cod_Status (Id,Name) values (0,'Draft');
@@ -96,10 +88,7 @@ Create Table Fin_Cod_Method                               -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fin_Cod_Method_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fin_Cod_Method_UK     UNIQUE      (Name),
-  CONSTRAINT Fin_Cod_Method_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Fin_Cod_Method_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Fin_Cod_Method_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Fin_Cod_Method_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Fin_Cod_Method (Id, Name) VALUES (0 , '-');
@@ -122,10 +111,7 @@ Create Table Fin_Cod_Contract                             -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fin_Cod_Contract_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fin_Cod_Contract_UK     UNIQUE      (Name),
-  CONSTRAINT Fin_Cod_Contract_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Fin_Cod_Contract_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Fin_Cod_Contract_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Fin_Cod_Contract_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Fin_Cod_Contract (Id, Name) VALUES (0, '-');
@@ -138,10 +124,7 @@ Create Table Fin_Cod_KeyType                              -- جدول ترميز
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fin_Cod_KeyType_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fin_Cod_KeyType_UK     UNIQUE      (Name),
-  CONSTRAINT Fin_Cod_KeyType_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Fin_Cod_KeyType_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Fin_Cod_KeyType_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Fin_Cod_KeyType_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Fin_Cod_KeyType (Id, Name) VALUES (0, '-');
@@ -154,10 +137,7 @@ Create Table Fin_Cod_Loc                             -- جدول ترميز ال
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fin_Cod_Loc_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fin_Cod_Loc_UK     UNIQUE      (Name),
-  CONSTRAINT Fin_Cod_Loc_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Fin_Cod_Loc_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Fin_Cod_Loc_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Fin_Cod_Loc_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Fin_Cod_Loc (Id, Name) VALUES (0, '-');
@@ -170,10 +150,7 @@ Create Table Fin_Cod_LType                            -- جدول ترميز ن�
   Ins_User   BIGINT, Ins_Date     DATETIME,
   Upd_User   BIGINT, Upd_Date     DATETIME,
   CONSTRAINT Fin_Cod_LType_PK     PRIMARY KEY (Id  ),
-  CONSTRAINT Fin_Cod_LType_UK     UNIQUE      (Name),
-  CONSTRAINT Fin_Cod_LType_Fk     Foreign Key (Status_Id) References Phs_Cod_Status(Id),
-  CONSTRAINT Fin_Cod_LType_Ins_FK Foreign Key (Ins_User ) References Cpy_User      (Id),
-  CONSTRAINT Fin_Cod_LType_Upd_FK Foreign Key (Upd_User ) References Cpy_User      (Id)
+  CONSTRAINT Fin_Cod_LType_UK     UNIQUE      (Name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO Fin_Cod_LType (Id, Name) VALUES (0, 'خدمة');
@@ -203,7 +180,7 @@ Create Table Fin_MInv                               -- فواتير التدقي
   Bank_Id       BIGINT,                                 -- البنك
   Ord_Id        BIGINT,                                -- مقتاح الأمر
   Num           BIGINT Default 0,                      -- رقم
-  dDate         DATETIME Default NOW(),                      -- تاريخ
+  dDate         DATETIME DEFAULT (NOW()),                      -- تاريخ
   RefNum        VARCHAR(30),                         -- رقم مرتبط بالعميل
   Contract_Id   BIGINT Default 0,                       -- العقد
   KeyType_Id    BIGINT Default 0,                       -- نوع الوثيقة المرتبطة
@@ -219,25 +196,7 @@ Create Table Fin_MInv                               -- فواتير التدقي
   Ins_User      BIGINT, Ins_Date     DATETIME,
   Upd_User      BIGINT, Upd_Date     DATETIME,
   CONSTRAINT    Fin_Inv_PK           Primary Key (Id),
-  CONSTRAINT    Fin_Inv_UK           Unique      (Period_Id, Num),
-  CONSTRAINT    Fin_Inv_WPer_FK      Foreign Key (Period_Id  ) References Cpy_Period      (Id),
-  CONSTRAINT    Fin_Inv_Vhr_FK       Foreign Key (Vhr_Id     ) References Acc_Mst         (Id),
-  CONSTRAINT    Fin_Inv_Dept_FK      Foreign Key (Dept_Id    ) References Cpy_Dept        (Id),
-  CONSTRAINT    Fin_Inv_Unit_FK      Foreign Key (Unit_Id    ) References Cpy_Unit        (Id),
-  CONSTRAINT    Fin_Inv_Oper_FK      Foreign Key (Oper_Id    ) References Cpy_Oper        (Id),
-  CONSTRAINT    Fin_Inv_Cont_FK      Foreign Key (Cont_Id    ) References Mng_Cont        (Id),
-  CONSTRAINT    Fin_Inv_Acc_FK       Foreign Key (Acc_Id     ) References Acc_Acc         (Id),
-  CONSTRAINT    Fin_Inv_RActv_FK     Foreign Key (Dept_RId   ) References Cpy_Dept        (Id),
-  CONSTRAINT    Fin_Inv_RASec_FK     Foreign Key (Unit_RId   ) References Cpy_Unit        (Id),
-  CONSTRAINT    Fin_Inv_RASOp_FK     Foreign Key (Oper_RId   ) References Cpy_Oper        (Id),
-  CONSTRAINT    Fin_Inv_Src_FK       Foreign Key (Src_Id     ) References Phs_Cod_Src     (Id),
-  CONSTRAINT    Fin_Inv_Trt_FK       Foreign Key (Trt_Id     ) References Fin_Cod_Trt     (Id),
-  CONSTRAINT    Fin_Inv_Status_FK    Foreign Key (Status_Id  ) References Fin_Cod_Status  (Id),
-  CONSTRAINT    Fin_Inv_Method_FK    Foreign Key (Method_Id  ) References Fin_Cod_Method  (Id),
-  CONSTRAINT    Fin_Inv_Contract_FK  Foreign Key (Contract_Id) References Fin_Cod_Contract(Id),
-  CONSTRAINT    Fin_Inv_KeyType_FK   Foreign Key (KeyType_Id ) References Fin_Cod_KeyType (Id),
-  CONSTRAINT    Fin_Inv_Ins_FK       Foreign Key (Ins_User   ) References Cpy_User        (Id),
-  CONSTRAINT    Fin_Inv_Upd_FK       Foreign Key (Upd_User   ) References Cpy_User        (Id)
+  CONSTRAINT    Fin_Inv_UK           Unique      (Period_Id, Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fin_TInv                               -- بنود الفواتير
@@ -267,19 +226,7 @@ Create Table Fin_TInv                               -- بنود الفواتير
   Rem        VARCHAR(250),                           -- البيان
   Ins_User   BIGINT,  Ins_Date  DATETIME,
   Upd_User   BIGINT,  Upd_Date  DATETIME,
-  CONSTRAINT Fin_TInv_PK       Primary Key (Id),
-  CONSTRAINT Fin_TInv_MInv_FK  Foreign Key (Mst_Id  ) References Fin_MInv     (Id),
-  CONSTRAINT Fin_TInv_Cont_FK  Foreign Key (Cont_RId) References Mng_Cont     (Id),
-  CONSTRAINT Fin_TInv_Serv_FK  Foreign Key (Serv_Id ) References Mng_Serv     (Id),
-  CONSTRAINT Fin_TInv_Acc_FK   Foreign Key (Acc_Id  ) References Acc_Acc      (Id),
--- CONSTRAINT Fin_TInv_Item_FK  Foreign Key (Item_Id ) References Stor_Item    (Id),
-  CONSTRAINT Fin_TInv_Curn_FK  Foreign Key (Curn_Id ) References Mng_Curn     (Id),
-  CONSTRAINT Fin_TInv_LType_FK Foreign Key (LType_Id) References Fin_Cod_LType(Id),
-  CONSTRAINT Fin_TInv_Type_FK  Foreign Key (Type_Id ) References Fin_Cod_Type (Id),
-  CONSTRAINT Fin_TInv_Loc_FK   Foreign Key (Loc_Id  ) References Fin_Cod_Loc  (Id),
-  CONSTRAINT Fin_TInv_Unit_FK  Foreign Key (Unit_Id ) References Cpy_Unit     (Id),
-  CONSTRAINT Fin_TInv_Ins_FK   Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Fin_TInv_Upd_FK   Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Fin_TInv_PK       Primary Key (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fin_MDbt                            -- الوثائق المدينة
@@ -301,7 +248,7 @@ Create Table Fin_MDbt                            -- الوثائق المدين�
   Bank_Id       BIGINT,                            -- البنك
   Ord_Id        BIGINT,                           -- مقتاح الأمر
   Num           BIGINT Default 0,                 -- رقم
-  dDate         DATETIME Default NOW(),                 -- تاريخ
+  dDate         DATETIME DEFAULT (NOW()),                 -- تاريخ
   RefNum        VARCHAR(30),                    -- رقم مرتبط بالعميل
   Contract_Id   BIGINT Default 0,                  -- العقد
   KeyType_Id    BIGINT Default 0,                  -- نوع الوثيقة المرتبطة
@@ -317,24 +264,7 @@ Create Table Fin_MDbt                            -- الوثائق المدين�
   Ins_User      BIGINT, Ins_Date     DATETIME,
   Upd_User      BIGINT, Upd_Date     DATETIME,
   CONSTRAINT    Fin_Dbt_PK           Primary Key (Id),
-  CONSTRAINT    Fin_Dbt_UK           Unique      (Period_Id, Num),
-  CONSTRAINT    Fin_Dbt_Period_FK    Foreign Key (period_Id  ) References Cpy_Period      (Id),
-  CONSTRAINT    Fin_Dbt_Vhr_FK       Foreign Key (Vhr_Id     ) References Acc_Mst         (Id),
-  CONSTRAINT    Fin_Dbt_Dept_FK      Foreign Key (Dept_Id    ) References Cpy_Dept        (Id),
-  CONSTRAINT    Fin_Dbt_Unit_FK      Foreign Key (Unit_Id    ) References Cpy_Unit        (Id),
-  CONSTRAINT    Fin_Dbt_Oper_FK      Foreign Key (Oper_Id    ) References Cpy_Oper        (Id),
-  CONSTRAINT    Fin_Dbt_Cont_FK      Foreign Key (Cont_Id    ) References Mng_Cont        (Id),
-  CONSTRAINT    Fin_Dbt_Acc_FK       Foreign Key (Acc_Id     ) References Acc_Acc         (Id),
-  CONSTRAINT    Fin_Dbt_RActv_FK     Foreign Key (Dept_RId   ) References Cpy_Dept        (Id),
-  CONSTRAINT    Fin_Dbt_RASec_FK     Foreign Key (Unit_RId   ) References Cpy_Unit        (Id),
-  CONSTRAINT    Fin_Dbt_RASOp_FK     Foreign Key (Oper_RId   ) References Cpy_Oper        (Id),
-  CONSTRAINT    Fin_Dbt_Src_FK       Foreign Key (Src_Id     ) References Phs_Cod_Src     (Id),
-  CONSTRAINT    Fin_Dbt_Trt_FK       Foreign Key (Trt_Id     ) References Fin_Cod_Trt     (Id),
-  CONSTRAINT    Fin_Dbt_Method_FK    Foreign Key (Method_Id  ) References Fin_Cod_Method  (Id),
-  CONSTRAINT    Fin_Dbt_Contract_FK  Foreign Key (Contract_Id) References Fin_Cod_Contract(Id),
-  CONSTRAINT    Fin_Dbt_KeyType_FK   Foreign Key (KeyType_Id ) References Fin_Cod_KeyType (Id),
-  CONSTRAINT    Fin_Dbt_Ins_FK       Foreign Key (Ins_User   ) References Cpy_User        (Id),
-  CONSTRAINT    Fin_Dbt_Upd_FK       Foreign Key (Upd_User   ) References Cpy_User        (Id)
+  CONSTRAINT    Fin_Dbt_UK           Unique      (Period_Id, Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fin_TDbt                            -- بنود الوثائق المدينة
@@ -364,19 +294,7 @@ Create Table Fin_TDbt                            -- بنود الوثائق ال
   Rem        VARCHAR(250),                      -- البيان
   Ins_User   BIGINT,  Ins_Date  DATETIME,
   Upd_User   BIGINT,  Upd_Date  DATETIME,
-  CONSTRAINT Fin_TDbt_PK       Primary Key (Id),
-  CONSTRAINT Fin_TDbt_MDbt_FK  Foreign Key (Mst_Id  ) References Fin_MDbt     (Id),
-  CONSTRAINT Fin_TDbt_Cont_FK  Foreign Key (Cont_RId) References Mng_Cont     (Id),
-  CONSTRAINT Fin_TDbt_Serv_FK  Foreign Key (Serv_Id ) References Mng_Serv     (Id),
-  CONSTRAINT Fin_TDbt_Acc_FK   Foreign Key (Acc_Id  ) References Acc_Acc      (Id),
--- CONSTRAINT Fin_TDbt_Item_FK  Foreign Key (Item_Id ) References Stor_Item    (Id),
-  CONSTRAINT Fin_TDbt_Curn_FK  Foreign Key (Curn_Id ) References Mng_Curn     (Id),
-  CONSTRAINT Fin_TDbt_LType_FK Foreign Key (LType_Id) References Fin_Cod_LType(Id),
-  CONSTRAINT Fin_TDbt_Type_FK  Foreign Key (Type_Id ) References Fin_Cod_Type (Id),
-  CONSTRAINT Fin_TDbt_Loc_FK   Foreign Key (Loc_Id  ) References Fin_Cod_Loc  (Id),
-  CONSTRAINT Fin_TDbt_Unit_FK  Foreign Key (Unit_Id ) References Cpy_Unit     (Id),
-  CONSTRAINT Fin_TDbt_Ins_FK   Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Fin_TDbt_Upd_FK   Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Fin_TDbt_PK       Primary Key (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fin_MCrd                           -- الوثائق الدائنة
@@ -398,7 +316,7 @@ Create Table Fin_MCrd                           -- الوثائق الدائنة
   Bank_Id       BIGINT,                            -- البنك
   Ord_Id        BIGINT,                           -- مقتاح الأمر
   Num           BIGINT Default 0,                 -- رقم
-  dDate         DATETIME Default NOW(),                 -- تاريخ
+  dDate         DATETIME DEFAULT (NOW()),                 -- تاريخ
   RefNum        VARCHAR(30),                    -- رقم مرتبط بالعميل
   Contract_Id   BIGINT Default 0,                  -- العقد
   KeyType_Id    BIGINT Default 0,                  -- نوع الوثيقة المرتبطة
@@ -414,24 +332,7 @@ Create Table Fin_MCrd                           -- الوثائق الدائنة
   Ins_User      BIGINT, Ins_Date     DATETIME,
   Upd_User      BIGINT, Upd_Date     DATETIME,
   CONSTRAINT    Fin_Crd_PK           Primary Key (Id),
-  CONSTRAINT    Fin_Crd_UK           Unique      (Period_Id, Num),
-  CONSTRAINT    Fin_Crd_Period_FK    Foreign Key (period_Id  ) References Cpy_Period      (Id),
-  CONSTRAINT    Fin_Crd_Vhr_FK       Foreign Key (Vhr_Id     ) References Acc_Mst         (Id),
-  CONSTRAINT    Fin_Crd_Dept_FK      Foreign Key (Dept_Id    ) References Cpy_Dept        (Id),
-  CONSTRAINT    Fin_Crd_Unit_FK      Foreign Key (Unit_Id    ) References Cpy_Unit        (Id),
-  CONSTRAINT    Fin_Crd_Oper_FK      Foreign Key (Oper_Id    ) References Cpy_Oper        (Id),
-  CONSTRAINT    Fin_Crd_Cont_FK      Foreign Key (Cont_Id    ) References Mng_Cont        (Id),
-  CONSTRAINT    Fin_Crd_Acc_FK       Foreign Key (Acc_Id     ) References Acc_Acc         (Id),
-  CONSTRAINT    Fin_Crd_RActv_FK     Foreign Key (Dept_RId   ) References Cpy_Dept        (Id),
-  CONSTRAINT    Fin_Crd_RASec_FK     Foreign Key (Unit_RId   ) References Cpy_Unit        (Id),
-  CONSTRAINT    Fin_Crd_RASOp_FK     Foreign Key (Oper_RId   ) References Cpy_Oper        (Id),
-  CONSTRAINT    Fin_Crd_Src_FK       Foreign Key (Src_Id     ) References Phs_Cod_Src     (Id),
-  CONSTRAINT    Fin_Crd_Trt_FK       Foreign Key (Trt_Id     ) References Fin_Cod_Trt     (Id),
-  CONSTRAINT    Fin_Crd_Method_FK    Foreign Key (Method_Id  ) References Fin_Cod_Method  (Id),
-  CONSTRAINT    Fin_Crd_Contract_FK  Foreign Key (Contract_Id) References Fin_Cod_Contract(Id),
-  CONSTRAINT    Fin_Crd_KeyType_FK   Foreign Key (KeyType_Id ) References Fin_Cod_KeyType (Id),
-  CONSTRAINT    Fin_Crd_Ins_FK       Foreign Key (Ins_User   ) References Cpy_User        (Id),
-  CONSTRAINT    Fin_Crd_Upd_FK       Foreign Key (Upd_User   ) References Cpy_User        (Id)
+  CONSTRAINT    Fin_Crd_UK           Unique      (Period_Id, Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fin_TCrd                           -- بنود الوثائق الدائنة
@@ -461,19 +362,7 @@ Create Table Fin_TCrd                           -- بنود الوثائق ال�
   Rem        VARCHAR(250),                      -- البيان
   Ins_User   BIGINT,  Ins_Date  DATETIME,
   Upd_User   BIGINT,  Upd_Date  DATETIME,
-  CONSTRAINT Fin_TCrd_PK       Primary Key (Id),
-  CONSTRAINT Fin_TCrd_MCrd_FK  Foreign Key (Mst_Id  ) References Fin_MCrd     (Id),
-  CONSTRAINT Fin_TCrd_Cont_FK  Foreign Key (Cont_RId) References Mng_Cont     (Id),
-  CONSTRAINT Fin_TCrd_Serv_FK  Foreign Key (Serv_Id ) References Mng_Serv     (Id),
-  CONSTRAINT Fin_TCrd_Acc_FK   Foreign Key (Acc_Id  ) References Acc_Acc      (Id),
--- CONSTRAINT Fin_TCrd_Item_FK  Foreign Key (Item_Id ) References Stor_Item    (Id),
-  CONSTRAINT Fin_TCrd_Curn_FK  Foreign Key (Curn_Id ) References Mng_Curn     (Id),
-  CONSTRAINT Fin_TCrd_LType_FK Foreign Key (LType_Id) References Fin_Cod_LType(Id),
-  CONSTRAINT Fin_TCrd_Type_FK  Foreign Key (Type_Id ) References Fin_Cod_Type (Id),
-  CONSTRAINT Fin_TCrd_Loc_FK   Foreign Key (Loc_Id  ) References Fin_Cod_Loc  (Id),
-  CONSTRAINT Fin_TCrd_Unit_FK  Foreign Key (Unit_Id ) References Cpy_Unit     (Id),
-  CONSTRAINT Fin_TCrd_Ins_FK   Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Fin_TCrd_Upd_FK   Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Fin_TCrd_PK       Primary Key (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fin_MExp                          -- مصاريف
@@ -495,7 +384,7 @@ Create Table Fin_MExp                          -- مصاريف
   Bank_Id       BIGINT,                            -- البنك
   Ord_Id        BIGINT,                           -- مقتاح الأمر
   Num           BIGINT Default 0,                 -- رقم
-  dDate         DATETIME Default NOW(),                 -- تاريخ
+  dDate         DATETIME DEFAULT (NOW()),                 -- تاريخ
   RefNum        VARCHAR(30),                    -- رقم مرتبط بالعميل
   Contract_Id   BIGINT Default 0,                  -- العقد
   KeyType_Id    BIGINT Default 0,                  -- نوع الوثيقة المرتبطة
@@ -511,24 +400,7 @@ Create Table Fin_MExp                          -- مصاريف
   Ins_User      BIGINT, Ins_Date     DATETIME,
   Upd_User      BIGINT, Upd_Date     DATETIME,
   CONSTRAINT    Fin_Exp_PK           Primary Key (Id),
-  CONSTRAINT    Fin_Exp_UK           Unique      (Period_Id, Num),
-  CONSTRAINT    Fin_Exp_Period_FK    Foreign Key (period_Id  ) References Cpy_Period      (Id),
-  CONSTRAINT    Fin_Exp_Vhr_FK       Foreign Key (Vhr_Id     ) References Acc_Mst         (Id),
-  CONSTRAINT    Fin_Exp_Dept_FK      Foreign Key (Dept_Id    ) References Cpy_Dept        (Id),
-  CONSTRAINT    Fin_Exp_Unit_FK      Foreign Key (Unit_Id    ) References Cpy_Unit        (Id),
-  CONSTRAINT    Fin_Exp_Oper_FK      Foreign Key (Oper_Id    ) References Cpy_Oper        (Id),
-  CONSTRAINT    Fin_Exp_Cont_FK      Foreign Key (Cont_Id    ) References Mng_Cont        (Id),
-  CONSTRAINT    Fin_Exp_Acc_FK       Foreign Key (Acc_Id     ) References Acc_Acc         (Id),
-  CONSTRAINT    Fin_Exp_RActv_FK     Foreign Key (Dept_RId   ) References Cpy_Dept        (Id),
-  CONSTRAINT    Fin_Exp_RASec_FK     Foreign Key (Unit_RId   ) References Cpy_Unit        (Id),
-  CONSTRAINT    Fin_Exp_RASOp_FK     Foreign Key (Oper_RId   ) References Cpy_Oper        (Id),
-  CONSTRAINT    Fin_Exp_Src_FK       Foreign Key (Src_Id     ) References Phs_Cod_Src     (Id),
-  CONSTRAINT    Fin_Exp_Trt_FK       Foreign Key (Trt_Id     ) References Fin_Cod_Trt     (Id),
-  CONSTRAINT    Fin_Exp_Method_FK    Foreign Key (Method_Id  ) References Fin_Cod_Method  (Id),
-  CONSTRAINT    Fin_Exp_Contract_FK  Foreign Key (Contract_Id) References Fin_Cod_Contract(Id),
-  CONSTRAINT    Fin_Exp_KeyType_FK   Foreign Key (KeyType_Id ) References Fin_Cod_KeyType (Id),
-  CONSTRAINT    Fin_Exp_Ins_FK       Foreign Key (Ins_User   ) References Cpy_User        (Id),
-  CONSTRAINT    Fin_Exp_Upd_FK       Foreign Key (Upd_User   ) References Cpy_User        (Id)
+  CONSTRAINT    Fin_Exp_UK           Unique      (Period_Id, Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fin_TExp                          -- بنود المصاريف
@@ -558,19 +430,7 @@ Create Table Fin_TExp                          -- بنود المصاريف
   Rem        VARCHAR(250),                      -- البيان
   Ins_User   BIGINT,  Ins_Date  DATETIME,
   Upd_User   BIGINT,  Upd_Date  DATETIME,
-  CONSTRAINT Fin_TExp_PK       Primary Key (Id),
-  CONSTRAINT Fin_TExp_MInv_FK  Foreign Key (Mst_Id  ) References Fin_MExp     (Id),
-  CONSTRAINT Fin_TExp_Cont_FK  Foreign Key (Cont_RId) References Mng_Cont     (Id),
-  CONSTRAINT Fin_TExp_Serv_FK  Foreign Key (Serv_Id ) References Mng_Serv     (Id),
-  CONSTRAINT Fin_TExp_Acc_FK   Foreign Key (Acc_Id  ) References Acc_Acc      (Id),
--- CONSTRAINT Fin_TExp_Item_FK  Foreign Key (Item_Id ) References Stor_Item    (Id),
-  CONSTRAINT Fin_TExp_Curn_FK  Foreign Key (Curn_Id ) References Mng_Curn     (Id),
-  CONSTRAINT Fin_TExp_LType_FK Foreign Key (LType_Id) References Fin_Cod_LType(Id),
-  CONSTRAINT Fin_TExp_Type_FK  Foreign Key (Type_Id ) References Fin_Cod_Type (Id),
-  CONSTRAINT Fin_TExp_Loc_FK   Foreign Key (Loc_Id  ) References Fin_Cod_Loc  (Id),
-  CONSTRAINT Fin_TExp_Unit_FK  Foreign Key (Unit_Id ) References Cpy_Unit     (Id),
-  CONSTRAINT Fin_TExp_Ins_FK   Foreign Key (Ins_User) References Cpy_User     (Id),
-  CONSTRAINT Fin_TExp_Upd_FK   Foreign Key (Upd_User) References Cpy_User     (Id)
+  CONSTRAINT Fin_TExp_PK       Primary Key (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fin_MRec                            -- وثائق المناقلة بين المتعاملين
@@ -593,7 +453,7 @@ Create Table Fin_MRec                            -- وثائق المناقلة 
   Bank_Id       BIGINT,                            -- البنك
   Ord_Id        BIGINT,                           -- مقتاح الأمر
   Num           BIGINT Default 0,                 -- رقم
-  dDate         DATETIME Default NOW(),                 -- تاريخ
+  dDate         DATETIME DEFAULT (NOW()),                 -- تاريخ
   RefNum        VARCHAR(30),                    -- رقم مرتبط بالعميل
   Contract_Id   BIGINT Default 0,                  -- العقد
   KeyType_Id    BIGINT Default 0,                  -- نوع الوثيقة المرتبطة
@@ -617,27 +477,7 @@ Create Table Fin_MRec                            -- وثائق المناقلة 
   Ins_User      BIGINT, Ins_Date     DATETIME,
   Upd_User      BIGINT, Upd_Date     DATETIME,
   CONSTRAINT    Fin_Rec_PK           Primary Key (Id),
-  CONSTRAINT    Fin_Rec_UK           Unique      (Period_Id, Num),
-  CONSTRAINT    Fin_Rec_Period_FK    Foreign Key (period_Id  ) References Cpy_Period      (Id),
-  CONSTRAINT    Fin_Rec_Vhr_FK       Foreign Key (Vhr_Id     ) References Acc_Mst         (Id),
-  CONSTRAINT    Fin_Rec_Dept_FK      Foreign Key (Dept_Id    ) References Cpy_Dept        (Id),
-  CONSTRAINT    Fin_Rec_Unit_FK      Foreign Key (Unit_Id    ) References Cpy_Unit        (Id),
-  CONSTRAINT    Fin_Rec_Oper_FK      Foreign Key (Oper_Id    ) References Cpy_Oper        (Id),
-  CONSTRAINT    Fin_Rec_Cont_FK      Foreign Key (Cont_Id    ) References Mng_Cont        (Id),
-  CONSTRAINT    Fin_Rec_ContR_FK     Foreign Key (Cont_RId   ) References Mng_Cont        (Id),
-  CONSTRAINT    Fin_Rec_RActv_FK     Foreign Key (Dept_RId   ) References Cpy_Dept        (Id),
-  CONSTRAINT    Fin_Rec_RASec_FK     Foreign Key (Unit_RId   ) References Cpy_Unit        (Id),
-  CONSTRAINT    Fin_Rec_RASOp_FK     Foreign Key (Oper_RId   ) References Cpy_Oper        (Id),
-  CONSTRAINT    Fin_Rec_Src_FK       Foreign Key (Src_Id     ) References Phs_Cod_Src     (Id),
-  CONSTRAINT    Fin_Rec_Trt_FK       Foreign Key (Trt_Id     ) References Fin_Cod_Trt     (Id),
-  CONSTRAINT    Fin_Rec_TrtR_FK      Foreign Key (Trt_RId    ) References Fin_Cod_Trt     (Id),
-  CONSTRAINT    Fin_Rec_Method_FK    Foreign Key (Method_Id  ) References Fin_Cod_Method  (Id),
-  CONSTRAINT    Fin_Rec_Contract_FK  Foreign Key (Contract_Id) References Fin_Cod_Contract(Id),
-  CONSTRAINT    Fin_Rec_KeyType_FK   Foreign Key (KeyType_Id ) References Fin_Cod_KeyType (Id),
-  CONSTRAINT    Fin_Rec_Curn_FK      Foreign Key (Curn_Id    ) References Mng_Curn        (Id),
-  CONSTRAINT    Fin_Rec_CurnR_FK     Foreign Key (Curn_RId   ) References Mng_Curn        (Id),
-  CONSTRAINT    Fin_Rec_Ins_FK       Foreign Key (Ins_User   ) References Cpy_User        (Id),
-  CONSTRAINT    Fin_Rec_Upd_FK       Foreign Key (Upd_User   ) References Cpy_User        (Id)
+  CONSTRAINT    Fin_Rec_UK           Unique      (Period_Id, Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fin_MAlc                         -- إغلاق الأوراق المالية
@@ -660,7 +500,7 @@ Create Table Fin_MAlc                         -- إغلاق الأوراق ال�
   Bank_Id       BIGINT,                            -- البنك
   Ord_Id        BIGINT,                           -- مقتاح الأمر
   Num           BIGINT Default 0,                 -- رقم
-  dDate         DATETIME Default NOW(),                 -- تاريخ
+  dDate         DATETIME DEFAULT (NOW()),                 -- تاريخ
   RefNum        VARCHAR(30),                    -- رقم مرتبط بالعميل
   Contract_Id   BIGINT Default 0,                  -- العقد
   KeyType_Id    BIGINT Default 0,                  -- نوع الوثيقة المرتبطة
@@ -676,25 +516,7 @@ Create Table Fin_MAlc                         -- إغلاق الأوراق ال�
   Ins_User      BIGINT, Ins_Date DATETIME,
   Upd_User      BIGINT, Upd_Date DATETIME,
   CONSTRAINT    Fin_Alc_PK           Primary Key (Id),
-  CONSTRAINT    Fin_Alc_UK           Unique      (Period_Id, Num),
-  CONSTRAINT    Fin_Alc_Period_FK    Foreign Key (period_Id  ) References Cpy_Period      (Id),
-  CONSTRAINT    Fin_Alc_Vhr_FK       Foreign Key (Vhr_Id     ) References Acc_Mst         (Id),
-  CONSTRAINT    Fin_Alc_Dept_FK      Foreign Key (Dept_Id    ) References Cpy_Dept        (Id),
-  CONSTRAINT    Fin_Alc_Unit_FK      Foreign Key (Unit_Id    ) References Cpy_Unit        (Id),
-  CONSTRAINT    Fin_Alc_Oper_FK      Foreign Key (Oper_Id    ) References Cpy_Oper        (Id),
-  CONSTRAINT    Fin_Alc_Cont_FK      Foreign Key (Cont_Id    ) References Mng_Cont        (Id),
-  CONSTRAINT    Fin_Alc_ContR_FK     Foreign Key (Cont_RId   ) References Mng_Cont        (Id),
-  CONSTRAINT    Fin_Alc_RActv_FK     Foreign Key (Dept_RId   ) References Cpy_Dept        (Id),
-  CONSTRAINT    Fin_Alc_RASec_FK     Foreign Key (Unit_RId   ) References Cpy_Unit        (Id),
-  CONSTRAINT    Fin_Alc_RASOp_FK     Foreign Key (Oper_RId   ) References Cpy_Oper        (Id),
-  CONSTRAINT    Fin_Alc_Src_FK       Foreign Key (Src_Id     ) References Phs_Cod_Src     (Id),
-  CONSTRAINT    Fin_Alc_Trt_FK       Foreign Key (Trt_Id     ) References Fin_Cod_Trt     (Id),
-  CONSTRAINT    Fin_Alc_TrtR_FK      Foreign Key (Trt_RId    ) References Fin_Cod_Trt     (Id),
-  CONSTRAINT    Fin_Alc_Method_FK    Foreign Key (Method_Id  ) References Fin_Cod_Method  (Id),
-  CONSTRAINT    Fin_Alc_Contract_FK  Foreign Key (Contract_Id) References Fin_Cod_Contract(Id),
-  CONSTRAINT    Fin_Alc_KeyType_FK   Foreign Key (KeyType_Id ) References Fin_Cod_KeyType (Id),
-  CONSTRAINT    Fin_Alc_Ins_FK       Foreign Key (Ins_User   ) References Cpy_User        (Id),
-  CONSTRAINT    Fin_Alc_Upd_FK       Foreign Key (Upd_User   ) References Cpy_User        (Id)
+  CONSTRAINT    Fin_Alc_UK           Unique      (Period_Id, Num)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fin_AlcDbt                       -- وثائق المالية المرتبطة
@@ -714,15 +536,7 @@ Create Table Fin_AlcDbt                       -- وثائق المالية ال�
   Rem        VARCHAR(250),                      -- البيان
   Ins_User   BIGINT,  Ins_Date  DATETIME,
   Upd_User   BIGINT,  Upd_Date  DATETIME,
-  CONSTRAINT Fin_TDAlc_PK       Primary Key (Id),
-  CONSTRAINT Fin_TDAlc_FK       Foreign Key (Mst_Id  ) References Fin_MAlc    (Id),
-  CONSTRAINT Fin_TDAlc_RActv_FK Foreign Key (Dept_RId) References Cpy_Dept    (Id),
-  CONSTRAINT Fin_TDAlc_RASec_FK Foreign Key (Unit_RId) References Cpy_Unit    (Id),
-  CONSTRAINT Fin_TDAlc_RASOp_FK Foreign Key (Oper_RId) References Cpy_Oper    (Id),
-  CONSTRAINT Fin_TDAlc_Curn_FK  Foreign Key (Curn_Id ) References Mng_Curn    (Id),
-  CONSTRAINT Fin_TDAlc_Type_FK  Foreign Key (Type_Id ) References Fin_Cod_Type(Id),
-  CONSTRAINT Fin_TDAlc_Ins_FK   Foreign Key (Ins_User) References Cpy_User    (Id),
-  CONSTRAINT Fin_TDAlc_Upd_FK   Foreign Key (Upd_User) References Cpy_User    (Id)
+  CONSTRAINT Fin_TDAlc_PK       Primary Key (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 Create Table Fin_TAlcCrd                      -- وثائق المالية المرتبطة
@@ -742,15 +556,7 @@ Create Table Fin_TAlcCrd                      -- وثائق المالية ال�
   Rem        VARCHAR(250),                      -- البيان
   Ins_User   BIGINT,  Ins_Date  DATETIME,
   Upd_User   BIGINT,  Upd_Date  DATETIME,
-  CONSTRAINT Fin_TCAlc_PK       Primary Key (Id),
-  CONSTRAINT Fin_TCAlc_FK       Foreign Key (Mst_Id  ) References Fin_MAlc    (Id),
-  CONSTRAINT Fin_TCAlc_RActv_FK Foreign Key (Dept_RId) References Cpy_Dept    (Id),
-  CONSTRAINT Fin_TCAlc_RASec_FK Foreign Key (Unit_RId) References Cpy_Unit    (Id),
-  CONSTRAINT Fin_TCAlc_RASOp_FK Foreign Key (Oper_RId) References Cpy_Oper    (Id),
-  CONSTRAINT Fin_TCAlc_Curn_FK  Foreign Key (Curn_Id ) References Mng_Curn    (Id),
-  CONSTRAINT Fin_TCAlc_Type_FK  Foreign Key (Type_Id ) References Fin_Cod_Type(Id),
-  CONSTRAINT Fin_TCAlc_Ins_FK   Foreign Key (Ins_User) References Cpy_User    (Id),
-  CONSTRAINT Fin_TCAlc_Upd_FK   Foreign Key (Upd_User) References Cpy_User    (Id)
+  CONSTRAINT Fin_TCAlc_PK       Primary Key (Id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- TODO(port): other has no automatic equivalent (source line 789).
