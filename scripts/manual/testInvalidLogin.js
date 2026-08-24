@@ -1,6 +1,7 @@
-/* global Buffer */
+/* global Buffer, process */
 
 const http = require('http');
+require('dotenv').config();
 
 console.log('--- Testing Login Validation Failure ---');
 
@@ -11,7 +12,7 @@ const postData = JSON.stringify({
 
 const req = http.request({
   hostname: 'localhost',
-  port: 3000,
+  port: process.env.PORT || 3000,
   path: '/PhsAPI/Auth/Login',
   method: 'POST',
   headers: {

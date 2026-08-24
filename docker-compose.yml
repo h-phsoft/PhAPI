@@ -1,0 +1,48 @@
+services:
+  api:
+    build: .
+    ports:
+      - '${PORT:-3000}:3000'
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+
+      # Required. The container refuses to start without it.
+      JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in your .env or shell}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-24h}
+
+      # Required in production: the origins allowed to call this API.
+      CORS_ORIGINS: ${CORS_ORIGINS:?set CORS_ORIGINS, e.g. https://app.example.com}
+
+      DB_TYPE: ${DB_TYPE:-oracle}
+      DB_HOST: ${DB_HOST:-host.docker.internal}
+      DB_PORT: ${DB_PORT:-1521}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME:-xe}
+      DB_CONNECT_STRING: ${DB_CONNECT_STRING:-}
+      DB_POOL_LIMIT: ${DB_POOL_LIMIT:-10}
+      DB_USER_PREFIX: ${DB_USER_PREFIX:-c##erp}
+
+      ADMIN_DB_USER: ${ADMIN_DB_USER:-}
+      ADMIN_DB_PASS: ${ADMIN_DB_PASS:-}
+      ADMIN_DB_CONNECT_STRING: ${ADMIN_DB_CONNECT_STRING:-}
+
+      RBAC_MODE: ${RBAC_MODE:-audit}
+      AUDIT_LOG: ${AUDIT_LOG:-true}
+      RATE_LIMIT_MAX: ${RATE_LIMIT_MAX:-1000}
+      AUTH_RATE_LIMIT_MAX: ${AUTH_RATE_LIMIT_MAX:-10}
+      MAX_PAGE_SIZE: ${MAX_PAGE_SIZE:-1000}
+      AUTOCOMPLETE_SIZE: ${AUTOCOMPLETE_SIZE:-50}
+
+    # Reaches an Oracle instance running on the host rather than in compose.
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+
+    restart: unless-stopped
+
+    volumes:
+      - api-logs:/app/logs
+
+volumes:
+  api-logs:

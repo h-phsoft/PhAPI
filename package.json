@@ -10,6 +10,7 @@
     "test:security": "node tests/autocomplete.security.test.js"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
@@ -19,6 +20,7 @@
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.6.5",
     "oracledb": "^6.10.0",
+    "pdfkit": "^0.19.1",
     "pg": "^8.11.3",
     "winston": "^3.11.0"
   },

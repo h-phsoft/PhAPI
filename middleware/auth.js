@@ -1,9 +1,6 @@
-/* global process */
-
 const jwt = require('jsonwebtoken');
+const env = require('../config/env');
 const ResultManager = require('../utils/responseManager');
-
-const JWT_SECRET = process.env.JWT_SECRET || 'phs_api_secret_key_2026';
 
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];
@@ -13,7 +10,7 @@ function authenticateToken(req, res, next) {
     return res.status(200).json(ResultManager.error(401, 'Access token is required'));
   }
 
-  jwt.verify(token, JWT_SECRET, (err, user) => {
+  jwt.verify(token, env.jwtSecret, (err, user) => {
     if (err) {
       return res.status(200).json(ResultManager.error(403, 'Invalid or expired token'));
     }

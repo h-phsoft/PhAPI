@@ -1,4 +1,4 @@
-const autocompleteService = require('./services/autocompleteService');
+const autocompleteService = require('../../services/autocompleteService');
 
 console.log('--- Testing Autocomplete Service ---');
 

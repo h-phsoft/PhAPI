@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken');
+const env = require('../config/env');
 const mainApp = require('../config/mainApp');
 const repository = require('../repository/unifiedRepository');
 const i18nHelper = require('../utils/i18nHelper');
-
-const JWT_SECRET = process.env.JWT_SECRET || 'phs_api_secret_key_2026';
+const passwordUtil = require('../utils/password');
 
 class AuthError extends Error {
   constructor(message, statusCode = 401) {
@@ -169,19 +169,33 @@ class AuthService {
     }
 
     if (!passwordValidated) {
-      if (String(dbPass) !== String(loginPass)) {
+      const { valid, legacy } = await passwordUtil.verify(loginPass, dbPass);
+
+      if (!valid) {
         throw new AuthError('Invalid username or password', 401);
+      }
+
+      if (legacy) {
+        // The stored value is still plaintext. Login is allowed so the tenant
+        // keeps working, but every hit is recorded so the migration can be
+        // tracked. See scripts/migratePasswords.js.
+        logger.warn(`[AuthService] User '${loginUser}' in copy '${loginCopy}' authenticated against a plaintext password`);
       }
     }
 
     const userId = dbUser.id || dbUser.ID || dbUser.Id || loginUser;
     const userName = dbUser.name || dbUser.NAME || dbUser.Name || loginUser;
 
+    // Carried so the authorization middleware can resolve the permission group
+    // without an extra user lookup on every request.
+    const pgrpId = Number(dbUser.pgrpId || dbUser.PGRP_ID || dbUser.PGrp_Id || 0) || 0;
+
     // Issue JWT token only after successful database verification
     const tokenPayload = {
       jui: String(userId),
       userId: String(userId),
       userName,
+      pgrpId,
       Copy: String(loginCopy),
       copy: String(loginCopy),
       vCopy: String(loginCopy),
@@ -189,7 +203,7 @@ class AuthService {
       periodId: loginPeriod
     };
 
-    const token = jwt.sign(tokenPayload, JWT_SECRET, { expiresIn: '24h' });
+    const token = jwt.sign(tokenPayload, env.jwtSecret, { expiresIn: env.jwtExpiresIn });
 
     return {
       token,

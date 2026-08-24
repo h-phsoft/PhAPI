@@ -1,13 +1,14 @@
 /* global __dirname */
 
 const path = require('path');
-const mainApp = require('./config/mainApp');
+const mainApp = require('../../config/mainApp');
 
 console.log('--- Testing Metadata Loading ---');
 
+const projectRoot = path.join(__dirname, '..', '..');
 const modulesDirs = [
-  path.join(__dirname, 'resources', 'modules'),
-  path.join(__dirname, 'db', 'JSON', 'pkgs')
+  path.join(projectRoot, 'resources', 'modules'),
+  path.join(projectRoot, 'db', 'JSON', 'pkgs')
 ];
 
 mainApp.loadMetadata(modulesDirs);

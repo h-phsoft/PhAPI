@@ -1,19 +1,30 @@
-/* global Buffer */
+/* global Buffer, process */
 
 const http = require('http');
+require('dotenv').config();
 
 console.log('--- Testing Login Endpoint ---');
 
+// Credentials come from the environment so no real password lives in the repo.
+const username = process.env.TEST_LOGIN_USER;
+const password = process.env.TEST_LOGIN_PASS;
+
+if (!username || !password) {
+  console.error('Set TEST_LOGIN_USER and TEST_LOGIN_PASS before running this script.');
+  console.error('  Example: TEST_LOGIN_USER=admin TEST_LOGIN_PASS=secret node scripts/manual/testLogin.js');
+  process.exit(1);
+}
+
 const postData = JSON.stringify({
-  username: "admin",
-  password: "PhPass",
-  tenantId: "1",
-  periodId: 2026
+  username,
+  password,
+  tenantId: process.env.TEST_LOGIN_TENANT || "1",
+  periodId: Number(process.env.TEST_LOGIN_PERIOD || 2026)
 });
 
 const req = http.request({
   hostname: 'localhost',
-  port: 3000,
+  port: process.env.PORT || 3000,
   path: '/PhsAPI/Auth/Login',
   method: 'POST',
   headers: {

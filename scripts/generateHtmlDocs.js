@@ -527,7 +527,7 @@ function generateHtmlDocs() {
           <div class="code-block">
             curl -X POST http://localhost:3000/PhsAPI/Auth/Login \\
                  -H "Content-Type: application/json" \\
-                 -d '{"username": "admin", "password": "PhPass", "vCopy": "MKM", "periodId": 2026}'
+                 -d '{"username": "admin", "password": "YOUR_PASSWORD", "vCopy": "MKM", "periodId": 2026}'
           </div>
         </div>
 

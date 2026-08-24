@@ -33,6 +33,9 @@ class AuthController {
     } catch (err) {
       if (err.name === 'AuthError' || err.statusCode === 401) {
         logger.warn(`[AuthController] Login failed from IP: ${req.ip} - Reason: ${err.message}`);
+        // Failures are reported as HTTP 200 for the legacy client, so the rate
+        // limiter cannot read the status code. Flag it explicitly instead.
+        res.locals.loginFailed = true;
         return res.status(200).json(ResultManager.invalidLogin(err.message));
       }
       logger.error(`[AuthController] Unexpected error during login: ${err.message}`);
