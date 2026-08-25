@@ -412,34 +412,46 @@ async function runAllTests() {
   console.log('\n--- 4c. Authorization Mapping Tests ---');
 
   const authorize = require('../middleware/authorize');
-  const normalizeTarget = authorize.normalizeTarget;
 
-  test('Authorize maps request paths to a package/table target', () => {
-    assert.strictEqual(normalizeTarget('/UC/Acc/Account/List'), 'acc/account');
-    assert.strictEqual(normalizeTarget('/PhsAPI/UC/Acc/Account/List'), 'acc/account');
-    assert.strictEqual(normalizeTarget('/PhsAPI/Acc/Account/Get/12'), 'acc/account');
-    assert.strictEqual(normalizeTarget('/UC/Stor/Items/Search/1/20'), 'stor/items');
+  // Resolution runs through mainApp, so pin it to what the server loads.
+  mainApp.loadMetadata(path.join(__dirname, '..', 'resources', 'modules'));
+
+  test('Authorize resolves a request package/table to its entity key', () => {
+    // Callers reach the same entity by full name or short name, and both have to
+    // reduce to one key or a grant would cover only half the ways in.
+    assert.strictEqual(authorize.requestTarget('Acc', 'Acc_Master'), 'acc/acc_master');
+    assert.strictEqual(authorize.requestTarget('Acc', 'Master'), 'acc/acc_master');
+    assert.strictEqual(authorize.requestTarget('acc', 'ACC_MASTER'), 'acc/acc_master');
   });
 
-  test('Authorize normalises stored MPrg_ApiURL values the same way', () => {
-    // The column's shape varies by tenant, so every plausible form has to reduce
-    // to the same key as the request path it guards.
-    assert.strictEqual(normalizeTarget('Acc/Account'), 'acc/account');
-    assert.strictEqual(normalizeTarget('/Acc/Account'), 'acc/account');
-    assert.strictEqual(normalizeTarget('/PhsAPI/Acc/Account'), 'acc/account');
-    assert.strictEqual(normalizeTarget('/UC/Acc/Account/List'), 'acc/account');
-    assert.strictEqual(normalizeTarget('https://api.example.com/PhsAPI/Acc/Account'), 'acc/account');
-    assert.strictEqual(normalizeTarget('/UC/Acc/Account?x=1'), 'acc/account');
-    assert.strictEqual(normalizeTarget('ACC/ACCOUNT'), 'acc/account');
+  test('Authorize resolves MPrg_RelTable to the key a request produces', () => {
+    // This is what makes the permission check work at all: the grant side stores
+    // an entity synonym ('Acc_Mst') and the request side names a package and
+    // table, and the two have to meet.
+    const pairs = [
+      ['Acc_Mst', ['Acc', 'Acc_Master']],
+      ['Acc_Acc', ['Acc', 'Account']],
+      ['Acc_Cost', ['Acc', 'Acc_Cost_Centers']],
+      ['Acc_BudMst', ['Acc', 'Budget_Master']]
+    ];
+
+    for (const [relTable, [pkg, table]] of pairs) {
+      const fromGrant = authorize.relTableTarget(relTable);
+      const fromRequest = authorize.requestTarget(pkg, table);
+      assert.ok(fromGrant, `${relTable} should resolve`);
+      assert.strictEqual(fromGrant, fromRequest, `${relTable} vs ${pkg}/${table}`);
+    }
   });
 
-  test('Authorize returns null for paths that are not program-scoped', () => {
-    // These carry no package/table pair, so they cannot be permission-checked.
-    assert.strictEqual(normalizeTarget('/UC/InitForm'), null);
-    assert.strictEqual(normalizeTarget('/CC/getCopies'), null);
-    assert.strictEqual(normalizeTarget(''), null);
-    assert.strictEqual(normalizeTarget(null), null);
-    assert.strictEqual(normalizeTarget('/PhsAPI'), null);
+  test('Authorize returns null for targets it cannot resolve', () => {
+    // A null means "nothing to check against", which the middleware lets through
+    // rather than denying -- the service layer rejects the unknown entity anyway.
+    assert.strictEqual(authorize.requestTarget('NoSuchPkg', 'NoSuchTable'), null);
+    assert.strictEqual(authorize.requestTarget('', ''), null);
+    assert.strictEqual(authorize.relTableTarget('No_Such_Synonym'), null);
+    assert.strictEqual(authorize.relTableTarget(''), null);
+    assert.strictEqual(authorize.relTableTarget(null), null);
+    assert.strictEqual(authorize.relTableTarget(undefined), null);
   });
 
   // -------------------------------------------------------------
