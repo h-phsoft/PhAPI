@@ -12,6 +12,35 @@ class ValidationError extends Error {
   }
 }
 
+/**
+ * The generic /CC/attached endpoints operate on the copy-level attachment table.
+ *
+ * These were looked up as 'Phs_Attached' / 'Cpy_Attached', neither of which is a
+ * registered name -- the real entity is synonym 'Cpy_Attach' over table
+ * Copy_Attached_Files. Both lookups therefore returned null on every call and
+ * each handler fell through to a fabricated result, so uploads persisted
+ * nothing, reads returned an invented filename and deletes deleted nothing,
+ * all while reporting success. Resolution now fails loudly instead.
+ */
+const ATTACHMENT_LOOKUPS = [
+  ['Cpy', 'Cpy_Attach'],
+  ['Cpy', 'Copy_Attached_Files']
+];
+
+/**
+ * @returns {Object} The attachment entity metadata
+ * @throws {Error} When no attachment entity is registered
+ */
+function getAttachmentEntity() {
+  for (const [packageName, tableName] of ATTACHMENT_LOOKUPS) {
+    const entity = mainApp.getEntity(packageName, tableName);
+    if (entity) {
+      return entity;
+    }
+  }
+  throw new Error('Entity metadata not found for the attachment table (Cpy/Cpy_Attach)');
+}
+
 class UnifiedService {
   /**
    * Validates input payload against entity metadata.
@@ -567,34 +596,28 @@ class UnifiedService {
    * Saves uploaded attachment metadata.
    */
   async uploadFile(hParams = {}, context = {}) {
-    const entity = mainApp.getEntity('Phs', 'Phs_Attached') || mainApp.getEntity('Cpy', 'Cpy_Attached');
-    if (entity) {
-      const res = await repository.insert(entity, hParams, context);
-      return { id: res.insertedId, ...hParams };
-    }
-    return { id: Date.now(), ...hParams };
+    const entity = getAttachmentEntity();
+    const data = { ...hParams };
+    this.injectAuditFields(entity, data, context, false);
+
+    const res = await repository.insert(entity, data, context);
+    return { ...data, id: res.insertedId };
   }
 
   /**
    * Gets attachment metadata by ID.
    */
   async getFile(id, context = {}) {
-    const entity = mainApp.getEntity('Phs', 'Phs_Attached') || mainApp.getEntity('Cpy', 'Cpy_Attached');
-    if (entity) {
-      return await repository.findById(entity, id, context);
-    }
-    return { id, filename: `attachment_${id}` };
+    const entity = getAttachmentEntity();
+    return await repository.findById(entity, id, context);
   }
 
   /**
    * Deletes attachment by ID.
    */
   async deleteFile(id, context = {}) {
-    const entity = mainApp.getEntity('Phs', 'Phs_Attached') || mainApp.getEntity('Cpy', 'Cpy_Attached');
-    if (entity) {
-      return await repository.delete(entity, id, context);
-    }
-    return { success: true };
+    const entity = getAttachmentEntity();
+    return await repository.delete(entity, id, context);
   }
 }
 

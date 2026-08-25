@@ -108,6 +108,29 @@ function parseRbacMode(raw) {
 
 const rbacMode = parseRbacMode(process.env.RBAC_MODE);
 
+/**
+ * Whether to serve the /docs portal.
+ *
+ * express.static mounts it ahead of authentication, so everything under docs/ is
+ * readable by anyone who can reach the host -- the full endpoint surface, the
+ * OpenAPI description and a 4.6 MB Postman collection. That is useful in
+ * development and an unnecessary disclosure in production, so it defaults off
+ * there and can be turned back on deliberately.
+ * @returns {boolean}
+ */
+function parseDocsEnabled(raw) {
+  if (raw === undefined || String(raw).trim() === '') {
+    return !isProduction;
+  }
+  return String(raw).trim().toLowerCase() === 'true';
+}
+
+const docsEnabled = parseDocsEnabled(process.env.DOCS_ENABLED);
+
+if (docsEnabled && isProduction) {
+  warnings.push('DOCS_ENABLED=true in production; the /docs portal is served without authentication.');
+}
+
 if (errors.length > 0) {
   throw new Error(
     '\n[PhsAPI] Invalid environment configuration:\n' +
@@ -134,6 +157,9 @@ module.exports = {
   rbacMode,
   // How long a user's resolved program set is cached, in seconds.
   rbacCacheTtlSeconds: parseInt(process.env.RBAC_CACHE_TTL_SECONDS || '300', 10),
+
+  // Defaults to on outside production; the portal has no authentication.
+  docsEnabled,
 
   // Audit writes are fail-safe, so this defaults on; tenants without a Phs_Logs
   // table trip a breaker after a few failures rather than logging every request.

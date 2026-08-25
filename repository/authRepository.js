@@ -31,12 +31,17 @@ class AuthRepository {
    * A pgrpId of 0 or less means "no group restriction", matching how getMenuByPid
    * already treats it.
    *
+   * MPrg_RelTable is what ties a program to the data it governs. MPrg_ApiURL is
+   * the UI screen route ('acc/mng/CodedTables') and does not correspond to the
+   * /UC/:package/:table path an API call uses, so it cannot be matched against
+   * one; MPrg_RelTable holds an entity synonym ('Acc_Mst') that can.
+   *
    * @param {Object} conn
    * @param {number} pgrpId
-   * @returns {Promise<Array>} rows of MPrg_Id / MPrg_Name / MPrg_ApiURL
+   * @returns {Promise<Array>} rows of MPrg_Id / MPrg_Name / MPrg_ApiURL / MPrg_RelTable
    */
   async getPermittedPrograms(conn, pgrpId) {
-    let sql = `SELECT MPrg_Id, MPrg_Name, MPrg_ApiURL
+    let sql = `SELECT MPrg_Id, MPrg_Name, MPrg_ApiURL, MPrg_RelTable
                FROM Phs_VMIPrg
                WHERE MPrg_Id > 0 AND MPrg_Status_Id = 1 AND Menu_Status_Id = 1`;
     const params = {};
@@ -47,6 +52,26 @@ class AuthRepository {
     }
 
     return conn.query(sql, params);
+  }
+
+  /**
+   * Every table bound to an active program, ignoring permission groups.
+   *
+   * This is the set of tables that are governed at all. A table no program binds
+   * carries no permission of its own and must not be denied -- most programs have
+   * no MPrg_RelTable, so without this distinction enforcement would reject nearly
+   * every request.
+   *
+   * @param {Object} conn
+   * @returns {Promise<Array>} rows of MPrg_RelTable
+   */
+  async getProgramTables(conn) {
+    return conn.query(
+      `SELECT DISTINCT MPrg_RelTable
+       FROM Phs_VMIPrg
+       WHERE MPrg_Id > 0 AND MPrg_Status_Id = 1 AND Menu_Status_Id = 1
+         AND MPrg_RelTable IS NOT NULL`
+    );
   }
 
   async getMenuByPid(conn, pgrpId, pid) {

@@ -412,34 +412,126 @@ async function runAllTests() {
   console.log('\n--- 4c. Authorization Mapping Tests ---');
 
   const authorize = require('../middleware/authorize');
-  const normalizeTarget = authorize.normalizeTarget;
 
-  test('Authorize maps request paths to a package/table target', () => {
-    assert.strictEqual(normalizeTarget('/UC/Acc/Account/List'), 'acc/account');
-    assert.strictEqual(normalizeTarget('/PhsAPI/UC/Acc/Account/List'), 'acc/account');
-    assert.strictEqual(normalizeTarget('/PhsAPI/Acc/Account/Get/12'), 'acc/account');
-    assert.strictEqual(normalizeTarget('/UC/Stor/Items/Search/1/20'), 'stor/items');
+  // Resolution runs through mainApp, so pin it to what the server loads.
+  mainApp.loadMetadata(path.join(__dirname, '..', 'resources', 'modules'));
+
+  test('Authorize resolves a request package/table to its entity key', () => {
+    // Callers reach the same entity by full name or short name, and both have to
+    // reduce to one key or a grant would cover only half the ways in.
+    assert.strictEqual(authorize.requestTarget('Acc', 'Acc_Master'), 'acc/acc_master');
+    assert.strictEqual(authorize.requestTarget('Acc', 'Master'), 'acc/acc_master');
+    assert.strictEqual(authorize.requestTarget('acc', 'ACC_MASTER'), 'acc/acc_master');
   });
 
-  test('Authorize normalises stored MPrg_ApiURL values the same way', () => {
-    // The column's shape varies by tenant, so every plausible form has to reduce
-    // to the same key as the request path it guards.
-    assert.strictEqual(normalizeTarget('Acc/Account'), 'acc/account');
-    assert.strictEqual(normalizeTarget('/Acc/Account'), 'acc/account');
-    assert.strictEqual(normalizeTarget('/PhsAPI/Acc/Account'), 'acc/account');
-    assert.strictEqual(normalizeTarget('/UC/Acc/Account/List'), 'acc/account');
-    assert.strictEqual(normalizeTarget('https://api.example.com/PhsAPI/Acc/Account'), 'acc/account');
-    assert.strictEqual(normalizeTarget('/UC/Acc/Account?x=1'), 'acc/account');
-    assert.strictEqual(normalizeTarget('ACC/ACCOUNT'), 'acc/account');
+  test('Authorize resolves MPrg_RelTable to the key a request produces', () => {
+    // This is what makes the permission check work at all: the grant side stores
+    // an entity synonym ('Acc_Mst') and the request side names a package and
+    // table, and the two have to meet.
+    const pairs = [
+      ['Acc_Mst', ['Acc', 'Acc_Master']],
+      ['Acc_Acc', ['Acc', 'Account']],
+      ['Acc_Cost', ['Acc', 'Acc_Cost_Centers']],
+      ['Acc_BudMst', ['Acc', 'Budget_Master']]
+    ];
+
+    for (const [relTable, [pkg, table]] of pairs) {
+      const fromGrant = authorize.relTableTarget(relTable);
+      const fromRequest = authorize.requestTarget(pkg, table);
+      assert.ok(fromGrant, `${relTable} should resolve`);
+      assert.strictEqual(fromGrant, fromRequest, `${relTable} vs ${pkg}/${table}`);
+    }
   });
 
-  test('Authorize returns null for paths that are not program-scoped', () => {
-    // These carry no package/table pair, so they cannot be permission-checked.
-    assert.strictEqual(normalizeTarget('/UC/InitForm'), null);
-    assert.strictEqual(normalizeTarget('/CC/getCopies'), null);
-    assert.strictEqual(normalizeTarget(''), null);
-    assert.strictEqual(normalizeTarget(null), null);
-    assert.strictEqual(normalizeTarget('/PhsAPI'), null);
+  test('Authorize returns null for targets it cannot resolve', () => {
+    // A null means "nothing to check against", which the middleware lets through
+    // rather than denying -- the service layer rejects the unknown entity anyway.
+    assert.strictEqual(authorize.requestTarget('NoSuchPkg', 'NoSuchTable'), null);
+    assert.strictEqual(authorize.requestTarget('', ''), null);
+    assert.strictEqual(authorize.relTableTarget('No_Such_Synonym'), null);
+    assert.strictEqual(authorize.relTableTarget(''), null);
+    assert.strictEqual(authorize.relTableTarget(null), null);
+    assert.strictEqual(authorize.relTableTarget(undefined), null);
+  });
+
+  // -------------------------------------------------------------
+  // 4g. ATTACHMENT AUTHORIZATION TESTS
+  // -------------------------------------------------------------
+  console.log('\n--- 4g. Attachment Authorization Tests ---');
+
+  const env = require('../config/env');
+
+  // checkProgram reads env.rbacMode on every call, so the rollout stage can be
+  // driven from here. Restored after each test.
+  async function withRbacMode(mode, fn) {
+    const previous = env.rbacMode;
+    env.rbacMode = mode;
+    try {
+      return await fn();
+    } finally {
+      env.rbacMode = previous;
+    }
+  }
+
+  test('Attachment entity resolves, and carries the program id the check needs', () => {
+    // Load what the server loads. Test 1 above also pulls in db/JSON/pkgs, where
+    // Cpy/reports/AttachedFiles.json declares the same Cpy_Attach synonym with
+    // zero columns and, registering last, overwrites the real definition. The
+    // server only ever reads resources/modules, so that is the shape these
+    // handlers actually see.
+    mainApp.loadMetadata(path.join(__dirname, '..', 'resources', 'modules'));
+
+    // The /CC/attached handlers used to look this up as 'Phs_Attached' or
+    // 'Cpy_Attached'. Neither is a registered name, so every lookup returned null
+    // and the handlers silently fabricated success. Guard the real name.
+    const entity = mainApp.getEntity('Cpy', 'Cpy_Attach');
+    assert.ok(entity, 'Cpy/Cpy_Attach should resolve');
+    assert.strictEqual(entity.tableName, 'Copy_Attached_Files');
+
+    assert.strictEqual(mainApp.getEntity('Phs', 'Phs_Attached'), null, 'the old name should still not resolve');
+    assert.strictEqual(mainApp.getEntity('Cpy', 'Cpy_Attached'), null, 'the old name should still not resolve');
+
+    // Authorization is keyed on this column; without it there is nothing to check.
+    const fields = entity.fields.map((f) => f.Field.toLowerCase());
+    assert.ok(fields.includes('mprgid'), 'attachment rows must carry mprgId');
+  });
+
+  await testAsync('Attachment check allows everything while RBAC_MODE is off', async () => {
+    // 'no-such-copy' would fail any real lookup, so a true here can only come
+    // from the mode short-circuit.
+    const allowed = await withRbacMode('off', () =>
+      authorize.checkProgram('no-such-copy', { userId: '1' }, 999999, 'attachment 1'));
+    assert.strictEqual(allowed, true);
+  });
+
+  await testAsync('Attachment check allows a row that carries no program id', async () => {
+    // Matches how the route middleware skips paths with no package/table pair:
+    // nothing to check against, so nothing is denied.
+    for (const mode of ['audit', 'enforce']) {
+      for (const missing of [null, undefined, 0, '', 'not-a-number']) {
+        const allowed = await withRbacMode(mode, () =>
+          authorize.checkProgram('no-such-copy', { userId: '1' }, missing, 'attachment 1'));
+        assert.strictEqual(allowed, true, `mode=${mode} mprgId=${JSON.stringify(missing)}`);
+      }
+    }
+  });
+
+  await testAsync('Attachment check fails open in audit and closed in enforce', async () => {
+    authorize.clearCache();
+
+    // The tenant cannot be resolved, so the permission lookup throws. Audit must
+    // never break a working deployment; enforce must not fall back to allowing.
+    const inAudit = await withRbacMode('audit', () =>
+      authorize.checkProgram('no-such-copy', { userId: '1', pgrpId: 5 }, 42, 'attachment 42'));
+    assert.strictEqual(inAudit, true, 'audit should allow through a failed lookup');
+
+    authorize.clearCache();
+
+    const inEnforce = await withRbacMode('enforce', () =>
+      authorize.checkProgram('no-such-copy', { userId: '1', pgrpId: 5 }, 42, 'attachment 42'));
+    assert.strictEqual(inEnforce, false, 'enforce should deny when permissions cannot be read');
+
+    authorize.clearCache();
   });
 
   // -------------------------------------------------------------
@@ -478,7 +570,6 @@ async function runAllTests() {
   });
 
   const jwt = require('jsonwebtoken');
-  const env = require('../config/env');
   const testToken = jwt.sign({ jui: 1, Copy: '01-Admin' }, env.jwtSecret);
 
   await testIntegration('Authenticated POST /UC/InitForm returns 200 OK', async () => {
