@@ -443,6 +443,84 @@ async function runAllTests() {
     }
   });
 
+  await testAsync('Authorize decides on the program id when the caller sends one', async () => {
+    const TENANT = 'test-copy';
+    const USER = { userId: '77' };
+    authorize.clearCache();
+
+    // Group holds programs 10 and 11, whose tables are Acc_Master and Account.
+    authorize.primeCache(TENANT, USER.userId, {
+      unrestricted: false,
+      tables: ['acc/acc_master', 'acc/acc_account'],
+      programIds: [10, 11]
+    });
+    authorize.primeGoverned(TENANT, ['acc/acc_master', 'acc/acc_account', 'stor/stor_items']);
+
+    // A claimed program the caller holds is decided directly on MPrg_Id, with no
+    // inference from the URL at all.
+    let d = await authorize.decide(TENANT, USER, 'Acc', 'Acc_Master', 10);
+    assert.strictEqual(d.allowed, true, d.reason);
+
+    // A claimed program the caller does not hold is refused outright.
+    d = await authorize.decide(TENANT, USER, 'Acc', 'Acc_Master', 99);
+    assert.strictEqual(d.allowed, false, d.reason);
+
+    // Routes with no package/table pair are still decided, which the table-based
+    // check could never do -- this is what covers attachments and InitForm.
+    d = await authorize.decide(TENANT, USER, undefined, undefined, 11);
+    assert.strictEqual(d.allowed, true, d.reason);
+
+    d = await authorize.decide(TENANT, USER, undefined, undefined, 99);
+    assert.strictEqual(d.allowed, false, d.reason);
+
+    authorize.clearCache();
+  });
+
+  await testAsync('Authorize falls back to the table when no program id is sent', async () => {
+    const TENANT = 'test-copy';
+    const USER = { userId: '77' };
+    authorize.clearCache();
+
+    authorize.primeCache(TENANT, USER.userId, {
+      unrestricted: false,
+      tables: ['acc/acc_master'],
+      programIds: [10]
+    });
+    authorize.primeGoverned(TENANT, ['acc/acc_master', 'acc/acc_account']);
+
+    // Granted table.
+    let d = await authorize.decide(TENANT, USER, 'Acc', 'Acc_Master', null);
+    assert.strictEqual(d.allowed, true, d.reason);
+
+    // Governed by some program, but not one this caller holds.
+    d = await authorize.decide(TENANT, USER, 'Acc', 'Account', null);
+    assert.strictEqual(d.allowed, false, d.reason);
+
+    // No program binds it, so there is no permission to withhold.
+    d = await authorize.decide(TENANT, USER, 'Stor', 'Items', null);
+    assert.strictEqual(d.allowed, true, d.reason);
+
+    // Neither a program nor a table: nothing to check.
+    d = await authorize.decide(TENANT, USER, undefined, undefined, null);
+    assert.strictEqual(d.allowed, true, d.reason);
+
+    authorize.clearCache();
+  });
+
+  await testAsync('Authorize lets an unrestricted caller through either way', async () => {
+    const TENANT = 'test-copy';
+    const USER = { userId: '78' };
+    authorize.clearCache();
+    authorize.primeCache(TENANT, USER.userId, { unrestricted: true });
+
+    for (const mprg of [null, 99]) {
+      const d = await authorize.decide(TENANT, USER, 'Acc', 'Acc_Master', mprg);
+      assert.strictEqual(d.allowed, true, `mprgId=${mprg}: ${d.reason}`);
+    }
+
+    authorize.clearCache();
+  });
+
   test('Authorize returns null for targets it cannot resolve', () => {
     // A null means "nothing to check against", which the middleware lets through
     // rather than denying -- the service layer rejects the unknown entity anyway.

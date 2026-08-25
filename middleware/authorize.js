@@ -223,21 +223,40 @@ async function loadPermissions(tenantId, user) {
  *
  * @returns {Promise<{allowed: boolean, target: string, reason: string}>}
  */
-async function decide(tenantId, user, packageName, tableName) {
-  const fallbackTarget = `${packageName}/${tableName}`.toLowerCase();
+async function decide(tenantId, user, packageName, tableName, mprgId) {
+  const describe = packageName && tableName ? `${packageName}/${tableName}`.toLowerCase() : `program ${mprgId}`;
 
   // Checked first because in most tenants every user lands here, and it costs a
   // per-user cache hit instead of the tenant-wide governed-table lookup below.
-  const { unrestricted, tables } = await loadPermissions(tenantId, user);
+  const { unrestricted, tables, programIds } = await loadPermissions(tenantId, user);
   if (unrestricted) {
-    return { allowed: true, target: fallbackTarget, reason: 'caller has no permission group' };
+    return { allowed: true, target: describe, reason: 'caller has no permission group' };
   }
+
+  // Preferred path: the caller names the program it is acting on, so the grant
+  // is checked directly on MPrg_Id with no inference from the URL. This is the
+  // only check that works on routes carrying no package/table pair at all.
+  const claimed = Number(mprgId);
+  if (Number.isInteger(claimed) && claimed > 0) {
+    if (!programIds.has(claimed)) {
+      return { allowed: false, target: describe, reason: `no grant for program ${claimed}` };
+    }
+    return { allowed: true, target: describe, reason: `granted program ${claimed}` };
+  }
+
+  // Nothing to check when the caller names neither a program nor a table.
+  if (!packageName || !tableName) {
+    return { allowed: true, target: describe, reason: 'not program-scoped' };
+  }
+
+  // Fallback for callers that send no program id: match the requested table
+  // against the tables the caller's granted programs bind.
+  const target = requestTarget(packageName, tableName);
 
   // The metadata knows no such entity. The service layer will fail on it anyway,
   // and there is no program binding to check it against.
-  const target = requestTarget(packageName, tableName);
   if (!target) {
-    return { allowed: true, target: fallbackTarget, reason: 'unknown entity' };
+    return { allowed: true, target: describe, reason: 'unknown entity' };
   }
 
   if (tables.has(target)) {
@@ -261,17 +280,18 @@ function authorize(req, res, next) {
   const params = req.params || {};
   const pkg = params.package || params.pkgName;
   const table = params.table || params.reportName;
+  const mprgId = req.context && req.context.mPrgId;
 
-  // Routes without a package/table pair (InitForm, Codes, attachments) are not
-  // program-scoped and carry no permission of their own.
-  if (!pkg || !table) {
+  // Nothing identifies a permission: no program claimed, and no program-scoped
+  // package/table pair either. InitForm, Codes and getCopies land here.
+  if (!mprgId && (!pkg || !table)) {
     return next();
   }
 
   const user = req.user || {};
   const tenantId = (req.context && req.context.tenantId) || user.tenantId || 'default';
 
-  decide(tenantId, user, pkg, table)
+  decide(tenantId, user, pkg, table, mprgId)
     .then(({ allowed, target }) => {
       if (allowed) {
         return next();
@@ -290,7 +310,7 @@ function authorize(req, res, next) {
     })
     .catch((err) => {
       // Audit must never break a working deployment; enforce fails closed.
-      const target = `${pkg}/${table}`.toLowerCase();
+      const target = pkg && table ? `${pkg}/${table}`.toLowerCase() : `program ${mprgId}`;
       if (env.rbacMode === 'audit') {
         logger.error(`[Authorize] AUDIT permission lookup failed for '${target}': ${err.message}`);
         return next();
@@ -362,6 +382,27 @@ authorize.clearCache = () => {
   permissionCache.clear();
   governedCache.clear();
 };
+
+/**
+ * Fills the caches directly instead of reading the database.
+ *
+ * Exposed so the decision matrix can be tested without a provisioned tenant;
+ * production paths never call these.
+ */
+authorize.primeCache = (tenantId, userId, { unrestricted = false, tables = [], programIds = [] } = {}) => {
+  permissionCache.set(`${tenantId}:${userId}`, {
+    unrestricted,
+    tables: new Set(tables),
+    programIds: new Set(programIds),
+    expiresAt: cacheExpiry()
+  });
+};
+
+authorize.primeGoverned = (tenantId, tables = []) => {
+  governedCache.set(tenantId, { tables: new Set(tables), expiresAt: cacheExpiry() });
+};
+
+authorize.decide = decide;
 authorize.requestTarget = requestTarget;
 authorize.relTableTarget = relTableTarget;
 authorize.checkProgram = checkProgram;
