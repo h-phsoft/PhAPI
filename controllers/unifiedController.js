@@ -3,6 +3,7 @@ const autocompleteService = require('../services/autocompleteService');
 const reportService = require('../services/reportService');
 const auditService = require('../services/auditService');
 const ResultManager = require('../utils/responseManager');
+const sendResult = require('../utils/sendResult');
 const i18nHelper = require('../utils/i18nHelper');
 const { coercePage, coercePageSize } = require('../utils/pagination');
 const authorize = require('../middleware/authorize');
@@ -324,7 +325,7 @@ class UnifiedController {
       const mprgId = hParams.mprgId !== undefined ? hParams.mprgId : context.mPrgId;
       const allowed = await authorize.checkProgram(context.tenantId, req.user, mprgId, 'a new attachment');
       if (!allowed) {
-        return res.status(200).json(ResultManager.error(403, NO_ATTACHMENT_ACCESS));
+        return sendResult(res, ResultManager.error(403, NO_ATTACHMENT_ACCESS));
       }
 
       const result = await UnifiedService.uploadFile(hParams, context);
@@ -341,12 +342,12 @@ class UnifiedController {
 
       const result = await UnifiedService.getFile(id, context);
       if (!result) {
-        return res.status(200).json(ResultManager.error(404, 'Attachment not found'));
+        return sendResult(res, ResultManager.error(404, 'Attachment not found'));
       }
 
       const allowed = await authorize.checkProgram(context.tenantId, req.user, result.mprgId, `attachment ${id}`);
       if (!allowed) {
-        return res.status(200).json(ResultManager.error(403, NO_ATTACHMENT_ACCESS));
+        return sendResult(res, ResultManager.error(403, NO_ATTACHMENT_ACCESS));
       }
 
       res.status(200).json(ResultManager.ok(result));
@@ -365,12 +366,12 @@ class UnifiedController {
       // never there.
       const existing = await UnifiedService.getFile(id, context);
       if (!existing) {
-        return res.status(200).json(ResultManager.error(404, 'Attachment not found'));
+        return sendResult(res, ResultManager.error(404, 'Attachment not found'));
       }
 
       const allowed = await authorize.checkProgram(context.tenantId, req.user, existing.mprgId, `attachment ${id}`);
       if (!allowed) {
-        return res.status(200).json(ResultManager.error(403, NO_ATTACHMENT_ACCESS));
+        return sendResult(res, ResultManager.error(403, NO_ATTACHMENT_ACCESS));
       }
 
       const result = await UnifiedService.deleteFile(id, context);

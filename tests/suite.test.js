@@ -558,6 +558,36 @@ async function runAllTests() {
     return paths;
   }
 
+  test('Envelope code becomes the HTTP status once legacy mode is off', () => {
+    const { httpStatusFor } = require('../utils/sendResult');
+    const ResultManager = require('../utils/responseManager');
+    const previous = env.legacyJavaClient;
+
+    try {
+      // The Java client reads the outcome from the body and treats any non-2xx
+      // as a transport failure, so while it is supported everything stays 200.
+      env.legacyJavaClient = true;
+      assert.strictEqual(httpStatusFor(ResultManager.error(403, 'nope')), 200);
+      assert.strictEqual(httpStatusFor(ResultManager.invalid('gone')), 200);
+      assert.strictEqual(httpStatusFor(ResultManager.ok({})), 200);
+
+      env.legacyJavaClient = false;
+      assert.strictEqual(httpStatusFor(ResultManager.error(403, 'nope')), 403);
+      assert.strictEqual(httpStatusFor(ResultManager.error(401, 'nope')), 401);
+      assert.strictEqual(httpStatusFor(ResultManager.invalid('gone')), 404);
+      assert.strictEqual(httpStatusFor(ResultManager.ok({})), 200);
+
+      // A code outside the HTTP range would make Express throw; 200 is safer
+      // than taking the process down over a malformed envelope.
+      assert.strictEqual(httpStatusFor({ code: 0 }), 200);
+      assert.strictEqual(httpStatusFor({ code: 999 }), 200);
+      assert.strictEqual(httpStatusFor({}), 200);
+      assert.strictEqual(httpStatusFor(null), 200);
+    } finally {
+      env.legacyJavaClient = previous;
+    }
+  });
+
   test('Legacy Java URL shapes reduce to the canonical path', () => {
     const { canonicalize } = require('../middleware/legacyRoutes');
 

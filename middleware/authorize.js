@@ -2,6 +2,7 @@ const env = require('../config/env');
 const logger = require('../utils/logger');
 const mainApp = require('../config/mainApp');
 const ResultManager = require('../utils/responseManager');
+const sendResult = require('../utils/sendResult');
 const connectionPool = require('../core/connectionPool');
 const authRepository = require('../repository/authRepository');
 
@@ -285,7 +286,7 @@ function authorize(req, res, next) {
       }
 
       logger.warn(`[Authorize] DENIED user '${user.userId}' in copy '${tenantId}' access to '${target}'`);
-      return res.status(200).json(ResultManager.error(403, 'You do not have permission to access this program'));
+      return sendResult(res, ResultManager.error(403, 'You do not have permission to access this program'));
     })
     .catch((err) => {
       // Audit must never break a working deployment; enforce fails closed.
@@ -295,7 +296,7 @@ function authorize(req, res, next) {
         return next();
       }
       logger.error(`[Authorize] Permission lookup failed for '${target}': ${err.message}`);
-      return res.status(200).json(ResultManager.error(403, 'Unable to verify permissions'));
+      return sendResult(res, ResultManager.error(403, 'Unable to verify permissions'));
     });
 }
 

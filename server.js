@@ -48,9 +48,9 @@ const authLimiter = rateLimit({
   windowMs: env.rateLimitWindowMs,
   max: env.authRateLimitMax,
   skipSuccessfulRequests: true,
-  // A rejected login still answers HTTP 200 to stay compatible with the legacy
-  // Java client, so the status code cannot be trusted here — authController
-  // marks genuine failures on res.locals instead.
+  // While LEGACY_JAVA_CLIENT is on a rejected login still answers HTTP 200, so
+  // the status code cannot be trusted here. authController marks genuine failures
+  // on res.locals instead, which is correct under both settings.
   requestWasSuccessful: (req, res) => !res.locals.loginFailed,
   message: { status: false, code: 429, message: 'Too many login attempts. Try again later.' }
 });

@@ -1,5 +1,6 @@
 const {getTenantDbConfig} = require('../config/db.config');
 const ResultManager = require('../utils/responseManager');
+const sendResult = require('../utils/sendResult');
 
 async function resolveTenant(req, res, next) {
   // Check headers for Java & Express naming conventions
@@ -25,7 +26,7 @@ async function resolveTenant(req, res, next) {
 
     next();
   } catch (err) {
-    return res.status(200).json(ResultManager.invalid(err.message));
+    return sendResult(res, ResultManager.invalid(err.message));
   }
 }
 

@@ -1,4 +1,5 @@
 const ResultManager = require('../utils/responseManager');
+const sendResult = require('../utils/sendResult');
 const i18nHelper = require('../utils/i18nHelper');
 const logger = require('../utils/logger');
 
@@ -38,7 +39,7 @@ function errorHandler(err, req, res, next) {
   });
 
 
-  res.status(200).json(ResultManager.error(statusCode, err.message || localizedMessage));
+  sendResult(res, ResultManager.error(statusCode, err.message || localizedMessage));
 }
 
 module.exports = errorHandler;
