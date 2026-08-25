@@ -539,8 +539,34 @@ async function runAllTests() {
   // -------------------------------------------------------------
   console.log('\n--- 5. Express Server Health & Route Verification ---');
 
-  const server = http.createServer(require('../server'));
+  const expressApp = require('../server');
+  const server = http.createServer(expressApp);
   await new Promise((resolve) => server.listen(3009, resolve));
+
+  /** Every path Express has a handler registered for. */
+  function registeredPaths() {
+    const paths = [];
+    (function walk(stack) {
+      for (const layer of stack) {
+        if (layer.route) {
+          paths.push(layer.route.path);
+        } else if (layer.name === 'router' && layer.handle && layer.handle.stack) {
+          walk(layer.handle.stack);
+        }
+      }
+    })(expressApp._router.stack);
+    return paths;
+  }
+
+  test('Only the unified routes carry :package/:table', () => {
+    // authorize derives its permission target from these params, so a route that
+    // carries them outside /UC is a data endpoint the middleware cannot see the
+    // shape of. Keeping them in one place keeps that reasoning true.
+    const stray = registeredPaths().filter(
+      (p) => /:package|:table|:pkgName|:reportName/.test(p) && !p.includes('/UC/')
+    );
+    assert.deepStrictEqual(stray, [], `found :package/:table outside /UC: ${stray.join(', ')}`);
+  });
 
   await testAsync('Health endpoint GET /health returns 200 OK', async () => {
     const res = await new Promise((resolve, reject) => {

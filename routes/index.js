@@ -43,6 +43,7 @@ function mount(method, pathStr, handler) {
 // --- UNIFIED CONTROLLER (/UC & /PhsAPI/UC) ENDPOINTS ---
 mount('post', '/UC/InitForm', (req, res, next) => unifiedController.initForm(req, res, next));
 mount('post', '/UC/:package/:table/List', (req, res, next) => unifiedController.listRecords(req, res, next));
+mount('get', '/UC/:package/:table/List', (req, res, next) => unifiedController.listRecords(req, res, next));
 mount('post', '/UC/:package/:table/Search/:page/:size', (req, res, next) => unifiedController.search(req, res, next));
 mount('post', '/UC/:package/:table/Find/:page/:size', (req, res, next) => unifiedController.find(req, res, next));
 mount('post', '/UC/:package/:table/Autocomplete', (req, res, next) => unifiedController.autocomplete(req, res, next));
@@ -52,6 +53,7 @@ mount('post', '/UC/:package/:table/New', (req, res, next) => unifiedController.n
 mount('put', '/UC/:package/:table', (req, res, next) => unifiedController.updateRecord(req, res, next));
 mount('put', '/UC/:package/:table/:fieldName/:id/:fieldValue', (req, res, next) => unifiedController.updateField(req, res, next));
 mount('put', '/UC/:package/:table/:id', (req, res, next) => unifiedController.updateFields(req, res, next));
+mount('patch', '/UC/:package/:table/:id', (req, res, next) => unifiedController.updateFields(req, res, next));
 mount('delete', '/UC/:package/:table/:id', (req, res, next) => unifiedController.deleteRecord(req, res, next));
 
 mount('get', '/UC/:package/Codes', (req, res, next) => unifiedController.getCodes(req, res, next));
@@ -74,15 +76,5 @@ mount('post', '/CC/getCopies', (req, res, next) => unifiedController.getCopies(r
 mount('post', '/CC/attached/new', (req, res, next) => unifiedController.uploadFile(req, res, next));
 mount('get', '/CC/attached/:id', (req, res, next) => unifiedController.getFile(req, res, next));
 mount('delete', '/CC/attached/:id', (req, res, next) => unifiedController.deleteFile(req, res, next));
-
-// --- GENERIC REST ENDPOINTS (/PhsAPI/:package/:table/...) ---
-router.get('/PhsAPI/:package/:table/Autocomplete', authorize, (req, res, next) => unifiedController.autocomplete(req, res, next));
-router.post('/PhsAPI/:package/:table/New', authorize, (req, res, next) => unifiedController.newRecord(req, res, next));
-router.get('/PhsAPI/:package/:table/List', authorize, (req, res, next) => unifiedController.listRecords(req, res, next));
-router.post('/PhsAPI/:package/:table/List', authorize, (req, res, next) => unifiedController.listRecords(req, res, next));
-router.get('/PhsAPI/:package/:table/Get/:id', authorize, (req, res, next) => unifiedController.getRecord(req, res, next));
-router.put('/PhsAPI/:package/:table/Update/:id', authorize, (req, res, next) => unifiedController.updateRecord(req, res, next));
-router.patch('/PhsAPI/:package/:table/Update/:id', authorize, (req, res, next) => unifiedController.updateRecord(req, res, next));
-router.delete('/PhsAPI/:package/:table/Delete/:id', authorize, (req, res, next) => unifiedController.deleteRecord(req, res, next));
 
 module.exports = router;
