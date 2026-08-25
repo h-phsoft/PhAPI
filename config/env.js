@@ -127,6 +127,14 @@ function parseDocsEnabled(raw) {
 
 const docsEnabled = parseDocsEnabled(process.env.DOCS_ENABLED);
 
+/**
+ * Whether to keep accepting what the legacy Java front-end sends: a /PhsAPI path
+ * prefix and the older auth endpoint names. PhApp uses the canonical paths, so
+ * this can be turned off once the Java client is retired -- at which point
+ * middleware/legacyRoutes.js can be deleted outright.
+ */
+const legacyJavaClient = String(process.env.LEGACY_JAVA_CLIENT || 'true').toLowerCase() !== 'false';
+
 if (docsEnabled && isProduction) {
   warnings.push('DOCS_ENABLED=true in production; the /docs portal is served without authentication.');
 }
@@ -160,6 +168,8 @@ module.exports = {
 
   // Defaults to on outside production; the portal has no authentication.
   docsEnabled,
+
+  legacyJavaClient,
 
   // Audit writes are fail-safe, so this defaults on; tenants without a Phs_Logs
   // table trip a breaker after a few failures rather than logging every request.

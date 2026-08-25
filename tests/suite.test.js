@@ -558,6 +558,54 @@ async function runAllTests() {
     return paths;
   }
 
+  test('Legacy Java URL shapes reduce to the canonical path', () => {
+    const { canonicalize } = require('../middleware/legacyRoutes');
+
+    // The servlet context prefix, on every shape the Java client sends.
+    assert.strictEqual(canonicalize('/PhsAPI/Auth/Login'), '/Auth/Login');
+    assert.strictEqual(canonicalize('/PhsAPI/UC/Acc/Master/List'), '/UC/Acc/Master/List');
+    assert.strictEqual(canonicalize('/PhsAPI/CC/attached/7'), '/CC/attached/7');
+
+    // Older endpoint names for operations that still exist.
+    assert.strictEqual(canonicalize('/UserAccount/Authentication'), '/Auth/Login');
+    assert.strictEqual(canonicalize('/UserAccount/getAccessToken'), '/Auth/Login');
+    assert.strictEqual(canonicalize('/PhsAPI/UserAccount/Logout'), '/Auth/Logout');
+    assert.strictEqual(canonicalize('/PHSAPI/useraccount/authentication'.replace('/PHSAPI', '/PhsAPI')), '/Auth/Login');
+
+    // Query strings survive, since Search and Find carry them.
+    assert.strictEqual(canonicalize('/PhsAPI/UC/Acc/Master/Search/1/20?q=x'), '/UC/Acc/Master/Search/1/20?q=x');
+
+    // Canonical and unrelated paths are untouched.
+    assert.strictEqual(canonicalize('/UC/Acc/Master/List'), '/UC/Acc/Master/List');
+    assert.strictEqual(canonicalize('/Auth/Login'), '/Auth/Login');
+    assert.strictEqual(canonicalize('/health'), '/health');
+    assert.strictEqual(canonicalize('/UserAccount/getUserProfile'), '/UserAccount/getUserProfile');
+
+    // A bare prefix is the root, not an empty string Express cannot match.
+    assert.strictEqual(canonicalize('/PhsAPI'), '/');
+  });
+
+  test('Each operation is registered exactly once', () => {
+    // The prefix and the auth aliases used to be duplicate registrations; they
+    // are rewrites now, so a repeated method+path means a real duplicate.
+    const seen = new Map();
+    (function walk(stack) {
+      for (const layer of stack) {
+        if (layer.route) {
+          for (const method of Object.keys(layer.route.methods)) {
+            const key = `${method.toUpperCase()} ${layer.route.path}`;
+            seen.set(key, (seen.get(key) || 0) + 1);
+          }
+        } else if (layer.name === 'router' && layer.handle && layer.handle.stack) {
+          walk(layer.handle.stack);
+        }
+      }
+    })(expressApp._router.stack);
+
+    const duplicates = [...seen.entries()].filter(([, n]) => n > 1).map(([k]) => k);
+    assert.deepStrictEqual(duplicates, [], `registered more than once: ${duplicates.join(', ')}`);
+  });
+
   test('Only the unified routes carry :package/:table', () => {
     // authorize derives its permission target from these params, so a route that
     // carries them outside /UC is a data endpoint the middleware cannot see the
@@ -582,17 +630,30 @@ async function runAllTests() {
     assert.strictEqual(Array.isArray(res.body.packages), true);
   });
 
-  await testAsync('Protected API endpoint without JWT returns 401 UNAUTHORIZED status', async () => {
-    const res = await new Promise((resolve, reject) => {
-      http.get('http://localhost:3009/PhsAPI/Acc/Account/List', (response) => {
+  /** GETs a path and parses the envelope. */
+  function getJson(pathStr) {
+    return new Promise((resolve, reject) => {
+      http.get(`http://localhost:3009${pathStr}`, (response) => {
         let body = '';
-        response.on('data', chunk => body += chunk);
+        response.on('data', (chunk) => { body += chunk; });
         response.on('end', () => resolve({ status: response.statusCode, body: JSON.parse(body) }));
       }).on('error', reject);
     });
+  }
 
+  await testAsync('Protected API endpoint without JWT returns 401 UNAUTHORIZED status', async () => {
+    const res = await getJson('/UC/Acc/Account/List');
     assert.strictEqual(res.body.status, false);
     assert.strictEqual(res.body.code, 401);
+  });
+
+  await testAsync('Legacy /PhsAPI prefix still reaches the same route', async () => {
+    // Reaching authentication rather than the 404 handler is the proof that the
+    // rewrite ran and the route matched.
+    const canonical = await getJson('/UC/Acc/Account/List');
+    const prefixed = await getJson('/PhsAPI/UC/Acc/Account/List');
+    assert.deepStrictEqual(prefixed.body, canonical.body);
+    assert.strictEqual(prefixed.body.code, 401);
   });
 
   const jwt = require('jsonwebtoken');

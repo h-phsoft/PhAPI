@@ -6,41 +6,29 @@ const authorize = require('../middleware/authorize');
 const unifiedController = require('../controllers/unifiedController');
 const authController = require('../controllers/authController');
 
-// Public Auth routes
-router.post('/PhsAPI/Auth/Login', (req, res, next) => authController.login(req, res, next));
+// Public auth route. The Java client's older names for it -- Authentication and
+// getAccessToken -- are rewritten to this path by middleware/legacyRoutes.js
+// rather than registered again here.
 router.post('/Auth/Login', (req, res, next) => authController.login(req, res, next));
-router.post('/PhsAPI/UserAccount/Authentication', (req, res, next) => authController.login(req, res, next));
-router.post('/UserAccount/Authentication', (req, res, next) => authController.login(req, res, next));
-router.post('/PhsAPI/UserAccount/getAccessToken', (req, res, next) => authController.login(req, res, next));
-router.post('/UserAccount/getAccessToken', (req, res, next) => authController.login(req, res, next));
 
 
 // Global authentication and tenant resolution middleware for protected routes
 router.use(authenticateToken);
 router.use(resolveTenant);
 
-router.post('/PhsAPI/UserAccount/getUserProfile', (req, res, next) => authController.getUserProfile(req, res, next));
 router.post('/UserAccount/getUserProfile', (req, res, next) => authController.getUserProfile(req, res, next));
-router.get('/PhsAPI/UserAccount/getUserProfile', (req, res, next) => authController.getUserProfile(req, res, next));
 router.get('/UserAccount/getUserProfile', (req, res, next) => authController.getUserProfile(req, res, next));
 
-router.post('/PhsAPI/Auth/Logout', (req, res, next) => authController.logout(req, res, next));
 router.post('/Auth/Logout', (req, res, next) => authController.logout(req, res, next));
-router.post('/PhsAPI/UserAccount/Logout', (req, res, next) => authController.logout(req, res, next));
-router.post('/UserAccount/Logout', (req, res, next) => authController.logout(req, res, next));
 
 
-// Helper function to mount routes on both prefixed (/PhsAPI) and non-prefixed paths.
 // authorize runs per-route rather than via router.use so that it can read the
 // resolved :package/:table params and skip routes that are not program-scoped.
 function mount(method, pathStr, handler) {
   router[method](pathStr, authorize, handler);
-  if (!pathStr.startsWith('/PhsAPI')) {
-    router[method](`/PhsAPI${pathStr}`, authorize, handler);
-  }
 }
 
-// --- UNIFIED CONTROLLER (/UC & /PhsAPI/UC) ENDPOINTS ---
+// --- UNIFIED CONTROLLER (/UC) ENDPOINTS ---
 mount('post', '/UC/InitForm', (req, res, next) => unifiedController.initForm(req, res, next));
 mount('post', '/UC/:package/:table/List', (req, res, next) => unifiedController.listRecords(req, res, next));
 mount('get', '/UC/:package/:table/List', (req, res, next) => unifiedController.listRecords(req, res, next));
@@ -71,7 +59,7 @@ mount('post', '/UC/:package/:table/Save', (req, res, next) => unifiedController.
 mount('post', '/UC/:pkgName/:reportName/DashQueryLine', (req, res, next) => unifiedController.dashLine(req, res, next));
 mount('post', '/UC/:pkgName/:reportName/DashQueryPie', (req, res, next) => unifiedController.dashPie(req, res, next));
 
-// --- CUSTOMIZED CONTROLLER (/CC & /PhsAPI/CC) ENDPOINTS ---
+// --- CUSTOMIZED CONTROLLER (/CC) ENDPOINTS ---
 mount('post', '/CC/getCopies', (req, res, next) => unifiedController.getCopies(req, res, next));
 mount('post', '/CC/attached/new', (req, res, next) => unifiedController.uploadFile(req, res, next));
 mount('get', '/CC/attached/:id', (req, res, next) => unifiedController.getFile(req, res, next));
