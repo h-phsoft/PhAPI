@@ -15,17 +15,30 @@ const authRepository = require('../repository/authRepository');
  * grants a permission group (PGrp_Id) access to programs (MPrg_Id) -- so this
  * middleware reuses it rather than introducing a parallel one.
  *
- * Requests are matched to programs through MPrg_RelTable, the entity a program
- * operates on. An earlier version matched on MPrg_ApiURL instead; that column
- * holds the UI screen route ('acc/mng/CodedTables', 'acc/GeneralLedger'), which
- * shares no namespace with the /UC/:package/:table path an API call uses
- * ('acc/acc_master'). Measured across live tenants, almost nothing matched, so
- * enforcing on it would have denied nearly every program-scoped request.
+ * A request is constrained two ways, and neither implies the other:
  *
- * Because most programs carry no MPrg_RelTable, permission is only decided for
- * tables some active program actually binds. A table no program binds is
- * ungoverned and passes through, the same way routes with no package/table pair
- * do -- otherwise enforcement would reject the majority of legitimate traffic.
+ *   1. If the caller sends an mprgid header naming the program it is acting on,
+ *      that program must be one the caller's group is granted. This is the only
+ *      check that reaches endpoints with no package/table pair in the path.
+ *   2. If the request names a table, that table must be one the caller's granted
+ *      programs bind through MPrg_RelTable.
+ *
+ * Both apply, so claiming a program is never a way to reach more than not
+ * claiming one -- a caller holding program A cannot use it to touch program B's
+ * table unless they hold B as well.
+ *
+ * MPrg_RelTable is the column that binds a program to its data. An earlier
+ * version matched on MPrg_ApiURL instead; that holds the UI screen route
+ * ('acc/mng/CodedTables', 'acc/GeneralLedger'), which shares no namespace with
+ * the /UC/:package/:table path an API call uses ('acc/acc_master'). Measured
+ * across live tenants almost nothing matched, so enforcing on it would have
+ * denied nearly every program-scoped request.
+ *
+ * Because most programs carry no MPrg_RelTable, check 2 only decides tables some
+ * active program actually binds. A table no program binds is ungoverned and
+ * passes through -- otherwise enforcement would reject the majority of
+ * legitimate traffic, and multi-table screens would break, since a screen reads
+ * its master plus whatever it looks up and only the master is ever bound.
  *
  * RBAC_MODE governs the rollout:
  *
@@ -233,24 +246,25 @@ async function decide(tenantId, user, packageName, tableName, mprgId) {
     return { allowed: true, target: describe, reason: 'caller has no permission group' };
   }
 
-  // Preferred path: the caller names the program it is acting on, so the grant
-  // is checked directly on MPrg_Id with no inference from the URL. This is the
-  // only check that works on routes carrying no package/table pair at all.
+  // Both checks below apply. They constrain different things and neither implies
+  // the other: the program id says which screen the caller claims to be on, the
+  // table says what the request would actually read or write.
+
+  // 1. A claimed program must be one the caller holds. This is the only check
+  //    that reaches routes with no package/table pair at all.
   const claimed = Number(mprgId);
-  if (Number.isInteger(claimed) && claimed > 0) {
-    if (!programIds.has(claimed)) {
-      return { allowed: false, target: describe, reason: `no grant for program ${claimed}` };
-    }
-    return { allowed: true, target: describe, reason: `granted program ${claimed}` };
+  const claimsProgram = Number.isInteger(claimed) && claimed > 0;
+  if (claimsProgram && !programIds.has(claimed)) {
+    return { allowed: false, target: describe, reason: `no grant for program ${claimed}` };
   }
 
-  // Nothing to check when the caller names neither a program nor a table.
+  // 2. The requested table must be one the caller's granted programs bind.
   if (!packageName || !tableName) {
-    return { allowed: true, target: describe, reason: 'not program-scoped' };
+    return claimsProgram
+      ? { allowed: true, target: describe, reason: `granted program ${claimed}` }
+      : { allowed: true, target: describe, reason: 'not program-scoped' };
   }
 
-  // Fallback for callers that send no program id: match the requested table
-  // against the tables the caller's granted programs bind.
   const target = requestTarget(packageName, tableName);
 
   // The metadata knows no such entity. The service layer will fail on it anyway,
@@ -263,7 +277,10 @@ async function decide(tenantId, user, packageName, tableName, mprgId) {
     return { allowed: true, target, reason: 'granted' };
   }
 
-  // Not granted, but only a table some active program binds can be denied.
+  // Not granted. Only a table some active program binds can be denied -- a
+  // lookup or child table that no program declares is not withheld, which is
+  // also what keeps multi-table screens working: a screen reads its master plus
+  // whatever it looks up, and only the master is ever bound.
   const governed = await loadGovernedTables(tenantId);
   if (!governed.has(target)) {
     return { allowed: true, target, reason: 'no program binds this table' };

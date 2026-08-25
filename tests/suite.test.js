@@ -456,8 +456,7 @@ async function runAllTests() {
     });
     authorize.primeGoverned(TENANT, ['acc/acc_master', 'acc/acc_account', 'stor/stor_items']);
 
-    // A claimed program the caller holds is decided directly on MPrg_Id, with no
-    // inference from the URL at all.
+    // A claimed program the caller holds, on a table the caller may reach.
     let d = await authorize.decide(TENANT, USER, 'Acc', 'Acc_Master', 10);
     assert.strictEqual(d.allowed, true, d.reason);
 
@@ -472,6 +471,38 @@ async function runAllTests() {
 
     d = await authorize.decide(TENANT, USER, undefined, undefined, 99);
     assert.strictEqual(d.allowed, false, d.reason);
+
+    authorize.clearCache();
+  });
+
+  await testAsync('Holding a program does not waive the check on the table', async () => {
+    const TENANT = 'test-copy';
+    const USER = { userId: '77' };
+    authorize.clearCache();
+
+    // The caller holds program 10 only, which binds Acc_Master. Account is bound
+    // by a program they do not hold.
+    authorize.primeCache(TENANT, USER.userId, {
+      unrestricted: false,
+      tables: ['acc/acc_master'],
+      programIds: [10]
+    });
+    authorize.primeGoverned(TENANT, ['acc/acc_master', 'acc/acc_account']);
+
+    // Claiming a program they do hold must not carry them into a governed table
+    // they do not. The two checks constrain different things.
+    let d = await authorize.decide(TENANT, USER, 'Acc', 'Account', 10);
+    assert.strictEqual(d.allowed, false, d.reason);
+
+    // The same request without the header is refused the same way, so sending
+    // one can never be a way to get more than not sending one.
+    d = await authorize.decide(TENANT, USER, 'Acc', 'Account', null);
+    assert.strictEqual(d.allowed, false, d.reason);
+
+    // A table no program binds -- a lookup or child a screen reads alongside its
+    // master -- stays reachable, which is what keeps multi-table screens working.
+    d = await authorize.decide(TENANT, USER, 'Acc', 'Acc_Code_Table', 10);
+    assert.strictEqual(d.allowed, true, d.reason);
 
     authorize.clearCache();
   });
