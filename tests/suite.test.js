@@ -443,6 +443,115 @@ async function runAllTests() {
     }
   });
 
+  await testAsync('Authorize decides on the program id when the caller sends one', async () => {
+    const TENANT = 'test-copy';
+    const USER = { userId: '77' };
+    authorize.clearCache();
+
+    // Group holds programs 10 and 11, whose tables are Acc_Master and Account.
+    authorize.primeCache(TENANT, USER.userId, {
+      unrestricted: false,
+      tables: ['acc/acc_master', 'acc/acc_account'],
+      programIds: [10, 11]
+    });
+    authorize.primeGoverned(TENANT, ['acc/acc_master', 'acc/acc_account', 'stor/stor_items']);
+
+    // A claimed program the caller holds, on a table the caller may reach.
+    let d = await authorize.decide(TENANT, USER, 'Acc', 'Acc_Master', 10);
+    assert.strictEqual(d.allowed, true, d.reason);
+
+    // A claimed program the caller does not hold is refused outright.
+    d = await authorize.decide(TENANT, USER, 'Acc', 'Acc_Master', 99);
+    assert.strictEqual(d.allowed, false, d.reason);
+
+    // Routes with no package/table pair are still decided, which the table-based
+    // check could never do -- this is what covers attachments and InitForm.
+    d = await authorize.decide(TENANT, USER, undefined, undefined, 11);
+    assert.strictEqual(d.allowed, true, d.reason);
+
+    d = await authorize.decide(TENANT, USER, undefined, undefined, 99);
+    assert.strictEqual(d.allowed, false, d.reason);
+
+    authorize.clearCache();
+  });
+
+  await testAsync('Holding a program does not waive the check on the table', async () => {
+    const TENANT = 'test-copy';
+    const USER = { userId: '77' };
+    authorize.clearCache();
+
+    // The caller holds program 10 only, which binds Acc_Master. Account is bound
+    // by a program they do not hold.
+    authorize.primeCache(TENANT, USER.userId, {
+      unrestricted: false,
+      tables: ['acc/acc_master'],
+      programIds: [10]
+    });
+    authorize.primeGoverned(TENANT, ['acc/acc_master', 'acc/acc_account']);
+
+    // Claiming a program they do hold must not carry them into a governed table
+    // they do not. The two checks constrain different things.
+    let d = await authorize.decide(TENANT, USER, 'Acc', 'Account', 10);
+    assert.strictEqual(d.allowed, false, d.reason);
+
+    // The same request without the header is refused the same way, so sending
+    // one can never be a way to get more than not sending one.
+    d = await authorize.decide(TENANT, USER, 'Acc', 'Account', null);
+    assert.strictEqual(d.allowed, false, d.reason);
+
+    // A table no program binds -- a lookup or child a screen reads alongside its
+    // master -- stays reachable, which is what keeps multi-table screens working.
+    d = await authorize.decide(TENANT, USER, 'Acc', 'Acc_Code_Table', 10);
+    assert.strictEqual(d.allowed, true, d.reason);
+
+    authorize.clearCache();
+  });
+
+  await testAsync('Authorize falls back to the table when no program id is sent', async () => {
+    const TENANT = 'test-copy';
+    const USER = { userId: '77' };
+    authorize.clearCache();
+
+    authorize.primeCache(TENANT, USER.userId, {
+      unrestricted: false,
+      tables: ['acc/acc_master'],
+      programIds: [10]
+    });
+    authorize.primeGoverned(TENANT, ['acc/acc_master', 'acc/acc_account']);
+
+    // Granted table.
+    let d = await authorize.decide(TENANT, USER, 'Acc', 'Acc_Master', null);
+    assert.strictEqual(d.allowed, true, d.reason);
+
+    // Governed by some program, but not one this caller holds.
+    d = await authorize.decide(TENANT, USER, 'Acc', 'Account', null);
+    assert.strictEqual(d.allowed, false, d.reason);
+
+    // No program binds it, so there is no permission to withhold.
+    d = await authorize.decide(TENANT, USER, 'Stor', 'Items', null);
+    assert.strictEqual(d.allowed, true, d.reason);
+
+    // Neither a program nor a table: nothing to check.
+    d = await authorize.decide(TENANT, USER, undefined, undefined, null);
+    assert.strictEqual(d.allowed, true, d.reason);
+
+    authorize.clearCache();
+  });
+
+  await testAsync('Authorize lets an unrestricted caller through either way', async () => {
+    const TENANT = 'test-copy';
+    const USER = { userId: '78' };
+    authorize.clearCache();
+    authorize.primeCache(TENANT, USER.userId, { unrestricted: true });
+
+    for (const mprg of [null, 99]) {
+      const d = await authorize.decide(TENANT, USER, 'Acc', 'Acc_Master', mprg);
+      assert.strictEqual(d.allowed, true, `mprgId=${mprg}: ${d.reason}`);
+    }
+
+    authorize.clearCache();
+  });
+
   test('Authorize returns null for targets it cannot resolve', () => {
     // A null means "nothing to check against", which the middleware lets through
     // rather than denying -- the service layer rejects the unknown entity anyway.
@@ -539,8 +648,112 @@ async function runAllTests() {
   // -------------------------------------------------------------
   console.log('\n--- 5. Express Server Health & Route Verification ---');
 
-  const server = http.createServer(require('../server'));
+  const expressApp = require('../server');
+  const server = http.createServer(expressApp);
   await new Promise((resolve) => server.listen(3009, resolve));
+
+  /** Every path Express has a handler registered for. */
+  function registeredPaths() {
+    const paths = [];
+    (function walk(stack) {
+      for (const layer of stack) {
+        if (layer.route) {
+          paths.push(layer.route.path);
+        } else if (layer.name === 'router' && layer.handle && layer.handle.stack) {
+          walk(layer.handle.stack);
+        }
+      }
+    })(expressApp._router.stack);
+    return paths;
+  }
+
+  test('Envelope code becomes the HTTP status once legacy mode is off', () => {
+    const { httpStatusFor } = require('../utils/sendResult');
+    const ResultManager = require('../utils/responseManager');
+    const previous = env.legacyJavaClient;
+
+    try {
+      // The Java client reads the outcome from the body and treats any non-2xx
+      // as a transport failure, so while it is supported everything stays 200.
+      env.legacyJavaClient = true;
+      assert.strictEqual(httpStatusFor(ResultManager.error(403, 'nope')), 200);
+      assert.strictEqual(httpStatusFor(ResultManager.invalid('gone')), 200);
+      assert.strictEqual(httpStatusFor(ResultManager.ok({})), 200);
+
+      env.legacyJavaClient = false;
+      assert.strictEqual(httpStatusFor(ResultManager.error(403, 'nope')), 403);
+      assert.strictEqual(httpStatusFor(ResultManager.error(401, 'nope')), 401);
+      assert.strictEqual(httpStatusFor(ResultManager.invalid('gone')), 404);
+      assert.strictEqual(httpStatusFor(ResultManager.ok({})), 200);
+
+      // A code outside the HTTP range would make Express throw; 200 is safer
+      // than taking the process down over a malformed envelope.
+      assert.strictEqual(httpStatusFor({ code: 0 }), 200);
+      assert.strictEqual(httpStatusFor({ code: 999 }), 200);
+      assert.strictEqual(httpStatusFor({}), 200);
+      assert.strictEqual(httpStatusFor(null), 200);
+    } finally {
+      env.legacyJavaClient = previous;
+    }
+  });
+
+  test('Legacy Java URL shapes reduce to the canonical path', () => {
+    const { canonicalize } = require('../middleware/legacyRoutes');
+
+    // The servlet context prefix, on every shape the Java client sends.
+    assert.strictEqual(canonicalize('/PhsAPI/Auth/Login'), '/Auth/Login');
+    assert.strictEqual(canonicalize('/PhsAPI/UC/Acc/Master/List'), '/UC/Acc/Master/List');
+    assert.strictEqual(canonicalize('/PhsAPI/CC/attached/7'), '/CC/attached/7');
+
+    // Older endpoint names for operations that still exist.
+    assert.strictEqual(canonicalize('/UserAccount/Authentication'), '/Auth/Login');
+    assert.strictEqual(canonicalize('/UserAccount/getAccessToken'), '/Auth/Login');
+    assert.strictEqual(canonicalize('/PhsAPI/UserAccount/Logout'), '/Auth/Logout');
+    assert.strictEqual(canonicalize('/PHSAPI/useraccount/authentication'.replace('/PHSAPI', '/PhsAPI')), '/Auth/Login');
+
+    // Query strings survive, since Search and Find carry them.
+    assert.strictEqual(canonicalize('/PhsAPI/UC/Acc/Master/Search/1/20?q=x'), '/UC/Acc/Master/Search/1/20?q=x');
+
+    // Canonical and unrelated paths are untouched.
+    assert.strictEqual(canonicalize('/UC/Acc/Master/List'), '/UC/Acc/Master/List');
+    assert.strictEqual(canonicalize('/Auth/Login'), '/Auth/Login');
+    assert.strictEqual(canonicalize('/health'), '/health');
+    assert.strictEqual(canonicalize('/UserAccount/getUserProfile'), '/UserAccount/getUserProfile');
+
+    // A bare prefix is the root, not an empty string Express cannot match.
+    assert.strictEqual(canonicalize('/PhsAPI'), '/');
+  });
+
+  test('Each operation is registered exactly once', () => {
+    // The prefix and the auth aliases used to be duplicate registrations; they
+    // are rewrites now, so a repeated method+path means a real duplicate.
+    const seen = new Map();
+    (function walk(stack) {
+      for (const layer of stack) {
+        if (layer.route) {
+          for (const method of Object.keys(layer.route.methods)) {
+            const key = `${method.toUpperCase()} ${layer.route.path}`;
+            seen.set(key, (seen.get(key) || 0) + 1);
+          }
+        } else if (layer.name === 'router' && layer.handle && layer.handle.stack) {
+          walk(layer.handle.stack);
+        }
+      }
+    })(expressApp._router.stack);
+
+    const duplicates = [...seen.entries()].filter(([, n]) => n > 1).map(([k]) => k);
+    assert.deepStrictEqual(duplicates, [], `registered more than once: ${duplicates.join(', ')}`);
+  });
+
+  test('Only the unified routes carry :package/:table', () => {
+    // authorize derives its permission target from these params, so a route that
+    // carries them outside /UC is a data endpoint the middleware cannot see the
+    // shape of. Keeping them in one place keeps that reasoning true.
+    const stray = registeredPaths().filter(
+      (p) => /:package|:table|:pkgName|:reportName/.test(p) && !p.includes('/UC/')
+    );
+    assert.deepStrictEqual(stray, [], `found :package/:table outside /UC: ${stray.join(', ')}`);
+  });
 
   await testAsync('Health endpoint GET /health returns 200 OK', async () => {
     const res = await new Promise((resolve, reject) => {
@@ -556,17 +769,30 @@ async function runAllTests() {
     assert.strictEqual(Array.isArray(res.body.packages), true);
   });
 
-  await testAsync('Protected API endpoint without JWT returns 401 UNAUTHORIZED status', async () => {
-    const res = await new Promise((resolve, reject) => {
-      http.get('http://localhost:3009/PhsAPI/Acc/Account/List', (response) => {
+  /** GETs a path and parses the envelope. */
+  function getJson(pathStr) {
+    return new Promise((resolve, reject) => {
+      http.get(`http://localhost:3009${pathStr}`, (response) => {
         let body = '';
-        response.on('data', chunk => body += chunk);
+        response.on('data', (chunk) => { body += chunk; });
         response.on('end', () => resolve({ status: response.statusCode, body: JSON.parse(body) }));
       }).on('error', reject);
     });
+  }
 
+  await testAsync('Protected API endpoint without JWT returns 401 UNAUTHORIZED status', async () => {
+    const res = await getJson('/UC/Acc/Account/List');
     assert.strictEqual(res.body.status, false);
     assert.strictEqual(res.body.code, 401);
+  });
+
+  await testAsync('Legacy /PhsAPI prefix still reaches the same route', async () => {
+    // Reaching authentication rather than the 404 handler is the proof that the
+    // rewrite ran and the route matched.
+    const canonical = await getJson('/UC/Acc/Account/List');
+    const prefixed = await getJson('/PhsAPI/UC/Acc/Account/List');
+    assert.deepStrictEqual(prefixed.body, canonical.body);
+    assert.strictEqual(prefixed.body.code, 401);
   });
 
   const jwt = require('jsonwebtoken');

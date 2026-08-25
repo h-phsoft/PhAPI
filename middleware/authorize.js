@@ -2,6 +2,7 @@ const env = require('../config/env');
 const logger = require('../utils/logger');
 const mainApp = require('../config/mainApp');
 const ResultManager = require('../utils/responseManager');
+const sendResult = require('../utils/sendResult');
 const connectionPool = require('../core/connectionPool');
 const authRepository = require('../repository/authRepository');
 
@@ -14,17 +15,30 @@ const authRepository = require('../repository/authRepository');
  * grants a permission group (PGrp_Id) access to programs (MPrg_Id) -- so this
  * middleware reuses it rather than introducing a parallel one.
  *
- * Requests are matched to programs through MPrg_RelTable, the entity a program
- * operates on. An earlier version matched on MPrg_ApiURL instead; that column
- * holds the UI screen route ('acc/mng/CodedTables', 'acc/GeneralLedger'), which
- * shares no namespace with the /UC/:package/:table path an API call uses
- * ('acc/acc_master'). Measured across live tenants, almost nothing matched, so
- * enforcing on it would have denied nearly every program-scoped request.
+ * A request is constrained two ways, and neither implies the other:
  *
- * Because most programs carry no MPrg_RelTable, permission is only decided for
- * tables some active program actually binds. A table no program binds is
- * ungoverned and passes through, the same way routes with no package/table pair
- * do -- otherwise enforcement would reject the majority of legitimate traffic.
+ *   1. If the caller sends an mprgid header naming the program it is acting on,
+ *      that program must be one the caller's group is granted. This is the only
+ *      check that reaches endpoints with no package/table pair in the path.
+ *   2. If the request names a table, that table must be one the caller's granted
+ *      programs bind through MPrg_RelTable.
+ *
+ * Both apply, so claiming a program is never a way to reach more than not
+ * claiming one -- a caller holding program A cannot use it to touch program B's
+ * table unless they hold B as well.
+ *
+ * MPrg_RelTable is the column that binds a program to its data. An earlier
+ * version matched on MPrg_ApiURL instead; that holds the UI screen route
+ * ('acc/mng/CodedTables', 'acc/GeneralLedger'), which shares no namespace with
+ * the /UC/:package/:table path an API call uses ('acc/acc_master'). Measured
+ * across live tenants almost nothing matched, so enforcing on it would have
+ * denied nearly every program-scoped request.
+ *
+ * Because most programs carry no MPrg_RelTable, check 2 only decides tables some
+ * active program actually binds. A table no program binds is ungoverned and
+ * passes through -- otherwise enforcement would reject the majority of
+ * legitimate traffic, and multi-table screens would break, since a screen reads
+ * its master plus whatever it looks up and only the master is ever bound.
  *
  * RBAC_MODE governs the rollout:
  *
@@ -222,28 +236,51 @@ async function loadPermissions(tenantId, user) {
  *
  * @returns {Promise<{allowed: boolean, target: string, reason: string}>}
  */
-async function decide(tenantId, user, packageName, tableName) {
-  const fallbackTarget = `${packageName}/${tableName}`.toLowerCase();
+async function decide(tenantId, user, packageName, tableName, mprgId) {
+  const describe = packageName && tableName ? `${packageName}/${tableName}`.toLowerCase() : `program ${mprgId}`;
 
   // Checked first because in most tenants every user lands here, and it costs a
   // per-user cache hit instead of the tenant-wide governed-table lookup below.
-  const { unrestricted, tables } = await loadPermissions(tenantId, user);
+  const { unrestricted, tables, programIds } = await loadPermissions(tenantId, user);
   if (unrestricted) {
-    return { allowed: true, target: fallbackTarget, reason: 'caller has no permission group' };
+    return { allowed: true, target: describe, reason: 'caller has no permission group' };
   }
+
+  // Both checks below apply. They constrain different things and neither implies
+  // the other: the program id says which screen the caller claims to be on, the
+  // table says what the request would actually read or write.
+
+  // 1. A claimed program must be one the caller holds. This is the only check
+  //    that reaches routes with no package/table pair at all.
+  const claimed = Number(mprgId);
+  const claimsProgram = Number.isInteger(claimed) && claimed > 0;
+  if (claimsProgram && !programIds.has(claimed)) {
+    return { allowed: false, target: describe, reason: `no grant for program ${claimed}` };
+  }
+
+  // 2. The requested table must be one the caller's granted programs bind.
+  if (!packageName || !tableName) {
+    return claimsProgram
+      ? { allowed: true, target: describe, reason: `granted program ${claimed}` }
+      : { allowed: true, target: describe, reason: 'not program-scoped' };
+  }
+
+  const target = requestTarget(packageName, tableName);
 
   // The metadata knows no such entity. The service layer will fail on it anyway,
   // and there is no program binding to check it against.
-  const target = requestTarget(packageName, tableName);
   if (!target) {
-    return { allowed: true, target: fallbackTarget, reason: 'unknown entity' };
+    return { allowed: true, target: describe, reason: 'unknown entity' };
   }
 
   if (tables.has(target)) {
     return { allowed: true, target, reason: 'granted' };
   }
 
-  // Not granted, but only a table some active program binds can be denied.
+  // Not granted. Only a table some active program binds can be denied -- a
+  // lookup or child table that no program declares is not withheld, which is
+  // also what keeps multi-table screens working: a screen reads its master plus
+  // whatever it looks up, and only the master is ever bound.
   const governed = await loadGovernedTables(tenantId);
   if (!governed.has(target)) {
     return { allowed: true, target, reason: 'no program binds this table' };
@@ -260,17 +297,18 @@ function authorize(req, res, next) {
   const params = req.params || {};
   const pkg = params.package || params.pkgName;
   const table = params.table || params.reportName;
+  const mprgId = req.context && req.context.mPrgId;
 
-  // Routes without a package/table pair (InitForm, Codes, attachments) are not
-  // program-scoped and carry no permission of their own.
-  if (!pkg || !table) {
+  // Nothing identifies a permission: no program claimed, and no program-scoped
+  // package/table pair either. InitForm, Codes and getCopies land here.
+  if (!mprgId && (!pkg || !table)) {
     return next();
   }
 
   const user = req.user || {};
   const tenantId = (req.context && req.context.tenantId) || user.tenantId || 'default';
 
-  decide(tenantId, user, pkg, table)
+  decide(tenantId, user, pkg, table, mprgId)
     .then(({ allowed, target }) => {
       if (allowed) {
         return next();
@@ -285,17 +323,17 @@ function authorize(req, res, next) {
       }
 
       logger.warn(`[Authorize] DENIED user '${user.userId}' in copy '${tenantId}' access to '${target}'`);
-      return res.status(200).json(ResultManager.error(403, 'You do not have permission to access this program'));
+      return sendResult(res, ResultManager.error(403, 'You do not have permission to access this program'));
     })
     .catch((err) => {
       // Audit must never break a working deployment; enforce fails closed.
-      const target = `${pkg}/${table}`.toLowerCase();
+      const target = pkg && table ? `${pkg}/${table}`.toLowerCase() : `program ${mprgId}`;
       if (env.rbacMode === 'audit') {
         logger.error(`[Authorize] AUDIT permission lookup failed for '${target}': ${err.message}`);
         return next();
       }
       logger.error(`[Authorize] Permission lookup failed for '${target}': ${err.message}`);
-      return res.status(200).json(ResultManager.error(403, 'Unable to verify permissions'));
+      return sendResult(res, ResultManager.error(403, 'Unable to verify permissions'));
     });
 }
 
@@ -361,6 +399,27 @@ authorize.clearCache = () => {
   permissionCache.clear();
   governedCache.clear();
 };
+
+/**
+ * Fills the caches directly instead of reading the database.
+ *
+ * Exposed so the decision matrix can be tested without a provisioned tenant;
+ * production paths never call these.
+ */
+authorize.primeCache = (tenantId, userId, { unrestricted = false, tables = [], programIds = [] } = {}) => {
+  permissionCache.set(`${tenantId}:${userId}`, {
+    unrestricted,
+    tables: new Set(tables),
+    programIds: new Set(programIds),
+    expiresAt: cacheExpiry()
+  });
+};
+
+authorize.primeGoverned = (tenantId, tables = []) => {
+  governedCache.set(tenantId, { tables: new Set(tables), expiresAt: cacheExpiry() });
+};
+
+authorize.decide = decide;
 authorize.requestTarget = requestTarget;
 authorize.relTableTarget = relTableTarget;
 authorize.checkProgram = checkProgram;

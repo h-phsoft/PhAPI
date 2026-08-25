@@ -2,6 +2,7 @@
 
 const {AuthService} = require('../services/authService');
 const ResultManager = require('../utils/responseManager');
+const sendResult = require('../utils/sendResult');
 const i18nHelper = require('../utils/i18nHelper');
 
 class AuthController {
@@ -36,7 +37,7 @@ class AuthController {
         // Failures are reported as HTTP 200 for the legacy client, so the rate
         // limiter cannot read the status code. Flag it explicitly instead.
         res.locals.loginFailed = true;
-        return res.status(200).json(ResultManager.invalidLogin(err.message));
+        return sendResult(res, ResultManager.invalidLogin(err.message));
       }
       logger.error(`[AuthController] Unexpected error during login: ${err.message}`);
       next(err);

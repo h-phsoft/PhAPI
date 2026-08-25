@@ -19,6 +19,7 @@ try {
 
 const mainApp = require('./config/mainApp');
 const routes = require('./routes');
+const legacyRoutes = require('./middleware/legacyRoutes');
 const errorHandler = require('./middleware/errorHandling');
 
 const app = express();
@@ -28,6 +29,10 @@ const PORT = env.port;
 app.use(helmet());
 
 app.set('trust proxy', 1);
+
+// Rewrite legacy Java URL shapes before anything matches on the path -- the rate
+// limiters below are mounted per path and have to see the canonical one.
+app.use(legacyRoutes);
 
 // Rate limiting. /health is exempt so uptime monitoring never eats a user's budget.
 const limiter = rateLimit({
@@ -43,21 +48,14 @@ const authLimiter = rateLimit({
   windowMs: env.rateLimitWindowMs,
   max: env.authRateLimitMax,
   skipSuccessfulRequests: true,
-  // A rejected login still answers HTTP 200 to stay compatible with the legacy
-  // Java client, so the status code cannot be trusted here — authController
-  // marks genuine failures on res.locals instead.
+  // While LEGACY_JAVA_CLIENT is on a rejected login still answers HTTP 200, so
+  // the status code cannot be trusted here. authController marks genuine failures
+  // on res.locals instead, which is correct under both settings.
   requestWasSuccessful: (req, res) => !res.locals.loginFailed,
   message: { status: false, code: 429, message: 'Too many login attempts. Try again later.' }
 });
-const AUTH_PATHS = [
-  '/Auth/Login',
-  '/UserAccount/Authentication',
-  '/UserAccount/getAccessToken'
-];
-AUTH_PATHS.forEach((authPath) => {
-  app.use(authPath, authLimiter);
-  app.use(`/PhsAPI${authPath}`, authLimiter);
-});
+// One path now: the legacy aliases were rewritten to it above.
+app.use('/Auth/Login', authLimiter);
 
 // CORS. env.corsOrigins is null only outside production, where any origin is allowed.
 app.use(cors({

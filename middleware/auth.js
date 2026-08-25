@@ -1,18 +1,19 @@
 const jwt = require('jsonwebtoken');
 const env = require('../config/env');
 const ResultManager = require('../utils/responseManager');
+const sendResult = require('../utils/sendResult');
 
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];
   const token = authHeader && (authHeader.startsWith('Bearer ') ? authHeader.split(' ')[1] : authHeader);
 
   if (!token) {
-    return res.status(200).json(ResultManager.error(401, 'Access token is required'));
+    return sendResult(res, ResultManager.error(401, 'Access token is required'));
   }
 
   jwt.verify(token, env.jwtSecret, (err, user) => {
     if (err) {
-      return res.status(200).json(ResultManager.error(403, 'Invalid or expired token'));
+      return sendResult(res, ResultManager.error(403, 'Invalid or expired token'));
     }
 
     // Support both Java token payload (jui, Copy) and standard Node payload (userId, tenantId)
