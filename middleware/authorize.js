@@ -26,7 +26,7 @@ const authRepository = require('../repository/authRepository');
  * switch to enforce.
  */
 
-// key: `${tenantId}:${userId}` -> { expiresAt, unrestricted, programs:Set<string> }
+// key: `${tenantId}:${userId}` -> { expiresAt, unrestricted, programs:Set<string>, programIds:Set<number> }
 const permissionCache = new Map();
 
 /**
@@ -53,6 +53,25 @@ function normalizeTarget(value) {
     return null;
   }
   return `${segments[0]}/${segments[1]}`.toLowerCase();
+}
+
+/**
+ * Reads MPrg_Id off a driver row. Oracle upper-cases column names, MySQL and
+ * Postgres do not, so all three spellings are tried.
+ * @param {Object} row
+ * @returns {*} The raw value, or undefined
+ */
+function readProgramId(row) {
+  if (!row) {
+    return undefined;
+  }
+  if (row.MPRG_ID !== undefined) {
+    return row.MPRG_ID;
+  }
+  if (row.MPrg_Id !== undefined) {
+    return row.MPrg_Id;
+  }
+  return row.mprg_id;
 }
 
 /**
@@ -94,13 +113,19 @@ async function loadPermissions(tenantId, user) {
 
     // Matches getMenuByPid: no group means no restriction.
     if (pgrpId <= 0) {
-      const entry = { unrestricted: true, programs: new Set(), expiresAt: Date.now() + env.rbacCacheTtlSeconds * 1000 };
+      const entry = {
+        unrestricted: true,
+        programs: new Set(),
+        programIds: new Set(),
+        expiresAt: Date.now() + env.rbacCacheTtlSeconds * 1000
+      };
       permissionCache.set(cacheKey, entry);
       return entry;
     }
 
     const rows = await authRepository.getPermittedPrograms(conn, pgrpId);
     const programs = new Set();
+    const programIds = new Set();
 
     (rows || []).forEach((row) => {
       const apiUrl = row.MPRG_APIURL || row.MPrg_ApiURL || row.mprg_apiurl;
@@ -108,9 +133,21 @@ async function loadPermissions(tenantId, user) {
       if (target) {
         programs.add(target);
       }
+
+      // Resources that carry a program id of their own -- attachments -- are
+      // checked against these rather than against a package/table pair.
+      const id = Number(readProgramId(row));
+      if (Number.isInteger(id) && id > 0) {
+        programIds.add(id);
+      }
     });
 
-    const entry = { unrestricted: false, programs, expiresAt: Date.now() + env.rbacCacheTtlSeconds * 1000 };
+    const entry = {
+      unrestricted: false,
+      programs,
+      programIds,
+      expiresAt: Date.now() + env.rbacCacheTtlSeconds * 1000
+    };
     permissionCache.set(cacheKey, entry);
     return entry;
   } finally {
@@ -165,8 +202,66 @@ function authorize(req, res, next) {
     });
 }
 
+/**
+ * Permission check for resources identified by a program id instead of a
+ * package/table pair. Attachments are the case this exists for: an attachment
+ * row carries the MPrg_Id of the program it belongs to, which is the same key
+ * Cpy_Perm grants against, so the check reuses the cache above rather than
+ * introducing a second permission model.
+ *
+ * RBAC_MODE is honoured exactly as the route middleware honours it, so
+ * attachments never start denying ahead of the rest of the API.
+ *
+ * An attachment with no usable program id is treated as not program-scoped and
+ * allowed, matching how the middleware skips routes that carry no package/table.
+ *
+ * @param {string} tenantId
+ * @param {Object} user req.user
+ * @param {*} mprgId Program id from the resource itself
+ * @param {string} [describe] Text for the audit log, e.g. "attachment 41"
+ * @returns {Promise<boolean>} false only under RBAC_MODE=enforce with no grant
+ */
+async function checkProgram(tenantId, user, mprgId, describe = 'resource') {
+  if (env.rbacMode === 'off') {
+    return true;
+  }
+
+  const id = Number(mprgId);
+  if (!Number.isInteger(id) || id <= 0) {
+    logger.warn(`[Authorize] ${describe} carries no program id; allowing without a permission check`);
+    return true;
+  }
+
+  let permitted;
+  try {
+    const { unrestricted, programIds } = await loadPermissions(tenantId, user || {});
+    permitted = unrestricted || programIds.has(id);
+  } catch (err) {
+    // Same posture as the middleware: audit must never break a working
+    // deployment, enforce fails closed.
+    logger.error(`[Authorize] Permission lookup failed for ${describe}: ${err.message}`);
+    return env.rbacMode !== 'enforce';
+  }
+
+  if (permitted) {
+    return true;
+  }
+
+  if (env.rbacMode === 'audit') {
+    logger.warn(
+      `[Authorize] AUDIT would deny user '${(user || {}).userId}' in copy '${tenantId}' ` +
+      `access to ${describe} (program ${id})`
+    );
+    return true;
+  }
+
+  logger.warn(`[Authorize] DENIED user '${(user || {}).userId}' in copy '${tenantId}' access to ${describe} (program ${id})`);
+  return false;
+}
+
 /** Drops cached permissions. Exposed for tests and for reacting to grant changes. */
 authorize.clearCache = () => permissionCache.clear();
 authorize.normalizeTarget = normalizeTarget;
+authorize.checkProgram = checkProgram;
 
 module.exports = authorize;

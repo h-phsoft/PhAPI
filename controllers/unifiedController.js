@@ -5,6 +5,9 @@ const auditService = require('../services/auditService');
 const ResultManager = require('../utils/responseManager');
 const i18nHelper = require('../utils/i18nHelper');
 const { coercePage, coercePageSize } = require('../utils/pagination');
+const authorize = require('../middleware/authorize');
+
+const NO_ATTACHMENT_ACCESS = 'You do not have permission to access this attachment';
 
 class UnifiedController {
   async initForm(req, res, next) {
@@ -305,10 +308,25 @@ class UnifiedController {
     }
   }
 
+  /**
+   * The attachment routes carry no :package/:table pair, so the authorize
+   * middleware skips them. An attachment is still program-scoped -- the row
+   * holds the MPrg_Id of the program it belongs to -- so the check happens here,
+   * once the row has been read, against the same Cpy_Perm grants.
+   */
   async uploadFile(req, res, next) {
     try {
-      const hParams = req.body;
+      const hParams = req.body || {};
       const context = req.context || {};
+
+      // On upload the program id comes from the caller, so it is checked before
+      // anything is written rather than after.
+      const mprgId = hParams.mprgId !== undefined ? hParams.mprgId : context.mPrgId;
+      const allowed = await authorize.checkProgram(context.tenantId, req.user, mprgId, 'a new attachment');
+      if (!allowed) {
+        return res.status(200).json(ResultManager.error(403, NO_ATTACHMENT_ACCESS));
+      }
+
       const result = await UnifiedService.uploadFile(hParams, context);
       res.status(200).json(ResultManager.ok(result));
     } catch (err) {
@@ -320,7 +338,17 @@ class UnifiedController {
     try {
       const id = req.params.id;
       const context = req.context || {};
+
       const result = await UnifiedService.getFile(id, context);
+      if (!result) {
+        return res.status(200).json(ResultManager.error(404, 'Attachment not found'));
+      }
+
+      const allowed = await authorize.checkProgram(context.tenantId, req.user, result.mprgId, `attachment ${id}`);
+      if (!allowed) {
+        return res.status(200).json(ResultManager.error(403, NO_ATTACHMENT_ACCESS));
+      }
+
       res.status(200).json(ResultManager.ok(result));
     } catch (err) {
       next(err);
@@ -331,6 +359,20 @@ class UnifiedController {
     try {
       const id = req.params.id;
       const context = req.context || {};
+
+      // Read first: the permission lives on the row, so it cannot be checked
+      // without it, and a delete must not report success for a row that was
+      // never there.
+      const existing = await UnifiedService.getFile(id, context);
+      if (!existing) {
+        return res.status(200).json(ResultManager.error(404, 'Attachment not found'));
+      }
+
+      const allowed = await authorize.checkProgram(context.tenantId, req.user, existing.mprgId, `attachment ${id}`);
+      if (!allowed) {
+        return res.status(200).json(ResultManager.error(403, NO_ATTACHMENT_ACCESS));
+      }
+
       const result = await UnifiedService.deleteFile(id, context);
       res.status(200).json(ResultManager.ok(result));
     } catch (err) {

@@ -36,4 +36,6 @@ This guide provides step-by-step instructions for deploying this Node.js project
 
 ## Step 6: Start/Restart the App
 1. Once `npm install` finishes and your environment variables are configured, scroll back to the top of the Node.js App configuration page and click **Restart**.
-2. Your API should now be live on the Application URL you selected. You can visit `http://api.yourdomain.com/docs/index.html` to check if your interactive docs page is loading properly.
+2. Your API should now be live on the Application URL you selected. Visit `http://api.yourdomain.com/health` to check that it is up.
+
+> **Note on `/docs`:** the documentation portal is served by `express.static` *ahead of* authentication, so anyone who can reach the host can read it. It is therefore off by default when `NODE_ENV=production`. Set `DOCS_ENABLED=true` in `.env` only if you accept publishing the full endpoint surface, the OpenAPI description and the Postman collection.

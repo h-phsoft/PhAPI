@@ -75,8 +75,12 @@ app.use(bodyParser.text({type: ['text/*', 'text/plain', 'text/html', 'applicatio
 const modulesDir = path.join(__dirname, 'resources', 'modules');
 mainApp.loadMetadata(modulesDir);
 
-// Serve static HTML documentation portal at /docs
-app.use('/docs', express.static(path.join(__dirname, 'docs')));
+// Serve the static HTML documentation portal at /docs. This mount sits ahead of
+// authentication, so everything under docs/ is public wherever it is enabled --
+// off by default in production.
+if (env.docsEnabled) {
+  app.use('/docs', express.static(path.join(__dirname, 'docs')));
+}
 
 // Serve static landing page at root
 app.use(express.static(path.join(__dirname, 'public')));
@@ -133,7 +137,11 @@ async function checkDatabaseConnectionOnStartup() {
 // Start server
 app.listen(PORT, async () => {
   console.log(`[PhsAPI] Server running on http://localhost:${PORT}`);
-  console.log(`[PhsAPI] Interactive Docs available at http://localhost:${PORT}/docs/index.html`);
+  console.log(
+    env.docsEnabled
+      ? `[PhsAPI] Interactive Docs available at http://localhost:${PORT}/docs/index.html`
+      : '[PhsAPI] Interactive Docs disabled (set DOCS_ENABLED=true to serve /docs)'
+  );
   console.log(`[PhsAPI] Environment: ${env.nodeEnv}`);
   await checkDatabaseConnectionOnStartup();
 });

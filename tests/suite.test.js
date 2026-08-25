@@ -443,6 +443,86 @@ async function runAllTests() {
   });
 
   // -------------------------------------------------------------
+  // 4g. ATTACHMENT AUTHORIZATION TESTS
+  // -------------------------------------------------------------
+  console.log('\n--- 4g. Attachment Authorization Tests ---');
+
+  const env = require('../config/env');
+
+  // checkProgram reads env.rbacMode on every call, so the rollout stage can be
+  // driven from here. Restored after each test.
+  async function withRbacMode(mode, fn) {
+    const previous = env.rbacMode;
+    env.rbacMode = mode;
+    try {
+      return await fn();
+    } finally {
+      env.rbacMode = previous;
+    }
+  }
+
+  test('Attachment entity resolves, and carries the program id the check needs', () => {
+    // Load what the server loads. Test 1 above also pulls in db/JSON/pkgs, where
+    // Cpy/reports/AttachedFiles.json declares the same Cpy_Attach synonym with
+    // zero columns and, registering last, overwrites the real definition. The
+    // server only ever reads resources/modules, so that is the shape these
+    // handlers actually see.
+    mainApp.loadMetadata(path.join(__dirname, '..', 'resources', 'modules'));
+
+    // The /CC/attached handlers used to look this up as 'Phs_Attached' or
+    // 'Cpy_Attached'. Neither is a registered name, so every lookup returned null
+    // and the handlers silently fabricated success. Guard the real name.
+    const entity = mainApp.getEntity('Cpy', 'Cpy_Attach');
+    assert.ok(entity, 'Cpy/Cpy_Attach should resolve');
+    assert.strictEqual(entity.tableName, 'Copy_Attached_Files');
+
+    assert.strictEqual(mainApp.getEntity('Phs', 'Phs_Attached'), null, 'the old name should still not resolve');
+    assert.strictEqual(mainApp.getEntity('Cpy', 'Cpy_Attached'), null, 'the old name should still not resolve');
+
+    // Authorization is keyed on this column; without it there is nothing to check.
+    const fields = entity.fields.map((f) => f.Field.toLowerCase());
+    assert.ok(fields.includes('mprgid'), 'attachment rows must carry mprgId');
+  });
+
+  await testAsync('Attachment check allows everything while RBAC_MODE is off', async () => {
+    // 'no-such-copy' would fail any real lookup, so a true here can only come
+    // from the mode short-circuit.
+    const allowed = await withRbacMode('off', () =>
+      authorize.checkProgram('no-such-copy', { userId: '1' }, 999999, 'attachment 1'));
+    assert.strictEqual(allowed, true);
+  });
+
+  await testAsync('Attachment check allows a row that carries no program id', async () => {
+    // Matches how the route middleware skips paths with no package/table pair:
+    // nothing to check against, so nothing is denied.
+    for (const mode of ['audit', 'enforce']) {
+      for (const missing of [null, undefined, 0, '', 'not-a-number']) {
+        const allowed = await withRbacMode(mode, () =>
+          authorize.checkProgram('no-such-copy', { userId: '1' }, missing, 'attachment 1'));
+        assert.strictEqual(allowed, true, `mode=${mode} mprgId=${JSON.stringify(missing)}`);
+      }
+    }
+  });
+
+  await testAsync('Attachment check fails open in audit and closed in enforce', async () => {
+    authorize.clearCache();
+
+    // The tenant cannot be resolved, so the permission lookup throws. Audit must
+    // never break a working deployment; enforce must not fall back to allowing.
+    const inAudit = await withRbacMode('audit', () =>
+      authorize.checkProgram('no-such-copy', { userId: '1', pgrpId: 5 }, 42, 'attachment 42'));
+    assert.strictEqual(inAudit, true, 'audit should allow through a failed lookup');
+
+    authorize.clearCache();
+
+    const inEnforce = await withRbacMode('enforce', () =>
+      authorize.checkProgram('no-such-copy', { userId: '1', pgrpId: 5 }, 42, 'attachment 42'));
+    assert.strictEqual(inEnforce, false, 'enforce should deny when permissions cannot be read');
+
+    authorize.clearCache();
+  });
+
+  // -------------------------------------------------------------
   // 5. SERVER INTEGRATION & ROUTE MATCHING TESTS
   // -------------------------------------------------------------
   console.log('\n--- 5. Express Server Health & Route Verification ---');
@@ -478,7 +558,6 @@ async function runAllTests() {
   });
 
   const jwt = require('jsonwebtoken');
-  const env = require('../config/env');
   const testToken = jwt.sign({ jui: 1, Copy: '01-Admin' }, env.jwtSecret);
 
   await testIntegration('Authenticated POST /UC/InitForm returns 200 OK', async () => {
