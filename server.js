@@ -141,6 +141,7 @@ app.listen(PORT, async () => {
       : '[PhsAPI] Interactive Docs disabled (set DOCS_ENABLED=true to serve /docs)'
   );
   console.log(`[PhsAPI] Environment: ${env.nodeEnv}`);
+  console.log(`[PhsAPI] Database engine: ${env.dbType}`);
   await checkDatabaseConnectionOnStartup();
 });
 

@@ -53,6 +53,48 @@ BEGIN
   RETURN CAST(p_val AS CHAR);
 END $$
 
+-- Password helpers, ported from the PhSecur package.
+--
+-- Encode_Pass is not a hash: Oracle's
+--   UTL_I18N.STRING_TO_RAW('OneGod165' || password, 'AL32UTF8')
+-- renders the UTF-8 bytes as upper-case hex, which is trivially reversible.
+-- Reproduced exactly so existing stored values keep matching; replacing it with
+-- a real hash is a data migration, not a translation.
+--
+-- These must exist before the seed data runs: the Cpy_User inserts call
+-- Encode_Pass, and without it every user row is silently skipped.
+DROP FUNCTION IF EXISTS Encode_Pass $$
+CREATE FUNCTION Encode_Pass(p_password TEXT)
+RETURNS VARCHAR(512)
+DETERMINISTIC
+BEGIN
+  RETURN UPPER(HEX(CONVERT(CONCAT('OneGod165', IFNULL(p_password, '')) USING utf8mb4)));
+END $$
+
+DROP FUNCTION IF EXISTS Compare_Pass $$
+CREATE FUNCTION Compare_Pass(p_old TEXT, p_new TEXT)
+RETURNS INT
+DETERMINISTIC
+BEGIN
+  RETURN IF(Encode_Pass(p_old) = Encode_Pass(p_new), 1, 0);
+END $$
+
+-- Returns the user id for a valid logon, or -99 when the credentials do not
+-- match, matching what the API's login path expects from the Oracle function.
+DROP FUNCTION IF EXISTS Check_Login $$
+CREATE FUNCTION Check_Login(p_logon TEXT, p_pass TEXT)
+RETURNS DECIMAL(20,0)
+READS SQL DATA
+BEGIN
+  DECLARE v_id DECIMAL(20,0);
+  SELECT u.Id INTO v_id
+    FROM Cpy_User u
+   WHERE LOWER(u.Logon) = LOWER(p_logon)
+     AND u.Pass = Encode_Pass(p_pass)
+   LIMIT 1;
+  RETURN IFNULL(v_id, -99);
+END $$
+
 DELIMITER ;
 `;
 
@@ -355,12 +397,22 @@ module.exports = {
   /**
    * Selects the database a script's statements apply to.
    *
-   * Foreign key checks are switched off for the session because the scripts are
-   * not in dependency order: a table often carries a foreign key to one created
-   * in a later file, which MySQL refuses outright rather than resolving later.
-   * The setting is per-session, so it has to be repeated in every file.
+   * Two session settings come with it, and both are per-session, so they have
+   * to be repeated in every file:
+   *
+   * FOREIGN_KEY_CHECKS is off because the scripts are not in dependency order:
+   * a table often carries a foreign key to one created in a later file, which
+   * MySQL refuses outright rather than resolving later.
+   *
+   * NO_AUTO_VALUE_ON_ZERO makes MySQL store an explicit id of 0 instead of
+   * treating it as "generate the next value". The seed data is full of
+   * `values (0, '-')` placeholder rows, and without this each one silently
+   * becomes 1 and then collides with the real row that owns that id.
    */
-  useDatabase: (name) => `SET FOREIGN_KEY_CHECKS = 0;\nUSE ${name};\n`,
+  useDatabase: (name) =>
+    `SET FOREIGN_KEY_CHECKS = 0;\n` +
+    `SET SESSION sql_mode = CONCAT(@@sql_mode, ',NO_AUTO_VALUE_ON_ZERO,PIPES_AS_CONCAT');\n` +
+    `USE ${name};\n`,
 
   /**
    * Applied to the finished file. MySQL only recognises `--` as a comment when

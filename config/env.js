@@ -109,6 +109,41 @@ function parseRbacMode(raw) {
 const rbacMode = parseRbacMode(process.env.RBAC_MODE);
 
 /**
+ * The database engine this deployment runs against, chosen once at setup.
+ *
+ * One engine is active for the whole process: the value selects the SQL builder,
+ * the driver, and how a tenant is resolved (an Oracle schema user, or a separate
+ * database on MySQL/PostgreSQL). Validating it here means an unsupported or
+ * mistyped value stops the process rather than surfacing as a driver error on
+ * the first query.
+ *
+ * @returns {'oracle'|'mysql'|'postgres'}
+ */
+function parseDbType(raw) {
+  const value = (raw || 'oracle').trim().toLowerCase();
+
+  const aliases = {
+    oracle: 'oracle',
+    mysql: 'mysql',
+    mariadb: 'mysql',
+    postgres: 'postgres',
+    postgresql: 'postgres',
+    pg: 'postgres'
+  };
+
+  const resolved = aliases[value];
+  if (!resolved) {
+    errors.push(
+      `DB_TYPE must be one of oracle | mysql | postgres (received '${raw}').`
+    );
+    return 'oracle';
+  }
+  return resolved;
+}
+
+const dbType = parseDbType(process.env.DB_TYPE);
+
+/**
  * Whether to serve the /docs portal.
  *
  * express.static mounts it ahead of authentication, so everything under docs/ is
@@ -161,6 +196,9 @@ module.exports = {
 
   // null means "any origin" — permitted in development only.
   corsOrigins,
+
+  /** Active engine: 'oracle' | 'mysql' | 'postgres'. Fixed for the process. */
+  dbType,
 
   rbacMode,
   // How long a user's resolved program set is cached, in seconds.

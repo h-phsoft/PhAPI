@@ -62,27 +62,3 @@ The first synonym becomes the table name; the rest become views.
 Each one is left in place in the output as a commented `TODO(port)` block
 containing the original Oracle statement.
 
-## postgres
-
-- Files written: 183
-- Statements: 18211
-- Translated: 16709
-- Translated but needing review: 102
-- Needing manual porting: 215
-
-### Needs manual porting, by kind
-
-| Kind | Count |
-| --- | --- |
-| grant | 71 |
-| other | 71 |
-| dba | 28 |
-| procedure | 14 |
-| function | 12 |
-| package | 10 |
-| view | 7 |
-| context | 2 |
-
-Each one is left in place in the output as a commented `TODO(port)` block
-containing the original Oracle statement.
-

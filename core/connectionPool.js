@@ -1,5 +1,77 @@
 const { getTenantDbConfig } = require('../config/db.config');
 
+/**
+ * Rewrites Oracle-style SQL so MySQL and PostgreSQL can run it.
+ *
+ * The repository layer is written against Oracle: named binds (`:logon`) and
+ * `FROM DUAL`. Neither target understands either, so rather than forking every
+ * repository method the statement is translated here, where the dialect is
+ * already known.
+ *
+ * Named binds are collected in first-appearance order. Values come from an
+ * object by name, or from an array positionally, which is how the existing
+ * callers pass them.
+ *
+ * @param {string} sql
+ * @param {Object|Array|undefined} params
+ * @param {'mysql'|'postgres'} dialect
+ * @returns {{text: string, values: Array}}
+ */
+function adaptOracleSql(sql, params, dialect) {
+  const names = [];
+  let text = '';
+  let i = 0;
+
+  while (i < sql.length) {
+    const ch = sql[i];
+
+    // Copy string literals verbatim: a colon inside one is data, not a bind.
+    if (ch === "'") {
+      const end = sql.indexOf("'", i + 1);
+      const stop = end === -1 ? sql.length : end + 1;
+      text += sql.slice(i, stop);
+      i = stop;
+      continue;
+    }
+
+    // PostgreSQL's :: cast must survive untouched.
+    if (ch === ':' && sql[i + 1] === ':') {
+      text += '::';
+      i += 2;
+      continue;
+    }
+
+    const bind = ch === ':' ? /^:([A-Za-z_][A-Za-z0-9_]*)/.exec(sql.slice(i)) : null;
+    if (bind) {
+      const name = bind[1];
+      let index = names.indexOf(name);
+      if (index === -1) {
+        names.push(name);
+        index = names.length - 1;
+      }
+      text += dialect === 'mysql' ? '?' : `$${index + 1}`;
+      i += bind[0].length;
+      continue;
+    }
+
+    text += ch;
+    i++;
+  }
+
+  // Oracle's dummy table has no equivalent; a bare SELECT is the same thing.
+  text = text.replace(/\s+FROM\s+DUAL\b/gi, '');
+
+  let values = [];
+  if (names.length > 0) {
+    values = names.map((name, index) =>
+      Array.isArray(params) ? params[index] : (params ? params[name] : undefined));
+  } else if (Array.isArray(params)) {
+    values = params;
+  }
+
+  return { text, values };
+}
+
 let mysql = null;
 let pg = null;
 let oracledb = null;
@@ -57,7 +129,8 @@ class ConnectionPoolManager {
           return {
             driverConn: connection,
             async query(sql, params) {
-              const [rows] = await connection.execute(sql, params || []);
+              const q = adaptOracleSql(sql, params, 'mysql');
+              const [rows] = await connection.query(q.text, q.values);
               return rows;
             },
             async beginTransaction() { await connection.beginTransaction(); },
@@ -67,7 +140,8 @@ class ConnectionPoolManager {
           };
         },
         async query(sql, params) {
-          const [rows] = await pool.execute(sql, params || []);
+          const q = adaptOracleSql(sql, params, 'mysql');
+          const [rows] = await pool.query(q.text, q.values);
           return rows;
         }
       };
@@ -92,7 +166,8 @@ class ConnectionPoolManager {
           return {
             driverConn: client,
             async query(sql, params) {
-              const res = await client.query(sql, params || []);
+              const q = adaptOracleSql(sql, params, 'postgres');
+              const res = await client.query(q.text, q.values);
               return res.rows;
             },
             async beginTransaction() { await client.query('BEGIN'); },
@@ -102,7 +177,8 @@ class ConnectionPoolManager {
           };
         },
         async query(sql, params) {
-          const res = await pool.query(sql, params || []);
+          const q = adaptOracleSql(sql, params, 'postgres');
+          const res = await pool.query(q.text, q.values);
           return res.rows;
         }
       };

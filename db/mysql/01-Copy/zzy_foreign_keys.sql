@@ -4,6 +4,7 @@
 -- 4326 constraints.
 
 SET FOREIGN_KEY_CHECKS = 0;
+SET SESSION sql_mode = CONCAT(@@sql_mode, ',NO_AUTO_VALUE_ON_ZERO,PIPES_AS_CONCAT');
 USE phsoftme_erp_demo;
 
 ALTER TABLE Phs_Priv ADD CONSTRAINT PhsPrv_Status_FK  Foreign Key (Status_Id) References Phs_Cod_Status(Id);

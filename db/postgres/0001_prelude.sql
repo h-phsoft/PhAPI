@@ -23,3 +23,34 @@ CREATE OR REPLACE FUNCTION To_Number_Compat(p_val TEXT)
 RETURNS NUMERIC AS $$
   SELECT p_val::NUMERIC;
 $$ LANGUAGE sql IMMUTABLE;
+
+-- Password helpers, ported from the PhSecur package.
+--
+-- Encode_Pass is not a hash: Oracle's
+--   UTL_I18N.STRING_TO_RAW('OneGod165' || password, 'AL32UTF8')
+-- renders the UTF-8 bytes as upper-case hex, which is trivially reversible.
+-- It is reproduced exactly so existing stored values keep matching; replacing
+-- it with a real hash is a data migration, not a translation.
+CREATE OR REPLACE FUNCTION Encode_Pass(p_password TEXT)
+RETURNS TEXT AS $$
+  SELECT upper(encode(convert_to('OneGod165' || coalesce(p_password, ''), 'UTF8'), 'hex'));
+$$ LANGUAGE sql IMMUTABLE;
+
+CREATE OR REPLACE FUNCTION Compare_Pass(p_old TEXT, p_new TEXT)
+RETURNS INTEGER AS $$
+  SELECT CASE WHEN Encode_Pass(p_old) = Encode_Pass(p_new) THEN 1 ELSE 0 END;
+$$ LANGUAGE sql IMMUTABLE;
+
+-- Returns the user id for a valid logon, or -99 when the credentials do not
+-- match, matching what the API's login path expects from the Oracle function.
+CREATE OR REPLACE FUNCTION Check_Login(p_logon TEXT, p_pass TEXT)
+RETURNS NUMERIC AS $$
+  SELECT COALESCE(
+    (SELECT u.id
+       FROM Cpy_User u
+      WHERE lower(u.logon) = lower(p_logon)
+        AND u.pass = Encode_Pass(p_pass)
+      LIMIT 1),
+    -99
+  );
+$$ LANGUAGE sql STABLE;

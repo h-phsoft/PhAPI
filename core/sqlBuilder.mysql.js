@@ -4,8 +4,13 @@
  */
 
 class MysqlSqlBuilder {
+  /**
+   * The ported schema names each object after its Oracle synonym, because MySQL
+   * has no synonyms and a foreign key cannot reference a view. The synonym is
+   * therefore what resolves here, matching the Oracle builder.
+   */
   getTableName(entity) {
-    return entity.tableName;
+    return entity.synonym || entity.tableName;
   }
 
   buildSelect(entity, options = {}) {

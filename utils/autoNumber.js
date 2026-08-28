@@ -48,7 +48,10 @@ class AutoNumberHelper {
       if (dbType.toLowerCase() === 'oracle') {
         sql = `SELECT NVL(MAX(${targetCol}), 0) + 1 AS "nextVal" FROM ${targetTable}`;
       } else if (dbType.toLowerCase() === 'postgres' || dbType.toLowerCase() === 'pg') {
-        sql = `SELECT COALESCE(MAX("${targetCol}"), 0) + 1 AS "nextVal" FROM "${targetTable}"`;
+        // The ported schema was created from unquoted DDL, so PostgreSQL holds
+        // every identifier lower-cased. A quoted mixed-case reference is
+        // case-sensitive and would not match it.
+        sql = `SELECT COALESCE(MAX("${targetCol.toLowerCase()}"), 0) + 1 AS "nextVal" FROM "${targetTable.toLowerCase()}"`;
       } else {
         sql = `SELECT COALESCE(MAX(\`${targetCol}\`), 0) + 1 AS nextVal FROM \`${targetTable}\``;
       }

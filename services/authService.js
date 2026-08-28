@@ -105,8 +105,20 @@ class AuthService {
         // 1. Try Java Check_Login function if available
         try {
           const funcRows = await authRepository.executeCheckLogin(conn, String(loginUser).trim(), String(loginPass).trim());
-          if (funcRows && funcRows.length > 0 && funcRows[0].USERID && Number(funcRows[0].USERID) > -99) {
-            const p_id = funcRows[0].USERID;
+
+          // The alias is written `AS UserId`, but Oracle folds an unquoted alias
+          // to USERID and PostgreSQL folds it to userid, so the key has to be
+          // read case-insensitively. Reading only USERID silently skipped this
+          // check on PostgreSQL and fell through to a comparison of the raw
+          // password against the encoded stored value, which never matches.
+          const firstRow = funcRows && funcRows.length > 0 ? funcRows[0] : null;
+          const userIdKey = firstRow
+            ? Object.keys(firstRow).find((key) => key.toLowerCase() === 'userid')
+            : undefined;
+          const checkedId = userIdKey ? firstRow[userIdKey] : undefined;
+
+          if (checkedId !== undefined && checkedId !== null && Number(checkedId) > -99) {
+            const p_id = checkedId;
             const uRows = await authRepository.getUserById(conn, p_id);
             if (uRows && uRows.length > 0) {
               dbUser = uRows[0];

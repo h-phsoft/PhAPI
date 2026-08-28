@@ -12,9 +12,17 @@ try {
 /**
  * In-memory map of tenant database configurations.
  */
-const defaultDbType = (process.env.DB_TYPE || 'mysql').toLowerCase();
-const defaultPort = process.env.DB_PORT ? parseInt(process.env.DB_PORT, 10) : (defaultDbType === 'oracle' ? 1521 : 3306);
-const defaultUser = process.env.DB_USER || 'root';
+
+// Single source of truth: env.js validates DB_TYPE and normalises the aliases
+// (postgresql/pg -> postgres, mariadb -> mysql), so nothing here re-parses it.
+const defaultDbType = require('./env').dbType;
+
+const DEFAULT_PORTS = { oracle: 1521, postgres: 5432, mysql: 3306 };
+const defaultPort = process.env.DB_PORT
+  ? parseInt(process.env.DB_PORT, 10)
+  : DEFAULT_PORTS[defaultDbType];
+
+const defaultUser = process.env.DB_USER || (defaultDbType === 'postgres' ? 'postgres' : 'root');
 
 const tenantConfigs = {
   default: {
@@ -29,6 +37,100 @@ const tenantConfigs = {
   }
 };
 
+
+/** True for engines where a tenant is a separate database rather than a schema user. */
+function isRelational(dbType) {
+  return dbType === 'postgres' || dbType === 'mysql';
+}
+
+/**
+ * Resolves a tenant on PostgreSQL or MySQL.
+ *
+ * The two models differ fundamentally. On Oracle every copy is a schema user
+ * inside one database, so Phs_Cpy.OUser/OPass are login credentials and the
+ * lookup below returns them. On PostgreSQL and MySQL each copy is its own
+ * database reached with the same credentials, so what has to be derived is a
+ * database name, and OUser/OPass are meaningless -- they still hold Oracle
+ * usernames such as 'C##erpDemo'.
+ *
+ * The name is built as DB_TENANT_PREFIX + copy, which is how the ported schema
+ * is laid out: copy 'Demo' lives in phsoftme_erp_demo. Phs_Cpy is still
+ * consulted so an unknown copy is rejected rather than silently pointed at a
+ * database that may not exist.
+ *
+ * @param {string|number} tenantKey Copy name, URL or id
+ * @returns {Promise<Object|null>}
+ */
+async function resolveTenantFromRelationalAdmin(tenantKey) {
+  const prefix = process.env.DB_TENANT_PREFIX || 'phsoftme_erp_';
+  const adminDatabase = process.env.ADMIN_DB_NAME || process.env.DB_NAME;
+  const key = String(tenantKey).toLowerCase();
+
+  const base = {
+    dbType: defaultDbType,
+    host: process.env.DB_HOST || 'localhost',
+    port: defaultPort,
+    user: process.env.ADMIN_DB_USER || defaultUser,
+    password: process.env.ADMIN_DB_PASS || process.env.DB_PASSWORD || '',
+    connectionLimit: parseInt(process.env.DB_POOL_LIMIT || '10', 10)
+  };
+
+  const sql = defaultDbType === 'mysql'
+    ? 'SELECT Id, Name, URL FROM Phs_Cpy WHERE LOWER(Name)=? OR LOWER(URL)=? OR CAST(Id AS CHAR)=?'
+    : 'SELECT Id, Name, URL FROM Phs_Cpy WHERE LOWER(Name)=$1 OR LOWER(URL)=$2 OR CAST(Id AS TEXT)=$3';
+
+  let rows = [];
+
+  try {
+    if (defaultDbType === 'mysql') {
+      const mysql = require('mysql2/promise');
+      const conn = await mysql.createConnection({ ...base, database: adminDatabase });
+      try {
+        const [result] = await conn.execute(sql, [key, key, key]);
+        rows = result;
+      } finally {
+        await conn.end();
+      }
+    } else {
+      const { Client } = require('pg');
+      const client = new Client({ ...base, database: adminDatabase });
+      await client.connect();
+      try {
+        const result = await client.query(sql, [key, key, key]);
+        rows = result.rows;
+      } finally {
+        await client.end();
+      }
+    }
+  } catch (err) {
+    console.error(`[DbConfig] Admin lookup failed for copy '${tenantKey}': ${err.message}`);
+    return null;
+  }
+
+  if (!rows || rows.length === 0) {
+    return null;
+  }
+
+  const row = rows[0];
+  const name = row.URL || row.url || row.Name || row.name || tenantKey;
+
+  const config = {
+    ...base,
+    tenantId: String(row.Id ?? row.id ?? tenantKey),
+    name: row.Name || row.name,
+    url: row.URL || row.url,
+    database: `${prefix}${String(name).toLowerCase()}`
+  };
+
+  // Cache under every spelling the caller might arrive with.
+  [tenantKey, config.tenantId, config.name, config.url].forEach((alias) => {
+    if (alias) {
+      tenantConfigs[String(alias).toLowerCase()] = config;
+    }
+  });
+
+  return config;
+}
 
 /**
  * Connects to Admin Oracle DB to resolve copy credentials from Phs_Cpy table.
@@ -167,8 +269,12 @@ async function getTenantDbConfig(tenantKey) {
     return tenantConfigs[keyStr];
   }
 
-  // 2. Query Admin DB Phs_Cpy table for OUser & OPass credentials
-  const resolvedConfig = await resolveTenantFromAdminDb(tenantKey);
+  // 2. Resolve through the admin database. Which lookup applies depends on how
+  //    the engine models a tenant: an Oracle schema user, or its own database.
+  const resolvedConfig = isRelational(defaultDbType)
+    ? await resolveTenantFromRelationalAdmin(tenantKey)
+    : await resolveTenantFromAdminDb(tenantKey);
+
   if (resolvedConfig) {
     return resolvedConfig;
   }

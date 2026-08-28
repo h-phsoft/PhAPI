@@ -2,6 +2,7 @@
 -- Emitted as views: nothing foreign-keys them, so a view is safe.
 
 SET FOREIGN_KEY_CHECKS = 0;
+SET SESSION sql_mode = CONCAT(@@sql_mode, ',NO_AUTO_VALUE_ON_ZERO,PIPES_AS_CONCAT');
 USE phsoftme_erp_demo;
 
 CREATE OR REPLACE VIEW Emp_VOTime AS SELECT * FROM Emp_VOtime;
