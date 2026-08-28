@@ -38,11 +38,11 @@ The first synonym becomes the table name; the rest become views.
 | ams_prices | Ams_Price | AMS_Price |
 | ams_price_fees | AMS_Price_Fee | AMS_Disc_Detail |
 
-## mysql
+## postgres
 
 - Files written: 183
 - Statements: 18211
-- Translated: 15913
+- Translated: 16709
 - Translated but needing review: 102
 - Needing manual porting: 215
 

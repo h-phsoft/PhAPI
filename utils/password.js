@@ -16,6 +16,30 @@ const BCRYPT_ROUNDS = 12;
 const BCRYPT_PATTERN = /^\$2[aby]\$\d{2}\$/;
 
 /**
+ * The prefix the PhSecur package concatenates before encoding. Kept identical to
+ * the Oracle implementation so existing stored values keep verifying.
+ */
+const LEGACY_SECRET = 'OneGod165';
+
+// Output of the legacy scheme: an even-length run of upper-case hex.
+const LEGACY_PATTERN = /^[0-9A-F]+$/;
+
+/**
+ * Reproduces PhSecur.Encode_Pass.
+ *
+ * Oracle's UTL_I18N.STRING_TO_RAW(secret || password, 'AL32UTF8') renders the
+ * UTF-8 bytes as upper-case hex. This is deliberately NOT a hash -- it is
+ * reversible by anyone who reads this file -- but it is how every password in
+ * these databases is stored, so verification has to understand it.
+ *
+ * @param {string} plain
+ * @returns {string} Upper-case hex
+ */
+function encodeLegacy(plain) {
+  return Buffer.from(`${LEGACY_SECRET}${plain}`, 'utf8').toString('hex').toUpperCase();
+}
+
+/**
  * @param {*} stored Value read from the user table
  * @returns {boolean} True when the value is already a bcrypt digest
  */
@@ -63,6 +87,18 @@ async function verify(plain, stored) {
 
   if (isHashed(stored)) {
     return { valid: await bcrypt.compare(String(plain), stored), legacy: false };
+  }
+
+  const storedText = String(stored);
+
+  // The PhSecur scheme. Checked before the plaintext comparison because that is
+  // how every existing row is stored: without this, the fallback login path can
+  // never match, and a tenant whose Check_Login function is missing or failing
+  // is locked out entirely.
+  if (LEGACY_PATTERN.test(storedText) && storedText.length % 2 === 0) {
+    if (timingSafeEquals(encodeLegacy(String(plain)), storedText)) {
+      return { valid: true, legacy: true };
+    }
   }
 
   return { valid: timingSafeEquals(plain, stored), legacy: true };

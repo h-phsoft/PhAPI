@@ -69,9 +69,19 @@ app.use(bodyParser.urlencoded({extended: true, limit: '1mb'}));
 app.use(bodyParser.text({type: ['text/*', 'text/plain', 'text/html', 'application/text'], limit: '1mb'}));
 
 
-// Load metadata singleton at startup directly from resources/modules
-const modulesDir = path.join(__dirname, 'resources', 'modules');
-mainApp.loadMetadata(modulesDir);
+// Load the metadata singleton at startup.
+//
+// Both trees are required, and they do not overlap: resources/modules holds the
+// entity definitions, while db/JSON/pkgs holds the report and dashboard
+// definitions (Crm/ReportMasterView, Cpy/UsersView and the rest). Loading only
+// the first left every report endpoint raising "Report metadata not found" for
+// anything defined in the second -- which the test suite never caught, because
+// it loads both.
+const modulesDirs = [
+  path.join(__dirname, 'resources', 'modules'),
+  path.join(__dirname, 'db', 'JSON', 'pkgs')
+];
+mainApp.loadMetadata(modulesDirs);
 
 // Serve the static HTML documentation portal at /docs. This mount sits ahead of
 // authentication, so everything under docs/ is public wherever it is enabled --

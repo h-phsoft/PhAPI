@@ -39,6 +39,59 @@ class I18nHelper {
 
     return msg;
   }
+
+  /**
+   * Translates a label stored in the database.
+   *
+   * Menu, type and program names are held in a single Name column with no
+   * second-language equivalent, so the stored English text doubles as the
+   * translation key. Anything without an entry falls back to that text, which
+   * means an untranslated tenant keeps working and reads exactly as it did
+   * before.
+   *
+   * Lookups are case-insensitive and ignore surrounding whitespace, because the
+   * seed data pads names for column alignment.
+   *
+   * @param {string} label Text as stored in the database
+   * @param {string} lang Language code, e.g. 'en' or 'ar'
+   * @returns {string} The translation, or the original label
+   */
+  translateLabel(label, lang = 'en') {
+    if (label === undefined || label === null) {
+      return label;
+    }
+
+    const text = String(label).trim();
+    if (text === '') {
+      return text;
+    }
+
+    const localeMap = this.locales[lang] || this.locales[this.defaultLanguage] || {};
+    const labels = localeMap.labels;
+    if (!labels || typeof labels !== 'object') {
+      return text;
+    }
+
+    if (labels[text] !== undefined) {
+      return labels[text];
+    }
+
+    // Build a lower-cased index once per locale so repeated menu lookups do not
+    // rescan the table on every entry.
+    if (!this._labelIndex) {
+      this._labelIndex = {};
+    }
+    if (!this._labelIndex[lang]) {
+      const index = {};
+      for (const [key, value] of Object.entries(labels)) {
+        index[String(key).trim().toLowerCase()] = value;
+      }
+      this._labelIndex[lang] = index;
+    }
+
+    const hit = this._labelIndex[lang][text.toLowerCase()];
+    return hit === undefined ? text : hit;
+  }
 }
 
 module.exports = new I18nHelper();

@@ -229,12 +229,131 @@ class AuthService {
     };
   }
 
-  async getMenu(conn, pgrpId, pid) {
+  /**
+   * Builds the navigation tree the client renders: menu, then type, then
+   * program.
+   *
+   * Phs_VMIPrg carries all three on every row, so the whole tree comes from one
+   * query and is grouped in memory. This replaces a recursive walk over
+   * MPrg_PId that issued one query per node -- a few hundred round trips on
+   * every login -- and produced program branches with no menu or type grouping.
+   *
+   * Every node shares one shape (id, name, icon, aList) so the client renders
+   * any level with the same component.
+   *
+   * Menu, type and program names are translated through the locale files. The
+   * stored English text is the key, so a tenant with no translations reads
+   * exactly as before.
+   *
+   * @param {Object} conn
+   * @param {number} pgrpId 0 or less means no group restriction
+   * @param {string} lang Language code from the request, e.g. 'en' or 'ar'
+   * @returns {Promise<Array>} Menu nodes holding type nodes holding programs
+   */
+  async getMenu(conn, pgrpId, lang = 'en') {
+    const logger = require('../utils/logger');
+    const authRepository = require('../repository/authRepository');
+    const t = (label) => i18nHelper.translateLabel(label, lang);
+
+    // Oracle upper-cases unquoted columns, PostgreSQL lower-cases them and
+    // MySQL preserves them, so every spelling is tried.
+    const col = (row, name) => {
+      if (row[name.toUpperCase()] !== undefined) return row[name.toUpperCase()];
+      if (row[name] !== undefined) return row[name];
+      const lower = name.toLowerCase();
+      if (row[lower] !== undefined) return row[lower];
+      const key = Object.keys(row).find((k) => k.toLowerCase() === lower);
+      return key ? row[key] : undefined;
+    };
+
+    try {
+      const rows = await authRepository.getMenuRows(conn, pgrpId);
+      if (!rows || rows.length === 0) {
+        return [];
+      }
+
+      const menus = new Map();
+      const typesByMenu = new Map();
+
+      for (const row of rows) {
+        const menuId = col(row, 'Menu_Id');
+        const typeId = col(row, 'Type_Id');
+
+        if (!menus.has(menuId)) {
+          menus.set(menuId, {
+            id: 'menu-' + menuId,
+            level: 'menu',
+            menuId,
+            name: t(col(row, 'Menu_Name')),
+            icon: col(row, 'Menu_Image'),
+            url: col(row, 'Menu_URL'),
+            descr: col(row, 'Menu_Descr'),
+            aList: []
+          });
+          typesByMenu.set(menuId, new Map());
+        }
+
+        const menu = menus.get(menuId);
+        const types = typesByMenu.get(menuId);
+
+        if (!types.has(typeId)) {
+          const type = {
+            id: 'type-' + menuId + '-' + typeId,
+            level: 'type',
+            menuId,
+            typeId,
+            name: t(col(row, 'Type_Name')),
+            icon: col(row, 'Type_Icon'),
+            aList: []
+          };
+          types.set(typeId, type);
+          menu.aList.push(type);
+        }
+
+        // MPrg_Params is stored as an a=1&b=2 query string.
+        const paramsRaw = col(row, 'MPrg_Params');
+        const hParams = {};
+        if (paramsRaw) {
+          String(paramsRaw).split('&').forEach((pair) => {
+            const parts = pair.split('=');
+            if (parts.length === 2) {
+              hParams[parts[0]] = parts[1];
+            }
+          });
+        }
+
+        types.get(typeId).aList.push({
+          id: col(row, 'MPrg_Id'),
+          level: 'program',
+          pId: col(row, 'MPrg_PId'),
+          menuId,
+          typeId,
+          ord: col(row, 'MPrg_Ord'),
+          name: t(col(row, 'MPrg_Name')),
+          url: col(row, 'MPrg_URL'),
+          apiUrl: col(row, 'MPrg_ApiURL'),
+          icon: col(row, 'MPrg_Icon'),
+          relTable: col(row, 'MPrg_RelTable'),
+          statusId: col(row, 'MPrg_Status_Id'),
+          hParams,
+          aList: []
+        });
+      }
+
+      return Array.from(menus.values());
+    } catch (err) {
+      logger.error(`[AuthService] Error in getMenu: ${err.message}`);
+      return [];
+    }
+  }
+
+  /** Superseded by getMenu; retained for callers still walking by parent id. */
+  async getMenuByPidTree(conn, pgrpId, pid) {
     let aList = [];
     try {
       const authRepository = require('../repository/authRepository');
       let rows = await authRepository.getMenuByPid(conn, pgrpId, pid);
-      
+
       if (rows && rows.length > 0) {
         for (let row of rows) {
           let hParamsStr = row.MPRG_PARAMS || row.MPrg_Params || row.mprg_params;
@@ -269,7 +388,7 @@ class AuthService {
             statusId: row.MPRG_STATUS_ID || row.MPrg_Status_Id || row.mprg_status_id,
             statusName: row.MPRG_STATUS_NAME || row.MPrg_Status_Name || row.mprg_status_name,
           };
-          obj.aList = await this.getMenu(conn, pgrpId, obj.id);
+          obj.aList = await this.getMenuByPidTree(conn, pgrpId, obj.id);
           aList.push(obj);
         }
       }
@@ -330,7 +449,7 @@ class AuthService {
         }
       }
 
-      let programs = await this.getMenu(conn, pgrpId, 0);
+      let programs = await this.getMenu(conn, pgrpId, context.lang || 'en');
 
       return {
         profile,

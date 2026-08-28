@@ -120,7 +120,10 @@ async function runAllTests() {
       filters: { docNo: 'DOC200' }
     });
 
-    assert.strictEqual(sql.includes('FROM `Acc_Master`'), true, 'MySQL query should use table name with backticks');
+    // The ported schema names every object after its Oracle synonym, since
+    // neither MySQL nor PostgreSQL has synonyms and a foreign key cannot
+    // reference a view. All three builders therefore resolve the synonym.
+    assert.strictEqual(sql.includes('FROM `Acc_Mst`'), true, 'MySQL query should use the synonym with backticks');
     assert.strictEqual(sql.includes('LIMIT ? OFFSET ?'), true, 'MySQL query should contain LIMIT OFFSET syntax');
     assert.strictEqual(params[0], 'DOC200');
     assert.strictEqual(params[1], 20); // limit
@@ -133,8 +136,11 @@ async function runAllTests() {
       notes: 'Test notes'
     });
 
-    assert.strictEqual(sql.includes('INSERT INTO "Acc_Master"'), true);
-    assert.strictEqual(sql.includes('RETURNING "Id"'), true);
+    // Synonym, and lower-cased: the schema is created from unquoted DDL, so
+    // PostgreSQL stores every identifier in lower case and a quoted mixed-case
+    // reference would not match it. Column aliases keep their camelCase.
+    assert.strictEqual(sql.includes('INSERT INTO "acc_mst"'), true);
+    assert.strictEqual(sql.includes('RETURNING "id"'), true);
     assert.strictEqual(params.length, 2);
   });
 
