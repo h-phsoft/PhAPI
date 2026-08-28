@@ -85,6 +85,11 @@ class AuthRepository {
    * Ordering is by menu, then type, then the program's own order, so the
    * grouping can rely on the sequence rather than sorting again.
    *
+   * Because the grouping is flat, a disabled parent no longer prunes its
+   * subtree the way the recursive walk did, so the parent's status is checked
+   * explicitly. Without it a disabled module such as Point of Sale keeps
+   * showing every screen underneath it.
+   *
    * @param {Object} conn
    * @param {number} pgrpId 0 or less means no group restriction
    * @returns {Promise<Array>}
@@ -96,16 +101,18 @@ class AuthRepository {
                       MPrg_Id, MPrg_PId, MPrg_Ord,
                       MPrg_Name, MPrg_URL, MPrg_ApiURL, MPrg_Icon,
                       MPrg_Params, MPrg_RelTable, MPrg_Status_Id, MPrg_Status_Name
-                 FROM Phs_VMIPrg
-                WHERE MPrg_ID > 1 AND MPrg_Status_Id = 1 AND Menu_Status_Id = 1 AND MPrg_PId != 0`;
+                 FROM Phs_VMIPrg V
+                WHERE V.MPrg_ID > 1 AND V.MPrg_Status_Id = 1 AND V.Menu_Status_Id = 1 AND V.MPrg_PId != 0
+                  AND EXISTS (SELECT 1 FROM Phs_MPrg P
+                               WHERE P.Id = V.MPrg_PId AND P.Status_Id = 1)`;
     const params = {};
 
     if (pgrpId > 0) {
-      sql += ` AND MPrg_Id IN (SELECT MPrg_Id FROM Cpy_Perm WHERE PGrp_Id = :pgrpId AND OK = 1)`;
+      sql += ` AND V.MPrg_Id IN (SELECT MPrg_Id FROM Cpy_Perm WHERE PGrp_Id = :pgrpId AND OK = 1)`;
       params.pgrpId = Number(pgrpId);
     }
 
-    sql += ` ORDER BY Menu_Id, Type_Id, MPrg_Ord, MPrg_Id`;
+    sql += ` ORDER BY V.Menu_Id, V.Type_Id, V.MPrg_Ord, V.MPrg_Id`;
 
     return conn.query(sql, params);
   }
