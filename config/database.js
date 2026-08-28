@@ -15,7 +15,7 @@ class Database {
           host: process.env.DB_HOST || 'localhost',
           user: process.env.DB_USER || 'root',
           password: process.env.DB_PASSWORD || 'RootPass',
-          database: process.env.DB_NAME || 'erpadmin',
+          database: process.env.DB_NAME || 'phsoftme_erp_admin',
           waitForConnections: true,
           connectionLimit: 10,
           queueLimit: 0
