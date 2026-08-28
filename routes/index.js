@@ -21,6 +21,11 @@ router.get('/UserAccount/getUserProfile', (req, res, next) => authController.get
 
 router.post('/Auth/Logout', (req, res, next) => authController.logout(req, res, next));
 
+// Changing one's own password is not program-scoped -- it carries no
+// package/table and no mprgid -- so like getUserProfile it is mounted above
+// `authorize`. The token decides whose password changes.
+router.post('/UserAccount/changePassword', (req, res, next) => authController.changePassword(req, res, next));
+
 
 // authorize runs per-route rather than via router.use so that it can read the
 // resolved :package/:table params and skip routes that are not program-scoped.

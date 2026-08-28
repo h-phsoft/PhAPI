@@ -16,6 +16,29 @@ class AuthRepository {
     return conn.query(sql, [logon]);
   }
 
+  /**
+   * The same row as getUserById, from whichever user table the copy has.
+   *
+   * Login already accepts either Cpy_User or Copy_Users, and a password change
+   * has to write back to the table it read from, so the name is a parameter
+   * here rather than fixed in the statement. It is interpolated, so callers
+   * must pass one of the known candidates and never a value off the request.
+   *
+   * @param {Object} conn
+   * @param {string} table Candidate user table
+   * @param {number|string} id
+   */
+  async getUserByIdFrom(conn, table, id) {
+    const sql = `SELECT Id, UGrp_Id, PGrp_Id, Gender_Id, Status_Id, Logon, Pass, Name, Picture FROM ${table} WHERE Id = :id`;
+    return conn.query(sql, {id});
+  }
+
+  /** Stores a new password for one user. Same table caveat as getUserByIdFrom. */
+  async updateUserPassword(conn, table, id, pass) {
+    const sql = `UPDATE ${table} SET Pass = :pass WHERE Id = :id`;
+    return conn.query(sql, {pass, id});
+  }
+
   async getFullUserById(conn, userId) {
     return conn.query('SELECT * FROM Cpy_User WHERE Id = :userId', {userId});
   }

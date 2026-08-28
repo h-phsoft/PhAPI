@@ -5,6 +5,30 @@ const repository = require('../repository/unifiedRepository');
 const i18nHelper = require('../utils/i18nHelper');
 const passwordUtil = require('../utils/password');
 
+/**
+ * Tables a copy may keep its account rows in. Older copies name it Copy_Users;
+ * both are tried, in this order, wherever a user is looked up.
+ */
+const USER_TABLES = ['Cpy_User', 'Copy_Users'];
+
+/**
+ * Reads one column out of a driver row.
+ *
+ * Oracle upper-cases unquoted columns, PostgreSQL lower-cases them and MySQL
+ * preserves them, so every spelling is tried before falling back to a scan.
+ *
+ * @param {Object} row
+ * @param {string} name Column name as written in the schema, e.g. 'Status_Id'
+ */
+function readColumn(row, name) {
+  if (row[name.toUpperCase()] !== undefined) return row[name.toUpperCase()];
+  if (row[name] !== undefined) return row[name];
+  const lower = name.toLowerCase();
+  if (row[lower] !== undefined) return row[lower];
+  const key = Object.keys(row).find((k) => k.toLowerCase() === lower);
+  return key ? row[key] : undefined;
+}
+
 class AuthError extends Error {
   constructor(message, statusCode = 401) {
     super(message);
@@ -95,7 +119,7 @@ class AuthService {
     let dbUser = null;
     let passwordValidated = false;
     const errors = [];
-    const candidateTables = ['Cpy_User', 'Copy_Users'];
+    const candidateTables = USER_TABLES;
 
     try {
       const pool = await connectionPoolManager.getPool(loginCopy);
@@ -255,16 +279,7 @@ class AuthService {
     const authRepository = require('../repository/authRepository');
     const t = (label) => i18nHelper.translateLabel(label, lang);
 
-    // Oracle upper-cases unquoted columns, PostgreSQL lower-cases them and
-    // MySQL preserves them, so every spelling is tried.
-    const col = (row, name) => {
-      if (row[name.toUpperCase()] !== undefined) return row[name.toUpperCase()];
-      if (row[name] !== undefined) return row[name];
-      const lower = name.toLowerCase();
-      if (row[lower] !== undefined) return row[lower];
-      const key = Object.keys(row).find((k) => k.toLowerCase() === lower);
-      return key ? row[key] : undefined;
-    };
+    const col = readColumn;
 
     try {
       const rows = await authRepository.getMenuRows(conn, pgrpId);
@@ -397,6 +412,158 @@ class AuthService {
       logger.error(`[AuthService] Error in getMenu: ${err.message}`);
     }
     return aList;
+  }
+
+  /**
+   * Changes the signed-in user's own password.
+   *
+   * The current password is checked the way login checks it -- the copy's own
+   * Check_Login function first, then the stored value -- so whoever can sign in
+   * can also change their password, whichever scheme their row is still held
+   * under. The replacement is written as a bcrypt digest, the same form
+   * scripts/migratePasswords.js writes, so a change also moves that row off
+   * plaintext.
+   *
+   * The user is identified from the token rather than the body: this endpoint
+   * changes the caller's own password and nobody else's.
+   *
+   * @param {Object} payload { currentPassword, newPassword }
+   * @param {Object} context Request context (tenantId, userId, lang)
+   * @returns {Promise<Object>} { userId, userName }
+   */
+  async changePassword(payload = {}, context = {}) {
+    const logger = require('../utils/logger');
+    const connectionPoolManager = require('../core/connectionPool');
+    const authRepository = require('../repository/authRepository');
+
+    const lang = context.lang || 'en';
+    const msg = (key, params) => i18nHelper.getMessage(key, lang, params);
+
+    const currentPassword = payload.currentPassword || payload.oldPassword;
+    const newPassword = payload.newPassword;
+
+    const tenantId = context.tenantId || context.copy || context.vCopy;
+    const userId = context.userId || context.jui;
+
+    if (!tenantId || !userId) {
+      throw new AuthError('Missing tenant or user context', 400);
+    }
+
+    if (!currentPassword || !newPassword) {
+      throw new AuthError(msg('PASSWORD_REQUIRED'), 400);
+    }
+
+    if (String(newPassword).length < passwordUtil.MIN_LENGTH) {
+      throw new AuthError(msg('PASSWORD_TOO_SHORT', { min: passwordUtil.MIN_LENGTH }), 400);
+    }
+
+    if (String(currentPassword) === String(newPassword)) {
+      throw new AuthError(msg('PASSWORD_UNCHANGED'), 400);
+    }
+
+    const pool = await connectionPoolManager.getPool(tenantId);
+    const conn = await pool.getConnection();
+
+    try {
+      // Which table holds the row decides which one the update writes to, so
+      // the candidates are walked here rather than assumed.
+      let table = null;
+      let dbUser = null;
+
+      for (const candidate of USER_TABLES) {
+        try {
+          const rows = await authRepository.getUserByIdFrom(conn, candidate, userId);
+          if (rows && rows.length > 0) {
+            table = candidate;
+            dbUser = rows[0];
+            break;
+          }
+        } catch (tableErr) {
+          logger.debug(`[AuthService] changePassword: ${candidate} unavailable: ${tableErr.message}`);
+        }
+      }
+
+      if (!dbUser) {
+        throw new AuthError(msg('NOT_FOUND'), 404);
+      }
+
+      const rowId = readColumn(dbUser, 'Id');
+      const logon = readColumn(dbUser, 'Logon');
+      const statusId = readColumn(dbUser, 'Status_Id');
+
+      if (statusId !== undefined && Number(statusId) !== 1) {
+        throw new AuthError(msg('USER_INACTIVE'), 403);
+      }
+
+      let verified = false;
+
+      // Check_Login is consulted first for the same reason login consults it:
+      // some copies hold the password in a scheme only that function knows.
+      // Its absence or failure is not fatal -- the stored value is checked
+      // below either way.
+      try {
+        const rows = await authRepository.executeCheckLogin(
+          conn,
+          String(logon).trim(),
+          String(currentPassword).trim()
+        );
+        const first = rows && rows.length > 0 ? rows[0] : null;
+        const checkedId = first ? readColumn(first, 'UserId') : undefined;
+        verified = checkedId !== undefined && checkedId !== null && Number(checkedId) === Number(rowId);
+      } catch (funcErr) {
+        logger.debug(`[AuthService] changePassword: Check_Login skipped: ${funcErr.message}`);
+      }
+
+      if (!verified) {
+        const { valid } = await passwordUtil.verify(currentPassword, readColumn(dbUser, 'Pass'));
+        verified = valid;
+      }
+
+      if (!verified) {
+        throw new AuthError(msg('PASSWORD_CURRENT_INVALID'), 401);
+      }
+
+      // Explicit, so the read-back below can undo the write. Without it a
+      // PostgreSQL connection commits the UPDATE on its own and there is
+      // nothing left to roll back; Oracle's wrapper already holds the
+      // statement open and MySQL needs the same call.
+      await conn.beginTransaction();
+
+      const digest = await passwordUtil.hash(newPassword);
+      await authRepository.updateUserPassword(conn, table, rowId, digest);
+
+      // A Pass column too narrow for a 60-character digest is the one failure
+      // that would lock the user out of the account they just changed, and not
+      // every backend raises on truncation. Reading the value back costs one
+      // query and turns that into a rejection instead. migratePasswords.js
+      // checks the same width before it writes.
+      const after = await authRepository.getUserByIdFrom(conn, table, rowId);
+      const storedAfter = after && after.length > 0 ? readColumn(after[0], 'Pass') : null;
+      const { valid: storedOk } = await passwordUtil.verify(newPassword, storedAfter);
+
+      if (!storedOk) {
+        logger.error(
+          `[AuthService] New password for user '${logon}' in copy '${tenantId}' did not survive the write; rolling back`
+        );
+        throw new AuthError(msg('PASSWORD_STORE_FAILED'), 500);
+      }
+
+      await conn.commit();
+      logger.info(`[AuthService] Password changed for user '${logon}' in copy '${tenantId}'`);
+
+      return { userId: String(rowId), userName: readColumn(dbUser, 'Name') || logon };
+    } catch (err) {
+      // Harmless on a transaction that has written nothing, which is every
+      // rejection above the update.
+      try {
+        await conn.rollback();
+      } catch (rollbackErr) {
+        logger.warn(`[AuthService] Rollback after a failed password change: ${rollbackErr.message}`);
+      }
+      throw err;
+    } finally {
+      await conn.release();
+    }
   }
 
   async getUserProfile(context = {}) {

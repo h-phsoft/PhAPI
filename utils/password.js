@@ -12,6 +12,14 @@ const crypto = require('crypto');
 
 const BCRYPT_ROUNDS = 12;
 
+/**
+ * Shortest password a user may choose.
+ *
+ * Enforced when a password is set, never when one is checked: existing rows
+ * hold whatever the tenant already had, and login has to keep accepting them.
+ */
+const MIN_LENGTH = 8;
+
 // bcrypt digests are always "$2<variant>$<cost>$..." and 60 characters long.
 const BCRYPT_PATTERN = /^\$2[aby]\$\d{2}\$/;
 
@@ -104,4 +112,4 @@ async function verify(plain, stored) {
   return { valid: timingSafeEquals(plain, stored), legacy: true };
 }
 
-module.exports = { hash, verify, isHashed, BCRYPT_ROUNDS };
+module.exports = { hash, verify, isHashed, BCRYPT_ROUNDS, MIN_LENGTH };

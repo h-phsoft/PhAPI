@@ -4,6 +4,7 @@ const {AuthService} = require('../services/authService');
 const ResultManager = require('../utils/responseManager');
 const sendResult = require('../utils/sendResult');
 const i18nHelper = require('../utils/i18nHelper');
+const auditService = require('../services/auditService');
 
 class AuthController {
   async login(req, res, next) {
@@ -55,6 +56,36 @@ class AuthController {
       next(err);
     }
   }
+  async changePassword(req, res, next) {
+    const logger = require('../utils/logger');
+    try {
+      const context = req.context || {};
+      const lang = context.lang || req.headers['vlang'] || req.headers['vLang'] || 'en';
+
+      await AuthService.changePassword(req.body || {}, context);
+
+      auditService.recordAsync({
+        type: 'PASSWORD',
+        text: `Password changed for user id=${context.userId}`,
+        context,
+        req
+      });
+
+      logger.info(`[AuthController] Password changed for user: ${context.userId} in tenant: ${context.tenantId}`);
+      return res.status(200).json(ResultManager.success(i18nHelper.getMessage('PASSWORD_CHANGED', lang)));
+    } catch (err) {
+      if (err.name === 'AuthError') {
+        // A mistyped current password is the ordinary outcome here, so these
+        // are reported to the caller rather than escalated to the error handler.
+        logger.warn(
+          `[AuthController] Password change rejected for user ${(req.context || {}).userId}: ${err.message}`
+        );
+        return sendResult(res, ResultManager.error(err.statusCode || 400, err.message));
+      }
+      next(err);
+    }
+  }
+
   async getUserProfile(req, res, next) {
     try {
       const context = req.context || {};

@@ -12,6 +12,13 @@
   "FORBIDDEN": "Forbidden action",
   "SERVER_ERROR": "Internal server error",
   "AUTONUMBER_ERROR": "Autonumber generation failed",
+  "USER_INACTIVE": "This user account is inactive",
+  "PASSWORD_CHANGED": "Password changed successfully",
+  "PASSWORD_REQUIRED": "The current and the new password are both required",
+  "PASSWORD_TOO_SHORT": "The new password must be at least {min} characters",
+  "PASSWORD_UNCHANGED": "The new password must be different from the current one",
+  "PASSWORD_CURRENT_INVALID": "The current password is incorrect",
+  "PASSWORD_STORE_FAILED": "The new password could not be saved. Please contact your administrator.",
   "labels": {
     "-": "-",
     "*": "*",
