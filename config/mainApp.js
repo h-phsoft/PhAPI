@@ -29,6 +29,24 @@ class MainApp {
     const synonym = raw.synonym || raw.Synonym || tableName;
     const primaryKey = (raw.primaryKey || raw.PrimaryKey || 'id').toLowerCase();
 
+    /**
+     * Whether the server assigns this entity's primary key.
+     *
+     * `AutoIncrement` declares that intent and `Sequence` names where the value
+     * comes from, but nothing read either flag: `isAutonumber` was only ever
+     * true if a column declared it, and no column does. `unifiedService.create`
+     * skips a field that is not marked, so the key went in as whatever the
+     * client happened to send -- 0 from a create form. Tables seeded with a
+     * placeholder row at id 0 (Fund_Item, Fund_Dept) then failed the very first
+     * save with a primary-key violation, and every other table failed on the
+     * second.
+     *
+     * Marking the key field is all it takes: AutoNumberHelper already reads an
+     * Oracle or Postgres sequence when one is named, and falls back to MAX + 1
+     * where the dialect has none.
+     */
+    const assignsOwnKey = raw.AutoIncrement === true || raw.autoIncrement === true;
+
     // Standardize fields/Columns array
     const rawFields = raw.fields || raw.Columns || [];
     const fields = rawFields.map(f => {
@@ -36,6 +54,10 @@ class MainApp {
       const colName = f.Name || f.Column || fieldName;
       const dbType = f.DBType || f.dbType || 'VARCHAR2';
       const type = f.Type || f.type || 'String';
+
+      const isAutonumber = f.isAutonumber !== undefined
+        ? f.isAutonumber
+        : (assignsOwnKey && String(fieldName).toLowerCase() === primaryKey);
 
       return {
         Name: colName,
@@ -50,9 +72,9 @@ class MainApp {
         insert: f.insert !== undefined ? f.insert : true,
         update: f.update !== undefined ? f.update : true,
         hasRelation: f.hasRelation !== undefined ? f.hasRelation : false,
-        isAutonumber: f.isAutonumber !== undefined ? f.isAutonumber : false,
+        isAutonumber,
         Autonumber: f.Autonumber || (raw.Sequence ? {
-          Mode: f.isAutonumber ? (raw.PeriodCondition ? '11' : '1') : '1',
+          Mode: isAutonumber ? (raw.PeriodCondition ? '11' : '1') : '1',
           Aggr: 'Max',
           Column: colName,
           Synonym: synonym,
@@ -142,6 +164,34 @@ class MainApp {
     console.log(`[MainApp] Metadata loaded successfully. Registered ${this.metadataByPackageAndTable.size} entities across ${this.packages.size} packages.`);
   }
 
+  /**
+   * How much authority a metadata file has over an entity name it shares.
+   *
+   * A package declares the same entity name in several role folders --
+   * Fund/Boxes exists under models/, import/, export/, reports/ and
+   * autocomplete/ -- and all of them normalise to the same registry key. Only
+   * some carry the column list: models/ and import/ use `Columns`, while
+   * reports/ and export/ use a `Fields` array of a different shape and
+   * autocomplete/ carries only a SELECT. Registration used to be an
+   * unconditional overwrite, so whichever file the directory walk reached last
+   * won -- alphabetically reports/ -- and the entity ended up registered with
+   * no columns at all. `validatePayload` builds its allowed-field map from that
+   * list, so every create and update failed with "Field 'x' is not defined in
+   * metadata", and `reportService.toReport` produced reports with no fields.
+   *
+   * A definition that actually carries columns therefore outranks one that does
+   * not, and among those that do, models/ is the canonical entity definition --
+   * import/ commonly lists only the subset an import file supplies. Files that
+   * tie keep last-one-wins, which is the behaviour everything else had.
+   */
+  static rankOf(metadata, sourcePath) {
+    const ROLE_PRIORITY = { models: 3, import: 2 };
+    const role = path.basename(path.dirname(sourcePath || '')).toLowerCase();
+    const hasFields = Array.isArray(metadata.fields) && metadata.fields.length > 0;
+
+    return (hasFields ? 100 : 0) + (ROLE_PRIORITY[role] || 1);
+  }
+
   registerEntity(metadata, sourcePath) {
     const pkg = metadata.package;
     const table = metadata.tableName;
@@ -153,17 +203,31 @@ class MainApp {
       return;
     }
 
+    // Recorded on the entity so a later registration can compare against it,
+    // and so the source of a surprising definition is visible when debugging.
+    metadata.sourcePath = sourcePath;
+    metadata.sourceRank = MainApp.rankOf(metadata, sourcePath);
+
+    /** Registers under one key unless a stronger definition already holds it. */
+    const claim = (map, mapKey) => {
+      const existing = map.get(mapKey);
+      if (existing && (existing.sourceRank || 0) > metadata.sourceRank) {
+        return;
+      }
+      map.set(mapKey, metadata);
+    };
+
     const key = `${pkg.toLowerCase()}:${table.toLowerCase()}`;
     const fileKey = `${pkg.toLowerCase()}:${filename.toLowerCase()}`;
 
-    this.metadataByPackageAndTable.set(key, metadata);
-    this.metadataByPackageAndTable.set(fileKey, metadata);
-    
-    this.metadataByTable.set(table.toLowerCase(), metadata);
-    this.metadataByTable.set(filename.toLowerCase(), metadata);
+    claim(this.metadataByPackageAndTable, key);
+    claim(this.metadataByPackageAndTable, fileKey);
+
+    claim(this.metadataByTable, table.toLowerCase());
+    claim(this.metadataByTable, filename.toLowerCase());
 
     if (synonym) {
-      this.metadataBySynonym.set(synonym.toLowerCase(), metadata);
+      claim(this.metadataBySynonym, synonym.toLowerCase());
     }
 
     if (!this.packages.has(pkg)) {
