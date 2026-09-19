@@ -99,6 +99,29 @@ class AuthController {
       next(err);
     }
   }
+
+  async getProgramOptions(req, res, next) {
+    try {
+      const context = req.context || {};
+      const lang = context.lang || req.headers['vlang'] || req.headers['vLang'] || 'en';
+      const menuId = req.params.menuId;
+
+      const connectionPoolManager = require('../core/connectionPool');
+      const tenantId = context.tenantId || context.copy || context.vCopy || (context.user && (context.user.tenantId || context.user.Copy));
+      const pool = await connectionPoolManager.getPool(tenantId);
+      const conn = await pool.getConnection();
+
+      try {
+        const pgrpId = Number(req.user?.pgrpId || 0);
+        const result = await AuthService.getProgramOptions(conn, pgrpId, menuId, lang);
+        return res.status(200).json(ResultManager.ok('Success', result));
+      } finally {
+        await conn.release();
+      }
+    } catch (err) {
+      next(err);
+    }
+  }
 }
 
 module.exports = new AuthController();

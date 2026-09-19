@@ -282,50 +282,107 @@ class AuthService {
     const col = readColumn;
 
     try {
-      const rows = await authRepository.getMenuRows(conn, pgrpId);
+      const rows = await authRepository.getRootPrograms(conn, pgrpId);
       if (!rows || rows.length === 0) {
         return [];
       }
 
-      const menus = new Map();
-      const typesByMenu = new Map();
+      const menus = [];
 
       for (const row of rows) {
-        const menuId = col(row, 'Menu_Id');
-        const typeId = col(row, 'Type_Id');
-
-        if (!menus.has(menuId)) {
-          menus.set(menuId, {
-            id: 'menu-' + menuId,
-            level: 'menu',
-            menuId,
-            name: t(col(row, 'Menu_Name')),
-            icon: col(row, 'Menu_Image'),
-            url: col(row, 'Menu_URL'),
-            descr: col(row, 'Menu_Descr'),
-            aList: []
+        // MPrg_Params is stored as an a=1&b=2 query string.
+        const paramsRaw = col(row, 'MPrg_Params');
+        const hParams = {};
+        if (paramsRaw) {
+          String(paramsRaw).split('&').forEach((pair) => {
+            const parts = pair.split('=');
+            if (parts.length === 2) {
+              hParams[parts[0]] = parts[1];
+            }
           });
-          typesByMenu.set(menuId, new Map());
         }
+        
+        menus.push({
+          id: 'menu-' + col(row, 'MPrg_Id'),
+          level: 'menu',
+          menuId: col(row, 'Menu_Id'),
+          typeId: col(row, 'Type_Id'),
+          name: t(col(row, 'MPrg_Name')),
+          url: col(row, 'MPrg_URL'),
+          apiUrl: col(row, 'MPrg_ApiURL'),
+          icon: col(row, 'MPrg_Icon'),
+          hParams,
+          aList: [] // Children fetched on demand via getProgramOptions
+        });
+      }
 
-        const menu = menus.get(menuId);
-        const types = typesByMenu.get(menuId);
+      return menus;
+    } catch (err) {
+      logger.error(`[AuthService] Error in getMenu: ${err.message}`);
+      return [];
+    }
+  }
+
+  async getPhsMenus(conn, lang = 'en') {
+    const logger = require('../utils/logger');
+    const authRepository = require('../repository/authRepository');
+    const i18nHelper = require('../utils/i18nHelper');
+    const t = (label) => i18nHelper.translateLabel(label, lang);
+    const col = readColumn;
+    try {
+      const rows = await authRepository.getPhsMenus(conn);
+      if (!rows || rows.length === 0) return [];
+      const menus = [];
+      for (const row of rows) {
+        menus.push({
+          id: col(row, 'Id'),
+          statusId: col(row, 'Status_Id'),
+          name: t(col(row, 'Name')),
+          image: col(row, 'Image'),
+          url: col(row, 'URL'),
+          descr: col(row, 'Descr')
+        });
+      }
+      return menus;
+    } catch (err) {
+      logger.error(`[AuthService] Error in getPhsMenus: ${err.message}`);
+      return [];
+    }
+  }
+
+  async getProgramOptions(conn, pgrpId, menuId, lang = 'en') {
+    const logger = require('../utils/logger');
+    const authRepository = require('../repository/authRepository');
+    const t = (label) => i18nHelper.translateLabel(label, lang);
+
+    const col = readColumn;
+
+    try {
+      const rows = await authRepository.getMenuRowsByMenuId(conn, pgrpId, menuId);
+      if (!rows || rows.length === 0) {
+        return [];
+      }
+
+      const types = new Map();
+      const result = [];
+
+      for (const row of rows) {
+        const typeId = col(row, 'Type_Id');
 
         if (!types.has(typeId)) {
           const type = {
             id: 'type-' + menuId + '-' + typeId,
             level: 'type',
-            menuId,
+            menuId: Number(menuId),
             typeId,
             name: t(col(row, 'Type_Name')),
             icon: col(row, 'Type_Icon'),
             aList: []
           };
           types.set(typeId, type);
-          menu.aList.push(type);
+          result.push(type);
         }
 
-        // MPrg_Params is stored as an a=1&b=2 query string.
         const paramsRaw = col(row, 'MPrg_Params');
         const hParams = {};
         if (paramsRaw) {
@@ -341,7 +398,7 @@ class AuthService {
           id: col(row, 'MPrg_Id'),
           level: 'program',
           pId: col(row, 'MPrg_PId'),
-          menuId,
+          menuId: Number(menuId),
           typeId,
           ord: col(row, 'MPrg_Ord'),
           name: t(col(row, 'MPrg_Name')),
@@ -355,9 +412,9 @@ class AuthService {
         });
       }
 
-      return Array.from(menus.values());
+      return result;
     } catch (err) {
-      logger.error(`[AuthService] Error in getMenu: ${err.message}`);
+      logger.error(`[AuthService] Error in getProgramOptions: ${err.message}`);
       return [];
     }
   }
@@ -617,11 +674,13 @@ class AuthService {
       }
 
       let programs = await this.getMenu(conn, pgrpId, context.lang || 'en');
+      let menus = await this.getPhsMenus(conn, context.lang || 'en');
 
       return {
         profile,
         permissions,
-        programs
+        programs,
+        menus
       };
     } finally {
       await conn.release();

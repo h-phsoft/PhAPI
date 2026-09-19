@@ -18,6 +18,7 @@ router.use(resolveTenant);
 
 router.post('/UserAccount/getUserProfile', (req, res, next) => authController.getUserProfile(req, res, next));
 router.get('/UserAccount/getUserProfile', (req, res, next) => authController.getUserProfile(req, res, next));
+router.get('/UserAccount/getProgramOptions/:menuId', (req, res, next) => authController.getProgramOptions(req, res, next));
 
 router.post('/Auth/Logout', (req, res, next) => authController.logout(req, res, next));
 

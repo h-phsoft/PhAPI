@@ -140,6 +140,49 @@ class AuthRepository {
     return conn.query(sql, params);
   }
 
+  async getPhsMenus(conn) {
+    let sql = `SELECT Id, Status_Id, Name, Image, URL, Descr
+                 FROM Phs_Menu
+                WHERE Status_Id = 1
+                ORDER BY Id`;
+    return conn.query(sql);
+  }
+
+  async getRootPrograms(conn, pgrpId) {
+    let sql = `SELECT Id as MPrg_Id, Menu_Id, Type_Id, MPrg_Id as MPrg_PId, Ord as MPrg_Ord,
+                      Name as MPrg_Name, URL as MPrg_URL, ApiURL as MPrg_ApiURL, Icon as MPrg_Icon,
+                      RelTable as MPrg_RelTable, Params as MPrg_Params, Status_Id as MPrg_Status_Id
+                 FROM Phs_MPrg
+                WHERE MPrg_Id = 0 AND Status_Id = 1`;
+    const params = {};
+    if (pgrpId > 0) {
+      sql += ` AND Id IN (SELECT MPrg_Id FROM Cpy_Perm WHERE PGrp_Id = :pgrpId AND OK = 1)`;
+      params.pgrpId = Number(pgrpId);
+    }
+    sql += ` ORDER BY Ord, Id`;
+    return conn.query(sql, params);
+  }
+
+  async getMenuRowsByMenuId(conn, pgrpId, menuId) {
+    let sql = `SELECT Menu_Id, Menu_Name, Menu_Image, Menu_URL, Menu_Descr,
+                      Menu_Status_Id, Menu_Status_Name,
+                      Type_Id, Type_Name, Type_Icon,
+                      MPrg_Id, MPrg_PId, MPrg_Ord,
+                      MPrg_Name, MPrg_URL, MPrg_ApiURL, MPrg_Icon,
+                      MPrg_Params, MPrg_RelTable, MPrg_Status_Id, MPrg_Status_Name
+                 FROM Phs_VMIPrg V
+                WHERE V.Menu_Id = :menuId AND V.MPrg_ID > 1 AND V.MPrg_Status_Id = 1 AND V.Menu_Status_Id = 1 AND V.MPrg_PId != 0
+                  AND EXISTS (SELECT 1 FROM Phs_MPrg P
+                               WHERE P.Id = V.MPrg_PId AND P.Status_Id = 1)`;
+    const params = {menuId: Number(menuId)};
+    if (pgrpId > 0) {
+      sql += ` AND V.MPrg_Id IN (SELECT MPrg_Id FROM Cpy_Perm WHERE PGrp_Id = :pgrpId AND OK = 1)`;
+      params.pgrpId = Number(pgrpId);
+    }
+    sql += ` ORDER BY V.Menu_Id, V.Type_Id, V.MPrg_Ord, V.MPrg_Id`;
+    return conn.query(sql, params);
+  }
+
   async getMenuByPid(conn, pgrpId, pid) {
     let sql = `SELECT Menu_Id, Menu_Name, Menu_Image, Menu_URL, Menu_Descr,
                        Menu_Status_Id, Menu_Status_Name,
