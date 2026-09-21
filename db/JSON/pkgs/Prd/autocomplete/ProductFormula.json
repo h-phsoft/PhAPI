@@ -1,9 +1,0 @@
-{
-  "Synonym": "Prd_Form",
-  "Select": "SELECT Id, Num||' '||Name AS Name FROM Prd_Form",
-  "Condition": "",
-  "Conds": {
-    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
-  },
-  "OrderBy": "Num"
-}

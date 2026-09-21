@@ -92,6 +92,7 @@
       },
       "isFile": false,
       "isNull": false,
+      "isLabel": false,
       "relation": null
     },
     {
@@ -119,6 +120,7 @@
       },
       "isFile": false,
       "isNull": false,
+      "isLabel": false,
       "relation": null
     },
     {
@@ -146,6 +148,7 @@
       },
       "isFile": false,
       "isNull": true,
+      "isLabel": false,
       "relation": null
     },
     {
@@ -173,6 +176,7 @@
       },
       "isFile": false,
       "isNull": true,
+      "isLabel": false,
       "relation": null
     },
     {
@@ -200,6 +204,7 @@
       },
       "isFile": false,
       "isNull": true,
+      "isLabel": false,
       "relation": null
     },
     {

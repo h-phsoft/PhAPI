@@ -31,7 +31,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Installment_Id",
       "Field": "installmentId",
       "DBType": "NUMBER",
@@ -45,7 +46,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Worker_Id",
       "Field": "workerId",
       "DBType": "NUMBER",
@@ -59,7 +61,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Worker_Status_Id",
       "Field": "workerStatusId",
       "DBType": "NUMBER",
@@ -73,7 +76,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Worker_Status_Name",
       "Field": "workerStatusName",
       "DBType": "VARCHAR2",
@@ -86,8 +90,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": false
-    }, {
+      "isNull": false,
+      "isLabel": false
+    },
+    {
       "Name": "Worker_User_Id",
       "Field": "workerUserId",
       "DBType": "NUMBER",
@@ -101,7 +107,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Worker_User_Name",
       "Field": "workerUserName",
       "DBType": "VARCHAR2",
@@ -114,8 +121,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": false
-    }, {
+      "isNull": false,
+      "isLabel": false
+    },
+    {
       "Name": "Worker_User_Logon",
       "Field": "workerUserLogon",
       "DBType": "VARCHAR2",
@@ -128,8 +137,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": false
-    }, {
+      "isNull": false,
+      "isLabel": false
+    },
+    {
       "Name": "Worker_City_Id",
       "Field": "workerCityId",
       "DBType": "NUMBER",
@@ -143,7 +154,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Worker_City_Name",
       "Field": "workerCityName",
       "DBType": "VARCHAR2",
@@ -156,8 +168,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": false
-    }, {
+      "isNull": false,
+      "isLabel": false
+    },
+    {
       "Name": "Worker_Country_Id",
       "Field": "workerCountryId",
       "DBType": "NUMBER",
@@ -171,7 +185,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Worker_Country_Name",
       "Field": "workerCountryName",
       "DBType": "VARCHAR2",
@@ -184,8 +199,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": false
-    }, {
+      "isNull": false,
+      "isLabel": false
+    },
+    {
       "Name": "Worker_Nlong",
       "Field": "workerNlong",
       "DBType": "NUMBER",
@@ -199,7 +216,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Worker_Nlat",
       "Field": "workerNlat",
       "DBType": "NUMBER",
@@ -213,7 +231,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Worker_Points",
       "Field": "workerPoints",
       "DBType": "NUMBER",
@@ -227,7 +246,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Worker_Mobile",
       "Field": "workerMobile",
       "DBType": "VARCHAR2",
@@ -240,8 +260,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": false
-    }, {
+      "isNull": false,
+      "isLabel": false
+    },
+    {
       "Name": "Worker_Fname",
       "Field": "workerFname",
       "DBType": "VARCHAR2",
@@ -254,8 +276,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": false
-    }, {
+      "isNull": false,
+      "isLabel": false
+    },
+    {
       "Name": "Worker_Lname",
       "Field": "workerLname",
       "DBType": "VARCHAR2",
@@ -268,8 +292,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": false
-    }, {
+      "isNull": false,
+      "isLabel": false
+    },
+    {
       "Name": "Worker_Email",
       "Field": "workerEmail",
       "DBType": "VARCHAR2",
@@ -282,8 +308,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Worker_Name",
       "Field": "workerName",
       "DBType": "VARCHAR2",
@@ -296,8 +324,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Worker_Address",
       "Field": "workerAddress",
       "DBType": "VARCHAR2",
@@ -310,8 +340,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Worker_Rem",
       "Field": "workerRem",
       "DBType": "VARCHAR2",
@@ -324,8 +356,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Status_Id",
       "Field": "statusId",
       "DBType": "NUMBER",
@@ -339,7 +373,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Status_Name",
       "Field": "statusName",
       "DBType": "VARCHAR2",
@@ -352,8 +387,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": false
-    }, {
+      "isNull": false,
+      "isLabel": false
+    },
+    {
       "Name": "City_Id",
       "Field": "cityId",
       "DBType": "NUMBER",
@@ -367,7 +404,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "City_Name",
       "Field": "cityName",
       "DBType": "VARCHAR2",
@@ -380,8 +418,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": false
-    }, {
+      "isNull": false,
+      "isLabel": false
+    },
+    {
       "Name": "Country_Id",
       "Field": "countryId",
       "DBType": "NUMBER",
@@ -395,7 +435,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Country_Name",
       "Field": "countryName",
       "DBType": "VARCHAR2",
@@ -408,8 +449,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": false
-    }, {
+      "isNull": false,
+      "isLabel": false
+    },
+    {
       "Name": "Mobile",
       "Field": "mobile",
       "DBType": "VARCHAR2",
@@ -422,8 +465,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": false
-    }, {
+      "isNull": false,
+      "isLabel": false
+    },
+    {
       "Name": "Ddate",
       "Field": "ddate",
       "DBType": "DATE",
@@ -437,7 +482,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Points",
       "Field": "points",
       "DBType": "NUMBER",
@@ -451,7 +497,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Nlong",
       "Field": "nlong",
       "DBType": "NUMBER",
@@ -465,7 +512,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Nlat",
       "Field": "nlat",
       "DBType": "NUMBER",
@@ -479,7 +527,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Name",
       "Field": "name",
       "DBType": "VARCHAR2",
@@ -492,8 +541,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Address",
       "Field": "address",
       "DBType": "VARCHAR2",
@@ -506,8 +557,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Rem",
       "Field": "rem",
       "DBType": "VARCHAR2",
@@ -520,7 +573,8 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
+      "isNull": true,
+      "isLabel": false
     }
   ]
 }

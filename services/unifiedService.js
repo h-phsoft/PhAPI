@@ -2,6 +2,7 @@ const mainApp = require('../config/mainApp');
 const connectionPool = require('../core/connectionPool');
 const repository = require('../repository/unifiedRepository');
 const AutoNumberHelper = require('../utils/autoNumber');
+const i18nHelper = require('../utils/i18nHelper');
 
 class ValidationError extends Error {
   constructor(message, details = []) {
@@ -39,6 +40,81 @@ function getAttachmentEntity() {
     }
   }
   throw new Error('Entity metadata not found for the attachment table (Cpy/Cpy_Attach)');
+}
+
+/**
+ * Which properties of a row hold system vocabulary, worked out once per entity.
+ *
+ * Only the entity's own columns are considered, because a row never carries
+ * anyone else's text: `unifiedRepository` issues a plain single-table SELECT
+ * and does not join, so a Fund_Box row comes back with `statusId` and no
+ * `statusName`. The status word a screen displays is read from Phs_Cod_Status
+ * itself, fetched as its own request -- which is the row this translates.
+ *
+ * Cached against the entity object, a singleton built once at startup.
+ *
+ * @param {Object} entity Entity metadata
+ * @returns {string[]} Row properties to translate
+ */
+const labelPlans = new WeakMap();
+
+function labelPlanFor(entity) {
+  const cached = labelPlans.get(entity);
+  if (cached) {
+    return cached;
+  }
+
+  const fields = Array.isArray(entity.fields) ? entity.fields : [];
+  const plan = fields
+    .filter(field => field.isLabel === true && field.Field)
+    .map(field => field.Field);
+
+  labelPlans.set(entity, plan);
+  return plan;
+}
+
+/**
+ * Translates the vocabulary in rows on their way out.
+ *
+ * Applied for every language, English included: the seed stores keys, not
+ * prose -- Phs_Cod_Status holds 'Status.Active' -- so English needs the lookup
+ * as much as Arabic does. Anything without an entry falls back to the stored
+ * text, which is exactly what a screen shows today.
+ *
+ * Rows are mutated in place; they are fresh objects from the query, not shared
+ * metadata.
+ *
+ * @param {Object} entity Entity metadata
+ * @param {Object|Object[]} rows A row or rows straight from the repository
+ * @param {Object} context Request context, carrying `lang`
+ * @returns {Object|Object[]} The same rows
+ */
+function localizeLabels(entity, rows, context = {}) {
+  if (!rows || !entity) {
+    return rows;
+  }
+
+  const plan = labelPlanFor(entity);
+  if (plan.length === 0) {
+    return rows;
+  }
+
+  const lang = context.lang || context.vLang || 'en';
+  const list = Array.isArray(rows) ? rows : [rows];
+
+  for (const row of list) {
+    if (!row || typeof row !== 'object') {
+      continue;
+    }
+    for (const property of plan) {
+      const value = row[property];
+      if (typeof value === 'string' && value !== '') {
+        row[property] = i18nHelper.translateLabel(value, lang);
+      }
+    }
+  }
+
+  return rows;
 }
 
 class UnifiedService {
@@ -226,7 +302,8 @@ class UnifiedService {
     if (!entity) {
       throw new Error(`Entity metadata not found for ${packageName}/${tableName}`);
     }
-    return await repository.find(entity, options, context);
+    const rows = await repository.find(entity, options, context);
+    return localizeLabels(entity, rows, context);
   }
 
   /**
@@ -252,12 +329,13 @@ class UnifiedService {
           const filters = {};
           filters[childConfig.foreignKey] = id;
           const childrenRows = await repository.find(childEntity, { filters }, context);
-          masterRecord[childConfig.childKey] = childrenRows;
+          // Localised against the child's own metadata, not the master's.
+          masterRecord[childConfig.childKey] = localizeLabels(childEntity, childrenRows, context);
         }
       }
     }
 
-    return masterRecord;
+    return localizeLabels(entity, masterRecord, context);
   }
 
   /**
@@ -373,7 +451,7 @@ class UnifiedService {
 
     const rows = await repository.find(entity, options, context);
     return {
-      data: rows,
+      data: localizeLabels(entity, rows, context),
       page: options.page,
       size: options.pageSize
     };
@@ -407,7 +485,7 @@ class UnifiedService {
 
     const rows = await repository.find(entity, options, context);
     return {
-      data: rows,
+      data: localizeLabels(entity, rows, context),
       page: options.page,
       size: options.pageSize,
       query: queryString
@@ -456,7 +534,7 @@ class UnifiedService {
       const entity = mainApp.getEntity(packageName, table);
       if (entity) {
         const rows = await repository.find(entity, { pageSize: 100 }, context);
-        result[packageName + table] = rows;
+        result[packageName + table] = localizeLabels(entity, rows, context);
       }
     }
 
@@ -517,7 +595,7 @@ class UnifiedService {
       throw new Error(`Entity metadata not found for ${packageName}/${tableName}`);
     }
 
-    const rows = await repository.find(entity, { pageSize: 500 }, context);
+    const rows = localizeLabels(entity, await repository.find(entity, { pageSize: 500 }, context), context);
     const parentField = entity.fields.find(f => f.Field.toLowerCase().includes('parent') || f.Field.toLowerCase().includes('pid'));
     const parentKey = parentField ? parentField.Field : 'parentId';
 

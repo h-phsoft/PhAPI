@@ -120,7 +120,7 @@ class AuthRepository {
   async getMenuRows(conn, pgrpId) {
     let sql = `SELECT Menu_Id, Menu_Name, Menu_Image, Menu_URL, Menu_Descr,
                       Menu_Status_Id, Menu_Status_Name,
-                      Type_Id, Type_Name, Type_Icon,
+                      Type_Id, Type_Name, Type_Icon, Type_Status_Id,
                       MPrg_Id, MPrg_PId, MPrg_Ord,
                       MPrg_Name, MPrg_URL, MPrg_ApiURL, MPrg_Icon,
                       MPrg_Params, MPrg_RelTable, MPrg_Status_Id, MPrg_Status_Name
@@ -166,7 +166,7 @@ class AuthRepository {
   async getMenuRowsByMenuId(conn, pgrpId, menuId) {
     let sql = `SELECT Menu_Id, Menu_Name, Menu_Image, Menu_URL, Menu_Descr,
                       Menu_Status_Id, Menu_Status_Name,
-                      Type_Id, Type_Name, Type_Icon,
+                      Type_Id, Type_Name, Type_Icon, Type_Status_Id,
                       MPrg_Id, MPrg_PId, MPrg_Ord,
                       MPrg_Name, MPrg_URL, MPrg_ApiURL, MPrg_Icon,
                       MPrg_Params, MPrg_RelTable, MPrg_Status_Id, MPrg_Status_Name

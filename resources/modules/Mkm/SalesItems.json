@@ -31,7 +31,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Sales_Id",
       "Field": "salesId",
       "DBType": "NUMBER",
@@ -52,7 +53,8 @@
         "RelField": "salesName"
       },
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Prod_Id",
       "Field": "prodId",
       "DBType": "NUMBER",
@@ -73,7 +75,8 @@
         "RelField": "prodName"
       },
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Serial",
       "Field": "serial",
       "DBType": "VARCHAR2",
@@ -86,8 +89,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": false
-    }, {
+      "isNull": false,
+      "isLabel": false
+    },
+    {
       "Name": "Wdays",
       "Field": "wdays",
       "DBType": "NUMBER",
@@ -101,7 +106,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Edate",
       "Field": "edate",
       "DBType": "DATE",
@@ -115,7 +121,8 @@
       "update": false,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Ins_User",
       "Field": "insUser",
       "DBType": "NUMBER",
@@ -129,7 +136,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Ins_Date",
       "Field": "insDate",
       "DBType": "DATE",
@@ -143,7 +151,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Upd_User",
       "Field": "updUser",
       "DBType": "NUMBER",
@@ -157,7 +166,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Upd_Date",
       "Field": "updDate",
       "DBType": "DATE",

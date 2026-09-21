@@ -1,9 +1,0 @@
-{
-  "Synonym": "Cpy_Actv",
-  "Select": "SELECT Id, Num||' - '||Name AS Name FROM Cpy_Actv",
-  "Condition": "",
-  "Conds": {
-    "term": "Lower(Num||' - '||Name) LIKE '%{term}%'"
-  },
-  "OrderBy": "Num"
-}

@@ -1,9 +1,0 @@
-{
-  "Synonym": "Fre_Cod_Comod",
-  "Select": "SELECT Id,Name FROM Fre_Cod_Comod",
-  "Condition": "",
-  "Conds": {
-    "term": "Lower(Name) LIKE Lower('%{term}%')"
-  },
-  "OrderBy": "Name"
-}

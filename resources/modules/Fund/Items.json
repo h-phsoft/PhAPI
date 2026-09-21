@@ -31,7 +31,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Status_Id",
       "Field": "statusId",
       "DBType": "NUMBER",
@@ -45,7 +46,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Name",
       "Field": "name",
       "DBType": "VARCHAR2",
@@ -58,8 +60,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": false
-    }, {
+      "isNull": false,
+      "isLabel": false
+    },
+    {
       "Name": "Rem",
       "Field": "rem",
       "DBType": "VARCHAR2",
@@ -72,8 +76,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Ins_User",
       "Field": "insUser",
       "DBType": "NUMBER",
@@ -87,7 +93,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Ins_Date",
       "Field": "insDate",
       "DBType": "DATE",
@@ -101,7 +108,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Upd_User",
       "Field": "updUser",
       "DBType": "NUMBER",
@@ -115,7 +123,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Upd_Date",
       "Field": "updDate",
       "DBType": "DATE",

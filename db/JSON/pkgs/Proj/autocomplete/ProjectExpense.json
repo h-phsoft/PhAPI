@@ -1,9 +1,0 @@
-{
-  "Synonym": "Proj_Proj_Expense",
-  "Select": "SELECT Id, Num||' '||Name AS Name FROM Proj_Proj_Expense",
-  "Condition": "",
-  "Conds": {
-    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
-  },
-  "OrderBy": "Num"
-}

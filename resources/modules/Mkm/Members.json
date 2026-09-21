@@ -31,7 +31,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Ugrp_Id",
       "Field": "ugrpId",
       "DBType": "NUMBER",
@@ -52,7 +53,8 @@
         "RelField": "ugrpName"
       },
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Status_Id",
       "Field": "statusId",
       "DBType": "NUMBER",
@@ -73,7 +75,8 @@
         "RelField": "statusName"
       },
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Country_Id",
       "Field": "countryId",
       "DBType": "NUMBER",
@@ -94,7 +97,8 @@
         "RelField": "countryName"
       },
       "isNull": false
-    }, {
+    },
+    {
       "Name": "City_Id",
       "Field": "cityId",
       "DBType": "NUMBER",
@@ -115,7 +119,8 @@
         "RelField": "cityName"
       },
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Points",
       "Field": "points",
       "DBType": "NUMBER",
@@ -129,7 +134,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Nlong",
       "Field": "nlong",
       "DBType": "NUMBER",
@@ -143,7 +149,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Nlat",
       "Field": "nlat",
       "DBType": "NUMBER",
@@ -157,7 +164,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Mobile",
       "Field": "mobile",
       "DBType": "VARCHAR2",
@@ -170,8 +178,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": false
-    }, {
+      "isNull": false,
+      "isLabel": false
+    },
+    {
       "Name": "Fname",
       "Field": "fname",
       "DBType": "VARCHAR2",
@@ -184,8 +194,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": false
-    }, {
+      "isNull": false,
+      "isLabel": false
+    },
+    {
       "Name": "Lname",
       "Field": "lname",
       "DBType": "VARCHAR2",
@@ -198,8 +210,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": false
-    }, {
+      "isNull": false,
+      "isLabel": false
+    },
+    {
       "Name": "Email",
       "Field": "email",
       "DBType": "VARCHAR2",
@@ -212,8 +226,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Name",
       "Field": "name",
       "DBType": "VARCHAR2",
@@ -226,8 +242,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Address",
       "Field": "address",
       "DBType": "VARCHAR2",
@@ -240,8 +258,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Rem",
       "Field": "rem",
       "DBType": "VARCHAR2",
@@ -254,8 +274,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "User_Id",
       "Field": "userId",
       "DBType": "NUMBER",
@@ -276,7 +298,8 @@
         "RelField": "userName"
       },
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Upd_User",
       "Field": "updUser",
       "DBType": "NUMBER",
@@ -290,7 +313,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Upd_Date",
       "Field": "updDate",
       "DBType": "DATE",
@@ -304,7 +328,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Ins_User",
       "Field": "insUser",
       "DBType": "NUMBER",
@@ -318,7 +343,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Ins_Date",
       "Field": "insDate",
       "DBType": "DATE",

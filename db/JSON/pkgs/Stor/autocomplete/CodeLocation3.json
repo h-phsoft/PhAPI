@@ -1,9 +1,0 @@
-{
-  "Synonym": "Stor_Cod_Loc3",
-  "Select": "SELECT Id, Num||' '||Name AS Name FROM Stor_Cod_Loc3",
-  "Condition": "",
-  "Conds": {
-    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
-  },
-  "OrderBy": "Num"
-}

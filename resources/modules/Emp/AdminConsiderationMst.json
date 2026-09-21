@@ -162,6 +162,7 @@
       },
       "isFile": false,
       "isNull": true,
+      "isLabel": false,
       "relation": null
     },
     {

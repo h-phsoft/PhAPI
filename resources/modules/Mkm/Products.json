@@ -26,8 +26,8 @@
       "cascadeDelete": true,
       "Column": "PROD_ID",
       "ColKey": "prodId"
-    }
-    , {
+    },
+    {
       "ChildKey": "child1",
       "Pkg": "Mkm",
       "Key": "ProdSerials",
@@ -53,7 +53,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Mnum",
       "Field": "mnum",
       "DBType": "NUMBER",
@@ -67,7 +68,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Brand_Id",
       "Field": "brandId",
       "DBType": "NUMBER",
@@ -88,7 +90,8 @@
         "RelField": "brandName"
       },
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Status_Id",
       "Field": "statusId",
       "DBType": "NUMBER",
@@ -109,7 +112,8 @@
         "RelField": "statusName"
       },
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Cat_Id",
       "Field": "catId",
       "DBType": "NUMBER",
@@ -130,7 +134,8 @@
         "RelField": "catName"
       },
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Tag_Id",
       "Field": "tagId",
       "DBType": "NUMBER",
@@ -144,7 +149,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Name1",
       "Field": "name1",
       "DBType": "VARCHAR2",
@@ -157,8 +163,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": false
-    }, {
+      "isNull": false,
+      "isLabel": false
+    },
+    {
       "Name": "Name2",
       "Field": "name2",
       "DBType": "VARCHAR2",
@@ -171,8 +179,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": false
-    }, {
+      "isNull": false,
+      "isLabel": false
+    },
+    {
       "Name": "Qnt",
       "Field": "qnt",
       "DBType": "NUMBER",
@@ -186,7 +196,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Price",
       "Field": "price",
       "DBType": "NUMBER",
@@ -200,7 +211,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Cprice",
       "Field": "cprice",
       "DBType": "NUMBER",
@@ -214,7 +226,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Desc1",
       "Field": "desc1",
       "DBType": "VARCHAR2",
@@ -227,8 +240,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Desc2",
       "Field": "desc2",
       "DBType": "VARCHAR2",
@@ -241,8 +256,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Desc3",
       "Field": "desc3",
       "DBType": "VARCHAR2",
@@ -255,8 +272,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Desc4",
       "Field": "desc4",
       "DBType": "VARCHAR2",
@@ -269,8 +288,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Desc5",
       "Field": "desc5",
       "DBType": "VARCHAR2",
@@ -283,8 +304,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Image",
       "Field": "image",
       "DBType": "VARCHAR2",
@@ -297,8 +320,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Ins_User",
       "Field": "insUser",
       "DBType": "NUMBER",
@@ -312,7 +337,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Ins_Date",
       "Field": "insDate",
       "DBType": "DATE",
@@ -326,7 +352,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Upd_User",
       "Field": "updUser",
       "DBType": "NUMBER",
@@ -340,7 +367,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Upd_Date",
       "Field": "updDate",
       "DBType": "DATE",

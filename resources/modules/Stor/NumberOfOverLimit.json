@@ -1,8 +1,8 @@
 {
   "package": "Stor",
   "module": "Stor",
-  "tableName": "Number_Of_OverLimit",
-  "synonym": "Num_OverLimit",
+  "tableName": "Stor_Number_Of_Overlimit",
+  "synonym": "Stor_Num_Overlimit",
   "primaryKey": "id",
   "hasChilds": false,
   "children": [],

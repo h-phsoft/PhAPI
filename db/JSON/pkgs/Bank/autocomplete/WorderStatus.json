@@ -1,9 +1,0 @@
-{
-  "Synonym": "Bank_Wordstatus",
-  "Select": "SELECT Id, Num||' '||Name AS Name FROM Bank_Wordstatus",
-  "Condition": "",
-  "Conds": {
-    "term": "Lower(Num||' '||Name) LIKE '%{term}%'"
-  },
-  "OrderBy": "Num"
-}

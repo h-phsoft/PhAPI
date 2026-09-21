@@ -29,6 +29,32 @@ function readColumn(row, name) {
   return key ? row[key] : undefined;
 }
 
+/**
+ * Parses MPrg_Params, which is stored as an `a=1&b=2` query string.
+ *
+ * Pairs without exactly one `=` are skipped rather than guessed at: the column
+ * is free text a tenant edits by hand, and half a pair says nothing.
+ *
+ * @param {string|null|undefined} raw
+ * @returns {Object} Never null, so callers can spread it unguarded
+ */
+function parseMPrgParams(raw) {
+  const params = {};
+
+  if (!raw) {
+    return params;
+  }
+
+  String(raw).split('&').forEach((pair) => {
+    const parts = pair.split('=');
+    if (parts.length === 2) {
+      params[parts[0]] = parts[1];
+    }
+  });
+
+  return params;
+}
+
 class AuthError extends Error {
   constructor(message, statusCode = 401) {
     super(message);
@@ -254,27 +280,49 @@ class AuthService {
   }
 
   /**
-   * Builds the navigation tree the client renders: menu, then type, then
-   * program.
+   * The signed-in user's permitted programs: menu, then type, then program.
    *
-   * Phs_VMIPrg carries all three on every row, so the whole tree comes from one
-   * query and is grouped in memory. This replaces a recursive walk over
-   * MPrg_PId that issued one query per node -- a few hundred round trips on
-   * every login -- and produced program branches with no menu or type grouping.
+   * Phs_VMIPrg carries all three levels on every row -- it is the join of
+   * Phs_MPrg, Phs_VMenu, Phs_Cod_PrgType and Phs_Cod_Status -- so the whole
+   * tree comes from one query and is grouped in memory.
    *
-   * Every node shares one shape (id, name, icon, aList) so the client renders
-   * any level with the same component.
+   * It used to return only the root rows of Phs_MPrg, each with an empty child
+   * list, and leave the client to fetch a menu's contents from
+   * getProgramOptions when it opened one. That kept the profile small but left
+   * the client unable to answer the question it most needs to -- may this user
+   * open this screen -- because nothing in that payload carried a program's
+   * real MPrg_Id. The root rows are keyed `menu-<id>`, so checking a route
+   * against a grant meant a round trip per module, and a client that guessed
+   * instead would be guessing about permissions.
    *
-   * Menu, type and program names are translated through the locale files. The
-   * stored English text is the key, so a tenant with no translations reads
-   * exactly as before.
+   * The permitted tree therefore comes back whole, at sign-in, and is what the
+   * client authorises its own navigation against. Nothing outside the caller's
+   * Cpy_Perm grants reaches it: the filtering is in the query, so an
+   * unpermitted program is absent rather than present and flagged. A PGrp_Id of
+   * 0 or less means unrestricted, as it does everywhere else in PhAPI, and
+   * those callers get every active program.
+   *
+   * This is the client's view of its own menu, not an authorisation decision.
+   * PhAPI still re-checks every request against Cpy_Perm on the `mprgid` header
+   * and against the tables the granted programs bind -- a tree that arrived at
+   * sign-in cannot be what guards a request made an hour later.
+   *
+   * Names are translated through the locale files, keyed on the stored English
+   * text, so a tenant with no translations reads exactly as before.
+   *
+   * The field names are the client's, not the schema's: one `icon` at every
+   * level rather than Menu_Image beside Type_Icon, and `params` already parsed
+   * out of the `a=1&b=2` string it is stored as, because no caller wants it any
+   * other way. Status is reported only on a type -- the query constrains menus
+   * and programs to active ones, so saying so again would be noise, while a
+   * type's status is the one it does not filter.
    *
    * @param {Object} conn
    * @param {number} pgrpId 0 or less means no group restriction
    * @param {string} lang Language code from the request, e.g. 'en' or 'ar'
-   * @returns {Promise<Array>} Menu nodes holding type nodes holding programs
+   * @returns {Promise<Array>} Menus holding progTypes holding programs
    */
-  async getMenu(conn, pgrpId, lang = 'en') {
+  async getMenuPrograms(conn, pgrpId, lang = 'en') {
     const logger = require('../utils/logger');
     const authRepository = require('../repository/authRepository');
     const t = (label) => i18nHelper.translateLabel(label, lang);
@@ -282,43 +330,72 @@ class AuthService {
     const col = readColumn;
 
     try {
-      const rows = await authRepository.getRootPrograms(conn, pgrpId);
+      const rows = await authRepository.getMenuRows(conn, pgrpId);
       if (!rows || rows.length === 0) {
         return [];
       }
 
-      const menus = [];
+      // Keyed lookups rather than a scan per row: a tenant's tree runs to a few
+      // hundred programs, and the rows arrive grouped anyway.
+      const menuMap = new Map();
+      const typeMap = new Map();
 
       for (const row of rows) {
-        // MPrg_Params is stored as an a=1&b=2 query string.
-        const paramsRaw = col(row, 'MPrg_Params');
-        const hParams = {};
-        if (paramsRaw) {
-          String(paramsRaw).split('&').forEach((pair) => {
-            const parts = pair.split('=');
-            if (parts.length === 2) {
-              hParams[parts[0]] = parts[1];
-            }
+        const menuId = col(row, 'Menu_Id');
+        const typeId = col(row, 'Type_Id');
+        const progId = col(row, 'MPrg_Id');
+        const typeKey = `${menuId}:${typeId}`;
+
+        if (!menuMap.has(menuId)) {
+          menuMap.set(menuId, {
+            id: menuId,
+            name: t(col(row, 'Menu_Name')),
+            url: col(row, 'Menu_URL'),
+            icon: col(row, 'Menu_Image'),
+            description: col(row, 'Menu_Descr'),
+            progTypes: []
           });
         }
-        
-        menus.push({
-          id: 'menu-' + col(row, 'MPrg_Id'),
-          level: 'menu',
-          menuId: col(row, 'Menu_Id'),
-          typeId: col(row, 'Type_Id'),
-          name: t(col(row, 'MPrg_Name')),
-          url: col(row, 'MPrg_URL'),
-          apiUrl: col(row, 'MPrg_ApiURL'),
-          icon: col(row, 'MPrg_Icon'),
-          hParams,
-          aList: [] // Children fetched on demand via getProgramOptions
-        });
+
+        if (!typeMap.has(typeKey)) {
+          const progType = {
+            id: typeId,
+            name: t(col(row, 'Type_Name')),
+            icon: col(row, 'Type_Icon'),
+            statusId: col(row, 'Type_Status_Id'),
+            programs: []
+          };
+          typeMap.set(typeKey, progType);
+          menuMap.get(menuId).progTypes.push(progType);
+        }
+
+        // Guarded although Phs_VMIPrg is an inner join and every row carries a
+        // program: the view could be widened, and a type holding a null entry
+        // would break the client quietly rather than loudly.
+        if (progId) {
+          typeMap.get(typeKey).programs.push({
+            id: progId,
+            parentId: col(row, 'MPrg_PId'),
+            order: col(row, 'MPrg_Ord'),
+            name: t(col(row, 'MPrg_Name')),
+            url: col(row, 'MPrg_URL'),
+            apiUrl: col(row, 'MPrg_ApiURL'),
+            icon: col(row, 'MPrg_Icon'),
+            params: parseMPrgParams(col(row, 'MPrg_Params')),
+            relTable: col(row, 'MPrg_RelTable')
+          });
+        }
       }
 
-      return menus;
+      // No sort pass: the query orders by Menu_Id, Type_Id, MPrg_Ord, MPrg_Id,
+      // and insertion order is what a Map preserves, so menus, types and
+      // programs already come out in the order the tenant arranged them.
+      //
+      // Nothing empty is left to prune either -- a menu or a type is only here
+      // because a permitted program put it here.
+      return Array.from(menuMap.values());
     } catch (err) {
-      logger.error(`[AuthService] Error in getMenu: ${err.message}`);
+      logger.error(`[AuthService] Error in getMenuPrograms: ${err.message}`);
       return [];
     }
   }
@@ -383,17 +460,6 @@ class AuthService {
           result.push(type);
         }
 
-        const paramsRaw = col(row, 'MPrg_Params');
-        const hParams = {};
-        if (paramsRaw) {
-          String(paramsRaw).split('&').forEach((pair) => {
-            const parts = pair.split('=');
-            if (parts.length === 2) {
-              hParams[parts[0]] = parts[1];
-            }
-          });
-        }
-
         types.get(typeId).aList.push({
           id: col(row, 'MPrg_Id'),
           level: 'program',
@@ -407,7 +473,7 @@ class AuthService {
           icon: col(row, 'MPrg_Icon'),
           relTable: col(row, 'MPrg_RelTable'),
           statusId: col(row, 'MPrg_Status_Id'),
-          hParams,
+          hParams: parseMPrgParams(col(row, 'MPrg_Params')),
           aList: []
         });
       }
@@ -673,7 +739,7 @@ class AuthService {
         }
       }
 
-      let programs = await this.getMenu(conn, pgrpId, context.lang || 'en');
+      let programs = await this.getMenuPrograms(conn, pgrpId, context.lang || 'en');
       let menus = await this.getPhsMenus(conn, context.lang || 'en');
 
       return {

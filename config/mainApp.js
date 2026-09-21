@@ -84,6 +84,12 @@ class MainApp {
         } : null),
         isFile: f.isFile || false,
         isNull: f.isNull !== undefined ? f.isNull : true,
+
+        // Carried through rather than dropped. This map rebuilds every field
+        // from a fixed list of keys, so anything it does not name is lost
+        // between the JSON and the runtime -- which is how a flag can sit
+        // correctly in 3603 columns and still arrive undefined.
+        isLabel: f.isLabel !== undefined ? f.isLabel : false,
         relation: f.relation || f.Relation || null
       };
     });
@@ -129,11 +135,16 @@ class MainApp {
     this.metadataByTable.clear();
     this.packages.clear();
 
-    for (const modulesDir of dirs) {
+    for (const [index, modulesDir] of dirs.entries()) {
       if (!fs.existsSync(modulesDir)) {
         console.warn(`[MainApp] Modules directory does not exist: ${modulesDir}`);
         continue;
       }
+
+      // Earlier in the list means more authoritative, so the caller declares
+      // precedence by ordering the directories rather than by anything in the
+      // files themselves. Spaced by 10 so role priority never bridges two trees.
+      const treeRank = (dirs.length - index) * 10;
 
       const readDirRecursive = (dir, currentPkg = '') => {
         const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -149,7 +160,7 @@ class MainApp {
               const rawMetadata = JSON.parse(rawData);
               const filename = path.basename(entry.name, '.json');
               const normalized = this.normalizeMetadata(rawMetadata, currentPkg, filename);
-              this.registerEntity(normalized, fullPath);
+              this.registerEntity(normalized, fullPath, treeRank);
             } catch (err) {
               console.error(`[MainApp] Error loading metadata from ${fullPath}:`, err.message);
             }
@@ -183,16 +194,38 @@ class MainApp {
    * not, and among those that do, models/ is the canonical entity definition --
    * import/ commonly lists only the subset an import file supplies. Files that
    * tie keep last-one-wins, which is the behaviour everything else had.
+   *
+   * Above both of those sits which tree the file came from, in the order they
+   * are passed to `loadMetadata`: earlier is stronger.
+   *
+   * Only one tree is loaded today, so this decides nothing on its own. It was
+   * added when two were: `resources/modules`, which is maintained and carries
+   * the field annotations such as `isLabel`, was losing 1925 of 2001 tables to
+   * the legacy Java tree purely because that tree's files sat in directories
+   * named models/. An annotation could be correct in 764 files and be read from
+   * 76 of them. It stays because a second tree is exactly the situation that
+   * produced the bug, and ordering the directories is how a caller says which
+   * one it trusts.
+   *
+   * A tree only outranks another when its file carries columns, which keeps the
+   * older fix intact: a file with no column list still loses to one that
+   * describes the table, whichever tree each came from.
+   *
+   * @param {Object} metadata The normalised definition
+   * @param {string} sourcePath Where it was read from
+   * @param {number} treeRank Authority of its tree; higher is stronger
    */
-  static rankOf(metadata, sourcePath) {
+  static rankOf(metadata, sourcePath, treeRank = 0) {
     const ROLE_PRIORITY = { models: 3, import: 2 };
     const role = path.basename(path.dirname(sourcePath || '')).toLowerCase();
     const hasFields = Array.isArray(metadata.fields) && metadata.fields.length > 0;
 
-    return (hasFields ? 100 : 0) + (ROLE_PRIORITY[role] || 1);
+    // 1000 keeps "has columns" decisive: no combination of tree and role can
+    // reach it.
+    return (hasFields ? 1000 : 0) + treeRank + (ROLE_PRIORITY[role] || 1);
   }
 
-  registerEntity(metadata, sourcePath) {
+  registerEntity(metadata, sourcePath, treeRank = 0) {
     const pkg = metadata.package;
     const table = metadata.tableName;
     const synonym = metadata.synonym;
@@ -206,7 +239,7 @@ class MainApp {
     // Recorded on the entity so a later registration can compare against it,
     // and so the source of a surprising definition is visible when debugging.
     metadata.sourcePath = sourcePath;
-    metadata.sourceRank = MainApp.rankOf(metadata, sourcePath);
+    metadata.sourceRank = MainApp.rankOf(metadata, sourcePath, treeRank);
 
     /** Registers under one key unless a stronger definition already holds it. */
     const claim = (map, mapKey) => {

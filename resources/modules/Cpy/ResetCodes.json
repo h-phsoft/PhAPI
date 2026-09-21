@@ -1,0 +1,133 @@
+{
+  "package": "Cpy",
+  "module": "Cpy",
+  "tableName": "Copy_Reset_Codes",
+  "synonym": "Cpy_Rcode",
+  "primaryKey": "id",
+  "hasChilds": false,
+  "children": [],
+  "auditFields": {
+    "createdBy": "insUser",
+    "createdAt": "insDate",
+    "updatedBy": "updUser",
+    "updatedAt": "updDate"
+  },
+  "fields": [
+    {
+      "Name": "Id",
+      "Field": "id",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "30",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": true,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Id",
+        "Synonym": "Cpy_Rcode",
+        "Sequence": "Cpy_Rcode_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": false,
+      "relation": null
+    },
+    {
+      "Name": "User_Id",
+      "Field": "userId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "User_Id",
+        "Synonym": "Cpy_Rcode",
+        "Sequence": "Cpy_Rcode_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": false,
+      "relation": {
+        "refTable": "Copy_Users",
+        "refSynonym": "Cpy_User",
+        "primaryKey": "Id",
+        "foreignKey": "User_Id",
+        "displayField": "Name",
+        "apiDisplayField": "userName"
+      }
+    },
+    {
+      "Name": "Code",
+      "Field": "code",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Code",
+        "Synonym": "Cpy_Rcode",
+        "Sequence": "Cpy_Rcode_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "isLabel": false,
+      "relation": null
+    },
+    {
+      "Name": "Ins_Date",
+      "Field": "insDate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Ins_Date",
+        "Synonym": "Cpy_Rcode",
+        "Sequence": "Cpy_Rcode_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": null
+    }
+  ]
+}

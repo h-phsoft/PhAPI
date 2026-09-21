@@ -1,9 +1,0 @@
-{
-  "Synonym": "Prd_Oexec_Stage_Isemi",
-  "Select": "SELECT Id, Num||' '||Name AS Name FROM Prd_Oexec_Stage_Isemi",
-  "Condition": "",
-  "Conds": {
-    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
-  },
-  "OrderBy": "Num"
-}

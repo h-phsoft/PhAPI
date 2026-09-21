@@ -92,6 +92,7 @@
       },
       "isFile": false,
       "isNull": false,
+      "isLabel": false,
       "relation": null
     },
     {

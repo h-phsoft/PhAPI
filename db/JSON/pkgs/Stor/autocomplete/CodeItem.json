@@ -1,9 +1,0 @@
-{
-  "Synonym": "Stor_Cod_Itm",
-  "Select": "SELECT Id,Name AS Name FROM Stor_Cod_Itm",
-  "Condition": "",
-  "Conds": {
-    "term": "Lower(Name) LIKE Lower('%{term}%')"
-  },
-  "OrderBy": "Id"
-}

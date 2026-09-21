@@ -1,9 +1,0 @@
-{
-  "Synonym": "Sal_Retmst",
-  "Select": "SELECT Id, Num||' '||Name AS Name FROM Sal_Retmst",
-  "Condition": "",
-  "Conds": {
-    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
-  },
-  "OrderBy": "Num"
-}

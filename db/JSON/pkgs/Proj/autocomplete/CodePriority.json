@@ -1,9 +1,0 @@
-{
-  "Synonym": "Proj_Cod_Priority",
-  "Select": "SELECT Id, Num||' '||Name AS Name FROM Proj_Cod_Priority",
-  "Condition": "",
-  "Conds": {
-    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
-  },
-  "OrderBy": "Num"
-}

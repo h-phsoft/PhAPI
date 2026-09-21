@@ -71,15 +71,19 @@ app.use(bodyParser.text({type: ['text/*', 'text/plain', 'text/html', 'applicatio
 
 // Load the metadata singleton at startup.
 //
-// Both trees are required, and they do not overlap: resources/modules holds the
-// entity definitions, while db/JSON/pkgs holds the report and dashboard
-// definitions (Crm/ReportMasterView, Cpy/UsersView and the rest). Loading only
-// the first left every report endpoint raising "Report metadata not found" for
-// anything defined in the second -- which the test suite never caught, because
-// it loads both.
+// `resources/modules` is now the whole of it. The legacy Java tree at
+// db/JSON/pkgs was loaded alongside it until every table it described had been
+// generated across; it has since been deleted, and listing a directory that no
+// longer exists only warns on every boot.
+//
+// Order is still precedence, should a second tree ever be added: the first to
+// describe a table answers for it, and the maintained tree comes first.
+//
+// Autocomplete templates are not loaded here. `autocompleteService` reads
+// resources/autocomplete on its own, which is why /Autocomplete endpoints were
+// unaffected by that deletion.
 const modulesDirs = [
-  path.join(__dirname, 'resources', 'modules'),
-  path.join(__dirname, 'db', 'JSON', 'pkgs')
+  path.join(__dirname, 'resources', 'modules')
 ];
 mainApp.loadMetadata(modulesDirs);
 

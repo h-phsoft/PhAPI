@@ -31,7 +31,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Status_Id",
       "Field": "statusId",
       "DBType": "NUMBER",
@@ -52,7 +53,8 @@
         "RelField": "statusName"
       },
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Code",
       "Field": "code",
       "DBType": "VARCHAR2",
@@ -65,8 +67,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": false
-    }, {
+      "isNull": false,
+      "isLabel": false
+    },
+    {
       "Name": "Name",
       "Field": "name",
       "DBType": "VARCHAR2",
@@ -79,8 +83,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": false
-    }, {
+      "isNull": false,
+      "isLabel": false
+    },
+    {
       "Name": "Phone",
       "Field": "phone",
       "DBType": "NUMBER",
@@ -94,7 +100,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": false
-    }, {
+    },
+    {
       "Name": "Symbol",
       "Field": "symbol",
       "DBType": "VARCHAR2",
@@ -107,8 +114,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Capital",
       "Field": "capital",
       "DBType": "VARCHAR2",
@@ -121,8 +130,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Currency",
       "Field": "currency",
       "DBType": "VARCHAR2",
@@ -135,8 +146,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Continent",
       "Field": "continent",
       "DBType": "VARCHAR2",
@@ -149,8 +162,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Continent_Code",
       "Field": "continentCode",
       "DBType": "VARCHAR2",
@@ -163,8 +178,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Alpha_3",
       "Field": "alpha3",
       "DBType": "VARCHAR2",
@@ -177,8 +194,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Rem",
       "Field": "rem",
       "DBType": "VARCHAR2",
@@ -191,8 +210,10 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": true
-    }, {
+      "isNull": true,
+      "isLabel": false
+    },
+    {
       "Name": "Ins_User",
       "Field": "insUser",
       "DBType": "NUMBER",
@@ -206,7 +227,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Ins_Date",
       "Field": "insDate",
       "DBType": "DATE",
@@ -220,7 +242,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Upd_User",
       "Field": "updUser",
       "DBType": "NUMBER",
@@ -234,7 +257,8 @@
       "update": true,
       "hasRelation": false,
       "isNull": true
-    }, {
+    },
+    {
       "Name": "Upd_Date",
       "Field": "updDate",
       "DBType": "DATE",

@@ -285,57 +285,23 @@
       "relation": null
     },
     {
-      "Name": "Curn_Id",
-      "Field": "curnId",
-      "DBType": "NUMBER",
-      "Type": "Short",
-      "Short": "Short",
-      "Scale": "0",
-      "Precision": "3",
-      "Default": "1",
-      "query": true,
-      "insert": true,
-      "update": true,
-      "hasRelation": true,
-      "isAutonumber": false,
-      "Autonumber": {
-        "Mode": "1",
-        "Aggr": "Max",
-        "Column": "Curn_Id",
-        "Synonym": "Proj_Proj_Tsheet",
-        "Sequence": "Proj_Proj_Tsheet_Seq",
-        "Condition": "",
-        "PeriodCondition": ""
-      },
-      "isFile": false,
-      "isNull": false,
-      "relation": {
-        "refTable": "Mng_Currency",
-        "refSynonym": "Mng_Curn",
-        "primaryKey": "Id",
-        "foreignKey": "Curn_Id",
-        "displayField": "Name",
-        "apiDisplayField": "curnName"
-      }
-    },
-    {
-      "Name": "Curn_Rate",
-      "Field": "curnRate",
+      "Name": "Scurn_Rate",
+      "Field": "scurnRate",
       "DBType": "NUMBER",
       "Type": "Double",
       "Short": "Double",
       "Scale": "9",
       "Precision": "25",
       "Default": "1",
-      "query": true,
-      "insert": true,
-      "update": true,
+      "query": false,
+      "insert": false,
+      "update": false,
       "hasRelation": false,
       "isAutonumber": false,
       "Autonumber": {
         "Mode": "1",
         "Aggr": "Max",
-        "Column": "Curn_Rate",
+        "Column": "Scurn_Rate",
         "Synonym": "Proj_Proj_Tsheet",
         "Sequence": "Proj_Proj_Tsheet_Seq",
         "Condition": "",
@@ -478,6 +444,7 @@
       },
       "isFile": false,
       "isNull": true,
+      "isLabel": false,
       "relation": null
     },
     {
@@ -587,6 +554,101 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Ccurn_Id",
+      "Field": "ccurnId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "3",
+      "Default": "1",
+      "query": false,
+      "insert": false,
+      "update": false,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Ccurn_Id",
+        "Synonym": "Proj_Proj_Tsheet",
+        "Sequence": "Proj_Proj_Tsheet_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Mng_Currency",
+        "refSynonym": "Mng_Curn",
+        "primaryKey": "Id",
+        "foreignKey": "Ccurn_Id",
+        "displayField": "Name",
+        "apiDisplayField": "ccurnName"
+      }
+    },
+    {
+      "Name": "Ccurn_Rate",
+      "Field": "ccurnRate",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "9",
+      "Precision": "25",
+      "Default": "1",
+      "query": false,
+      "insert": false,
+      "update": false,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Ccurn_Rate",
+        "Synonym": "Proj_Proj_Tsheet",
+        "Sequence": "Proj_Proj_Tsheet_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": null
+    },
+    {
+      "Name": "Scurn_Id",
+      "Field": "scurnId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "3",
+      "Default": "1",
+      "query": false,
+      "insert": false,
+      "update": false,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Scurn_Id",
+        "Synonym": "Proj_Proj_Tsheet",
+        "Sequence": "Proj_Proj_Tsheet_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Mng_Currency",
+        "refSynonym": "Mng_Curn",
+        "primaryKey": "Id",
+        "foreignKey": "Scurn_Id",
+        "displayField": "Name",
+        "apiDisplayField": "scurnName"
+      }
     }
   ]
 }

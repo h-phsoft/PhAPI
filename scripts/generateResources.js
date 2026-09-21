@@ -1,11 +1,79 @@
 /* global __dirname */
 
+/**
+ * Superseded, and inert: its source no longer exists.
+ *
+ * This converted db/JSON/pkgs -- a snapshot of the old Java front end's
+ * metadata -- into resources/modules. That tree has been deleted now that
+ * every table it described has been carried across, so every run of this ends
+ * at "Source directory not found".
+ *
+ * `generateFromSchema.js` does the same job from a live database, which is a
+ * source that cannot drift. Kept only so the conversion is recoverable if
+ * db/JSON/pkgs is ever restored from history; it can be deleted otherwise.
+ */
+
 const fs = require('fs');
 const path = require('path');
+
+const { modelFileName } = require('./lib/modelNaming');
 
 const srcPkgsDir = path.join(__dirname, '..', 'db', 'JSON', 'pkgs');
 const destModulesDir = path.join(__dirname, '..', 'resources', 'modules');
 const destAutocompleteDir = path.join(__dirname, '..', 'resources', 'autocomplete');
+
+/**
+ * Whether to rewrite files that already exist.
+ *
+ * Off by default, and that is the whole point. These files are edited by hand
+ * after they are generated -- translation flags, relation corrections -- and a
+ * generator that rewrote them would silently undo that work with no diff to
+ * notice. Generation is for what the database has gained, not for what is
+ * already described.
+ *
+ * --force covers the one case the default cannot: a column added to a table
+ * that already has a file. It discards hand edits, so it has to be asked for.
+ */
+const force = process.argv.includes('--force');
+
+/**
+ * The tables already described under a package directory, keyed by tableName.
+ *
+ * Indexed by table rather than by filename because the two disagree: the files
+ * already there are named after the source model (CodeStatus.json) while this
+ * script names what it writes after the table (Phs_Code_Status.json).
+ * Comparing paths therefore matches nothing and rewrites every table under a
+ * second name, which is how 985 duplicates appear beside 781 originals.
+ *
+ * @param {string} dir A package directory under resources/modules
+ * @returns {Set<string>} Lower-cased table names
+ */
+function describedTables(dir) {
+  const seen = new Set();
+
+  if (!fs.existsSync(dir)) {
+    return seen;
+  }
+
+  for (const file of fs.readdirSync(dir)) {
+    if (!file.endsWith('.json')) {
+      continue;
+    }
+    try {
+      const meta = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8'));
+      // `Name` in the files still in the older format; reading only
+      // `tableName` leaves those looking undescribed.
+      const described = meta.tableName || meta.Name || meta.Table || meta.Synonym;
+      if (described) {
+        seen.add(String(described).toLowerCase());
+      }
+    } catch {
+      // A file that cannot be parsed describes nothing; treat the table as new.
+    }
+  }
+
+  return seen;
+}
 
 function ensureDir(dir) {
   if (!fs.existsSync(dir)) {
@@ -89,6 +157,20 @@ function normalizeModel(raw, pkgName, filename) {
       Autonumber: autonumber,
       isFile: f.isFile || false,
       isNull: f.isNull !== undefined ? f.isNull : true,
+
+      // Whether this column holds system vocabulary that should be translated
+      // on the way out -- Active/Inactive, Yes/No -- rather than text a tenant
+      // typed.
+      //
+      // Emitted only for a VARCHAR2. Going by Type would be wrong: a DATE is
+      // typed String here too, so that would mark 1995 date columns as labels.
+      //
+      // Off for everything generated, because it cannot be read off the schema
+      // -- a code table's Name and a person's Name are the same column -- and
+      // is turned on by hand.
+      ...(dbType === 'VARCHAR2'
+        ? { isLabel: f.isLabel !== undefined ? f.isLabel : false }
+        : {}),
       relation
     };
   });
@@ -115,8 +197,7 @@ function normalizeModel(raw, pkgName, filename) {
     tableName,
     synonym,
     primaryKey,
-    hasChilds: raw.hasChilds !== undefined ? raw.hasChilds : (children.length > 0),
-    children,
+    hasChilds: raw.hasChilds !== undefined ? raw.hasChilds : (children.length > 0),    children,
     auditFields: raw.auditFields || {
       createdBy: 'insUser',
       createdAt: 'insDate',
@@ -139,7 +220,12 @@ function processAll() {
   ensureDir(destAutocompleteDir);
 
   let modelCount = 0;
+
+
+  let modelSkipped = 0;
   let autocompleteCount = 0;
+
+  let autocompleteSkipped = 0;
 
   const packages = fs.readdirSync(srcPkgsDir);
 
@@ -155,22 +241,69 @@ function processAll() {
       const targetPkgModuleDir = path.join(destModulesDir, pkg);
       ensureDir(targetPkgModuleDir);
 
-      const files = fs.readdirSync(modelsDir);
-      for (const file of files) {
-        if (file.endsWith('.json')) {
-          const filePath = path.join(modelsDir, file);
-          const filename = path.basename(file, '.json');
-          try {
-            const rawData = fs.readFileSync(filePath, 'utf8');
-            const rawJson = JSON.parse(rawData);
-            const normalized = normalizeModel(rawJson, pkg, filename);
 
-            const destPath = path.join(targetPkgModuleDir, `${normalized.tableName || filename}.json`);
-            fs.writeFileSync(destPath, JSON.stringify(normalized, null, 2), 'utf8');
-            modelCount++;
-          } catch (err) {
-            console.error(`Error processing model ${filePath}:`, err.message);
+      const described = describedTables(targetPkgModuleDir);
+
+      // Several source models can name the same table, and only one file is
+      // written for it, so the choice has to be made on merit rather than on
+      // whichever the directory listing reaches first. Lrg has three files
+      // claiming Lrg_Request_View -- DashboardRequestStatus with 11 columns,
+      // RequestStudyView with 151 and RequestView with 152 -- and the thin one
+      // sorts first. That was survivable while these files lost precedence to
+      // db/JSON/pkgs; now that they win it, first-read would make a dashboard
+      // query the definition of the view.
+      //
+      // The richest definition wins: most columns, and on a tie most children,
+      // because two files can carry the same 10 columns and disagree about the
+      // detail table hanging off them -- Lrg has ReciveInatallPayment.json and
+      // ReciveInstallPayment.json, identical but for the child, and the typo
+      // sorts first. A full tie keeps the first read, which is the behaviour
+      // every non-clashing table already had.
+      const chosen = new Map();
+
+      /** @returns {boolean} Whether `b` describes more than `a`. */
+      const richer = (a, b) =>
+        b.fields.length > a.fields.length
+        || (b.fields.length === a.fields.length && b.children.length > a.children.length);
+
+      for (const file of fs.readdirSync(modelsDir)) {
+        if (!file.endsWith('.json')) {
+          continue;
+        }
+        const filePath = path.join(modelsDir, file);
+        const filename = path.basename(file, '.json');
+        try {
+          const rawJson = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+          const normalized = normalizeModel(rawJson, pkg, filename);
+          const tableKey = String(normalized.tableName || filename).toLowerCase();
+          const held = chosen.get(tableKey);
+
+          if (!held || richer(held.normalized, normalized)) {
+            chosen.set(tableKey, { normalized, filename, filePath });
           }
+        } catch (err) {
+          console.error(`Error processing model ${filePath}:`, err.message);
+        }
+      }
+
+      for (const [tableKey, pick] of chosen) {
+        // Already described: leave it, hand edits and all. Compared by table,
+        // not by path, because a curated file may sit under a name this run
+        // would not choose.
+        if (!force && described.has(tableKey)) {
+          modelSkipped++;
+          continue;
+        }
+
+        const table = pick.normalized.tableName || pick.filename;
+        const destPath = path.join(targetPkgModuleDir, `${modelFileName(table, pkg)}.json`);
+
+        try {
+          fs.writeFileSync(destPath, JSON.stringify(pick.normalized, null, 2), 'utf8');
+          modelCount++;
+          described.add(tableKey);
+        } catch (err) {
+          console.error(`Error writing model ${destPath}:`, err.message);
         }
       }
     }
@@ -188,6 +321,15 @@ function processAll() {
           try {
             const rawData = fs.readFileSync(filePath, 'utf8');
             const destPath = path.join(targetPkgAutoDir, file);
+            if (!force && fs.existsSync(destPath)) {
+
+              autocompleteSkipped++;
+
+              continue;
+
+            }
+
+
             fs.writeFileSync(destPath, rawData, 'utf8');
             autocompleteCount++;
           } catch (err) {
@@ -198,8 +340,13 @@ function processAll() {
     }
   }
 
-  console.log(`Successfully generated ${modelCount} standardized entity models in ${destModulesDir}`);
-  console.log(`Successfully copied ${autocompleteCount} autocomplete definitions to ${destAutocompleteDir}`);
+  console.log(`Generated ${modelCount} new entity model(s) in ${destModulesDir}`);
+
+
+  console.log(`Left ${modelSkipped} existing model(s) untouched${force ? '' : ' (pass --force to rewrite them)'}`);
+  console.log(`Copied ${autocompleteCount} new autocomplete definition(s) to ${destAutocompleteDir}`);
+
+  console.log(`Left ${autocompleteSkipped} existing definition(s) untouched`);
 }
 
 processAll();

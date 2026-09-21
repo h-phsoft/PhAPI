@@ -99,6 +99,7 @@
       },
       "isFile": false,
       "isNull": false,
+      "isLabel": true,
       "relation": null
     },
     {

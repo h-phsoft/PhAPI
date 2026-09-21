@@ -1,9 +1,0 @@
-{
-  "Synonym": "Fund_Vbox",
-  "Select": "SELECT Id, Num||' '||Name AS Name FROM Fund_Vbox",
-  "Condition": "",
-  "Conds": {
-    "term": "Lower(Num||' '||Name) LIKE Lower('%{term}%')"
-  },
-  "OrderBy": "Num"
-}

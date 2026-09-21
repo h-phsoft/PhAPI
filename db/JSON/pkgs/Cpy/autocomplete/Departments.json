@@ -1,9 +1,0 @@
-{
-  "Synonym": "Cpy_Dept",
-  "Select": "SELECT Id,Name AS Name FROM Cpy_Dept",
-  "Condition": "",
-  "Conds": {
-    "term": "Lower(Name) LIKE Lower('%{term}%')"
-  },
-  "OrderBy": "Id"
-}

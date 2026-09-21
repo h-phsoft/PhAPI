@@ -1,9 +1,0 @@
-{
-  "Synonym": "Cash_Apjobs",
-  "Select": "SELECT Id, Num||' '||Name AS Name FROM Cash_Apjobs",
-  "Condition": "",
-  "Conds": {
-    "term": "Lower(Num||' '||Name) LIKE '%{term}%'"
-  },
-  "OrderBy": "Num"
-}
