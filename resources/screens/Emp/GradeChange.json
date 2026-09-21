@@ -1,0 +1,659 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "entity": "Emp/GradeChangeView",
+  "order": "Cgrad_Ddate,Cgrad_Num",
+  "fields": [
+    {
+      "name": "empId",
+      "labelKey": "empId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "empNum",
+      "labelKey": "empNum",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "empFname",
+      "labelKey": "empFname",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "cgradId",
+      "labelKey": "cgradId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "cgradNum",
+      "labelKey": "cgradNum",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "cgradDdate",
+      "labelKey": "cgradDdate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_char(Cgrad_Ddate,'DD-MM-YYYY')"
+    },
+    {
+      "name": "empName",
+      "labelKey": "empName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "tgradOid",
+      "labelKey": "tgradOid",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "grpOid",
+      "labelKey": "grpOid",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "grpOname",
+      "labelKey": "grpOname",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "degreeOid",
+      "labelKey": "degreeOid",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "degreeOname",
+      "labelKey": "degreeOname",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "tgradNid",
+      "labelKey": "tgradNid",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "grpNid",
+      "labelKey": "grpNid",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "grpNname",
+      "labelKey": "grpNname",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "degreeNid",
+      "labelKey": "degreeNid",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "degreeNname",
+      "labelKey": "degreeNname",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "cgradDays",
+      "labelKey": "cgradDays",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "cgradSdate",
+      "labelKey": "cgradSdate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_char(Cgrad_Sdate,'DD-MM-YYYY')"
+    },
+    {
+      "name": "cgradRem",
+      "labelKey": "cgradRem",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "deptId",
+      "labelKey": "deptId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "deptName",
+      "labelKey": "deptName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "sectId",
+      "labelKey": "sectId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "sectName",
+      "labelKey": "sectName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobId",
+      "labelKey": "jobId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "jobName",
+      "labelKey": "jobName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "levelId",
+      "labelKey": "levelId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "levelName",
+      "labelKey": "levelName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "spc1Id",
+      "labelKey": "spc1Id",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "spc1Name",
+      "labelKey": "spc1Name",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "spc2Id",
+      "labelKey": "spc2Id",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "spc2Name",
+      "labelKey": "spc2Name",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "spc3Id",
+      "labelKey": "spc3Id",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "spc3Name",
+      "labelKey": "spc3Name",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "spc4Id",
+      "labelKey": "spc4Id",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "spc4Name",
+      "labelKey": "spc4Name",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    }
+  ],
+  "screen": "Emp/GradeChange"
+}

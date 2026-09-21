@@ -1,0 +1,172 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "entity": "Phs/SpecialPrivileges",
+  "order": "Id",
+  "fields": [
+    {
+      "name": "id",
+      "labelKey": "id",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "statusId",
+      "labelKey": "statusId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "autocomplete": "Phs_Cod_Status"
+    },
+    {
+      "name": "name",
+      "labelKey": "name",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "lovid",
+      "labelKey": "lovid",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "lovnum",
+      "labelKey": "lovnum",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "lovname",
+      "labelKey": "lovname",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "lovtable",
+      "labelKey": "lovtable",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "lovwhere",
+      "labelKey": "lovwhere",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "rem",
+      "labelKey": "rem",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    }
+  ],
+  "screen": "Phs/SpecialPrivileges"
+}

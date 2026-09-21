@@ -1,0 +1,189 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "entity": "Emp/DeductionView",
+  "order": "Ded_Num",
+  "fields": [
+    {
+      "name": "dedId",
+      "labelKey": "dedId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "amttypeId",
+      "labelKey": "amttypeId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "taxbrktId",
+      "labelKey": "taxbrktId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "taxbrktName",
+      "labelKey": "taxbrktName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "taxpayId",
+      "labelKey": "taxpayId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "taxpayName",
+      "labelKey": "taxpayName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "dedNum",
+      "labelKey": "dedNum",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "dedName",
+      "labelKey": "dedName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "amttypeName",
+      "labelKey": "amttypeName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "dedAmt",
+      "labelKey": "dedAmt",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    }
+  ],
+  "screen": "Emp/Deduction"
+}

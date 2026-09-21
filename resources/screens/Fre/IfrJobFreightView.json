@@ -1,0 +1,2504 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "entity": "Fre/IfrJobFreightView",
+  "order": "Job_Id",
+  "fields": [
+    {
+      "name": "jobId",
+      "labelKey": "jobId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "aggregate": [
+        "Sum",
+        "Min",
+        "Max",
+        "Avg",
+        "StdDev",
+        "Variance",
+        "Median"
+      ]
+    },
+    {
+      "name": "periodId",
+      "labelKey": "periodId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "periodNum",
+      "labelKey": "periodNum",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "periodSdate",
+      "labelKey": "periodSdate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Period_Sdate, 'DD-MM-YYYY')"
+    },
+    {
+      "name": "periodEdate",
+      "labelKey": "periodEdate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Period_Edate, 'DD-MM-YYYY')"
+    },
+    {
+      "name": "periodName",
+      "labelKey": "periodName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "deptId",
+      "labelKey": "deptId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "deptName",
+      "labelKey": "deptName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "unitId",
+      "labelKey": "unitId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "unitName",
+      "labelKey": "unitName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "operId",
+      "labelKey": "operId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "operName",
+      "labelKey": "operName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "curnId",
+      "labelKey": "curnId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "curnName",
+      "labelKey": "curnName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "curnRate",
+      "labelKey": "curnRate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "modeId",
+      "labelKey": "modeId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "modeName",
+      "labelKey": "modeName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobNum",
+      "labelKey": "jobNum",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "jobDate",
+      "labelKey": "jobDate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Job_Date, 'DD-MM-YYYY')"
+    },
+    {
+      "name": "jobDescr",
+      "labelKey": "jobDescr",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "dYear",
+      "labelKey": "dYear",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "dMonth",
+      "labelKey": "dMonth",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "dDayofmonth",
+      "labelKey": "dDayofmonth",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "dDayofyear",
+      "labelKey": "dDayofyear",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "dDayofweek",
+      "labelKey": "dDayofweek",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "dYearmonth",
+      "labelKey": "dYearmonth",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "itermId",
+      "labelKey": "itermId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "itermName",
+      "labelKey": "itermName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "ptermId",
+      "labelKey": "ptermId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "ptermName",
+      "labelKey": "ptermName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "ocntryId",
+      "labelKey": "ocntryId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "ocntryName",
+      "labelKey": "ocntryName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "ocityId",
+      "labelKey": "ocityId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "ocityName",
+      "labelKey": "ocityName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "oportId",
+      "labelKey": "oportId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "oportName",
+      "labelKey": "oportName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "osportId",
+      "labelKey": "osportId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "osportName",
+      "labelKey": "osportName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "oaportId",
+      "labelKey": "oaportId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "oaportName",
+      "labelKey": "oaportName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobOname",
+      "labelKey": "jobOname",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobOaddress",
+      "labelKey": "jobOaddress",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "dcntryId",
+      "labelKey": "dcntryId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "dcntryName",
+      "labelKey": "dcntryName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "dcityId",
+      "labelKey": "dcityId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "dcityName",
+      "labelKey": "dcityName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "dportId",
+      "labelKey": "dportId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "dportName",
+      "labelKey": "dportName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "dsportId",
+      "labelKey": "dsportId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "dsportName",
+      "labelKey": "dsportName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "daportId",
+      "labelKey": "daportId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "daportName",
+      "labelKey": "daportName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobDname",
+      "labelKey": "jobDname",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobDaddress",
+      "labelKey": "jobDaddress",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "comodId",
+      "labelKey": "comodId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "comodName",
+      "labelKey": "comodName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobVcomd",
+      "labelKey": "jobVcomd",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobShip",
+      "labelKey": "jobShip",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobCons",
+      "labelKey": "jobCons",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobQnt",
+      "labelKey": "jobQnt",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "jobPrice",
+      "labelKey": "jobPrice",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "jobWnet",
+      "labelKey": "jobWnet",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "jobWgros",
+      "labelKey": "jobWgros",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "jobWchrg",
+      "labelKey": "jobWchrg",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "jobVolume",
+      "labelKey": "jobVolume",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "jobAmt",
+      "labelKey": "jobAmt",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "jobCamt",
+      "labelKey": "jobCamt",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "jobComm",
+      "labelKey": "jobComm",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "jobCcomm",
+      "labelKey": "jobCcomm",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "jobEtd",
+      "labelKey": "jobEtd",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Job_Etd, 'DD-MM-YYYY')"
+    },
+    {
+      "name": "jobEta",
+      "labelKey": "jobEta",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Job_Eta, 'DD-MM-YYYY')"
+    },
+    {
+      "name": "jobAtd",
+      "labelKey": "jobAtd",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Job_Atd, 'DD-MM-YYYY')"
+    },
+    {
+      "name": "jobAta",
+      "labelKey": "jobAta",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Job_Ata, 'DD-MM-YYYY')"
+    },
+    {
+      "name": "userId",
+      "labelKey": "userId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "userUgrpId",
+      "labelKey": "userUgrpId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "userPgrpId",
+      "labelKey": "userPgrpId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "userGenderId",
+      "labelKey": "userGenderId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "userStatusId",
+      "labelKey": "userStatusId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "userLogon",
+      "labelKey": "userLogon",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "userName",
+      "labelKey": "userName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "statusId",
+      "labelKey": "statusId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "statusName",
+      "labelKey": "statusName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "statusDate",
+      "labelKey": "statusDate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Status_Date, 'DD-MM-YYYY')"
+    },
+    {
+      "name": "statusRem",
+      "labelKey": "statusRem",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "delStatusId",
+      "labelKey": "delStatusId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "delStatusName",
+      "labelKey": "delStatusName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "delNum",
+      "labelKey": "delNum",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "delDate",
+      "labelKey": "delDate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Del_Date, 'DD-MM-YYYY')"
+    },
+    {
+      "name": "delPerson",
+      "labelKey": "delPerson",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobDcust",
+      "labelKey": "jobDcust",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobDuedate",
+      "labelKey": "jobDuedate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Job_Duedate, 'DD-MM-YYYY')"
+    },
+    {
+      "name": "jobMnum",
+      "labelKey": "jobMnum",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobMdate",
+      "labelKey": "jobMdate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Job_Mdate, 'DD-MM-YYYY')"
+    },
+    {
+      "name": "jobHnum",
+      "labelKey": "jobHnum",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobHdate",
+      "labelKey": "jobHdate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Job_Hdate, 'DD-MM-YYYY')"
+    },
+    {
+      "name": "jobEnum",
+      "labelKey": "jobEnum",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobEdate",
+      "labelKey": "jobEdate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Job_Edate, 'DD-MM-YYYY')"
+    },
+    {
+      "name": "jobFnum",
+      "labelKey": "jobFnum",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobFdate",
+      "labelKey": "jobFdate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Job_Fdate, 'DD-MM-YYYY')"
+    },
+    {
+      "name": "airlineId",
+      "labelKey": "airlineId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "airlineName",
+      "labelKey": "airlineName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "shiplineId",
+      "labelKey": "shiplineId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "shiplineName",
+      "labelKey": "shiplineName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobNref",
+      "labelKey": "jobNref",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobBref",
+      "labelKey": "jobBref",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobPorder",
+      "labelKey": "jobPorder",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "trackId",
+      "labelKey": "trackId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "trackName",
+      "labelKey": "trackName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobLdm",
+      "labelKey": "jobLdm",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "jobCbm",
+      "labelKey": "jobCbm",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "jobCmrdate",
+      "labelKey": "jobCmrdate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Job_Cmrdate, 'DD-MM-YYYY')"
+    },
+    {
+      "name": "packId",
+      "labelKey": "packId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "packName",
+      "labelKey": "packName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "kdoctypeId",
+      "labelKey": "kdoctypeId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "kdoctypeName",
+      "labelKey": "kdoctypeName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobKdocnum",
+      "labelKey": "jobKdocnum",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobKdocdate",
+      "labelKey": "jobKdocdate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Job_Kdocdate, 'DD-MM-YYYY')"
+    },
+    {
+      "name": "jobWaybill",
+      "labelKey": "jobWaybill",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "idoctypeId",
+      "labelKey": "idoctypeId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "idoctypeName",
+      "labelKey": "idoctypeName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobIdocnum",
+      "labelKey": "jobIdocnum",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobIdocdate",
+      "labelKey": "jobIdocdate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Job_Idocdate, 'DD-MM-YYYY')"
+    },
+    {
+      "name": "odoctypeId",
+      "labelKey": "odoctypeId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "odoctypeName",
+      "labelKey": "odoctypeName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobOdocnum",
+      "labelKey": "jobOdocnum",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobOdocdate",
+      "labelKey": "jobOdocdate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Job_Odocdate, 'DD-MM-YYYY')"
+    },
+    {
+      "name": "jobTripno",
+      "labelKey": "jobTripno",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "ttypeId",
+      "labelKey": "ttypeId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "ttypeName",
+      "labelKey": "ttypeName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobRelId",
+      "labelKey": "jobRelId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "jobRem",
+      "labelKey": "jobRem",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "pshareStatusId",
+      "labelKey": "pshareStatusId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "pshareStatusName",
+      "labelKey": "pshareStatusName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "jobInsUser",
+      "labelKey": "jobInsUser",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "jobInsDate",
+      "labelKey": "jobInsDate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Job_Ins_Date, 'DD-MM-YYYY')"
+    },
+    {
+      "name": "jobUpdUser",
+      "labelKey": "jobUpdUser",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "jobUpdDate",
+      "labelKey": "jobUpdDate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Job_Upd_Date, 'DD-MM-YYYY')"
+    }
+  ],
+  "screen": "Fre/IfrJobFreightView"
+}

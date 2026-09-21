@@ -1,0 +1,423 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "entity": "Proj/ProjectTimesheet",
+  "order": "Id",
+  "fields": [
+    {
+      "name": "id",
+      "labelKey": "id",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "projId",
+      "labelKey": "projId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "aggregate": [
+        "Sum",
+        "Min",
+        "Max",
+        "Avg",
+        "StdDev",
+        "Variance",
+        "Median"
+      ],
+      "autocomplete": "Proj_Proj"
+    },
+    {
+      "name": "teamId",
+      "labelKey": "teamId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "autocomplete": "Proj_Team"
+    },
+    {
+      "name": "mwitemId",
+      "labelKey": "mwitemId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "autocomplete": "Proj_Mwitem"
+    },
+    {
+      "name": "twitemId",
+      "labelKey": "twitemId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "autocomplete": "Proj_Twitem"
+    },
+    {
+      "name": "ddate",
+      "labelKey": "ddate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Ddate, 'DD-MM-YYYY')"
+    },
+    {
+      "name": "hours",
+      "labelKey": "hours",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "sprice",
+      "labelKey": "sprice",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "cprice",
+      "labelKey": "cprice",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "scurnRate",
+      "labelKey": "scurnRate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "camt",
+      "labelKey": "camt",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "amt",
+      "labelKey": "amt",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "ccst",
+      "labelKey": "ccst",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "cst",
+      "labelKey": "cst",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "rem",
+      "labelKey": "rem",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "insUser",
+      "labelKey": "insUser",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "insDate",
+      "labelKey": "insDate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Ins_Date, 'DD-MM-YYYY')"
+    },
+    {
+      "name": "updUser",
+      "labelKey": "updUser",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "updDate",
+      "labelKey": "updDate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Upd_Date, 'DD-MM-YYYY')"
+    },
+    {
+      "name": "ccurnId",
+      "labelKey": "ccurnId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "autocomplete": "Mng_Curn"
+    },
+    {
+      "name": "ccurnRate",
+      "labelKey": "ccurnRate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "scurnId",
+      "labelKey": "scurnId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "autocomplete": "Mng_Curn"
+    }
+  ],
+  "screen": "Proj/ProjectTimesheet"
+}

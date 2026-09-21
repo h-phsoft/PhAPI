@@ -1,0 +1,319 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "entity": "Str/StoresMateriales",
+  "order": "Id",
+  "fields": [
+    {
+      "name": "id",
+      "labelKey": "id",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "width": "100px"
+    },
+    {
+      "name": "storId",
+      "labelKey": "storId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "autocomplete": "Str_Store",
+      "width": "100px"
+    },
+    {
+      "name": "itemId",
+      "labelKey": "itemId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "autocomplete": "Str_Item",
+      "width": "100px"
+    },
+    {
+      "name": "loc1Id",
+      "labelKey": "loc1Id",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "autocomplete": "Str_Cod_Loc1",
+      "width": "100px"
+    },
+    {
+      "name": "loc2Id",
+      "labelKey": "loc2Id",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "autocomplete": "Str_Cod_Loc2",
+      "width": "100px"
+    },
+    {
+      "name": "loc3Id",
+      "labelKey": "loc3Id",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "autocomplete": "Str_Cod_Loc3",
+      "width": "100px"
+    },
+    {
+      "name": "statusId",
+      "labelKey": "statusId",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "autocomplete": "Phs_Cod_Status",
+      "width": "100px"
+    },
+    {
+      "name": "reqLimit",
+      "labelKey": "reqLimit",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "width": "100px"
+    },
+    {
+      "name": "minLimit",
+      "labelKey": "minLimit",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "width": "100px"
+    },
+    {
+      "name": "maxLimit",
+      "labelKey": "maxLimit",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "width": "100px"
+    },
+    {
+      "name": "cqnt",
+      "labelKey": "cqnt",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "width": "100px"
+    },
+    {
+      "name": "camt",
+      "labelKey": "camt",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "width": "100px"
+    },
+    {
+      "name": "insUser",
+      "labelKey": "insUser",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "width": "100px"
+    },
+    {
+      "name": "insDate",
+      "labelKey": "insDate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "width": "100px"
+    },
+    {
+      "name": "updUser",
+      "labelKey": "updUser",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "width": "100px"
+    },
+    {
+      "name": "updDate",
+      "labelKey": "updDate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "width": "100px"
+    }
+  ],
+  "screen": "Str/StoresMateriales"
+}

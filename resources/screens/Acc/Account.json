@@ -1,0 +1,149 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "entity": "Acc/AccountView",
+  "order": "Id",
+  "fields": [
+    {
+      "name": "id",
+      "labelKey": "id",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "aggregate": [
+        "Sum",
+        "Min",
+        "Max",
+        "Avg",
+        "StdDev",
+        "Variance",
+        "Median"
+      ]
+    },
+    {
+      "name": "num",
+      "labelKey": "num",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "name",
+      "labelKey": "name",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "typeName",
+      "labelKey": "typeName",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "statusName",
+      "labelKey": "statusName",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "dbcrName",
+      "labelKey": "dbcrName",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "closeName",
+      "labelKey": "closeName",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "rem",
+      "labelKey": "rem",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    }
+  ],
+  "screen": "Acc/Account"
+}

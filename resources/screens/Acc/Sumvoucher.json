@@ -1,0 +1,441 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "entity": "Acc/SumvoucherView",
+  "order": "Id",
+  "fields": [
+    {
+      "name": "mstId",
+      "labelKey": "mstId",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "branId",
+      "labelKey": "branId",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "branName",
+      "labelKey": "branName",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "periodId",
+      "labelKey": "periodId",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "periodName",
+      "labelKey": "periodName",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "periodSdate",
+      "labelKey": "periodSdate",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "periodEdate",
+      "labelKey": "periodEdate",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "srcId",
+      "labelKey": "srcId",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "srcName",
+      "labelKey": "srcName",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "commitId",
+      "labelKey": "commitId",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "statusName",
+      "labelKey": "statusName",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "mstNum",
+      "labelKey": "mstNum",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "mstPnum",
+      "labelKey": "mstPnum",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "mstDate",
+      "labelKey": "mstDate",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "mstRem",
+      "labelKey": "mstRem",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "docId",
+      "labelKey": "docId",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "docName",
+      "labelKey": "docName",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "mstDocn",
+      "labelKey": "mstDocn",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "mstDocd",
+      "labelKey": "mstDocd",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "minsUser",
+      "labelKey": "minsUser",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "minsDate",
+      "labelKey": "minsDate",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "mupdUser",
+      "labelKey": "mupdUser",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "mupdDate",
+      "labelKey": "mupdDate",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "sumDeb",
+      "labelKey": "sumDeb",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "sumCrd",
+      "labelKey": "sumCrd",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "sumDebc",
+      "labelKey": "sumDebc",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "sumCrdc",
+      "labelKey": "sumCrdc",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    }
+  ],
+  "screen": "Acc/Sumvoucher"
+}

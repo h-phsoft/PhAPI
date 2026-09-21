@@ -1,0 +1,249 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "entity": "Acc/BudgetView",
+  "order": "Id",
+  "fields": [
+    {
+      "name": "mstId",
+      "labelKey": "mstId",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "mstNum",
+      "labelKey": "mstNum",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "mstName",
+      "labelKey": "mstName",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "mstDate",
+      "labelKey": "mstDate",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "mstRem",
+      "labelKey": "mstRem",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "trnId",
+      "labelKey": "trnId",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "trnOrd",
+      "labelKey": "trnOrd",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "trnBud",
+      "labelKey": "trnBud",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "trnRem",
+      "labelKey": "trnRem",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "costId",
+      "labelKey": "costId",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "costNum",
+      "labelKey": "costNum",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "costName",
+      "labelKey": "costName",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "accId",
+      "labelKey": "accId",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ]
+    },
+    {
+      "name": "accNum",
+      "labelKey": "accNum",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "accName",
+      "labelKey": "accName",
+      "filter": true,
+      "display": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    }
+  ],
+  "screen": "Acc/Budget"
+}

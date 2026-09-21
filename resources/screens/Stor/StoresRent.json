@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "entity": "Stor/StoresView",
+  "order": "Stor_Lname",
+  "fields": [
+    {
+      "name": "storLname",
+      "labelKey": "storLname",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        "[%",
+        "%]",
+        "%",
+        "![%",
+        "!%]",
+        "!%"
+      ]
+    },
+    {
+      "name": "storEdate",
+      "labelKey": "storEdate",
+      "filter": true,
+      "display": true,
+      "group": true,
+      "sort": true,
+      "operators": [
+        "=",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<=",
+        "<>",
+        "><"
+      ],
+      "expression": "To_Char(Stor_Edate, 'DD-MM-YYYY')"
+    }
+  ],
+  "screen": "Stor/StoresRent"
+}
