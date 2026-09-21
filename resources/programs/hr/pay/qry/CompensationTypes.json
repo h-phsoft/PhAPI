@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "hr/pay/qry/CompensationTypes",
+  "entity": "Emp/Compensation",
+  "search": {
+    "fields": [
+      {
+        "name": "comtypeId",
+        "labelKey": "comtypeName",
+        "operators": [
+          "=",
+          "!="
+        ]
+      }
+    ]
+  }
+}

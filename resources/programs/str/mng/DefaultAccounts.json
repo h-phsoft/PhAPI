@@ -1,0 +1,92 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "str/mng/DefaultAccounts",
+  "entity": "Str/DefaultAccounts",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "storId",
+        "labelKey": "Store"
+      },
+      {
+        "name": "trntypId",
+        "labelKey": "Transaction"
+      },
+      {
+        "name": "cstaccId",
+        "labelKey": "Cost.Account",
+        "input": "autocomplete",
+        "endpoint": "/Acc/GrantedAccount/Autocomplete"
+      },
+      {
+        "name": "revaccId",
+        "labelKey": "Revenue.Account",
+        "input": "autocomplete",
+        "endpoint": "/Acc/GrantedAccount/Autocomplete"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "storId",
+        "labelKey": "Store",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "trntypId",
+        "labelKey": "Transaction",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "cstaccId",
+        "labelKey": "Cost.Account",
+        "input": "autocomplete",
+        "endpoint": "/Acc/GrantedAccount/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "revaccId",
+        "labelKey": "Revenue.Account",
+        "input": "autocomplete",
+        "endpoint": "/Acc/GrantedAccount/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

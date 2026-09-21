@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "lrg/qry/risk/Statistics",
+  "entity": "Lrg/Instrument",
+  "search": {
+    "fields": [
+      {
+        "name": "dnum",
+        "labelKey": "Dnum",
+        "operators": [
+          "<>"
+        ]
+      }
+    ]
+  }
+}

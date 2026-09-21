@@ -1,0 +1,116 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "super/ReceiveStatus",
+  "entity": "Cpy/UnitReceiveStatus",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "width": "10"
+      },
+      {
+        "name": "rstatusId",
+        "labelKey": "RStatus",
+        "width": "10"
+      },
+      {
+        "name": "forcecloseId",
+        "labelKey": "ForcecloseId",
+        "width": "10"
+      },
+      {
+        "name": "headId",
+        "labelKey": "HeadId",
+        "width": "10"
+      },
+      {
+        "name": "unitId",
+        "labelKey": "UnitId",
+        "width": "10"
+      },
+      {
+        "name": "days",
+        "labelKey": "Days",
+        "width": "25"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "10"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rstatusId",
+        "labelKey": "RStatus",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "headId",
+        "labelKey": "HeadId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "forcecloseId",
+        "labelKey": "ForcecloseId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitId",
+        "labelKey": "UnitId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "days",
+        "labelKey": "Days",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

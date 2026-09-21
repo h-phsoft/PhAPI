@@ -1,0 +1,223 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "fix/mng/Assets",
+  "entity": "Fix/FixedsItems",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "width": "100px"
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "150px"
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Unit",
+        "width": "80px"
+      },
+      {
+        "name": "spc1Id",
+        "labelKey": "Specification 1",
+        "width": "100px"
+      },
+      {
+        "name": "spc2Id",
+        "labelKey": "Specification 2",
+        "width": "100px"
+      },
+      {
+        "name": "spc3Id",
+        "labelKey": "Specification 3",
+        "width": "100px"
+      },
+      {
+        "name": "spc4Id",
+        "labelKey": "Specification 4",
+        "width": "100px"
+      },
+      {
+        "name": "spc5Id",
+        "labelKey": "Specification 5",
+        "width": "100px"
+      },
+      {
+        "name": "perc",
+        "labelKey": "Perc%",
+        "width": "80px"
+      },
+      {
+        "name": "accFid",
+        "labelKey": "Acc.Fixed",
+        "input": "autocomplete",
+        "width": "150px",
+        "endpoint": "/UC/Acc/GrantedAccount/Autocomplete"
+      },
+      {
+        "name": "accDid",
+        "labelKey": "Acc.Depreciation",
+        "input": "autocomplete",
+        "width": "150px",
+        "endpoint": "/UC/Acc/GrantedAccount/Autocomplete"
+      },
+      {
+        "name": "accRid",
+        "labelKey": "Acc.Total.Depreciation",
+        "input": "autocomplete",
+        "width": "150px",
+        "endpoint": "/UC/Acc/GrantedAccount/Autocomplete"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "250px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Unit",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc1Id",
+        "labelKey": "Specification 1",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc2Id",
+        "labelKey": "Specification 2",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc3Id",
+        "labelKey": "Specification 3",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc4Id",
+        "labelKey": "Specification 4",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc5Id",
+        "labelKey": "Specification 5",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "perc",
+        "labelKey": "Perc",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "accFid",
+        "labelKey": "Acc.Fixed",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/GrantedAccount/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "accDid",
+        "labelKey": "Acc.Depreciation",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/GrantedAccount/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "accRid",
+        "labelKey": "Acc.Total.Depreciation",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/GrantedAccount/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

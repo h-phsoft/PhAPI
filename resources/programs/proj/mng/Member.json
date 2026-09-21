@@ -1,0 +1,83 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "proj/mng/Member",
+  "entity": "Mkm/Members",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "name",
+        "labelKey": "Proj.name"
+      },
+      {
+        "name": "userId",
+        "labelKey": "Proj.userId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Users/Autocomplete"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Proj.statusId",
+        "input": "autocomplete"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Proj.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "userId",
+        "labelKey": "Proj.userId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Users/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Proj.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Proj.name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Proj.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

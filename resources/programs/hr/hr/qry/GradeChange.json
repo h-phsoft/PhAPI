@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "hr/hr/qry/GradeChange",
+  "entity": "Emp/GradeChange",
+  "search": {
+    "fields": [
+      {
+        "name": "empId",
+        "labelKey": "Employee",
+        "input": "autocomplete",
+        "endpoint": "/UC/Emp/Employee/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "tgradOid",
+        "labelKey": "Old.Grade",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "tgradNid",
+        "labelKey": "New.Grade",
+        "operators": [
+          "=",
+          "!="
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "prd/mng/Plans",
+  "entity": "Prd/PlanMst",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Prd.num"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Prd.ddate"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Prd.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Prd.num",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Prd.ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Prd.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

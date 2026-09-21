@@ -1,0 +1,264 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "trans/Balancing",
+  "entity": "Trn/BalanceMaster",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "blnId",
+        "labelKey": "Trn.Balan",
+        "width": "100px"
+      },
+      {
+        "name": "num",
+        "labelKey": "Number"
+      },
+      {
+        "name": "bdate",
+        "labelKey": "Date",
+        "width": "100px"
+      },
+      {
+        "name": "modelId",
+        "labelKey": "Trn.Model",
+        "width": "100px"
+      },
+      {
+        "name": "pnum",
+        "labelKey": "Trn.PNum"
+      },
+      {
+        "name": "weight",
+        "labelKey": "Trn.Weight"
+      },
+      {
+        "name": "overweight",
+        "labelKey": "Trn.OverWeight"
+      },
+      {
+        "name": "fee",
+        "labelKey": "Trn.Fee"
+      },
+      {
+        "name": "wpenalty",
+        "labelKey": "Trn.WPenalty"
+      },
+      {
+        "name": "apenalty",
+        "labelKey": "Trn.APenalty"
+      },
+      {
+        "name": "rnum",
+        "labelKey": "Trn.Rnum"
+      },
+      {
+        "name": "docNum",
+        "labelKey": "Trn.DocNum"
+      },
+      {
+        "name": "docDate",
+        "labelKey": "Trn.DocDate",
+        "width": "100px"
+      },
+      {
+        "name": "resId",
+        "labelKey": "Trn.ResStatus",
+        "width": "100px"
+      },
+      {
+        "name": "src",
+        "labelKey": "Trn.Src"
+      },
+      {
+        "name": "dest",
+        "labelKey": "Trn.Dest"
+      },
+      {
+        "name": "driver",
+        "labelKey": "Driver"
+      },
+      {
+        "name": "commodity",
+        "labelKey": "Commodity"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Remark"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "blnId",
+        "labelKey": "Trn.Balan",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "bdate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "modelId",
+        "labelKey": "Model",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "pnum",
+        "labelKey": "Trn.PNum",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "fee",
+        "labelKey": "Trn.Fee",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "wpenalty",
+        "labelKey": "Trn.WPenalty",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "apenalty",
+        "labelKey": "Trn.APenalty",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "src",
+        "labelKey": "Trn.Src",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "dest",
+        "labelKey": "Trn.Dest",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "driver",
+        "labelKey": "Driver",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "commodity",
+        "labelKey": "Commodity",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

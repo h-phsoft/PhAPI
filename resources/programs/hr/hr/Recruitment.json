@@ -1,0 +1,230 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "hr/hr/Recruitment",
+  "entity": "Emp/Recruitment",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "width": "10"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "width": "10"
+      },
+      {
+        "name": "code",
+        "labelKey": "Code",
+        "width": "10"
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "25"
+      },
+      {
+        "name": "sdate",
+        "labelKey": "S.Date",
+        "width": "10"
+      },
+      {
+        "name": "edate",
+        "labelKey": "E.Date",
+        "width": "10"
+      },
+      {
+        "name": "geninfo",
+        "labelKey": "Geninfo",
+        "width": "10"
+      },
+      {
+        "name": "pospurp",
+        "labelKey": "Pospurp",
+        "width": "10"
+      },
+      {
+        "name": "essenfunc",
+        "labelKey": "Essenfunc",
+        "width": "10"
+      },
+      {
+        "name": "minreq",
+        "labelKey": "Minreq",
+        "width": "10"
+      },
+      {
+        "name": "prefqlfy",
+        "labelKey": "Prefqlfy",
+        "width": "10"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "code",
+        "labelKey": "Code",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "sdate",
+        "labelKey": "S.Date",
+        "input": "datetime",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "edate",
+        "labelKey": "E.Date",
+        "input": "datetime",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "geninfo",
+        "labelKey": "Geninfo",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "pospurp",
+        "labelKey": "Pospurp",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "essenfunc",
+        "labelKey": "Essenfunc",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "minreq",
+        "labelKey": "Minreq",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "prefqlfy",
+        "labelKey": "Prefqlfy",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "super/Departments",
+  "entity": "Cpy/Departments",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "width": "100"
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "100"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "100"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

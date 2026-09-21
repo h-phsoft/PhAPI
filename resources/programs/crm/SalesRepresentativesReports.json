@@ -1,0 +1,234 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "crm/SalesRepresentativesReports",
+  "entity": "Crm/ReportMaster",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "ownerId",
+        "hidden": true
+      },
+      {
+        "name": "reprId",
+        "labelKey": "Crm.reprId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Crm/Representatives/Autocomplete"
+      },
+      {
+        "name": "contId",
+        "labelKey": "Crm.contId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Crm/Contact/Autocomplete"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Crm.ddate"
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Crm.typeId"
+      },
+      {
+        "name": "person",
+        "labelKey": "Crm.person"
+      },
+      {
+        "name": "fdate",
+        "labelKey": "Crm.fdate"
+      },
+      {
+        "name": "frem",
+        "labelKey": "Crm.frem"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Crm.statusId"
+      },
+      {
+        "name": "kindId",
+        "labelKey": "Crm.kindId"
+      },
+      {
+        "name": "chance",
+        "labelKey": "Crm.chance"
+      },
+      {
+        "name": "comp",
+        "labelKey": "Crm.comp"
+      },
+      {
+        "name": "report",
+        "hidden": true
+      },
+      {
+        "name": "rem",
+        "labelKey": "Crm.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "reprId",
+        "labelKey": "Crm.reprId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Crm/Representatives/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "contId",
+        "labelKey": "Crm.contId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Crm/Contact/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Crm.ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Crm.typeId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "person",
+        "labelKey": "Crm.person",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "fdate",
+        "labelKey": "Crm.fdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "frem",
+        "labelKey": "Crm.frem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Crm.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "kindId",
+        "labelKey": "Crm.kindId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "chance",
+        "labelKey": "Crm.chance",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "comp",
+        "labelKey": "Crm.comp",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "report",
+        "labelKey": "Crm.report",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Crm.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

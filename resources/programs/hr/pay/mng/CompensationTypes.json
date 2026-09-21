@@ -1,0 +1,144 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "hr/pay/mng/CompensationTypes",
+  "entity": "Emp/Compensation",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "width": "8"
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "10"
+      },
+      {
+        "name": "comtypeId",
+        "labelKey": "comtypeName",
+        "width": "10"
+      },
+      {
+        "name": "brktId",
+        "labelKey": "TaxBrackets",
+        "width": "10"
+      },
+      {
+        "name": "isdedId",
+        "labelKey": "Isded",
+        "width": "12"
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Amount.Type",
+        "width": "8"
+      },
+      {
+        "name": "pamt",
+        "labelKey": "trnAmt",
+        "width": "8"
+      },
+      {
+        "name": "maxamt",
+        "labelKey": "Maxamt",
+        "width": "40"
+      },
+      {
+        "name": "maxtypeId",
+        "labelKey": "Max.type",
+        "width": "10"
+      },
+      {
+        "name": "maxsaltypId",
+        "labelKey": "Max.Salary.Type",
+        "width": "10"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "comtypeId",
+        "labelKey": "comtypeName",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "isdedId",
+        "labelKey": "Isded",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "brktId",
+        "labelKey": "TaxBrackets",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Type",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "pamt",
+        "labelKey": "trnAmt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      }
+    ]
+  }
+}

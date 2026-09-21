@@ -1,0 +1,217 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "hr/pay/Loans",
+  "entity": "Emp/Loans",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "width": "10"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "width": "10"
+      },
+      {
+        "name": "empId",
+        "labelKey": "Employee",
+        "input": "autocomplete",
+        "width": "25",
+        "endpoint": "/UC/Emp/Employee/Autocomplete"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "width": "10"
+      },
+      {
+        "name": "sdate",
+        "labelKey": "S.Date",
+        "width": "10"
+      },
+      {
+        "name": "edate",
+        "labelKey": "E.Date",
+        "width": "10"
+      },
+      {
+        "name": "pflgId",
+        "labelKey": "Pflg",
+        "width": "10"
+      },
+      {
+        "name": "tamt",
+        "labelKey": "Total.Amount",
+        "width": "8"
+      },
+      {
+        "name": "mamt",
+        "labelKey": "Month.Amount",
+        "width": "8"
+      },
+      {
+        "name": "bamt",
+        "labelKey": "Balance.Amount",
+        "width": "8"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "40"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "empId",
+        "labelKey": "Employee",
+        "input": "autocomplete",
+        "endpoint": "/UC/Emp/Employee/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "pflgId",
+        "labelKey": "Pflg",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "sdate",
+        "labelKey": "S.Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "edate",
+        "labelKey": "E.date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "tamt",
+        "labelKey": "Total.Amount",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "mamt",
+        "labelKey": "Month.Amount",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "bamt",
+        "labelKey": "Balance.Amount",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

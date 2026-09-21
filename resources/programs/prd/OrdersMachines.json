@@ -1,0 +1,100 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "prd/OrdersMachines",
+  "entity": "Prd/OrderMachineWorkTimes",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "mordId",
+        "labelKey": "Prd.mordId",
+        "input": "autocomplete"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Prd.ddate"
+      },
+      {
+        "name": "nhour",
+        "labelKey": "Prd.nhour"
+      },
+      {
+        "name": "nminute",
+        "labelKey": "Prd.nminute"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Prd.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "tordId",
+        "labelKey": "Prd.tordId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Prd.ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "nhour",
+        "labelKey": "Prd.nhour",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "nminute",
+        "labelKey": "Prd.nminute",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Prd.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

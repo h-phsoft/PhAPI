@@ -1,0 +1,76 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "hr/hr/mng/AppraisalTemplate",
+  "entity": "Emp/AppraisalTemplatesMst",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "width": "10"
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "10"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "40"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

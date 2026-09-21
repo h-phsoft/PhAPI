@@ -1,0 +1,77 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "prd/Orders",
+  "entity": "Prd/OrderMst",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "periodId",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Prd.num"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Prd.ddate"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Prd.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Prd.num",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Prd.ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Prd.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

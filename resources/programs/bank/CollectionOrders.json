@@ -1,0 +1,390 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "bank/CollectionOrders",
+  "entity": "Bank/CollectionOrder",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "periodId",
+        "hidden": true
+      },
+      {
+        "name": "userId",
+        "hidden": true
+      },
+      {
+        "name": "vhrId",
+        "hidden": true
+      },
+      {
+        "name": "deptId",
+        "labelKey": "Bank.deptId"
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Bank.unitId"
+      },
+      {
+        "name": "operId",
+        "labelKey": "Bank.operId"
+      },
+      {
+        "name": "num",
+        "labelKey": "Bank.num"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Bank.ddate"
+      },
+      {
+        "name": "edate",
+        "labelKey": "Bank.edate"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Bank.statusId"
+      },
+      {
+        "name": "statusDate",
+        "labelKey": "Bank.statusDate"
+      },
+      {
+        "name": "statusDescr",
+        "labelKey": "Bank.statusDescr"
+      },
+      {
+        "name": "contId",
+        "labelKey": "Bank.contId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete"
+      },
+      {
+        "name": "correspondent",
+        "labelKey": "Bank.correspondent"
+      },
+      {
+        "name": "recipient",
+        "labelKey": "Bank.recipient"
+      },
+      {
+        "name": "bankId",
+        "labelKey": "Bank.bankid",
+        "input": "autocomplete",
+        "endpoint": "/UC/Bank/Accounts/Autocomplete"
+      },
+      {
+        "name": "rnum",
+        "labelKey": "Bank.rnum"
+      },
+      {
+        "name": "rdate",
+        "labelKey": "Bank.rdate"
+      },
+      {
+        "name": "mnum",
+        "labelKey": "Bank.mnum"
+      },
+      {
+        "name": "mdate",
+        "labelKey": "Bank.mdate"
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Bank.curnId"
+      },
+      {
+        "name": "curnRate",
+        "labelKey": "Bank.curnRate"
+      },
+      {
+        "name": "camt",
+        "labelKey": "Bank.camt"
+      },
+      {
+        "name": "amt",
+        "labelKey": "Bank.amt"
+      },
+      {
+        "name": "ccom",
+        "labelKey": "Bank.ccom"
+      },
+      {
+        "name": "com",
+        "labelKey": "Bank.com"
+      },
+      {
+        "name": "reason",
+        "labelKey": "Bank.reason"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Bank.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "deptId",
+        "labelKey": "Bank.deptId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Bank.unitId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "operId",
+        "labelKey": "Bank.operId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "Bank.num",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Bank.ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "edate",
+        "labelKey": "Bank.edate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Bank.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusDate",
+        "labelKey": "Bank.statusDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "statusDescr",
+        "labelKey": "Bank.statusDescr",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "contId",
+        "labelKey": "Bank.contId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "correspondent",
+        "labelKey": "Bank.correspondent",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "recipient",
+        "labelKey": "Bank.recipient",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "bankId",
+        "labelKey": "Bank.bankid",
+        "input": "autocomplete",
+        "endpoint": "/UC/Bank/Accounts/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rnum",
+        "labelKey": "Bank.rnum",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rdate",
+        "labelKey": "Bank.rdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Bank.curnId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnRate",
+        "labelKey": "Bank.curnRate",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ccom",
+        "labelKey": "Bank.ccom",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "com",
+        "labelKey": "Bank.com",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "reason",
+        "labelKey": "Bank.reason",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Bank.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

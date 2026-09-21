@@ -1,0 +1,101 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "fix/Additions",
+  "entity": "Fix/InputMaster",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "vhrId",
+        "hidden": true
+      },
+      {
+        "name": "periodId",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "width": "100px"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "width": "100px"
+      },
+      {
+        "name": "accId",
+        "labelKey": "Account",
+        "input": "autocomplete",
+        "width": "150px",
+        "endpoint": "/UC/Acc/GrantedAccount/Autocomplete"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "700px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "accId",
+        "labelKey": "Account",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/GrantedAccount/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/risk/mng/Pointers",
+  "entity": "Lrg/RejectionLetter",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "vhrId",
+        "hidden": true
+      },
+      {
+        "name": "reqId",
+        "labelKey": "ReqId"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "width": "100px"
+      },
+      {
+        "name": "agrdate",
+        "labelKey": "Agrdate",
+        "width": "100px"
+      },
+      {
+        "name": "agrnum",
+        "labelKey": "Agrnum",
+        "width": "100px"
+      },
+      {
+        "name": "director",
+        "labelKey": "Director",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "reqId",
+        "labelKey": "ReqId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "StatusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "agrdate",
+        "labelKey": "Agrdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "agrnum",
+        "labelKey": "Agrnum",
+        "input": "number",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "director",
+        "labelKey": "Director",
+        "input": "number",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "input": "number",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      }
+    ]
+  }
+}

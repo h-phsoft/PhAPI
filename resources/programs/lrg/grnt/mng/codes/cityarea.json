@@ -1,0 +1,73 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/grnt/mng/codes/cityarea",
+  "entity": "Lrg/CodeArea",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "cityid",
+        "labelKey": "city",
+        "width": "200px"
+      },
+      {
+        "name": "statusId",
+        "hidden": true
+      },
+      {
+        "name": "name",
+        "labelKey": "Area",
+        "width": "200px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "500px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "cityid",
+        "labelKey": "city",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "area",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,302 @@
+/**
+ * Composing a screen for a client to render.
+ *
+ * A screen file is an overlay and deliberately thin: it says which fields, in
+ * what order, under which label, and how a reference is picked. Everything else
+ * about a field -- its type, whether it is required, what it defaults to, which
+ * table it points at and which column carries that row's name -- is in the
+ * generated entity model, and restating it in the screen file would be a second
+ * source of truth (M3).
+ *
+ * So the two are put together here, and here rather than anywhere lower because
+ * what comes out is display: a translated label, an input kind, a lookup URL.
+ * A service returns domain values; presentation is what turns them into
+ * something a screen can draw (L4).
+ *
+ * The client therefore receives one flat field list with nothing left to infer,
+ * and does not need the entity model, the locale files, or any knowledge of how
+ * a DBType maps to an input.
+ */
+
+const mainApp = require('../metadata/registry');
+const screens = require('../metadata/screens');
+const { operatorsFor } = require('../core/query/conditions');
+const { dateKind } = require('../core/types/dates');
+const i18nHelper = require('../utils/i18nHelper');
+
+/**
+ * The input a column is entered through, when the screen does not say.
+ *
+ * Derived, because every part of the answer is in the schema: a reference
+ * column carries a relation and is picked from a list, a DATE is a date, a
+ * NUMBER is a number. The screen overrides only what the schema cannot imply --
+ * that a reference with thousands of rows is searched rather than listed.
+ *
+ * @param {Object} meta A field from the entity model
+ * @returns {string}
+ */
+function inputFor(meta) {
+  if (meta.relation) {
+    return 'select';
+  }
+
+  // DATE, DATETIME and TIME as the column declares them, lower-cased into the
+  // input a client renders. The declared type is the authority on whether a
+  // value carries a time, which is the same rule the bind side follows (D4).
+  const kind = dateKind(meta);
+  if (kind) {
+    return kind.toLowerCase();
+  }
+
+  const dbType = String(meta.DBType || '').toUpperCase();
+  if (/INT|NUMBER|NUMERIC|DECIMAL|FLOAT|DOUBLE|REAL|MONEY/.test(dbType)) {
+    return 'number';
+  }
+
+  return 'text';
+}
+
+/**
+ * The `/UC` path a relation points at, or null when nothing describes it.
+ *
+ * A relation names the referenced table as the database spells it --
+ * `Phs_Code_Gender` -- while a client addresses it by package and model name --
+ * `/UC/Phs/CodeGender`. The registry knows both, so the translation happens
+ * once here rather than in every screen file.
+ *
+ * @param {Object} relation
+ * @returns {string|null}
+ */
+function lookupPath(relation) {
+  if (!relation || !relation.refTable) {
+    return null;
+  }
+
+  const target = mainApp.getEntityByTable(relation.refTable)
+    || mainApp.getEntityBySynonym(relation.refSynonym || '');
+
+  if (!target || !target.sourcePath) {
+    return null;
+  }
+
+  const name = String(target.sourcePath).split(/[\\/]/).pop().replace(/\.json$/, '');
+  return `/UC/${target.package}/${name}`;
+}
+
+/**
+ * One field, as a client needs it.
+ *
+ * @param {Object} declared The screen's entry for this field
+ * @param {Object} meta The entity's column
+ * @param {string} lang
+ * @returns {Object}
+ */
+function composeField(declared, meta, lang, withOperators) {
+  const field = {
+    name: meta.Field,
+    label: i18nHelper.translateLabel(declared.labelKey || meta.Field, lang),
+    input: declared.input || inputFor(meta)
+  };
+
+  // A column the server assigns is not asked for; a NOT NULL one is required.
+  if (meta.isNull === false && !meta.isAutonumber) {
+    field.required = true;
+  }
+
+  if (meta.Default !== undefined && meta.Default !== null && meta.Default !== '') {
+    field.defaultValue = String(meta.Default);
+  }
+
+  if (meta.relation) {
+    const path = lookupPath(meta.relation);
+    if (path) {
+      field.lookup = path;
+    }
+    if (meta.relation.apiDisplayField) {
+      field.displayField = meta.relation.apiDisplayField;
+    }
+  }
+
+  if (declared.endpoint) {
+    field.endpoint = declared.endpoint;
+  }
+  if (declared.width) {
+    field.width = declared.width;
+  }
+  if (declared.hidden) {
+    field.hidden = true;
+  }
+  if (declared.readOnly) {
+    field.readOnly = true;
+  }
+
+  // What may be asked of this column, narrowed by its type -- and only where
+  // something will be asked. An entry form does not compare, so carrying an
+  // operator list on every form field would be sending a search vocabulary to a
+  // screen that has no search.
+  if (withOperators) {
+    const allowed = operatorsFor(meta);
+    const offered = Array.isArray(declared.operators) && declared.operators.length > 0
+      ? declared.operators.filter(op => allowed.includes(op))
+      : allowed;
+
+    if (offered.length > 0) {
+      field.operators = offered;
+    }
+  }
+
+  return field;
+}
+
+/**
+ * Turns a screen's field list into composed fields, dropping any naming a
+ * column the entity does not have.
+ *
+ * Dropped rather than passed through: a field that resolves to no column cannot
+ * be read, written or searched, and forwarding its name to a client invites it
+ * to send that name back as an identifier (D2).
+ *
+ * @returns {{fields: Object[], dropped: string[]}}
+ */
+function composeFields(list, entity, lang, withOperators = false) {
+  const byExact = new Map(entity.fields.map(f => [f.Field, f]));
+  const byLower = new Map(entity.fields.map(f => [String(f.Field).toLowerCase(), f]));
+
+  const fields = [];
+  const dropped = [];
+
+  for (const declared of (list || [])) {
+    if (!declared || !declared.name) {
+      continue;
+    }
+    // Exact first: twenty-seven entities expose two columns whose API names
+    // differ only in case, and a case-insensitive lookup picks between them at
+    // random.
+    const meta = byExact.get(declared.name) || byLower.get(String(declared.name).toLowerCase());
+    if (!meta) {
+      dropped.push(String(declared.name));
+      continue;
+    }
+    fields.push(composeField(declared, meta, lang, withOperators));
+  }
+
+  return { fields, dropped };
+}
+
+/**
+ * The screen a program renders, composed, or null when it has none.
+ *
+ * @param {string} programUrl The path as Phs_MPrg records it
+ * @param {Object} context Request context, carrying `lang`
+ * @returns {Object|null}
+ */
+function forProgram(programUrl, context = {}) {
+  const screen = screens.getProgram(programUrl);
+  if (!screen) {
+    return null;
+  }
+
+  const [pkg, name] = String(screen.entity || '').split('/');
+  const entity = mainApp.getEntity(pkg, name);
+  if (!entity) {
+    return null;
+  }
+
+  const lang = context.lang || context.vLang || 'en';
+  const modelName = String(entity.sourcePath || '').split(/[\\/]/).pop().replace(/\.json$/, '');
+
+  const composed = {
+    version: screen.version || '1.0',
+    kind: screen.kind || 'form',
+    program: screen.program || programUrl,
+    entity: `${entity.package}/${modelName}`,
+    endpoint: `/UC/${entity.package}/${modelName}`,
+    primaryKey: entity.primaryKey,
+    dropped: []
+  };
+
+  if (screen.form) {
+    const { fields, dropped } = composeFields(screen.form.fields, entity, lang);
+    composed.form = { fields };
+    composed.dropped.push(...dropped);
+  }
+
+  if (screen.search) {
+    const { fields, dropped } = composeFields(screen.search.fields, entity, lang, true);
+    composed.search = { fields };
+    composed.dropped.push(...dropped);
+  }
+
+  if (screen.order) {
+    composed.order = screen.order;
+  }
+
+  return composed;
+}
+
+/**
+ * The query definition behind a report endpoint, composed.
+ *
+ * @param {string} pkg
+ * @param {string} name
+ * @param {Object} context
+ * @returns {Object|null}
+ */
+function forReport(pkg, name, context = {}) {
+  const screen = screens.getReport(pkg, name);
+  if (!screen) {
+    return null;
+  }
+
+  const [entityPkg, entityName] = String(screen.entity || '').split('/');
+  const entity = mainApp.getEntity(entityPkg, entityName);
+  if (!entity) {
+    return null;
+  }
+
+  const lang = context.lang || context.vLang || 'en';
+
+  // A query definition marks each field for what it may take part in, and the
+  // four are independent: a column can be shown without being filterable.
+  const declared = (screen.fields || []).map(field => ({
+    ...field,
+    labelKey: field.labelKey || field.name
+  }));
+
+  const { fields, dropped } = composeFields(declared, entity, lang, true);
+
+  // The flags the query definition carries and the entity does not.
+  const flags = new Map((screen.fields || []).map(f => [String(f.name).toLowerCase(), f]));
+  for (const field of fields) {
+    const source = flags.get(String(field.name).toLowerCase());
+    if (!source) {
+      continue;
+    }
+    for (const flag of ['filter', 'display', 'group', 'sort']) {
+      if (source[flag]) {
+        field[flag] = true;
+      }
+    }
+    if (Array.isArray(source.aggregate) && source.aggregate.length > 0) {
+      field.aggregate = source.aggregate;
+    }
+    if (source.expression) {
+      field.expression = source.expression;
+    }
+  }
+
+  return {
+    version: screen.version || '1.0',
+    kind: 'query',
+    screen: screen.screen || `${pkg}/${name}`,
+    entity: screen.entity,
+    endpoint: `/UC/${pkg}/${name}`,
+    order: screen.order,
+    condition: screen.condition,
+    periodCondition: screen.periodCondition,
+    fields,
+    dropped
+  };
+}
+
+module.exports = { forProgram, forReport, composeFields, inputFor, lookupPath };

@@ -1,0 +1,88 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "super/NotifTables",
+  "entity": "Notif/Tables",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Notif.Status",
+        "width": "100"
+      },
+      {
+        "name": "name",
+        "labelKey": "Notif.Name",
+        "width": "100"
+      },
+      {
+        "name": "dname",
+        "labelKey": "Notif.Dname",
+        "width": "100"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Notif.Rem",
+        "width": "100"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "statusId",
+        "labelKey": "Notif.Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Notif.Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "dname",
+        "labelKey": "Notif.Dname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

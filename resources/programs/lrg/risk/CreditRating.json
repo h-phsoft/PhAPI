@@ -1,0 +1,150 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/risk/CreditRating",
+  "entity": "Lrg/RequestCategoryMst",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "reqId",
+        "labelKey": "ReqId",
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Lrg/Borrowers/Autocomplete"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "ClassificationDate",
+        "width": "100px"
+      },
+      {
+        "name": "commitId",
+        "labelKey": "Commited",
+        "width": "100px"
+      },
+      {
+        "name": "catId",
+        "labelKey": "CatId",
+        "width": "100px"
+      },
+      {
+        "name": "degreeId",
+        "labelKey": "DegreeId",
+        "width": "100px"
+      },
+      {
+        "name": "opinion",
+        "labelKey": "Opinion",
+        "width": "100px"
+      },
+      {
+        "name": "footnote",
+        "labelKey": "FootNote",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "reqId",
+        "labelKey": "ReqId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Lrg/Borrowers/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "commitId",
+        "labelKey": "Commited",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "DDatee",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "catId",
+        "labelKey": "CatId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "degreeId",
+        "labelKey": "DegreeId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "opinion",
+        "labelKey": "Opinion",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "footnote",
+        "labelKey": "FootNote",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

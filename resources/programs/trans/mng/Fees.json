@@ -1,0 +1,99 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "trans/mng/Fees",
+  "entity": "Trn/Fees",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "100px"
+      },
+      {
+        "name": "forId",
+        "labelKey": "For",
+        "width": "100px"
+      },
+      {
+        "name": "typeId",
+        "labelKey": "AmtTyp",
+        "width": "100px"
+      },
+      {
+        "name": "amt",
+        "labelKey": "Amount",
+        "width": "100px"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Remark"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "forId",
+        "labelKey": "For",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "AmtTyp",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

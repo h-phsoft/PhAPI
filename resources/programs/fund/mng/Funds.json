@@ -1,0 +1,114 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "fund/mng/Funds",
+  "entity": "Fund/Boxes",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "name",
+        "labelKey": "Fund.name"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Crm.statusId"
+      },
+      {
+        "name": "costId",
+        "labelKey": "Fund.costId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/CostActive/Autocomplete"
+      },
+      {
+        "name": "accId",
+        "labelKey": "Fund.accId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/AccActive/Autocomplete"
+      },
+      {
+        "name": "userId",
+        "labelKey": "Fund.userId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Users/Autocomplete"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Fund.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "name",
+        "labelKey": "Fund.name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Fund.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "costId",
+        "labelKey": "Fund.costId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/CostActive/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "accId",
+        "labelKey": "Fund.accId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/AccActive/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "userId",
+        "labelKey": "Fund.userId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Users/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Fund.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

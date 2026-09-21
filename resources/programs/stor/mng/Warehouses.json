@@ -1,0 +1,244 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "stor/mng/Warehouses",
+  "entity": "Stor/Stores",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "LName",
+        "labelKey": "Stor.nameStor"
+      },
+      {
+        "name": "IName",
+        "labelKey": "Stor.nameStor"
+      },
+      {
+        "name": "costId",
+        "labelKey": "Stor.costId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccCost/Autocomplete"
+      },
+      {
+        "name": "accId",
+        "labelKey": "Stor.accId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccAcc/Autocomplete"
+      },
+      {
+        "name": "cstaccId",
+        "labelKey": "Stor.cstaccId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccAcc/Autocomplete"
+      },
+      {
+        "name": "revaccId",
+        "labelKey": "Stor.revaccId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccAcc/Autocomplete"
+      },
+      {
+        "name": "empId",
+        "labelKey": "Stor.empStor",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/Employee/Autocomplete"
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Stor.typeStor"
+      },
+      {
+        "name": "ownId",
+        "labelKey": "Stor.ownId"
+      },
+      {
+        "name": "saleId",
+        "labelKey": "Stor.saleId"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Stor.statusId"
+      },
+      {
+        "name": "sdate",
+        "labelKey": "Stor.sdate"
+      },
+      {
+        "name": "edate",
+        "labelKey": "Stor.edate"
+      },
+      {
+        "name": "descr",
+        "labelKey": "Stor.descr"
+      },
+      {
+        "name": "address",
+        "labelKey": "Stor.address"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Stor.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "statusId",
+        "labelKey": "Stor.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "costId",
+        "labelKey": "Stor.costId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccCost/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "accId",
+        "labelKey": "Stor.accId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccAcc/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "cstaccId",
+        "labelKey": "Stor.cstaccId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccAcc/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "revaccId",
+        "labelKey": "Stor.revaccId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccAcc/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "empId",
+        "labelKey": "Stor.empStor",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/Employee/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Stor.typeStor",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ownId",
+        "labelKey": "Stor.ownId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "saleId",
+        "labelKey": "Stor.saleId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "sdate",
+        "labelKey": "Stor.ware.sdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "edate",
+        "labelKey": "Stor.ware.edate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Stor.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "descr",
+        "labelKey": "Stor.descr",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "address",
+        "labelKey": "Stor.address",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

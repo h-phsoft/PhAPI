@@ -1,0 +1,94 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "sdesk/mng/Services",
+  "entity": "Sdesk/Service",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "num",
+        "width": "50px"
+      },
+      {
+        "name": "name",
+        "labelKey": "name",
+        "width": "125px"
+      },
+      {
+        "name": "description",
+        "labelKey": "description",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem",
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "num",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "description",
+        "labelKey": "description",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

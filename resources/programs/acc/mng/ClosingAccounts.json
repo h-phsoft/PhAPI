@@ -1,0 +1,74 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "acc/mng/ClosingAccounts",
+  "entity": "Acc/CloseAccount",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "ord",
+        "labelKey": "Order",
+        "width": "5"
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "15"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "ord",
+        "labelKey": "Order",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

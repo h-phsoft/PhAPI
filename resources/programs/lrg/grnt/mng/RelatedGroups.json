@@ -1,0 +1,86 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/grnt/mng/RelatedGroups",
+  "entity": "Lrg/RelatedGroupMst",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "width": "100px"
+      },
+      {
+        "name": "name",
+        "labelKey": "Name"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

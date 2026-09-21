@@ -1,0 +1,79 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "stor/mng/ItemFormula",
+  "entity": "Stor/ItemFormula",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "itemId",
+        "labelKey": "Stor.itemId"
+      },
+      {
+        "name": "itemRid",
+        "labelKey": "Stor.itemRid"
+      },
+      {
+        "name": "qnt",
+        "labelKey": "Stor.qnt"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Stor.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "itemId",
+        "labelKey": "Stor.itemId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "itemRid",
+        "labelKey": "Stor.itemRid",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "qnt",
+        "labelKey": "Stor.qnt",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Stor.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

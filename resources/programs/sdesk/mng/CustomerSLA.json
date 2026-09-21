@@ -1,0 +1,107 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "sdesk/mng/CustomerSLA",
+  "entity": "Sdesk/CustomerSla",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "contId",
+        "labelKey": "sedesc.ContId",
+        "width": "100px"
+      },
+      {
+        "name": "sdate",
+        "labelKey": "sedesc.SDate",
+        "width": "100px"
+      },
+      {
+        "name": "edate",
+        "labelKey": "sedesc.EDate",
+        "width": "100px"
+      },
+      {
+        "name": "renewaldate",
+        "labelKey": "sedesc.RenewalDate",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem",
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "contId",
+        "labelKey": "sedesc.ContId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "edate",
+        "labelKey": "sedesc.EDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "sdate",
+        "labelKey": "sedesc.SDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "renewaldate",
+        "labelKey": "sedesc.RenewalDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

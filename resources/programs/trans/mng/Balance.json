@@ -1,0 +1,94 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "trans/mng/Balance",
+  "entity": "Trn/Balance",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "100px"
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Type",
+        "width": "100px"
+      },
+      {
+        "name": "locId",
+        "labelKey": "Location",
+        "width": "100px"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Remark"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Type",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "locId",
+        "labelKey": "Location",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

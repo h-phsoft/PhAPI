@@ -1,0 +1,223 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/legal/LoanRenormal",
+  "entity": "Lrg/LoanReturnNormal",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "width": "100px"
+      },
+      {
+        "name": "commitId",
+        "labelKey": "Commited",
+        "width": "100px"
+      },
+      {
+        "name": "reqId",
+        "labelKey": "ReqId",
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Lrg/Borrowers/Autocomplete"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Datee",
+        "width": "100px"
+      },
+      {
+        "name": "amt",
+        "labelKey": "Payment",
+        "width": "100px"
+      },
+      {
+        "name": "newDamt",
+        "labelKey": "NewDamt",
+        "width": "100px"
+      },
+      {
+        "name": "name",
+        "labelKey": "settName",
+        "width": "100px"
+      },
+      {
+        "name": "position",
+        "labelKey": "PositionReq",
+        "width": "100px"
+      },
+      {
+        "name": "report",
+        "labelKey": "Report",
+        "width": "100px"
+      },
+      {
+        "name": "InstallNum",
+        "labelKey": "InstallNum",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "commitId",
+        "labelKey": "Commited",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "reqId",
+        "labelKey": "ReqId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Lrg/Borrowers/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Datee",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "amt",
+        "labelKey": "Payment",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "InstallNum",
+        "labelKey": "InstallNum",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "amt",
+        "labelKey": "NewDamt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "position",
+        "labelKey": "PositionReq",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "settName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "report",
+        "labelKey": "Report",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

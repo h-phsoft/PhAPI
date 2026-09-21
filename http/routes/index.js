@@ -5,6 +5,7 @@ const resolveTenant = require('../middleware/tenantResolver');
 const authorize = require('../middleware/authorize');
 const unifiedController = require('../controllers/unifiedController');
 const authController = require('../controllers/authController');
+const screenController = require('../controllers/screenController');
 
 // Public auth route. The Java client's older names for it -- Authentication and
 // getAccessToken -- are rewritten to this path by middleware/legacyRoutes.js
@@ -33,6 +34,13 @@ router.post('/UserAccount/changePassword', (req, res, next) => authController.ch
 function mount(method, pathStr, handler) {
   router[method](pathStr, authorize, handler);
 }
+
+// --- SCREEN METADATA ---
+// Ahead of the generic /UC/:package/:table routes, which would otherwise read
+// `Screen` as a package and `Program` as a table. A program path carries
+// slashes, so it is the rest of the path rather than one parameter.
+mount('get', '/UC/Screen/Program/*', (req, res, next) => screenController.program(req, res, next));
+mount('get', '/UC/Screen/Report/:pkgName/:reportName', (req, res, next) => screenController.report(req, res, next));
 
 // --- UNIFIED CONTROLLER (/UC) ENDPOINTS ---
 mount('post', '/UC/InitForm', (req, res, next) => unifiedController.initForm(req, res, next));

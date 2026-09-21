@@ -1,0 +1,76 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "super/ForwardStatus",
+  "entity": "Cpy/UnitForwardStatus",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "urstatusfId",
+        "labelKey": "UrstatusfId",
+        "width": "10"
+      },
+      {
+        "name": "urstatusrId",
+        "labelKey": "UrstatusrId",
+        "width": "10"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "width": "10"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "10"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "urstatusfId",
+        "labelKey": "UrstatusfId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "urstatusrId",
+        "labelKey": "UrstatusrId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

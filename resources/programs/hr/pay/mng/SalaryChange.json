@@ -1,0 +1,217 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "hr/pay/mng/SalaryChange",
+  "entity": "Emp/ChangeSalary",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Number"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date"
+      },
+      {
+        "name": "docn",
+        "labelKey": "Doc.Num"
+      },
+      {
+        "name": "docd",
+        "labelKey": "Doc.Date"
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Type"
+      },
+      {
+        "name": "saltypId",
+        "labelKey": "Salary.Type"
+      },
+      {
+        "name": "brktId",
+        "labelKey": "Brackets"
+      },
+      {
+        "name": "perc",
+        "labelKey": "Perc"
+      },
+      {
+        "name": "amt",
+        "labelKey": "Amount"
+      },
+      {
+        "name": "nmin",
+        "labelKey": "S.Min"
+      },
+      {
+        "name": "nmax",
+        "labelKey": "S.Max"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "docn",
+        "labelKey": "Doc.Num",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "docd",
+        "labelKey": "Doc.Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Type",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "saltypId",
+        "labelKey": "Salary.Type",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "brktId",
+        "labelKey": "Brackets",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "perc",
+        "labelKey": "Perc",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "amt",
+        "labelKey": "Amount",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "nmin",
+        "labelKey": "S.Min",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "nmax",
+        "labelKey": "S.Max",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

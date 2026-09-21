@@ -1,0 +1,318 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "crm/mng/Contacts",
+  "entity": "Crm/Contact",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "LName",
+        "labelKey": "LName",
+        "width": "100px"
+      },
+      {
+        "name": "IName",
+        "labelKey": "IName",
+        "width": "100px"
+      },
+      {
+        "name": "legalName",
+        "labelKey": "LegalName",
+        "width": "100px"
+      },
+      {
+        "name": "owner",
+        "labelKey": "Owner",
+        "width": "100px"
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "width": "100px"
+      },
+      {
+        "name": "title",
+        "labelKey": "Title",
+        "width": "100px"
+      },
+      {
+        "name": "contact",
+        "labelKey": "Contact",
+        "width": "100px"
+      },
+      {
+        "name": "phone",
+        "labelKey": "Phone",
+        "width": "100px"
+      },
+      {
+        "name": "phone1",
+        "labelKey": "Phone.2",
+        "width": "100px"
+      },
+      {
+        "name": "mobile",
+        "labelKey": "Mobile",
+        "width": "100px"
+      },
+      {
+        "name": "fax",
+        "labelKey": "Fax",
+        "width": "100px"
+      },
+      {
+        "name": "email",
+        "labelKey": "Email",
+        "width": "100px"
+      },
+      {
+        "name": "website",
+        "labelKey": "Website",
+        "width": "100px"
+      },
+      {
+        "name": "address",
+        "labelKey": "Address",
+        "width": "100px"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "width": "100px"
+      },
+      {
+        "name": "reprId",
+        "labelKey": "Repr",
+        "input": "autocomplete",
+        "endpoint": "/UC/Crm/Representatives/Autocomplete",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "LName",
+        "labelKey": "LName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "IName",
+        "labelKey": "IName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "legalName",
+        "labelKey": "LegalName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "owner",
+        "labelKey": "Owner",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "contact",
+        "labelKey": "Contact",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "title",
+        "labelKey": "Title",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "phone",
+        "labelKey": "Phone",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "phone1",
+        "labelKey": "Phone.2",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "mobile",
+        "labelKey": "Mobile",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "email",
+        "labelKey": "Email",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "website",
+        "labelKey": "Website",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "address",
+        "labelKey": "Address",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "reprId",
+        "labelKey": "Repr",
+        "input": "autocomplete",
+        "endpoint": "/UC/Crm/Representatives/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

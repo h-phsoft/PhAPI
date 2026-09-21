@@ -1,0 +1,483 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "proj/qry/s/Invoice",
+  "entity": "Proj/InvoiceView",
+  "search": {
+    "fields": [
+      {
+        "name": "minvNum",
+        "labelKey": "Proj.minvNum",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "minvDate",
+        "labelKey": "Proj.minvDate",
+        "input": "autocomplete",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "minvDuedate",
+        "labelKey": "Proj.minvDuedate",
+        "input": "autocomplete",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "minvPaidId",
+        "labelKey": "Proj.minvPaidId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "minvPaidAmt",
+        "labelKey": "Proj.minvPaidAmt",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "minvPaidDate",
+        "labelKey": "Proj.minvPaidDate",
+        "input": "autocomplete",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "minvRem",
+        "labelKey": "Proj.minvRem",
+        "input": "autocomplete",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "minvPeriodId",
+        "labelKey": "Proj.minvPeriodId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "periodName",
+        "labelKey": "Proj.periodName",
+        "input": "autocomplete",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "minvStatusId",
+        "labelKey": "Proj.minvStatusId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusName",
+        "labelKey": "Proj.statusName",
+        "input": "autocomplete",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "minvCustId",
+        "labelKey": "Proj.minvCustId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/Customers/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "custName",
+        "labelKey": "Proj.custName",
+        "input": "autocomplete",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "minvInsUser",
+        "labelKey": "Proj.minvInsUser",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "minvInsDate",
+        "labelKey": "Proj.minvInsDate",
+        "input": "autocomplete",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "minvUpdUser",
+        "labelKey": "Proj.minvUpdUser",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "minvUpdDate",
+        "labelKey": "Proj.minvUpdDate",
+        "input": "autocomplete",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "tinvId",
+        "labelKey": "Proj.tinvId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "tinvMstId",
+        "labelKey": "Proj.tinvMstId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "tinvNord",
+        "labelKey": "Proj.tinvNord",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "tinvQnt",
+        "labelKey": "Proj.tinvQnt",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "tinvPrice",
+        "labelKey": "Proj.tinvPrice",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "tinvCamt",
+        "labelKey": "Proj.tinvCamt",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "tinvAmt",
+        "labelKey": "Proj.tinvAmt",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "tinvRem",
+        "labelKey": "Proj.tinvRem",
+        "input": "autocomplete",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "tinvProjId",
+        "labelKey": "Proj.tinvProjId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/Project/Autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "projName",
+        "labelKey": "Proj.projName",
+        "input": "autocomplete",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "tinvTsheetId",
+        "labelKey": "Proj.tinvTsheetId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "tinvTypeId",
+        "labelKey": "Proj.tinvTypeId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "typeName",
+        "labelKey": "Proj.typeName",
+        "input": "autocomplete",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "tinvUnitId",
+        "labelKey": "Proj.tinvUnitId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitName",
+        "labelKey": "Proj.unitName",
+        "input": "autocomplete",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "tinvCurnId",
+        "labelKey": "Proj.tinvCurnId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnName",
+        "labelKey": "Proj.curnName",
+        "input": "autocomplete",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "tinvCurnRate",
+        "labelKey": "Proj.tinvCurnRate",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      }
+    ]
+  }
+}

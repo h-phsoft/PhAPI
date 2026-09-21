@@ -1,0 +1,220 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "prd/mng/QAFields",
+  "entity": "Prd/QualityAssuranceField",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "name",
+        "labelKey": "Prd.name"
+      },
+      {
+        "name": "ftypeId",
+        "labelKey": "Prd.ftypeId"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Prd.statusId"
+      },
+      {
+        "name": "vdefault",
+        "labelKey": "Prd.vdefault"
+      },
+      {
+        "name": "ddefValue",
+        "labelKey": "Prd.ddefValue"
+      },
+      {
+        "name": "dminValue",
+        "labelKey": "Prd.dminValue"
+      },
+      {
+        "name": "dmaxValue",
+        "labelKey": "Prd.dmaxValue"
+      },
+      {
+        "name": "ndefValue",
+        "labelKey": "Prd.ndefValue"
+      },
+      {
+        "name": "nminValue",
+        "labelKey": "Prd.nminValue"
+      },
+      {
+        "name": "nmaxValue",
+        "labelKey": "Prd.nmaxValue"
+      },
+      {
+        "name": "ydefValue",
+        "labelKey": "Prd.ydefValue"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Prd.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "name",
+        "labelKey": "Prd.name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "ftypeId",
+        "labelKey": "Prd.ftypeId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Prd.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "vdefault",
+        "labelKey": "Prd.vdefault",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "ddefValue",
+        "labelKey": "Prd.ddefValue",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "dminValue",
+        "labelKey": "Prd.dminValue",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "dmaxValue",
+        "labelKey": "Prd.dmaxValue",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ndefValue",
+        "labelKey": "Prd.ndefValue",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "nminValue",
+        "labelKey": "Prd.nminValue",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "nmaxValue",
+        "labelKey": "Prd.nmaxValue",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ydefValue",
+        "labelKey": "Prd.ydefValue",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Prd.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

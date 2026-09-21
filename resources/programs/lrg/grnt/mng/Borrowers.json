@@ -1,0 +1,449 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/grnt/mng/Borrowers",
+  "entity": "Lrg/Borrowers",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "width": "100px"
+      },
+      {
+        "name": "fullName",
+        "labelKey": "name",
+        "width": "100px"
+      },
+      {
+        "name": "legalId",
+        "labelKey": "LegalId",
+        "width": "100px"
+      },
+      {
+        "name": "docId",
+        "labelKey": "DocId",
+        "width": "100px"
+      },
+      {
+        "name": "docNum",
+        "labelKey": "DocNum",
+        "width": "100px"
+      },
+      {
+        "name": "cityId",
+        "labelKey": "CityId",
+        "width": "100px"
+      },
+      {
+        "name": "sectorId",
+        "labelKey": "SectorId",
+        "width": "100px"
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Type",
+        "width": "100px"
+      },
+      {
+        "name": "name",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "father",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "mother",
+        "labelKey": "Mother",
+        "width": "100px"
+      },
+      {
+        "name": "lname",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "genderId",
+        "labelKey": "Gender",
+        "width": "100px"
+      },
+      {
+        "name": "natId",
+        "labelKey": "Nationality",
+        "width": "100px"
+      },
+      {
+        "name": "issudate",
+        "labelKey": "IssuDate"
+      },
+      {
+        "name": "expiredate",
+        "labelKey": "ExpireDate",
+        "width": "100px"
+      },
+      {
+        "name": "kiedplace",
+        "labelKey": "KiedPlace",
+        "width": "100px"
+      },
+      {
+        "name": "kiednum",
+        "labelKey": "KiedNum",
+        "width": "100px"
+      },
+      {
+        "name": "dob",
+        "labelKey": "Date.Of.Birth"
+      },
+      {
+        "name": "pob",
+        "labelKey": "Place.Of.Birth",
+        "width": "100px"
+      },
+      {
+        "name": "partner",
+        "labelKey": "Partner",
+        "width": "100px"
+      },
+      {
+        "name": "class1Id",
+        "labelKey": "Class1Id",
+        "width": "100px"
+      },
+      {
+        "name": "class2Id",
+        "labelKey": "Class2Id",
+        "width": "100px"
+      },
+      {
+        "name": "class3Id",
+        "labelKey": "Class3Id",
+        "width": "100px"
+      },
+      {
+        "name": "martialId",
+        "labelKey": "maritalName",
+        "width": "100px"
+      },
+      {
+        "name": "mobile",
+        "labelKey": "Mobile",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "legalId",
+        "labelKey": "LegalId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "docId",
+        "labelKey": "DocId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "docNum",
+        "labelKey": "DocNum",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "cityId",
+        "labelKey": "CityId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "sectorId",
+        "labelKey": "SectorId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Type",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "father",
+        "labelKey": "Father",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "mother",
+        "labelKey": "Mother",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "lname",
+        "labelKey": "LName",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "genderId",
+        "labelKey": "Gender",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "issudate",
+        "labelKey": "IssuDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "expiredate",
+        "labelKey": "ExpireDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "kiedplace",
+        "labelKey": "KiedPlace",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "kiednum",
+        "labelKey": "KiedNum",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "dob",
+        "labelKey": "Date.Of.Birth",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "pob",
+        "labelKey": "Place.Of.Birth",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "partner",
+        "labelKey": "Partner",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "class1Id",
+        "labelKey": "Class1Id",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "class2Id",
+        "labelKey": "Class2Id",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "class3Id",
+        "labelKey": "Class3Id",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "martialId",
+        "labelKey": "maritalName",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "natId",
+        "labelKey": "Nationality",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "mobile",
+        "labelKey": "Mobile",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

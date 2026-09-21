@@ -1,0 +1,80 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "fix/ActualQTYs",
+  "entity": "Fix/ActualMaster",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "periodId",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "width": "10"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "width": "10"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "50"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

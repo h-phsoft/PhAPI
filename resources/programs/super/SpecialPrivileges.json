@@ -1,0 +1,164 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "super/SpecialPrivileges",
+  "entity": "Phs/SpecialPrivileges",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "width": "100"
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "100"
+      },
+      {
+        "name": "lovid",
+        "labelKey": "Lovid",
+        "width": "100"
+      },
+      {
+        "name": "lovnum",
+        "labelKey": "Lovnum",
+        "width": "100"
+      },
+      {
+        "name": "lovname",
+        "labelKey": "Lovname",
+        "width": "100"
+      },
+      {
+        "name": "lovtable",
+        "labelKey": "Lovtable",
+        "width": "100"
+      },
+      {
+        "name": "lovwhere",
+        "labelKey": "Lovwhere",
+        "width": "100"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "100"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "lovid",
+        "labelKey": "Lovid",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "lovnum",
+        "labelKey": "Lovnum",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "lovname",
+        "labelKey": "Lovname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "lovtable",
+        "labelKey": "Lovtable",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "lovwhere",
+        "labelKey": "Lovwhere",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

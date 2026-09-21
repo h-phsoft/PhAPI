@@ -1,0 +1,66 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "acc/mng/GrantAccounts",
+  "entity": "Acc/GrantAccount",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "systemId",
+        "labelKey": "System",
+        "width": "10"
+      },
+      {
+        "name": "accId",
+        "labelKey": "Account",
+        "input": "autocomplete",
+        "width": "15",
+        "endpoint": "/Acc/AccActive/Autocomplete"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Remark"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "systemId",
+        "labelKey": "System",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "accId",
+        "labelKey": "Account",
+        "input": "autocomplete",
+        "endpoint": "/Acc/AccActive/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Remark",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

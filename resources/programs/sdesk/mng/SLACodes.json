@@ -1,0 +1,75 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "sdesk/mng/SLACodes",
+  "entity": "Sdesk/CodeSla",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "color",
+        "labelKey": "color",
+        "width": "100px"
+      },
+      {
+        "name": "name",
+        "labelKey": "name",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem",
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "color",
+        "labelKey": "color",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

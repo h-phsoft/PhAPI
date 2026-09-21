@@ -1,0 +1,106 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "trans/mng/Model",
+  "entity": "Trn/CodeModel",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "100px"
+      },
+      {
+        "name": "axes",
+        "labelKey": "Axes",
+        "width": "100px"
+      },
+      {
+        "name": "weight",
+        "labelKey": "Trn.Weight",
+        "width": "100px"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Remark"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "axes",
+        "labelKey": "Axes",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "weight",
+        "labelKey": "Trn.Weight",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,753 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "stor/mng/Items",
+  "entity": "Stor/Items",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "fqnt",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Stor.numitem"
+      },
+      {
+        "name": "part",
+        "labelKey": "Stor.part"
+      },
+      {
+        "name": "LName",
+        "labelKey": "Stor.LName"
+      },
+      {
+        "name": "IName",
+        "labelKey": "Stor.IName"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Stor.statusId"
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Stor.typeId"
+      },
+      {
+        "name": "methodId",
+        "labelKey": "Stor.methodId"
+      },
+      {
+        "name": "mcostId",
+        "labelKey": "Stor.mcostId"
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Stor.unitId"
+      },
+      {
+        "name": "catId",
+        "labelKey": "Stor.catId"
+      },
+      {
+        "name": "insaleId",
+        "labelKey": "Stor.insaleId"
+      },
+      {
+        "name": "seasonId",
+        "labelKey": "Stor.seasonId"
+      },
+      {
+        "name": "spc1Id",
+        "labelKey": "Stor.spc1Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/CodeSpecification1/Autocomplete"
+      },
+      {
+        "name": "spc2Id",
+        "labelKey": "Stor.spc2Id",
+        "input": "autocomplete"
+      },
+      {
+        "name": "spc3Id",
+        "labelKey": "Stor.spc3Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/CodeSpecification3/Autocomplete"
+      },
+      {
+        "name": "spc4Id",
+        "labelKey": "Stor.spc4Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/CodeSpecification4/Autocomplete"
+      },
+      {
+        "name": "spc5Id",
+        "labelKey": "Stor.spc5Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/CodeSpecification5/Autocomplete"
+      },
+      {
+        "name": "spc6Id",
+        "labelKey": "Stor.spc6Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/CodeSpecification6/Autocomplete"
+      },
+      {
+        "name": "spc7Id",
+        "labelKey": "Stor.spc7Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/CodeSpecification7/Autocomplete"
+      },
+      {
+        "name": "spc8Id",
+        "labelKey": "Stor.spc8Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/CodeSpecification8/Autocomplete"
+      },
+      {
+        "name": "spc9Id",
+        "labelKey": "Stor.spc9Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/CodeSpecification9/Autocomplete"
+      },
+      {
+        "name": "spc0Id",
+        "labelKey": "Stor.spc0Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/CodeSpecification0/Autocomplete"
+      },
+      {
+        "name": "dwarnty",
+        "labelKey": "Stor.dwarnty"
+      },
+      {
+        "name": "nofp",
+        "labelKey": "Stor.nofp"
+      },
+      {
+        "name": "minUnit",
+        "labelKey": "Stor.minUnit"
+      },
+      {
+        "name": "box",
+        "labelKey": "Stor.box"
+      },
+      {
+        "name": "cprice",
+        "labelKey": "Stor.cprice"
+      },
+      {
+        "name": "nprice",
+        "labelKey": "Stor.nprice"
+      },
+      {
+        "name": "dprice",
+        "labelKey": "Stor.dprice"
+      },
+      {
+        "name": "sprice",
+        "labelKey": "Stor.sprice"
+      },
+      {
+        "name": "wprice",
+        "labelKey": "Stor.wprice"
+      },
+      {
+        "name": "rprice",
+        "labelKey": "Stor.rprice"
+      },
+      {
+        "name": "hprice",
+        "labelKey": "Stor.hprice"
+      },
+      {
+        "name": "mprice",
+        "labelKey": "Stor.mprice"
+      },
+      {
+        "name": "cboxprice",
+        "labelKey": "Stor.cprice Stor.box_price"
+      },
+      {
+        "name": "nboxprice",
+        "labelKey": "Stor.nprice Stor.box_price"
+      },
+      {
+        "name": "dboxprice",
+        "labelKey": "Stor.dprice Stor.box_price"
+      },
+      {
+        "name": "sboxprice",
+        "labelKey": "Stor.sprice Stor.box_price"
+      },
+      {
+        "name": "wboxprice",
+        "labelKey": "Stor.wprice Stor.box_price"
+      },
+      {
+        "name": "rboxprice",
+        "labelKey": "Stor.rprice Stor.box_price"
+      },
+      {
+        "name": "hboxprice",
+        "labelKey": "Stor.hprice Stor.box_price"
+      },
+      {
+        "name": "mboxprice",
+        "labelKey": "Stor.mprice Stor.box_price"
+      },
+      {
+        "name": "descr",
+        "labelKey": "Stor.descr"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Stor.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Stor.numitem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "part",
+        "labelKey": "Stor.part",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "LName",
+        "labelKey": "Stor.LName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "IName",
+        "labelKey": "Stor.IName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Stor.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Stor.typeId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "methodId",
+        "labelKey": "Stor.methodId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "mcostId",
+        "labelKey": "Stor.mcostId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Stor.unitId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "catId",
+        "labelKey": "Stor.catId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "insaleId",
+        "labelKey": "Stor.insaleId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "seasonId",
+        "labelKey": "Stor.seasonId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc0Id",
+        "labelKey": "Stor.spc0Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/CodeSpecification0/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc1Id",
+        "labelKey": "Stor.spc1Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/CodeSpecification1/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc3Id",
+        "labelKey": "Stor.spc2Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/CodeSpecification2/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc3Id",
+        "labelKey": "Stor.spc3Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/CodeSpecification3/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc4Id",
+        "labelKey": "Stor.spc4Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/CodeSpecification4/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc5Id",
+        "labelKey": "Stor.spc5Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/CodeSpecification5/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc6Id",
+        "labelKey": "Stor.spc6Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/CodeSpecification6/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc7Id",
+        "labelKey": "Stor.spc7Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/CodeSpecification7/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc8Id",
+        "labelKey": "Stor.spc8Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/CodeSpecification8/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc9Id",
+        "labelKey": "Stor.spc9Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/CodeSpecification9/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dwarnty",
+        "labelKey": "Stor.dwarnty",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "nofp",
+        "labelKey": "Stor.nofp",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "minUnit",
+        "labelKey": "Stor.minUnit",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "box",
+        "labelKey": "Stor.box",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "cprice",
+        "labelKey": "Stor.cprice",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "nprice",
+        "labelKey": "Stor.nprice",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "dprice",
+        "labelKey": "Stor.dprice",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "sprice",
+        "labelKey": "Stor.sprice",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "wprice",
+        "labelKey": "Stor.wprice",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rprice",
+        "labelKey": "Stor.rprice",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "hprice",
+        "labelKey": "Stor.hprice",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "mprice",
+        "labelKey": "Stor.mprice",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "cboxprice",
+        "labelKey": "Stor.cprice Stor.box_price",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "nboxprice",
+        "labelKey": "Stor.nprice Stor.box_price",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "dboxprice",
+        "labelKey": "Stor.dprice Stor.box_price",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "sboxprice",
+        "labelKey": "Stor.sprice Stor.box_price",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "wboxprice",
+        "labelKey": "Stor.wprice Stor.box_price",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rboxprice",
+        "labelKey": "Stor.rprice Stor.box_price",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "hboxprice",
+        "labelKey": "Stor.hprice Stor.box_price",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "mboxprice",
+        "labelKey": "Stor.mprice Stor.box_price",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "descr",
+        "labelKey": "Stor.descr",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Stor.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

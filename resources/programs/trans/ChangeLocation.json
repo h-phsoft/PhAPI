@@ -1,0 +1,87 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "trans/ChangeLocation",
+  "entity": "Trn/ChangeLocation",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "blnId",
+        "labelKey": "Trn.Balan",
+        "width": "100px"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "width": "100px"
+      },
+      {
+        "name": "olocId",
+        "labelKey": "Old.Location",
+        "input": "autocomplete",
+        "width": "100px"
+      },
+      {
+        "name": "nlocId",
+        "labelKey": "New.Location",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Remark"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "olocId",
+        "labelKey": "Old.Location",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "nlocId",
+        "labelKey": "New.Location",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

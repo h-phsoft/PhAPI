@@ -1,0 +1,80 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/grnt/mng/UserUnits",
+  "entity": "Cpy/UserUnits",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "userId",
+        "labelKey": "UserId",
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Cpy/Users/Autocomplete"
+      },
+      {
+        "name": "deptId",
+        "labelKey": "DeptId",
+        "width": "15"
+      },
+      {
+        "name": "unitId",
+        "labelKey": "UnitId",
+        "width": "10"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "40"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "userId",
+        "labelKey": "UserId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Users/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "deptId",
+        "labelKey": "DeptId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitId",
+        "labelKey": "UnitId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,287 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "proj/Tasks",
+  "entity": "Cpy/Task",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "taskId",
+        "labelKey": "Cpy.taskId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Task/Autocomplete"
+      },
+      {
+        "name": "name",
+        "labelKey": "Cpy.name"
+      },
+      {
+        "name": "projId",
+        "labelKey": "Proj.projId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/Project/Autocomplete"
+      },
+      {
+        "name": "userId",
+        "labelKey": "proj.user",
+        "input": "autocomplete",
+        "width": "10",
+        "endpoint": "/UC/Cpy/Users/Autocomplete"
+      },
+      {
+        "name": "deptId",
+        "labelKey": "Cpy.deptId"
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Cpy.unitId"
+      },
+      {
+        "name": "priorityId",
+        "labelKey": "Cpy.priorityId"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Cpy.statusId"
+      },
+      {
+        "name": "privacyId",
+        "labelKey": "Cpy.privacyId"
+      },
+      {
+        "name": "compPerc",
+        "labelKey": "Cpy.compPerc"
+      },
+      {
+        "name": "reminderId",
+        "labelKey": "Cpy.reminderId"
+      },
+      {
+        "name": "reminddays",
+        "labelKey": "Cpy.reminddays"
+      },
+      {
+        "name": "sdate",
+        "labelKey": "Cpy.sdate"
+      },
+      {
+        "name": "edate",
+        "labelKey": "Cpy.edate"
+      },
+      {
+        "name": "asdate",
+        "labelKey": "Cpy.asdate"
+      },
+      {
+        "name": "aedate",
+        "labelKey": "Cpy.aedate"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Cpy.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "taskId",
+        "labelKey": "Cpy.taskId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Task/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Cpy.name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "projId",
+        "labelKey": "Proj.projId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/Project/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "userId",
+        "labelKey": "Proj.userId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Users/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "deptId",
+        "labelKey": "Cpy.deptId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Cpy.unitId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "priorityId",
+        "labelKey": "Cpy.priorityId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Cpy.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "privacyId",
+        "labelKey": "Cpy.privacyId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "compPerc",
+        "labelKey": "Cpy.compPerc",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "reminderId",
+        "labelKey": "Cpy.reminderId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "reminddays",
+        "labelKey": "Cpy.reminddays",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "sdate",
+        "labelKey": "Cpy.sdate",
+        "input": "datetime",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "edate",
+        "labelKey": "Cpy.edate",
+        "input": "datetime",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "asdate",
+        "labelKey": "Cpy.asdate",
+        "input": "datetime",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "aedate",
+        "labelKey": "Cpy.aedate",
+        "input": "datetime",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Cpy.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

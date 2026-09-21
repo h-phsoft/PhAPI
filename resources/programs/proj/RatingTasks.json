@@ -1,0 +1,88 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "proj/RatingTasks",
+  "entity": "Cpy/TaskRatingmst",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "taskId",
+        "labelKey": "Cpy.taskId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Task/Autocomplete"
+      },
+      {
+        "name": "sdate",
+        "labelKey": "Cpy.sdate"
+      },
+      {
+        "name": "edate",
+        "labelKey": "Cpy.edate"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Cpy.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "taskId",
+        "labelKey": "Cpy.taskId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Task/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "sdate",
+        "labelKey": "Cpy.sdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "edate",
+        "labelKey": "Cpy.edate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Cpy.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

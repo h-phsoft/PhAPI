@@ -1,0 +1,64 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "hr/att/mng/WorkingShifts",
+  "entity": "Emp/WorkGroups",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "width": "10"
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Type",
+        "width": "10"
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "60"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Type",
+        "operators": [
+          "=",
+          "!="
+        ]
+      }
+    ]
+  }
+}

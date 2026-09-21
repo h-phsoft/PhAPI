@@ -1,0 +1,155 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "acc/DailyJournal",
+  "entity": "Acc/Master",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "periodId",
+        "hidden": true
+      },
+      {
+        "name": "srcId",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "width": "75px"
+      },
+      {
+        "name": "pnum",
+        "labelKey": "Print.Number",
+        "width": "150px"
+      },
+      {
+        "name": "mdate",
+        "labelKey": "Date",
+        "width": "150px"
+      },
+      {
+        "name": "docId",
+        "labelKey": "Document",
+        "width": "150px"
+      },
+      {
+        "name": "docn",
+        "labelKey": "his.Num",
+        "width": "75px"
+      },
+      {
+        "name": "docd",
+        "labelKey": "his.Date",
+        "width": "150px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "200px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "pnum",
+        "labelKey": "Print.Number",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "mdate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "docId",
+        "labelKey": "Document",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "docn",
+        "labelKey": "his.Num",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "docd",
+        "labelKey": "his.Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Vhr.MRem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

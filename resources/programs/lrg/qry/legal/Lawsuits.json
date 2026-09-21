@@ -1,0 +1,157 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "lrg/qry/legal/Lawsuits",
+  "entity": "Lrg/RequestSuitsView",
+  "search": {
+    "fields": [
+      {
+        "name": "lenderId",
+        "labelKey": "lender",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "borrowerId",
+        "labelKey": "BorrowerName"
+      },
+      {
+        "name": "dnum",
+        "labelKey": "Dnum",
+        "operators": [
+          "<>"
+        ]
+      },
+      {
+        "name": "loantypeId",
+        "labelKey": "loantypeName",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "areaId",
+        "labelKey": "Area",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "cityId",
+        "labelKey": "CityId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loantypeId",
+        "labelKey": "Loantype",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanPeriodId",
+        "labelKey": "LoanPeriodInstall",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanPurposeId",
+        "labelKey": "LoanPurpose",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanIspartialyId",
+        "labelKey": "AgeName",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanIspartialyId",
+        "labelKey": "LoanIspartialyId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanIspaymentsId",
+        "labelKey": "LoanisPaymentsId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanLamt",
+        "labelKey": "LoanLAmt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "loanGperc",
+        "labelKey": "LoanGperc",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "loanGamt",
+        "labelKey": "LoanGamt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "loanDate",
+        "labelKey": "loanDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "clnc/mng/Lists",
+  "entity": "Clnc/Lists",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "name",
+        "labelKey": "Clnc.name"
+      },
+      {
+        "name": "color",
+        "labelKey": "Clnc.color"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Clnc.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "name",
+        "labelKey": "Clnc.name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "color",
+        "labelKey": "Clnc.color",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Clnc.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

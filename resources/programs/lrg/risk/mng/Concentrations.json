@@ -1,0 +1,121 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/risk/mng/Concentrations",
+  "entity": "Lrg/ConcentrationsMst",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "width": "90px"
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "200px"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Ddate",
+        "width": "90px"
+      },
+      {
+        "name": "commitId",
+        "labelKey": "Commited",
+        "width": "100px"
+      },
+      {
+        "name": "isdefaultId",
+        "labelKey": "Default",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "400px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "commitId",
+        "labelKey": "Commited",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "isdefaultId",
+        "labelKey": "Default",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

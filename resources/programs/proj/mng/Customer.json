@@ -1,0 +1,146 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "proj/mng/Customer",
+  "entity": "Proj/Customers",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Proj.statusId",
+        "input": "autocomplete"
+      },
+      {
+        "name": "catId",
+        "labelKey": "Proj.catId",
+        "input": "autocomplete"
+      },
+      {
+        "name": "class1Id",
+        "labelKey": "Proj.class1Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/CodeCustomerClass1/Autocomplete"
+      },
+      {
+        "name": "class2Id",
+        "labelKey": "Proj.class2Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/CodeCustomerClass2/Autocomplete"
+      },
+      {
+        "name": "class3Id",
+        "labelKey": "Proj.class3Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/CodeCustomerClass3/Autocomplete"
+      },
+      {
+        "name": "name",
+        "labelKey": "Proj.name"
+      },
+      {
+        "name": "image",
+        "labelKey": "Proj.image"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Proj.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "statusId",
+        "labelKey": "Proj.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "catId",
+        "labelKey": "Proj.catId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "class1Id",
+        "labelKey": "Proj.class1Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/CodeCustomerClass1/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "class2Id",
+        "labelKey": "Proj.class2Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/CodeCustomerClass2/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "class3Id",
+        "labelKey": "Proj.class3Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/CodeCustomerClass3/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Proj.name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "image",
+        "labelKey": "Proj.image",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Proj.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

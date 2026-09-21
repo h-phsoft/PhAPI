@@ -1,0 +1,46 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "acc/mng/ChartOfAccounts",
+  "entity": "Acc/Account",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "hidden": true
+      },
+      {
+        "name": "pnum",
+        "hidden": true
+      },
+      {
+        "name": "name",
+        "hidden": true
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status"
+      },
+      {
+        "name": "typeId",
+        "hidden": true
+      },
+      {
+        "name": "dbcrId",
+        "labelKey": "Deb-Crd"
+      },
+      {
+        "name": "closeId",
+        "labelKey": "Account"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem"
+      }
+    ]
+  }
+}

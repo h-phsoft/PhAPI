@@ -1,0 +1,186 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "str/mng/Items",
+  "entity": "Str/Items",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "width": "10"
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "15"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "width": "10"
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Unit",
+        "width": "10"
+      },
+      {
+        "name": "spc1Id",
+        "labelKey": "Specification1",
+        "input": "autocomplete",
+        "width": "10",
+        "endpoint": "/UC/Str/CodeSpecification1/Autocomplete"
+      },
+      {
+        "name": "spc2Id",
+        "labelKey": "Specification2",
+        "input": "autocomplete",
+        "width": "10",
+        "endpoint": "/UC/Str/CodeSpecification2/Autocomplete"
+      },
+      {
+        "name": "spc3Id",
+        "labelKey": "Specification3",
+        "input": "autocomplete",
+        "width": "10",
+        "endpoint": "/UC/Str/CodeSpecification3/Autocomplete"
+      },
+      {
+        "name": "spc4Id",
+        "labelKey": "Specification4",
+        "input": "autocomplete",
+        "width": "10",
+        "endpoint": "/UC/Str/CodeSpecification4/Autocomplete"
+      },
+      {
+        "name": "spc5Id",
+        "labelKey": "Specification5",
+        "input": "autocomplete",
+        "width": "10",
+        "endpoint": "/UC/Str/CodeSpecification5/Autocomplete"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "10"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Unit",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc1Id",
+        "labelKey": "Specification 1",
+        "input": "autocomplete",
+        "endpoint": "/UC/Str/CodeSpecification1/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc2Id",
+        "labelKey": "Specification 2",
+        "input": "autocomplete",
+        "endpoint": "/UC/Str/CodeSpecification2/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc3Id",
+        "labelKey": "Specification 3",
+        "input": "autocomplete",
+        "endpoint": "/UC/Str/CodeSpecification3/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc4Id",
+        "labelKey": "Specification 4",
+        "input": "autocomplete",
+        "endpoint": "/UC/Str/CodeSpecification4/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc5Id",
+        "labelKey": "Specification 5",
+        "input": "autocomplete",
+        "endpoint": "/UC/Str/CodeSpecification5/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

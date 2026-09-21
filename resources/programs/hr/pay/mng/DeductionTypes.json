@@ -1,0 +1,90 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "hr/pay/mng/DeductionTypes",
+  "entity": "Emp/Deduction",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "width": "10"
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "10"
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Amount.Type",
+        "width": "10"
+      },
+      {
+        "name": "amt",
+        "labelKey": "dedAmt",
+        "width": "10"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Amount.Type",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "amt",
+        "labelKey": "dedAmt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      }
+    ]
+  }
+}

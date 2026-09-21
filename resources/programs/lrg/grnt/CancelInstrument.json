@@ -1,0 +1,153 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/grnt/CancelInstrument",
+  "entity": "Lrg/CodeProjectType",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "width": "100px"
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "100px"
+      },
+      {
+        "name": "parentId",
+        "labelKey": "ParentId",
+        "width": "100px"
+      },
+      {
+        "name": "typeId",
+        "labelKey": "TypeId",
+        "width": "100px"
+      },
+      {
+        "name": "descr",
+        "labelKey": "Descr",
+        "width": "100px"
+      },
+      {
+        "name": "division",
+        "labelKey": "Division",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "parentId",
+        "labelKey": "ParentId",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "TypeId",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "descr",
+        "labelKey": "Descr",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "division",
+        "labelKey": "Division",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      }
+    ]
+  }
+}

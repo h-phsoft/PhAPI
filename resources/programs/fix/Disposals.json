@@ -1,0 +1,95 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "fix/Disposals",
+  "entity": "Fix/OutputMaster",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "periodId",
+        "hidden": true
+      },
+      {
+        "name": "vhrId",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "width": "10"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "width": "10"
+      },
+      {
+        "name": "accId",
+        "labelKey": "Account",
+        "input": "autocomplete",
+        "width": "30",
+        "endpoint": "/UC/Acc/GrantedAccount/Autocomplete"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "50"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "accId",
+        "labelKey": "Account",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/GrantedAccount/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

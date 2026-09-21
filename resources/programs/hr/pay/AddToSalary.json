@@ -1,0 +1,269 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "hr/pay/AddToSalary",
+  "entity": "Emp/AddonSalary",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "width": "10"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "width": "10"
+      },
+      {
+        "name": "docn",
+        "labelKey": "Doc.Num",
+        "width": "8"
+      },
+      {
+        "name": "docd",
+        "labelKey": "Doc.Date",
+        "width": "10"
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Type",
+        "width": "10"
+      },
+      {
+        "name": "saltypId",
+        "labelKey": "Salary.Type",
+        "width": "10"
+      },
+      {
+        "name": "brktId",
+        "labelKey": "TaxBrackets",
+        "width": "10"
+      },
+      {
+        "name": "nyear",
+        "labelKey": "Year",
+        "width": "10"
+      },
+      {
+        "name": "nmonth",
+        "labelKey": "Month",
+        "width": "10"
+      },
+      {
+        "name": "perc",
+        "labelKey": "Perc",
+        "width": "8"
+      },
+      {
+        "name": "amt",
+        "labelKey": "Amount",
+        "width": "8"
+      },
+      {
+        "name": "nmin",
+        "labelKey": "S.Min",
+        "width": "8"
+      },
+      {
+        "name": "nmax",
+        "labelKey": "S.Max",
+        "width": "8"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "40"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "docn",
+        "labelKey": "Doc.Num",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "docd",
+        "labelKey": "Doc.Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Type",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "saltypId",
+        "labelKey": "Salary.Type",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "brktId",
+        "labelKey": "TaxBrackets",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "nyear",
+        "labelKey": "Year",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "nmonth",
+        "labelKey": "Month",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "perc",
+        "labelKey": "Perc",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "amt",
+        "labelKey": "Amount",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "nmin",
+        "labelKey": "S.Min",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "nmax",
+        "labelKey": "S.Max",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

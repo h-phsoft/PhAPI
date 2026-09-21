@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "hr/att/qry/Missions",
+  "entity": "Emp/Missions",
+  "search": {
+    "fields": [
+      {
+        "name": "typeId",
+        "labelKey": "Type",
+        "operators": [
+          "=",
+          "!="
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "clnc/mng/AppointmentType",
+  "entity": "Clnc/AppointmentType",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "100px"
+      },
+      {
+        "name": "capacity",
+        "labelKey": "Capacity",
+        "width": "150px"
+      },
+      {
+        "name": "minutes",
+        "labelKey": "Appointment.Minutes",
+        "width": "150px"
+      },
+      {
+        "name": "titleBg",
+        "hidden": true,
+        "width": "150px"
+      },
+      {
+        "name": "titleFg",
+        "hidden": true,
+        "width": "150px"
+      },
+      {
+        "name": "patientFg",
+        "hidden": true,
+        "width": "150px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "capacity",
+        "labelKey": "Capacity",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "minutes",
+        "labelKey": "Appointment.Minutes",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      }
+    ]
+  }
+}

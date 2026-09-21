@@ -1,0 +1,191 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/folw/ClaimsReceived",
+  "entity": "Lrg/ReqFinancialClaim",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "vhrId",
+        "hidden": true
+      },
+      {
+        "name": "reqId",
+        "labelKey": "ReqId"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Ddate"
+      },
+      {
+        "name": "num",
+        "labelKey": "Num"
+      },
+      {
+        "name": "amt",
+        "labelKey": "Amt"
+      },
+      {
+        "name": "execonname",
+        "labelKey": "Execonname"
+      },
+      {
+        "name": "execdept",
+        "labelKey": "Execdept"
+      },
+      {
+        "name": "execnum",
+        "labelKey": "Execnum"
+      },
+      {
+        "name": "execopen",
+        "labelKey": "Execopen"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "reqId",
+        "labelKey": "ReqId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "amt",
+        "labelKey": "Amt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "execonname",
+        "labelKey": "Execonname",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "execdept",
+        "labelKey": "Execdept",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "execnum",
+        "labelKey": "Execnum",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "execopen",
+        "labelKey": "Execopen",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

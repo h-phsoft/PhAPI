@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "hr/pay/qry/EmployeeDeduction",
+  "entity": "Emp/EmployeeDeduction",
+  "search": {
+    "fields": [
+      {
+        "name": "dedId",
+        "labelKey": "dedName",
+        "input": "autocomplete",
+        "endpoint": "/UC/Emp/Deduction/Autocomplete",
+        "operators": [
+          "="
+        ]
+      },
+      {
+        "name": "empId",
+        "labelKey": "Employee",
+        "input": "autocomplete",
+        "endpoint": "/UC/Emp/Employee/Autocomplete",
+        "operators": [
+          "="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      }
+    ]
+  }
+}

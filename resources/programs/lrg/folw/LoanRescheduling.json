@@ -1,0 +1,414 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/folw/LoanRescheduling",
+  "entity": "Lrg/RequestSettlment",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "relId",
+        "hidden": true
+      },
+      {
+        "name": "reqId",
+        "labelKey": "Req.loanNum",
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Lrg/Borrowers/Autocomplete"
+      },
+      {
+        "name": "lnum",
+        "labelKey": "Lnum",
+        "width": "100px"
+      },
+      {
+        "name": "commitId",
+        "labelKey": "Commit",
+        "width": "100px"
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "width": "100px"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Datee",
+        "width": "100px"
+      },
+      {
+        "name": "rdate",
+        "labelKey": "RDate",
+        "width": "100px"
+      },
+      {
+        "name": "ldate",
+        "labelKey": "LDate",
+        "width": "100px"
+      },
+      {
+        "name": "reqLamt",
+        "labelKey": "ReqLAmt",
+        "width": "100px"
+      },
+      {
+        "name": "reqGamt",
+        "labelKey": "ReqGAmt",
+        "width": "100px"
+      },
+      {
+        "name": "reqGperc",
+        "labelKey": "ReqGPerc",
+        "width": "100px"
+      },
+      {
+        "name": "newamt",
+        "labelKey": "debitmass",
+        "width": "100px"
+      },
+      {
+        "name": "interestrate",
+        "labelKey": "InterestRate",
+        "width": "100px"
+      },
+      {
+        "name": "condition",
+        "labelKey": "Condition",
+        "width": "100px"
+      },
+      {
+        "name": "usedamt",
+        "labelKey": "principalbalance",
+        "width": "100px"
+      },
+      {
+        "name": "name",
+        "labelKey": "NameReq",
+        "width": "100px"
+      },
+      {
+        "name": "position",
+        "labelKey": "PositionReq",
+        "width": "100px"
+      },
+      {
+        "name": "address",
+        "labelKey": "addressPresenter",
+        "width": "100px"
+      },
+      {
+        "name": "returndate",
+        "labelKey": "ReturnDate",
+        "width": "100px"
+      },
+      {
+        "name": "goodwillamt",
+        "labelKey": "GoodwillAmt",
+        "width": "100px"
+      },
+      {
+        "name": "guarantees",
+        "labelKey": "Guarantees",
+        "width": "100px"
+      },
+      {
+        "name": "report",
+        "labelKey": "Report",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "reqId",
+        "labelKey": "ReqId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Lrg/Borrowers/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Datee",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ldate",
+        "labelKey": "LDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rdate",
+        "labelKey": "RDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "lnum",
+        "labelKey": "Lnum",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "reqLamt",
+        "labelKey": "ReqLAmt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "reqGamt",
+        "labelKey": "ReqGAmt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "reqGperc",
+        "labelKey": "ReqGPerc",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "newamt",
+        "labelKey": "debitmass",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "interestrate",
+        "labelKey": "InterestRate",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "condition",
+        "labelKey": "Condition",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "usedamt",
+        "labelKey": "principalbalance",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "NameReq",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "position",
+        "labelKey": "PositionReq",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "address",
+        "labelKey": "addressPresenter",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "returndate",
+        "labelKey": "ReturnDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "goodwillamt",
+        "labelKey": "GoodwillAmt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "guarantees",
+        "labelKey": "Guarantees",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "report",
+        "labelKey": "Report",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

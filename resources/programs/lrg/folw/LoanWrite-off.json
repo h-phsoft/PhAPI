@@ -1,0 +1,126 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/folw/LoanWrite-off",
+  "entity": "Lrg/CommissionsCredit",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "vhrId",
+        "hidden": true
+      },
+      {
+        "name": "reqId",
+        "labelKey": "ReqId"
+      },
+      {
+        "name": "num",
+        "labelKey": "Num"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Ddate"
+      },
+      {
+        "name": "amt",
+        "labelKey": "Amt"
+      },
+      {
+        "name": "reason",
+        "labelKey": "Reason"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "reqId",
+        "labelKey": "ReqId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "amt",
+        "labelKey": "Amt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "reason",
+        "labelKey": "Reason",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

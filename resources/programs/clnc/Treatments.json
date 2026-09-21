@@ -1,0 +1,116 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "clnc/Treatments",
+  "entity": "Clnc/Treatment",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "invId",
+        "hidden": true
+      },
+      {
+        "name": "clinicId",
+        "labelKey": "Clinic",
+        "width": "200px"
+      },
+      {
+        "name": "doctorId",
+        "labelKey": "Doctor",
+        "width": "200px"
+      },
+      {
+        "name": "patientId",
+        "labelKey": "Patient",
+        "input": "autocomplete",
+        "width": "200px",
+        "endpoint": "/UC/Clnc/Patient/Autocomplete"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "width": "100px"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "width": "100px"
+      },
+      {
+        "name": "descr",
+        "labelKey": "Description",
+        "width": "200px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "clinicId",
+        "labelKey": "Clinic",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "doctorId",
+        "labelKey": "Doctor",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "patientId",
+        "labelKey": "Patient",
+        "input": "autocomplete",
+        "endpoint": "/UC/Clnc/Patient/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "descr",
+        "labelKey": "Description",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

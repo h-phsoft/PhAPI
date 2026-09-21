@@ -1,0 +1,78 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "trans/Leakycars",
+  "entity": "Trn/LeakyCars",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "blnId",
+        "labelKey": "Trn.Balan",
+        "width": "100px"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "width": "100px"
+      },
+      {
+        "name": "pnum",
+        "labelKey": "Trn.PNum"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Remark"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "pnum",
+        "labelKey": "Trn.PNum",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "clnc/mng/Clinics",
+  "entity": "Clnc/Clinics",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "100px"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Stauts",
+        "width": "80px"
+      },
+      {
+        "name": "phone1",
+        "labelKey": "Phone 1",
+        "width": "80px"
+      },
+      {
+        "name": "phone2",
+        "labelKey": "Phone 2",
+        "width": "80px"
+      },
+      {
+        "name": "phone3",
+        "labelKey": "Phone 3",
+        "width": "80px"
+      },
+      {
+        "name": "email",
+        "labelKey": "Email",
+        "width": "100px"
+      },
+      {
+        "name": "address",
+        "labelKey": "Address",
+        "width": "150px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "email",
+        "labelKey": "Email",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "phone1",
+        "labelKey": "Phone 1",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "phone2",
+        "labelKey": "Phone 2",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "phone3",
+        "labelKey": "Phone 3",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "address",
+        "labelKey": "Address",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

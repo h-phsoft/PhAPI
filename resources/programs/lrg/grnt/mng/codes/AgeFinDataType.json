@@ -1,0 +1,63 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/grnt/mng/codes/AgeFinDataType",
+  "entity": "Lrg/AgeFinanceDataType",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "ageId",
+        "labelKey": "AgeId",
+        "width": "200px"
+      },
+      {
+        "name": "datatypeId",
+        "labelKey": "DatatypeId",
+        "width": "200px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "500px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "ageId",
+        "labelKey": "AgeId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "datatypeId",
+        "labelKey": "DatatypeId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/risk/RiskNote",
+  "entity": "Lrg/RequestRiskStudy",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "reqId",
+        "labelKey": "Lnum",
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Lrg/RequestNum/Autocomplete"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "DDate",
+        "width": "100"
+      },
+      {
+        "name": "catresultId",
+        "labelKey": "CatResultId",
+        "width": "100"
+      },
+      {
+        "name": "riskGamt",
+        "labelKey": "GAmt",
+        "width": "100"
+      },
+      {
+        "name": "riskGperc",
+        "labelKey": "GPerc",
+        "width": "100"
+      },
+      {
+        "name": "exposAlloc",
+        "labelKey": "ExposAlloc",
+        "width": "100"
+      },
+      {
+        "name": "lenderConcnt",
+        "labelKey": "LenderConcnt",
+        "width": "100"
+      },
+      {
+        "name": "projConcnt",
+        "labelKey": "ProjConcnt",
+        "width": "100"
+      },
+      {
+        "name": "sectorConcnt",
+        "labelKey": "SectorConcnt",
+        "width": "100"
+      },
+      {
+        "name": "prodConcnt",
+        "labelKey": "ProdConcnt",
+        "width": "100"
+      },
+      {
+        "name": "condition",
+        "labelKey": "Condition",
+        "width": "100"
+      },
+      {
+        "name": "opinion",
+        "labelKey": "Risk_Opinion",
+        "width": "100"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "100"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "reqId",
+        "labelKey": "ReqId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Lrg/RequestNum/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "DDatee",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "lenderConcnt",
+        "labelKey": "LenderConcnt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "sectorConcnt",
+        "labelKey": "SectorConcnt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "prodConcnt",
+        "labelKey": "ProdConcnt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "projConcnt",
+        "labelKey": "ProjConcnt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "projConcnt",
+        "labelKey": "ProjConcnt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "riskGamt",
+        "labelKey": "GAmt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "riskGperc",
+        "labelKey": "GPerc",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "condition",
+        "labelKey": "Condition",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "opinion",
+        "labelKey": "Risk_Opinion",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

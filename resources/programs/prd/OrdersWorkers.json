@@ -1,0 +1,148 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "prd/OrdersWorkers",
+  "entity": "Prd/OrderEmployeeWorkTimes",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "mordId",
+        "labelKey": "Prd.mordId",
+        "input": "autocomplete"
+      },
+      {
+        "name": "tordId",
+        "labelKey": "Prd.tordId",
+        "input": "autocomplete"
+      },
+      {
+        "name": "stageId",
+        "labelKey": "Prd.stageId",
+        "input": "autocomplete"
+      },
+      {
+        "name": "empId",
+        "labelKey": "Prd.empId",
+        "input": "autocomplete"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Prd.ddate"
+      },
+      {
+        "name": "nhour",
+        "labelKey": "Prd.nhour"
+      },
+      {
+        "name": "nminute",
+        "labelKey": "Prd.nminute"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Prd.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "mordId",
+        "labelKey": "Prd.mordId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "tordId",
+        "labelKey": "Prd.tordId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "stageId",
+        "labelKey": "Prd.stageId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "empId",
+        "labelKey": "Prd.empId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Prd.ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "nhour",
+        "labelKey": "Prd.nhour",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "nminute",
+        "labelKey": "Prd.nminute",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Prd.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

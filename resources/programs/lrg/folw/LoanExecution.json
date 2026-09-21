@@ -1,0 +1,204 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/folw/LoanExecution",
+  "entity": "Lrg/ReqLoanInstallment",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "fileName",
+        "hidden": true
+      },
+      {
+        "name": "loanNum",
+        "labelKey": "IdentificationNum",
+        "width": "100px"
+      },
+      {
+        "name": "reqId",
+        "labelKey": "Lnum",
+        "input": "autocomplete",
+        "width": "100px"
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Type"
+      },
+      {
+        "name": "InstId",
+        "labelKey": "Warranty.instrument"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "DateExecution"
+      },
+      {
+        "name": "lamt",
+        "labelKey": "LAmt"
+      },
+      {
+        "name": "gamt",
+        "labelKey": "guaranteeAmt"
+      },
+      {
+        "name": "gperc",
+        "labelKey": "guaranteeRatio"
+      },
+      {
+        "name": "periodId",
+        "labelKey": "PeriodId"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "status"
+      },
+      {
+        "name": "installs",
+        "labelKey": "Installs"
+      },
+      {
+        "name": "loanInstall",
+        "labelKey": "Installment.value"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "loanNum",
+        "labelKey": "IdentificationNum",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Type",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "InstId",
+        "labelKey": "Warranty.instrument",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "DateExecution",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "lamt",
+        "labelKey": "LAmt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "gamt",
+        "labelKey": "guaranteeAmt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "gperc",
+        "labelKey": "guaranteeRatio",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "periodId",
+        "labelKey": "PeriodId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "installs",
+        "labelKey": "Installs",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

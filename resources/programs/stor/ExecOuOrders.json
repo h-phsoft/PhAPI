@@ -1,0 +1,183 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "stor/ExecOuOrders",
+  "entity": "Stor/ExecuteOutboundMaster",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "periodId",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Stor.num"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Stor.ddate"
+      },
+      {
+        "name": "storId",
+        "labelKey": "Stor.storId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/Stores/Autocomplete"
+      },
+      {
+        "name": "ordId",
+        "labelKey": "Stor.ordOutbound",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/OutboundOrderMaster/Autocomplete"
+      },
+      {
+        "name": "contId",
+        "labelKey": "sedesc.ContId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete"
+      },
+      {
+        "name": "docId",
+        "labelKey": "Stor.docId"
+      },
+      {
+        "name": "docn",
+        "labelKey": "Stor.docn"
+      },
+      {
+        "name": "docd",
+        "labelKey": "Stor.docd"
+      },
+      {
+        "name": "finId",
+        "labelKey": "Stor.finId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/FinCredit/Autocomplete"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Stor.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "storId",
+        "labelKey": "Stor.storId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/Stores/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ordId",
+        "labelKey": "Stor.ordOutbound",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/OutboundOrderMaster/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "contId",
+        "labelKey": "sedesc.ContId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Stor.ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "Stor.num",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "docId",
+        "labelKey": "Stor.docId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "docn",
+        "labelKey": "Stor.docn",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "docd",
+        "labelKey": "Stor.docd",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "finId",
+        "labelKey": "Stor.finId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/FinCredit/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Stor.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

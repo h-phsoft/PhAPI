@@ -1,0 +1,120 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "proj/ProjectFollowup",
+  "entity": "Proj/ProjectTimesheet",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "projId",
+        "labelKey": "Proj.projId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/UserProject/Autocomplete"
+      },
+      {
+        "name": "mwitemId",
+        "labelKey": "Proj.mwitemId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/WorkitemMst/Autocomplete"
+      },
+      {
+        "name": "twitemId",
+        "labelKey": "Proj.twitemId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/TwitemTrn/Autocomplete"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Proj.ddate"
+      },
+      {
+        "name": "hours",
+        "labelKey": "Proj.hours"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Proj.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "projId",
+        "labelKey": "Proj.projId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/UserProject/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "mwitemId",
+        "labelKey": "Proj.mwitemId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/WorkitemMst/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "twitemId",
+        "labelKey": "Proj.twitemId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/TwitemTrn/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Proj.ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "hours",
+        "labelKey": "Proj.hours",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Proj.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

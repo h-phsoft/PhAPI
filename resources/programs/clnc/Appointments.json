@@ -1,0 +1,214 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "clnc/Appointments",
+  "entity": "Clnc/Appointment",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "clinicId",
+        "labelKey": "Clinic",
+        "width": "200px"
+      },
+      {
+        "name": "doctorId",
+        "labelKey": "Doctor",
+        "width": "200px"
+      },
+      {
+        "name": "patientId",
+        "labelKey": "Patient",
+        "input": "autocomplete",
+        "width": "200px",
+        "endpoint": "/UC/Clnc/Patient/Autocomplete"
+      },
+      {
+        "name": "specialId",
+        "labelKey": "Speciality",
+        "width": "200px"
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Type",
+        "width": "100px"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "width": "100px"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "width": "100px"
+      },
+      {
+        "name": "nhour",
+        "labelKey": "Appointment.Hour",
+        "width": "100px"
+      },
+      {
+        "name": "nminute",
+        "labelKey": "Appointment.Minute",
+        "width": "100px"
+      },
+      {
+        "name": "minutes",
+        "labelKey": "Appointment.Minutes",
+        "width": "100px"
+      },
+      {
+        "name": "amt",
+        "labelKey": "Amt",
+        "width": "100px"
+      },
+      {
+        "name": "descr",
+        "labelKey": "Description",
+        "width": "150px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "clinicId",
+        "labelKey": "Clinic",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "doctorId",
+        "labelKey": "Doctor",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "patientId",
+        "labelKey": "Patient",
+        "input": "autocomplete",
+        "endpoint": "/UC/Clnc/Patient/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "specialId",
+        "labelKey": "Speciality",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Type",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "nhour",
+        "labelKey": "Appointment.Hour",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "nminute",
+        "labelKey": "Appointment.Minute",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "minutes",
+        "labelKey": "Appointment.Minutes",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "amt",
+        "labelKey": "Amt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "descr",
+        "labelKey": "Description",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

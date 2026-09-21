@@ -1,0 +1,363 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "fin/Invoices",
+  "entity": "Fin/InvoiceMst",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "srcId",
+        "hidden": true
+      },
+      {
+        "name": "trtId",
+        "hidden": true
+      },
+      {
+        "name": "ordId",
+        "hidden": true
+      },
+      {
+        "name": "periodId",
+        "hidden": true
+      },
+      {
+        "name": "deptId",
+        "hidden": true,
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Cpy/Departments/Autocomplete"
+      },
+      {
+        "name": "unitId",
+        "hidden": true,
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Cpy/DepartmentUnit/Autocomplete"
+      },
+      {
+        "name": "operId",
+        "hidden": true,
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Cpy/UnitOperations/Autocomplete"
+      },
+      {
+        "name": "bankId",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "vhrId",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Ddate",
+        "width": "100px"
+      },
+      {
+        "name": "keydate",
+        "labelKey": "KeyDate",
+        "width": "100px"
+      },
+      {
+        "name": "keynum",
+        "labelKey": "KeyNum",
+        "width": "100px"
+      },
+      {
+        "name": "deptRid",
+        "hidden": true,
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Cpy/Departments/Autocomplete"
+      },
+      {
+        "name": "unitRid",
+        "hidden": true,
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Cpy/DepartmentUnit/Autocomplete"
+      },
+      {
+        "name": "operRid",
+        "hidden": true,
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Cpy/UnitOperations/Autocomplete"
+      },
+      {
+        "name": "contId",
+        "labelKey": "sedesc.ContId",
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Mng/Contact/Autocomplete"
+      },
+      {
+        "name": "num",
+        "labelKey": "num",
+        "width": "100px"
+      },
+      {
+        "name": "statusId",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "refnum",
+        "labelKey": "RefNum",
+        "width": "100px"
+      },
+      {
+        "name": "contractId",
+        "labelKey": "ContractId",
+        "width": "100px"
+      },
+      {
+        "name": "methodId",
+        "labelKey": "MethodId",
+        "width": "100px"
+      },
+      {
+        "name": "keytypeId",
+        "labelKey": "KeyTypeId",
+        "width": "100px"
+      },
+      {
+        "name": "duedate",
+        "labelKey": "Duedate",
+        "width": "100px"
+      },
+      {
+        "name": "note",
+        "labelKey": "Note",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem",
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "statusId",
+        "labelKey": "status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "num",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "keynum",
+        "labelKey": "KeyNum",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "keydate",
+        "labelKey": "KeyDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "deptId",
+        "labelKey": "fre.deptId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Departments/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitId",
+        "labelKey": "fre.unitId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/DepartmentUnit/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "operId",
+        "labelKey": "fre.operId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/UnitOperations/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "deptRid",
+        "labelKey": "DeptRId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Departments/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitRid",
+        "labelKey": "UnitRId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/DepartmentUnit/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "operRid",
+        "labelKey": "OperRId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/UnitOperations/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "contId",
+        "labelKey": "sedesc.ContId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "bankId",
+        "labelKey": "BankId",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "contractId",
+        "labelKey": "ContractId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "duedate",
+        "labelKey": "DueDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "keytypeId",
+        "labelKey": "KeyTypeId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "refnum",
+        "labelKey": "RefNum",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "note",
+        "labelKey": "Note",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

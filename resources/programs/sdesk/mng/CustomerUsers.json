@@ -1,0 +1,68 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "sdesk/mng/CustomerUsers",
+  "entity": "Sdesk/CustomerUser",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "userId",
+        "labelKey": "User",
+        "input": "autocomplete",
+        "width": "100px"
+      },
+      {
+        "name": "contId",
+        "labelKey": "sedesc.ContId",
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Mng/Contact/Autocomplete"
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem",
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "userId",
+        "labelKey": "User",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "contId",
+        "labelKey": "sedesc.ContId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

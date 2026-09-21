@@ -1,0 +1,277 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "prd/ProductReturn",
+  "entity": "Prd/ReturnInboundMst",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "periodId",
+        "labelKey": "Prd.periodId"
+      },
+      {
+        "name": "storId",
+        "labelKey": "Stor.stor",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/Store/Autocomplete"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Pur.status"
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Pur.curnName"
+      },
+      {
+        "name": "accId",
+        "labelKey": "Pur.accName",
+        "input": "autocomplete",
+        "endpoint": "/UC/Pur/AccAcc/Autocomplete"
+      },
+      {
+        "name": "docId",
+        "labelKey": "Pur.docName"
+      },
+      {
+        "name": "bcurnId",
+        "labelKey": "Prd.bcurnId"
+      },
+      {
+        "name": "bcurnRate",
+        "labelKey": "Prd.bcurnRate"
+      },
+      {
+        "name": "relId",
+        "labelKey": "Prd.relId"
+      },
+      {
+        "name": "finId",
+        "labelKey": "Pur.finId",
+        "input": "autocomplete"
+      },
+      {
+        "name": "rate",
+        "labelKey": "Pur.rate"
+      },
+      {
+        "name": "num",
+        "labelKey": "Pur.num"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Pur.ddate"
+      },
+      {
+        "name": "docn",
+        "labelKey": "Pur.docn"
+      },
+      {
+        "name": "docd",
+        "labelKey": "Pur.docd"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Pur.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "periodId",
+        "labelKey": "Prd.periodId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "storId",
+        "labelKey": "Stor.stor",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/Store/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Pur.status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Pur.curnName",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "accId",
+        "labelKey": "Pur.accName",
+        "input": "autocomplete",
+        "endpoint": "/UC/Pur/AccAcc/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "docId",
+        "labelKey": "Pur.docName",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "bcurnId",
+        "labelKey": "Prd.bcurnId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "bcurnRate",
+        "labelKey": "Prd.bcurnRate",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "relId",
+        "labelKey": "Prd.relId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "finId",
+        "labelKey": "Pur.finId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rate",
+        "labelKey": "Pur.rate",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "Pur.num",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Pur.ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "docn",
+        "labelKey": "Pur.docn",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "docd",
+        "labelKey": "Pur.docd",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Pur.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "super/MenuPrograms",
+  "entity": "Phs/MenuPrograms",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "mprgId",
+        "hidden": true
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "100"
+      },
+      {
+        "name": "menuId",
+        "labelKey": "MenuId",
+        "width": "100"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "width": "100"
+      },
+      {
+        "name": "ord",
+        "labelKey": "Ord",
+        "width": "100"
+      },
+      {
+        "name": "apiurl",
+        "labelKey": "Apiurl",
+        "width": "100"
+      },
+      {
+        "name": "url",
+        "labelKey": "Url",
+        "width": "100"
+      },
+      {
+        "name": "icon",
+        "labelKey": "Icon",
+        "width": "100"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "menuId",
+        "labelKey": "MenuId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ord",
+        "labelKey": "Ord",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "apiurl",
+        "labelKey": "Apiurl",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "url",
+        "labelKey": "Url",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

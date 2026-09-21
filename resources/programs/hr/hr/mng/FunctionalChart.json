@@ -1,0 +1,30 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "hr/hr/mng/FunctionalChart",
+  "entity": "Emp/FunctionalChart",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "pid",
+        "hidden": true
+      },
+      {
+        "name": "name",
+        "labelKey": "Name"
+      },
+      {
+        "name": "description",
+        "labelKey": "Description"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem"
+      }
+    ]
+  }
+}

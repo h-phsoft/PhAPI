@@ -1,0 +1,282 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "proj/Projects",
+  "entity": "Proj/Project",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "custId",
+        "labelKey": "Proj.custId",
+        "input": "autocomplete"
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Proj.typeId",
+        "input": "autocomplete"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Proj.statusId",
+        "input": "autocomplete"
+      },
+      {
+        "name": "priorityId",
+        "labelKey": "Proj.priorityId"
+      },
+      {
+        "name": "memberId",
+        "labelKey": "Proj.memberId",
+        "input": "autocomplete"
+      },
+      {
+        "name": "class1Id",
+        "labelKey": "Proj.class1Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/CodeMemberClass1/Autocomplete"
+      },
+      {
+        "name": "class2Id",
+        "labelKey": "Proj.class2Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/CodeMemberClass2/Autocomplete"
+      },
+      {
+        "name": "class3Id",
+        "labelKey": "Proj.class3Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/CodeMemberClass3/Autocomplete"
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Proj.curnId",
+        "input": "autocomplete"
+      },
+      {
+        "name": "progress",
+        "labelKey": "Proj.progress"
+      },
+      {
+        "name": "name",
+        "labelKey": "Proj.name"
+      },
+      {
+        "name": "sdate",
+        "labelKey": "Proj.sdate"
+      },
+      {
+        "name": "edate",
+        "labelKey": "Proj.edate"
+      },
+      {
+        "name": "asdate",
+        "labelKey": "Proj.asdate"
+      },
+      {
+        "name": "aedate",
+        "labelKey": "Proj.aedate"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Proj.rem"
+      },
+      {
+        "name": "descr",
+        "labelKey": "Proj.descr"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "custId",
+        "labelKey": "Proj.custId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Proj.typeId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Proj.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "priorityId",
+        "labelKey": "Proj.priorityId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "memberId",
+        "labelKey": "Proj.memberId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "class1Id",
+        "labelKey": "Proj.class1Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/CodeMemberClass1/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "class2Id",
+        "labelKey": "Proj.class2Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/CodeMemberClass2/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "class3Id",
+        "labelKey": "Proj.class3Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/CodeMemberClass3/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Proj.curnId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "progress",
+        "labelKey": "Proj.progress",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Proj.name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "sdate",
+        "labelKey": "Proj.sdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "edate",
+        "labelKey": "Proj.edate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "asdate",
+        "labelKey": "Proj.asdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "aedate",
+        "labelKey": "Proj.aedate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Proj.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "descr",
+        "labelKey": "Proj.descr",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

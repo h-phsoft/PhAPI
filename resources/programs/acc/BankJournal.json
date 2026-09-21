@@ -1,0 +1,97 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "acc/BankJournal",
+  "entity": "Acc/BankMaster",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "periodId",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "width": "5"
+      },
+      {
+        "name": "mdate",
+        "labelKey": "Date",
+        "width": "5"
+      },
+      {
+        "name": "accId",
+        "labelKey": "Account",
+        "input": "autocomplete",
+        "width": "15",
+        "endpoint": "/Acc/AccActive/Autocomplete"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "50"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "mdate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "accId",
+        "labelKey": "Account",
+        "input": "autocomplete",
+        "endpoint": "/Acc/AccActive/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

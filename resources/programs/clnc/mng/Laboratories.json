@@ -1,0 +1,132 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "clnc/mng/Laboratories",
+  "entity": "Clnc/Laboratory",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "100px"
+      },
+      {
+        "name": "mobile",
+        "labelKey": "Mobile",
+        "width": "80px"
+      },
+      {
+        "name": "phone1",
+        "labelKey": "Phone 1",
+        "width": "80px"
+      },
+      {
+        "name": "phone2",
+        "labelKey": "Phone 2",
+        "width": "80px"
+      },
+      {
+        "name": "email",
+        "labelKey": "Email",
+        "width": "100px"
+      },
+      {
+        "name": "descr",
+        "labelKey": "Description",
+        "width": "150px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "mobile",
+        "labelKey": "Mobile",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "phone1",
+        "labelKey": "Phone 1",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "phone2",
+        "labelKey": "Phone 2",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "email",
+        "labelKey": "Email",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "descr",
+        "labelKey": "Description",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

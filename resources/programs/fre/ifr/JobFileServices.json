@@ -1,0 +1,387 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "fre/ifr/JobFileServices",
+  "entity": "Fre/IfrDbcrDocuments",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "periodId",
+        "hidden": true
+      },
+      {
+        "name": "jobId",
+        "hidden": true,
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/IfrJobFreight/Autocomplete"
+      },
+      {
+        "name": "num",
+        "labelKey": "num"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "ddate"
+      },
+      {
+        "name": "locId",
+        "labelKey": "locId",
+        "width": "100px"
+      },
+      {
+        "name": "trtId",
+        "labelKey": "fre.trtId",
+        "width": "100px"
+      },
+      {
+        "name": "contId",
+        "labelKey": "fre.contId",
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Mng/Contact/Autocomplete"
+      },
+      {
+        "name": "servId",
+        "labelKey": "fre.service",
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Mng/Services/Autocomplete"
+      },
+      {
+        "name": "curnId",
+        "labelKey": "fre.curnId",
+        "width": "100px"
+      },
+      {
+        "name": "curnRate",
+        "labelKey": "fre.curnRate",
+        "width": "100px"
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Fre.Unit"
+      },
+      {
+        "name": "qnt",
+        "labelKey": "fre.qnt",
+        "width": "100px"
+      },
+      {
+        "name": "price",
+        "labelKey": "fre.price",
+        "width": "100px"
+      },
+      {
+        "name": "camt",
+        "labelKey": "fre.camt",
+        "width": "100px"
+      },
+      {
+        "name": "amt",
+        "labelKey": "fre.amt",
+        "width": "100px"
+      },
+      {
+        "name": "waybill",
+        "labelKey": "fre.waybill",
+        "width": "100px"
+      },
+      {
+        "name": "nref",
+        "labelKey": "fre.nref",
+        "width": "100px"
+      },
+      {
+        "name": "dref",
+        "labelKey": "fre.dref",
+        "width": "100px"
+      },
+      {
+        "name": "deptRid",
+        "hidden": true,
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Cpy/Departments/Autocomplete"
+      },
+      {
+        "name": "unitRid",
+        "hidden": true,
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Cpy/Departments/Autocomplete"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "fre.statusId",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem",
+        "width": "100px"
+      },
+      {
+        "name": "ifreId",
+        "hidden": true
+      },
+      {
+        "name": "dfreId",
+        "hidden": true
+      },
+      {
+        "name": "cfreId",
+        "hidden": true
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "jobId",
+        "labelKey": "Fre.IfrJobFreight",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/IfrJobFreight/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "fre.num",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "fre.ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "locId",
+        "labelKey": "fre.locId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "trtId",
+        "labelKey": "fre.trtId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "contId",
+        "labelKey": "fre.contId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "servId",
+        "labelKey": "fre.service",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Services/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnId",
+        "labelKey": "fre.curnId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnRate",
+        "labelKey": "fre.curnRate",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "qnt",
+        "labelKey": "fre.qnt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "price",
+        "labelKey": "fre.price",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "camt",
+        "labelKey": "fre.camt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "amt",
+        "labelKey": "fre.amt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "waybill",
+        "labelKey": "fre.waybill",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "nref",
+        "labelKey": "fre.nref",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "dref",
+        "labelKey": "fre.dref",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "deptRid",
+        "labelKey": "fre.deptRid",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Departments/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitRid",
+        "labelKey": "fre.unitRid",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Departments/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "fre.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "fre.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

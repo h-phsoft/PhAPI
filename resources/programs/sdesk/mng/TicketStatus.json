@@ -1,0 +1,89 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "sdesk/mng/TicketStatus",
+  "entity": "Sdesk/CodeTicketStatus",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "ndays",
+        "labelKey": "sdes.NDays",
+        "width": "100px"
+      },
+      {
+        "name": "color",
+        "labelKey": "color",
+        "width": "100px"
+      },
+      {
+        "name": "name",
+        "labelKey": "name",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem",
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "ndays",
+        "labelKey": "Sdes.NDays",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "color",
+        "labelKey": "color",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

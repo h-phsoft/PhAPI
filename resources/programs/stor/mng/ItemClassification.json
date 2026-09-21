@@ -1,0 +1,102 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "stor/mng/ItemClassification",
+  "entity": "Stor/CodeGroup",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "name",
+        "labelKey": "Crm.name"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Crm.statusId"
+      },
+      {
+        "name": "fcolor",
+        "labelKey": "Crm.fcolor"
+      },
+      {
+        "name": "bcolor",
+        "labelKey": "Crm.bcolor"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Crm.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "name",
+        "labelKey": "Crm.name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Crm.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "fcolor",
+        "labelKey": "Crm.fcolor",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "bcolor",
+        "labelKey": "Crm.bcolor",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Crm.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

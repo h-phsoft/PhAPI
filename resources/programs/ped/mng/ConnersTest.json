@@ -1,0 +1,84 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "ped/mng/ConnersTest",
+  "entity": "Ped/Tests",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Ped.statusId"
+      },
+      {
+        "name": "name",
+        "labelKey": "Ped.name"
+      },
+      {
+        "name": "version",
+        "labelKey": "Ped.version"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Ped.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "statusId",
+        "labelKey": "Ped.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Ped.name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "version",
+        "labelKey": "Ped.version",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Ped.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

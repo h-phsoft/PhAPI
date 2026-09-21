@@ -1,0 +1,100 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/folw/LoanDefault",
+  "entity": "Lrg/RequestDefault",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "reqId",
+        "labelKey": "ReqId",
+        "width": "100px"
+      },
+      {
+        "name": "catId",
+        "labelKey": "Degrree",
+        "width": "100"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Datestart",
+        "width": "100px"
+      },
+      {
+        "name": "balance",
+        "labelKey": "Blance.Default",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Remclaims",
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "reqId",
+        "labelKey": "ReqId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Lrg/Request/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "catId",
+        "labelKey": "Degrree",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Datestart",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "balance",
+        "labelKey": "Blance.Default",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Remclaims",
+        "input": "number",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      }
+    ]
+  }
+}

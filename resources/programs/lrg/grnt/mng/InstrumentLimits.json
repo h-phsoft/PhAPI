@@ -1,0 +1,86 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/grnt/mng/InstrumentLimits",
+  "entity": "Lrg/InstrumentIssueLimits",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "issueId",
+        "labelKey": "IssueId"
+      },
+      {
+        "name": "nstart",
+        "labelKey": "Start"
+      },
+      {
+        "name": "nend",
+        "labelKey": "n.End"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "issueId",
+        "labelKey": "IssueId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "nstart",
+        "labelKey": "Start.From",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "nend",
+        "labelKey": "End.To",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

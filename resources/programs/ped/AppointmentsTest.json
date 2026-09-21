@@ -1,0 +1,364 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "ped/AppointmentsTest",
+  "entity": "Ped/Appointments",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "infoSource",
+        "labelKey": "Ped.infoSource",
+        "width": "250px"
+      },
+      {
+        "name": "comingfrom",
+        "labelKey": "Ped.comingfrom",
+        "width": "250px"
+      },
+      {
+        "name": "appointmentDate",
+        "labelKey": "Ped.appointmentDate",
+        "width": "100px"
+      },
+      {
+        "name": "name",
+        "labelKey": "Ped.name",
+        "width": "250px"
+      },
+      {
+        "name": "genderId",
+        "labelKey": "Ped.genderId",
+        "width": "100px"
+      },
+      {
+        "name": "dateOfBirth",
+        "labelKey": "Ped.dateOfBirth",
+        "width": "100px"
+      },
+      {
+        "name": "currentClass",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "assumedClass",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "currentSchool",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "address",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "phone1",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "phone2",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "fatherName",
+        "labelKey": "Ped.fatherName",
+        "width": "250px"
+      },
+      {
+        "name": "fatherEduQualification",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "fatherJop",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "motherName",
+        "labelKey": "Ped.motherName",
+        "width": "250px"
+      },
+      {
+        "name": "motherEduQualification",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "motherJop",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "brothersNumber",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "childOrder",
+        "hidden": true,
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "infoSource",
+        "labelKey": "Ped.infoSource",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "comingfrom",
+        "labelKey": "Ped.comingfrom",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "appointmentDate",
+        "labelKey": "Ped.appointmentDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "genderId",
+        "labelKey": "Ped.genderId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dateOfBirth",
+        "labelKey": "Ped.dateOfBirth",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "motherName",
+        "labelKey": "Ped.motherName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "currentClass",
+        "labelKey": "Ped.currentClass",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "assumedClass",
+        "labelKey": "Ped.assumedClass",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "currentSchool",
+        "labelKey": "Ped.currentSchool",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "address",
+        "labelKey": "Ped.address",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "phone1",
+        "labelKey": "Ped.phone1",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "phone2",
+        "labelKey": "Ped.phone2",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "fatherEduQualification",
+        "labelKey": "Ped.fatherEduQualification",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "fatherJop",
+        "labelKey": "Ped.fatherJop",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "motherEduQualification",
+        "labelKey": "Ped.motherEduQualification",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "motherJop",
+        "labelKey": "Ped.motherJop",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "brothersNumber",
+        "labelKey": "Ped.brothersNumber",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "childOrder",
+        "labelKey": "Ped.childOrder",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      }
+    ]
+  }
+}

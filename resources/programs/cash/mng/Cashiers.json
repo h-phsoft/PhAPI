@@ -1,0 +1,120 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "cash/mng/Cashiers",
+  "entity": "Cash/Cashiers",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "num"
+      },
+      {
+        "name": "name",
+        "labelKey": "name"
+      },
+      {
+        "name": "userId",
+        "labelKey": "userId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Users/Autocomplete"
+      },
+      {
+        "name": "costId",
+        "labelKey": "costId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/CostActive/Autocomplete"
+      },
+      {
+        "name": "accId",
+        "labelKey": "cash.accId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/Account/Autocomplete"
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "num",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "userId",
+        "labelKey": "userId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Users/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "costId",
+        "labelKey": "costId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/CostActive/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "accId",
+        "labelKey": "cash.accId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/Account/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "stor/mng/Store_Item_Accounts",
+  "entity": "Stor/StoreItemAccounts",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "storId",
+        "labelKey": "Stor.storId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/Stores/Autocomplete"
+      },
+      {
+        "name": "itemId",
+        "labelKey": "Stor.itemId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/Items/Autocomplete"
+      },
+      {
+        "name": "trntypId",
+        "labelKey": "Stor.trntypId"
+      },
+      {
+        "name": "cstaccId",
+        "labelKey": "Stor.cstaccId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccAcc/Autocomplete"
+      },
+      {
+        "name": "revaccId",
+        "labelKey": "Stor.revaccId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccAcc/Autocomplete"
+      },
+      {
+        "name": "comaccId",
+        "labelKey": "Stor.comaccId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccAcc/Autocomplete"
+      },
+      {
+        "name": "disaccId",
+        "labelKey": "Stor.disaccId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccAcc/Autocomplete"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Stor.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "storId",
+        "labelKey": "Stor.storId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/Stores/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "itemId",
+        "labelKey": "Stor.itemId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/Items/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "trntypId",
+        "labelKey": "Stor.trntypId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "cstaccId",
+        "labelKey": "Stor.cstaccId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccAcc/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "revaccId",
+        "labelKey": "Stor.revaccId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccAcc/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "comaccId",
+        "labelKey": "Stor.comaccId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccAcc/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "disaccId",
+        "labelKey": "Stor.disaccId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccAcc/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Stor.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

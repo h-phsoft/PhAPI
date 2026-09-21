@@ -1,0 +1,138 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "clnc/LaboratoryReceive",
+  "entity": "Clnc/LaboratoryReceive",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "sendId",
+        "hidden": true
+      },
+      {
+        "name": "sendId",
+        "hidden": true,
+        "width": "300px"
+      },
+      {
+        "name": "clinicId",
+        "labelKey": "Clinic",
+        "width": "200px"
+      },
+      {
+        "name": "doctorId",
+        "labelKey": "Doctor",
+        "width": "200px"
+      },
+      {
+        "name": "laborId",
+        "labelKey": "Laboratory",
+        "width": "200px"
+      },
+      {
+        "name": "patientId",
+        "labelKey": "Patient",
+        "width": "200px"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "width": "100px"
+      },
+      {
+        "name": "qnt",
+        "labelKey": "Qnt",
+        "width": "100px"
+      },
+      {
+        "name": "descr",
+        "labelKey": "Description",
+        "width": "150px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "clinicId",
+        "labelKey": "Clinic",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "doctorId",
+        "labelKey": "Doctor",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "laborId",
+        "labelKey": "Laboratory",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "patientId",
+        "labelKey": "Patient",
+        "input": "autocomplete",
+        "endpoint": "/UC/Clnc/Patient/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "qnt",
+        "labelKey": "Qnt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "descr",
+        "labelKey": "Description",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

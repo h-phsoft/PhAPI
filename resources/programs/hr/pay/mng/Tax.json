@@ -1,0 +1,133 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "hr/pay/mng/Tax",
+  "entity": "Emp/TaxBracketsMaster",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "width": "10"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Ddate",
+        "width": "12"
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "15"
+      },
+      {
+        "name": "gnum",
+        "labelKey": "G.Num",
+        "width": "8"
+      },
+      {
+        "name": "gdate",
+        "labelKey": "G.Date",
+        "width": "12"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "40"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "gnum",
+        "labelKey": "G.Num",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "gdate",
+        "labelKey": "G.Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

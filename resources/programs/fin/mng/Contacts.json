@@ -1,0 +1,583 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "fin/mng/Contacts",
+  "entity": "Mng/Contact",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "typeId",
+        "hidden": true
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "100px"
+      },
+      {
+        "name": "lname",
+        "labelKey": "LName",
+        "width": "100px"
+      },
+      {
+        "name": "owner",
+        "labelKey": "Owner",
+        "width": "100px"
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "width": "100px"
+      },
+      {
+        "name": "title",
+        "labelKey": "Title",
+        "width": "100px"
+      },
+      {
+        "name": "contact",
+        "labelKey": "Contact",
+        "width": "100px"
+      },
+      {
+        "name": "phone",
+        "labelKey": "Phone",
+        "width": "100px"
+      },
+      {
+        "name": "mobile",
+        "labelKey": "Mobile",
+        "width": "100px"
+      },
+      {
+        "name": "fax",
+        "labelKey": "Fax",
+        "width": "100px"
+      },
+      {
+        "name": "email",
+        "labelKey": "Email",
+        "width": "100px"
+      },
+      {
+        "name": "website",
+        "labelKey": "Website",
+        "width": "100px"
+      },
+      {
+        "name": "pobox",
+        "labelKey": "POBox",
+        "width": "100px"
+      },
+      {
+        "name": "pcode",
+        "labelKey": "PCode",
+        "width": "100px"
+      },
+      {
+        "name": "address",
+        "labelKey": "Address",
+        "width": "100px"
+      },
+      {
+        "name": "nlmt",
+        "labelKey": "NLmt",
+        "width": "100px"
+      },
+      {
+        "name": "dlmt",
+        "labelKey": "DLmt",
+        "width": "100px"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "width": "100px"
+      },
+      {
+        "name": "costId",
+        "labelKey": "Cost.Center",
+        "input": "autocomplete",
+        "endpoint": "/UCAcc/CostCenters/Autocomplete",
+        "width": "100px"
+      },
+      {
+        "name": "accdbtId",
+        "labelKey": "Cost.Account",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/Account/Autocomplete",
+        "width": "100px"
+      },
+      {
+        "name": "reprId",
+        "labelKey": "Repr",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/Account/Autocomplete",
+        "width": "100px"
+      },
+      {
+        "name": "acccrdId",
+        "labelKey": "Revenue.Account",
+        "input": "autocomplete",
+        "endpoint": "/UCAcc/Account/Autocomplete\"",
+        "width": "100px"
+      },
+      {
+        "name": "spc1Id",
+        "labelKey": "Specification 1",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/CodeSpecification1/Autocomplete",
+        "width": "100px"
+      },
+      {
+        "name": "spc2Id",
+        "labelKey": "Specification 2",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/CodeSpecification2/Autocomplete",
+        "width": "100px"
+      },
+      {
+        "name": "spc3Id",
+        "labelKey": "Specification 3",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/CodeSpecification3/Autocomplete",
+        "width": "100px"
+      },
+      {
+        "name": "spc4Id",
+        "labelKey": "Specification 4",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/CodeSpecification4/Autocomplete",
+        "width": "100px"
+      },
+      {
+        "name": "spc5Id",
+        "labelKey": "Specification 5",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/CodeSpecification5/Autocomplete",
+        "width": "100px"
+      },
+      {
+        "name": "spc6Id",
+        "labelKey": "Specification6",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/CodeSpecification6/Autocomplete",
+        "width": "100px"
+      },
+      {
+        "name": "spc7Id",
+        "labelKey": "Specification7",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/CodeSpecification7/Autocomplete",
+        "width": "100px"
+      },
+      {
+        "name": "spc8Id",
+        "labelKey": "Specification 8",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/CodeSpecification8/Autocomplete",
+        "width": "100px"
+      },
+      {
+        "name": "spc9Id",
+        "labelKey": "Specification 9",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/CodeSpecification9/Autocomplete",
+        "width": "100px"
+      },
+      {
+        "name": "spc0Id",
+        "labelKey": "Specification 10",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/CodeSpecification0/Autocomplete",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "lname",
+        "labelKey": "LName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "owner",
+        "labelKey": "Owner",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "contact",
+        "labelKey": "Contact",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "title",
+        "labelKey": "Title",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "phone",
+        "labelKey": "Phone",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "mobile",
+        "labelKey": "Mobile",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "email",
+        "labelKey": "Email",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "website",
+        "labelKey": "Website",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "pobox",
+        "labelKey": "POBox",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "pcode",
+        "labelKey": "PCode",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "address",
+        "labelKey": "Address",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "nlmt",
+        "labelKey": "NLmt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "dlmt",
+        "labelKey": "DLmt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "reprId",
+        "labelKey": "Repr",
+        "input": "autocomplete",
+        "endpoint": "/UC/Crm/Representatives/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "costId",
+        "labelKey": "Cost.Center",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/CostActive/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "accdbtId",
+        "labelKey": "Cost.Account",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/Account/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "acccrdId",
+        "labelKey": "Revenue.Account",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/Account/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc1Id",
+        "labelKey": "Specification 1",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/CodeSpecification1/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc2Id",
+        "labelKey": "Specification 2",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/CodeSpecification2/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc3Id",
+        "labelKey": "Specification 3",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/CodeSpecification3/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc4Id",
+        "labelKey": "Specification 4",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/CodeSpecification4/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc5Id",
+        "labelKey": "Specification 5",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/CodeSpecification5/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc6Id",
+        "labelKey": "Specification6",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/CodeSpecification6/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc7Id",
+        "labelKey": "Specification 7",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/CodeSpecification7/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc8Id",
+        "labelKey": "Specification 8",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/CodeSpecification8/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc9Id",
+        "labelKey": "Specification 9",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/CodeSpecification9/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc0Id",
+        "labelKey": "Specification 10",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/CodeSpecification0/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

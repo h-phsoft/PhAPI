@@ -1,0 +1,153 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "stor/ActualQuantities",
+  "entity": "Stor/ActualMaster",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "periodId",
+        "hidden": true
+      },
+      {
+        "name": "storId",
+        "labelKey": "Stor.storId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/Stores/Autocomplete"
+      },
+      {
+        "name": "docId",
+        "labelKey": "Stor.docId"
+      },
+      {
+        "name": "num",
+        "labelKey": "Stor.num"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Stor.ddate"
+      },
+      {
+        "name": "docn",
+        "labelKey": "Stor.docn"
+      },
+      {
+        "name": "docd",
+        "labelKey": "Stor.docd"
+      },
+      {
+        "name": "responsible",
+        "labelKey": "Stor.responsible"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Stor.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "storId",
+        "labelKey": "Stor.storId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/Stores/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "Stor.num",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Stor.ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "docId",
+        "labelKey": "Stor.docId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "docn",
+        "labelKey": "Stor.docn",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "docd",
+        "labelKey": "Stor.docd",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "responsible",
+        "labelKey": "Stor.responsible",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Stor.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

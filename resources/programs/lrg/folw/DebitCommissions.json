@@ -1,0 +1,117 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/folw/DebitCommissions",
+  "entity": "Lrg/Commissions",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "vhrId",
+        "hidden": true
+      },
+      {
+        "name": "reqId",
+        "labelKey": "ReqId",
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Lrg/Borrowers/Autocomplete"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Ddate",
+        "width": "100px"
+      },
+      {
+        "name": "paymentId",
+        "labelKey": "ploan",
+        "width": "100px"
+      },
+      {
+        "name": "amt",
+        "labelKey": "commissions",
+        "width": "100px"
+      },
+      {
+        "name": "srcId",
+        "labelKey": "Source",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "reqId",
+        "labelKey": "ReqId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Lrg/Borrowers/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "amt",
+        "labelKey": "commissions",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "paymentId",
+        "labelKey": "ploan",
+        "input": "autocomplete",
+        "endpoint": "/UC/Lrg/LoanPayment/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

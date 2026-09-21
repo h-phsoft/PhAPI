@@ -1,0 +1,27 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "hr/pay/qry/EmployeeCompensation",
+  "entity": "Emp/EmployeeCompensation",
+  "search": {
+    "fields": [
+      {
+        "name": "empId",
+        "labelKey": "Employee",
+        "input": "autocomplete",
+        "endpoint": "/UC/Emp/Employee/Autocomplete",
+        "operators": [
+          "="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      }
+    ]
+  }
+}

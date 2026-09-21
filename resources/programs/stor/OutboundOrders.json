@@ -1,0 +1,236 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "stor/OutboundOrders",
+  "entity": "Stor/OutboundOrderMaster",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "srcId",
+        "labelKey": "Stor.srcId"
+      },
+      {
+        "name": "trntypId",
+        "labelKey": "Stor.trntypId"
+      },
+      {
+        "name": "periodId",
+        "hidden": true
+      },
+      {
+        "name": "storId",
+        "labelKey": "Stor.storId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/Stores/Autocomplete"
+      },
+      {
+        "name": "contId",
+        "labelKey": "Stor.contId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "stor.statusId"
+      },
+      {
+        "name": "docId",
+        "labelKey": "Stor.docId"
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Stor.curnId"
+      },
+      {
+        "name": "curnRate",
+        "labelKey": "Stor.curnRate"
+      },
+      {
+        "name": "relId",
+        "hidden": true
+      },
+      {
+        "name": "finId",
+        "labelKey": "Stor.finId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/FinMdbt/Autocomplete"
+      },
+      {
+        "name": "num",
+        "labelKey": "Stor.outNum"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Stor.ddate"
+      },
+      {
+        "name": "docn",
+        "labelKey": "Stor.docn"
+      },
+      {
+        "name": "docd",
+        "labelKey": "Stor.docd"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Stor.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "srcId",
+        "labelKey": "Stor.srcId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "storId",
+        "labelKey": "Stor.storId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/Stores/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "contId",
+        "labelKey": "Stor.contId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "docId",
+        "labelKey": "Stor.docId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Stor.curnId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "stor.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnRate",
+        "labelKey": "Stor.curnRate",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "finId",
+        "labelKey": "Stor.finId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/FinMdbt/Autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "Stor.outNum",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Stor.ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "docn",
+        "labelKey": "Stor.docn",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "docd",
+        "labelKey": "Stor.docd",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Stor.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

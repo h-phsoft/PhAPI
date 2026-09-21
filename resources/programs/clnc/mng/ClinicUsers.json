@@ -1,0 +1,48 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "clnc/mng/ClinicUsers",
+  "entity": "Clnc/UserClinics",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "clinicId",
+        "labelKey": "Clinic",
+        "width": "300px"
+      },
+      {
+        "name": "userId",
+        "labelKey": "User",
+        "input": "autocomplete",
+        "width": "300px",
+        "endpoint": "/UC/Cpy/Users/Autocomplete"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "clinicId",
+        "labelKey": "Clinic",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "userId",
+        "labelKey": "UserName",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Users/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "proj/Invoice",
+  "entity": "Proj/InvoiceMst",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "periodId",
+        "hidden": true
+      },
+      {
+        "name": "custId",
+        "labelKey": "Proj.custId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/Customers/Autocomplete"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Proj.statusId"
+      },
+      {
+        "name": "num",
+        "labelKey": "Proj.num"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Proj.ddate"
+      },
+      {
+        "name": "duedate",
+        "labelKey": "Proj.duedate"
+      },
+      {
+        "name": "paidId",
+        "labelKey": "Proj.paidId"
+      },
+      {
+        "name": "paidAmt",
+        "labelKey": "Proj.paidAmt"
+      },
+      {
+        "name": "paidDate",
+        "labelKey": "Proj.paidDate"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Proj.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "statusId",
+        "labelKey": "Proj.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "custId",
+        "labelKey": "Proj.custId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/Customers/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "Proj.num",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Proj.ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "duedate",
+        "labelKey": "Proj.duedate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "paidId",
+        "labelKey": "Proj.paidId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "paidAmt",
+        "labelKey": "Proj.paidAmt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "paidDate",
+        "labelKey": "Proj.paidDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Proj.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

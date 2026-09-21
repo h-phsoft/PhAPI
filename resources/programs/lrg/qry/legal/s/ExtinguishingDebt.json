@@ -1,0 +1,112 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "lrg/qry/legal/s/ExtinguishingDebt",
+  "entity": "Lrg/RequestExtinguishingView",
+  "search": {
+    "fields": [
+      {
+        "name": "lenderId",
+        "labelKey": "lender",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "borrowerName",
+        "labelKey": "BorrowerName",
+        "operators": [
+          "%",
+          "!%"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          "<>"
+        ]
+      },
+      {
+        "name": "dnum",
+        "labelKey": "Dnum",
+        "operators": [
+          "<>"
+        ]
+      },
+      {
+        "name": "sizeId",
+        "labelKey": "Size",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loantypeId",
+        "labelKey": "loantypeName",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "areaId",
+        "labelKey": "Area",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loantypeId",
+        "labelKey": "Loantype",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanPeriodId",
+        "labelKey": "LoanPeriodInstall",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanPurposeId",
+        "labelKey": "LoanPurpose",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanIspartialyId",
+        "labelKey": "AgeName",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanIspartialyId",
+        "labelKey": "LoanIspartialyId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanIspaymentsId",
+        "labelKey": "LoanisPaymentsId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      }
+    ]
+  }
+}

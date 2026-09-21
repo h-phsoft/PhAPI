@@ -1,0 +1,112 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "stor/mng/DefaultAccounts",
+  "entity": "Stor/Accounts",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "trntypId",
+        "labelKey": "Stor.trntypId"
+      },
+      {
+        "name": "cstaccId",
+        "labelKey": "Stor.cstaccId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccAcc/Autocomplete"
+      },
+      {
+        "name": "revaccId",
+        "labelKey": "Stor.revaccId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccAcc/Autocomplete"
+      },
+      {
+        "name": "comaccId",
+        "labelKey": "Stor.comaccId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccAcc/Autocomplete"
+      },
+      {
+        "name": "disaccId",
+        "labelKey": "Stor.disaccId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccAcc/Autocomplete"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Stor.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "trntypId",
+        "labelKey": "Stor.trntypId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "cstaccId",
+        "labelKey": "Stor.cstaccId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccAcc/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "revaccId",
+        "labelKey": "Stor.revaccId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccAcc/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "comaccId",
+        "labelKey": "Stor.comaccId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccAcc/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "disaccId",
+        "labelKey": "Stor.disaccId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/AccAcc/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Stor.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

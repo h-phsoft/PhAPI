@@ -237,6 +237,15 @@ library.
 matches its hand-written version field for field, and the hand-written one still
 takes precedence when present.
 
+**Note on the metadata this needed.** Step 2 converted the first of the two
+declarative sources P1 names — the 595 query definitions, which describe what
+may be *searched* on an entity. The entry forms are the second, `aFields` and
+`aQFields`, and they are a different fact: `Clnc/Doctors.json` lists twenty
+searchable columns including the audit stamps, while the Doctors *screen* is
+sixteen fields in a particular order with Speciality as a select and User as an
+autocomplete. Step 3 therefore recovered that second source before it could
+render anything. See `resources/SCREENS.md`.
+
 ### Step 4 — Screens
 
 In order of how uniform they are: Table, then Query, then Daily, then Statistic.
@@ -299,6 +308,35 @@ Recorded so the rules above are traceable to evidence rather than taste.
 | Models declaring relations (lookups) | 846 |
 | Models that are pre-joined views | 233 |
 | Autocomplete templates | 488 |
+
+**Recovered program screens** — from the Java client's page scripts
+
+| | |
+|---|---|
+| Page scripts read | 543 |
+| Declaring a screen a widget could be handed | 461 |
+| Converted (their entity is described here) | 273 |
+| Naming a `/CC/` endpoint or an unregistered entity | 122 |
+| Form fields / search fields carried | 2663 / 2356 |
+| Fields dropped — column not on the entity | 600 |
+| Fields stating an input the schema cannot imply | 927 of 5019 (18%) |
+
+**Metadata measured against the live schema** — `Demo`, 935 tables
+
+| | |
+|---|---|
+| Models whose column count matches the table | 793 |
+| Models describing **fewer** columns than the table has | 133 (1579 columns undescribed) |
+| Models describing more | 9 |
+| Columns whose nullability agrees | 18595 of 18728 (99.3%) |
+| Model says optional, database says NOT NULL | 62 |
+| Model says required, database says nullable | 71 |
+
+A column no model describes is never read or written: every SELECT and INSERT
+is built from the model's field list. Worst cases are
+`Fre_Lfr_Dbcr_Documents_View` (43 of 249), `Ped_Appointments` (25 of 103) and
+`Emp_Employee` (15 of 87). Repairing this is a merge, never a regeneration —
+M2 stands.
 
 **Recovered query definitions**
 

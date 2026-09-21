@@ -1,0 +1,150 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "crm/mng/SalesRepresentatives",
+  "entity": "Crm/Representatives",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "name",
+        "labelKey": "Crm.name"
+      },
+      {
+        "name": "userId",
+        "labelKey": "Crm.userId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Users/Autocomplete"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Crm.statusId"
+      },
+      {
+        "name": "accId",
+        "labelKey": "Crm.accId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/Account/Autocomplete"
+      },
+      {
+        "name": "accCid",
+        "labelKey": "Crm.accCid",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/Account/Autocomplete"
+      },
+      {
+        "name": "comm",
+        "labelKey": "Crm.comm"
+      },
+      {
+        "name": "target",
+        "labelKey": "Crm.target"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Crm.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "name",
+        "labelKey": "Crm.name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "userId",
+        "labelKey": "Crm.userId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Users/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Crm.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "accId",
+        "labelKey": "Crm.accId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/Account/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "accCid",
+        "labelKey": "Crm.accCid",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/Account/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "comm",
+        "labelKey": "Crm.comm",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "target",
+        "labelKey": "Crm.target",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Crm.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

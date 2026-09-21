@@ -18,6 +18,7 @@ try {
 }
 
 const mainApp = require('./metadata/registry');
+const screens = require('./metadata/screens');
 const routes = require('./http/routes');
 const legacyRoutes = require('./http/middleware/legacyRoutes');
 const errorHandler = require('./http/middleware/errorHandling');
@@ -86,6 +87,15 @@ const modulesDirs = [
   path.join(__dirname, 'resources', 'modules')
 ];
 mainApp.loadMetadata(modulesDirs);
+
+// The screens laid over those entities: one file per program, plus the query
+// definitions the report endpoints run. Loaded after the entities because every
+// screen names one, and a screen whose entity is not registered is served as
+// having no screen rather than as a broken one.
+screens.load({
+  programs: path.join(__dirname, 'resources', 'programs'),
+  reports: path.join(__dirname, 'resources', 'screens')
+});
 
 // Serve the static HTML documentation portal at /docs. This mount sits ahead of
 // authentication, so everything under docs/ is public wherever it is enabled --

@@ -1,0 +1,515 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "fin/CommClearing",
+  "entity": "Fin/Reconcile",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "srcId",
+        "hidden": true
+      },
+      {
+        "name": "trtRid",
+        "hidden": true
+      },
+      {
+        "name": "trtId",
+        "hidden": true
+      },
+      {
+        "name": "ordId",
+        "hidden": true
+      },
+      {
+        "name": "periodId",
+        "hidden": true
+      },
+      {
+        "name": "vhrId",
+        "hidden": true
+      },
+      {
+        "name": "bankId",
+        "hidden": true
+      },
+      {
+        "name": "deptId",
+        "labelKey": "DeptId",
+        "width": "100px"
+      },
+      {
+        "name": "curnId",
+        "labelKey": "CurnId",
+        "width": "100px"
+      },
+      {
+        "name": "curnRid",
+        "labelKey": "CurnRId",
+        "width": "100px"
+      },
+      {
+        "name": "unitId",
+        "labelKey": "UnitId",
+        "width": "100px"
+      },
+      {
+        "name": "operId",
+        "labelKey": "OperId",
+        "width": "100px"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Ddate",
+        "width": "100px"
+      },
+      {
+        "name": "keydate",
+        "labelKey": "KeyDate",
+        "width": "100px"
+      },
+      {
+        "name": "keynum",
+        "labelKey": "KeyNum",
+        "width": "100px"
+      },
+      {
+        "name": "deptRid",
+        "labelKey": "DeptRId",
+        "width": "100px"
+      },
+      {
+        "name": "unitRid",
+        "labelKey": "UnitRId",
+        "width": "100px"
+      },
+      {
+        "name": "operRid",
+        "labelKey": "OperRId",
+        "width": "100px"
+      },
+      {
+        "name": "contId",
+        "labelKey": "sedesc.ContId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete",
+        "width": "100px"
+      },
+      {
+        "name": "contRid",
+        "labelKey": "sedesc.ContId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete",
+        "width": "100px"
+      },
+      {
+        "name": "num",
+        "labelKey": "num",
+        "width": "100px"
+      },
+      {
+        "name": "curnRrate",
+        "labelKey": "CurnRrate",
+        "width": "100px"
+      },
+      {
+        "name": "curnRate",
+        "labelKey": "CurnRate",
+        "width": "100px"
+      },
+      {
+        "name": "rcamt",
+        "labelKey": "RCAmt",
+        "width": "100px"
+      },
+      {
+        "name": "camt",
+        "labelKey": "Camt",
+        "width": "100px"
+      },
+      {
+        "name": "ramt",
+        "labelKey": "RAmt",
+        "width": "100px"
+      },
+      {
+        "name": "amt",
+        "labelKey": "Amt",
+        "width": "100px"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "width": "100px"
+      },
+      {
+        "name": "methodId",
+        "labelKey": "MethodId",
+        "width": "100px"
+      },
+      {
+        "name": "refnum",
+        "labelKey": "RefNum",
+        "width": "100px"
+      },
+      {
+        "name": "contractId",
+        "labelKey": "ContractId",
+        "width": "100px"
+      },
+      {
+        "name": "keytypeId",
+        "labelKey": "KeyTypeId",
+        "width": "100px"
+      },
+      {
+        "name": "duedate",
+        "labelKey": "Duedate",
+        "width": "100px"
+      },
+      {
+        "name": "note",
+        "labelKey": "Note",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem",
+        "width": "100px"
+      },
+      {
+        "name": "acamt",
+        "labelKey": "ACAmt",
+        "width": "100px"
+      },
+      {
+        "name": "aamt",
+        "labelKey": "AAmt",
+        "width": "100px"
+      },
+      {
+        "name": "apcamt",
+        "labelKey": "APCAmt",
+        "width": "100px"
+      },
+      {
+        "name": "apamt",
+        "labelKey": "APAmt",
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "deptId",
+        "labelKey": "DeptId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnId",
+        "labelKey": "CurnId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnRid",
+        "labelKey": "CurnRId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "methodId",
+        "labelKey": "MethodId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "keynum",
+        "labelKey": "KeyNum",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "camt",
+        "labelKey": "Camt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "num",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "keydate",
+        "labelKey": "KeyDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "unitId",
+        "labelKey": "UnitId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "operId",
+        "labelKey": "OperId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "deptRid",
+        "labelKey": "DeptRId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitRid",
+        "labelKey": "UnitRId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "operRid",
+        "labelKey": "OperRId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "contId",
+        "labelKey": "sedesc.ContId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "contRid",
+        "labelKey": "sedesc.ContId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "contractId",
+        "labelKey": "ContractId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "duedate",
+        "labelKey": "DueDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "keytypeId",
+        "labelKey": "KeyTypeId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "acamt",
+        "labelKey": "ACAmt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rcamt",
+        "labelKey": "RCAmt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ramt",
+        "labelKey": "RAmt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnRate",
+        "labelKey": "CurnRate",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "amt",
+        "labelKey": "Amt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "aamt",
+        "labelKey": "AAmt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "apamt",
+        "labelKey": "APAmt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "apcamt",
+        "labelKey": "APCAmt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "refnum",
+        "labelKey": "RefNum",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "note",
+        "labelKey": "Note",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "curnRrate",
+        "labelKey": "CurnRrate",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

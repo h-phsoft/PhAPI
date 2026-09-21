@@ -1,0 +1,96 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "super/DepartmentUnits",
+  "entity": "Cpy/DepartmentUnit",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "width": "100"
+      },
+      {
+        "name": "deptId",
+        "labelKey": "DeptId",
+        "width": "100"
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "100"
+      },
+      {
+        "name": "costId",
+        "labelKey": "CostId",
+        "width": "25"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "100"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "deptId",
+        "labelKey": "DeptId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "costId",
+        "labelKey": "CostId",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

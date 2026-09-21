@@ -1,0 +1,118 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "ped/mng/Teachers",
+  "entity": "Ped/Lecturer",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Ped.statusId"
+      },
+      {
+        "name": "name",
+        "labelKey": "Ped.name"
+      },
+      {
+        "name": "mobile",
+        "labelKey": "Ped.mobile"
+      },
+      {
+        "name": "genderId",
+        "labelKey": "Ped.genderId"
+      },
+      {
+        "name": "age",
+        "labelKey": "Ped.age"
+      },
+      {
+        "name": "studyfld",
+        "labelKey": "Ped.studyfld"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Ped.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "name",
+        "labelKey": "Ped.name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "mobile",
+        "labelKey": "Ped.mobile",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "genderId",
+        "labelKey": "Ped.genderId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "age",
+        "labelKey": "Ped.age",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "studyfld",
+        "labelKey": "Ped.studyfld",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Ped.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

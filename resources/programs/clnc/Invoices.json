@@ -1,0 +1,122 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "clnc/Invoices",
+  "entity": "Clnc/Invoices",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "width": "100px"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "width": "100px"
+      },
+      {
+        "name": "clinicId",
+        "labelKey": "Clinic",
+        "input": "autocomplete",
+        "width": "200px"
+      },
+      {
+        "name": "patientId",
+        "labelKey": "Patient",
+        "input": "autocomplete",
+        "width": "200px",
+        "endpoint": "/UC/Clnc/Patient/Autocomplete"
+      },
+      {
+        "name": "discId",
+        "labelKey": "Discount.Type",
+        "width": "100px"
+      },
+      {
+        "name": "discVal",
+        "labelKey": "Discount",
+        "width": "100px"
+      },
+      {
+        "name": "discAmt",
+        "labelKey": "Discount.Amount",
+        "width": "150px"
+      },
+      {
+        "name": "discReason",
+        "labelKey": "Reason",
+        "width": "200px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "clinicId",
+        "labelKey": "Clinic",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "patientId",
+        "labelKey": "Patient",
+        "input": "autocomplete",
+        "endpoint": "/UC/Clnc/Patient/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "discReason",
+        "labelKey": "Reason",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,302 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "clnc/mng/Doctors",
+  "entity": "Clnc/Doctors",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "100px"
+      },
+      {
+        "name": "specialId",
+        "labelKey": "Speciality",
+        "width": "200px"
+      },
+      {
+        "name": "userId",
+        "labelKey": "User",
+        "input": "autocomplete",
+        "width": "150px",
+        "endpoint": "/UC/Cpy/Users/Autocomplete"
+      },
+      {
+        "name": "dob",
+        "labelKey": "Date.of.birth",
+        "width": "100px"
+      },
+      {
+        "name": "genderId",
+        "labelKey": "Gender",
+        "width": "100px"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "status"
+      },
+      {
+        "name": "martialId",
+        "labelKey": "Martial",
+        "width": "100px"
+      },
+      {
+        "name": "idtypeId",
+        "labelKey": "Id.Type",
+        "width": "100px"
+      },
+      {
+        "name": "natId",
+        "labelKey": "Nationality",
+        "width": "100px"
+      },
+      {
+        "name": "idnum",
+        "labelKey": "ID.Number",
+        "width": "150px"
+      },
+      {
+        "name": "natnum",
+        "labelKey": "NatNum",
+        "width": "150px"
+      },
+      {
+        "name": "mobile",
+        "labelKey": "Mobile",
+        "width": "80px"
+      },
+      {
+        "name": "phone1",
+        "labelKey": "Phone 1",
+        "width": "80px"
+      },
+      {
+        "name": "phone2",
+        "labelKey": "Phone 2",
+        "width": "80px"
+      },
+      {
+        "name": "email",
+        "labelKey": "Email",
+        "width": "100px"
+      },
+      {
+        "name": "langs",
+        "labelKey": "Languages",
+        "width": "100px"
+      },
+      {
+        "name": "descr",
+        "labelKey": "Description",
+        "width": "150px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "specialId",
+        "labelKey": "Speciality",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "userId",
+        "labelKey": "UserName",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Users/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dob",
+        "labelKey": "Date.of.birth",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "genderId",
+        "labelKey": "Gender",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "martialId",
+        "labelKey": "Martial",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "natId",
+        "labelKey": "Nationality",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "idtypeId",
+        "labelKey": "Id.Type",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "idnum",
+        "labelKey": "Resume.No",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "natnum",
+        "labelKey": "NatNum",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "mobile",
+        "labelKey": "Mobile",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "phone1",
+        "labelKey": "Phone 1",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "phone2",
+        "labelKey": "Phone 2",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "email",
+        "labelKey": "Email",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "langs",
+        "labelKey": "Languages",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "descr",
+        "labelKey": "Description",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

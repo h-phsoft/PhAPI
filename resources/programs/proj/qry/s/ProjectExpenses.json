@@ -1,0 +1,183 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "proj/qry/s/ProjectExpenses",
+  "entity": "Proj/ExpenseView",
+  "search": {
+    "fields": [
+      {
+        "name": "expDate",
+        "labelKey": "Proj.ddate",
+        "input": "autocomplete",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "expQnt",
+        "labelKey": "Proj.qnt",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "expPrice",
+        "labelKey": "Proj.price",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "expCamt",
+        "labelKey": "Proj.camt",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "expAmt",
+        "labelKey": "Proj.amt",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "expRem",
+        "labelKey": "Proj.rem",
+        "input": "autocomplete",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "expProjId",
+        "labelKey": "Proj.projId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/Project/Autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "projName",
+        "labelKey": "Proj.Name",
+        "input": "autocomplete",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "expServId",
+        "labelKey": "Proj.servId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Services/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "expBillableId",
+        "labelKey": "Proj.billableId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "expBilledId",
+        "labelKey": "Proj.billedId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "expCurnId",
+        "labelKey": "Proj.curnId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "expCurnRate",
+        "labelKey": "Proj.curnRate",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "str/mng/Warehouses",
+  "entity": "Str/Stores",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "name",
+        "labelKey": "Name"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status"
+      },
+      {
+        "name": "accId",
+        "labelKey": "Account",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/GrantedAccount/Autocomplete"
+      },
+      {
+        "name": "costId",
+        "labelKey": "Cost Center",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/CostActive/Autocomplete"
+      },
+      {
+        "name": "cstAccId",
+        "labelKey": "Cost.Account",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/GrantedAccount/Autocomplete"
+      },
+      {
+        "name": "revAccId",
+        "labelKey": "Revenue.Account",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/GrantedAccount/Autocomplete"
+      },
+      {
+        "name": "empId",
+        "labelKey": "Employee",
+        "input": "autocomplete",
+        "width": "20",
+        "endpoint": "/UC/Emp/Employee/Autocomplete"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "accId",
+        "labelKey": "Account",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/GrantedAccount/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "costId",
+        "labelKey": "Cost.Center",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/CostActive/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "cstAccId",
+        "labelKey": "Cost.Account",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/GrantedAccount/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "revAccId",
+        "labelKey": "Revenue.Account",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/GrantedAccount/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "empId",
+        "labelKey": "Employee",
+        "input": "autocomplete",
+        "endpoint": "/UC/Emp/Employee/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

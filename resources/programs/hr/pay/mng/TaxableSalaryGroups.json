@@ -1,0 +1,250 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "hr/pay/mng/TaxableSalaryGroups",
+  "entity": "Emp/SalaryGroups",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "125px"
+      },
+      {
+        "name": "brktId",
+        "labelKey": "TaxBrackets",
+        "width": "100px"
+      },
+      {
+        "name": "gtameperc",
+        "labelKey": "Gtameperc",
+        "width": "100px"
+      },
+      {
+        "name": "gtamoperc1",
+        "labelKey": "Gtamoperc1",
+        "width": "100px"
+      },
+      {
+        "name": "gtamoperc2",
+        "labelKey": "Gtamoperc2",
+        "width": "100px"
+      },
+      {
+        "name": "gtamoperc3",
+        "labelKey": "Gtamoperc3",
+        "width": "100px"
+      },
+      {
+        "name": "dprice",
+        "labelKey": "Dprice",
+        "width": "100px"
+      },
+      {
+        "name": "absence",
+        "labelKey": "Absence",
+        "width": "100px"
+      },
+      {
+        "name": "delay",
+        "labelKey": "Delay",
+        "width": "100px"
+      },
+      {
+        "name": "nprice",
+        "labelKey": "Nprice",
+        "width": "100px"
+      },
+      {
+        "name": "wprice",
+        "labelKey": "Wprice",
+        "width": "100px"
+      },
+      {
+        "name": "vprice",
+        "labelKey": "Vprice",
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "brktId",
+        "labelKey": "TaxBrackets",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "gtameperc",
+        "labelKey": "Gtameperc",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "gtamoperc1",
+        "labelKey": "Gtamoperc1",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "gtamoperc2",
+        "labelKey": "Gtamoperc2",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "gtamoperc3",
+        "labelKey": "Gtamoperc3",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "dprice",
+        "labelKey": "Dprice",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "absence",
+        "labelKey": "absence",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "delay",
+        "labelKey": "delay",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "nprice",
+        "labelKey": "Nprice",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "wprice",
+        "labelKey": "Wprice",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "vprice",
+        "labelKey": "Vprice",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      }
+    ]
+  }
+}

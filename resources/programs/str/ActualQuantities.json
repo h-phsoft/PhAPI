@@ -1,0 +1,168 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "str/ActualQuantities",
+  "entity": "Str/ActualMaster",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "periodId",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "width": "150px"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "width": "150px"
+      },
+      {
+        "name": "storId",
+        "labelKey": "Store",
+        "width": "150px"
+      },
+      {
+        "name": "docId",
+        "labelKey": "Document",
+        "width": "150px"
+      },
+      {
+        "name": "docn",
+        "labelKey": "his.Num",
+        "width": "75px"
+      },
+      {
+        "name": "docd",
+        "labelKey": "his.Date",
+        "width": "150px"
+      },
+      {
+        "name": "responsible",
+        "labelKey": "Responsible",
+        "width": "150px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Remark",
+        "width": "150px"
+      },
+      {
+        "name": "insDate",
+        "labelKey": "Ins.Date",
+        "width": "150px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "storId",
+        "labelKey": "Store",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "docId",
+        "labelKey": "Document",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "docn",
+        "labelKey": "his.Num",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "docd",
+        "labelKey": "his.Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "responsible",
+        "labelKey": "Responsible",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

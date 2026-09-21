@@ -1,0 +1,151 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "hr/hr/AppraisalNote",
+  "entity": "Emp/AppraisalNotes",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "width": "8"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "width": "10"
+      },
+      {
+        "name": "empId",
+        "labelKey": "Employee",
+        "input": "autocomplete",
+        "width": "25",
+        "endpoint": "/UC/Emp/Employee/Autocomplete"
+      },
+      {
+        "name": "apprgrpId",
+        "labelKey": "Appraisal.Group",
+        "width": "15"
+      },
+      {
+        "name": "appritmId",
+        "labelKey": "Appraisal.Item",
+        "width": "15"
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Type",
+        "width": "10"
+      },
+      {
+        "name": "points",
+        "labelKey": "Points",
+        "width": "8"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "40"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "empId",
+        "labelKey": "Employee",
+        "input": "autocomplete",
+        "endpoint": "/UC/Emp/Employee/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "apprgrpId",
+        "labelKey": "Appraisal.Group",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "appritmId",
+        "labelKey": "Appraisal.Item",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Type",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "points",
+        "labelKey": "Points",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

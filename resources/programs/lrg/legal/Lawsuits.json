@@ -1,0 +1,278 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/legal/Lawsuits",
+  "entity": "Lrg/Suits",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "suitId",
+        "hidden": true
+      },
+      {
+        "name": "reqId",
+        "labelKey": "ReqId",
+        "input": "autocomplete",
+        "width": "100px"
+      },
+      {
+        "name": "bnum",
+        "labelKey": "numbasic",
+        "width": "100px"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Ddate",
+        "width": "100px"
+      },
+      {
+        "name": "courtId",
+        "labelKey": "CourtId",
+        "width": "100px"
+      },
+      {
+        "name": "typeId",
+        "labelKey": "TypeId",
+        "width": "100px"
+      },
+      {
+        "name": "cityId",
+        "labelKey": "CityId",
+        "width": "100px"
+      },
+      {
+        "name": "plaintiffname",
+        "labelKey": "PlaintiffName",
+        "width": "100px"
+      },
+      {
+        "name": "lawyerId",
+        "labelKey": "Corporation.lawyer",
+        "width": "100px"
+      },
+      {
+        "name": "defendantname",
+        "labelKey": "DefendantName",
+        "width": "100px"
+      },
+      {
+        "name": "lawyor",
+        "labelKey": "Lawyor",
+        "width": "100px"
+      },
+      {
+        "name": "subject",
+        "labelKey": "Subjectt",
+        "width": "100px"
+      },
+      {
+        "name": "proccess",
+        "labelKey": "Proccess",
+        "width": "100px"
+      },
+      {
+        "name": "Lawyor2",
+        "labelKey": "LawyerId",
+        "width": "100px"
+      },
+      {
+        "name": "stage",
+        "labelKey": "Stage",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "reqId",
+        "labelKey": "ReqId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "bnum",
+        "labelKey": "numbasic",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "TypeId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "courtId",
+        "labelKey": "CourtId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "cityId",
+        "labelKey": "CityId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "plaintiffname",
+        "labelKey": "plaintiffname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "lawyerId",
+        "labelKey": "Corporation.lawyer",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "defendantname",
+        "labelKey": "defendantname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "lawyor",
+        "labelKey": "lawyor",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "subject",
+        "labelKey": "Subjectt",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "proccess",
+        "labelKey": "Proccess",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "Lawyor2",
+        "labelKey": "LawyerId",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "stage",
+        "labelKey": "Stage",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

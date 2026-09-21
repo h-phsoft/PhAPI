@@ -1,0 +1,543 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "cash/TransferOrders",
+  "entity": "Cash/TransferOrder",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "periodId",
+        "hidden": true
+      },
+      {
+        "name": "userId",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "cash.num"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "cash.ddate"
+      },
+      {
+        "name": "deptId",
+        "labelKey": "Cash.deptId"
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Cash.unitId"
+      },
+      {
+        "name": "operId",
+        "labelKey": "Cash.operId"
+      },
+      {
+        "name": "methodId",
+        "labelKey": "cash.method"
+      },
+      {
+        "name": "rnum",
+        "labelKey": "cash.rnum"
+      },
+      {
+        "name": "rdate",
+        "labelKey": "cash.rdate"
+      },
+      {
+        "name": "cboxFid",
+        "labelKey": "cash.cboxFId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cash/Boxes/Autocomplete"
+      },
+      {
+        "name": "cashFid",
+        "labelKey": "cash.cashId",
+        "input": "autocomplete"
+      },
+      {
+        "name": "cboxTid",
+        "labelKey": "cash.cboxTId",
+        "input": "autocomplete"
+      },
+      {
+        "name": "cashTid",
+        "labelKey": "cash.cashTId",
+        "input": "autocomplete"
+      },
+      {
+        "name": "edate",
+        "labelKey": "cash.edate"
+      },
+      {
+        "name": "curnFid",
+        "labelKey": "cash.curnFid"
+      },
+      {
+        "name": "curnFrate",
+        "labelKey": "cash.curnFrate"
+      },
+      {
+        "name": "fcamt",
+        "labelKey": "cash.fcamt"
+      },
+      {
+        "name": "famt",
+        "labelKey": "cash.famt"
+      },
+      {
+        "name": "curnTid",
+        "labelKey": "cash.curnTid"
+      },
+      {
+        "name": "curnTrate",
+        "labelKey": "cash.curnTrate"
+      },
+      {
+        "name": "tcamt",
+        "labelKey": "cash.tcamt"
+      },
+      {
+        "name": "tamt",
+        "labelKey": "cash.tamt"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "cash.statusId"
+      },
+      {
+        "name": "statusDate",
+        "labelKey": "cash.statusDate"
+      },
+      {
+        "name": "statusDescr",
+        "labelKey": "cash.statusDescr"
+      },
+      {
+        "name": "cityId",
+        "labelKey": "cash.cityId"
+      },
+      {
+        "name": "phnbyId",
+        "labelKey": "cash.phnby"
+      },
+      {
+        "name": "correspondent",
+        "labelKey": "cash.correspondent"
+      },
+      {
+        "name": "recipient",
+        "labelKey": "cash.recipient"
+      },
+      {
+        "name": "reason",
+        "labelKey": "cash.reason"
+      },
+      {
+        "name": "note",
+        "labelKey": "cash.note"
+      },
+      {
+        "name": "rem",
+        "labelKey": "cash.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "deptId",
+        "labelKey": "Cash.deptId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Cash.unitId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "operId",
+        "labelKey": "Cash.operId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "contId",
+        "labelKey": "cash.contId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "servId",
+        "labelKey": "cash.servId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Services/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "methodId",
+        "labelKey": "methodId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "cboxFid",
+        "labelKey": "cash.cboxFId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cash/Boxes/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "cashFid",
+        "labelKey": "cash.cashId",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "cashTid",
+        "labelKey": "cash.cashId",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "cash.num",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "cash.ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rnum",
+        "labelKey": "cash.rnum",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rdate",
+        "labelKey": "cash.rdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "edate",
+        "labelKey": "cash.edate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "insDate",
+        "labelKey": "cash.insDate",
+        "input": "date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "curnFid",
+        "labelKey": "cash.curnFid",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnFrate",
+        "labelKey": "cash.curnFrate",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "fcamt",
+        "labelKey": "cash.fcamt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "famt",
+        "labelKey": "cash.famt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "curnTid",
+        "labelKey": "cash.curnTid",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnTrate",
+        "labelKey": "cash.curnTrate",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "tcamt",
+        "labelKey": "cash.tcamt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "tamt",
+        "labelKey": "cash.tamt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "cash.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusDate",
+        "labelKey": "cash.statusDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "statusDescr",
+        "labelKey": "cash.statusDescr",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "cityId",
+        "labelKey": "cash.cityId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "phnbyId",
+        "labelKey": "cash.phnby",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "correspondent",
+        "labelKey": "cash.correspondent",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "recipient",
+        "labelKey": "cash.recipient",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "note",
+        "labelKey": "cash.note",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "reason",
+        "labelKey": "cash.reason",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "cash.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

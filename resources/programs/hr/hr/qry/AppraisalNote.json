@@ -1,0 +1,28 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "hr/hr/qry/AppraisalNote",
+  "entity": "Emp/AppraisalNotes",
+  "search": {
+    "fields": [
+      {
+        "name": "empId",
+        "labelKey": "Employee",
+        "input": "autocomplete",
+        "endpoint": "/UC/Emp/Employee/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "type",
+        "operators": [
+          "=",
+          "!="
+        ]
+      }
+    ]
+  }
+}

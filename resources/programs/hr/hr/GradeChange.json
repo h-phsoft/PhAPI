@@ -1,0 +1,158 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "hr/hr/GradeChange",
+  "entity": "Emp/GradeChange",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "width": "100px"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "width": "100px"
+      },
+      {
+        "name": "empId",
+        "labelKey": "Employee",
+        "input": "autocomplete",
+        "width": "200px",
+        "endpoint": "/UC/Emp/Employee/Autocomplete"
+      },
+      {
+        "name": "tgradOid",
+        "labelKey": "Old.Grade",
+        "input": "autocomplete",
+        "width": "150px"
+      },
+      {
+        "name": "tgradNid",
+        "labelKey": "New.Grade",
+        "width": "150px"
+      },
+      {
+        "name": "sdate",
+        "labelKey": "Grad.Start.Date",
+        "width": "100px"
+      },
+      {
+        "name": "days",
+        "labelKey": "Grad.Days",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "50"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "empId",
+        "labelKey": "Employee",
+        "input": "autocomplete",
+        "endpoint": "/UC/Emp/Employee/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "tgradOid",
+        "labelKey": "Old.Grade",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "tgradNid",
+        "labelKey": "New.Grade",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "sdate",
+        "labelKey": "Grad.Start.Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "days",
+        "labelKey": "Grad.Days",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

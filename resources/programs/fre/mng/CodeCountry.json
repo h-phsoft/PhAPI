@@ -1,0 +1,193 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "fre/mng/CodeCountry",
+  "entity": "Fre/CodeCountry",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "code",
+        "labelKey": "Fre.code"
+      },
+      {
+        "name": "name",
+        "labelKey": "Fre.name"
+      },
+      {
+        "name": "phone",
+        "labelKey": "Fre.phone"
+      },
+      {
+        "name": "symbol",
+        "labelKey": "Fre.symbol"
+      },
+      {
+        "name": "capital",
+        "labelKey": "Fre.capital"
+      },
+      {
+        "name": "currency",
+        "labelKey": "Fre.currency"
+      },
+      {
+        "name": "continent",
+        "labelKey": "Fre.continent"
+      },
+      {
+        "name": "continentCode",
+        "labelKey": "Fre.continentCode"
+      },
+      {
+        "name": "alpha3",
+        "labelKey": "Fre.alpha3"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Fre.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "code",
+        "labelKey": "Fre.code",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Fre.name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "phone",
+        "labelKey": "Fre.phone",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "symbol",
+        "labelKey": "Fre.symbol",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "capital",
+        "labelKey": "Fre.capital",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "currency",
+        "labelKey": "Fre.currency",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "continent",
+        "labelKey": "Fre.continent",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "continentCode",
+        "labelKey": "Fre.continentCode",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "alpha3",
+        "labelKey": "Fre.alpha3",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Fre.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

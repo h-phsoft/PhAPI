@@ -1,0 +1,231 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "stor/mng/WarehouseItems",
+  "entity": "Stor/StoresMateriales",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "storId",
+        "labelKey": "Stor.storId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/Stores/Autocomplete"
+      },
+      {
+        "name": "itemId",
+        "labelKey": "Stor.itemId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/Items/Autocomplete"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Stor.statusId"
+      },
+      {
+        "name": "loc1Id",
+        "labelKey": "Stor.loc1Id"
+      },
+      {
+        "name": "loc2Id",
+        "labelKey": "Stor.loc2Id"
+      },
+      {
+        "name": "loc3Id",
+        "labelKey": "Stor.loc3Id"
+      },
+      {
+        "name": "cqnt",
+        "labelKey": "Stor.cqnt"
+      },
+      {
+        "name": "bqnt",
+        "labelKey": "Stor.bqnt"
+      },
+      {
+        "name": "cwqnt",
+        "labelKey": "Stor.cwqnt"
+      },
+      {
+        "name": "camt",
+        "labelKey": "Stor.camt"
+      },
+      {
+        "name": "reqLimit",
+        "labelKey": "Req.Limit"
+      },
+      {
+        "name": "minLimit",
+        "labelKey": "Stor.minLimit"
+      },
+      {
+        "name": "maxLimit",
+        "labelKey": "Stor.maxLimit"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "storId",
+        "labelKey": "Stor.storId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/Stores/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "itemId",
+        "labelKey": "Stor.itemId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/Items/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Stor.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loc1Id",
+        "labelKey": "Stor.loc1Id",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loc2Id",
+        "labelKey": "Stor.loc2Id",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loc3Id",
+        "labelKey": "Stor.loc3Id",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "cqnt",
+        "labelKey": "Stor.cqnt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "bqnt",
+        "labelKey": "Stor.bqnt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "cwqnt",
+        "labelKey": "Stor.cwqnt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "camt",
+        "labelKey": "Stor.camt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "reqLimit",
+        "labelKey": "Stor.reqLimit",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "minLimit",
+        "labelKey": "Stor.minLimit",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "maxLimit",
+        "labelKey": "Stor.maxLimit",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      }
+    ]
+  }
+}

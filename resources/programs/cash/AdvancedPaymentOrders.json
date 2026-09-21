@@ -1,0 +1,452 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "cash/AdvancedPaymentOrders",
+  "entity": "Cash/AdvancedPaymentOrder",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "periodId",
+        "hidden": true
+      },
+      {
+        "name": "userId",
+        "hidden": true
+      },
+      {
+        "name": "vhrId",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "cash.num"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "cash.ddate"
+      },
+      {
+        "name": "deptId",
+        "labelKey": "Cash.deptId"
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Cash.unitId"
+      },
+      {
+        "name": "operId",
+        "labelKey": "Cash.operId"
+      },
+      {
+        "name": "contId",
+        "labelKey": "cash.contId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete"
+      },
+      {
+        "name": "methodId",
+        "labelKey": "cash.method"
+      },
+      {
+        "name": "cboxId",
+        "labelKey": "cash.cboxId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cash/Boxes/Autocomplete"
+      },
+      {
+        "name": "cashId",
+        "labelKey": "cash.cashId",
+        "input": "autocomplete"
+      },
+      {
+        "name": "rnum",
+        "labelKey": "cash.rnum"
+      },
+      {
+        "name": "rdate",
+        "labelKey": "cash.rdate"
+      },
+      {
+        "name": "edate",
+        "labelKey": "cash.edate"
+      },
+      {
+        "name": "curnId",
+        "labelKey": "cash.curnId"
+      },
+      {
+        "name": "curnRate",
+        "labelKey": "cash.curnRate"
+      },
+      {
+        "name": "camt",
+        "labelKey": "cash.camt"
+      },
+      {
+        "name": "amt",
+        "labelKey": "cash.amt"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "cash.statusId"
+      },
+      {
+        "name": "statusDate",
+        "labelKey": "cash.statusDate"
+      },
+      {
+        "name": "statusDescr",
+        "labelKey": "cash.statusDescr"
+      },
+      {
+        "name": "cityId",
+        "labelKey": "cash.cityId"
+      },
+      {
+        "name": "phnbyId",
+        "labelKey": "cash.phnby"
+      },
+      {
+        "name": "correspondent",
+        "labelKey": "cash.correspondent"
+      },
+      {
+        "name": "recipient",
+        "labelKey": "cash.recipient"
+      },
+      {
+        "name": "dcust",
+        "labelKey": "cash.dcust"
+      },
+      {
+        "name": "reason",
+        "labelKey": "cash.reason"
+      },
+      {
+        "name": "note",
+        "labelKey": "cash.note"
+      },
+      {
+        "name": "rem",
+        "labelKey": "cash.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "deptId",
+        "labelKey": "Cash.deptId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Cash.unitId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "operId",
+        "labelKey": "Cash.operId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "contId",
+        "labelKey": "cash.contId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "methodId",
+        "labelKey": "methodId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "cboxId",
+        "labelKey": "cash.cboxId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cash/Boxes/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "cash.num",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "cash.ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rnum",
+        "labelKey": "cash.rnum",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rdate",
+        "labelKey": "cash.rdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "edate",
+        "labelKey": "cash.edate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "curnId",
+        "labelKey": "cash.curnId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnRate",
+        "labelKey": "cash.curnRate",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "camt",
+        "labelKey": "cash.camt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "amt",
+        "labelKey": "cash.amt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "cash.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusDate",
+        "labelKey": "cash.statusDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "statusDescr",
+        "labelKey": "cash.statusDescr",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "cityId",
+        "labelKey": "cash.cityId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "phnbyId",
+        "labelKey": "cash.phnby",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "correspondent",
+        "labelKey": "cash.correspondent",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "recipient",
+        "labelKey": "cash.recipient",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "note",
+        "labelKey": "cash.note",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "dcust",
+        "labelKey": "cash.dcust",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "reason",
+        "labelKey": "cash.reason",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "cash.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

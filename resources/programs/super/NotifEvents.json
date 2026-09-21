@@ -1,0 +1,146 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "super/NotifEvents",
+  "entity": "Notif/TableEvents",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "tableId",
+        "labelKey": "Notif.TableId",
+        "width": "100"
+      },
+      {
+        "name": "eventId",
+        "labelKey": "Notif.EventId",
+        "width": "100"
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Notif.TypeId",
+        "width": "100"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Notif.Status",
+        "width": "100"
+      },
+      {
+        "name": "title",
+        "labelKey": "Notif.Title",
+        "width": "100"
+      },
+      {
+        "name": "color",
+        "labelKey": "Notif.Color",
+        "width": "100"
+      },
+      {
+        "name": "icon",
+        "labelKey": "Notif.Icon",
+        "width": "100"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Notif.Rem",
+        "width": "100"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "tableId",
+        "labelKey": "Notif.TableId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "eventId",
+        "labelKey": "Notif.EventId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Notif.TypeId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Notif.Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "title",
+        "labelKey": "Notif.Title",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "color",
+        "labelKey": "Notif.Color",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "icon",
+        "labelKey": "Notif.Icon",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Notif.Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

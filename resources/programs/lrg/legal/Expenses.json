@@ -1,0 +1,162 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/legal/Expenses",
+  "entity": "Lrg/SuitExpenses",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "mstId",
+        "labelKey": "MstLSuit",
+        "width": "25"
+      },
+      {
+        "name": "num",
+        "labelKey": "Num"
+      },
+      {
+        "name": "expenseId",
+        "labelKey": "Expense"
+      },
+      {
+        "name": "docpayId",
+        "labelKey": "Docpay"
+      },
+      {
+        "name": "docexpId",
+        "labelKey": "Docexp"
+      },
+      {
+        "name": "respId",
+        "labelKey": "RespId",
+        "width": "100px"
+      },
+      {
+        "name": "amt",
+        "labelKey": "Amt"
+      },
+      {
+        "name": "docnum",
+        "labelKey": "Docnum"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "DDate"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "mstId",
+        "labelKey": "MstLSuit",
+        "input": "autocomplete",
+        "endpoint": "/UC/Lrg/MstLSuit/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "expenseId",
+        "labelKey": "Expense",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "docpayId",
+        "labelKey": "Docpay",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "respId",
+        "labelKey": "RespId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "docexpId",
+        "labelKey": "Docexp",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "amt",
+        "labelKey": "Amt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "docnum",
+        "labelKey": "Docnum",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "DDatee",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

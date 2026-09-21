@@ -1,0 +1,78 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "clnc/mng/Procedures",
+  "entity": "Clnc/Category",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "name",
+        "labelKey": "Clnc.name"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "status"
+      },
+      {
+        "name": "specialId",
+        "labelKey": "Clnc.appSpecialName"
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "name",
+        "labelKey": "Clnc.name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "specialId",
+        "labelKey": "Clnc.appSpecialName",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,303 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "prd/OrdersExpenses",
+  "entity": "Prd/OrderExpense",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "periodId",
+        "hidden": true
+      },
+      {
+        "name": "mordId",
+        "labelKey": "Prd.mordId"
+      },
+      {
+        "name": "tordId",
+        "labelKey": "Prd.tordId"
+      },
+      {
+        "name": "expId",
+        "labelKey": "Prd.expId"
+      },
+      {
+        "name": "num",
+        "labelKey": "Prd.num"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Prd.ddate"
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Prd.curnId"
+      },
+      {
+        "name": "curnRate",
+        "labelKey": "Prd.curnRate"
+      },
+      {
+        "name": "qnt",
+        "labelKey": "Prd.qnt"
+      },
+      {
+        "name": "price",
+        "labelKey": "Prd.price"
+      },
+      {
+        "name": "amt",
+        "labelKey": "Prd.amt"
+      },
+      {
+        "name": "camt",
+        "labelKey": "Prd.camt"
+      },
+      {
+        "name": "costFid",
+        "labelKey": "Prd.costFid"
+      },
+      {
+        "name": "accFid",
+        "labelKey": "Prd.accFid"
+      },
+      {
+        "name": "costTid",
+        "labelKey": "Prd.costTid"
+      },
+      {
+        "name": "accTid",
+        "labelKey": "Prd.accTid"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Prd.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "mordId",
+        "labelKey": "Prd.mordId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "tordId",
+        "labelKey": "Prd.tordId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "expId",
+        "labelKey": "Prd.expId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "Prd.num",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Prd.ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Prd.curnId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnRate",
+        "labelKey": "Prd.curnRate",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "qnt",
+        "labelKey": "Prd.qnt",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "price",
+        "labelKey": "Prd.price",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "amt",
+        "labelKey": "Prd.amt",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "camt",
+        "labelKey": "Prd.camt",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "costFid",
+        "labelKey": "Prd.costFid",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "accFid",
+        "labelKey": "Prd.accFid",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "costTid",
+        "labelKey": "Prd.costTid",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "accTid",
+        "labelKey": "Prd.accTid",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Prd.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

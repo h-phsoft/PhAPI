@@ -1,0 +1,186 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "fre/lfr/mng/Drivers",
+  "entity": "Fre/Drivers",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "fname",
+        "labelKey": "Fre.fname"
+      },
+      {
+        "name": "lname",
+        "labelKey": "Fre.lname"
+      },
+      {
+        "name": "father",
+        "labelKey": "Fre.father"
+      },
+      {
+        "name": "mother",
+        "labelKey": "Fre.mother"
+      },
+      {
+        "name": "natid",
+        "labelKey": "Fre.natid"
+      },
+      {
+        "name": "phone",
+        "labelKey": "Fre.phone"
+      },
+      {
+        "name": "mobile",
+        "labelKey": "Fre.mobile"
+      },
+      {
+        "name": "kindId",
+        "labelKey": "Fre.kindId"
+      },
+      {
+        "name": "listId",
+        "labelKey": "Fre.listId"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Fre.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "fname",
+        "labelKey": "Fre.fname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "lname",
+        "labelKey": "Fre.lname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "father",
+        "labelKey": "Fre.father",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "mother",
+        "labelKey": "Fre.mother",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "natid",
+        "labelKey": "Fre.natid",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "phone",
+        "labelKey": "Fre.phone",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "mobile",
+        "labelKey": "Fre.mobile",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "kindId",
+        "labelKey": "Fre.kindId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "listId",
+        "labelKey": "Fre.listId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Fre.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "sales/Sales",
+  "entity": "Sales/SalesMst",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "periodId",
+        "hidden": true
+      },
+      {
+        "name": "contId",
+        "labelKey": "Pur.ContName",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete"
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Pur.curnName"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Pur.status"
+      },
+      {
+        "name": "accId",
+        "labelKey": "Pur.accName",
+        "input": "autocomplete",
+        "endpoint": "/UC/Pur/AccAcc/Autocomplete"
+      },
+      {
+        "name": "docId",
+        "labelKey": "Pur.docName"
+      },
+      {
+        "name": "regnId",
+        "labelKey": "Sales.regnId"
+      },
+      {
+        "name": "reprId",
+        "labelKey": "Sales.reprId"
+      },
+      {
+        "name": "cmtId",
+        "labelKey": "Sales.cmtId"
+      },
+      {
+        "name": "cmv",
+        "labelKey": "Sales.cmv"
+      },
+      {
+        "name": "ccom",
+        "labelKey": "Sales.ccom"
+      },
+      {
+        "name": "com",
+        "labelKey": "Sales.com"
+      },
+      {
+        "name": "rate",
+        "labelKey": "Pur.rate"
+      },
+      {
+        "name": "num",
+        "labelKey": "Pur.num"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Pur.ddate"
+      },
+      {
+        "name": "docn",
+        "labelKey": "Pur.docn"
+      },
+      {
+        "name": "docd",
+        "labelKey": "Pur.docd"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Pur.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Pur.num",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Pur.ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "contId",
+        "labelKey": "Pur.contName",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Pur.status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Pur.curnName",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "accId",
+        "labelKey": "Pur.accName",
+        "input": "autocomplete",
+        "endpoint": "/UC/Pur/AccAcc/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "docId",
+        "labelKey": "Pur.docName",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "docn",
+        "labelKey": "Pur.docn",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "docd",
+        "labelKey": "Pur.docd",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Pur.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

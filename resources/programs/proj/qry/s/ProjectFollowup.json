@@ -1,0 +1,236 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "proj/qry/s/ProjectFollowup",
+  "entity": "Proj/FollowupView",
+  "search": {
+    "fields": [
+      {
+        "name": "tsheetDate",
+        "labelKey": "Proj.tsheetDate",
+        "input": "autocomplete",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "tsheetHours",
+        "labelKey": "Proj.tsheetHours",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "tsheetSprice",
+        "labelKey": "Proj.tsheetSprice",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "tsheetCprice",
+        "labelKey": "Proj.tsheetCprice",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "tsheetCamt",
+        "labelKey": "Proj.tsheetCamt",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "tsheetAmt",
+        "labelKey": "Proj.tsheetAmt",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "tsheetCcst",
+        "labelKey": "Proj.tsheetCcst",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "tsheetCst",
+        "labelKey": "Proj.tsheetCst",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "tsheetRem",
+        "labelKey": "Proj.tsheetRem",
+        "input": "autocomplete",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "tsheetProjId",
+        "labelKey": "Proj.tsheetProjId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/UserProject/Autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "projName",
+        "labelKey": "Proj.Name",
+        "input": "autocomplete",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "mwitemName",
+        "labelKey": "Proj.mwitemName",
+        "input": "autocomplete",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "twitemName",
+        "labelKey": "Proj.twitemName",
+        "input": "autocomplete",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "curnName",
+        "labelKey": "curnName",
+        "input": "autocomplete",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "tsheetCurnRate",
+        "labelKey": "Proj.tsheetCurnRate",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      }
+    ]
+  }
+}

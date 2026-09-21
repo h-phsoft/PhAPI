@@ -1,0 +1,146 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "pms/PurchaseOrder",
+  "entity": "Por/PurchaseOrderMst",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Number"
+      },
+      {
+        "name": "userId",
+        "labelKey": "username"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "statusName"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "DDate"
+      },
+      {
+        "name": "reqId",
+        "labelKey": "Request",
+        "input": "autocomplete",
+        "endpoint": "/UC/Pur/RequestMst/Autocomplete"
+      },
+      {
+        "name": "contId",
+        "labelKey": "Supplier",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete"
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Currency"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Remark"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "userId",
+        "labelKey": "username",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "statusName",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "reqId",
+        "labelKey": "Request",
+        "input": "autocomplete",
+        "endpoint": "/UC/Pur/RequestMst/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "contId",
+        "labelKey": "Supplier",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Currency",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

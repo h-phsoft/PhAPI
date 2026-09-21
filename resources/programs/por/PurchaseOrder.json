@@ -1,0 +1,140 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "por/PurchaseOrder",
+  "entity": "Por/PurchaseOrderMst",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "reqId",
+        "labelKey": "Por.reqId"
+      },
+      {
+        "name": "userId",
+        "labelKey": "Por.userId"
+      },
+      {
+        "name": "contId",
+        "labelKey": "Por.contId"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Por.statusId"
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Por.curnId"
+      },
+      {
+        "name": "num",
+        "labelKey": "Por.num"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Por.ddate"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Por.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "reqId",
+        "labelKey": "Por.reqId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "userId",
+        "labelKey": "Por.userId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "contId",
+        "labelKey": "Por.contId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Por.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Por.curnId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "Por.num",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Por.ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Por.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

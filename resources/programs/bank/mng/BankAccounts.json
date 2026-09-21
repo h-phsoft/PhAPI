@@ -1,0 +1,270 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "bank/mng/BankAccounts",
+  "entity": "Bank/Accounts",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "code",
+        "labelKey": "Bank.code"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Bank.statusId"
+      },
+      {
+        "name": "costId",
+        "labelKey": "Bank.costId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/CostActive/Autocomplete"
+      },
+      {
+        "name": "accId",
+        "labelKey": "Bank.accId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/AccActive/Autocomplete"
+      },
+      {
+        "name": "accCid",
+        "labelKey": "Bank.accCid",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/AccActive/Autocomplete"
+      },
+      {
+        "name": "name",
+        "labelKey": "Bank.name"
+      },
+      {
+        "name": "bname",
+        "labelKey": "Bank.bname"
+      },
+      {
+        "name": "curnId",
+        "labelKey": "cash.curnId"
+      },
+      {
+        "name": "baddress",
+        "labelKey": "Bank.baddress"
+      },
+      {
+        "name": "bswift",
+        "labelKey": "Bank.bswift"
+      },
+      {
+        "name": "bfax",
+        "labelKey": "Bank.bfax"
+      },
+      {
+        "name": "accnum",
+        "labelKey": "Bank.accnum"
+      },
+      {
+        "name": "accname",
+        "labelKey": "Bank.accname"
+      },
+      {
+        "name": "note",
+        "labelKey": "Bank.note"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Bank.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "code",
+        "labelKey": "Bank.code",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Bank.name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Bank.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "bname",
+        "labelKey": "Bank.bname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "baddress",
+        "labelKey": "Bank.baddress",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "curnId",
+        "labelKey": "cash.curnId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "bswift",
+        "labelKey": "Bank.bswift",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "bfax",
+        "labelKey": "Bank.bfax",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "accnum",
+        "labelKey": "Bank.accnum",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "accname",
+        "labelKey": "Bank.accname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "costId",
+        "labelKey": "Bank.costId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/CostActive/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "accId",
+        "labelKey": "Bank.accId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/AccActive/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "accCid",
+        "labelKey": "Bank.accCid",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/AccActive/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "note",
+        "labelKey": "Bank.note",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Bank.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,321 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/grnt/UpdateRequest",
+  "entity": "Lrg/Instrument",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "statusId",
+        "hidden": true
+      },
+      {
+        "name": "periodId",
+        "hidden": true
+      },
+      {
+        "name": "InstId",
+        "labelKey": "Warranty.instrument"
+      },
+      {
+        "name": "issueID",
+        "labelKey": "Inssue",
+        "width": "100px"
+      },
+      {
+        "name": "dnum",
+        "labelKey": "Num",
+        "width": "100px"
+      },
+      {
+        "name": "reqId",
+        "labelKey": "Lnum",
+        "input": "autocomplete",
+        "width": "100px"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Ddate",
+        "width": "100px"
+      },
+      {
+        "name": "agrnum",
+        "labelKey": "AgrNum",
+        "width": "100px"
+      },
+      {
+        "name": "appendixNum",
+        "labelKey": "AppendixNum",
+        "width": "100px"
+      },
+      {
+        "name": "agrdate",
+        "labelKey": "AgrDate",
+        "width": "100px"
+      },
+      {
+        "name": "mintnum",
+        "labelKey": "MintNum",
+        "width": "100px"
+      },
+      {
+        "name": "mintdate",
+        "labelKey": "MintDate",
+        "width": "100px"
+      },
+      {
+        "name": "lamt",
+        "labelKey": "Loan.amount",
+        "width": "100px"
+      },
+      {
+        "name": "gamt",
+        "labelKey": "guaranteeAmt",
+        "width": "100px"
+      },
+      {
+        "name": "gperc",
+        "labelKey": "instGPerc",
+        "width": "100px"
+      },
+      {
+        "name": "comm",
+        "labelKey": "Comm",
+        "width": "100px"
+      },
+      {
+        "name": "director",
+        "labelKey": "Director",
+        "width": "100px"
+      },
+      {
+        "name": "note",
+        "labelKey": "Notee",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "dnum",
+        "labelKey": "Num",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "gamt",
+        "labelKey": "guaranteeAmt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "issueID",
+        "labelKey": "Inssue",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "lamt",
+        "labelKey": "Loan.amount",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "gperc",
+        "labelKey": "instGPerc",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "comm",
+        "labelKey": "Comm",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "agrnum",
+        "labelKey": "AgrNum",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "agrdate",
+        "labelKey": "AgrDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "mintnum",
+        "labelKey": "MintNum",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "appendixNum",
+        "labelKey": "AppendixNum",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "mintdate",
+        "labelKey": "MintDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "director",
+        "labelKey": "Director",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "note",
+        "labelKey": "Notee",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

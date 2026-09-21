@@ -1,0 +1,195 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "str/mng/WarehouseItems",
+  "entity": "Str/StoresMateriales",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "storId",
+        "labelKey": "Store",
+        "width": "150px"
+      },
+      {
+        "name": "itemId",
+        "labelKey": "Item",
+        "input": "autocomplete",
+        "width": "150px",
+        "endpoint": "/UC/Str/Items/Autocomplete"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "width": "100px"
+      },
+      {
+        "name": "loc1Id",
+        "labelKey": "Location 1",
+        "width": "150px"
+      },
+      {
+        "name": "loc2Id",
+        "labelKey": "Location 2",
+        "width": "150px"
+      },
+      {
+        "name": "loc3Id",
+        "labelKey": "Location 3",
+        "width": "150px"
+      },
+      {
+        "name": "minLimit",
+        "labelKey": "Min",
+        "width": "100px"
+      },
+      {
+        "name": "reqLimit",
+        "labelKey": "Req.Limit",
+        "width": "100px"
+      },
+      {
+        "name": "maxLimit",
+        "labelKey": "Max",
+        "width": "100px"
+      },
+      {
+        "name": "cqnt",
+        "labelKey": "Quantity",
+        "width": "100px"
+      },
+      {
+        "name": "camt",
+        "labelKey": "Amount",
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "storId",
+        "labelKey": "Store",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "itemId",
+        "labelKey": "Item",
+        "input": "autocomplete",
+        "endpoint": "/UC/Str/Items/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loc1Id",
+        "labelKey": "Location 1",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loc2Id",
+        "labelKey": "Location 2",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loc3Id",
+        "labelKey": "Location 3",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "reqLimit",
+        "labelKey": "Req.Limit",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "minLimit",
+        "labelKey": "Min.Limit",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "maxLimit",
+        "labelKey": "Max.Limit",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "cqnt",
+        "labelKey": "Quantity",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "camt",
+        "labelKey": "Amount",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "hr/hr/mng/EmployeeCard_1",
+  "entity": "Emp/Employee",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Number"
+      },
+      {
+        "name": "inum",
+        "labelKey": "Insurance.Number"
+      },
+      {
+        "name": "name",
+        "labelKey": "Name"
+      },
+      {
+        "name": "sgrpId",
+        "labelKey": "Salary.Group"
+      },
+      {
+        "name": "acrId",
+        "labelKey": "Acr"
+      },
+      {
+        "name": "idate",
+        "labelKey": "Idate"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "inum",
+        "labelKey": "Insurance.Number",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "sgrpId",
+        "labelKey": "Salary.Group",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "acrId",
+        "labelKey": "Acr",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "idate",
+        "labelKey": "Idate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "insursal",
+        "labelKey": "Insursal",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      }
+    ]
+  }
+}

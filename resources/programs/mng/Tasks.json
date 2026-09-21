@@ -1,0 +1,227 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "mng/Tasks",
+  "entity": "Cpy/Task",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "taskId",
+        "labelKey": "TaskId",
+        "input": "autocomplete",
+        "width": "25",
+        "endpoint": "/UC/Cpy/Task/Autocomplete"
+      },
+      {
+        "name": "priorityId",
+        "labelKey": "PriorityId",
+        "width": "150px"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "StatusId",
+        "width": "150px"
+      },
+      {
+        "name": "compPerc",
+        "labelKey": "CompPerc",
+        "width": "150px"
+      },
+      {
+        "name": "privacyId",
+        "labelKey": "PrivacyId",
+        "width": "150px"
+      },
+      {
+        "name": "deptId",
+        "labelKey": "DeptId",
+        "width": "150px"
+      },
+      {
+        "name": "unitId",
+        "labelKey": "UnitId",
+        "width": "150px"
+      },
+      {
+        "name": "userId",
+        "labelKey": "UserId",
+        "width": "150px"
+      },
+      {
+        "name": "sdate",
+        "labelKey": "SDate"
+      },
+      {
+        "name": "edate",
+        "labelKey": "EDate"
+      },
+      {
+        "name": "reminderId",
+        "labelKey": "ReminderId",
+        "width": "150px"
+      },
+      {
+        "name": "reminddays",
+        "labelKey": "RemindDays"
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "width": "150px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "150px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "taskId",
+        "labelKey": "TaskId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Task/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "priorityId",
+        "labelKey": "PriorityId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "compPerc",
+        "labelKey": "CompPerc",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "privacyId",
+        "labelKey": "PrivacyId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "deptId",
+        "labelKey": "DeptId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitId",
+        "labelKey": "UnitId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "userId",
+        "labelKey": "UserId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "sdate",
+        "labelKey": "SDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "edate",
+        "labelKey": "EDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "reminderId",
+        "labelKey": "ReminderId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "reminddays",
+        "labelKey": "RemindDays",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

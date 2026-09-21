@@ -1,0 +1,184 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "ped/DoctorsAppointment",
+  "entity": "Ped/AppointmentSched",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "specialId",
+        "labelKey": "Ped.specialId"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Ped.statusId"
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Ped.typeId"
+      },
+      {
+        "name": "doctorId",
+        "labelKey": "Ped.doctorId"
+      },
+      {
+        "name": "patientName",
+        "labelKey": "Ped.patientName"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Ped.ddate"
+      },
+      {
+        "name": "nhour",
+        "labelKey": "Ped.nhour"
+      },
+      {
+        "name": "nminute",
+        "labelKey": "Ped.nminute"
+      },
+      {
+        "name": "minutes",
+        "labelKey": "Ped.minutes"
+      },
+      {
+        "name": "amt",
+        "labelKey": "Ped.amt"
+      },
+      {
+        "name": "descr",
+        "labelKey": "Ped.descr"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "specialId",
+        "labelKey": "Ped.specialId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Ped.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Ped.typeId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "doctorId",
+        "labelKey": "Ped.doctorId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "patientName",
+        "labelKey": "Ped.patientName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Ped.ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "nhour",
+        "labelKey": "Ped.nhour",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "nminute",
+        "labelKey": "Ped.nminute",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "minutes",
+        "labelKey": "Ped.minutes",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "amt",
+        "labelKey": "Ped.amt",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "descr",
+        "labelKey": "Ped.descr",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

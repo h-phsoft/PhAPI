@@ -1,0 +1,230 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/legal/Claims",
+  "entity": "Lrg/ReqFinancialClaim",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "vhrId",
+        "hidden": true
+      },
+      {
+        "name": "reqId",
+        "labelKey": "Req.loanNum",
+        "input": "autocomplete",
+        "width": "100px"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status"
+      },
+      {
+        "name": "num",
+        "labelKey": "Num"
+      },
+      {
+        "name": "commitId",
+        "labelKey": "Commit",
+        "width": "100px"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Ddate"
+      },
+      {
+        "name": "amt",
+        "labelKey": "Amt"
+      },
+      {
+        "name": "expextedpay",
+        "labelKey": "ExpextedPay"
+      },
+      {
+        "name": "execonname",
+        "labelKey": "Execonname"
+      },
+      {
+        "name": "execdept",
+        "labelKey": "Execdept"
+      },
+      {
+        "name": "execnum",
+        "labelKey": "Execnum"
+      },
+      {
+        "name": "execopen",
+        "labelKey": "Execopen"
+      },
+      {
+        "name": "balance",
+        "labelKey": "Balance.claim",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "reqId",
+        "labelKey": "Req.loanNum",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "amt",
+        "labelKey": "Amt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "expextedpay",
+        "labelKey": "ExpextedPay",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "execonname",
+        "labelKey": "Execonname",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "execdept",
+        "labelKey": "Execdept",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "execnum",
+        "labelKey": "Execnum",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "execopen",
+        "labelKey": "Execopen",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "balance",
+        "labelKey": "Balance.claim",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

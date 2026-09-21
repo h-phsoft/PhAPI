@@ -1,0 +1,212 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "proj/ProjectExpenses",
+  "entity": "Proj/ProjectExpense",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "projId",
+        "labelKey": "Proj.projId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/Project/Autocomplete"
+      },
+      {
+        "name": "servId",
+        "labelKey": "Proj.servId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Services/Autocomplete"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Proj.ddate"
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Proj.curnId"
+      },
+      {
+        "name": "curnRate",
+        "labelKey": "Proj.curnRate"
+      },
+      {
+        "name": "qnt",
+        "labelKey": "Proj.qnt"
+      },
+      {
+        "name": "price",
+        "labelKey": "Proj.price"
+      },
+      {
+        "name": "camt",
+        "labelKey": "Proj.camt"
+      },
+      {
+        "name": "amt",
+        "labelKey": "Proj.amt"
+      },
+      {
+        "name": "billableId",
+        "labelKey": "Proj.billableId"
+      },
+      {
+        "name": "billedId",
+        "labelKey": "Proj.billedId"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Proj.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "projId",
+        "labelKey": "Proj.projId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/Project/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "servId",
+        "labelKey": "Proj.servId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Services/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Proj.ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Proj.curnId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnRate",
+        "labelKey": "Proj.curnRate",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "qnt",
+        "labelKey": "Proj.qnt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "price",
+        "labelKey": "Proj.price",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "camt",
+        "labelKey": "Proj.camt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "amt",
+        "labelKey": "Proj.amt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "billableId",
+        "labelKey": "Proj.billableId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "billedId",
+        "labelKey": "Proj.billedId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Proj.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

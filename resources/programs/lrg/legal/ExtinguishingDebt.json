@@ -1,0 +1,281 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/legal/ExtinguishingDebt",
+  "entity": "Lrg/RequestExtinguishing",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "commitId",
+        "labelKey": "Commited",
+        "width": "100px"
+      },
+      {
+        "name": "reqId",
+        "labelKey": "ReqId",
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Lrg/Borrowers/Autocomplete"
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "width": "100px"
+      },
+      {
+        "name": "lamt",
+        "labelKey": "LAmtt",
+        "width": "100px"
+      },
+      {
+        "name": "gamt",
+        "labelKey": "GAmtt",
+        "width": "100px"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Datee",
+        "width": "100px"
+      },
+      {
+        "name": "amt",
+        "labelKey": "AmtAdd",
+        "width": "100px"
+      },
+      {
+        "name": "debmass",
+        "labelKey": "DebMass",
+        "width": "100px"
+      },
+      {
+        "name": "usedamt",
+        "labelKey": "UserAmt",
+        "width": "100px"
+      },
+      {
+        "name": "restamt",
+        "labelKey": "RestAmt",
+        "width": "100px"
+      },
+      {
+        "name": "proccess",
+        "labelKey": "Proccess",
+        "width": "100px"
+      },
+      {
+        "name": "justifs",
+        "labelKey": "Justifs",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem-legal",
+        "width": "100px"
+      },
+      {
+        "name": "damanopinion",
+        "labelKey": "DamanOpinion",
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "commitId",
+        "labelKey": "Commited",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "reqId",
+        "labelKey": "ReqId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Lrg/Borrowers/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Datee",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "lamt",
+        "labelKey": "LAmtt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "gamt",
+        "labelKey": "GAmtt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "amt",
+        "labelKey": "AmtAdd",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "debmass",
+        "labelKey": "Debmass",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "justifs",
+        "labelKey": "Justifs",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "usedamt",
+        "labelKey": "Usedamt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "proccess",
+        "labelKey": "Proccess",
+        "operators": [
+          "=",
+          "!=",
+          "[%",
+          "%]",
+          "%",
+          "![%",
+          "!%]",
+          "!%"
+        ]
+      },
+      {
+        "name": "restamt",
+        "labelKey": "Restamt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem-legal",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "damanopinion",
+        "labelKey": "DamanOpinion",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

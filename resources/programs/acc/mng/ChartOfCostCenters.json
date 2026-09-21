@@ -1,0 +1,34 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "acc/mng/ChartOfCostCenters",
+  "entity": "Acc/CostCenters",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Number"
+      },
+      {
+        "name": "name",
+        "labelKey": "Name"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status"
+      },
+      {
+        "name": "typeId",
+        "hidden": true
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem"
+      }
+    ]
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "hr/hr/ApplicationForm",
+  "entity": "Emp/Application",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "recrId",
+        "labelKey": "Recruitment",
+        "width": "200px"
+      },
+      {
+        "name": "num",
+        "labelKey": "num",
+        "width": "100px"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "date",
+        "width": "100px"
+      },
+      {
+        "name": "name",
+        "labelKey": "name",
+        "width": "150px"
+      },
+      {
+        "name": "genderId",
+        "labelKey": "Gender",
+        "width": "100px"
+      },
+      {
+        "name": "natId",
+        "labelKey": "Nationality",
+        "width": "100px"
+      },
+      {
+        "name": "martialId",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "militaryId",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "mobile",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "email",
+        "hidden": true,
+        "width": "150px"
+      },
+      {
+        "name": "reqsal",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "hidden": true,
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "recrId",
+        "labelKey": "Recruitment",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "num",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "genderId",
+        "labelKey": "gender",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "natId",
+        "labelKey": "Nationality",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "martialId",
+        "labelKey": "martial",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "militaryId",
+        "labelKey": "military",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "mobile",
+        "labelKey": "mobile",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "email",
+        "labelKey": "email",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "reqsal",
+        "labelKey": "ReqSal",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

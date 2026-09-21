@@ -1,0 +1,233 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/legal/Collections",
+  "entity": "Lrg/LoanCollections",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "vhrId",
+        "hidden": true
+      },
+      {
+        "name": "curnRate",
+        "hidden": true
+      },
+      {
+        "name": "camt",
+        "hidden": true
+      },
+      {
+        "name": "curnId",
+        "hidden": true
+      },
+      {
+        "name": "reqId",
+        "labelKey": "Req.loanNum",
+        "width": "100px"
+      },
+      {
+        "name": "num",
+        "labelKey": "Num.collection",
+        "width": "100px"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date.collection",
+        "width": "100px"
+      },
+      {
+        "name": "typeId",
+        "labelKey": "CodeCollectType",
+        "width": "100px"
+      },
+      {
+        "name": "respId",
+        "labelKey": "RespId",
+        "width": "100px"
+      },
+      {
+        "name": "interId",
+        "labelKey": "InterId",
+        "width": "100px"
+      },
+      {
+        "name": "interven",
+        "labelKey": "BorrowerIdd",
+        "width": "25"
+      },
+      {
+        "name": "claimamt",
+        "labelKey": "GAmtt",
+        "width": "100px"
+      },
+      {
+        "name": "balance",
+        "labelKey": "Balnce.collection",
+        "width": "100px"
+      },
+      {
+        "name": "interest",
+        "labelKey": "interest.collection",
+        "width": "100px"
+      },
+      {
+        "name": "fee",
+        "labelKey": "fee",
+        "width": "100px"
+      },
+      {
+        "name": "cost",
+        "labelKey": "Cost.collection",
+        "width": "100px"
+      },
+      {
+        "name": "amt",
+        "labelKey": "Amt.collection",
+        "width": "100px"
+      },
+      {
+        "name": "netamt",
+        "labelKey": "NetAmt",
+        "width": "100px"
+      },
+      {
+        "name": "gamt",
+        "labelKey": "Damt",
+        "width": "100px"
+      },
+      {
+        "name": "lamt",
+        "labelKey": "Lamt",
+        "width": "100px"
+      },
+      {
+        "name": "restamt",
+        "labelKey": "RestAmt.collection",
+        "width": "100px"
+      },
+      {
+        "name": "gamtafterrecovery",
+        "labelKey": "GAmtAfterRecovery",
+        "width": "100px"
+      },
+      {
+        "name": "latefee",
+        "labelKey": "LateFee.collection",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "reqId",
+        "labelKey": "ReqId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Lrg/Borrowers/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "Num",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date.collection",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "CodeCollectType",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "interId",
+        "labelKey": "InterId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "netamt",
+        "labelKey": "NetAmt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "claimamt",
+        "labelKey": "GAmtt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "lamt",
+        "labelKey": "Lamt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "lamt",
+        "labelKey": "UserAmt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

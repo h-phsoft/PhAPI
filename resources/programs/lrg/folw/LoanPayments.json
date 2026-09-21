@@ -1,0 +1,166 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "lrg/folw/LoanPayments",
+  "entity": "Lrg/LoanPayment",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "srcId",
+        "labelKey": "source"
+      },
+      {
+        "name": "reqId",
+        "labelKey": "Lnum",
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Lrg/RequestNum/Autocomplete"
+      },
+      {
+        "name": "num",
+        "labelKey": "ploanNum",
+        "width": "40px"
+      },
+      {
+        "name": "bloanNum",
+        "labelKey": "Subnumber",
+        "width": "100px"
+      },
+      {
+        "name": "instId",
+        "labelKey": "Installment.schedule",
+        "width": "100px"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "DateExecution",
+        "width": "40px"
+      },
+      {
+        "name": "amt",
+        "labelKey": "Payment.amount"
+      },
+      {
+        "name": "perc",
+        "labelKey": "PercBud",
+        "width": "100px"
+      },
+      {
+        "name": "gamt",
+        "labelKey": "Guarantee.amountpayment"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "reqId",
+        "labelKey": "ReqId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Lrg/RequestNum/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "ploanNum",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "bloanNum",
+        "labelKey": "Subnumber",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "instId",
+        "labelKey": "Installment.schedule",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "srcId",
+        "labelKey": "source",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "perc",
+        "labelKey": "PercBud",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "gamt",
+        "labelKey": "Guarantee.amountpayment",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

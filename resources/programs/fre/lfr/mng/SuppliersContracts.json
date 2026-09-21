@@ -1,0 +1,525 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "fre/lfr/mng/SuppliersContracts",
+  "entity": "Fre/ContractMst",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "typeId",
+        "hidden": true
+      },
+      {
+        "name": "deptId",
+        "labelKey": "Fre.DeptId"
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Fre.UnitId"
+      },
+      {
+        "name": "operId",
+        "labelKey": "Fre.OperId"
+      },
+      {
+        "name": "contId",
+        "labelKey": "Fre.ContId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Crm/Contact/Autocomplete"
+      },
+      {
+        "name": "num",
+        "labelKey": "fre.num",
+        "width": "100px"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "fre.ddate",
+        "width": "100px"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "fre.statusId",
+        "width": "100px"
+      },
+      {
+        "name": "sdate",
+        "labelKey": "fre.stdate"
+      },
+      {
+        "name": "edate",
+        "labelKey": "fre.endate"
+      },
+      {
+        "name": "dmrgeServId",
+        "labelKey": "Fre.dmrgeServId",
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Mng/Services/Autocomplete"
+      },
+      {
+        "name": "dmrgeCurnId",
+        "labelKey": "fre.curnId",
+        "width": "100px"
+      },
+      {
+        "name": "dmrgeUnitId",
+        "labelKey": "Fre.Unit"
+      },
+      {
+        "name": "loadServId",
+        "labelKey": "Fre.loadServId",
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Mng/Services/Autocomplete"
+      },
+      {
+        "name": "loadCurnId",
+        "labelKey": "fre.curnId",
+        "width": "100px"
+      },
+      {
+        "name": "loadUnitId",
+        "labelKey": "Fre.Unit"
+      },
+      {
+        "name": "offloadServId",
+        "labelKey": "Fre.offloadServId",
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Mng/Services/Autocomplete"
+      },
+      {
+        "name": "offloadCurnId",
+        "labelKey": "fre.curnId",
+        "width": "100px"
+      },
+      {
+        "name": "offloadUnitId",
+        "labelKey": "Fre.Unit"
+      },
+      {
+        "name": "overloadServId",
+        "labelKey": "Fre.overload",
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Mng/Services/Autocomplete"
+      },
+      {
+        "name": "overloadCurnId",
+        "labelKey": "fre.curnId",
+        "width": "100px"
+      },
+      {
+        "name": "overloadUnitId",
+        "labelKey": "Fre.Unit"
+      },
+      {
+        "name": "coolingServId",
+        "labelKey": "Fre.cooling",
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Mng/Services/Autocomplete"
+      },
+      {
+        "name": "coolingCurnId",
+        "labelKey": "fre.curnId",
+        "width": "100px"
+      },
+      {
+        "name": "coolingUnitId",
+        "labelKey": "Fre.Unit"
+      },
+      {
+        "name": "cancelServId",
+        "labelKey": "Fre.canceling",
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Mng/Services/Autocomplete"
+      },
+      {
+        "name": "cancelCurnId",
+        "labelKey": "fre.curnId",
+        "width": "100px"
+      },
+      {
+        "name": "cancelUnitId",
+        "labelKey": "Fre.Unit"
+      },
+      {
+        "name": "overdistServId",
+        "labelKey": "fre.odist",
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Mng/Services/Autocomplete"
+      },
+      {
+        "name": "overdistCurnId",
+        "labelKey": "fre.curnId",
+        "width": "100px"
+      },
+      {
+        "name": "overdistUnitId",
+        "labelKey": "Fre.Unit"
+      },
+      {
+        "name": "transmtServId",
+        "labelKey": "fre.transport",
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Mng/Services/Autocomplete"
+      },
+      {
+        "name": "transmtCurnId",
+        "labelKey": "fre.curnId",
+        "width": "100px"
+      },
+      {
+        "name": "transmtUnitId",
+        "labelKey": "Fre.Unit"
+      },
+      {
+        "name": "descr",
+        "labelKey": "Fre.descr"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Fre.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "deptId",
+        "labelKey": "fre.deptId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitId",
+        "labelKey": "fre.unitId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "operId",
+        "labelKey": "fre.operId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "contId",
+        "labelKey": "Fre.ContId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Crm/Contact/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "fre.num",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "fre.ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "fre.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "sdate",
+        "labelKey": "fre.stdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "edate",
+        "labelKey": "fre.endate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "dmrgeServId",
+        "labelKey": "Fre.dmrgeServId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Services/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dmrgeCurnId",
+        "labelKey": "fre.curnId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dmrgeUnitId",
+        "labelKey": "fre.unit",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loadServId",
+        "labelKey": "Fre.loadServId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Services/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loadCurnId",
+        "labelKey": "fre.curnId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loadUnitId",
+        "labelKey": "fre.unit",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "offloadServId",
+        "labelKey": "Fre.offloadServId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Services/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "offloadCurnId",
+        "labelKey": "fre.curnId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "overloadServId",
+        "labelKey": "Fre.overload",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Services/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "overloadCurnId",
+        "labelKey": "fre.curnId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "overloadUnitId",
+        "labelKey": "fre.unit",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "coolingServId",
+        "labelKey": "Fre.cooling",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Services/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "coolingCurnId",
+        "labelKey": "fre.curnId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "coolingUnitId",
+        "labelKey": "fre.unit",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "cancelServId",
+        "labelKey": "fre.canceling",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Services/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "cancelCurnId",
+        "labelKey": "fre.curnId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "cancelUnitId",
+        "labelKey": "fre.unit",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "overdistServId",
+        "labelKey": "fre.odist",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Services/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "overdistCurnId",
+        "labelKey": "fre.curnId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "overdistUnitId",
+        "labelKey": "fre.unit",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "transmtServId",
+        "labelKey": "fre.transport",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Services/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "transmtCurnId",
+        "labelKey": "fre.curnId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "transmtUnitId",
+        "labelKey": "fre.unit",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "descr",
+        "labelKey": "Fre.descr",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Fre.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "sdesk/mng/CustomerSrvices",
+  "entity": "Sdesk/CustomerService",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "servId",
+        "labelKey": "sedesc.ServId",
+        "width": "100px"
+      },
+      {
+        "name": "contId",
+        "labelKey": "sedesc.ContId",
+        "input": "autocomplete",
+        "width": "100px",
+        "endpoint": "/UC/Mng/Contact/Autocomplete"
+      },
+      {
+        "name": "sdate",
+        "labelKey": "sedesc.SDate",
+        "width": "100px"
+      },
+      {
+        "name": "edate",
+        "labelKey": "sedesc.EDate",
+        "width": "100px"
+      },
+      {
+        "name": "renewaldate",
+        "labelKey": "sedesc.RenewalDate",
+        "width": "100px"
+      },
+      {
+        "name": "description",
+        "labelKey": "description",
+        "width": "100px"
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem",
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "servId",
+        "labelKey": "sedesc.ServId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "contId",
+        "labelKey": "sedesc.ContId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "edate",
+        "labelKey": "sedesc.EDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "sdate",
+        "labelKey": "sedesc.SDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "renewaldate",
+        "labelKey": "sedesc.RenewalDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "description",
+        "labelKey": "description",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

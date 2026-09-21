@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "prd/qry/NeededPlanMaterials",
+  "entity": "Prd/PlanMst",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      }
+    ]
+  }
+}

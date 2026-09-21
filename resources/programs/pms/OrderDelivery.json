@@ -1,0 +1,152 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "pms/OrderDelivery",
+  "entity": "Por/DeliveryMst",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Number"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "statusName"
+      },
+      {
+        "name": "ddate",
+        "labelKey": "DDate"
+      },
+      {
+        "name": "pordId",
+        "labelKey": "Purchase_Order",
+        "input": "autocomplete",
+        "endpoint": "/UC/Pur/PurchaseOrderMst/Autocomplete"
+      },
+      {
+        "name": "contId",
+        "labelKey": "Supplier",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete"
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Currency"
+      },
+      {
+        "name": "rate",
+        "labelKey": "exchange.rate"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Remark"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Number",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "statusName",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "pordId",
+        "labelKey": "Purchase_Order",
+        "input": "autocomplete",
+        "endpoint": "/UC/Pur/PurchaseOrderMst/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "contId",
+        "labelKey": "Supplier",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Currency",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rate",
+        "labelKey": "exchange.rate",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

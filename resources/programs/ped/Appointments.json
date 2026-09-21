@@ -1,0 +1,210 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "ped/Appointments",
+  "entity": "Ped/Appointments",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "infoSource",
+        "labelKey": "Ped.infoSource",
+        "width": "250px"
+      },
+      {
+        "name": "comingfrom",
+        "labelKey": "Ped.comingfrom",
+        "width": "250px"
+      },
+      {
+        "name": "appointmentDate",
+        "labelKey": "Ped.appointmentDate",
+        "width": "100px"
+      },
+      {
+        "name": "name",
+        "labelKey": "Ped.name",
+        "width": "250px"
+      },
+      {
+        "name": "genderId",
+        "labelKey": "Ped.genderId",
+        "width": "100px"
+      },
+      {
+        "name": "dateOfBirth",
+        "labelKey": "Ped.dateOfBirth",
+        "width": "100px"
+      },
+      {
+        "name": "currentClass",
+        "labelKey": "Ped.currentClass",
+        "width": "100px"
+      },
+      {
+        "name": "assumedClass",
+        "labelKey": "Ped.assumedClass",
+        "width": "100px"
+      },
+      {
+        "name": "currentSchool",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "address",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "phone1",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "phone2",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "fatherName",
+        "labelKey": "Ped.fatherName",
+        "width": "250px"
+      },
+      {
+        "name": "fatherEduQualification",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "fatherJop",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "motherName",
+        "labelKey": "Ped.motherName",
+        "width": "250px"
+      },
+      {
+        "name": "motherEduQualification",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "motherJop",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "brothersNumber",
+        "hidden": true,
+        "width": "100px"
+      },
+      {
+        "name": "childOrder",
+        "hidden": true,
+        "width": "100px"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "infoSource",
+        "labelKey": "Ped.infoSource",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "comingfrom",
+        "labelKey": "Ped.comingfrom",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "appointmentDate",
+        "labelKey": "Ped.appointmentDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "Ped.name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "genderId",
+        "labelKey": "Ped.genderId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dateOfBirth",
+        "labelKey": "Ped.dateOfBirth",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "motherName",
+        "labelKey": "Ped.motherName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "ped/mng/Doctors",
+  "entity": "Ped/Doctors",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "name",
+        "labelKey": "Ped.name"
+      },
+      {
+        "name": "dob",
+        "labelKey": "Ped.dob"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Ped.statusId"
+      },
+      {
+        "name": "genderId",
+        "labelKey": "Ped.genderId",
+        "width": "100px"
+      },
+      {
+        "name": "specialId",
+        "labelKey": "Ped.specialId"
+      },
+      {
+        "name": "natnum",
+        "labelKey": "Ped.natnum"
+      },
+      {
+        "name": "mobile",
+        "labelKey": "Ped.mobile"
+      },
+      {
+        "name": "phone1",
+        "labelKey": "Ped.phone1"
+      },
+      {
+        "name": "phone2",
+        "labelKey": "Ped.phone2"
+      },
+      {
+        "name": "email",
+        "labelKey": "Ped.email"
+      },
+      {
+        "name": "langs",
+        "labelKey": "Ped.langs"
+      },
+      {
+        "name": "descr",
+        "labelKey": "Ped.descr"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "name",
+        "labelKey": "Ped.name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "dob",
+        "labelKey": "Ped.dob",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Ped.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "genderId",
+        "labelKey": "Ped.genderId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "specialId",
+        "labelKey": "Ped.specialId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "natnum",
+        "labelKey": "Ped.natnum",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "mobile",
+        "labelKey": "Ped.mobile",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "phone1",
+        "labelKey": "Ped.phone1",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "phone2",
+        "labelKey": "Ped.phone2",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "email",
+        "labelKey": "Ped.email",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "langs",
+        "labelKey": "Ped.langs",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "descr",
+        "labelKey": "Ped.descr",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

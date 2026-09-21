@@ -1,0 +1,62 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "hr/pay/AttendanceForSalaries",
+  "entity": "Emp/SalariesCalculation",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "statusId",
+        "hidden": true
+      },
+      {
+        "name": "nyear",
+        "labelKey": "Year",
+        "width": "10"
+      },
+      {
+        "name": "nmonth",
+        "labelKey": "Month",
+        "width": "10"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "nyear",
+        "labelKey": "Year",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "nmonth",
+        "labelKey": "Month",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      }
+    ]
+  }
+}

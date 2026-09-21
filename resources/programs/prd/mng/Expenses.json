@@ -1,0 +1,96 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "prd/mng/Expenses",
+  "entity": "Prd/Expenses",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "lname",
+        "labelKey": "Prd.lname"
+      },
+      {
+        "name": "iname",
+        "labelKey": "Prd.iname"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Prd.statusId"
+      },
+      {
+        "name": "accId",
+        "labelKey": "Prd.accId"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Prd.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "lname",
+        "labelKey": "Prd.lname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "iname",
+        "labelKey": "Prd.iname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Prd.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "accId",
+        "labelKey": "Prd.accId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Prd.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

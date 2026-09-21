@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "prd/qry/ManufOrders",
+  "entity": "Prd/OrderMst",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      }
+    ]
+  }
+}

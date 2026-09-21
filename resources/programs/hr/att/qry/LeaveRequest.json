@@ -1,0 +1,26 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "hr/att/qry/LeaveRequest",
+  "entity": "Emp/LeaveRequest",
+  "search": {
+    "fields": [
+      {
+        "name": "typeId",
+        "labelKey": "Type",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "approveId",
+        "labelKey": "Status",
+        "operators": [
+          "=",
+          "!="
+        ]
+      }
+    ]
+  }
+}

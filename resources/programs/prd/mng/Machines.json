@@ -1,0 +1,163 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "prd/mng/Machines",
+  "entity": "Prd/Machines",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "lname",
+        "labelKey": "Prd.lname"
+      },
+      {
+        "name": "iname",
+        "labelKey": "Prd.iname"
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Prd.statusId"
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Prd.curnId"
+      },
+      {
+        "name": "catId",
+        "labelKey": "Prd.catId"
+      },
+      {
+        "name": "accId",
+        "labelKey": "Prd.accId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/AccActive/Autocomplete"
+      },
+      {
+        "name": "hamt",
+        "labelKey": "Prd.hamt"
+      },
+      {
+        "name": "helec",
+        "labelKey": "Prd.helec"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Prd.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "lname",
+        "labelKey": "Prd.lname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "iname",
+        "labelKey": "Prd.iname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Prd.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Prd.curnId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "catId",
+        "labelKey": "Prd.catId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "accId",
+        "labelKey": "Prd.accId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/AccActive/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "hamt",
+        "labelKey": "Prd.hamt",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "helec",
+        "labelKey": "Prd.helec",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Prd.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

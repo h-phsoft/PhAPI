@@ -1,0 +1,157 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "fin/mng/Services",
+  "entity": "Mng/Services",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "code",
+        "labelKey": "code"
+      },
+      {
+        "name": "name",
+        "labelKey": "name"
+      },
+      {
+        "name": "costId",
+        "labelKey": "costId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/CostCenters/Autocomplete"
+      },
+      {
+        "name": "accId",
+        "labelKey": "Revenue Account",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/Account/Autocomplete"
+      },
+      {
+        "name": "accRid",
+        "labelKey": "Cost Account",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/Account/Autocomplete"
+      },
+      {
+        "name": "cst",
+        "labelKey": "cst"
+      },
+      {
+        "name": "grp",
+        "labelKey": "Group"
+      },
+      {
+        "name": "rem",
+        "labelKey": "rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "code",
+        "labelKey": "Number",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "name",
+        "labelKey": "name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "costId",
+        "labelKey": "costId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/CostCenters/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "accId",
+        "labelKey": "Cost Account",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/Account/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "accRid",
+        "labelKey": "Revenue Account",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/Account/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "cst",
+        "labelKey": "cost",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "grp",
+        "labelKey": "Group",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Remarks",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

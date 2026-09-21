@@ -1,0 +1,126 @@
+{
+  "version": "1.0",
+  "kind": "form",
+  "program": "fre/lfr/mng/Plates",
+  "entity": "Fre/Trucks",
+  "form": {
+    "fields": [
+      {
+        "name": "id",
+        "hidden": true
+      },
+      {
+        "name": "num",
+        "labelKey": "Fre.num"
+      },
+      {
+        "name": "city",
+        "labelKey": "Fre.city"
+      },
+      {
+        "name": "color",
+        "labelKey": "Fre.color"
+      },
+      {
+        "name": "brand",
+        "labelKey": "Fre.brand"
+      },
+      {
+        "name": "year",
+        "labelKey": "Fre.year"
+      },
+      {
+        "name": "rem",
+        "labelKey": "Fre.rem"
+      }
+    ]
+  },
+  "search": {
+    "fields": [
+      {
+        "name": "num",
+        "labelKey": "Fre.num",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "city",
+        "labelKey": "Fre.city",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "color",
+        "labelKey": "Fre.color",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "brand",
+        "labelKey": "Fre.brand",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "year",
+        "labelKey": "Fre.year",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Fre.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

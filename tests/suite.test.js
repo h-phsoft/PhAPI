@@ -802,7 +802,18 @@ async function runAllTests() {
   });
 
   const jwt = require('jsonwebtoken');
-  const testToken = jwt.sign({ jui: 1, Copy: '01-Admin' }, env.jwtSecret);
+
+  /**
+   * The tenant these tests run against.
+   *
+   * It used to be '01-Admin', which is not a copy in Phs_Cpy on any machine --
+   * so every integration test below failed with "Tenant copy not found" the
+   * moment anyone set RUN_INTEGRATION_TESTS=1, and the skip was hiding it
+   * rather than the tests being environment-specific. Overridable because the
+   * copy that exists differs per developer.
+   */
+  const testTenant = process.env.TEST_TENANT || 'Demo';
+  const testToken = jwt.sign({ jui: 1, Copy: testTenant }, env.jwtSecret);
 
   await testIntegration('Authenticated POST /UC/InitForm returns 200 OK', async () => {
     const postData = JSON.stringify({ package: 'Acc', table: 'Acc_Master' });
@@ -849,6 +860,77 @@ async function runAllTests() {
     assert.strictEqual(Array.isArray(res.body.data), true);
   });
 
+  test('The screen routes sit ahead of the generic ones', () => {
+    // `/UC/Screen/Program/clnc/mng/Doctors` matches `/UC/:package/:table/:id`
+    // as readily as it matches its own route, and Express takes the first that
+    // fits. Registered after, every screen request would have been answered by
+    // getRecord with package 'Screen' and table 'Program'.
+    const paths = registeredPaths();
+    const screen = paths.indexOf('/UC/Screen/Program/*');
+    const generic = paths.indexOf('/UC/:package/:table/:id');
+
+    assert.notStrictEqual(screen, -1, 'the program screen route is not registered');
+    assert.notStrictEqual(generic, -1, 'the generic record route is not registered');
+    assert.ok(screen < generic, `screen route is registered at ${screen}, after the generic one at ${generic}`);
+  });
+
+  await testAsync('A screen cannot be read without a token', async () => {
+    // The description of a screen names its table and every column on it, so it
+    // is behind the same authentication as the data.
+    const res = await getJson('/UC/Screen/Program/clnc/mng/Doctors');
+    assert.strictEqual(res.body.status, false);
+    assert.strictEqual(res.body.code, 401);
+  });
+
+  /** GETs a path with the test token and parses the envelope. */
+  function getAuthed(pathStr) {
+    return new Promise((resolve, reject) => {
+      http.get(`http://localhost:3009${pathStr}`, {
+        headers: { Authorization: `Bearer ${testToken}` }
+      }, (response) => {
+        let body = '';
+        response.on('data', chunk => body += chunk);
+        response.on('end', () => resolve({ status: response.statusCode, body: JSON.parse(body) }));
+      }).on('error', reject);
+    });
+  }
+
+  await testIntegration('A program screen is served composed, over HTTP', async () => {
+    const res = await getAuthed('/UC/Screen/Program/clnc/mng/Doctors');
+
+    assert.strictEqual(res.body.status, true, `expected a screen, got: ${res.body.message}`);
+    const screen = res.body.data;
+
+    assert.strictEqual(screen.endpoint, '/UC/Clnc/Doctors');
+    assert.strictEqual(screen.primaryKey, 'id');
+    assert.deepStrictEqual(screen.dropped, [], 'the screen names columns its entity does not have');
+
+    // Every field arrives ready to draw: translated, typed, and with somewhere
+    // to read its options from.
+    const fields = screen.form.fields;
+    assert.ok(fields.length > 0, 'no form fields');
+    for (const field of fields) {
+      assert.ok(field.label, `${field.name} has no label`);
+      assert.ok(field.input, `${field.name} has no input kind`);
+    }
+
+    const special = fields.find(f => f.name === 'specialId');
+    assert.strictEqual(special.input, 'select');
+    assert.strictEqual(special.lookup, '/UC/Clnc/Specials');
+    assert.strictEqual(special.displayField, 'specialName');
+
+    // A reference too large to list is searched instead, which is the one thing
+    // the schema cannot imply and the screen file does say.
+    const user = fields.find(f => f.name === 'userId');
+    assert.strictEqual(user.input, 'autocomplete');
+    assert.strictEqual(user.endpoint, '/UC/Cpy/Users/Autocomplete');
+  });
+
+  await testIntegration('A program nothing describes is answered with 404, not an empty screen', async () => {
+    const res = await getAuthed('/UC/Screen/Program/no/such/program');
+    assert.strictEqual(res.body.status, false);
+    assert.strictEqual(res.body.code, 404);
+  });
 
   server.close();
 
