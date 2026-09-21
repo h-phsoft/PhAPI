@@ -77,10 +77,16 @@ class UnifiedController {
       const table = req.params.table || req.params.tableName;
       const page = coercePage(req.params.page);
       const size = coercePageSize(req.params.size);
-      const conditions = req.body;
       const context = req.context || {};
 
-      const result = localize(pkg, table, await UnifiedService.search(pkg, table, conditions, page, size, context), context);
+      // The body is the condition list. A client that wants the conditions
+      // joined with OR sends `{ conditions, logic }` instead; a bare array
+      // means AND, which is what every existing caller sends.
+      const body = req.body;
+      const conditions = Array.isArray(body) ? body : (body && body.conditions) || body;
+      const logic = (body && !Array.isArray(body) && body.logic) || 'AND';
+
+      const result = localize(pkg, table, await UnifiedService.search(pkg, table, conditions, page, size, context, logic), context);
       res.status(200).json(ResultManager.ok(result));
     } catch (err) {
       next(err);

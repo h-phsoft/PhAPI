@@ -357,28 +357,29 @@ class UnifiedService {
   /**
    * Advanced multi-condition search with pagination.
    */
-  async search(packageName, tableName, conditions = [], page = 1, size = 20, context = {}) {
+  async search(packageName, tableName, conditions = [], page = 1, size = 20, context = {}, logic = 'AND') {
     const entity = mainApp.getEntity(packageName, tableName);
     if (!entity) {
       throw new Error(`Entity metadata not found for ${packageName}/${tableName}`);
     }
 
-    const filters = {};
-    if (Array.isArray(conditions)) {
-      for (const cond of conditions) {
-        if (cond.field && cond.value !== undefined) {
-          filters[cond.field] = cond.value;
-        }
-      }
-    } else if (conditions && typeof conditions === 'object') {
-      Object.assign(filters, conditions);
-    }
-
+    // A list of conditions, each carrying its own operator. This used to
+    // collapse to `filters[field] = value`, which discarded the operator and
+    // made every search an equality test however it was asked for.
+    //
+    // An object is still accepted, because callers that only ever wanted
+    // equality send one, and it means exactly that.
     const options = {
-      filters,
       page: parseInt(page, 10) || 1,
       pageSize: parseInt(size, 10) || 20
     };
+
+    if (Array.isArray(conditions)) {
+      options.conditions = conditions;
+      options.logic = logic;
+    } else if (conditions && typeof conditions === 'object') {
+      options.filters = { ...conditions };
+    }
 
     const rows = await repository.find(entity, options, context);
     return {

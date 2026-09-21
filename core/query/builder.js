@@ -16,6 +16,7 @@
 
 const ParamBinder = require('./paramBinder');
 const { dateKind, toDateParam } = require('../types/dates');
+const { buildWhere } = require('./conditions');
 
 /**
  * The column a field maps to, as this engine spells it.
@@ -63,11 +64,16 @@ function primaryKeyColumn(dialect, entity) {
  *
  * @param {Object} dialect
  * @param {Object} entity Entity metadata
- * @param {Object} options { fields, filters, joins, sortBy, sortOrder, page, pageSize }
+ * @param {Object} options { fields, filters, conditions, logic, joins, sortBy,
+ *   sortOrder, page, pageSize }. `filters` is equality shorthand;
+ *   `conditions` carries an operator per field.
  * @returns {{sql: string, params: Object|Array}}
  */
 function buildSelect(dialect, entity, options = {}) {
-  const { fields, filters = {}, joins = [], sortBy, sortOrder = 'ASC', page = 1, pageSize = 20 } = options;
+  const {
+    fields, filters = {}, conditions = [], logic = 'AND', joins = [],
+    sortBy, sortOrder = 'ASC', page = 1, pageSize = 20
+  } = options;
   const table = tableOf(entity);
   const bind = new ParamBinder(dialect);
 
@@ -91,10 +97,21 @@ function buildSelect(dialect, entity, options = {}) {
   }
 
   const where = [];
+
+  // Equality filters: the shorthand every list endpoint uses.
   for (const [key, value] of Object.entries(filters)) {
     const fieldMeta = entity.fields.find(f => f.Field.toLowerCase() === String(key).toLowerCase());
     if (fieldMeta && fieldMeta.query) {
       where.push(`${column(dialect, fieldMeta)} = ${bindValue(dialect, bind, fieldMeta, value)}`);
+    }
+  }
+
+  // Search conditions: an operator per field, which is what a query screen
+  // sends. Bound and validated by core/query/conditions.
+  if (conditions && conditions.length > 0) {
+    const built = buildWhere(dialect, entity, conditions, logic, bind);
+    if (built.sql) {
+      where.push(conditions.length > 1 ? `(${built.sql})` : built.sql);
     }
   }
 
