@@ -22,6 +22,8 @@ function ref(identifier) {
   return `"${String(identifier).toLowerCase()}"`;
 }
 
+const { dateKind, dateExpression, toDateParam } = require('./sqlDates');
+
 class PgSqlBuilder {
   /**
    * The ported schema names each object after its Oracle synonym, because
@@ -62,8 +64,10 @@ class PgSqlBuilder {
     for (const [key, value] of Object.entries(filters)) {
       const fieldMeta = entity.fields.find(f => f.Field.toLowerCase() === key.toLowerCase());
       if (fieldMeta && fieldMeta.query) {
-        whereClauses.push(`${ref(fieldMeta.Name)} = $${paramIndex++}`);
-        params.push(value);
+        const kind = dateKind(fieldMeta);
+        const placeholder = `$${paramIndex++}`;
+        whereClauses.push(`${ref(fieldMeta.Name)} = ${kind ? dateExpression('postgres', placeholder, kind) : placeholder}`);
+        params.push(kind ? toDateParam(value, kind) : value);
       }
     }
 
@@ -101,9 +105,11 @@ class PgSqlBuilder {
     for (const fieldMeta of entity.fields) {
       const apiField = fieldMeta.Field;
       if (data.hasOwnProperty(apiField)) {
+        const kind = dateKind(fieldMeta);
+        const placeholder = `$${paramIndex++}`;
         columns.push(ref(fieldMeta.Name));
-        placeholders.push(`$${paramIndex++}`);
-        params.push(data[apiField]);
+        placeholders.push(kind ? dateExpression('postgres', placeholder, kind) : placeholder);
+        params.push(kind ? toDateParam(data[apiField], kind) : data[apiField]);
       }
     }
 
@@ -126,8 +132,10 @@ class PgSqlBuilder {
     for (const fieldMeta of entity.fields) {
       const apiField = fieldMeta.Field;
       if (fieldMeta.update && data.hasOwnProperty(apiField)) {
-        setClauses.push(`${ref(fieldMeta.Name)} = $${paramIndex++}`);
-        params.push(data[apiField]);
+        const kind = dateKind(fieldMeta);
+        const placeholder = `$${paramIndex++}`;
+        setClauses.push(`${ref(fieldMeta.Name)} = ${kind ? dateExpression('postgres', placeholder, kind) : placeholder}`);
+        params.push(kind ? toDateParam(data[apiField], kind) : data[apiField]);
       }
     }
 

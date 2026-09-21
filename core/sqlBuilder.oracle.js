@@ -4,6 +4,8 @@
  * Uses Oracle synonym in FROM clause if available.
  */
 
+const { dateKind, dateExpression, toDateParam } = require('./sqlDates');
+
 class OracleSqlBuilder {
   /**
    * Returns table or synonym name for Oracle queries.
@@ -48,8 +50,9 @@ class OracleSqlBuilder {
       const fieldMeta = entity.fields.find(f => f.Field.toLowerCase() === key.toLowerCase());
       if (fieldMeta && fieldMeta.query) {
         const paramName = `p_${paramIndex++}`;
-        whereClauses.push(`${fieldMeta.Name} = :${paramName}`);
-        params[paramName] = value;
+        const kind = dateKind(fieldMeta);
+        whereClauses.push(`${fieldMeta.Name} = ${kind ? dateExpression('oracle', `:${paramName}`, kind) : `:${paramName}`}`);
+        params[paramName] = kind ? toDateParam(value, kind) : value;
       }
     }
 
@@ -96,9 +99,10 @@ class OracleSqlBuilder {
       const apiField = fieldMeta.Field;
       if (data.hasOwnProperty(apiField)) {
         const paramName = `p_${paramIndex++}`;
+        const kind = dateKind(fieldMeta);
         columns.push(fieldMeta.Name);
-        valuePlaceholders.push(`:${paramName}`);
-        params[paramName] = data[apiField];
+        valuePlaceholders.push(kind ? dateExpression('oracle', `:${paramName}`, kind) : `:${paramName}`);
+        params[paramName] = kind ? toDateParam(data[apiField], kind) : data[apiField];
       }
     }
 
@@ -122,8 +126,9 @@ class OracleSqlBuilder {
       const apiField = fieldMeta.Field;
       if (fieldMeta.update && data.hasOwnProperty(apiField)) {
         const paramName = `p_${paramIndex++}`;
-        setClauses.push(`${fieldMeta.Name} = :${paramName}`);
-        params[paramName] = data[apiField];
+        const kind = dateKind(fieldMeta);
+        setClauses.push(`${fieldMeta.Name} = ${kind ? dateExpression('oracle', `:${paramName}`, kind) : `:${paramName}`}`);
+        params[paramName] = kind ? toDateParam(data[apiField], kind) : data[apiField];
       }
     }
 

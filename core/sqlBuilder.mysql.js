@@ -3,6 +3,8 @@
  * Uses standard parameterized placeholders (?) or positional params array.
  */
 
+const { dateKind, dateExpression, toDateParam } = require('./sqlDates');
+
 class MysqlSqlBuilder {
   /**
    * The ported schema names each object after its Oracle synonym, because MySQL
@@ -41,8 +43,9 @@ class MysqlSqlBuilder {
     for (const [key, value] of Object.entries(filters)) {
       const fieldMeta = entity.fields.find(f => f.Field.toLowerCase() === key.toLowerCase());
       if (fieldMeta && fieldMeta.query) {
-        whereClauses.push(`\`${fieldMeta.Name}\` = ?`);
-        params.push(value);
+        const kind = dateKind(fieldMeta);
+        whereClauses.push(`\`${fieldMeta.Name}\` = ${kind ? dateExpression('mysql', '?', kind) : '?'}`);
+        params.push(kind ? toDateParam(value, kind) : value);
       }
     }
 
@@ -79,9 +82,10 @@ class MysqlSqlBuilder {
     for (const fieldMeta of entity.fields) {
       const apiField = fieldMeta.Field;
       if (data.hasOwnProperty(apiField)) {
+        const kind = dateKind(fieldMeta);
         columns.push(`\`${fieldMeta.Name}\``);
-        placeholders.push('?');
-        params.push(data[apiField]);
+        placeholders.push(kind ? dateExpression('mysql', '?', kind) : '?');
+        params.push(kind ? toDateParam(data[apiField], kind) : data[apiField]);
       }
     }
 
@@ -100,8 +104,9 @@ class MysqlSqlBuilder {
     for (const fieldMeta of entity.fields) {
       const apiField = fieldMeta.Field;
       if (fieldMeta.update && data.hasOwnProperty(apiField)) {
-        setClauses.push(`\`${fieldMeta.Name}\` = ?`);
-        params.push(data[apiField]);
+        const kind = dateKind(fieldMeta);
+        setClauses.push(`\`${fieldMeta.Name}\` = ${kind ? dateExpression('mysql', '?', kind) : '?'}`);
+        params.push(kind ? toDateParam(data[apiField], kind) : data[apiField]);
       }
     }
 

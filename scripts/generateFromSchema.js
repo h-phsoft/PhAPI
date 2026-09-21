@@ -301,6 +301,11 @@ function packageFor(tableName, learned) {
 const AUDIT_COLUMNS = new Set(['ins_user', 'upd_user', 'ins_date', 'upd_date']);
 
 /**
+ * The audit stamps, as `auditFields` names them, which are kept to the second.
+ */
+const AUDIT_TIMESTAMPS = new Set(['insdate', 'upddate']);
+
+/**
  * Assembles the model JSON for one table.
  *
  * @param {Object} table The gathered schema for this table
@@ -330,6 +335,14 @@ function buildModel(table, ctx) {
   const fields = table.columns.map((col) => {
     const shape = mapColumnType(col.dataType, col.precision, col.scale);
     const fieldName = toFieldName(col.name);
+
+    // An audit stamp records when a row was touched, so it keeps its hour.
+    // Oracle spells the column DATE either way -- it has no DATETIME -- and
+    // the declaration here is what decides the format, so it is made
+    // explicitly rather than inferred again at every use.
+    if (shape.DBType === 'DATE' && AUDIT_TIMESTAMPS.has(fieldName.toLowerCase())) {
+      shape.DBType = 'DATETIME';
+    }
     const fk = fkByColumn.get(String(col.name).toLowerCase());
 
     let relation = null;

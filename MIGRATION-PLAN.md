@@ -1,0 +1,355 @@
+# PhERP — Migration and Architecture Plan
+
+Porting PhsAPI / PhsApp (Java) to PhAPI / PhApp (Node.js), and improving them
+while doing it.
+
+This document is the contract. Where code and this file disagree, one of them is
+wrong and the disagreement gets resolved before the work continues — it is not
+left standing.
+
+There are no dates or estimates here on purpose. Steps have entry and exit
+conditions instead, so a step is finished when it is demonstrably finished.
+
+---
+
+## Part 1 — Rules
+
+These are binding. A rule is not advice; breaking one is a defect even when the
+feature works.
+
+### Layering
+
+**L1. Each layer may require only the layer directly beneath it.**
+Reaching two layers down is a violation even when it compiles. `utils` is the
+single exception: it is a leaf, everyone may use it, and it may require nothing
+but Node built-ins.
+
+**L2. Only `http/` knows HTTP.**
+No `req`, `res`, status code, header or route string below it. A service that
+needs the caller's language receives a value, not a request.
+
+**L3. Only `data/dialects` knows an engine.**
+No `oracle`, `mysql` or `postgres` string, and no engine-specific SQL function,
+anywhere above it. A layer that needs a date converted asks the query layer; the
+query layer asks the dialect.
+
+**L4. Presentation never runs in the domain.**
+Translating a label, formatting a date for a client, shaping an envelope — these
+happen in `presentation`, on the way out. A service returns domain values.
+
+**L5. A repository handles one entity and knows no rules.**
+It reads and writes rows. Validation, audit stamps, autonumbering, child
+ordering and transactions belong to the service above it.
+
+**L6. Cross-cutting logic is written once.**
+If the same rule appears in two dialects, two services or two controllers, it is
+in the wrong place. Move it down until there is one copy.
+
+### Metadata
+
+**M1. `resources/modules` is generated from the database and is authoritative
+for what a column is.**
+Type, precision, scale, nullability, relations, sequences, children. Nothing
+hand-written competes with it. `scripts/generateFromSchema.js` is how it changes.
+
+**M2. The generator never rewrites an existing file.**
+Hand-set annotations — `isLabel`, corrected display fields, curated children —
+cannot be recovered from a schema. `--force` exists and must be asked for
+explicitly.
+
+**M3. Screen metadata is an overlay, never a copy.**
+A screen file names an entity and adds only what the schema cannot know: field
+order, grid, labels, list columns, which fields are filterable, which operators,
+aggregates, expressions, autocomplete source. If a property can be derived from
+the entity, deriving it is mandatory.
+
+**M4. One entity per block, not per screen.**
+A screen is a composition of blocks. Master/detail, lookups and attachments each
+name their own entity. Relations already declared on the entity supply lookups
+without the screen mentioning them.
+
+**M5. Metadata is data, not code.**
+Adding a screen is adding a file. It must never require a deploy, a build step
+or an edit to a registry.
+
+### Data access
+
+**D1. Values are bound, never concatenated.**
+No client value reaches SQL text. This includes numbers, dates and IN lists. The
+Java original concatenated and escaped quotes; that is not ported.
+
+**D2. Identifiers come from metadata, never from a request.**
+A column or table name is resolved against the entity's field list first. An
+unresolved name drops the condition and is logged; it is never passed through.
+
+**D3. Operators come from a closed list.**
+An operator not on the list is rejected before SQL is built. The `$$` free-SQL
+operator is never accepted from a client.
+
+**D4. Dates state their format at both boundaries.**
+Never rely on a session's `NLS_DATE_FORMAT` or on a driver's timezone. The
+column's declared type decides: `DATE`, `DATETIME`, `TIME`. On the way out a
+date is written from its own calendar parts with no timezone attached.
+
+**D5. A large result streams.**
+Anything that can return thousands of rows — reports, exports, code tables such
+as the 9168-row airport list — streams. It does not accumulate in memory.
+
+### Porting
+
+**P1. Recover before inventing.**
+The Java system describes its screens declaratively already. Before designing a
+format, find the existing one and read it. Two have been found: 595 query
+definitions and per-screen `aFields` / `aQFields`.
+
+**P2. Port semantics, not implementation.**
+The operator set, the date formats, the field validation and the `$$` rejection
+are the contract and are ported exactly. String concatenation, unbound values
+and `UPPER(col) LIKE` on every text search are not.
+
+**P3. Where the legacy metadata and the schema disagree, the schema wins.**
+The legacy `dataType` is absent on 64% of fields; `DBType` is generated and
+accurate.
+
+**P4. Existing screens are not touched by generated ones.**
+A custom component always takes precedence over a screen file. Ejecting a
+generated screen to custom code is done by adding the component, and requires no
+change to the metadata.
+
+**P5. Node's advantages are taken after the feature works, not instead of it.**
+Streaming, worker threads, shared types and concurrency are improvements to
+working code.
+
+### Verification
+
+**V1. A claim about behaviour is measured, not asserted.**
+"It works" means it was run. A fix to a query path is proven against the
+database, inside a transaction, and rolled back.
+
+**V2. A migration that rewrites files proves it only changed what it meant to.**
+Hash the tree before, hash it after, and report what moved.
+
+**V3. The test suite is green before a step is called finished.**
+Not "green except". A test that cannot pass is either fixed or deleted with a
+reason.
+
+**V4. Layer rules are enforced by a test, not by memory.**
+See Part 4.
+
+---
+
+## Part 2 — Target layers
+
+Each layer's charter, and the thing it must never do.
+
+| Layer | Does | Must never |
+|---|---|---|
+| `http/routes` | Path, method, middleware wiring | Contain logic |
+| `http/controllers` | Translate HTTP to and from the domain | Build SQL, apply rules |
+| `presentation` | Label translation, date formatting, response envelope | Read or write data |
+| `domain/services` | Business rules, transactions, validation, autonumber, children | Know HTTP or a dialect |
+| `data/repository` | One entity in and out | Know rules or HTTP |
+| `data/query` | Dialect-neutral query model: select, insert, update, conditions, dates | Name an engine |
+| `data/dialects` | Quoting, placeholders, pagination, date functions | Contain query shape |
+| `metadata` | Entity and screen registry, loading and reloading | Depend on anything above it |
+| `utils` | Pure leaf helpers | Require any project layer |
+
+A dialect declares four things and nothing more:
+
+```js
+{
+  quote:       name => `"${name}"`,
+  placeholder: index => `:p_${index}`,
+  paginate:    (sql, page, size) => `${sql} OFFSET … FETCH NEXT …`,
+  toDate:      (placeholder, format) => `TO_DATE(${placeholder}, '${format}')`
+}
+```
+
+The shape of a SELECT is not a dialect concern. Adding a fourth engine is adding
+one such file.
+
+---
+
+## Part 3 — Steps
+
+Ordered. A step starts only when the previous one's exit condition holds.
+
+### Step 0 — Boundaries
+
+Draw the layers before adding anything to them. No behaviour changes.
+
+1. Extract `presentation` from `services`: label translation and date output
+   formatting move out of `unifiedService`.
+2. Collapse the three SQL builders into one query model plus three dialect
+   files. The six build methods are written once.
+3. Move the metadata registry out of `config/` into `metadata/`. A registry is
+   not configuration.
+4. Move SQL dialect adaptation out of the connection pool into `data/dialects`.
+5. Break the upward dependencies out of `utils`.
+
+**Entry:** none. **Exit:** the layer test passes, the suite is green, and no
+endpoint's output has changed.
+
+**Why first:** the condition engine is the next thing written. Written before
+this step it is written three times.
+
+### Step 1 — Condition engine
+
+Port `Condition.java` by its semantics.
+
+1. The seventeen operators, with the SQL each produces, in `data/query`.
+2. Values bound. Value type taken from the entity's `DBType`.
+3. Field names resolved against the entity; unresolved conditions dropped and
+   logged.
+4. `$$` rejected from any client-supplied condition.
+5. `unifiedService.search` wired to it, replacing the equality-only filter map.
+6. Operator allowlist per field kind, derived from `DBType`.
+
+**Entry:** Step 0 complete. **Exit:** every operator proven against the database
+with a bound value; a hostile value in each operator proven to stay inside the
+bind; the suite green.
+
+### Step 2 — Screen metadata converter
+
+Convert, do not author.
+
+1. Read the recovered query definitions and the legacy per-screen field
+   metadata.
+2. Emit `resources/screens/`, carrying only what the schema cannot supply.
+3. Read both spellings of the aggregate keys.
+4. Seed translation keys into the locale files for every emitted label.
+
+**Entry:** Step 1 complete. **Exit:** converted screens validate against the
+screen schema; every entity they name resolves; a sample is compared field by
+field against its Java original.
+
+### Step 3 — Generic renderer
+
+One renderer in PhApp, built from PhApp's existing components. No new UI
+library.
+
+1. Fetch the screen file through the existing proxy, with session and program
+   id.
+2. Render search, list and form from it.
+3. Fall back to it only when the registry has no component for the program.
+
+**Entry:** Step 2 complete. **Exit:** one existing screen rendered from metadata
+matches its hand-written version field for field, and the hand-written one still
+takes precedence when present.
+
+### Step 4 — Screens
+
+In order of how uniform they are: Table, then Query, then Daily, then Statistic.
+
+**Entry:** Step 3 complete. **Exit:** per screen — it renders, searches, saves
+and deletes against the real database.
+
+### Step 5 — Node's advantages
+
+1. Stream report and export responses.
+2. Share entity types between PhAPI and PhApp instead of hand-writing them
+   twice.
+3. Parallelise independent reads that are sequential today.
+4. Move export generation and report aggregation to worker threads.
+5. Reload metadata without a restart.
+
+**Entry:** the feature the improvement applies to works. **Exit:** measured
+before and after.
+
+---
+
+## Part 4 — Enforcement
+
+Separation decays quietly. Someone needs a translation inside a repository,
+imports it, and the boundary is gone in one line. Memory does not prevent this.
+
+**A layer test runs in the suite.** It walks every `require`, maps each file to
+its layer, and fails on:
+
+- a layer requiring anything but the layer directly beneath it,
+- any file below `http/` naming `req`, `res` or a status code,
+- any file above `data/dialects` naming an engine,
+- `utils` requiring a project layer.
+
+A violation fails the build. That is what makes this decision irreversible: it
+stops being an agreement and becomes a condition.
+
+---
+
+## Appendix — Measured facts
+
+Recorded so the rules above are traceable to evidence rather than taste.
+
+**Scope**
+
+| | |
+|---|---|
+| Active programs in the menu | 530 |
+| Screens built in PhApp | 19 |
+| Daily / Query / Table / Statistic | 153 / 146 / 143 / 73 |
+| Programs declaring their table (`MPrg_RelTable`) | 72 |
+
+**Metadata**
+
+| | |
+|---|---|
+| Entity models in `resources/modules` | 1215 |
+| Tables and views read from the live schema | 935 |
+| Models declaring children (master/detail) | 147 |
+| Models declaring relations (lookups) | 846 |
+| Models that are pre-joined views | 233 |
+| Autocomplete templates | 488 |
+
+**Recovered query definitions**
+
+| | |
+|---|---|
+| Definitions | 595 |
+| Fields across them | 16775 |
+| Whose table is described today | 547 / 595 |
+| Filterable / groupable / aggregatable fields | 16678 / 16506 / 993 |
+| Fields with a computed expression | 883 |
+| Fields with autocomplete | 963 |
+| Fields whose `dataType` is absent | 10815 (64%) |
+| Misspelled `Agregate` / `isAgregate` keys | 3926 / 2785 |
+
+**The operator contract** — from `PhSoft/src/com/phsoft/web/commom/Condition.java`
+
+| Token | Meaning | SQL |
+|---|---|---|
+| `=` `!=` `>` `>=` `<` `<=` | comparison | `name <op> :p` |
+| `<>` | **between** | `name BETWEEN :p1 AND :p2` |
+| `><` | **not between** | `name NOT BETWEEN :p1 AND :p2` |
+| `[%` / `![%` | starts with / not | `UPPER(name) [NOT] LIKE UPPER(:p‖'%')` |
+| `%]` / `!%]` | ends with / not | `UPPER(name) [NOT] LIKE UPPER('%'‖:p)` |
+| `%` / `!%` | contains / not | `UPPER(name) [NOT] LIKE UPPER('%'‖:p‖'%')` |
+| `IN` / `!IN` | in list | `name [NOT] IN (:p1, :p2, …)` |
+| `$$` | free SQL | rejected from client input |
+
+`<>` and `><` are between and not-between, not inequality. Guessing this wrong
+silently changes every range filter in the system.
+
+**Date formats** — from `PhSoft/src/com/phsoft/tools/PhU.java`
+
+```
+Ph_DATE_SQL     = "DD-MM-YYYY"
+Ph_DATETIME_SQL = "DD-MM-YYYY HH24:mi:ss"
+Ph_TIME_SQL     = "HH24:mi:ss"
+```
+
+**Legacy field kinds** — `Condition.PHFC_*`, which is what the query
+definitions' `dataType` refers to
+
+```
+0 TEXT · 1 SELECT · 2 NUMBER · 3 DATEPICKER
+4 AUTOCOMPLETE · 5 CHECKBOX · 6 RADIO · 7 EMPTY · 8 DATETIMEPICKER
+```
+
+**Current layering**
+
+| | |
+|---|---|
+| Upward dependencies | 4 (3 of them `utils`) |
+| Lines across the three dialect builders | 495 |
+| Build methods duplicated per dialect | 6 |
+| Largest service | `unifiedService.js`, 792 lines |

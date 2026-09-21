@@ -3,6 +3,7 @@ const connectionPool = require('../core/connectionPool');
 const repository = require('../repository/unifiedRepository');
 const AutoNumberHelper = require('../utils/autoNumber');
 const i18nHelper = require('../utils/i18nHelper');
+const { dateKind, toClientValue } = require('../core/sqlDates');
 
 class ValidationError extends Error {
   constructor(message, details = []) {
@@ -115,6 +116,91 @@ function localizeLabels(entity, rows, context = {}) {
   }
 
   return rows;
+}
+
+/**
+ * Which properties hold a date, and of what kind, worked out once per entity.
+ *
+ * Read from the metadata, like everything else: a field's `DBType` says what
+ * the column is, and DATE, DATETIME and TIME each get their own shape.
+ *
+ * @param {Object} entity Entity metadata
+ * @returns {Array<[string, string]>} [property, kind] pairs
+ */
+const datePlans = new WeakMap();
+
+function datePlanFor(entity) {
+  const cached = datePlans.get(entity);
+  if (cached) {
+    return cached;
+  }
+
+  const fields = Array.isArray(entity.fields) ? entity.fields : [];
+  const plan = fields
+    .map(field => [field.Field, dateKind(field)])
+    .filter(([property, kind]) => property && kind);
+
+  datePlans.set(entity, plan);
+  return plan;
+}
+
+/**
+ * Formats date columns on their way out.
+ *
+ * The driver returns a JS Date, and JSON turns that into an instant in UTC:
+ *
+ *   stored in the database : 1995-09-01 00:00:00
+ *   JSON.stringify         : "1995-08-31T21:00:00.000Z"
+ *
+ * Midnight in Damascus is nine the previous evening in London, so every
+ * date-only value east of Greenwich reached the client a day early. The stored
+ * data was never wrong; the serialisation attached a timezone the column does
+ * not have.
+ *
+ * So the value is written out from its own calendar parts, in ISO order
+ * because that is what a date input reads and what sorts correctly as text,
+ * and with nothing about a timezone in it.
+ *
+ * @param {Object} entity Entity metadata
+ * @param {Object|Object[]} rows A row or rows straight from the repository
+ * @returns {Object|Object[]} The same rows
+ */
+function formatDates(entity, rows) {
+  if (!rows || !entity) {
+    return rows;
+  }
+
+  const plan = datePlanFor(entity);
+  if (plan.length === 0) {
+    return rows;
+  }
+
+  const list = Array.isArray(rows) ? rows : [rows];
+
+  for (const row of list) {
+    if (!row || typeof row !== 'object') {
+      continue;
+    }
+    for (const [property, kind] of plan) {
+      if (row[property] !== undefined) {
+        row[property] = toClientValue(row[property], kind);
+      }
+    }
+  }
+
+  return rows;
+}
+
+/**
+ * Everything a row needs doing to it before a client sees it.
+ *
+ * @param {Object} entity Entity metadata
+ * @param {Object|Object[]} rows Rows straight from the repository
+ * @param {Object} context Request context
+ * @returns {Object|Object[]} The same rows
+ */
+function present(entity, rows, context = {}) {
+  return formatDates(entity, localizeLabels(entity, rows, context));
 }
 
 class UnifiedService {
@@ -303,7 +389,7 @@ class UnifiedService {
       throw new Error(`Entity metadata not found for ${packageName}/${tableName}`);
     }
     const rows = await repository.find(entity, options, context);
-    return localizeLabels(entity, rows, context);
+    return present(entity, rows, context);
   }
 
   /**
@@ -330,12 +416,12 @@ class UnifiedService {
           filters[childConfig.foreignKey] = id;
           const childrenRows = await repository.find(childEntity, { filters }, context);
           // Localised against the child's own metadata, not the master's.
-          masterRecord[childConfig.childKey] = localizeLabels(childEntity, childrenRows, context);
+          masterRecord[childConfig.childKey] = present(childEntity, childrenRows, context);
         }
       }
     }
 
-    return localizeLabels(entity, masterRecord, context);
+    return present(entity, masterRecord, context);
   }
 
   /**
@@ -451,7 +537,7 @@ class UnifiedService {
 
     const rows = await repository.find(entity, options, context);
     return {
-      data: localizeLabels(entity, rows, context),
+      data: present(entity, rows, context),
       page: options.page,
       size: options.pageSize
     };
@@ -485,7 +571,7 @@ class UnifiedService {
 
     const rows = await repository.find(entity, options, context);
     return {
-      data: localizeLabels(entity, rows, context),
+      data: present(entity, rows, context),
       page: options.page,
       size: options.pageSize,
       query: queryString
@@ -534,7 +620,7 @@ class UnifiedService {
       const entity = mainApp.getEntity(packageName, table);
       if (entity) {
         const rows = await repository.find(entity, { pageSize: 100 }, context);
-        result[packageName + table] = localizeLabels(entity, rows, context);
+        result[packageName + table] = present(entity, rows, context);
       }
     }
 
@@ -595,7 +681,7 @@ class UnifiedService {
       throw new Error(`Entity metadata not found for ${packageName}/${tableName}`);
     }
 
-    const rows = localizeLabels(entity, await repository.find(entity, { pageSize: 500 }, context), context);
+    const rows = present(entity, await repository.find(entity, { pageSize: 500 }, context), context);
     const parentField = entity.fields.find(f => f.Field.toLowerCase().includes('parent') || f.Field.toLowerCase().includes('pid'));
     const parentKey = parentField ? parentField.Field : 'parentId';
 

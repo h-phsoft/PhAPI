@@ -317,7 +317,7 @@
     {
       "Name": "Ins_Date",
       "Field": "insDate",
-      "DBType": "DATE",
+      "DBType": "DATETIME",
       "Type": "String",
       "Short": "String",
       "Scale": "0",

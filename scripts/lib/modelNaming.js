@@ -136,10 +136,17 @@ const TYPE_FAMILIES = [
     'nvarchar2', 'text', 'tinytext', 'mediumtext', 'longtext', 'clob', 'nclob', 'citext',
     'json', 'jsonb', 'uuid', 'enum', 'set', 'xml'
   ]],
-  ['DATE', [
-    'date', 'datetime', 'timestamp', 'timestamptz', 'time', 'timetz', 'year', 'interval',
-    'timestamp without time zone', 'timestamp with time zone',
-    'time without time zone', 'time with time zone'
+  // Three date families, not one, because the format a column is written and
+  // read in follows what the metadata declares it to be. Oracle spells only
+  // DATE and TIMESTAMP, so a DATE that needs its hour kept is promoted to
+  // DATETIME by the generator; MySQL and PostgreSQL say which they mean.
+  ['DATE', ['date']],
+  ['DATETIME', [
+    'datetime', 'timestamp', 'timestamptz', 'year', 'interval',
+    'timestamp without time zone', 'timestamp with time zone'
+  ]],
+  ['TIME', [
+    'time', 'timetz', 'time without time zone', 'time with time zone'
   ]],
   ['BLOB', [
     'blob', 'tinyblob', 'mediumblob', 'longblob', 'bytea', 'binary', 'varbinary',
