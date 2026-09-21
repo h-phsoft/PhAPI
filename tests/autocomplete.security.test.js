@@ -10,7 +10,7 @@ const fs = require('fs');
 const path = require('path');
 
 const autocompleteService = require('../services/autocompleteService');
-const ParamBinder = require('../core/paramBinder');
+const ParamBinder = require('../core/query/paramBinder');
 
 let passed = 0;
 let total = 0;
@@ -49,7 +49,7 @@ console.log('===================================================\n');
 console.log('--- 1. Placeholder binding by shape ---');
 
 test('Quoted literal placeholder binds the assembled string, not the SQL', () => {
-  const binder = new ParamBinder('oracle');
+  const binder = new ParamBinder(require('../core/query').dialectFor('oracle'));
   const sql = autocompleteService.resolveCondition(
     "Lower(Num||' - '||Name) LIKE '%{term}%'",
     { term: 'chair' },
@@ -62,7 +62,7 @@ test('Quoted literal placeholder binds the assembled string, not the SQL', () =>
 });
 
 test('Bare placeholder binds a number', () => {
-  const binder = new ParamBinder('oracle');
+  const binder = new ParamBinder(require('../core/query').dialectFor('oracle'));
   const sql = autocompleteService.resolveCondition('stor_id={storId}', { storId: '42' }, binder);
 
   assert.strictEqual(sql, 'stor_id=:p_1');
@@ -70,7 +70,7 @@ test('Bare placeholder binds a number', () => {
 });
 
 test('Quoted id placeholder binds as a string (Stor/Items.json shape)', () => {
-  const binder = new ParamBinder('oracle');
+  const binder = new ParamBinder(require('../core/query').dialectFor('oracle'));
   const sql = autocompleteService.resolveCondition("id!='{itemId}'", { itemId: '7' }, binder);
 
   assert.strictEqual(sql, 'id!=:p_1');
@@ -78,7 +78,7 @@ test('Quoted id placeholder binds as a string (Stor/Items.json shape)', () => {
 });
 
 test('Quoted literals without placeholders are left untouched', () => {
-  const binder = new ParamBinder('oracle');
+  const binder = new ParamBinder(require('../core/query').dialectFor('oracle'));
   const sql = autocompleteService.resolveCondition(
     "Lower(' '||Name) LIKE Lower('%{term}%')",
     { term: 'x' },
@@ -90,7 +90,7 @@ test('Quoted literals without placeholders are left untouched', () => {
 });
 
 test('Subquery template binds correctly (Str/ItemsNotInStore.json shape)', () => {
-  const binder = new ParamBinder('oracle');
+  const binder = new ParamBinder(require('../core/query').dialectFor('oracle'));
   const sql = autocompleteService.resolveCondition(
     'id NOT IN (SELECT item_Id From STR_Stores_Materiales Where stor_Id={storId})',
     { storId: '3' },
@@ -105,7 +105,7 @@ test('Subquery template binds correctly (Str/ItemsNotInStore.json shape)', () =>
 console.log('\n--- 2. Injection payloads are neutralised ---');
 
 test("Quote-breaking payload in {term} stays inside the bind", () => {
-  const binder = new ParamBinder('oracle');
+  const binder = new ParamBinder(require('../core/query').dialectFor('oracle'));
   const payload = "' OR 1=1 --";
   const sql = autocompleteService.resolveCondition(
     "Lower(Name) LIKE '%{term}%'",
@@ -121,7 +121,7 @@ test("Quote-breaking payload in {term} stays inside the bind", () => {
 test('Numeric-context payload is bound, not inlined (the escaping blind spot)', () => {
   // The old `'` -> `''` escaping did nothing here: no quotes are needed to
   // break out of `stor_id={storId}`.
-  const binder = new ParamBinder('oracle');
+  const binder = new ParamBinder(require('../core/query').dialectFor('oracle'));
   const payload = '1 OR 1=1';
   const sql = autocompleteService.resolveCondition('stor_id={storId}', { storId: payload }, binder);
 
@@ -131,7 +131,7 @@ test('Numeric-context payload is bound, not inlined (the escaping blind spot)', 
 });
 
 test('Statement-terminating payload is bound, not inlined', () => {
-  const binder = new ParamBinder('oracle');
+  const binder = new ParamBinder(require('../core/query').dialectFor('oracle'));
   const payload = '1); DROP TABLE Stor_Item; --';
   const sql = autocompleteService.resolveCondition('Stor_Id={storFId}', { storFId: payload }, binder);
 
@@ -143,7 +143,7 @@ test('Statement-terminating payload is bound, not inlined', () => {
 console.log('\n--- 3. Unresolvable clauses leave no orphan binds ---');
 
 test('Missing placeholder value drops the clause and adds no bind', () => {
-  const binder = new ParamBinder('oracle');
+  const binder = new ParamBinder(require('../core/query').dialectFor('oracle'));
   const sql = autocompleteService.resolveCondition('stor_id={storId}', {}, binder);
 
   assert.strictEqual(sql, null, 'clause should be dropped');
@@ -151,13 +151,13 @@ test('Missing placeholder value drops the clause and adds no bind', () => {
 });
 
 test('Empty-string value counts as missing', () => {
-  const binder = new ParamBinder('oracle');
+  const binder = new ParamBinder(require('../core/query').dialectFor('oracle'));
   assert.strictEqual(autocompleteService.resolveCondition('a={x}', { x: '   ' }, binder), null);
   assert.strictEqual(countParams(binder), 0);
 });
 
 test('Partially-resolvable multi-placeholder clause adds no binds', () => {
-  const binder = new ParamBinder('mysql');
+  const binder = new ParamBinder(require('../core/query').dialectFor('mysql'));
   const sql = autocompleteService.resolveCondition('a={x} AND b={y}', { x: '1' }, binder);
 
   assert.strictEqual(sql, null, 'clause should be dropped when {y} is absent');
@@ -169,7 +169,7 @@ console.log('\n--- 4. Dialect placeholder syntax ---');
 
 for (const dbType of DIALECTS) {
   test(`${dbType}: placeholders and params stay in step`, () => {
-    const binder = new ParamBinder(dbType);
+    const binder = new ParamBinder(require('../core/query').dialectFor(dbType));
     const a = autocompleteService.resolveCondition("Name LIKE '%{term}%'", { term: 'q' }, binder);
     const b = autocompleteService.resolveCondition('stor_id={storId}', { storId: '5' }, binder);
     const sql = `SELECT Id FROM T WHERE (${a}) AND (${b})`;
@@ -180,7 +180,7 @@ for (const dbType of DIALECTS) {
 }
 
 test('Postgres numbers its placeholders in splice order', () => {
-  const binder = new ParamBinder('postgres');
+  const binder = new ParamBinder(require('../core/query').dialectFor('postgres'));
   const a = autocompleteService.resolveCondition("Name LIKE '%{term}%'", { term: 'q' }, binder);
   const b = autocompleteService.resolveCondition('stor_id={storId}', { storId: '5' }, binder);
 
@@ -260,7 +260,7 @@ test('No template leaks a hostile value into SQL text', () => {
           lookup[m[1]] = payload;
         }
 
-        const binder = new ParamBinder('oracle');
+        const binder = new ParamBinder(require('../core/query').dialectFor('oracle'));
         const sql = autocompleteService.resolveCondition(template, lookup, binder);
         checked++;
 

@@ -30,15 +30,17 @@ const ROOT = path.join(__dirname, '..');
  * The numbers are ordinals, not distances -- what matters is the ordering.
  */
 const LAYERS = {
-  'routes': 90,
-  'middleware': 90,
-  'controllers': 80,
+  'http/routes': 95,
+  'http/middleware': 90,
+  'http/controllers': 85,
+  'http': 80,
   'presentation': 70,
   'services': 60,
   'repository': 50,
   'core/query': 40,
   'core': 35,
   'core/dialects': 30,
+  'core/types': 25,
   'metadata': 20,
   'config': 20,
   'models': 0,
@@ -49,7 +51,7 @@ const LAYERS = {
 const LEAVES = new Set(['utils', 'models']);
 
 /** Folders whose files may mention HTTP. */
-const HTTP_LAYERS = new Set(['routes', 'middleware', 'controllers']);
+const HTTP_LAYERS = new Set(['http', 'http/routes', 'http/middleware', 'http/controllers']);
 
 /** Folders whose files may name a database engine. */
 const ENGINE_LAYERS = new Set(['core/dialects', 'core', 'config']);

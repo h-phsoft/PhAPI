@@ -1,4 +1,4 @@
-const mainApp = require('../config/mainApp');
+const mainApp = require('../metadata/registry');
 const repository = require('../repository/unifiedRepository');
 const Report = require('../models/report');
 const { coercePage, coercePageSize } = require('../utils/pagination');

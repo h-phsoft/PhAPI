@@ -3,8 +3,8 @@ const path = require('path');
 const http = require('http');
 
 // Import core modules
-const mainApp = require('../config/mainApp');
-const sqlBuilder = require('../core/sqlBuilder');
+const mainApp = require('../metadata/registry');
+const sqlBuilder = require('../core/query');
 const { UnifiedService, ValidationError } = require('../services/unifiedService');
 const autocompleteService = require('../services/autocompleteService');
 
@@ -417,7 +417,7 @@ async function runAllTests() {
   // -------------------------------------------------------------
   console.log('\n--- 4c. Authorization Mapping Tests ---');
 
-  const authorize = require('../middleware/authorize');
+  const authorize = require('../services/accessPolicy');
 
   // Resolution runs through mainApp, so pin it to what the server loads.
   mainApp.loadMetadata(path.join(__dirname, '..', 'resources', 'modules'));
@@ -674,8 +674,8 @@ async function runAllTests() {
   }
 
   test('Envelope code becomes the HTTP status once legacy mode is off', () => {
-    const { httpStatusFor } = require('../utils/sendResult');
-    const ResultManager = require('../utils/responseManager');
+    const { httpStatusFor } = require('../http/sendResult');
+    const ResultManager = require('../http/responseManager');
     const previous = env.legacyJavaClient;
 
     try {
@@ -704,7 +704,7 @@ async function runAllTests() {
   });
 
   test('Legacy Java URL shapes reduce to the canonical path', () => {
-    const { canonicalize } = require('../middleware/legacyRoutes');
+    const { canonicalize } = require('../http/middleware/legacyRoutes');
 
     // The servlet context prefix, on every shape the Java client sends.
     assert.strictEqual(canonicalize('/PhsAPI/Auth/Login'), '/Auth/Login');

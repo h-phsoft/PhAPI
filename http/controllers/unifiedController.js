@@ -1,12 +1,14 @@
-const { UnifiedService } = require('../services/unifiedService');
-const autocompleteService = require('../services/autocompleteService');
-const reportService = require('../services/reportService');
-const auditService = require('../services/auditService');
-const ResultManager = require('../utils/responseManager');
-const sendResult = require('../utils/sendResult');
-const i18nHelper = require('../utils/i18nHelper');
-const { coercePage, coercePageSize } = require('../utils/pagination');
-const authorize = require('../middleware/authorize');
+const { UnifiedService } = require('../../services/unifiedService');
+const autocompleteService = require('../../services/autocompleteService');
+const reportService = require('../../services/reportService');
+const auditService = require('../../services/auditService');
+const requestOrigin = require('../requestOrigin');
+const ResultManager = require('../responseManager');
+const sendResult = require('../sendResult');
+const { localize } = require('../../presentation/labels');
+const i18nHelper = require('../../utils/i18nHelper');
+const { coercePage, coercePageSize } = require('../../utils/pagination');
+const accessPolicy = require('../../services/accessPolicy');
 
 const NO_ATTACHMENT_ACCESS = 'You do not have permission to access this attachment';
 
@@ -36,7 +38,7 @@ class UnifiedController {
         type: 'CREATE',
         text: `${pkg}/${table} id=${(result && (result.id || result.Id)) || '?'}`,
         context,
-        req
+        origin: requestOrigin(req)
       });
 
       res.status(200).json(ResultManager.ok(result));
@@ -62,7 +64,7 @@ class UnifiedController {
         filters: vWhere
       };
 
-      const rows = await UnifiedService.list(pkg, table, options, context);
+      const rows = localize(pkg, table, await UnifiedService.list(pkg, table, options, context), context);
       res.status(200).json(ResultManager.ok(rows));
     } catch (err) {
       next(err);
@@ -78,7 +80,7 @@ class UnifiedController {
       const conditions = req.body;
       const context = req.context || {};
 
-      const result = await UnifiedService.search(pkg, table, conditions, page, size, context);
+      const result = localize(pkg, table, await UnifiedService.search(pkg, table, conditions, page, size, context), context);
       res.status(200).json(ResultManager.ok(result));
     } catch (err) {
       next(err);
@@ -94,7 +96,7 @@ class UnifiedController {
       const queryString = typeof req.body === 'string' ? req.body : (req.body?.query || '');
       const context = req.context || {};
 
-      const result = await UnifiedService.find(pkg, table, queryString, page, size, context);
+      const result = localize(pkg, table, await UnifiedService.find(pkg, table, queryString, page, size, context), context);
       res.status(200).json(ResultManager.ok(result));
     } catch (err) {
       next(err);
@@ -108,7 +110,7 @@ class UnifiedController {
       const id = req.params.id;
       const context = req.context || {};
 
-      const record = await UnifiedService.get(pkg, table, id, context);
+      const record = localize(pkg, table, await UnifiedService.get(pkg, table, id, context), context);
       if (!record) {
         return res.status(404).json(ResultManager.invalid('Record not found'));
       }
@@ -135,7 +137,7 @@ class UnifiedController {
         // in a log line.
         text: `${pkg}/${table} id=${id} fields=${Object.keys(data || {}).join(',')}`,
         context,
-        req
+        origin: requestOrigin(req)
       });
 
       res.status(200).json(ResultManager.ok(result));
@@ -186,7 +188,7 @@ class UnifiedController {
         type: 'DELETE',
         text: `${pkg}/${table} id=${id}`,
         context,
-        req
+        origin: requestOrigin(req)
       });
 
       res.status(200).json(ResultManager.ok(result));
@@ -323,7 +325,7 @@ class UnifiedController {
       // On upload the program id comes from the caller, so it is checked before
       // anything is written rather than after.
       const mprgId = hParams.mprgId !== undefined ? hParams.mprgId : context.mPrgId;
-      const allowed = await authorize.checkProgram(context.tenantId, req.user, mprgId, 'a new attachment');
+      const allowed = await accessPolicy.checkProgram(context.tenantId, req.user, mprgId, 'a new attachment');
       if (!allowed) {
         return sendResult(res, ResultManager.error(403, NO_ATTACHMENT_ACCESS));
       }
@@ -345,7 +347,7 @@ class UnifiedController {
         return sendResult(res, ResultManager.error(404, 'Attachment not found'));
       }
 
-      const allowed = await authorize.checkProgram(context.tenantId, req.user, result.mprgId, `attachment ${id}`);
+      const allowed = await accessPolicy.checkProgram(context.tenantId, req.user, result.mprgId, `attachment ${id}`);
       if (!allowed) {
         return sendResult(res, ResultManager.error(403, NO_ATTACHMENT_ACCESS));
       }
@@ -369,7 +371,7 @@ class UnifiedController {
         return sendResult(res, ResultManager.error(404, 'Attachment not found'));
       }
 
-      const allowed = await authorize.checkProgram(context.tenantId, req.user, existing.mprgId, `attachment ${id}`);
+      const allowed = await accessPolicy.checkProgram(context.tenantId, req.user, existing.mprgId, `attachment ${id}`);
       if (!allowed) {
         return sendResult(res, ResultManager.error(403, NO_ATTACHMENT_ACCESS));
       }

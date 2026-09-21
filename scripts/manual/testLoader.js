@@ -1,7 +1,7 @@
 /* global __dirname */
 
 const path = require('path');
-const mainApp = require('../../config/mainApp');
+const mainApp = require('../../metadata/registry');
 
 console.log('--- Testing Metadata Loading ---');
 

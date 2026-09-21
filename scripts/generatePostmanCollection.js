@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const mainApp = require('../config/mainApp');
+const mainApp = require('../metadata/registry');
 
 const modulesDir = path.join(__dirname, '..', 'resources', 'modules');
 const docsDir = path.join(__dirname, '..', 'docs');

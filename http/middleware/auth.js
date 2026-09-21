@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
-const env = require('../config/env');
-const ResultManager = require('../utils/responseManager');
-const sendResult = require('../utils/sendResult');
+const env = require('../../config/env');
+const ResultManager = require('../responseManager');
+const sendResult = require('../sendResult');
 
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];

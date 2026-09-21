@@ -1,6 +1,7 @@
 const env = require('../config/env');
 const logger = require('../utils/logger');
 const connectionPool = require('../core/connectionPool');
+const query = require('../core/query');
 
 /**
  * Writes an audit trail of mutations into each tenant's Phs_Logs table.
@@ -18,10 +19,6 @@ const FAILURE_THRESHOLD = 3;
 // tenantId -> consecutive failure count. At the threshold the tenant is skipped.
 const failureCounts = new Map();
 
-/** @returns {string} Caller IP, preferring the proxy header Express resolves. */
-function clientIp(req) {
-  return (req && (req.ip || (req.connection && req.connection.remoteAddress))) || '';
-}
 
 function truncate(value) {
   const text = value === undefined || value === null ? '' : String(value);
@@ -36,10 +33,12 @@ class AuditService {
    * @param {string} options.type Short event type, e.g. 'CREATE' or 'DELETE'
    * @param {string} options.text Human-readable description
    * @param {Object} options.context Request context (tenantId, userId)
-   * @param {Object} [options.req] Express request, for IP and host
+   * @param {Object} [options.origin] Where the request came from:
+   *   `{ ip, host, port }`. Supplied by the HTTP layer, which is the only one
+   *   that has a request to read it off.
    * @returns {Promise<boolean>} True when the entry was written
    */
-  async record({ type, text, context = {}, req = null }) {
+  async record({ type, text, context = {}, origin = null }) {
     if (!env.auditLogEnabled) {
       return false;
     }
@@ -59,21 +58,20 @@ class AuditService {
         vtype: truncate(type),
         vtext: truncate(text),
         vuser: String(context.userId || ''),
-        vip: clientIp(req),
-        vhost: (req && req.hostname) || '',
-        vport: String((req && req.socket && req.socket.localPort) || ''),
+        vip: String((origin && origin.ip) || ''),
+        vhost: String((origin && origin.host) || ''),
+        vport: String((origin && origin.port) || ''),
         vrem: ''
       };
 
-      const sql = poolWrapper.dbType === 'oracle'
-        ? `INSERT INTO ${TABLE} (Vtype, Vtext, Vuser, Vip, Vhost, Vport, Vrem, Ddate)
-           VALUES (:vtype, :vtext, :vuser, :vip, :vhost, :vport, :vrem, SYSDATE)`
-        : `INSERT INTO ${TABLE} (Vtype, Vtext, Vuser, Vip, Vhost, Vport, Vrem, Ddate)
-           VALUES (?, ?, ?, ?, ?, ?, ?, NOW())`;
+      // One statement, written with named binds. The connection pool adapts
+      // those to whatever the engine wants, and the dialect supplies the one
+      // expression that genuinely differs. This used to be two statements
+      // chosen by comparing the engine's name.
+      const sql = `INSERT INTO ${TABLE} (Vtype, Vtext, Vuser, Vip, Vhost, Vport, Vrem, Ddate)
+           VALUES (:vtype, :vtext, :vuser, :vip, :vhost, :vport, :vrem, ${query.dialectFor(poolWrapper.dbType).now()})`;
 
-      const values = poolWrapper.dbType === 'oracle' ? params : Object.values(params);
-
-      await conn.query(sql, values);
+      await conn.query(sql, params);
       await conn.commit();
 
       failureCounts.delete(tenantId);

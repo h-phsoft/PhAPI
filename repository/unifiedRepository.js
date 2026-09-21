@@ -1,5 +1,6 @@
 const connectionPool = require('../core/connectionPool');
-const sqlBuilder = require('../core/sqlBuilder');
+const sqlBuilder = require('../core/query');
+const { shapeDates } = require('../core/types/dates');
 
 class UnifiedRepository {
   mapToCamelCase(data) {
@@ -30,7 +31,7 @@ class UnifiedRepository {
 
     const { sql, params } = sqlBuilder.buildSelect(dbType, entity, options);
     const rows = await poolWrapper.query(sql, params);
-    return this.mapToCamelCase(rows);
+    return shapeDates(entity, this.mapToCamelCase(rows));
   }
 
   /**
@@ -46,7 +47,7 @@ class UnifiedRepository {
 
     const { sql, params } = sqlBuilder.buildSelect(dbType, entity, { filters, page: 1, pageSize: 1 });
     const rows = await poolWrapper.query(sql, params);
-    return rows && rows.length > 0 ? this.mapToCamelCase(rows[0]) : null;
+    return rows && rows.length > 0 ? shapeDates(entity, this.mapToCamelCase(rows[0])) : null;
   }
 
   /**

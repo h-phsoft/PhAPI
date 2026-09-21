@@ -44,41 +44,37 @@
  * spellings and get their own. None of that reaches this table or anything
  * above it.
  */
+/**
+ * Two notations, not three engines.
+ *
+ * `pattern` is the SQL-standard form that Oracle's TO_DATE and PostgreSQL's
+ * TO_TIMESTAMP both read. `strftime` is the percent form MySQL's STR_TO_DATE
+ * wants. Naming them after what they are rather than after who uses them is
+ * what keeps this file from knowing an engine exists -- a dialect asks for the
+ * notation it speaks and spells its own conversion around it.
+ *
+ * `bind` and `out` are the value itself: what is written to the database, and
+ * what a client is handed back.
+ */
 const FORMATS = {
   DATE: {
-    oracle: 'DD-MM-YYYY',
-    mysql: '%d-%m-%Y',
-    postgres: 'DD-MM-YYYY',
+    pattern: 'DD-MM-YYYY',
+    strftime: '%d-%m-%Y',
     bind: (p) => `${pad(p.day)}-${pad(p.month)}-${pad(p.year, 4)}`,
     out: (p) => `${pad(p.year, 4)}-${pad(p.month)}-${pad(p.day)}`
   },
   DATETIME: {
-    oracle: 'DD-MM-YYYY HH24:MI:SS',
-    mysql: '%d-%m-%Y %H:%i:%s',
-    postgres: 'DD-MM-YYYY HH24:MI:SS',
+    pattern: 'DD-MM-YYYY HH24:MI:SS',
+    strftime: '%d-%m-%Y %H:%i:%s',
     bind: (p) => `${pad(p.day)}-${pad(p.month)}-${pad(p.year, 4)} ${pad(p.hours)}:${pad(p.minutes)}:${pad(p.seconds)}`,
     out: (p) => `${pad(p.year, 4)}-${pad(p.month)}-${pad(p.day)} ${pad(p.hours)}:${pad(p.minutes)}:${pad(p.seconds)}`
   },
   TIME: {
-    oracle: 'HH24:MI:SS',
-    mysql: '%H:%i:%s',
-    postgres: 'HH24:MI:SS',
+    pattern: 'HH24:MI:SS',
+    strftime: '%H:%i:%s',
     bind: (p) => `${pad(p.hours)}:${pad(p.minutes)}:${pad(p.seconds)}`,
     out: (p) => `${pad(p.hours)}:${pad(p.minutes)}:${pad(p.seconds)}`
   }
-};
-
-/**
- * The conversion each engine is given, around the placeholder.
- *
- * PostgreSQL's TO_TIMESTAMP returns `timestamp with time zone`, which would be
- * re-read through the session zone on its way into a `timestamp` column and
- * could land an hour out; the cast pins it.
- */
-const CONVERT = {
-  oracle: (placeholder, fmt) => `TO_DATE(${placeholder}, '${fmt.oracle}')`,
-  mysql: (placeholder, fmt) => `STR_TO_DATE(${placeholder}, '${fmt.mysql}')`,
-  postgres: (placeholder, fmt) => `TO_TIMESTAMP(${placeholder}, '${fmt.postgres}')::timestamp`
 };
 
 /** `2026-09-21`, `2026-09-21T08:04:24.970Z`, `2026/09/21 08:04` */
@@ -106,24 +102,6 @@ function dateKind(fieldMeta) {
 /** @returns {boolean} Whether this column holds a date, time or both */
 function isDateField(fieldMeta) {
   return dateKind(fieldMeta) !== null;
-}
-
-/**
- * Wraps a placeholder so the engine parses the bound string as this kind.
- *
- * @param {string} dbType 'oracle' | 'mysql' | 'postgres'
- * @param {string} placeholder The placeholder as that builder writes it
- * @param {string} kind 'DATE' | 'DATETIME' | 'TIME'
- * @returns {string} The expression to put in the statement
- */
-function dateExpression(dbType, placeholder, kind = 'DATETIME') {
-  const key = String(dbType).toLowerCase();
-  const engine = CONVERT[key]
-    || (key === 'postgresql' || key === 'pg' ? CONVERT.postgres : null);
-  const fmt = FORMATS[String(kind).toUpperCase()] || FORMATS.DATETIME;
-
-  // An engine with no conversion of its own gets the placeholder unchanged.
-  return engine ? engine(placeholder, fmt) : placeholder;
 }
 
 /**
@@ -228,11 +206,98 @@ function toClientValue(value, kind = 'DATETIME') {
   return (FORMATS[String(kind).toUpperCase()] || FORMATS.DATETIME).out(parts);
 }
 
+/**
+ * Which properties of a row hold a date, and of what kind. Cached against the
+ * entity, which is a singleton built once at startup.
+ */
+const plans = new WeakMap();
+
+/**
+ * @param {Object} entity Entity metadata
+ * @returns {Array<[string, string]>} [property, kind] pairs
+ */
+function datePlanFor(entity) {
+  const cached = plans.get(entity);
+  if (cached) {
+    return cached;
+  }
+
+  const fields = Array.isArray(entity.fields) ? entity.fields : [];
+  const plan = fields
+    .map(field => [field.Field, dateKind(field)])
+    .filter(([property, kind]) => property && kind);
+
+  plans.set(entity, plan);
+  return plan;
+}
+
+/**
+ * Puts every date column of a row into the shape its type declares.
+ *
+ * This is the other half of `toDateParam`, and lives beside it on purpose:
+ * writing a date and reading one back are the same concern, decided by the
+ * same declaration. Splitting them would leave a column bound one way and
+ * returned another, which is how the day came back wrong before either
+ * existed.
+ *
+ * It is not presentation. A client that wanted a different format would be
+ * presentation; turning a driver's Date back into the column's declared type
+ * is reading it correctly.
+ *
+ * Rows are mutated in place: they are fresh objects from the query.
+ *
+ * @param {Object} entity Entity metadata
+ * @param {Object|Object[]} rows A row or rows as the driver returned them
+ * @returns {Object|Object[]} The same rows
+ */
+function shapeDates(entity, rows) {
+  if (!rows || !entity) {
+    return rows;
+  }
+
+  const plan = datePlanFor(entity);
+  if (plan.length === 0) {
+    return rows;
+  }
+
+  const list = Array.isArray(rows) ? rows : [rows];
+
+  for (const row of list) {
+    if (!row || typeof row !== 'object') {
+      continue;
+    }
+    for (const [property, kind] of plan) {
+      if (row[property] !== undefined) {
+        row[property] = toClientValue(row[property], kind);
+      }
+    }
+  }
+
+  return rows;
+}
+
+/**
+ * The format string a kind is written and read in.
+ *
+ * A dialect asks for this and spells its own conversion around it, so the
+ * formats live in one place without this file knowing an engine exists.
+ *
+ * @param {string} kind 'DATE' | 'DATETIME' | 'TIME'
+ * @param {string} notation 'pattern' for the SQL-standard form, 'strftime' for
+ *   the percent form
+ * @returns {string}
+ */
+function formatFor(kind, notation = 'pattern') {
+  const fmt = FORMATS[String(kind).toUpperCase()] || FORMATS.DATETIME;
+  return fmt[notation] || fmt.pattern;
+}
+
 module.exports = {
+  formatFor,
   FORMATS,
   dateKind,
   isDateField,
-  dateExpression,
   toDateParam,
-  toClientValue
+  toClientValue,
+  shapeDates
 };

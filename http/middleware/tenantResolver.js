@@ -1,6 +1,6 @@
-const {getTenantDbConfig} = require('../config/db.config');
-const ResultManager = require('../utils/responseManager');
-const sendResult = require('../utils/sendResult');
+const {getTenantDbConfig} = require('../../config/db.config');
+const ResultManager = require('../responseManager');
+const sendResult = require('../sendResult');
 
 async function resolveTenant(req, res, next) {
   // Check headers for Java & Express naming conventions

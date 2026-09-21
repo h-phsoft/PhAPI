@@ -1,14 +1,16 @@
 /* global Buffer */
 
-const {AuthService} = require('../services/authService');
-const ResultManager = require('../utils/responseManager');
-const sendResult = require('../utils/sendResult');
-const i18nHelper = require('../utils/i18nHelper');
-const auditService = require('../services/auditService');
+const {AuthService} = require('../../services/authService');
+const ResultManager = require('../responseManager');
+const sendResult = require('../sendResult');
+const i18nHelper = require('../../utils/i18nHelper');
+const auditService = require('../../services/auditService');
+const requestOrigin = require('../requestOrigin');
+const { localizeMenu } = require('../../presentation/labels');
 
 class AuthController {
   async login(req, res, next) {
-    const logger = require('../utils/logger');
+    const logger = require('../../utils/logger');
     let credentials = req.body;
     const context = req.context || {};
     const lang = context.lang || req.headers['vlang'] || req.headers['vLang'] || 'en';
@@ -47,7 +49,7 @@ class AuthController {
 
   async logout(req, res, next) {
     try {
-      const logger = require('../utils/logger');
+      const logger = require('../../utils/logger');
       const user = req.user || {};
       logger.info(`[AuthController] Logout requested for user: ${user.userId || 'unknown'} in tenant: ${user.tenantId || 'unknown'}`);
       
@@ -57,7 +59,7 @@ class AuthController {
     }
   }
   async changePassword(req, res, next) {
-    const logger = require('../utils/logger');
+    const logger = require('../../utils/logger');
     try {
       const context = req.context || {};
       const lang = context.lang || req.headers['vlang'] || req.headers['vLang'] || 'en';
@@ -68,7 +70,7 @@ class AuthController {
         type: 'PASSWORD',
         text: `Password changed for user id=${context.userId}`,
         context,
-        req
+        origin: requestOrigin(req)
       });
 
       logger.info(`[AuthController] Password changed for user: ${context.userId} in tenant: ${context.tenantId}`);
@@ -91,7 +93,7 @@ class AuthController {
       const context = req.context || {};
       const lang = context.lang || req.headers['vlang'] || req.headers['vLang'] || 'en';
 
-      const result = await AuthService.getUserProfile(context);
+      const result = localizeMenu(await AuthService.getUserProfile(context), lang);
       const msg = i18nHelper.getMessage('SUCCESS', lang);
 
       return res.status(200).json(ResultManager.ok(msg, result));
@@ -106,14 +108,14 @@ class AuthController {
       const lang = context.lang || req.headers['vlang'] || req.headers['vLang'] || 'en';
       const menuId = req.params.menuId;
 
-      const connectionPoolManager = require('../core/connectionPool');
+      const connectionPoolManager = require('../../core/connectionPool');
       const tenantId = context.tenantId || context.copy || context.vCopy || (context.user && (context.user.tenantId || context.user.Copy));
       const pool = await connectionPoolManager.getPool(tenantId);
       const conn = await pool.getConnection();
 
       try {
         const pgrpId = Number(req.user?.pgrpId || 0);
-        const result = await AuthService.getProgramOptions(conn, pgrpId, menuId, lang);
+        const result = localizeMenu(await AuthService.getProgramOptions(conn, pgrpId, menuId, lang), lang);
         return res.status(200).json(ResultManager.ok('Success', result));
       } finally {
         await conn.release();

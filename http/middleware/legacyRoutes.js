@@ -1,4 +1,4 @@
-const env = require('../config/env');
+const env = require('../../config/env');
 
 /**
  * Rewrites the URL shapes the legacy Java front-end uses onto the canonical ones.

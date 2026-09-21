@@ -17,10 +17,10 @@ try {
   process.exit(1);
 }
 
-const mainApp = require('./config/mainApp');
-const routes = require('./routes');
-const legacyRoutes = require('./middleware/legacyRoutes');
-const errorHandler = require('./middleware/errorHandling');
+const mainApp = require('./metadata/registry');
+const routes = require('./http/routes');
+const legacyRoutes = require('./http/middleware/legacyRoutes');
+const errorHandler = require('./http/middleware/errorHandling');
 
 const app = express();
 const PORT = env.port;
@@ -112,7 +112,7 @@ app.get('/health', (req, res) => {
 // Mount API routes
 app.use('/', routes);
 
-const ResultManager = require('./utils/responseManager');
+const ResultManager = require('./http/responseManager');
 
 // 404 handler
 app.use((req, res) => {

@@ -1,7 +1,7 @@
 /* global process */
 
-const ResultManager = require('../utils/responseManager');
-const logger = require('../utils/logger');
+const ResultManager = require('../responseManager');
+const logger = require('../../utils/logger');
 
 const exceptionHandler = (err, req, res, next) => {
   logger.error(`Error: ${err.message}`, {

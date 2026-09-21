@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const env = require('../config/env');
-const mainApp = require('../config/mainApp');
+const mainApp = require('../metadata/registry');
 const repository = require('../repository/unifiedRepository');
 const i18nHelper = require('../utils/i18nHelper');
 const passwordUtil = require('../utils/password');
@@ -55,11 +55,27 @@ function parseMPrgParams(raw) {
   return params;
 }
 
+/**
+ * Something went wrong that the caller is responsible for.
+ *
+ * It carries no HTTP status, for two reasons. The first is layering: a service
+ * states what happened and the HTTP layer decides how to say so.
+ *
+ * The second is that the status it used to carry was never used. The error
+ * handler matches on `name` after reading `statusCode`, and its branch for
+ * this class assigns 401 unconditionally -- so every AuthError reached the
+ * client as 401 whatever it was thrown with. A "copy parameter is required"
+ * (thrown 400) and a "database connection error" (thrown 500) both arrived as
+ * "unauthorized".
+ *
+ * That distinction is worth having and is worth restoring deliberately, by
+ * giving this a kind the handler maps. It is not restored here because this
+ * step may not change what an endpoint answers.
+ */
 class AuthError extends Error {
-  constructor(message, statusCode = 401) {
+  constructor(message) {
     super(message);
     this.name = 'AuthError';
-    this.statusCode = statusCode;
   }
 }
 
@@ -125,7 +141,7 @@ class AuthService {
     const loginCopy = copyVal || context.copy || context.vCopy;
 
     if (!loginCopy) {
-      throw new AuthError('Copy parameter (copy or vCopy) is required for login', 400);
+      throw new AuthError('Copy parameter (copy or vCopy) is required for login');
     }
 
     const loginUser = userVal;
@@ -133,7 +149,7 @@ class AuthService {
     const loginPeriod = periodVal || context.periodId || 2026;
 
     if (!loginUser || !loginPass) {
-      throw new AuthError('Username and password are required', 400);
+      throw new AuthError('Username and password are required');
     }
 
 
@@ -205,7 +221,7 @@ class AuthService {
         error: poolErr.message,
         stack: poolErr.stack
       });
-      throw new AuthError(`Database connection error: ${poolErr.message}`, 500);
+      throw new AuthError(`Database connection error: ${poolErr.message}`);
     }
 
     if (!dbUser && errors.length > 0) {
@@ -219,7 +235,7 @@ class AuthService {
     // STRICT VALIDATION: User MUST exist in database
 
     if (!dbUser) {
-      throw new AuthError('Invalid username or password', 401);
+      throw new AuthError('Invalid username or password');
     }
 
     // STRICT VALIDATION: Check user active status and password match
@@ -227,14 +243,14 @@ class AuthService {
     const statusId = dbUser.statusId || dbUser.STATUS_ID || dbUser.Status_Id;
 
     if (statusId !== undefined && Number(statusId) !== 1) {
-      throw new AuthError('User account is inactive', 403);
+      throw new AuthError('User account is inactive');
     }
 
     if (!passwordValidated) {
       const { valid, legacy } = await passwordUtil.verify(loginPass, dbPass);
 
       if (!valid) {
-        throw new AuthError('Invalid username or password', 401);
+        throw new AuthError('Invalid username or password');
       }
 
       if (legacy) {
@@ -325,7 +341,6 @@ class AuthService {
   async getMenuPrograms(conn, pgrpId, lang = 'en') {
     const logger = require('../utils/logger');
     const authRepository = require('../repository/authRepository');
-    const t = (label) => i18nHelper.translateLabel(label, lang);
 
     const col = readColumn;
 
@@ -349,7 +364,7 @@ class AuthService {
         if (!menuMap.has(menuId)) {
           menuMap.set(menuId, {
             id: menuId,
-            name: t(col(row, 'Menu_Name')),
+            name: col(row, 'Menu_Name'),
             url: col(row, 'Menu_URL'),
             icon: col(row, 'Menu_Image'),
             description: col(row, 'Menu_Descr'),
@@ -360,7 +375,7 @@ class AuthService {
         if (!typeMap.has(typeKey)) {
           const progType = {
             id: typeId,
-            name: t(col(row, 'Type_Name')),
+            name: col(row, 'Type_Name'),
             icon: col(row, 'Type_Icon'),
             statusId: col(row, 'Type_Status_Id'),
             programs: []
@@ -377,7 +392,7 @@ class AuthService {
             id: progId,
             parentId: col(row, 'MPrg_PId'),
             order: col(row, 'MPrg_Ord'),
-            name: t(col(row, 'MPrg_Name')),
+            name: col(row, 'MPrg_Name'),
             url: col(row, 'MPrg_URL'),
             apiUrl: col(row, 'MPrg_ApiURL'),
             icon: col(row, 'MPrg_Icon'),
@@ -404,7 +419,6 @@ class AuthService {
     const logger = require('../utils/logger');
     const authRepository = require('../repository/authRepository');
     const i18nHelper = require('../utils/i18nHelper');
-    const t = (label) => i18nHelper.translateLabel(label, lang);
     const col = readColumn;
     try {
       const rows = await authRepository.getPhsMenus(conn);
@@ -414,7 +428,7 @@ class AuthService {
         menus.push({
           id: col(row, 'Id'),
           statusId: col(row, 'Status_Id'),
-          name: t(col(row, 'Name')),
+          name: col(row, 'Name'),
           image: col(row, 'Image'),
           url: col(row, 'URL'),
           descr: col(row, 'Descr')
@@ -430,7 +444,6 @@ class AuthService {
   async getProgramOptions(conn, pgrpId, menuId, lang = 'en') {
     const logger = require('../utils/logger');
     const authRepository = require('../repository/authRepository');
-    const t = (label) => i18nHelper.translateLabel(label, lang);
 
     const col = readColumn;
 
@@ -452,7 +465,7 @@ class AuthService {
             level: 'type',
             menuId: Number(menuId),
             typeId,
-            name: t(col(row, 'Type_Name')),
+            name: col(row, 'Type_Name'),
             icon: col(row, 'Type_Icon'),
             aList: []
           };
@@ -467,7 +480,7 @@ class AuthService {
           menuId: Number(menuId),
           typeId,
           ord: col(row, 'MPrg_Ord'),
-          name: t(col(row, 'MPrg_Name')),
+          name: col(row, 'MPrg_Name'),
           url: col(row, 'MPrg_URL'),
           apiUrl: col(row, 'MPrg_ApiURL'),
           icon: col(row, 'MPrg_Icon'),
@@ -569,19 +582,19 @@ class AuthService {
     const userId = context.userId || context.jui;
 
     if (!tenantId || !userId) {
-      throw new AuthError('Missing tenant or user context', 400);
+      throw new AuthError('Missing tenant or user context');
     }
 
     if (!currentPassword || !newPassword) {
-      throw new AuthError(msg('PASSWORD_REQUIRED'), 400);
+      throw new AuthError(msg('PASSWORD_REQUIRED'));
     }
 
     if (String(newPassword).length < passwordUtil.MIN_LENGTH) {
-      throw new AuthError(msg('PASSWORD_TOO_SHORT', { min: passwordUtil.MIN_LENGTH }), 400);
+      throw new AuthError(msg('PASSWORD_TOO_SHORT', { min: passwordUtil.MIN_LENGTH }));
     }
 
     if (String(currentPassword) === String(newPassword)) {
-      throw new AuthError(msg('PASSWORD_UNCHANGED'), 400);
+      throw new AuthError(msg('PASSWORD_UNCHANGED'));
     }
 
     const pool = await connectionPoolManager.getPool(tenantId);
@@ -607,7 +620,7 @@ class AuthService {
       }
 
       if (!dbUser) {
-        throw new AuthError(msg('NOT_FOUND'), 404);
+        throw new AuthError(msg('NOT_FOUND'));
       }
 
       const rowId = readColumn(dbUser, 'Id');
@@ -615,7 +628,7 @@ class AuthService {
       const statusId = readColumn(dbUser, 'Status_Id');
 
       if (statusId !== undefined && Number(statusId) !== 1) {
-        throw new AuthError(msg('USER_INACTIVE'), 403);
+        throw new AuthError(msg('USER_INACTIVE'));
       }
 
       let verified = false;
@@ -643,7 +656,7 @@ class AuthService {
       }
 
       if (!verified) {
-        throw new AuthError(msg('PASSWORD_CURRENT_INVALID'), 401);
+        throw new AuthError(msg('PASSWORD_CURRENT_INVALID'));
       }
 
       // Explicit, so the read-back below can undo the write. Without it a
@@ -668,7 +681,7 @@ class AuthService {
         logger.error(
           `[AuthService] New password for user '${logon}' in copy '${tenantId}' did not survive the write; rolling back`
         );
-        throw new AuthError(msg('PASSWORD_STORE_FAILED'), 500);
+        throw new AuthError(msg('PASSWORD_STORE_FAILED'));
       }
 
       await conn.commit();
@@ -700,7 +713,7 @@ class AuthService {
     if (!tenantId || !userId) {
       const logger = require('../utils/logger');
       logger.error(`[AuthService] Missing tenant or user context in getUserProfile. Context:`, context);
-      throw new AuthError('Missing tenant or user context', 400);
+      throw new AuthError('Missing tenant or user context');
     }
 
     const pool = await connectionPoolManager.getPool(tenantId);

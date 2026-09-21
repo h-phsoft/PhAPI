@@ -1,7 +1,7 @@
-const ResultManager = require('../utils/responseManager');
-const sendResult = require('../utils/sendResult');
-const i18nHelper = require('../utils/i18nHelper');
-const logger = require('../utils/logger');
+const ResultManager = require('../responseManager');
+const sendResult = require('../sendResult');
+const i18nHelper = require('../../utils/i18nHelper');
+const logger = require('../../utils/logger');
 
 function errorHandler(err, req, res, next) {
   const lang = req.context?.lang || 'en';

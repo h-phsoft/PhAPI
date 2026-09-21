@@ -1,8 +1,19 @@
+/**
+ * Who may reach which table, and which program grants it.
+ *
+ * This was the back half of the authorize middleware: permission loading,
+ * its two caches, the table-to-entity mapping and the decision itself. None
+ * of it touches a request -- `decide` and `checkProgram` take plain values --
+ * but living in an Express middleware made it unreachable except through one,
+ * which is why a controller ended up requiring middleware to ask a question
+ * about permissions.
+ *
+ * The middleware is now a wrapper over this: it reads the request, asks here,
+ * and answers.
+ */
 const env = require('../config/env');
 const logger = require('../utils/logger');
-const mainApp = require('../config/mainApp');
-const ResultManager = require('../utils/responseManager');
-const sendResult = require('../utils/sendResult');
+const mainApp = require('../metadata/registry');
 const connectionPool = require('../core/connectionPool');
 const authRepository = require('../repository/authRepository');
 
@@ -289,73 +300,6 @@ async function decide(tenantId, user, packageName, tableName, mprgId) {
   return { allowed: false, target, reason: 'no grant covers this table' };
 }
 
-function authorize(req, res, next) {
-  if (env.rbacMode === 'off') {
-    return next();
-  }
-
-  const params = req.params || {};
-  const pkg = params.package || params.pkgName;
-  const table = params.table || params.reportName;
-  const mprgId = req.context && req.context.mPrgId;
-
-  // Nothing identifies a permission: no program claimed, and no program-scoped
-  // package/table pair either. InitForm, Codes and getCopies land here.
-  if (!mprgId && (!pkg || !table)) {
-    return next();
-  }
-
-  const user = req.user || {};
-  const tenantId = (req.context && req.context.tenantId) || user.tenantId || 'default';
-
-  decide(tenantId, user, pkg, table, mprgId)
-    .then(({ allowed, target }) => {
-      if (allowed) {
-        return next();
-      }
-
-      if (env.rbacMode === 'audit') {
-        logger.warn(
-          `[Authorize] AUDIT would deny user '${user.userId}' in copy '${tenantId}' access to '${target}' ` +
-          `(${req.method} ${req.originalUrl})`
-        );
-        return next();
-      }
-
-      logger.warn(`[Authorize] DENIED user '${user.userId}' in copy '${tenantId}' access to '${target}'`);
-      return sendResult(res, ResultManager.error(403, 'You do not have permission to access this program'));
-    })
-    .catch((err) => {
-      // Audit must never break a working deployment; enforce fails closed.
-      const target = pkg && table ? `${pkg}/${table}`.toLowerCase() : `program ${mprgId}`;
-      if (env.rbacMode === 'audit') {
-        logger.error(`[Authorize] AUDIT permission lookup failed for '${target}': ${err.message}`);
-        return next();
-      }
-      logger.error(`[Authorize] Permission lookup failed for '${target}': ${err.message}`);
-      return sendResult(res, ResultManager.error(403, 'Unable to verify permissions'));
-    });
-}
-
-/**
- * Permission check for resources identified by a program id instead of a
- * package/table pair. Attachments are the case this exists for: an attachment
- * row carries the MPrg_Id of the program it belongs to, which is the same key
- * Cpy_Perm grants against, so the check reuses the cache above rather than
- * introducing a second permission model.
- *
- * RBAC_MODE is honoured exactly as the route middleware honours it, so
- * attachments never start denying ahead of the rest of the API.
- *
- * An attachment with no usable program id is treated as not program-scoped and
- * allowed, matching how the middleware skips routes that carry no package/table.
- *
- * @param {string} tenantId
- * @param {Object} user req.user
- * @param {*} mprgId Program id from the resource itself
- * @param {string} [describe] Text for the audit log, e.g. "attachment 41"
- * @returns {Promise<boolean>} false only under RBAC_MODE=enforce with no grant
- */
 async function checkProgram(tenantId, user, mprgId, describe = 'resource') {
   if (env.rbacMode === 'off') {
     return true;
@@ -395,10 +339,10 @@ async function checkProgram(tenantId, user, mprgId, describe = 'resource') {
 }
 
 /** Drops cached permissions. Exposed for tests and for reacting to grant changes. */
-authorize.clearCache = () => {
+function clearCache() {
   permissionCache.clear();
   governedCache.clear();
-};
+}
 
 /**
  * Fills the caches directly instead of reading the database.
@@ -406,22 +350,30 @@ authorize.clearCache = () => {
  * Exposed so the decision matrix can be tested without a provisioned tenant;
  * production paths never call these.
  */
-authorize.primeCache = (tenantId, userId, { unrestricted = false, tables = [], programIds = [] } = {}) => {
+function primeCache(tenantId, userId, { unrestricted = false, tables = [], programIds = [] } = {}) {
   permissionCache.set(`${tenantId}:${userId}`, {
     unrestricted,
     tables: new Set(tables),
     programIds: new Set(programIds),
     expiresAt: cacheExpiry()
   });
-};
+}
 
-authorize.primeGoverned = (tenantId, tables = []) => {
+function primeGoverned(tenantId, tables = []) {
   governedCache.set(tenantId, { tables: new Set(tables), expiresAt: cacheExpiry() });
-};
+}
 
-authorize.decide = decide;
-authorize.requestTarget = requestTarget;
-authorize.relTableTarget = relTableTarget;
-authorize.checkProgram = checkProgram;
 
-module.exports = authorize;
+
+
+
+
+module.exports = {
+  decide,
+  checkProgram,
+  requestTarget,
+  relTableTarget,
+  clearCache,
+  primeCache,
+  primeGoverned
+}

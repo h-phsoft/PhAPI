@@ -1,15 +1,20 @@
-const mainApp = require('../config/mainApp');
+const mainApp = require('../metadata/registry');
 const connectionPool = require('../core/connectionPool');
 const repository = require('../repository/unifiedRepository');
-const AutoNumberHelper = require('../utils/autoNumber');
-const i18nHelper = require('../utils/i18nHelper');
-const { dateKind, toClientValue } = require('../core/sqlDates');
+const AutoNumberHelper = require('../repository/autoNumber');
 
+/**
+ * A payload the caller got wrong.
+ *
+ * It carries no HTTP status: a service states what happened and the HTTP layer
+ * decides how to say so. Nothing is lost by dropping it -- the error handler
+ * already matches on `name` and answers 400 for this class, which is what the
+ * status it used to carry said.
+ */
 class ValidationError extends Error {
   constructor(message, details = []) {
     super(message);
     this.name = 'ValidationError';
-    this.statusCode = 400;
     this.details = details;
   }
 }
@@ -41,166 +46,6 @@ function getAttachmentEntity() {
     }
   }
   throw new Error('Entity metadata not found for the attachment table (Cpy/Cpy_Attach)');
-}
-
-/**
- * Which properties of a row hold system vocabulary, worked out once per entity.
- *
- * Only the entity's own columns are considered, because a row never carries
- * anyone else's text: `unifiedRepository` issues a plain single-table SELECT
- * and does not join, so a Fund_Box row comes back with `statusId` and no
- * `statusName`. The status word a screen displays is read from Phs_Cod_Status
- * itself, fetched as its own request -- which is the row this translates.
- *
- * Cached against the entity object, a singleton built once at startup.
- *
- * @param {Object} entity Entity metadata
- * @returns {string[]} Row properties to translate
- */
-const labelPlans = new WeakMap();
-
-function labelPlanFor(entity) {
-  const cached = labelPlans.get(entity);
-  if (cached) {
-    return cached;
-  }
-
-  const fields = Array.isArray(entity.fields) ? entity.fields : [];
-  const plan = fields
-    .filter(field => field.isLabel === true && field.Field)
-    .map(field => field.Field);
-
-  labelPlans.set(entity, plan);
-  return plan;
-}
-
-/**
- * Translates the vocabulary in rows on their way out.
- *
- * Applied for every language, English included: the seed stores keys, not
- * prose -- Phs_Cod_Status holds 'Status.Active' -- so English needs the lookup
- * as much as Arabic does. Anything without an entry falls back to the stored
- * text, which is exactly what a screen shows today.
- *
- * Rows are mutated in place; they are fresh objects from the query, not shared
- * metadata.
- *
- * @param {Object} entity Entity metadata
- * @param {Object|Object[]} rows A row or rows straight from the repository
- * @param {Object} context Request context, carrying `lang`
- * @returns {Object|Object[]} The same rows
- */
-function localizeLabels(entity, rows, context = {}) {
-  if (!rows || !entity) {
-    return rows;
-  }
-
-  const plan = labelPlanFor(entity);
-  if (plan.length === 0) {
-    return rows;
-  }
-
-  const lang = context.lang || context.vLang || 'en';
-  const list = Array.isArray(rows) ? rows : [rows];
-
-  for (const row of list) {
-    if (!row || typeof row !== 'object') {
-      continue;
-    }
-    for (const property of plan) {
-      const value = row[property];
-      if (typeof value === 'string' && value !== '') {
-        row[property] = i18nHelper.translateLabel(value, lang);
-      }
-    }
-  }
-
-  return rows;
-}
-
-/**
- * Which properties hold a date, and of what kind, worked out once per entity.
- *
- * Read from the metadata, like everything else: a field's `DBType` says what
- * the column is, and DATE, DATETIME and TIME each get their own shape.
- *
- * @param {Object} entity Entity metadata
- * @returns {Array<[string, string]>} [property, kind] pairs
- */
-const datePlans = new WeakMap();
-
-function datePlanFor(entity) {
-  const cached = datePlans.get(entity);
-  if (cached) {
-    return cached;
-  }
-
-  const fields = Array.isArray(entity.fields) ? entity.fields : [];
-  const plan = fields
-    .map(field => [field.Field, dateKind(field)])
-    .filter(([property, kind]) => property && kind);
-
-  datePlans.set(entity, plan);
-  return plan;
-}
-
-/**
- * Formats date columns on their way out.
- *
- * The driver returns a JS Date, and JSON turns that into an instant in UTC:
- *
- *   stored in the database : 1995-09-01 00:00:00
- *   JSON.stringify         : "1995-08-31T21:00:00.000Z"
- *
- * Midnight in Damascus is nine the previous evening in London, so every
- * date-only value east of Greenwich reached the client a day early. The stored
- * data was never wrong; the serialisation attached a timezone the column does
- * not have.
- *
- * So the value is written out from its own calendar parts, in ISO order
- * because that is what a date input reads and what sorts correctly as text,
- * and with nothing about a timezone in it.
- *
- * @param {Object} entity Entity metadata
- * @param {Object|Object[]} rows A row or rows straight from the repository
- * @returns {Object|Object[]} The same rows
- */
-function formatDates(entity, rows) {
-  if (!rows || !entity) {
-    return rows;
-  }
-
-  const plan = datePlanFor(entity);
-  if (plan.length === 0) {
-    return rows;
-  }
-
-  const list = Array.isArray(rows) ? rows : [rows];
-
-  for (const row of list) {
-    if (!row || typeof row !== 'object') {
-      continue;
-    }
-    for (const [property, kind] of plan) {
-      if (row[property] !== undefined) {
-        row[property] = toClientValue(row[property], kind);
-      }
-    }
-  }
-
-  return rows;
-}
-
-/**
- * Everything a row needs doing to it before a client sees it.
- *
- * @param {Object} entity Entity metadata
- * @param {Object|Object[]} rows Rows straight from the repository
- * @param {Object} context Request context
- * @returns {Object|Object[]} The same rows
- */
-function present(entity, rows, context = {}) {
-  return formatDates(entity, localizeLabels(entity, rows, context));
 }
 
 class UnifiedService {
@@ -389,7 +234,7 @@ class UnifiedService {
       throw new Error(`Entity metadata not found for ${packageName}/${tableName}`);
     }
     const rows = await repository.find(entity, options, context);
-    return present(entity, rows, context);
+    return rows;
   }
 
   /**
@@ -416,12 +261,12 @@ class UnifiedService {
           filters[childConfig.foreignKey] = id;
           const childrenRows = await repository.find(childEntity, { filters }, context);
           // Localised against the child's own metadata, not the master's.
-          masterRecord[childConfig.childKey] = present(childEntity, childrenRows, context);
+          masterRecord[childConfig.childKey] = childrenRows;
         }
       }
     }
 
-    return present(entity, masterRecord, context);
+    return masterRecord;
   }
 
   /**
@@ -537,7 +382,7 @@ class UnifiedService {
 
     const rows = await repository.find(entity, options, context);
     return {
-      data: present(entity, rows, context),
+      data: rows,
       page: options.page,
       size: options.pageSize
     };
@@ -571,7 +416,7 @@ class UnifiedService {
 
     const rows = await repository.find(entity, options, context);
     return {
-      data: present(entity, rows, context),
+      data: rows,
       page: options.page,
       size: options.pageSize,
       query: queryString
@@ -620,7 +465,7 @@ class UnifiedService {
       const entity = mainApp.getEntity(packageName, table);
       if (entity) {
         const rows = await repository.find(entity, { pageSize: 100 }, context);
-        result[packageName + table] = present(entity, rows, context);
+        result[packageName + table] = rows;
       }
     }
 
@@ -681,7 +526,7 @@ class UnifiedService {
       throw new Error(`Entity metadata not found for ${packageName}/${tableName}`);
     }
 
-    const rows = present(entity, await repository.find(entity, { pageSize: 500 }, context), context);
+    const rows = await repository.find(entity, { pageSize: 500 }, context);
     const parentField = entity.fields.find(f => f.Field.toLowerCase().includes('parent') || f.Field.toLowerCase().includes('pid'));
     const parentKey = parentField ? parentField.Field : 'parentId';
 

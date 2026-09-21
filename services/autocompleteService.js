@@ -1,8 +1,9 @@
 const fs = require('fs');
 const path = require('path');
-const mainApp = require('../config/mainApp');
+const mainApp = require('../metadata/registry');
 const connectionPool = require('../core/connectionPool');
-const ParamBinder = require('../core/paramBinder');
+const ParamBinder = require('../core/query/paramBinder');
+const sqlBuilder = require('../core/query');
 
 // Matches either a single-quoted literal containing at least one {placeholder}
 // (group 1 = its contents), or a bare {placeholder} (group 2 = its name).
@@ -244,7 +245,7 @@ class AutocompleteService {
     const tenantId = context.tenantId || 'default';
     const poolWrapper = await connectionPool.getPool(tenantId);
     const dbType = poolWrapper.dbType;
-    const binder = new ParamBinder(dbType);
+    const binder = new ParamBinder(sqlBuilder.dialectFor(dbType));
 
     // Select, Condition and OrderBy come from the template files on disk, not
     // from the request, so they are spliced in as written. Conds is the only
@@ -280,12 +281,8 @@ class AutocompleteService {
       finalSql += ` ORDER BY ${OrderBy.trim()}`;
     }
 
-    const limit = this.resolveLimit(queryParams);
-    if (dbType === 'oracle') {
-      finalSql += ` FETCH NEXT ${binder.add(limit)} ROWS ONLY`;
-    } else {
-      finalSql += ` LIMIT ${binder.add(limit)}`;
-    }
+    // The dialect spells its own row cap; this used to compare engine names.
+    finalSql += sqlBuilder.dialectFor(dbType).limit(binder, this.resolveLimit(queryParams));
 
     const rows = await poolWrapper.query(finalSql, binder.params);
     return this.mapToCamelCase(rows);
