@@ -148,6 +148,26 @@ class AuthRepository {
     return conn.query(sql);
   }
 
+  /**
+   * The copy's fiscal periods, newest first.
+   *
+   * Every period, not only the open ones: a closed year is still something to
+   * look at, and the Java client listed them all for the same reason. `Status_Id`
+   * comes back so a client can say which is which.
+   *
+   * The dates are formatted here rather than handed over as driver Date
+   * objects, because they are bounds a screen shows and compares, and a Date
+   * that crosses JSON acquires a timezone the column never had (D4).
+   */
+  async getPeriods(conn) {
+    const sql = `SELECT Id, Num, Name, Status_Id,
+                        To_Char(Sdate, 'YYYY-MM-DD') AS Sdate,
+                        To_Char(Edate, 'YYYY-MM-DD') AS Edate
+                   FROM Cpy_Period
+                  ORDER BY Id DESC`;
+    return conn.query(sql);
+  }
+
   async getRootPrograms(conn, pgrpId) {
     let sql = `SELECT Id as MPrg_Id, Menu_Id, Type_Id, MPrg_Id as MPrg_PId, Ord as MPrg_Ord,
                       Name as MPrg_Name, URL as MPrg_URL, ApiURL as MPrg_ApiURL, Icon as MPrg_Icon,

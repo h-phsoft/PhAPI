@@ -146,7 +146,10 @@ class AuthService {
 
     const loginUser = userVal;
     const loginPass = passVal;
-    const loginPeriod = periodVal || context.periodId || 2026;
+    // Settled below, once there is a connection to ask. A caller may name one;
+    // otherwise the copy's own open period is the answer, and only the copy
+    // knows it.
+    let loginPeriod = periodVal || context.periodId || null;
 
     if (!loginUser || !loginPass) {
       throw new AuthError('Username and password are required');
@@ -268,6 +271,18 @@ class AuthService {
     // without an extra user lookup on every request.
     const pgrpId = Number(dbUser.pgrpId || dbUser.PGRP_ID || dbUser.PGrp_Id || 0) || 0;
 
+    // The period the session opens against.
+    //
+    // It used to be a literal 2026 whenever a caller named none, which is not a
+    // period every copy has: Demo's one period is id 0, so every session there
+    // opened against one that does not exist. The copy's own newest open period
+    // is the answer, and the literal survives only as the last resort for a
+    // copy whose period table cannot be read at all -- which is where it always
+    // was, just no longer where it usually lands.
+    if (!loginPeriod) {
+      loginPeriod = await this.defaultPeriod(loginCopy);
+    }
+
     // Issue JWT token only after successful database verification
     const tokenPayload = {
       jui: String(userId),
@@ -293,6 +308,82 @@ class AuthService {
       periodId: loginPeriod,
       expiresIn: '24h'
     };
+  }
+
+  /**
+   * The period a session opens against when the caller names none.
+   *
+   * The newest open one, which is what the Java client opened on and what a
+   * person signing in almost always wants. A copy whose period table cannot be
+   * read gets 2026, which is the literal this replaced -- kept only so that a
+   * copy without the table still signs in.
+   *
+   * @param {string} copy
+   * @returns {Promise<number|string>}
+   */
+  async defaultPeriod(copy) {
+    const logger = require('../utils/logger');
+    const connectionPoolManager = require('../core/connectionPool');
+
+    try {
+      const pool = await connectionPoolManager.getPool(copy);
+      const conn = await pool.getConnection();
+      try {
+        const periods = await this.getPeriods(conn);
+        const open = periods.find((period) => Number(period.statusId ?? 1) === 1) || periods[0];
+        if (open && open.id !== undefined && open.id !== null) {
+          return open.id;
+        }
+      } finally {
+        await conn.release();
+      }
+    } catch (err) {
+      logger.warn(`[AuthService] Could not read a default period for '${copy}': ${err.message}`);
+    }
+
+    return 2026;
+  }
+
+  /**
+   * The copy's fiscal periods.
+   *
+   * Returned with the profile rather than fetched on its own. A period is a
+   * property of the session in the same way the permitted menu is -- it scopes
+   * every request the session goes on to make, through the `periodid` header --
+   * and a client that had to ask for it separately would be rendering its own
+   * chrome before it knew what it was working in.
+   *
+   * Names are translated like every other stored label: a period is usually
+   * called after its year and needs none, but "Open Period" is vocabulary.
+   *
+   * @param {Object} conn
+   * @param {string} lang
+   * @returns {Promise<Array>} Periods, newest first
+   */
+  async getPeriods(conn, lang = 'en') {
+    const logger = require('../utils/logger');
+    const authRepository = require('../repository/authRepository');
+    const col = readColumn;
+
+    try {
+      const rows = await authRepository.getPeriods(conn);
+
+      return (rows || []).map((row) => ({
+        id: col(row, 'Id'),
+        num: col(row, 'Num'),
+        name: col(row, 'Name'),
+        statusId: col(row, 'Status_Id'),
+        // The bounds a query screen opens on. The Java client took the same two
+        // off PhSettings.Period.
+        from: col(row, 'Sdate'),
+        to: col(row, 'Edate')
+      }));
+    } catch (err) {
+      // A copy with no period table is a copy with no periods, not a failed
+      // sign-in: the profile is worth more than the list.
+      logger.warn(`[AuthService] Could not read the fiscal periods: ${err.message}`);
+      return [];
+    }
   }
 
   /**
@@ -754,12 +845,14 @@ class AuthService {
 
       let programs = await this.getMenuPrograms(conn, pgrpId, context.lang || 'en');
       let menus = await this.getPhsMenus(conn, context.lang || 'en');
+      let periods = await this.getPeriods(conn);
 
       return {
         profile,
         permissions,
         programs,
-        menus
+        menus,
+        periods
       };
     } finally {
       await conn.release();

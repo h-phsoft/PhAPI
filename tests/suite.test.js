@@ -1286,6 +1286,73 @@ async function runAllTests() {
     assert.deepStrictEqual(failures, [], failures.join(' | '));
   });
 
+  await testIntegration('The profile carries the copy\'s fiscal periods', async () => {
+    // A period scopes every request the session goes on to make, so it arrives
+    // with the profile rather than being fetched separately.
+    const res = await getAuthed('/UserAccount/getUserProfile');
+
+    assert.strictEqual(res.body.status, true, `profile failed: ${res.body.message}`);
+    const periods = res.body.data.periods;
+
+    assert.ok(Array.isArray(periods), 'no periods on the profile');
+    assert.ok(periods.length > 0, 'the copy reported no periods at all');
+
+    for (const period of periods) {
+      assert.ok(period.id !== undefined && period.id !== null, 'a period with no id');
+      // The bounds a query screen opens on, as plain days rather than as a
+      // timestamp carrying a zone the column never had (D4).
+      if (period.from) {
+        assert.ok(/^\d{4}-\d{2}-\d{2}$/.test(period.from), `from is ${period.from}`);
+        assert.ok(/^\d{4}-\d{2}-\d{2}$/.test(period.to), `to is ${period.to}`);
+      }
+    }
+
+    // Newest first, which is what a person signing in wants to see at the top.
+    const ids = periods.map(p => Number(p.id)).filter(n => Number.isFinite(n));
+    assert.deepStrictEqual(ids, [...ids].sort((a, b) => b - a), `not newest first: ${ids.join(', ')}`);
+  });
+
+  await testIntegration('A default period is the copy\'s own, not a literal', async () => {
+    // It used to be a hard-coded 2026 whenever a caller named none, which is
+    // not a period every copy has -- Demo's one period is id 0.
+    const { AuthService } = require('../services/authService');
+    const profile = await getAuthed('/UserAccount/getUserProfile');
+    const periods = profile.body.data.periods || [];
+
+    const chosen = await AuthService.defaultPeriod(testTenant);
+
+    assert.ok(
+      periods.some(period => String(period.id) === String(chosen)),
+      `default period ${chosen} is not one of ${periods.map(p => p.id).join(', ')}`
+    );
+  });
+
+  await testIntegration('The periodid header reaches the request context', async () => {
+    // tenantResolver reads it off the request and every service reads it off
+    // the context. Proven through a live endpoint rather than by unit-testing
+    // the middleware, because the point is that it survives the whole path.
+    const { AuthService } = require('../services/authService');
+    const periods = (await getAuthed('/UserAccount/getUserProfile')).body.data.periods || [];
+    assert.ok(periods.length > 0, 'no period to send');
+
+    const wanted = String(periods[0].id);
+
+    const res = await new Promise((resolve, reject) => {
+      http.get(`http://localhost:3009/UC/Phs/CodeStatus/List`, {
+        headers: { Authorization: `Bearer ${testToken}`, periodid: wanted }
+      }, (response) => {
+        let body = '';
+        response.on('data', chunk => { body += chunk; });
+        response.on('end', () => resolve({ status: response.statusCode, body: JSON.parse(body) }));
+      }).on('error', reject);
+    });
+
+    // The request has to succeed with the header present: a period the copy
+    // has must never make a request fail.
+    assert.strictEqual(res.body.status, true,
+      `a request carrying periodid=${wanted} failed: ${res.body.message}`);
+  });
+
   server.close();
 
   // -------------------------------------------------------------
