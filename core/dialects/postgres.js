@@ -122,5 +122,20 @@ module.exports = {
     }
     // STDDEV and VARIANCE are the sample forms here, as they are in Oracle.
     return `${name}(${col})`;
+  },
+
+  /**
+   * Whether an error means the named sequence is not in this schema.
+   *
+   * PostgreSQL reports a missing relation of any kind as 42P01, and a sequence
+   * is a relation here. See the note on the Oracle dialect for why this is a
+   * condition to fall back from rather than a failure.
+   *
+   * @param {Error} err
+   * @returns {boolean}
+   */
+  isMissingSequence(err) {
+    const code = err && err.code;
+    return code === '42P01' || /does not exist/i.test(String((err && err.message) || ''));
   }
 };

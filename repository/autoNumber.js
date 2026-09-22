@@ -55,14 +55,28 @@ class AutoNumber {
     const dialect = query.dialectFor(dbType);
 
     // A named sequence, where this engine has them and the metadata names one.
+    //
+    // The metadata is shared by every tenant and names a sequence for 950
+    // tables, of which any one copy has only some -- 160 of 421 in the Demo
+    // schema. A copy that lacks the sequence falls through to MAX + 1, which is
+    // what the same rule already says to do (`Aggr: 'Max'`) and what the Java
+    // system did. Only a missing sequence is treated this way: a permission
+    // problem or a dead connection still fails the insert, because silently
+    // taking MAX + 1 in either case is how two rows end up sharing a key.
     if (rule.Sequence) {
       const sql = dialect.nextSequenceValue(rule.Sequence);
       if (sql) {
-        const value = readNextVal(await dbConn.query(sql));
-        if (value === null) {
-          throw new Error(`[Autonumber] Failed to fetch next value from sequence ${rule.Sequence}`);
+        try {
+          const value = readNextVal(await dbConn.query(sql));
+          if (value === null) {
+            throw new Error(`[Autonumber] Failed to fetch next value from sequence ${rule.Sequence}`);
+          }
+          return value;
+        } catch (err) {
+          if (!dialect.isMissingSequence || !dialect.isMissingSequence(err)) {
+            throw err;
+          }
         }
-        return value;
       }
     }
 

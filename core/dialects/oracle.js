@@ -128,5 +128,22 @@ module.exports = {
       return `MEDIAN(${col})`;
     }
     return `${name}(${col})`;
+  },
+
+  /**
+   * Whether an error means the named sequence is not in this schema.
+   *
+   * The metadata is shared by every tenant and names a sequence for 950 tables;
+   * only some of those sequences exist in any one copy -- 160 of the 421 this
+   * newly reads from are in the Demo schema, and several of the rest are views
+   * that cannot be inserted into anyway. So a missing sequence is an ordinary
+   * condition to fall back from, not a failure, and the engine's own code for
+   * it is the dialect's business to know (L3).
+   *
+   * @param {Error} err Whatever the driver threw
+   * @returns {boolean}
+   */
+  isMissingSequence(err) {
+    return /ORA-02289/.test(String((err && err.message) || ''));
   }
 };

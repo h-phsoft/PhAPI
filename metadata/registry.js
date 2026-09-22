@@ -55,9 +55,29 @@ class MainApp {
       const dbType = f.DBType || f.dbType || 'VARCHAR2';
       const type = f.Type || f.type || 'String';
 
-      const isAutonumber = f.isAutonumber !== undefined
-        ? f.isAutonumber
-        : (assignsOwnKey && String(fieldName).toLowerCase() === primaryKey);
+      /**
+       * Whether the server assigns this column's value.
+       *
+       * Reading `f.isAutonumber` and stopping there was not enough. The
+       * generator writes an `Autonumber` block onto every column naming the
+       * table's sequence -- 18935 of them, which makes the block itself no
+       * signal -- and on the primary key it writes that block AND
+       * `isAutonumber: false` beside it. That is a contradiction: the field
+       * says where its value comes from and then says it does not have one.
+       *
+       * 421 of the 950 key fields that name a sequence are flagged false, so
+       * `create` sent whatever the client had for the key -- 0 from an entry
+       * form -- and the insert failed on a NULL or a duplicate. 45 of the 93
+       * Table screens could not save a row at all.
+       *
+       * The sequence is the specific fact, so on the primary key it wins. On
+       * any other column the block is boilerplate and the flag stands.
+       */
+      const isKey = String(fieldName).toLowerCase() === primaryKey;
+      const namesSequence = Boolean(f.Autonumber && f.Autonumber.Sequence) || Boolean(raw.Sequence);
+
+      const isAutonumber = (isKey && namesSequence)
+        || (f.isAutonumber !== undefined ? f.isAutonumber : (assignsOwnKey && isKey));
 
       return {
         Name: colName,

@@ -98,5 +98,17 @@ module.exports = {
       return `VAR_SAMP(${col})`;
     }
     return `${name}(${col})`;
+  },
+
+  /**
+   * Whether an error means the named sequence is not in this schema.
+   *
+   * Always false: MySQL has no sequences, so `nextSequenceValue` answers null
+   * and nothing ever reads one. There is no error to recognise.
+   *
+   * @returns {boolean}
+   */
+  isMissingSequence() {
+    return false;
   }
 };

@@ -130,6 +130,24 @@ function composeField(declared, meta, lang, withOperators) {
     field.readOnly = true;
   }
 
+  // What the server will refuse, said plainly rather than discovered by having
+  // a save rejected. 19 fields across 15 screens sit on a column the entity
+  // marks un-insertable or un-updatable -- Stor_Stores_Materiales collects four
+  // quantities that only a transaction may set, and three request screens
+  // collect the approval they are waiting for -- so a renderer that does not
+  // know shows an input whose every value is thrown away.
+  //
+  // Absent means permitted, which is the convention the rest of these flags
+  // follow. Kept as two flags rather than one `readOnly` because the two are
+  // genuinely different: a field that cannot be inserted may still be edited
+  // afterwards, and one that cannot be updated is set once and then fixed.
+  if (meta.insert === false) {
+    field.noInsert = true;
+  }
+  if (meta.update === false) {
+    field.noUpdate = true;
+  }
+
   // What may be asked of this column, narrowed by its type -- and only where
   // something will be asked. An entry form does not compare, so carrying an
   // operator list on every form field would be sending a search vocabulary to a

@@ -343,6 +343,35 @@ Recorded so the rules above are traceable to evidence rather than taste.
 | Fields dropped — column not on the entity | 600 |
 | Fields stating an input the schema cannot imply | 927 of 5019 (18%) |
 
+**Saving, before the key was assigned**
+
+| | |
+|---|---|
+| Primary-key fields naming a sequence | 950 |
+| Already flagged `isAutonumber: true` | 529 |
+| Flagged false beside the sequence they name | 421 |
+| Table screens that could not save a row | 45 of 93 |
+| Of the 421 sequences, present in the `Demo` schema | 160 |
+
+The generator writes an `Autonumber` block naming the table's sequence onto
+every column -- 18935 of them, which makes the block itself no signal -- and on
+the primary key it writes that block *and* `isAutonumber: false` beside it. So
+`create` sent whatever the client held for the key, which is 0 from an entry
+form, and the insert failed on a NULL or a duplicate. On the primary key the
+named sequence now wins; on any other column the block stays boilerplate and
+the flag stands. A copy that lacks the sequence falls back to MAX + 1, which is
+what the same rule already says (`Aggr: 'Max'`).
+
+| | |
+|---|---|
+| Visible form fields across the 199 described screens | 1899 |
+| On a column the server refuses to insert | 15 |
+| On a column the server refuses to update | 4 |
+
+Nineteen fields, across fifteen screens, collected a value the save would be
+rejected for. A composed field now carries `noInsert` / `noUpdate`, so a
+renderer shows the column without collecting into it.
+
 **Row keys, before the repository was made metadata-aware**
 
 | | |
