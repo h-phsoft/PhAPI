@@ -35,6 +35,38 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Trn/BalanceUser",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "userId",
+          "labelKey": "User",
+          "width": "300px"
+        },
+        {
+          "name": "statusId",
+          "labelKey": "Status",
+          "width": "250px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "rem",
+          "width": "300px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

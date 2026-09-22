@@ -192,6 +192,243 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Fre/ContractTrn",
+      "foreignKey": "contrId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "contrId",
+          "hidden": true
+        },
+        {
+          "name": "kindId",
+          "labelKey": "Fre.kindId",
+          "width": "150px"
+        },
+        {
+          "name": "curnId",
+          "labelKey": "Fre.curnId",
+          "width": "150px"
+        },
+        {
+          "name": "ocntryId",
+          "labelKey": "Fre.ocntryId",
+          "width": "150px"
+        },
+        {
+          "name": "ocityId",
+          "labelKey": "Fre.ocityId",
+          "width": "150px"
+        },
+        {
+          "name": "oaddress",
+          "labelKey": "fre.oaddress",
+          "width": "150px"
+        },
+        {
+          "name": "dcntryId",
+          "labelKey": "Fre.dcntryId",
+          "width": "150px"
+        },
+        {
+          "name": "dcityId",
+          "labelKey": "Fre.dcityId",
+          "width": "150px"
+        },
+        {
+          "name": "daddress",
+          "labelKey": "fre.daddress",
+          "width": "150px"
+        },
+        {
+          "name": "ndmrge",
+          "labelKey": "Fre.ndmrge",
+          "width": "150px"
+        },
+        {
+          "name": "nload",
+          "labelKey": "fre.load",
+          "width": "150px"
+        },
+        {
+          "name": "noffload",
+          "labelKey": "Fre.offloadServId",
+          "width": "150px"
+        },
+        {
+          "name": "noverload",
+          "labelKey": "Fre.overload",
+          "width": "150px"
+        },
+        {
+          "name": "ncooling",
+          "labelKey": "Fre.cooling",
+          "width": "150px"
+        },
+        {
+          "name": "ncancel",
+          "labelKey": "Fre.canceling",
+          "width": "150px"
+        },
+        {
+          "name": "noverdist",
+          "labelKey": "Fre.overdist",
+          "width": "150px"
+        },
+        {
+          "name": "mt5",
+          "labelKey": "Fre.mt5",
+          "width": "150px"
+        },
+        {
+          "name": "mt10",
+          "labelKey": "Fre.mt10",
+          "width": "150px"
+        },
+        {
+          "name": "mt15",
+          "labelKey": "Fre.mt15",
+          "width": "150px"
+        },
+        {
+          "name": "mt20",
+          "labelKey": "Fre.mt20",
+          "width": "150px"
+        },
+        {
+          "name": "mt25",
+          "labelKey": "Fre.mt25",
+          "width": "150px"
+        },
+        {
+          "name": "mt30",
+          "labelKey": "Fre.mt30",
+          "width": "150px"
+        },
+        {
+          "name": "mt35",
+          "labelKey": "Fre.mt35",
+          "width": "150px"
+        },
+        {
+          "name": "mt40",
+          "labelKey": "Fre.mt40",
+          "width": "150px"
+        },
+        {
+          "name": "mt45",
+          "labelKey": "Fre.mt45",
+          "width": "150px"
+        },
+        {
+          "name": "mt50",
+          "labelKey": "Fre.mt50",
+          "width": "150px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Fre.rem",
+          "width": "150px"
+        }
+      ]
+    },
+    {
+      "childKey": "child1",
+      "entity": "Fre/ContractDistance",
+      "foreignKey": "contrId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "contrId",
+          "hidden": true
+        },
+        {
+          "name": "nfrom",
+          "labelKey": "Fre.nfrom",
+          "width": "150px"
+        },
+        {
+          "name": "nto",
+          "labelKey": "Fre.nto",
+          "width": "150px"
+        },
+        {
+          "name": "overload",
+          "labelKey": "Fre.overload",
+          "width": "150px"
+        },
+        {
+          "name": "cooling",
+          "labelKey": "Fre.cooling",
+          "width": "150px"
+        },
+        {
+          "name": "mt5",
+          "labelKey": "Fre.mt5",
+          "width": "150px"
+        },
+        {
+          "name": "mt10",
+          "labelKey": "Fre.mt10",
+          "width": "150px"
+        },
+        {
+          "name": "mt15",
+          "labelKey": "Fre.mt15",
+          "width": "150px"
+        },
+        {
+          "name": "mt20",
+          "labelKey": "Fre.mt20",
+          "width": "150px"
+        },
+        {
+          "name": "mt25",
+          "labelKey": "Fre.mt25",
+          "width": "150px"
+        },
+        {
+          "name": "mt30",
+          "labelKey": "Fre.mt30",
+          "width": "150px"
+        },
+        {
+          "name": "mt35",
+          "labelKey": "Fre.mt35",
+          "width": "150px"
+        },
+        {
+          "name": "mt40",
+          "labelKey": "Fre.mt40",
+          "width": "150px"
+        },
+        {
+          "name": "mt45",
+          "labelKey": "Fre.mt45",
+          "width": "150px"
+        },
+        {
+          "name": "mt50",
+          "labelKey": "Fre.mt50",
+          "width": "150px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Fre.rem",
+          "width": "150px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

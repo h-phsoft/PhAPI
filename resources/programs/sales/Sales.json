@@ -87,6 +87,110 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Sales/SalesTrn",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "itemId",
+          "labelKey": "Pur.itemName",
+          "width": "200px"
+        },
+        {
+          "name": "barcode",
+          "labelKey": "Pur.barcode",
+          "width": "125px"
+        },
+        {
+          "name": "wqnt",
+          "labelKey": "Pur.wqnt",
+          "width": "125px"
+        },
+        {
+          "name": "qnt",
+          "labelKey": "Pur.qnt",
+          "width": "125px"
+        },
+        {
+          "name": "price",
+          "labelKey": "Pur.price",
+          "width": "125px"
+        },
+        {
+          "name": "camt",
+          "labelKey": "Pur.camt",
+          "width": "125px",
+          "readOnly": true
+        },
+        {
+          "name": "amt",
+          "labelKey": "Pur.amt",
+          "width": "125px",
+          "readOnly": true
+        },
+        {
+          "name": "unitId",
+          "labelKey": "Pur.unitId",
+          "width": "125px"
+        },
+        {
+          "name": "colorId",
+          "labelKey": "Pur.colorId",
+          "width": "125px"
+        },
+        {
+          "name": "sizeId",
+          "labelKey": "Pur.sizeId",
+          "width": "125px"
+        },
+        {
+          "name": "nlength",
+          "labelKey": "Pur.nlength",
+          "width": "125px"
+        },
+        {
+          "name": "nwidth",
+          "labelKey": "Pur.nwidth",
+          "width": "125px"
+        },
+        {
+          "name": "nheight",
+          "labelKey": "Pur.nheight",
+          "width": "125px"
+        },
+        {
+          "name": "lotser",
+          "labelKey": "Pur.lotser",
+          "width": "125px"
+        },
+        {
+          "name": "sdate",
+          "labelKey": "Pur.sdate",
+          "width": "125px"
+        },
+        {
+          "name": "edate",
+          "labelKey": "Pur.edate",
+          "width": "125px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Pur.rem",
+          "width": "500px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

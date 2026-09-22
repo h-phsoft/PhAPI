@@ -70,6 +70,70 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Lrg/ReqLoanInstInstallment",
+      "foreignKey": "instId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "instId",
+          "hidden": true
+        },
+        {
+          "name": "pinterset",
+          "hidden": true
+        },
+        {
+          "name": "statusId",
+          "hidden": true
+        },
+        {
+          "name": "pamt",
+          "hidden": true
+        },
+        {
+          "name": "num",
+          "labelKey": "Num",
+          "width": "150px",
+          "readOnly": true
+        },
+        {
+          "name": "duedate",
+          "labelKey": "DueDates",
+          "width": "250px"
+        },
+        {
+          "name": "amt",
+          "labelKey": "Installment.capital",
+          "width": "250px",
+          "total": "SUM"
+        },
+        {
+          "name": "interset",
+          "labelKey": "Installment.interest",
+          "width": "250px",
+          "total": "SUM"
+        },
+        {
+          "name": "sumins",
+          "labelKey": "Installment.value",
+          "width": "250px",
+          "total": "SUM",
+          "readOnly": true
+        },
+        {
+          "name": "rem",
+          "labelKey": "Rem",
+          "width": "250px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

@@ -23,6 +23,43 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Prd/PlanTrn",
+      "foreignKey": "planId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "planId",
+          "hidden": true
+        },
+        {
+          "name": "itemId",
+          "labelKey": "Prd.itemId",
+          "width": "300px"
+        },
+        {
+          "name": "formId",
+          "labelKey": "Prd.formId",
+          "width": "300px"
+        },
+        {
+          "name": "qnt",
+          "labelKey": "Prd.qnt",
+          "width": "125px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Prd.rem",
+          "width": "300px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

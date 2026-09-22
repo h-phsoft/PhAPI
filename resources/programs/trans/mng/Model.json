@@ -35,6 +35,43 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Trn/CodeModelDetails",
+      "foreignKey": "modelId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "modelId",
+          "hidden": true
+        },
+        {
+          "name": "axe",
+          "labelKey": "Axe",
+          "width": "150px"
+        },
+        {
+          "name": "wheel1weight",
+          "labelKey": "Weight1",
+          "width": "150px"
+        },
+        {
+          "name": "wheel2weight",
+          "labelKey": "Weight2",
+          "width": "150px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "rem",
+          "width": "300px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

@@ -51,6 +51,138 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Fre/CodeCity",
+      "foreignKey": "cntryId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "cntryId",
+          "hidden": true
+        },
+        {
+          "name": "code",
+          "labelKey": "Fre.code",
+          "width": "125px"
+        },
+        {
+          "name": "name",
+          "labelKey": "Fre.name",
+          "width": "200px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Fre.rem",
+          "width": "200px"
+        }
+      ]
+    },
+    {
+      "childKey": "child1",
+      "entity": "Fre/CodeNationality",
+      "foreignKey": "cntryId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "cntryId",
+          "hidden": true
+        },
+        {
+          "name": "cntryName",
+          "labelKey": "Fre.cntryName",
+          "width": "200px"
+        },
+        {
+          "name": "code",
+          "labelKey": "Fre.code",
+          "width": "125px"
+        },
+        {
+          "name": "code3",
+          "labelKey": "Fre.code3",
+          "width": "125px"
+        },
+        {
+          "name": "name",
+          "labelKey": "Fre.name",
+          "width": "200px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Fre.rem",
+          "width": "200px"
+        }
+      ]
+    },
+    {
+      "childKey": "child2",
+      "entity": "Fre/CodeAirports",
+      "foreignKey": "cntryId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "cntryId",
+          "hidden": true
+        },
+        {
+          "name": "code",
+          "labelKey": "Fre.code",
+          "width": "125px"
+        },
+        {
+          "name": "name",
+          "labelKey": "Fre.name",
+          "width": "200px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Fre.rem",
+          "width": "200px"
+        }
+      ]
+    },
+    {
+      "childKey": "child3",
+      "entity": "Fre/CodeSeaports",
+      "foreignKey": "cntryId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "cntryId",
+          "hidden": true
+        },
+        {
+          "name": "code",
+          "labelKey": "Fre.code",
+          "width": "125px"
+        },
+        {
+          "name": "name",
+          "labelKey": "Fre.name",
+          "width": "200px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Fre.rem",
+          "width": "200px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

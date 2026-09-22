@@ -36,6 +36,98 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Sdesk/CustomerSlaMatrix",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "slaId",
+          "labelKey": "sdesc.Sladegree",
+          "width": "150px"
+        },
+        {
+          "name": "responsetime",
+          "labelKey": "Responsetime",
+          "width": "100px"
+        },
+        {
+          "name": "responseunitId",
+          "labelKey": "sdesc.Unit",
+          "width": "80px"
+        },
+        {
+          "name": "restoretime",
+          "labelKey": "Restoretime",
+          "width": "100px"
+        },
+        {
+          "name": "restoreunitId",
+          "labelKey": "sdesc.Unit",
+          "width": "80px"
+        },
+        {
+          "name": "resolvetime",
+          "labelKey": "Resolvetime",
+          "width": "100px"
+        },
+        {
+          "name": "resolveunitId",
+          "labelKey": "sdesc.Unit",
+          "width": "80px"
+        },
+        {
+          "name": "description",
+          "labelKey": "Description",
+          "width": "220px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Rem",
+          "width": "300px"
+        }
+      ]
+    },
+    {
+      "childKey": "child1",
+      "entity": "Sdesk/CustomerSlaService",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "servId",
+          "labelKey": "sedesc.ServId",
+          "width": "200px"
+        },
+        {
+          "name": "description",
+          "labelKey": "Description",
+          "width": "400px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Rem",
+          "width": "500px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

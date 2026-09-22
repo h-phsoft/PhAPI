@@ -349,6 +349,125 @@ function searchField(raw, entity, tokens) {
   return field;
 }
 
+/**
+ * Converts one grid column -- a line item's field.
+ *
+ * A grid column is not a form field and not a search field. It carries what a
+ * cell needs: a heading, whether the column is shown at all, how wide it is,
+ * and whether the grid foots it with a total. Everything else about the column
+ * comes from the child entity, the same as everywhere else (M3).
+ *
+ * @returns {Object|null}
+ */
+function lineField(raw, entity) {
+  const meta = resolveField(entity, raw.field);
+  if (!meta) {
+    return null;
+  }
+
+  const field = { name: meta.Field };
+
+  // `title` is the heading, through getLabel like every other label. A hidden
+  // column has one too -- `title: 'MstId'` -- which is not a label anyone
+  // reads, so it is dropped with the column's visibility.
+  const title = typeof raw.title === 'string' ? raw.title.trim() : '';
+  const hidden = raw.visible === false;
+
+  if (hidden) {
+    field.hidden = true;
+  } else if (title && !/^<|^\s*$/.test(title)) {
+    field.labelKey = title;
+  }
+
+  const input = inputFor(raw, meta);
+  if (input) {
+    field.input = input;
+  }
+
+  const endpoint = endpointFor(raw);
+  if (endpoint) {
+    field.endpoint = endpoint;
+  }
+
+  if (typeof raw.width === 'string' && /^\d/.test(raw.width)) {
+    field.width = raw.width;
+  }
+
+  // The grid's own footer total. Not a schema fact and not the report
+  // aggregates either -- this is one function over one visible column, which is
+  // what PhTable foots a money column with.
+  if (typeof raw.aggregate === 'string' && raw.aggregate.trim() !== '') {
+    field.total = raw.aggregate.trim().toUpperCase();
+  }
+
+  if (raw.enabled === false || isTrue(raw.isReadOnly)) {
+    field.readOnly = true;
+  }
+
+  return field;
+}
+
+/**
+ * Pairs each grid with the child entity it writes to.
+ *
+ * By evidence rather than by position: each declared child is scored on how
+ * many of the grid's columns are real columns of it, and the best-scoring child
+ * wins. The two lists usually align -- `crm/mng/Contacts` has three grids and
+ * three children -- but "usually" is not a thing to build a save path on, and a
+ * grid paired with the wrong child would write line items into another table.
+ *
+ * A child already taken by an earlier grid is not offered again, so two grids
+ * over similar children cannot both claim the same one.
+ *
+ * @param {Object[]} tables The page's phTable entries
+ * @param {Object} master The master entity
+ * @returns {Array<{table: Object, child: Object, entity: Object}>}
+ */
+function pairGrids(tables, master) {
+  const children = (master.children || []).map((child) => ({
+    child,
+    entity: mainApp.getEntity(child.pkg, child.table)
+      || mainApp.getEntityBySynonym(child.synonym || '')
+      || mainApp.getEntityByTable(child.table || '')
+  })).filter((candidate) => candidate.entity);
+
+  const taken = new Set();
+  const paired = [];
+
+  for (const table of tables) {
+    const columns = (table && table.aColumns) || [];
+    const named = columns.map((c) => c && c.field).filter(Boolean);
+    if (named.length === 0) {
+      continue;
+    }
+
+    let best = null;
+    let bestScore = 0;
+
+    for (const candidate of children) {
+      if (taken.has(candidate.entity)) {
+        continue;
+      }
+      const score = named.filter((name) => resolveField(candidate.entity, name)).length;
+      if (score > bestScore) {
+        best = candidate;
+        bestScore = score;
+      }
+    }
+
+    // A grid none of the children can account for is not converted: writing its
+    // rows somewhere would be worse than not offering them.
+    if (!best || bestScore < 2) {
+      continue;
+    }
+
+    taken.add(best.entity);
+    paired.push({ table, child: best.child, entity: best.entity });
+  }
+
+  return paired;
+}
+
 /** Every field of every conditions card a query page declares. */
 function conditionCards(options) {
   const cards = [];
@@ -411,6 +530,25 @@ function convert(page, tokens) {
     (raw) => searchField(raw, entity, tokens)
   );
 
+  // The line grids of a document screen, each paired with the child entity it
+  // writes to. A screen with lines is a composition of blocks, one entity per
+  // block (M4), and the child's own columns describe its fields.
+  const lines = [];
+  for (const { table, child, entity: childEntity } of pairGrids(page.tables || [], entity)) {
+    const fields = take((table.aColumns || []), (raw) => lineField(raw, childEntity));
+    if (fields.length === 0) {
+      continue;
+    }
+
+    const childName = path.basename(childEntity.sourcePath || '', '.json');
+    lines.push({
+      childKey: child.childKey,
+      entity: `${childEntity.package}/${childName}`,
+      foreignKey: child.foreignKey,
+      fields
+    });
+  }
+
   // A form field's autocomplete endpoint is declared in the JSP markup rather
   // than in `aFields`, so it does not survive reading the script. The same
   // page's search card names it for the same column -- `userId` is searched
@@ -443,6 +581,9 @@ function convert(page, tokens) {
 
   if (form.length > 0) {
     screen.form = { fields: form };
+  }
+  if (lines.length > 0) {
+    screen.lines = lines;
   }
   if (search.length > 0) {
     screen.search = { fields: search };
@@ -507,6 +648,8 @@ function main() {
   let nothing = 0;
   let formFields = 0;
   let searchFields = 0;
+  let lineGrids = 0;
+  let lineFields = 0;
   let droppedFields = 0;
   const written = [];
   const unresolved = [];
@@ -539,6 +682,8 @@ function main() {
     const { screen, dropped } = result;
     formFields += screen.form ? screen.form.fields.length : 0;
     searchFields += screen.search ? screen.search.fields.length : 0;
+    lineGrids += screen.lines ? screen.lines.length : 0;
+    lineFields += (screen.lines || []).reduce((n, line) => n + line.fields.length, 0);
     droppedFields += dropped.length;
 
     const dest = path.join(PROGRAMS, `${program}.json`);
@@ -558,6 +703,8 @@ function main() {
   console.log(`  no screen to recover : ${nothing}`);
   console.log(`  form fields          : ${formFields}`);
   console.log(`  search fields        : ${searchFields}`);
+  console.log(`  line grids           : ${lineGrids}`);
+  console.log(`  line fields          : ${lineFields}`);
   console.log(`  fields dropped       : ${droppedFields}   (column not on the entity)`);
 
   for (const w of written.slice(0, 8)) {

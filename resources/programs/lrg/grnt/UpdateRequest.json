@@ -104,6 +104,38 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Lrg/InstrumentDescription",
+      "foreignKey": "instId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "instId",
+          "hidden": true
+        },
+        {
+          "name": "kindId",
+          "labelKey": "KindId",
+          "width": "200px"
+        },
+        {
+          "name": "note",
+          "labelKey": "text",
+          "width": "500px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Description",
+          "width": "450px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

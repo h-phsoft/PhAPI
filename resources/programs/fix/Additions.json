@@ -41,6 +41,134 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Fix/InputTrans",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "ord",
+          "hidden": true
+        },
+        {
+          "name": "fixdId",
+          "labelKey": "Asset",
+          "width": "250px"
+        },
+        {
+          "name": "qnt",
+          "labelKey": "Quantity",
+          "width": "100px",
+          "total": "SUM",
+          "readOnly": true
+        },
+        {
+          "name": "price",
+          "labelKey": "Price",
+          "width": "100px"
+        },
+        {
+          "name": "amt",
+          "labelKey": "Amount",
+          "width": "100px",
+          "total": "SUM",
+          "readOnly": true
+        },
+        {
+          "name": "perc",
+          "labelKey": "Perc %",
+          "width": "100px"
+        },
+        {
+          "name": "sdate",
+          "labelKey": "S.Date",
+          "width": "150px"
+        },
+        {
+          "name": "edate",
+          "labelKey": "E.Date",
+          "width": "150px",
+          "readOnly": true
+        },
+        {
+          "name": "loc1Id",
+          "labelKey": "Location 1",
+          "width": "150px"
+        },
+        {
+          "name": "loc2Id",
+          "labelKey": "Location 2",
+          "width": "150px"
+        },
+        {
+          "name": "loc3Id",
+          "labelKey": "Location 3",
+          "width": "150px"
+        },
+        {
+          "name": "ftot",
+          "labelKey": "F.Total",
+          "width": "125px",
+          "readOnly": true
+        },
+        {
+          "name": "famt",
+          "labelKey": "F.Amount",
+          "width": "100px",
+          "readOnly": true
+        },
+        {
+          "name": "statusId",
+          "labelKey": "Status",
+          "width": "100px"
+        },
+        {
+          "name": "spc1Id",
+          "labelKey": "Spec 1",
+          "width": "150px"
+        },
+        {
+          "name": "spc2Id",
+          "labelKey": "Spec 2",
+          "width": "150px"
+        },
+        {
+          "name": "spc3Id",
+          "labelKey": "Spec 3",
+          "width": "150px"
+        },
+        {
+          "name": "spc4Id",
+          "labelKey": "Spec 4",
+          "width": "150px"
+        },
+        {
+          "name": "spc5Id",
+          "labelKey": "Spec 5",
+          "width": "150px"
+        },
+        {
+          "name": "spc6",
+          "labelKey": "Spec 6",
+          "width": "250px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Description",
+          "width": "250px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

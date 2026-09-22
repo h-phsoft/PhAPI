@@ -30,6 +30,42 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Acc/BudgetTransaction",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "ord",
+          "hidden": true
+        },
+        {
+          "name": "accId",
+          "labelKey": "Account",
+          "width": "250px"
+        },
+        {
+          "name": "bud",
+          "labelKey": "Amount",
+          "width": "125px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Desc",
+          "width": "500px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

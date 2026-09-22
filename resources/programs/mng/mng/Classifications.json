@@ -31,6 +31,38 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Mng/CodeItem",
+      "foreignKey": "grpId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "grpId",
+          "hidden": true
+        },
+        {
+          "name": "name",
+          "labelKey": "Mng.name",
+          "width": "250px"
+        },
+        {
+          "name": "statusId",
+          "labelKey": "Mng.statusId",
+          "width": "125px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Mng.rem",
+          "width": "350px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

@@ -127,6 +127,38 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Lrg/RequestSettlmenCondition",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "num",
+          "labelKey": "Num",
+          "width": "125px"
+        },
+        {
+          "name": "descr",
+          "labelKey": "Descr",
+          "width": "550px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Rem",
+          "width": "550px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

@@ -210,6 +210,98 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Stor/ItemFormula",
+      "foreignKey": "itemId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "itemId",
+          "hidden": true
+        },
+        {
+          "name": "itemRid",
+          "labelKey": "Stor.itemFormulaRId",
+          "width": "200px"
+        },
+        {
+          "name": "qnt",
+          "labelKey": "Stor.qnt",
+          "width": "125px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Stor.rem",
+          "width": "500px"
+        }
+      ]
+    },
+    {
+      "childKey": "child1",
+      "entity": "Stor/ItemClasses",
+      "foreignKey": "itemId",
+      "fields": [
+        {
+          "name": "itemId",
+          "hidden": true
+        },
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "grpId",
+          "labelKey": "Stor.grpId",
+          "width": "150px"
+        },
+        {
+          "name": "itmId",
+          "labelKey": "Stor.itmId",
+          "width": "150px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Stor.rem",
+          "width": "300px"
+        }
+      ]
+    },
+    {
+      "childKey": "child2",
+      "entity": "Stor/ItemSpecification",
+      "foreignKey": "itemId",
+      "fields": [
+        {
+          "name": "itemId",
+          "hidden": true
+        },
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "vtitle",
+          "labelKey": "Stor.vtitle",
+          "width": "200px"
+        },
+        {
+          "name": "vvalue",
+          "labelKey": "Stor.vvalue",
+          "width": "200px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Stor.rem",
+          "width": "300px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

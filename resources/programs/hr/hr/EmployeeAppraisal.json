@@ -47,6 +47,37 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Emp/AppraisalEmployeeTrn",
+      "foreignKey": "aempId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "aempId",
+          "hidden": true
+        },
+        {
+          "name": "tapprId",
+          "hidden": true
+        },
+        {
+          "name": "points",
+          "labelKey": "Points",
+          "width": "125px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Description",
+          "width": "275px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

@@ -26,6 +26,63 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Lrg/CodeTchecklist",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "groupId",
+          "labelKey": "CheckList.Group",
+          "width": "250px"
+        },
+        {
+          "name": "itemId",
+          "labelKey": "CheckList.Item",
+          "width": "450px"
+        },
+        {
+          "name": "nord",
+          "labelKey": "Nord",
+          "width": "75px"
+        },
+        {
+          "name": "ischeckId",
+          "labelKey": "ischeck",
+          "width": "100px"
+        },
+        {
+          "name": "isattachId",
+          "labelKey": "attach",
+          "width": "100px"
+        },
+        {
+          "name": "isRequiredId",
+          "labelKey": "isRequired",
+          "width": "100px"
+        },
+        {
+          "name": "statusId",
+          "labelKey": "status",
+          "width": "100px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Rem",
+          "width": "250px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

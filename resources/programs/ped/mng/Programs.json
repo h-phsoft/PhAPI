@@ -23,6 +23,43 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Ped/ProgramItem",
+      "foreignKey": "progId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "progId",
+          "hidden": true
+        },
+        {
+          "name": "ord",
+          "labelKey": "Ped.ord",
+          "width": "100px"
+        },
+        {
+          "name": "grpId",
+          "labelKey": "Ped.Grp_Id",
+          "width": "300px"
+        },
+        {
+          "name": "name",
+          "labelKey": "Ped.name",
+          "width": "300px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Pur.rem",
+          "width": "500px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

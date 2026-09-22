@@ -59,6 +59,43 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Prd/QualityAssuranceFieldValues",
+      "foreignKey": "fldId",
+      "fields": [
+        {
+          "name": "fldId",
+          "hidden": true
+        },
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "name",
+          "labelKey": "Prd.name",
+          "width": "400px"
+        },
+        {
+          "name": "fvalue",
+          "labelKey": "Prd.fvalue",
+          "width": "125px"
+        },
+        {
+          "name": "okId",
+          "labelKey": "Prd.okId",
+          "width": "125px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Prd.rem",
+          "width": "400px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

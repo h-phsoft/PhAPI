@@ -265,6 +265,124 @@ test('a screen path cannot reach outside the registry', () => {
   }
 });
 
+console.log('\n--- Line grids on a document screen ---');
+
+test('every line grid names a child of the screen it sits on', () => {
+  // A grid is paired with its child by evidence, not by position: each declared
+  // child is scored on how many of the grid's columns are real columns of it.
+  // A grid paired with the wrong child would write line items into another
+  // table, so the pairing is checked rather than assumed.
+  const broken = [];
+
+  for (const { rel, screen } of ALL) {
+    for (const line of (screen.lines || [])) {
+      const [masterPkg, masterName] = String(screen.entity || '').split('/');
+      const master = mainApp.getEntity(masterPkg, masterName);
+      if (!master) {
+        continue;
+      }
+
+      const [linePkg, lineName] = String(line.entity || '').split('/');
+      const lineEntity = mainApp.getEntity(linePkg, lineName);
+      if (!lineEntity) {
+        broken.push(`${rel}: ${line.entity} does not resolve`);
+        continue;
+      }
+
+      const declared = (master.children || []).some((child) => {
+        const candidate = mainApp.getEntity(child.pkg, child.table)
+          || mainApp.getEntityBySynonym(child.synonym || '')
+          || mainApp.getEntityByTable(child.table || '');
+        return candidate === lineEntity;
+      });
+
+      if (!declared) {
+        broken.push(`${rel}: ${master.tableName} declares no child ${lineEntity.tableName}`);
+      }
+    }
+  }
+
+  assert.strictEqual(broken.length, 0, broken.slice(0, 5).join('; '));
+});
+
+test('every line field names a column on its own child entity', () => {
+  const broken = [];
+
+  for (const { rel, screen } of ALL) {
+    for (const line of (screen.lines || [])) {
+      const [pkg, name] = String(line.entity || '').split('/');
+      const entity = mainApp.getEntity(pkg, name);
+      if (!entity) {
+        continue;
+      }
+      for (const field of line.fields) {
+        if (!columnOf(entity, field.name)) {
+          broken.push(`${rel}.${field.name}`);
+        }
+      }
+    }
+  }
+
+  assert.strictEqual(broken.length, 0, `unknown columns: ${broken.slice(0, 5).join(', ')}`);
+});
+
+test('a line grid carries the key that ties it to its master', () => {
+  // The service sets the foreign key from the master's key on save. Without it
+  // the lines would be written unattached, which is worse than not writing
+  // them: a row with no parent is invisible and undeletable from the screen.
+  const broken = [];
+
+  for (const { rel, screen } of ALL) {
+    for (const line of (screen.lines || [])) {
+      if (!line.childKey || !line.foreignKey) {
+        broken.push(`${rel}: childKey=${line.childKey} foreignKey=${line.foreignKey}`);
+      }
+    }
+  }
+
+  assert.strictEqual(broken.length, 0, broken.slice(0, 5).join('; '));
+});
+
+test('a line grid never asks the user for its own foreign key', () => {
+  // The master's key is not known when the line is typed, and a screen that
+  // asked would be asking which document its own lines belong to.
+  const broken = [];
+
+  for (const { rel } of ALL) {
+    const composed = screenView.forProgram(rel, { lang: 'en' });
+    for (const line of ((composed && composed.lines) || [])) {
+      const asked = line.fields.find(
+        f => String(f.name).toLowerCase() === String(line.foreignKey).toLowerCase() && !f.hidden
+      );
+      if (asked) {
+        broken.push(`${rel}.${line.foreignKey}`);
+      }
+    }
+  }
+
+  assert.strictEqual(broken.length, 0, broken.slice(0, 5).join(', '));
+});
+
+test('every composed line field can be drawn', () => {
+  const broken = [];
+
+  for (const { rel } of ALL) {
+    const composed = screenView.forProgram(rel, { lang: 'en' });
+    for (const line of ((composed && composed.lines) || [])) {
+      if (!line.endpoint || !line.primaryKey) {
+        broken.push(`${rel}: endpoint=${line.endpoint} primaryKey=${line.primaryKey}`);
+      }
+      for (const field of line.fields) {
+        if (!field.input || (!field.label && !field.hidden)) {
+          broken.push(`${rel}.${field.name}: label=${field.label} input=${field.input}`);
+        }
+      }
+    }
+  }
+
+  assert.strictEqual(broken.length, 0, broken.slice(0, 5).join('; '));
+});
+
 console.log('\n--- Marking a menu tree with what can be drawn ---');
 
 test('a program with a screen is marked, one without is marked false', () => {

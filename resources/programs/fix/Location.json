@@ -30,6 +30,69 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Fix/LocationTrans",
+      "foreignKey": "fmstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "fmstId",
+          "hidden": true
+        },
+        {
+          "name": "ord",
+          "hidden": true
+        },
+        {
+          "name": "ftrnId",
+          "labelKey": "Serial",
+          "width": "100px",
+          "readOnly": true
+        },
+        {
+          "name": "fixdId",
+          "hidden": true
+        },
+        {
+          "name": "oloc1Id",
+          "hidden": true
+        },
+        {
+          "name": "oloc2Id",
+          "hidden": true
+        },
+        {
+          "name": "oloc3Id",
+          "hidden": true
+        },
+        {
+          "name": "loc1Id",
+          "labelKey": "New.Loc 1",
+          "width": "125px"
+        },
+        {
+          "name": "loc2Id",
+          "labelKey": "New.Loc 2",
+          "width": "125px"
+        },
+        {
+          "name": "loc3Id",
+          "labelKey": "New.Loc 3",
+          "width": "125px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Description",
+          "width": "300px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

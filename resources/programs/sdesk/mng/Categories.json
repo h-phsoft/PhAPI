@@ -31,6 +31,69 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Sdesk/Subcategories",
+      "foreignKey": "catId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "catId",
+          "hidden": true
+        },
+        {
+          "name": "num",
+          "labelKey": "num",
+          "width": "150px",
+          "readOnly": true
+        },
+        {
+          "name": "name",
+          "labelKey": "name",
+          "width": "200px"
+        },
+        {
+          "name": "description",
+          "labelKey": "description",
+          "width": "300px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "rem",
+          "width": "300px"
+        }
+      ]
+    },
+    {
+      "childKey": "child1",
+      "entity": "Sdesk/CategoryService",
+      "foreignKey": "catId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "catId",
+          "hidden": true
+        },
+        {
+          "name": "servId",
+          "labelKey": "sedesc.ServId",
+          "width": "200px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "rem",
+          "width": "450px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

@@ -90,6 +90,38 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Proj/ProjectTeam",
+      "foreignKey": "projId",
+      "fields": [
+        {
+          "name": "projId",
+          "hidden": true
+        },
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "statusId",
+          "labelKey": "Proj.statusId",
+          "width": "100px"
+        },
+        {
+          "name": "title",
+          "labelKey": "Proj.title",
+          "width": "150px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Proj.rem",
+          "width": "400px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

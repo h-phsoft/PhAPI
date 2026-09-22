@@ -60,6 +60,42 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Str/ActualTrans",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "ord",
+          "hidden": true
+        },
+        {
+          "name": "itemId",
+          "labelKey": "Item",
+          "width": "400px"
+        },
+        {
+          "name": "qnt",
+          "labelKey": "Quantity",
+          "width": "125px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Description",
+          "width": "700px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

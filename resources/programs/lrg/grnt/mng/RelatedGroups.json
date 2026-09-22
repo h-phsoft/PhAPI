@@ -28,6 +28,38 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Lrg/RelatedGroupTrn",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "borrowerId",
+          "labelKey": "Borrower",
+          "width": "250px"
+        },
+        {
+          "name": "reltypeId",
+          "labelKey": "Relation.Type",
+          "width": "250px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Rem",
+          "width": "550px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

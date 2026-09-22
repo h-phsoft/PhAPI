@@ -27,6 +27,48 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Clnc/Procedures",
+      "foreignKey": "catId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "catId",
+          "hidden": true
+        },
+        {
+          "name": "code",
+          "labelKey": "code",
+          "width": "150px"
+        },
+        {
+          "name": "name",
+          "labelKey": "Clnc.name",
+          "width": "175px"
+        },
+        {
+          "name": "price",
+          "labelKey": "price",
+          "width": "150px"
+        },
+        {
+          "name": "vatId",
+          "labelKey": "Vat.type",
+          "width": "125px"
+        },
+        {
+          "name": "vat",
+          "labelKey": "Vat",
+          "width": "150px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

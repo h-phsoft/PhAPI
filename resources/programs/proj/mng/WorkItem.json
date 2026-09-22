@@ -23,6 +23,48 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Proj/TwitemTrn",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "nord",
+          "labelKey": "Proj.nord",
+          "width": "75px"
+        },
+        {
+          "name": "name",
+          "labelKey": "Proj.name",
+          "width": "400px"
+        },
+        {
+          "name": "statusId",
+          "labelKey": "Proj.statusId",
+          "width": "100px"
+        },
+        {
+          "name": "billableId",
+          "labelKey": "Proj.billableId",
+          "width": "100px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Proj.rem",
+          "width": "400px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

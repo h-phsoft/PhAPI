@@ -25,6 +25,78 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Emp/SalaryAttendance",
+      "foreignKey": "salId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "salId",
+          "hidden": true
+        },
+        {
+          "name": "empId",
+          "labelKey": "Employee",
+          "width": "225px"
+        },
+        {
+          "name": "dadd",
+          "labelKey": "Dadd",
+          "width": "110px"
+        },
+        {
+          "name": "nadd",
+          "labelKey": "Nadd",
+          "width": "110px"
+        },
+        {
+          "name": "wadd",
+          "labelKey": "Wadd",
+          "width": "140px"
+        },
+        {
+          "name": "hadd",
+          "labelKey": "Hadd",
+          "width": "140px"
+        },
+        {
+          "name": "nabs",
+          "labelKey": "Nabs",
+          "width": "75px"
+        },
+        {
+          "name": "nsik70",
+          "labelKey": "Nsik 70",
+          "width": "100px"
+        },
+        {
+          "name": "nsik80",
+          "labelKey": "Nsik 80",
+          "width": "100px"
+        },
+        {
+          "name": "ndel",
+          "labelKey": "Ndel",
+          "width": "100px"
+        },
+        {
+          "name": "nnpay",
+          "labelKey": "Nnpay",
+          "width": "100px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Rem",
+          "width": "300px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

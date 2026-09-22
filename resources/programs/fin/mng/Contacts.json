@@ -202,6 +202,128 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Mng/ContactContact",
+      "foreignKey": "contId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "contId",
+          "hidden": true
+        },
+        {
+          "name": "name",
+          "labelKey": "Name",
+          "width": "200px"
+        },
+        {
+          "name": "title",
+          "labelKey": "Title",
+          "width": "150px"
+        },
+        {
+          "name": "position",
+          "labelKey": "PositionId",
+          "width": "190px"
+        },
+        {
+          "name": "genderId",
+          "labelKey": "Gender",
+          "width": "190px"
+        },
+        {
+          "name": "mobile",
+          "labelKey": "Mobile",
+          "width": "150px"
+        },
+        {
+          "name": "phone",
+          "labelKey": "Phone",
+          "width": "150px"
+        },
+        {
+          "name": "fax",
+          "labelKey": "Mobile 2",
+          "width": "150px"
+        },
+        {
+          "name": "email",
+          "labelKey": "Email",
+          "width": "200px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Rem",
+          "width": "300px"
+        }
+      ]
+    },
+    {
+      "childKey": "child1",
+      "entity": "Mng/ContactBranche",
+      "foreignKey": "contId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "contId",
+          "hidden": true
+        },
+        {
+          "name": "name",
+          "labelKey": "Name",
+          "width": "200px"
+        },
+        {
+          "name": "mobile",
+          "labelKey": "Mobile",
+          "width": "150px"
+        },
+        {
+          "name": "phone",
+          "labelKey": "Phone",
+          "width": "150px"
+        },
+        {
+          "name": "fax",
+          "labelKey": "Fax",
+          "width": "150px"
+        },
+        {
+          "name": "email",
+          "labelKey": "Email",
+          "width": "200px"
+        },
+        {
+          "name": "address",
+          "labelKey": "Address",
+          "width": "150px"
+        },
+        {
+          "name": "pobox",
+          "labelKey": "Pobox",
+          "width": "150px"
+        },
+        {
+          "name": "pcode",
+          "labelKey": "Pcode",
+          "width": "150px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Rem",
+          "width": "450px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

@@ -27,6 +27,53 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Emp/AdminPunishmentTrn",
+      "foreignKey": "mapunId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "mapunId",
+          "hidden": true
+        },
+        {
+          "name": "empId",
+          "labelKey": "Employee",
+          "width": "225px"
+        },
+        {
+          "name": "apprgrpId",
+          "labelKey": "Appraisal.Group",
+          "width": "225px"
+        },
+        {
+          "name": "appritmId",
+          "labelKey": "Appraisal.Item",
+          "width": "225px"
+        },
+        {
+          "name": "points",
+          "labelKey": "Points",
+          "width": "125px"
+        },
+        {
+          "name": "days",
+          "labelKey": "Month",
+          "width": "100px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Description",
+          "width": "250px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

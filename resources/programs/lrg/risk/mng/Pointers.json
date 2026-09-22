@@ -48,6 +48,33 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Lrg/RejectionReasons",
+      "foreignKey": "rejectId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "rejectId",
+          "hidden": true
+        },
+        {
+          "name": "note",
+          "labelKey": "Note",
+          "width": "400px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Rem",
+          "width": "450px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

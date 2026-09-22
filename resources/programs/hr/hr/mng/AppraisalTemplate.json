@@ -26,6 +26,83 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Emp/AppraisalTemplatesTrn",
+      "foreignKey": "apprId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "apprId",
+          "hidden": true
+        },
+        {
+          "name": "apprgrpId",
+          "labelKey": "Appraisal.Group",
+          "width": "200px"
+        },
+        {
+          "name": "appritmId",
+          "labelKey": "Appraisal.Item",
+          "width": "200px"
+        },
+        {
+          "name": "points",
+          "labelKey": "Points",
+          "width": "150px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Description",
+          "width": "375px"
+        }
+      ]
+    },
+    {
+      "childKey": "child1",
+      "entity": "Emp/AppraisalEvaluation",
+      "foreignKey": "apprId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "apprId",
+          "hidden": true
+        },
+        {
+          "name": "eval",
+          "labelKey": "Evaluation",
+          "width": "200px"
+        },
+        {
+          "name": "spoints",
+          "labelKey": "Start.Points",
+          "width": "150px"
+        },
+        {
+          "name": "epoints",
+          "labelKey": "End.Points",
+          "width": "150px"
+        },
+        {
+          "name": "salinc",
+          "labelKey": "Salary.Inc",
+          "width": "150px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Description",
+          "width": "280px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

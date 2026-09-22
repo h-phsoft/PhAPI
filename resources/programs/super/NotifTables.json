@@ -31,6 +31,43 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Notif/TablesFields",
+      "foreignKey": "tableId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "tableId",
+          "hidden": true
+        },
+        {
+          "name": "kindId",
+          "labelKey": "Notif.KindId",
+          "width": "125px"
+        },
+        {
+          "name": "name",
+          "labelKey": "Notif.Name",
+          "width": "300px"
+        },
+        {
+          "name": "dname",
+          "labelKey": "Notif.DName",
+          "width": "300px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Notif.Rem",
+          "width": "300px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

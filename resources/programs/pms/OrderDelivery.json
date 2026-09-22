@@ -47,6 +47,60 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Por/DeliveryTrn",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "tordId",
+          "hidden": true,
+          "width": "200px"
+        },
+        {
+          "name": "itemId",
+          "labelKey": "Item",
+          "width": "250px"
+        },
+        {
+          "name": "qnt",
+          "labelKey": "Quantity",
+          "width": "150px"
+        },
+        {
+          "name": "price",
+          "labelKey": "Price",
+          "width": "150px"
+        },
+        {
+          "name": "camt",
+          "labelKey": "Camt_price",
+          "width": "150px",
+          "readOnly": true
+        },
+        {
+          "name": "amt",
+          "labelKey": "Amt_price",
+          "width": "150px",
+          "readOnly": true
+        },
+        {
+          "name": "rem",
+          "labelKey": "Description",
+          "width": "300px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

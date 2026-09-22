@@ -31,6 +31,68 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Prd/QualityAssuranceChecklistItem",
+      "foreignKey": "listId",
+      "fields": [
+        {
+          "name": "listId",
+          "hidden": true
+        },
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "ord",
+          "labelKey": "Prd.ord",
+          "width": "75px"
+        },
+        {
+          "name": "ltext",
+          "labelKey": "Prd.ltext",
+          "width": "200px"
+        },
+        {
+          "name": "itext",
+          "labelKey": "Prd.itext",
+          "width": "200px"
+        },
+        {
+          "name": "lhelp",
+          "labelKey": "Prd.lhelp",
+          "width": "200px"
+        },
+        {
+          "name": "ihelp",
+          "labelKey": "Prd.ihelp",
+          "width": "200px"
+        },
+        {
+          "name": "code",
+          "labelKey": "Prd.code",
+          "width": "100px"
+        },
+        {
+          "name": "fldId",
+          "labelKey": "Prd.fldId",
+          "width": "150px"
+        },
+        {
+          "name": "requiredId",
+          "labelKey": "Prd.requiredId",
+          "width": "100px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Prd.rem",
+          "width": "200px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

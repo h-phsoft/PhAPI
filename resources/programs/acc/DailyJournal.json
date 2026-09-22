@@ -54,6 +54,106 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Acc/Transaction",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "rid",
+          "hidden": true
+        },
+        {
+          "name": "ord",
+          "hidden": true
+        },
+        {
+          "name": "srem",
+          "hidden": true
+        },
+        {
+          "name": "accRid",
+          "hidden": true
+        },
+        {
+          "name": "debc",
+          "labelKey": "Debit",
+          "width": "125px",
+          "total": "SUM"
+        },
+        {
+          "name": "crdc",
+          "labelKey": "Credit",
+          "width": "125px",
+          "total": "SUM"
+        },
+        {
+          "name": "accId",
+          "labelKey": "Account",
+          "width": "300px"
+        },
+        {
+          "name": "costId",
+          "labelKey": "Cost.Center",
+          "width": "250px"
+        },
+        {
+          "name": "curnId",
+          "labelKey": "Currency",
+          "width": "100px"
+        },
+        {
+          "name": "curnRate",
+          "labelKey": "Rate",
+          "width": "90px",
+          "readOnly": true
+        },
+        {
+          "name": "deb",
+          "labelKey": "Local.Debit",
+          "width": "125px",
+          "total": "SUM",
+          "readOnly": true
+        },
+        {
+          "name": "crd",
+          "labelKey": "Local.Credit",
+          "width": "125px",
+          "total": "SUM",
+          "readOnly": true
+        },
+        {
+          "name": "rem",
+          "labelKey": "Description",
+          "width": "300px"
+        },
+        {
+          "name": "tdocId",
+          "labelKey": "Bank.Doc",
+          "width": "250px"
+        },
+        {
+          "name": "tdocn",
+          "labelKey": "her.Num",
+          "width": "125px"
+        },
+        {
+          "name": "tdocd",
+          "labelKey": "her.Date",
+          "width": "150px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

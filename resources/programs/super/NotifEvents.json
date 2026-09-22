@@ -51,6 +51,93 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child1",
+      "entity": "Notif/TableEventDescription",
+      "foreignKey": "teventId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "teventId",
+          "hidden": true
+        },
+        {
+          "name": "fieldId",
+          "labelKey": "Notif.FieldId",
+          "width": "250px"
+        },
+        {
+          "name": "typeId",
+          "labelKey": "Notif.TypeId",
+          "width": "250px"
+        },
+        {
+          "name": "norder",
+          "labelKey": "Notif.Norder",
+          "width": "250px"
+        },
+        {
+          "name": "value",
+          "labelKey": "Notif.Value",
+          "width": "250px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Notif.Rem",
+          "width": "300px"
+        }
+      ]
+    },
+    {
+      "childKey": "child",
+      "entity": "Notif/TableEventRecipients",
+      "foreignKey": "teventId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "teventId",
+          "hidden": true
+        },
+        {
+          "name": "typeId",
+          "labelKey": "Notif.TypeId",
+          "width": "250px"
+        },
+        {
+          "name": "userId",
+          "labelKey": "Notif.UserId",
+          "width": "250px"
+        },
+        {
+          "name": "deptId",
+          "labelKey": "Notif.DeptId",
+          "width": "250px"
+        },
+        {
+          "name": "unitId",
+          "labelKey": "Notif.UnitId",
+          "width": "250px"
+        },
+        {
+          "name": "pgrpId",
+          "labelKey": "Notif.PgrpId",
+          "width": "250px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Notif.Rem",
+          "width": "300px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

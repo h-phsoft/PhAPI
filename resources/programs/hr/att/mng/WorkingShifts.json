@@ -26,6 +26,59 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Emp/WorkGroupDays",
+      "foreignKey": "wgrpId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "wgrpId",
+          "hidden": true
+        },
+        {
+          "name": "day",
+          "labelKey": "Days",
+          "width": "100px",
+          "readOnly": true
+        },
+        {
+          "name": "st1h",
+          "labelKey": "S.Hour",
+          "width": "100px"
+        },
+        {
+          "name": "st1m",
+          "labelKey": "S.Minute",
+          "width": "100px"
+        },
+        {
+          "name": "ed1h",
+          "labelKey": "E.Hour",
+          "width": "100px"
+        },
+        {
+          "name": "ed1m",
+          "labelKey": "E.Minute",
+          "width": "100px"
+        },
+        {
+          "name": "addh",
+          "labelKey": "Add.Hour",
+          "width": "100px"
+        },
+        {
+          "name": "addm",
+          "labelKey": "Add.Minute",
+          "width": "100px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

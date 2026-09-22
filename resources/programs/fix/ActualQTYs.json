@@ -30,6 +30,47 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Fix/ActualTrans",
+      "foreignKey": "fmstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "fmstId",
+          "hidden": true
+        },
+        {
+          "name": "ord",
+          "hidden": true
+        },
+        {
+          "name": "ftrnId",
+          "labelKey": "Serial",
+          "width": "150px"
+        },
+        {
+          "name": "fixdId",
+          "hidden": true
+        },
+        {
+          "name": "qnt",
+          "labelKey": "Quantity",
+          "width": "100px",
+          "total": "SUM"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Description",
+          "width": "700px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

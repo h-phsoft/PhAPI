@@ -81,6 +81,43 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Emp/AddonSalaryEmployees",
+      "foreignKey": "asalId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "asalId",
+          "hidden": true
+        },
+        {
+          "name": "empId",
+          "labelKey": "Employee",
+          "width": "300px"
+        },
+        {
+          "name": "sal",
+          "labelKey": "Salary",
+          "width": "150px"
+        },
+        {
+          "name": "amt",
+          "labelKey": "Amount",
+          "width": "150px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Rem",
+          "width": "500px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

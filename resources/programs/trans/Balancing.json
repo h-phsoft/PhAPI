@@ -92,6 +92,45 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Trn/BalanceTransaction",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "axe",
+          "labelKey": "Axe",
+          "width": "150px"
+        },
+        {
+          "name": "weight",
+          "labelKey": "Total.Weight",
+          "width": "150px",
+          "total": "SUM"
+        },
+        {
+          "name": "overweight",
+          "labelKey": "OverWeight",
+          "width": "150px",
+          "total": "SUM"
+        },
+        {
+          "name": "rem",
+          "labelKey": "rem",
+          "width": "300px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

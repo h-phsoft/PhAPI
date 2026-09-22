@@ -31,6 +31,53 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Emp/GradeTemplatesTrn",
+      "foreignKey": "gradId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "gradId",
+          "hidden": true
+        },
+        {
+          "name": "grpId",
+          "labelKey": "Work.group",
+          "width": "200px"
+        },
+        {
+          "name": "degreeId",
+          "labelKey": "Grad.Degree",
+          "width": "200px"
+        },
+        {
+          "name": "days",
+          "labelKey": "Months",
+          "width": "100px"
+        },
+        {
+          "name": "minsal",
+          "labelKey": "Min.Salary",
+          "width": "150px"
+        },
+        {
+          "name": "maxsal",
+          "labelKey": "Max.Salary",
+          "width": "150px"
+        },
+        {
+          "name": "trem",
+          "labelKey": "Rem",
+          "width": "250px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

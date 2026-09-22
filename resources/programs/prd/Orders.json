@@ -27,6 +27,48 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Prd/OrderTrn",
+      "foreignKey": "mordId",
+      "fields": [
+        {
+          "name": "mordId",
+          "hidden": true
+        },
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "itemId",
+          "labelKey": "Prd.itemId",
+          "width": "300px"
+        },
+        {
+          "name": "formId",
+          "labelKey": "Prd.formId",
+          "width": "300px"
+        },
+        {
+          "name": "statusId",
+          "labelKey": "Prd.statusId",
+          "width": "125px"
+        },
+        {
+          "name": "qnt",
+          "labelKey": "Prd.qnt",
+          "width": "125px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Prd.rem",
+          "width": "300px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

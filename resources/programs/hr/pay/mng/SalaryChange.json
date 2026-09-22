@@ -59,6 +59,48 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Emp/ChangeSalaryEmployees",
+      "foreignKey": "csalId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "csalId",
+          "hidden": true
+        },
+        {
+          "name": "empId",
+          "labelKey": "Employee",
+          "width": "300px"
+        },
+        {
+          "name": "osal",
+          "labelKey": "Osal",
+          "width": "150px"
+        },
+        {
+          "name": "chnge",
+          "labelKey": "Chnge",
+          "width": "150px"
+        },
+        {
+          "name": "nsal",
+          "labelKey": "Nsal",
+          "width": "150px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Rem",
+          "width": "300px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

@@ -41,6 +41,43 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Emp/TaxBracketsTrans",
+      "foreignKey": "brktId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "brktId",
+          "hidden": true
+        },
+        {
+          "name": "samt",
+          "labelKey": "S.Amount",
+          "width": "175px"
+        },
+        {
+          "name": "eamt",
+          "labelKey": "E.Amount",
+          "width": "175px"
+        },
+        {
+          "name": "tax",
+          "labelKey": "Tax.perc %",
+          "width": "175px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Rem",
+          "width": "450px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

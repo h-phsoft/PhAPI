@@ -29,6 +29,33 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Cpy/TaskRatingtrn",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "userId",
+          "labelKey": "Proj.userId",
+          "width": "250px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Proj.rem",
+          "width": "300px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

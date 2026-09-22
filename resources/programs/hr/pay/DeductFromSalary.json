@@ -76,6 +76,43 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Emp/SubfromSalaryEmployees",
+      "foreignKey": "ssalId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "ssalId",
+          "hidden": true
+        },
+        {
+          "name": "empId",
+          "labelKey": "Employee",
+          "width": "300px"
+        },
+        {
+          "name": "sal",
+          "labelKey": "Salary",
+          "width": "125px"
+        },
+        {
+          "name": "amt",
+          "labelKey": "Amount",
+          "width": "150px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Rem",
+          "width": "300px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

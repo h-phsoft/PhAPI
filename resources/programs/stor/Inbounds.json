@@ -59,6 +59,100 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Stor/InboundTrans",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "itemId",
+          "labelKey": "Stor.itemId",
+          "width": "200px"
+        },
+        {
+          "name": "unitId",
+          "labelKey": "Stor.unitId",
+          "width": "125px"
+        },
+        {
+          "name": "qnt",
+          "labelKey": "Stor.qnt",
+          "width": "125px"
+        },
+        {
+          "name": "price",
+          "labelKey": "Stor.price",
+          "width": "125px"
+        },
+        {
+          "name": "camt",
+          "labelKey": "Stor.camt",
+          "width": "125px",
+          "readOnly": true
+        },
+        {
+          "name": "amt",
+          "labelKey": "Stor.amt",
+          "width": "125px",
+          "readOnly": true
+        },
+        {
+          "name": "colorId",
+          "labelKey": "Stor.colorId",
+          "width": "125px"
+        },
+        {
+          "name": "sizeId",
+          "labelKey": "Stor.sizeId",
+          "width": "125px"
+        },
+        {
+          "name": "nlength",
+          "labelKey": "Stor.nlength",
+          "width": "125px"
+        },
+        {
+          "name": "nwidth",
+          "labelKey": "Stor.nwidth",
+          "width": "125px"
+        },
+        {
+          "name": "nheight",
+          "labelKey": "Stor.nheight",
+          "width": "125px"
+        },
+        {
+          "name": "lotser",
+          "labelKey": "Stor.lotser",
+          "width": "125px"
+        },
+        {
+          "name": "sdate",
+          "labelKey": "Stor.sdate",
+          "width": "125px"
+        },
+        {
+          "name": "edate",
+          "labelKey": "Stor.edate",
+          "width": "125px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Stor.rem",
+          "width": "500px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

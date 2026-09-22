@@ -111,6 +111,34 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Ped/AppointmentTestQuestions",
+      "foreignKey": "App_Test_Id",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "appTestId",
+          "hidden": true
+        },
+        {
+          "name": "questId",
+          "labelKey": "Question",
+          "width": "600px",
+          "readOnly": true
+        },
+        {
+          "name": "degree",
+          "labelKey": "Degree",
+          "width": "100px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

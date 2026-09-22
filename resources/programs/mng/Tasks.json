@@ -80,6 +80,73 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child1",
+      "entity": "Cpy/TaskActions",
+      "foreignKey": "taskId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "taskId",
+          "hidden": true
+        },
+        {
+          "name": "actionId",
+          "labelKey": "ActionId",
+          "width": "250px"
+        },
+        {
+          "name": "userId",
+          "labelKey": "UserId",
+          "width": "250px"
+        },
+        {
+          "name": "describtion",
+          "labelKey": "Description",
+          "width": "250px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Rem",
+          "width": "300px"
+        }
+      ]
+    },
+    {
+      "childKey": "child",
+      "entity": "Cpy/TaskUsers",
+      "foreignKey": "taskId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "taskId",
+          "hidden": true
+        },
+        {
+          "name": "statusId",
+          "labelKey": "Status.Name",
+          "width": "300px"
+        },
+        {
+          "name": "userId",
+          "labelKey": "UserId",
+          "width": "300px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Rem",
+          "width": "450px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

@@ -91,6 +91,77 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Lrg/SuitsSession",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "num",
+          "labelKey": "Num",
+          "width": "150px"
+        },
+        {
+          "name": "stageId",
+          "hidden": true
+        },
+        {
+          "name": "ddate",
+          "labelKey": "Ddate",
+          "width": "150px"
+        },
+        {
+          "name": "subject",
+          "labelKey": "Subject",
+          "width": "450px"
+        },
+        {
+          "name": "sutsresult",
+          "labelKey": "Sutsresult",
+          "width": "450px"
+        },
+        {
+          "name": "delayreason",
+          "labelKey": "Delayreason",
+          "width": "450px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Rem",
+          "width": "450px"
+        }
+      ]
+    },
+    {
+      "childKey": "child4",
+      "entity": "Lrg/SuitsChecklist",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "rem",
+          "labelKey": "Rem",
+          "width": "450px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

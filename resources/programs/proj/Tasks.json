@@ -86,6 +86,78 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Cpy/TaskUsers",
+      "foreignKey": "taskId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "taskId",
+          "hidden": true
+        },
+        {
+          "name": "userId",
+          "labelKey": "Cpy.userId",
+          "width": "250px"
+        },
+        {
+          "name": "statusId",
+          "labelKey": "proj.statusId",
+          "width": "200px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "proj.rem",
+          "width": "350px"
+        }
+      ]
+    },
+    {
+      "childKey": "child1",
+      "entity": "Cpy/TaskActions",
+      "foreignKey": "taskId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "taskId",
+          "hidden": true
+        },
+        {
+          "name": "userId",
+          "labelKey": "Cpy.userId",
+          "width": "200px"
+        },
+        {
+          "name": "actionId",
+          "labelKey": "Cpy.actionId",
+          "width": "150px"
+        },
+        {
+          "name": "progressper",
+          "labelKey": "Cpy.progress",
+          "width": "125px"
+        },
+        {
+          "name": "describtion",
+          "labelKey": "Cpy.describtion",
+          "width": "250px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Cpy.rem",
+          "width": "350px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

@@ -23,6 +23,43 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Emp/ChangesalaryBracketsTrn",
+      "foreignKey": "brktId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "brktId",
+          "hidden": true
+        },
+        {
+          "name": "samt",
+          "labelKey": "S.amt",
+          "width": "125px"
+        },
+        {
+          "name": "eamt",
+          "labelKey": "E.amt",
+          "width": "150px"
+        },
+        {
+          "name": "amt",
+          "labelKey": "sal.perc",
+          "width": "150px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Rem",
+          "width": "300px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

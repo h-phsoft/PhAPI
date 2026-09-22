@@ -35,6 +35,43 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Por/RequestTrn",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "itemId",
+          "labelKey": "Item",
+          "width": "400px"
+        },
+        {
+          "name": "qnt",
+          "labelKey": "Quantity",
+          "width": "150px"
+        },
+        {
+          "name": "price",
+          "labelKey": "Price.surp",
+          "width": "150px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Description",
+          "width": "400px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

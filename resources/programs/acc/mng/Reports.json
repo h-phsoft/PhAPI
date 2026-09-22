@@ -19,6 +19,72 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Acc/ReportItems",
+      "foreignKey": "repId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "costId",
+          "hidden": true
+        },
+        {
+          "name": "repId",
+          "hidden": true
+        },
+        {
+          "name": "ord",
+          "labelKey": "#",
+          "width": "50px"
+        },
+        {
+          "name": "label",
+          "labelKey": "Label",
+          "width": "125px"
+        },
+        {
+          "name": "linetypeId",
+          "labelKey": "Line.Type",
+          "width": "150px"
+        },
+        {
+          "name": "accId",
+          "labelKey": "Account",
+          "width": "200px"
+        },
+        {
+          "name": "totId",
+          "labelKey": "Total.Account",
+          "width": "200px"
+        },
+        {
+          "name": "amtsideId",
+          "labelKey": "AmtSide",
+          "width": "115px"
+        },
+        {
+          "name": "amttypId",
+          "labelKey": "Amt.Type",
+          "width": "115px"
+        },
+        {
+          "name": "perc",
+          "labelKey": "Perc %",
+          "width": "100px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Desc",
+          "width": "200px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

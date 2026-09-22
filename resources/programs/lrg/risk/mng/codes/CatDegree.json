@@ -21,6 +21,53 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Lrg/CodeCategoryDegree",
+      "foreignKey": "catId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "catId",
+          "hidden": true
+        },
+        {
+          "name": "indicateId",
+          "labelKey": "Indicate",
+          "width": "225px"
+        },
+        {
+          "name": "fval",
+          "labelKey": "FVal",
+          "width": "200px"
+        },
+        {
+          "name": "tval",
+          "labelKey": "Tval",
+          "width": "200px"
+        },
+        {
+          "name": "pdVal",
+          "labelKey": "PdVal",
+          "width": "200px"
+        },
+        {
+          "name": "name",
+          "labelKey": "Name",
+          "width": "300px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Rem",
+          "width": "350px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

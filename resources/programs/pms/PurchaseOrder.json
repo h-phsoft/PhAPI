@@ -47,6 +47,53 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Por/PurchaseOrderTrn",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "treqId",
+          "hidden": true
+        },
+        {
+          "name": "itemId",
+          "labelKey": "Item",
+          "width": "300px"
+        },
+        {
+          "name": "qnt",
+          "labelKey": "Quantity",
+          "width": "150px"
+        },
+        {
+          "name": "cqnt",
+          "labelKey": "Recive_Quntity",
+          "width": "150px",
+          "readOnly": true
+        },
+        {
+          "name": "price",
+          "labelKey": "Price",
+          "width": "150px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Description",
+          "width": "300px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

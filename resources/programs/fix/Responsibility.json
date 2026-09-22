@@ -37,6 +37,48 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Fix/ResponsibilityTrans",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "ord",
+          "hidden": true
+        },
+        {
+          "name": "ftrnId",
+          "labelKey": "Serial",
+          "width": "125px",
+          "readOnly": true
+        },
+        {
+          "name": "fixdId",
+          "hidden": true
+        },
+        {
+          "name": "qnt",
+          "labelKey": "Quantity",
+          "width": "100px",
+          "readOnly": true
+        },
+        {
+          "name": "rem",
+          "labelKey": "Description",
+          "width": "600px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

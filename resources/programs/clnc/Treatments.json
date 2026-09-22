@@ -47,6 +47,70 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Clnc/TreatmentProcedures",
+      "foreignKey": "treatId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "treatId",
+          "hidden": true
+        },
+        {
+          "name": "ddate",
+          "labelKey": "Date",
+          "width": "100px"
+        },
+        {
+          "name": "procId",
+          "labelKey": "Procedure",
+          "width": "250px"
+        },
+        {
+          "name": "qnt",
+          "labelKey": "Qnt",
+          "width": "125px"
+        },
+        {
+          "name": "price",
+          "labelKey": "Price",
+          "width": "125px",
+          "readOnly": true
+        },
+        {
+          "name": "discount",
+          "labelKey": "Discount",
+          "width": "125px"
+        },
+        {
+          "name": "amt",
+          "labelKey": "Amount",
+          "width": "125px",
+          "readOnly": true
+        },
+        {
+          "name": "vatId",
+          "labelKey": "Vat.type",
+          "width": "150px"
+        },
+        {
+          "name": "vatValue",
+          "labelKey": "Vat",
+          "width": "125px"
+        },
+        {
+          "name": "vatAmt",
+          "labelKey": "Vat.Amt",
+          "width": "125px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

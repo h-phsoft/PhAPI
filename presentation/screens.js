@@ -57,6 +57,25 @@ function inputFor(meta) {
 }
 
 /**
+ * The name a client addresses an entity by: its model file's, without the
+ * extension.
+ *
+ * A registry key is the table -- `Clnc_Doctors` -- while a client asks for
+ * `/UC/Clnc/Doctors`, which is the file. The separator is whichever the host
+ * uses, and getting that character class wrong on Windows turns the whole
+ * absolute path into the name.
+ *
+ * @param {Object} entity
+ * @returns {string}
+ */
+function modelNameOf(entity) {
+  return String((entity && entity.sourcePath) || '')
+    .split(/[\\/]/)
+    .pop()
+    .replace(/\.json$/, '');
+}
+
+/**
  * The `/UC` path a relation points at, or null when nothing describes it.
  *
  * A relation names the referenced table as the database spells it --
@@ -79,8 +98,7 @@ function lookupPath(relation) {
     return null;
   }
 
-  const name = String(target.sourcePath).split(/[\\/]/).pop().replace(/\.json$/, '');
-  return `/UC/${target.package}/${name}`;
+  return `/UC/${target.package}/${modelNameOf(target)}`;
 }
 
 /**
@@ -221,7 +239,7 @@ function forProgram(programUrl, context = {}) {
   }
 
   const lang = context.lang || context.vLang || 'en';
-  const modelName = String(entity.sourcePath || '').split(/[\\/]/).pop().replace(/\.json$/, '');
+  const modelName = modelNameOf(entity);
 
   const composed = {
     version: screen.version || '1.0',
@@ -243,6 +261,47 @@ function forProgram(programUrl, context = {}) {
     const { fields, dropped } = composeFields(screen.search.fields, entity, lang, true);
     composed.search = { fields };
     composed.dropped.push(...dropped);
+  }
+
+  // The line grids of a document screen. One entity per block (M4): each is
+  // composed against its own child entity, so a line's columns carry their own
+  // types, defaults, lookups and required flags exactly as the master's do.
+  //
+  // The foreign key is reported but not rendered -- the service sets it from
+  // the master's key on save, and a screen that asked for it would be asking
+  // the user which document their own lines belong to.
+  if (Array.isArray(screen.lines) && screen.lines.length > 0) {
+    composed.lines = [];
+
+    for (const line of screen.lines) {
+      const [linePkg, lineName] = String(line.entity || '').split('/');
+      const lineEntity = mainApp.getEntity(linePkg, lineName);
+      if (!lineEntity) {
+        composed.dropped.push(String(line.entity));
+        continue;
+      }
+
+      const { fields, dropped } = composeFields(line.fields, lineEntity, lang);
+      composed.dropped.push(...dropped);
+
+      const lineModel = modelNameOf(lineEntity);
+
+      composed.lines.push({
+        childKey: line.childKey,
+        entity: `${lineEntity.package}/${lineModel}`,
+        endpoint: `/UC/${lineEntity.package}/${lineModel}`,
+        primaryKey: lineEntity.primaryKey,
+        foreignKey: line.foreignKey,
+        fields: fields.map((field) => {
+          // The grid's own footer total, which the line file carries and the
+          // schema cannot: one function over one money column.
+          const declared = line.fields.find(
+            f => String(f.name).toLowerCase() === String(field.name).toLowerCase()
+          );
+          return declared && declared.total ? { ...field, total: declared.total } : field;
+        })
+      });
+    }
   }
 
   if (screen.order) {

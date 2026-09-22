@@ -26,6 +26,63 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Lrg/SponsorsContacts",
+      "foreignKey": "sponsorsId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "sponsorsId",
+          "hidden": true
+        },
+        {
+          "name": "titleId",
+          "labelKey": "Borrower.Title",
+          "width": "190px"
+        },
+        {
+          "name": "name",
+          "labelKey": "Name",
+          "width": "200px"
+        },
+        {
+          "name": "positionId",
+          "labelKey": "PositionId",
+          "width": "190px"
+        },
+        {
+          "name": "mobile",
+          "labelKey": "Mobile",
+          "width": "120px"
+        },
+        {
+          "name": "phone",
+          "labelKey": "Phone",
+          "width": "120px"
+        },
+        {
+          "name": "fax",
+          "labelKey": "Fax",
+          "width": "150px"
+        },
+        {
+          "name": "email",
+          "labelKey": "Email",
+          "width": "200px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Description",
+          "width": "300px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

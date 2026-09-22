@@ -43,6 +43,28 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Por/PurchaseOrderTrn",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "rem",
+          "labelKey": "Por.rem",
+          "width": "125px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

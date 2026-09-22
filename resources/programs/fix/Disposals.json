@@ -41,6 +41,91 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Fix/OutputTrans",
+      "foreignKey": "mstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "mstId",
+          "hidden": true
+        },
+        {
+          "name": "ord",
+          "hidden": true
+        },
+        {
+          "name": "costId",
+          "hidden": true
+        },
+        {
+          "name": "perc",
+          "hidden": true
+        },
+        {
+          "name": "ftot",
+          "hidden": true
+        },
+        {
+          "name": "famt",
+          "hidden": true
+        },
+        {
+          "name": "rtot",
+          "hidden": true
+        },
+        {
+          "name": "ramt",
+          "hidden": true
+        },
+        {
+          "name": "ucst",
+          "hidden": true
+        },
+        {
+          "name": "cst",
+          "hidden": true
+        },
+        {
+          "name": "trnId",
+          "labelKey": "Serial",
+          "width": "125px",
+          "readOnly": true
+        },
+        {
+          "name": "fixdId",
+          "hidden": true
+        },
+        {
+          "name": "qnt",
+          "labelKey": "Quantity",
+          "width": "100px",
+          "readOnly": true
+        },
+        {
+          "name": "price",
+          "labelKey": "Price",
+          "width": "100px"
+        },
+        {
+          "name": "amt",
+          "labelKey": "Amount",
+          "width": "100px",
+          "readOnly": true
+        },
+        {
+          "name": "rem",
+          "labelKey": "Description",
+          "width": "415px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

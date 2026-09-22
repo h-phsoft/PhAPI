@@ -25,6 +25,53 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Acc/TotalAccounts",
+      "foreignKey": "totId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "totId",
+          "hidden": true
+        },
+        {
+          "name": "accId",
+          "labelKey": "Account",
+          "width": "215px"
+        },
+        {
+          "name": "costId",
+          "labelKey": "Cost.Center",
+          "width": "215px"
+        },
+        {
+          "name": "signId",
+          "labelKey": "Sign",
+          "width": "105px"
+        },
+        {
+          "name": "amttypId",
+          "labelKey": "Type",
+          "width": "125px"
+        },
+        {
+          "name": "perc",
+          "labelKey": "Perc %",
+          "width": "75px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Description",
+          "width": "250px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {

@@ -4,7 +4,8 @@
  * The Java front end describes each screen declaratively and then hands the
  * description to one of three widgets:
  *
- *   PhForm    an entry form with a list beneath it -- `aFields` and `aQFields`
+ *   PhForm    an entry form with a list beneath it -- `aFields` and `aQFields`,
+ *             plus `phTable` where the form is a document with line items
  *   PhQForm   a query form -- condition, display and print cards
  *   PhsQuery  the same, with grouping and aggregation cards as well
  *
@@ -253,6 +254,7 @@ function readWidgetArgs(args) {
   let qFields = null;
   let url = null;
   let options = null;
+  let tables = null;
 
   for (const arg of args) {
     if (!arg || typeof arg !== 'object') {
@@ -270,12 +272,17 @@ function readWidgetArgs(args) {
     if (arg.aUrl && typeof arg.aUrl === 'object') {
       url = arg.aUrl;
     }
+    // The line grids of a master/detail screen. One entry per grid, each
+    // carrying its own column list.
+    if (Array.isArray(arg.phTable)) {
+      tables = arg.phTable;
+    }
     if (Array.isArray(arg.cards) || arg.conditonCard || arg.conditionCard) {
       options = arg;
     }
   }
 
-  return { fields, qFields, url, options };
+  return { fields, qFields, url, options, tables };
 }
 
 /**
@@ -311,7 +318,9 @@ function readScreen(file, constantsPath) {
   }
 
   const first = captured[0] || null;
-  const fromWidget = first ? readWidgetArgs(first.args) : { fields: null, qFields: null, url: null, options: null };
+  const fromWidget = first
+    ? readWidgetArgs(first.args)
+    : { fields: null, qFields: null, url: null, options: null, tables: null };
 
   // Falling back to the builders directly covers a page whose widget could not
   // be reached at all.
@@ -330,6 +339,7 @@ function readScreen(file, constantsPath) {
     options: fromWidget.options,
     fields: Array.isArray(fields) ? fields : [],
     qFields: Array.isArray(qFields) ? qFields : [],
+    tables: Array.isArray(fromWidget.tables) ? fromWidget.tables : [],
     errors
   };
 }

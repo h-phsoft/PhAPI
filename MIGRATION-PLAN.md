@@ -261,6 +261,21 @@ and deletes against the real database.
 | Daily | 153 | 103 | 103 |
 | Query + Statistic | 219 | 121 | — |
 
+**Line grids**, recovered from the same page scripts:
+
+| | |
+|---|---|
+| Pages declaring a `phTable` | 254 |
+| Whose grid was captured | 104 |
+| Screens emitting lines | 85 |
+| Line grids / line fields | 106 / 984 |
+
+A grid is paired with the child entity it writes to by evidence, not by
+position: each declared child is scored on how many of the grid's columns are
+real columns of it. The two lists usually align — `crm/mng/Contacts` has three
+grids and three children — but a grid paired with the wrong child would write
+line items into another table.
+
 Query and Statistic were 24 until three things were fixed, and each was costing
 most of the rest:
 

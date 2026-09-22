@@ -30,6 +30,107 @@
       }
     ]
   },
+  "lines": [
+    {
+      "childKey": "child",
+      "entity": "Fix/SpecificationTrans",
+      "foreignKey": "fmstId",
+      "fields": [
+        {
+          "name": "id",
+          "hidden": true
+        },
+        {
+          "name": "fmstId",
+          "hidden": true
+        },
+        {
+          "name": "ord",
+          "hidden": true
+        },
+        {
+          "name": "ftrnId",
+          "labelKey": "Serial",
+          "width": "125px",
+          "readOnly": true
+        },
+        {
+          "name": "fixdId",
+          "hidden": true
+        },
+        {
+          "name": "ospc6",
+          "labelKey": "Old.Spec 6",
+          "width": "150px",
+          "readOnly": true
+        },
+        {
+          "name": "ostatusId",
+          "hidden": true
+        },
+        {
+          "name": "ospc1Id",
+          "hidden": true
+        },
+        {
+          "name": "ospc2Id",
+          "hidden": true
+        },
+        {
+          "name": "ospc3Id",
+          "hidden": true
+        },
+        {
+          "name": "ospc4Id",
+          "hidden": true
+        },
+        {
+          "name": "ospc5Id",
+          "hidden": true
+        },
+        {
+          "name": "statusId",
+          "labelKey": "New.Status",
+          "width": "150px"
+        },
+        {
+          "name": "spc1Id",
+          "labelKey": "New.Spec 1",
+          "width": "150px"
+        },
+        {
+          "name": "spc2Id",
+          "labelKey": "New.Spec 2",
+          "width": "150px"
+        },
+        {
+          "name": "spc3Id",
+          "labelKey": "New.Spec 3",
+          "width": "150px"
+        },
+        {
+          "name": "spc4Id",
+          "labelKey": "New.Spec 4",
+          "width": "150px"
+        },
+        {
+          "name": "spc5Id",
+          "labelKey": "New.Spec 5",
+          "width": "150px"
+        },
+        {
+          "name": "spc6",
+          "labelKey": "New.Spec 6",
+          "width": "150px"
+        },
+        {
+          "name": "rem",
+          "labelKey": "Description",
+          "width": "150px"
+        }
+      ]
+    }
+  ],
   "search": {
     "fields": [
       {
