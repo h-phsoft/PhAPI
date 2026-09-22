@@ -1076,6 +1076,128 @@ async function runAllTests() {
     assert.strictEqual(res.body.status, false, 'a function name from a request must be refused');
   });
 
+  await testIntegration('A converted query screen runs, driven by its own metadata', async () => {
+    // Not a hand-picked report: the first converted query screen whose entity
+    // this copy actually has, with a condition built from what the screen
+    // itself says its columns are. If the metadata cannot drive a report, this
+    // fails.
+    const screens = require('../metadata/screens');
+    const screenView = require('../presentation/screens');
+
+    let ran = 0;
+    let narrowed = 0;
+    const failures = [];
+
+    for (const programUrl of screens.programs()) {
+      if (ran >= 5) {
+        break;
+      }
+
+      const screen = screenView.forProgram(programUrl, {});
+      if (!screen || screen.kind !== 'query' || !screen.reportEndpoint) {
+        continue;
+      }
+
+      // A column that can be compared for equality, and a value to compare it
+      // against -- taken from a row the report itself returns.
+      const all = await postAuthed(`${screen.reportEndpoint}/Query`, { size: 20 });
+      if (all.body.status !== true) {
+        continue;
+      }
+      const rows = all.body.data.report.rows;
+      if (rows.length < 2) {
+        continue;
+      }
+
+      const filterable = (screen.search ? screen.search.fields : [])
+        .filter(f => (f.operators || []).includes('='))
+        .find(f => {
+          const value = rows[0][f.name];
+          // A value that is not repeated across every row, so filtering on it
+          // can be seen to have done something.
+          return value !== null && value !== undefined && value !== ''
+            && rows.some(row => String(row[f.name]) !== String(value));
+        });
+
+      if (!filterable) {
+        continue;
+      }
+
+      ran++;
+      const value = rows[0][filterable.name];
+
+      const filtered = await postAuthed(`${screen.reportEndpoint}/Query`, {
+        conditions: [{ field: filterable.name, operator: '=', value }],
+        size: 200
+      });
+
+      if (filtered.body.status !== true) {
+        failures.push(`${programUrl}: ${filtered.body.message}`);
+        continue;
+      }
+
+      const kept = filtered.body.data.report.rows;
+      const wrong = kept.filter(row => String(row[filterable.name]) !== String(value));
+
+      if (wrong.length > 0) {
+        failures.push(`${programUrl}: ${wrong.length} row(s) do not match ${filterable.name}=${value}`);
+        continue;
+      }
+      if (kept.length === 0) {
+        failures.push(`${programUrl}: filtering on a value taken from a row returned nothing`);
+        continue;
+      }
+      narrowed++;
+    }
+
+    assert.ok(ran > 0, 'no converted query screen could be driven; nothing was proven');
+    assert.deepStrictEqual(failures, [], failures.join(' | '));
+    assert.strictEqual(narrowed, ran, `${ran} ran, ${narrowed} narrowed correctly`);
+  });
+
+  await testIntegration('A query screen orders by a column it says is sortable', async () => {
+    const screens = require('../metadata/screens');
+    const screenView = require('../presentation/screens');
+
+    for (const programUrl of screens.programs()) {
+      const screen = screenView.forProgram(programUrl, {});
+      if (!screen || screen.kind !== 'query' || !screen.reportEndpoint) {
+        continue;
+      }
+
+      const numeric = (screen.columns || []).find(
+        c => c.input === 'number' && (screen.sortable || []).includes(c.name)
+      );
+      if (!numeric) {
+        continue;
+      }
+
+      const res = await postAuthed(`${screen.reportEndpoint}/Query`, {
+        order: [{ [numeric.name]: '-1' }],
+        size: 50
+      });
+      if (res.body.status !== true) {
+        continue;
+      }
+
+      const values = res.body.data.report.rows
+        .map(row => row[numeric.name])
+        .filter(v => v !== null && v !== undefined)
+        .map(Number);
+
+      if (values.length < 2) {
+        continue;
+      }
+
+      const sorted = [...values].sort((a, b) => b - a);
+      assert.deepStrictEqual(values, sorted,
+        `${programUrl} not descending by ${numeric.name}: ${values.slice(0, 8).join(', ')}`);
+      return;
+    }
+
+    assert.fail('no query screen offered a sortable numeric column to prove an order with');
+  });
+
   server.close();
 
   // -------------------------------------------------------------
