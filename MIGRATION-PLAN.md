@@ -369,9 +369,22 @@ converted query screen's columns came back as their own names. It now searches
 `labels` first, so a hand-written translation always beats a generated one, then
 `fields`.
 
-841 of those 2386 keys (35%) have an Arabic translation in the Java bundle. The
-`fields` section is still seeded with English in both locales, so an Arabic
-screen reads English column headings until that import is run.
+872 of those 2386 keys carry the Java bundle's own vocabulary now, in both
+languages, imported through `scripts/importJavaLabels.js --section=fields`. The
+bundle is keyed by word rather than by column — `Acc_Num`, not
+`Acc_Master.Acc_Num` — so a column name is matched through its plausible
+spellings: `accNum`, `acc num`, `accnum`, `Acc.Num`, `Acc_Num`.
+
+English takes the same words, so the two languages say the same thing. That is
+also the larger improvement: 805 of the 872 differ from the generated default,
+and almost all of them are a real label where there was an abbreviation —
+`accnum` was "Accnum" and is "Account Number", `admAuthresp` was "Adm Authresp"
+and is "Authoriztion and Responsibility".
+
+The flat namespace has one cost worth knowing: a word means whatever the screen
+that first used it meant, so `App_Id` carries the bundle's English "Count" and
+is now the label for every `appId` column. The remaining 1514 keys keep their
+generated readable default in both languages.
 
 **Saving, before the key was assigned**
 

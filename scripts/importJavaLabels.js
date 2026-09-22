@@ -14,10 +14,11 @@
  * looser comparisons rather than requiring an exact hit.
  *
  * Options:
- *   --from=<path>   The .properties file to read (required)
- *   --lang=<code>   Locale to write, inferred from the filename otherwise
- *   --apply         Write the changes; reports only without it
- *   --force         Also replace values that already look translated
+ *   --from=<path>      The .properties file to read (required)
+ *   --lang=<code>      Locale to write, inferred from the filename otherwise
+ *   --section=<name>   `labels` (default) or `fields`
+ *   --apply            Write the changes; reports only without it
+ *   --force            Also replace values that already look translated
  */
 
 const fs = require('fs');
@@ -45,6 +46,25 @@ if (!fs.existsSync(source)) {
 }
 
 const lang = readArg('lang', path.basename(source, '.properties'));
+
+/**
+ * Which section of the locale file to fill.
+ *
+ * `labels` is the vocabulary the menu and the screen label keys resolve
+ * through -- names as the Java bundle spells them, like `Date.of.birth`.
+ *
+ * `fields` is one entry per column name, seeded from the column itself:
+ * `clinicName` with a readable English default of "Clinic Name". 841 of those
+ * 2386 keys have an Arabic translation in the same bundle, which is the
+ * difference between an Arabic query screen reading Arabic and reading English.
+ * They need looser matching, because a column name is not how the bundle spells
+ * a word -- see `spellings`.
+ */
+const section = readArg('section', 'labels');
+if (section !== 'labels' && section !== 'fields') {
+  console.error(`--section must be 'labels' or 'fields', not '${section}'`);
+  process.exit(1);
+}
 
 /**
  * Parses a Java .properties file.
@@ -83,6 +103,31 @@ function parseProperties(file) {
   return out;
 }
 
+/**
+ * The ways the Java bundle might spell a column name.
+ *
+ * A column is `borrowerFname`; the bundle has `Borrower.Fname`, `BorrowerFname`
+ * or `Borrower Fname` depending on who added it. The English default already in
+ * the locale file -- "Borrower Fname" -- is tried too, because that is the
+ * spelling the seeding derived and often the one a person typed.
+ *
+ * @param {string} key The column name
+ * @param {string} english Its current value in the locale file
+ * @returns {string[]}
+ */
+function spellings(key, english) {
+  const words = String(key).replace(/([a-z0-9])([A-Z])/g, '$1 $2');
+
+  return [
+    key,
+    words,
+    words.replace(/\s+/g, ''),
+    words.replace(/\s+/g, '.'),
+    words.replace(/\s+/g, '_'),
+    english
+  ].filter(Boolean).map(String);
+}
+
 /** True when the text actually contains the target script rather than English. */
 function isTranslated(text, code) {
   if (!text) return false;
@@ -101,8 +146,13 @@ function main() {
   }
 
   const locale = JSON.parse(fs.readFileSync(localeFile, 'utf8'));
-  if (!locale.labels || typeof locale.labels !== 'object') {
-    console.error(`${lang}.json has no labels section. Run extractMenuLabels.js first.`);
+  const target = locale[section];
+  if (!target || typeof target !== 'object') {
+    console.error(
+      section === 'labels'
+        ? `${lang}.json has no labels section. Run extractMenuLabels.js first.`
+        : `${lang}.json has no fields section. Run seedScreenLabels.js --apply first.`
+    );
     process.exit(1);
   }
 
@@ -117,22 +167,36 @@ function main() {
     if (compact && byCompact[compact] === undefined) byCompact[compact] = value;
   }
 
-  const lookup = (label) => {
-    const candidates = [
-      props[label],
-      byLower[label.toLowerCase()],
-      byCompact[label.toLowerCase().replace(/[^a-z0-9]/g, '')]
-    ];
-    return candidates.find((value) => isTranslated(value, lang));
+  /**
+   * The bundle's translation for one key, through progressively looser
+   * matching: exact, case-insensitive, then alphanumerics only -- which is what
+   * bridges 'Fixed Assets' to 'FixedAssets'.
+   *
+   * A field key is tried under each of its plausible spellings as well, since
+   * `clinicName` is not how anyone writes a word.
+   */
+  const lookup = (label, english) => {
+    const forms = section === 'fields' ? spellings(label, english) : [label];
+
+    for (const form of forms) {
+      const compact = form.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const candidates = [props[form], byLower[form.toLowerCase()], byCompact[compact]];
+      const found = candidates.find((value) => isTranslated(value, lang));
+      if (found) {
+        return found;
+      }
+    }
+
+    return undefined;
   };
 
-  const labels = Object.keys(locale.labels);
+  const labels = Object.keys(target);
   let translated = 0;
   let kept = 0;
   const missing = [];
 
   for (const label of labels) {
-    const current = locale.labels[label];
+    const current = target[label];
 
     // Never clobber a hand-made translation unless asked.
     if (!force && isTranslated(current, lang) && current !== label) {
@@ -140,19 +204,19 @@ function main() {
       continue;
     }
 
-    const found = lookup(label);
+    const found = lookup(label, current);
     if (found) {
-      locale.labels[label] = found;
+      target[label] = found;
       translated++;
     } else {
       missing.push(label);
     }
   }
 
-  console.log(`\n--- ${path.basename(source)} -> locales/${lang}.json ---`);
+  console.log(`\n--- ${path.basename(source)} -> locales/${lang}.json [${section}] ---`);
   console.log(apply ? '  MODE: APPLY\n' : '  MODE: report only (pass --apply to write)\n');
   console.log(`  properties entries : ${Object.keys(props).length}`);
-  console.log(`  labels in locale   : ${labels.length}`);
+  console.log(`  keys in ${section.padEnd(10)}: ${labels.length}`);
   console.log(`  translated         : ${translated}`);
   console.log(`  kept (already done): ${kept}`);
   console.log(`  no match           : ${missing.length}`);
