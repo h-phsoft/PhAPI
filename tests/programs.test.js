@@ -265,6 +265,62 @@ test('a screen path cannot reach outside the registry', () => {
   }
 });
 
+console.log('\n--- Marking a menu tree with what can be drawn ---');
+
+test('a program with a screen is marked, one without is marked false', () => {
+  // The shape authService builds: menus holding progTypes holding programs.
+  const described = screens.programs()[0];
+  assert.ok(described, 'no program screens are loaded');
+
+  const tree = [{
+    id: 1, name: 'Clinics', url: 'Clinics',
+    progTypes: [{
+      id: 2, name: 'Management',
+      programs: [
+        { id: 70300315, name: 'Doctors', url: described, apiUrl: described },
+        { id: 999, name: 'Nothing', url: 'no/such/program', apiUrl: 'no/such/program' }
+      ]
+    }]
+  }];
+
+  screenView.describeMenu(tree);
+
+  const [hit, miss] = tree[0].progTypes[0].programs;
+  assert.strictEqual(hit.described, true, `${described} should be described`);
+  assert.strictEqual(miss.described, false, 'an undescribed program should say so');
+});
+
+test('marking removes nothing and adds nothing', () => {
+  const tree = [{
+    id: 1, url: 'Clinics',
+    progTypes: [{ id: 2, programs: [{ id: 5, url: 'no/such/program' }] }]
+  }];
+
+  screenView.describeMenu(tree);
+
+  assert.strictEqual(tree.length, 1);
+  assert.strictEqual(tree[0].progTypes[0].programs.length, 1,
+    'a program with no screen must stay in the tree, marked');
+});
+
+test('a menu or a type is not mistaken for a program', () => {
+  // Menus carry a url too, so only a node with an id and no children of its
+  // own is a program. Marking a menu would make the client treat a module as
+  // something to open.
+  const tree = [{ id: 1, url: 'Clinics', progTypes: [{ id: 2, programs: [] }] }];
+
+  screenView.describeMenu(tree);
+
+  assert.strictEqual(tree[0].described, undefined, 'a menu must not be marked');
+  assert.strictEqual(tree[0].progTypes[0].described, undefined, 'a type must not be marked');
+});
+
+test('marking a tree with nothing in it does not throw', () => {
+  assert.doesNotThrow(() => screenView.describeMenu(null));
+  assert.doesNotThrow(() => screenView.describeMenu([]));
+  assert.doesNotThrow(() => screenView.describeMenu([{ id: 1 }]));
+});
+
 console.log('\n--- Step 3 exit condition: generated matches hand-written ---');
 
 /**

@@ -163,16 +163,47 @@ function bindFor(dialect, bind, fieldMeta, value) {
 }
 
 /**
+ * One condition, however the caller spelled it.
+ *
+ * Two spellings reach this endpoint and both are the same contract. The
+ * canonical one is `{ field, operator, value, value2 }`. The Java client's
+ * `PhForm.getQueryData` and `PhsQuery.getQueryData` both build
+ * `{ fieldName, dataType, operation, value1, value2 }` instead, and reading only
+ * the canonical names meant `condition.field` was undefined on every one of
+ * them -- so the column never resolved, the condition was dropped as unknown,
+ * and the search came back as an unfiltered page of rows. Every search that
+ * client has made since the port has ignored what the user asked for.
+ *
+ * `dataType` is deliberately not read: it is the legacy `PHFC_*` component the
+ * field was drawn as, and the column's own DBType decides how a value is bound
+ * (P3 -- where the legacy metadata and the schema disagree, the schema wins).
+ *
+ * @param {Object} condition
+ * @returns {{field: *, operator: string, value: *, value2: *, values: *}}
+ */
+function normalize(condition) {
+  return {
+    field: condition.field !== undefined ? condition.field : condition.fieldName,
+    operator: condition.operator !== undefined ? condition.operator : condition.operation,
+    value: condition.value !== undefined ? condition.value : condition.value1,
+    value2: condition.value2,
+    values: condition.values
+  };
+}
+
+/**
  * Turns one condition into a SQL fragment, binding every value.
  *
  * @param {Object} dialect
  * @param {Object} bind
  * @param {Object} entity
- * @param {Object} condition { field, operator, value, value2, values }
+ * @param {Object} raw { field, operator, value, value2, values }, or the Java
+ *   client's { fieldName, operation, value1, value2 }
  * @returns {string|null} The fragment, or null when the condition is dropped
  * @throws {ConditionError} When the operator is refused
  */
-function toFragment(dialect, bind, entity, condition) {
+function toFragment(dialect, bind, entity, raw) {
+  const condition = normalize(raw);
   const operator = String(condition.operator || '=').trim();
 
   if (operator === FREE_SQL) {
@@ -259,7 +290,7 @@ function buildWhere(dialect, entity, conditions = [], logic = 'AND', bind) {
     if (fragment) {
       fragments.push(fragment);
     } else {
-      dropped.push(condition.field);
+      dropped.push(normalize(condition).field);
     }
   }
 
@@ -274,5 +305,6 @@ module.exports = {
   kindOf,
   operatorsFor,
   buildWhere,
-  toFragment
+  toFragment,
+  normalize
 };

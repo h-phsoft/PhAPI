@@ -7,6 +7,7 @@ const i18nHelper = require('../../utils/i18nHelper');
 const auditService = require('../../services/auditService');
 const requestOrigin = require('../requestOrigin');
 const { localizeMenu } = require('../../presentation/labels');
+const { describeMenu } = require('../../presentation/screens');
 
 class AuthController {
   async login(req, res, next) {
@@ -93,7 +94,9 @@ class AuthController {
       const context = req.context || {};
       const lang = context.lang || req.headers['vlang'] || req.headers['vLang'] || 'en';
 
-      const result = localizeMenu(await AuthService.getUserProfile(context), lang);
+      // Translated, then marked: a program the client holds no component for
+      // may still have a screen described, and this is what tells it so.
+      const result = describeMenu(localizeMenu(await AuthService.getUserProfile(context), lang));
       const msg = i18nHelper.getMessage('SUCCESS', lang);
 
       return res.status(200).json(ResultManager.ok(msg, result));
@@ -115,7 +118,7 @@ class AuthController {
 
       try {
         const pgrpId = Number(req.user?.pgrpId || 0);
-        const result = localizeMenu(await AuthService.getProgramOptions(conn, pgrpId, menuId, lang), lang);
+        const result = describeMenu(localizeMenu(await AuthService.getProgramOptions(conn, pgrpId, menuId, lang), lang));
         return res.status(200).json(ResultManager.ok('Success', result));
       } finally {
         await conn.release();

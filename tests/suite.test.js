@@ -932,6 +932,73 @@ async function runAllTests() {
     assert.strictEqual(res.body.code, 404);
   });
 
+  /** POSTs a path with the test token and parses the envelope. */
+  function postAuthed(pathStr, body) {
+    const payload = JSON.stringify(body);
+    return new Promise((resolve, reject) => {
+      const req = http.request(`http://localhost:3009${pathStr}`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${testToken}`,
+          'Content-Type': 'application/json',
+          'Content-Length': Buffer.byteLength(payload)
+        }
+      }, (response) => {
+        let body2 = '';
+        response.on('data', chunk => { body2 += chunk; });
+        response.on('end', () => resolve({ status: response.statusCode, body: JSON.parse(body2) }));
+      });
+      req.on('error', reject);
+      req.write(payload);
+      req.end();
+    });
+  }
+
+  await testIntegration('A search narrows the result, and both spellings narrow it the same way', async () => {
+    // Against a real table, over HTTP, with the operator engine in the path.
+    // The point is not that rows come back -- it is that FEWER come back than
+    // the unfiltered list, which is what every search this API served was
+    // failing to do.
+    const all = await postAuthed('/UC/Phs/CodeStatus/Search/1/200', []);
+    assert.strictEqual(all.body.status, true, `unfiltered search failed: ${all.body.message}`);
+    const total = (all.body.data.data || []).length;
+    assert.ok(total > 1, `expected several statuses, got ${total}`);
+
+    const canonical = await postAuthed('/UC/Phs/CodeStatus/Search/1/200',
+      [{ field: 'id', operator: '=', value: 1 }]);
+    const java = await postAuthed('/UC/Phs/CodeStatus/Search/1/200',
+      [{ fieldName: 'id', dataType: 2, operation: '=', value1: 1, value2: '' }]);
+
+    const canonicalRows = canonical.body.data.data || [];
+    const javaRows = java.body.data.data || [];
+
+    assert.strictEqual(canonicalRows.length, 1, `expected one row, got ${canonicalRows.length} of ${total}`);
+    assert.strictEqual(javaRows.length, 1,
+      `the Java spelling did not narrow: ${javaRows.length} of ${total}`);
+    assert.deepStrictEqual(javaRows, canonicalRows, 'the two spellings returned different rows');
+  });
+
+  await testIntegration('A range operator is a range, against the database', async () => {
+    // `<>` is BETWEEN. If it were read as "not equal" this would return
+    // everything except one row rather than the rows inside the bounds.
+    const between = await postAuthed('/UC/Phs/CodeStatus/Search/1/200',
+      [{ field: 'id', operator: '<>', value: 1, value2: 2 }]);
+
+    assert.strictEqual(between.body.status, true, `search failed: ${between.body.message}`);
+    const ids = (between.body.data.data || []).map(row => Number(row.id));
+
+    assert.ok(ids.length > 0, 'a BETWEEN over the first two ids returned nothing');
+    assert.deepStrictEqual(ids.filter(id => id < 1 || id > 2), [],
+      `BETWEEN 1 AND 2 returned ids outside it: ${ids.join(', ')}`);
+  });
+
+  await testIntegration('An operator a column forbids is refused, not ignored', async () => {
+    const res = await postAuthed('/UC/Phs/CodeStatus/Search/1/200',
+      [{ field: 'id', operator: '[%', value: '1' }]);
+
+    assert.strictEqual(res.body.status, false, 'starts-with on a number should be refused');
+  });
+
   server.close();
 
   // -------------------------------------------------------------

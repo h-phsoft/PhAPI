@@ -158,7 +158,67 @@ test('a DATETIME column keeps its time', () => {
   assert.ok(where.includes('HH24:MI:SS'), `expected a time in the format, got: ${where}`);
 });
 
-console.log('\n--- 7. Every dialect spells them ---');
+console.log('\n--- 7. Both spellings of a condition are the same condition ---');
+
+test('the Java client spelling filters, rather than being dropped', () => {
+  // PhForm.getQueryData and PhsQuery.getQueryData both build
+  // { fieldName, dataType, operation, value1, value2 }. Reading only the
+  // canonical names left `field` undefined on every one, so the column never
+  // resolved and the condition was dropped -- every search that client made
+  // came back unfiltered.
+  const { where, params } = whereFor({
+    fieldName: 'name', dataType: 0, operation: '%', value1: 'ali', value2: ''
+  });
+
+  assert.ok(where.includes('LIKE'), `expected a LIKE, got: ${where || '(no WHERE clause)'}`);
+  assert.ok(Object.values(params).includes('%ali%'), `expected the value bound, got: ${JSON.stringify(params)}`);
+});
+
+test('both spellings produce identical SQL', () => {
+  const canonical = whereFor({ field: 'name', operator: '[%', value: 'ali' });
+  const java = whereFor({ fieldName: 'name', operation: '[%', value1: 'ali' });
+
+  assert.strictEqual(java.where, canonical.where);
+  assert.deepStrictEqual(java.params, canonical.params);
+});
+
+test('a range in the Java spelling binds both ends', () => {
+  const { where, params } = whereFor({
+    fieldName: 'id', operation: '<>', value1: 3, value2: 9
+  });
+
+  assert.ok(where.includes('BETWEEN'), `expected BETWEEN, got: ${where}`);
+  const bound = Object.values(params);
+  assert.ok(bound.includes(3) && bound.includes(9), `both ends expected, got: ${JSON.stringify(params)}`);
+});
+
+test('the canonical spelling wins where a condition carries both', () => {
+  const { where } = whereFor({
+    field: 'name', operator: '=', value: 'canonical',
+    fieldName: 'id', operation: '>', value1: 5
+  });
+
+  assert.ok(where.includes('Name'), `expected the canonical field, got: ${where}`);
+  assert.ok(!where.includes('>'), `expected the canonical operator, got: ${where}`);
+});
+
+test('the legacy dataType is ignored in favour of the column type', () => {
+  // dataType 0 is PHFC_TEXT. `dob` is a DATE, and the column decides -- P3.
+  const { where } = whereFor({
+    fieldName: 'dob', dataType: 0, operation: '>', value1: '1990-01-01'
+  });
+
+  assert.ok(where.includes("'DD-MM-YYYY'"), `expected the date conversion, got: ${where}`);
+});
+
+test('$$ is still refused in the Java spelling', () => {
+  assert.throws(
+    () => whereFor({ fieldName: 'name', operation: '$$', value1: '1=1' }),
+    /free-SQL/
+  );
+});
+
+console.log('\n--- 8. Every dialect spells them ---');
 
 for (const dbType of ['oracle', 'mysql', 'postgres']) {
   test(`${dbType} builds a range and a contains`, () => {

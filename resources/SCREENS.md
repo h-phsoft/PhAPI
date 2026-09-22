@@ -149,6 +149,25 @@ Every operator a screen offers is narrowed to what the column's `DBType`
 permits, so a screen cannot offer `starts with` on a number however it was
 written.
 
+### Two spellings of a condition
+
+Both are accepted and mean the same thing:
+
+```json
+{ "field": "name", "operator": "%", "value": "ali", "value2": "" }
+{ "fieldName": "name", "operation": "%", "value1": "ali", "value2": "" }
+```
+
+The second is what the Java client's `PhForm.getQueryData` and
+`PhsQuery.getQueryData` build. Reading only the first left `field` undefined on
+every one of them, so the column never resolved, the condition was dropped as
+unknown, and the search came back as an unfiltered page — every search that
+client made since the port ignored what the user asked for.
+
+Its `dataType` is deliberately not read. That is the legacy `PHFC_*` component
+the field was drawn as; the column's own `DBType` decides how a value is bound
+(P3).
+
 ---
 
 ## What is served

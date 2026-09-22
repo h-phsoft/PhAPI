@@ -299,4 +299,59 @@ function forReport(pkg, name, context = {}) {
   };
 }
 
-module.exports = { forProgram, forReport, composeFields, inputFor, lookupPath };
+/**
+ * Marks the programs in a permitted menu tree that have a screen described.
+ *
+ * The client has to decide which menu entries become links, and until now it
+ * decided from a list of nineteen paths compiled into its own bundle. That list
+ * cannot know about a screen file, so a program described here was a menu entry
+ * greyed out for no reason a user could see -- and keeping such a list in step
+ * with a directory of metadata is exactly the registry edit M5 exists to
+ * forbid.
+ *
+ * So the answer comes from where the registry actually is. Each program gains
+ * `described`, and the client links a program when it holds a component for it
+ * or when this says one can be drawn.
+ *
+ * It is not an authorisation decision and does not touch the tree's membership:
+ * every node here is already one the caller was granted, and a program with no
+ * screen stays in the tree marked `described: false` rather than being removed.
+ * Nothing is added either -- a screen file for a program the caller does not
+ * hold is not in this tree to be marked.
+ *
+ * Mutates in place; the tree is freshly built per request, not shared metadata.
+ *
+ * @param {Array|Object} tree Menus, or any node of one
+ * @returns {Array|Object} The same tree
+ */
+function describeMenu(tree) {
+  if (!tree) {
+    return tree;
+  }
+
+  const nodes = Array.isArray(tree) ? tree : [tree];
+
+  for (const node of nodes) {
+    if (!node || typeof node !== 'object') {
+      continue;
+    }
+
+    // A program is a node carrying a path. Menus and types carry a url too, so
+    // the id is what distinguishes them -- a program's is its MPrg_Id and both
+    // `url` and `apiUrl` hold its path, of which some tenants populate only one.
+    const path = node.apiUrl || node.url;
+    if (node.id !== undefined && path && !Array.isArray(node.programs) && !Array.isArray(node.progTypes)) {
+      node.described = screens.getProgram(path) !== null;
+    }
+
+    for (const key of ['menus', 'progTypes', 'programs', 'aList', 'children']) {
+      if (Array.isArray(node[key])) {
+        describeMenu(node[key]);
+      }
+    }
+  }
+
+  return tree;
+}
+
+module.exports = { forProgram, forReport, composeFields, inputFor, lookupPath, describeMenu };

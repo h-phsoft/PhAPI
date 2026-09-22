@@ -253,6 +253,28 @@ In order of how uniform they are: Table, then Query, then Daily, then Statistic.
 **Entry:** Step 3 complete. **Exit:** per screen — it renders, searches, saves
 and deletes against the real database.
 
+**Measured coverage**, active programs in the `Demo` tenant:
+
+| Kind | Active | Described | With a form |
+|---|---|---|---|
+| Table | 143 | 93 | 93 |
+| Daily | 153 | 103 | 103 |
+| Query | 146 | 19 | 3 |
+| Statistic | 73 | 5 | 0 |
+
+**One correction to the order.** The report path has to be wired to the
+condition engine between Table and Query. `reportService.query` reads
+`params.filters` and answers `{name, title, data, count}`; the client sends
+`{conditions, group, aggregate, order}` and reads `data.report.rows`. So every
+condition a `/Query` or `/Statistics` caller sets is discarded and the response
+shape does not match. Step 1 wired the engine into `unifiedService.search` and
+never into the report path, and 219 screens depend on it.
+
+**Daily needs a capability, not a field list.** Its 103 described screens are
+master/detail — a form over a transaction with a grid of its lines — and
+`MasterDataScreen` has no child grid. That is why the plan puts Daily third and
+it stays third.
+
 ### Step 5 — Node's advantages
 
 1. Stream report and export responses.
