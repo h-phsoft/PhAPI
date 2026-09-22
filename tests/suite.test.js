@@ -1198,6 +1198,94 @@ async function runAllTests() {
     assert.fail('no query screen offered a sortable numeric column to prove an order with');
   });
 
+  await testIntegration('A query screen groups and aggregates as its metadata offers', async () => {
+    // A statistics screen is a query screen with a grouping, so this drives one
+    // from what the screen says may be grouped and what may be aggregated over
+    // -- the same lists the renderer builds its two cards from. The aggregate
+    // alias is checked too, because the client reads the answer by it.
+    const screens = require('../metadata/screens');
+    const screenView = require('../presentation/screens');
+
+    let proven = 0;
+    const failures = [];
+
+    for (const programUrl of screens.programs()) {
+      if (proven >= 3) {
+        break;
+      }
+
+      const screen = screenView.forProgram(programUrl, {});
+      if (!screen || screen.kind !== 'query' || !screen.reportEndpoint) {
+        continue;
+      }
+      if (!(screen.groupable || []).length || !(screen.aggregable || []).length) {
+        continue;
+      }
+
+      // A column worth grouping by: one the report returns more than one
+      // distinct value of, so grouping visibly collapses rows.
+      const sample = await postAuthed(`${screen.reportEndpoint}/Query`, { size: 50 });
+      if (sample.body.status !== true) {
+        continue;
+      }
+      const rows = sample.body.data.report.rows;
+      if (rows.length < 3) {
+        continue;
+      }
+
+      const groupOn = (screen.groupable || []).find((name) => {
+        const values = new Set(rows.map((row) => String(row[name])));
+        return values.size > 1 && values.size < rows.length;
+      });
+      const over = (screen.aggregable || []).find((entry) => entry.name !== groupOn);
+      if (!groupOn || !over) {
+        continue;
+      }
+
+      const grouped = await postAuthed(`${screen.reportEndpoint}/Query`, {
+        group: [groupOn],
+        aggregate: [{ Count: over.name }],
+        size: 500
+      });
+
+      if (grouped.body.status !== true) {
+        failures.push(`${programUrl}: ${grouped.body.message}`);
+        continue;
+      }
+
+      const out = grouped.body.data.report.rows;
+      const alias = `${over.name}Count`;
+
+      if (out.length === 0) {
+        failures.push(`${programUrl}: grouping returned nothing`);
+        continue;
+      }
+      if (!(alias in out[0])) {
+        failures.push(`${programUrl}: no ${alias} in ${Object.keys(out[0]).join(', ')}`);
+        continue;
+      }
+
+      const distinct = new Set(out.map((row) => String(row[groupOn])));
+      if (distinct.size !== out.length) {
+        failures.push(`${programUrl}: ${out.length} rows for ${distinct.size} distinct ${groupOn}`);
+        continue;
+      }
+
+      // Only the grouped column and the aggregate come back, which is what the
+      // renderer rebuilds its table from.
+      const extra = Object.keys(out[0]).filter((key) => key !== groupOn && key !== alias);
+      if (extra.length > 0) {
+        failures.push(`${programUrl}: a grouped answer also carried ${extra.join(', ')}`);
+        continue;
+      }
+
+      proven++;
+    }
+
+    assert.ok(proven > 0, 'no query screen offered both a grouping and an aggregate');
+    assert.deepStrictEqual(failures, [], failures.join(' | '));
+  });
+
   server.close();
 
   // -------------------------------------------------------------
