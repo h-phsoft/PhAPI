@@ -98,18 +98,46 @@ class ReportService {
   }
 
   /**
-   * Runs the report through the shared repository path.
-   * @returns {Promise<Array>}
+   * What a report asks for, as the query layer's options.
+   *
+   * This is the whole of what was missing. The method read `params.filters` --
+   * a map of equalities -- and nothing else, so a query screen's conditions,
+   * grouping, aggregates and ordering were all discarded and every /Query and
+   * /Statistics call returned the first five hundred rows of the view whatever
+   * the user had asked for. Filters are still read, because the dashboard
+   * endpoints send them.
+   *
+   * Each list is checked for its shape rather than trusted: a client that sends
+   * an object where a list belongs should get an unfiltered report, not a
+   * crash.
+   *
+   * @param {Object} params The parsed vParams
+   * @param {number} defaultRows Page size when the caller names none
+   * @returns {Object} Options for repository.find
    */
-  async fetchRows(entity, params, context, defaultRows = DEFAULT_REPORT_ROWS) {
-    const options = {
+  static queryOptions(params, defaultRows = DEFAULT_REPORT_ROWS) {
+    const list = (value) => (Array.isArray(value) ? value : []);
+
+    return {
       filters: params.filters || params.vWhere || {},
+      conditions: list(params.conditions),
+      logic: params.logic || 'AND',
+      group: list(params.group),
+      aggregate: list(params.aggregate),
+      order: list(params.order),
       page: coercePage(params.page),
       pageSize: coercePageSize(params.pageSize || params.size, defaultRows),
       sortBy: params.sortBy,
       sortOrder: params.sortOrder
     };
-    return repository.find(entity, options, context);
+  }
+
+  /**
+   * Runs the report through the shared repository path.
+   * @returns {Promise<Array>}
+   */
+  async fetchRows(entity, params, context, defaultRows = DEFAULT_REPORT_ROWS) {
+    return repository.find(entity, ReportService.queryOptions(params, defaultRows), context);
   }
 
   /**
@@ -136,7 +164,7 @@ class ReportService {
     const { entity, report } = this.resolve(pkgName, reportName);
     const rows = await this.fetchRows(entity, params, context);
 
-    return {
+    const answer = {
       name: report.getName(),
       title: report.getTitle(),
       total: rows.length,
@@ -144,19 +172,43 @@ class ReportService {
         count: rows.length,
         fields: Object.keys(rows[0] || {}).length
       },
+      // Computed in JavaScript over the page that came back, which is what this
+      // always did. Where the caller named `group` and `aggregate` the database
+      // has already done the work and `rows` is the answer -- these are the
+      // per-column figures over whatever was returned, not a second opinion on
+      // it.
       aggregations: this.calculateAggregations(rows)
     };
+
+    answer.report = {
+      name: answer.name,
+      title: answer.title,
+      rows,
+      count: rows.length,
+      columns: Object.keys(rows[0] || {})
+    };
+
+    return answer;
   }
 
   /**
-   * The report's rows, paginated.
+   * The report's rows, filtered, grouped and ordered as asked, paginated.
+   *
+   * Answers under `report` as well as at the top level. The Java client reads
+   * `data.report.rows`, so without it every result looked empty to that client
+   * however many rows came back; the flat keys stay because PhApp reads those.
+   *
+   * What the Java client needs beyond this is a pre-rendered table -- its
+   * `renderTable` reads `report.header[].cells[]` and `report.Footers[]`, which
+   * the Java API built server-side. That is presentation and belongs above this
+   * layer; it is not built here and those screens still need it.
    */
   async query(pkgName, reportName, vParams, context) {
     const params = parseParams(vParams);
     const { entity, report } = this.resolve(pkgName, reportName);
     const rows = await this.fetchRows(entity, params, context);
 
-    return {
+    const answer = {
       name: report.getName(),
       title: report.getTitle(),
       data: rows,
@@ -164,6 +216,18 @@ class ReportService {
       page: coercePage(params.page),
       size: coercePageSize(params.pageSize || params.size, DEFAULT_REPORT_ROWS)
     };
+
+    answer.report = {
+      name: answer.name,
+      title: answer.title,
+      rows,
+      count: rows.length,
+      // The columns actually returned, which a grouped query changes: it
+      // projects its groups and aggregates, not the entity's field list.
+      columns: Object.keys(rows[0] || {})
+    };
+
+    return answer;
   }
 
   /**

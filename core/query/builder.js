@@ -16,7 +16,8 @@
 
 const ParamBinder = require('./paramBinder');
 const { dateKind, toDateParam } = require('../types/dates');
-const { buildWhere } = require('./conditions');
+const { buildWhere, kindOf } = require('./conditions');
+const aggregates = require('./aggregates');
 
 /**
  * The column a field maps to, as this engine spells it.
@@ -60,32 +61,159 @@ function primaryKeyColumn(dialect, entity) {
 }
 
 /**
- * SELECT, with optional projection, joins, filters, sorting and pagination.
+ * The field a name refers to, or null when the entity has no such column.
+ *
+ * Every name that reaches the SQL goes through here. A name from a request
+ * never becomes an identifier (D2) -- it either resolves to a column the
+ * entity declares or it is dropped.
+ */
+function fieldFor(entity, name) {
+  if (!name) {
+    return null;
+  }
+  const wanted = String(name).toLowerCase();
+  return entity.fields.find(f => String(f.Field).toLowerCase() === wanted) || null;
+}
+
+/**
+ * What a grouped SELECT projects, and what it groups by.
+ *
+ * A grouped query is a different statement from a flat one: only the grouped
+ * columns and the aggregates may appear, so the projection is built from those
+ * rather than from the entity's full field list. Projecting anything else is an
+ * error in every engine, and building it anyway would produce SQL that fails at
+ * the database rather than here.
+ *
+ * Each aggregate is aliased `<field><Fn>` -- `amtSum`, `idCount` -- because a
+ * screen may ask for two aggregates of one column and both need somewhere to
+ * land. Spelled in camelCase rather than with an underscore so that the alias
+ * the SQL carries is exactly the key the row comes back under, on every engine
+ * and without the repository having to convert it.
+ *
+ * @returns {{selected: string[], groupBy: string[]}}
+ */
+function grouping(dialect, entity, group, aggregate) {
+  const selected = [];
+  const groupBy = [];
+
+  for (const name of group) {
+    const fieldMeta = fieldFor(entity, name);
+    if (!fieldMeta) {
+      continue;
+    }
+    const col = column(dialect, fieldMeta);
+    selected.push(`${col} AS ${dialect.alias(fieldMeta.Field)}`);
+    groupBy.push(col);
+  }
+
+  for (const entry of aggregate) {
+    // One function per key: `{ Sum: 'amt' }` from the screen metadata,
+    // `{ "2": "amt" }` from the client.
+    for (const [asked, field] of Object.entries(entry || {})) {
+      const fieldMeta = fieldFor(entity, field);
+      if (!fieldMeta) {
+        continue;
+      }
+      const name = aggregates.check(asked, kindOf(fieldMeta), fieldMeta.Field);
+      const alias = `${fieldMeta.Field}${name[0]}${name.slice(1).toLowerCase()}`;
+      selected.push(
+        `${dialect.aggregate(name, column(dialect, fieldMeta))} AS ${dialect.alias(alias)}`
+      );
+    }
+  }
+
+  return { selected, groupBy };
+}
+
+/**
+ * ORDER BY, from whichever way the caller expressed it.
+ *
+ * Three shapes reach this. `sortBy` with `sortOrder` is one column, which is
+ * what the list endpoints send. `order` is a list --
+ * `[{ ddate: '-1' }, { id: '1' }]` -- which is what a query screen sends,
+ * because its ordering card lets the user stack several. `1` and `-1` are the
+ * Java client's directions and the words are accepted too.
+ *
+ * Falls back to something rather than nothing, because pagination over an
+ * unordered query may repeat or skip rows between pages.
+ *
+ * @returns {string} The clause, including the leading keyword, or ''
+ */
+function ordering(dialect, entity, { order, sortBy, sortOrder, groupBy }) {
+  const parts = [];
+
+  for (const entry of (order || [])) {
+    for (const [name, direction] of Object.entries(entry || {})) {
+      const fieldMeta = fieldFor(entity, name);
+      if (!fieldMeta) {
+        continue;
+      }
+      const descending = String(direction) === '-1' || String(direction).toUpperCase() === 'DESC';
+      parts.push(`${column(dialect, fieldMeta)} ${descending ? 'DESC' : 'ASC'}`);
+    }
+  }
+
+  if (parts.length === 0 && sortBy) {
+    const fieldMeta = fieldFor(entity, sortBy);
+    const col = fieldMeta ? column(dialect, fieldMeta) : dialect.object(sortBy);
+    parts.push(`${col} ${String(sortOrder).toUpperCase() === 'DESC' ? 'DESC' : 'ASC'}`);
+  }
+
+  if (parts.length === 0) {
+    // A grouped query cannot order by a column it did not group by, so its
+    // fallback is the first grouped column rather than the primary key.
+    if (groupBy && groupBy.length > 0) {
+      parts.push(`${groupBy[0]} ASC`);
+    } else {
+      const pkMeta = fieldFor(entity, entity.primaryKey);
+      if (pkMeta) {
+        parts.push(`${column(dialect, pkMeta)} ASC`);
+      }
+    }
+  }
+
+  return parts.length > 0 ? ` ORDER BY ${parts.join(', ')}` : '';
+}
+
+/**
+ * SELECT, with optional projection, joins, filters, grouping, aggregation,
+ * sorting and pagination.
  *
  * @param {Object} dialect
  * @param {Object} entity Entity metadata
- * @param {Object} options { fields, filters, conditions, logic, joins, sortBy,
- *   sortOrder, page, pageSize }. `filters` is equality shorthand;
- *   `conditions` carries an operator per field.
+ * @param {Object} options { fields, filters, conditions, logic, joins, group,
+ *   aggregate, order, sortBy, sortOrder, page, pageSize }. `filters` is
+ *   equality shorthand; `conditions` carries an operator per field; `group`
+ *   with `aggregate` makes it a grouped query.
  * @returns {{sql: string, params: Object|Array}}
  */
 function buildSelect(dialect, entity, options = {}) {
   const {
     fields, filters = {}, conditions = [], logic = 'AND', joins = [],
+    group = [], aggregate = [], order = [],
     sortBy, sortOrder = 'ASC', page = 1, pageSize = 20
   } = options;
   const table = tableOf(entity);
   const bind = new ParamBinder(dialect);
 
-  // A named projection, else every column the entity declares. Either way each
-  // column carries its API name as an alias, which is the contract the rest of
-  // the system reads rows by.
-  const selected = (fields && fields.length > 0)
-    ? fields.map((name) => {
-      const fieldMeta = entity.fields.find(m => m.Field.toLowerCase() === String(name).toLowerCase());
+  const grouped = (group && group.length > 0) || (aggregate && aggregate.length > 0);
+  const plan = grouped ? grouping(dialect, entity, group, aggregate) : null;
+
+  // A grouped query projects its groups and its aggregates. Otherwise: a named
+  // projection, else every column the entity declares. Either way each column
+  // carries its API name as an alias, which is the contract the rest of the
+  // system reads rows by.
+  let selected;
+  if (plan && plan.selected.length > 0) {
+    selected = plan.selected;
+  } else if (fields && fields.length > 0) {
+    selected = fields.map((name) => {
+      const fieldMeta = fieldFor(entity, name);
       return fieldMeta ? `${column(dialect, fieldMeta)} AS ${dialect.alias(fieldMeta.Field)}` : name;
-    })
-    : entity.fields.map(f => `${column(dialect, f)} AS ${dialect.alias(f.Field)}`);
+    });
+  } else {
+    selected = entity.fields.map(f => `${column(dialect, f)} AS ${dialect.alias(f.Field)}`);
+  }
 
   let sql = `SELECT ${selected.join(', ')} FROM ${dialect.object(table)}`;
 
@@ -119,16 +247,11 @@ function buildSelect(dialect, entity, options = {}) {
     sql += ` WHERE ${where.join(' AND ')}`;
   }
 
-  if (sortBy) {
-    const sortMeta = entity.fields.find(f => f.Field.toLowerCase() === String(sortBy).toLowerCase());
-    const sortCol = sortMeta ? column(dialect, sortMeta) : dialect.object(sortBy);
-    sql += ` ORDER BY ${sortCol} ${String(sortOrder).toUpperCase() === 'DESC' ? 'DESC' : 'ASC'}`;
-  } else if (entity.primaryKey) {
-    const pkMeta = entity.fields.find(f => f.Field.toLowerCase() === String(entity.primaryKey).toLowerCase());
-    if (pkMeta) {
-      sql += ` ORDER BY ${column(dialect, pkMeta)} ASC`;
-    }
+  if (plan && plan.groupBy.length > 0) {
+    sql += ` GROUP BY ${plan.groupBy.join(', ')}`;
   }
+
+  sql += ordering(dialect, entity, { order, sortBy, sortOrder, groupBy: plan && plan.groupBy });
 
   if (page && pageSize) {
     sql += dialect.paginate(bind, (page - 1) * pageSize, pageSize);

@@ -103,5 +103,24 @@ module.exports = {
    */
   toDate(placeholder, kind) {
     return `TO_TIMESTAMP(${placeholder}, '${formatFor(kind, 'pattern')}')::timestamp`;
+  },
+
+  /**
+   * An aggregate applied to a column.
+   *
+   * The seven that every engine spells the same way need no special case. PostgreSQL has no MEDIAN function; the same value is an ordered-set
+   * aggregate, which is a different shape rather than a different name.
+   *
+   * @param {string} name A canonical name from core/query/aggregates
+   * @param {string} col The column, already quoted
+   * @returns {string}
+   * @throws {Error} When this engine has no way to spell it
+   */
+  aggregate(name, col) {
+    if (name === 'MEDIAN') {
+      return `PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY ${col})`;
+    }
+    // STDDEV and VARIANCE are the sample forms here, as they are in Oracle.
+    return `${name}(${col})`;
   }
 };

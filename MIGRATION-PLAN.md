@@ -343,6 +343,30 @@ Recorded so the rules above are traceable to evidence rather than taste.
 | Fields dropped — column not on the entity | 600 |
 | Fields stating an input the schema cannot imply | 927 of 5019 (18%) |
 
+**Row keys, before the repository was made metadata-aware**
+
+| | |
+|---|---|
+| Fields across every entity | 24553 |
+| Whose alias the row mapper changed | 18157 (74%) |
+| Date and time columns | 3168 |
+| Whose value was therefore never shaped on the way out | 2508 (79%) |
+| Columns marked `isLabel` | 125 |
+| Which were therefore never translated | 9 |
+
+`mapToCamelCase` lower-cased every key and camel-cased back across the
+underscores. Right for `SPECIAL_ID`; destructive for `specialId`, which has no
+underscore left to camel-case across and arrived as `specialid`. Two things
+above the repository read a row by the name the entity declares and so found
+nothing: `shapeDates`, which is why a DATE reached a client as
+`1995-08-31T21:00:00.000Z` with a timezone the column never had, and
+`presentation/labels`, which is why `isLabel` did nothing on a view's
+`statusName`. The entity now settles the spelling (M1).
+
+This changes what 74% of fields are keyed by in every response. PhApp was
+already reading case-insensitively and documented why; the Java client reads the
+camelCase name and had been finding nothing.
+
 **Metadata measured against the live schema** — `Demo`, 935 tables
 
 | | |

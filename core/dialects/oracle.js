@@ -111,5 +111,22 @@ module.exports = {
   /** Wraps a placeholder so a date is read in the format its type declares. */
   toDate(placeholder, kind) {
     return `TO_DATE(${placeholder}, '${formatFor(kind, 'pattern')}')`;
+  },
+
+  /**
+   * An aggregate applied to a column.
+   *
+   * The seven that every engine spells the same way need no special case. Oracle has MEDIAN as an ordinary aggregate.
+   *
+   * @param {string} name A canonical name from core/query/aggregates
+   * @param {string} col The column, already quoted
+   * @returns {string}
+   * @throws {Error} When this engine has no way to spell it
+   */
+  aggregate(name, col) {
+    if (name === 'MEDIAN') {
+      return `MEDIAN(${col})`;
+    }
+    return `${name}(${col})`;
   }
 };

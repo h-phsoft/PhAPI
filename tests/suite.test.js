@@ -999,6 +999,83 @@ async function runAllTests() {
     assert.strictEqual(res.body.status, false, 'starts-with on a number should be refused');
   });
 
+  await testIntegration('A report filters, rather than returning the whole view', async () => {
+    // reportService read `params.filters` and nothing else, so a query screen's
+    // conditions were discarded and every /Query call answered with the first
+    // page of the view whatever the user asked for.
+    const all = await postAuthed('/UC/Phs/CodeStatus/Query', {});
+    assert.strictEqual(all.body.status, true, `unfiltered report failed: ${all.body.message}`);
+
+    const total = all.body.data.report.rows.length;
+    assert.ok(total > 1, `expected several statuses, got ${total}`);
+
+    const filtered = await postAuthed('/UC/Phs/CodeStatus/Query', {
+      conditions: [{ field: 'id', operator: '=', value: 1 }]
+    });
+
+    assert.strictEqual(filtered.body.data.report.rows.length, 1,
+      `expected one row, got ${filtered.body.data.report.rows.length} of ${total}`);
+  });
+
+  await testIntegration('A report answers where the Java client reads', async () => {
+    // PhsQuery reads response.data.report.rows. Without it every result looked
+    // empty to that client however many rows came back.
+    const res = await postAuthed('/UC/Phs/CodeStatus/Query', {});
+
+    assert.ok(res.body.data.report, 'no report object');
+    assert.ok(Array.isArray(res.body.data.report.rows), 'report.rows is not a list');
+    assert.deepStrictEqual(res.body.data.report.rows, res.body.data.data,
+      'the two shapes should carry the same rows');
+    assert.ok(res.body.data.report.columns.length > 0, 'no columns reported');
+  });
+
+  await testIntegration('A report orders by what it was asked to order by', async () => {
+    const descending = await postAuthed('/UC/Phs/CodeStatus/Query', {
+      order: [{ id: '-1' }]
+    });
+    const ids = descending.body.data.report.rows.map(row => Number(row.id));
+
+    assert.ok(ids.length > 1, 'not enough rows to prove an order');
+    const sorted = [...ids].sort((a, b) => b - a);
+    assert.deepStrictEqual(ids, sorted, `not in descending order: ${ids.join(', ')}`);
+  });
+
+  await testIntegration('A grouped report groups, in the database', async () => {
+    // One row per distinct value, with the count beside it -- not one row per
+    // underlying row. The aggregate is keyed `<field>_<FN>`.
+    const res = await postAuthed('/UC/Phs/CodeStatus/Query', {
+      group: ['statusId'],
+      aggregate: [{ Count: 'id' }]
+    });
+
+    assert.strictEqual(res.body.status, true, `grouped report failed: ${res.body.message}`);
+    const rows = res.body.data.report.rows;
+
+    assert.ok(rows.length > 0, 'a grouped report returned nothing');
+    assert.ok('idCount' in rows[0], `expected idCount, got ${Object.keys(rows[0]).join(', ')}`);
+
+    const distinct = new Set(rows.map(row => String(row.statusId)));
+    assert.strictEqual(distinct.size, rows.length, 'a grouped report repeated a group');
+  });
+
+  await testIntegration('An aggregate a column forbids is refused, not ignored', async () => {
+    const res = await postAuthed('/UC/Phs/CodeStatus/Query', {
+      group: ['id'],
+      aggregate: [{ Sum: 'name' }]
+    });
+
+    assert.strictEqual(res.body.status, false, 'SUM over a text column should be refused');
+  });
+
+  await testIntegration('An aggregate that is not an aggregate is refused', async () => {
+    const res = await postAuthed('/UC/Phs/CodeStatus/Query', {
+      group: ['id'],
+      aggregate: [{ 'COUNT(*) FROM Cpy_User--': 'id' }]
+    });
+
+    assert.strictEqual(res.body.status, false, 'a function name from a request must be refused');
+  });
+
   server.close();
 
   // -------------------------------------------------------------
