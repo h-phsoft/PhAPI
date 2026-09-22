@@ -401,6 +401,27 @@ that first used it meant, so `App_Id` carries the bundle's English "Count" and
 is now the label for every `appId` column. The remaining 1514 keys keep their
 generated readable default in both languages.
 
+**Saving a document, before `update` knew about children**
+
+| | |
+|---|---|
+| Child collections `update` handled | none |
+| Columns required on create AND refused on create | 10 |
+| Columns NOT NULL with a database default the validator still demanded | 366 |
+
+`create` handled children, `get` returned them and `delete` cascaded them; only
+`update` did not. It validated a payload allowed to carry them and handed it to
+a repository that builds its SET from the entity's own columns, so a child array
+was silently dropped — every line a user changed on a document screen was
+discarded while the save reported success.
+
+The validator refused two kinds of payload no client could form. A column that
+is NOT NULL with no default and `insert: false` was required and refused at
+once, which is why `pur/Purchase`, `pur/Returns` and `sales/Sales` could not be
+saved at all. And a NOT NULL column with a database default was demanded from
+the client, which is what PhApp's `blankValue` exists to work around: sending
+the default back by hand.
+
 **Saving, before the key was assigned**
 
 | | |

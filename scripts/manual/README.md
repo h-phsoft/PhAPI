@@ -32,3 +32,17 @@ TEST_LOGIN_USER=admin TEST_LOGIN_PASS=yourpassword node scripts/manual/testLogin
 
 Optional overrides: `TEST_LOGIN_TENANT` (default `1`), `TEST_LOGIN_PERIOD`
 (default `2026`). All of these scripts honour `PORT` from `.env`.
+
+## After a write test
+
+`tests/crud.test.js` with `RUN_WRITE_TESTS=1` creates rows in a real tenant and
+removes them again. This is the check that it did:
+
+```bash
+node scripts/manual/sweepWriteTests.js
+node scripts/manual/sweepWriteTests.js --apply
+```
+
+It scans every table a generated screen writes to for rows carrying the
+harness's `ZZTEST` marker. The answer should always be zero. `--apply` removes
+what it finds, children before masters.

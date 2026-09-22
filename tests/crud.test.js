@@ -195,6 +195,84 @@ async function runLive() {
     return out;
   }
 
+  /**
+   * Document screens it is safe to drive.
+   *
+   * `safeTargets` rules out anything with children, which is every document, so
+   * the rule has to be different rather than absent. What matters is the same
+   * thing: nothing may be left depending on a row this creates.
+   *
+   *   the master may be referenced by its own children -- that is what a
+   *   document is -- and by nothing else;
+   *   the child may be referenced by nothing at all.
+   */
+  async function safeDocuments() {
+    const prgs = await wrapper.query(
+      'SELECT ApiUrl, Url FROM Phs_MPrg WHERE Status_Id = 1', {});
+    const refs = await wrapper.query(
+      'SELECT rc.table_name AS child, pc.table_name AS parent FROM user_constraints rc '
+      + 'JOIN user_constraints pc ON rc.r_constraint_name = pc.constraint_name '
+      + "WHERE rc.constraint_type = 'R'", {});
+
+    /** parent table -> the tables referencing it */
+    const inbound = new Map();
+    for (const row of refs) {
+      const parent = String(row.PARENT).toUpperCase();
+      if (!inbound.has(parent)) {
+        inbound.set(parent, new Set());
+      }
+      inbound.get(parent).add(String(row.CHILD).toUpperCase());
+    }
+
+    const out = [];
+
+    for (const row of prgs) {
+      const url = String(row.APIURL || row.URL || '');
+      const screen = screenView.forProgram(url, context);
+      if (!screen || !screen.lines || screen.lines.length === 0 || !screen.form) {
+        continue;
+      }
+
+      const [pkg, name] = String(screen.entity).split('/');
+      const master = mainApp.getEntity(pkg, name);
+      if (!master) {
+        continue;
+      }
+
+      const lineTables = new Set();
+      let describedAll = true;
+      for (const line of screen.lines) {
+        const [linePkg, lineName] = String(line.entity).split('/');
+        const lineEntity = mainApp.getEntity(linePkg, lineName);
+        if (!lineEntity) {
+          describedAll = false;
+          break;
+        }
+        lineTables.add(String(lineEntity.tableName).toUpperCase());
+      }
+      if (!describedAll) {
+        continue;
+      }
+
+      // Anything referencing the master that is not one of its own lines.
+      const onMaster = inbound.get(String(master.tableName).toUpperCase()) || new Set();
+      const strangers = [...onMaster].filter(table => !lineTables.has(table));
+      if (strangers.length > 0) {
+        continue;
+      }
+
+      // Anything referencing a line at all.
+      const lineIsReferenced = [...lineTables].some(table => (inbound.get(table) || new Set()).size > 0);
+      if (lineIsReferenced) {
+        continue;
+      }
+
+      out.push(url);
+    }
+
+    return out;
+  }
+
   /** One existing id from a lookup table, or null when it has no rows. */
   async function anExistingId(lookupPath) {
     const parts = String(lookupPath).split('/').filter(Boolean);
@@ -249,6 +327,61 @@ async function runLive() {
     );
   }
 
+  /**
+   * What an error means: something this harness cannot reach, or a defect.
+   *
+   * A trigger raising ORA-20xxx is a business rule -- "Undefined Transaction 0"
+   * from fix/Disposals is the database refusing a disposal against no
+   * transaction -- and a harness filling values from column types cannot
+   * satisfy one. That is not the screen being wrong.
+   */
+  function classify(err) {
+    const message = String(err.message).split('\n')[0];
+
+    if (message.startsWith('NOPARENT')) {
+      return { outcome: 'skipped', why: 'nothing to reference' };
+    }
+    if (/ORA-00942|does not exist|doesn't exist/i.test(message)) {
+      return { outcome: 'skipped', why: 'the table is not in this copy' };
+    }
+    if (/ORA-02291|foreign key/i.test(message)) {
+      return { outcome: 'skipped', why: 'a guessed reference does not exist' };
+    }
+    if (/ORA-00001|unique constraint|duplicate/i.test(message)) {
+      return { outcome: 'skipped', why: 'collides with a row already there' };
+    }
+    if (/ORA-2\d{4}/.test(message)) {
+      return { outcome: 'skipped', why: `a business rule refused it: ${message}` };
+    }
+
+    const detail = Array.isArray(err.details) && err.details.length > 0
+      ? `${message} -- ${err.details.join('; ')}`
+      : message;
+    return { outcome: 'failed', why: detail };
+  }
+
+  /**
+   * Removes a row this harness created, whatever went wrong after.
+   *
+   * Every failure path runs it. A create that succeeded and a line that then
+   * collided leaves a document behind otherwise, which is data left in someone
+   * else's database -- and the cascade takes its lines with it.
+   *
+   * @returns {Promise<boolean>} Whether the row is gone
+   */
+  async function cleanUp(pkg, name, id) {
+    if (id === undefined || id === null) {
+      return true;
+    }
+    try {
+      await UnifiedService.delete(pkg, name, id, context);
+      const left = await UnifiedService.get(pkg, name, id, context);
+      return !left;
+    } catch {
+      return false;
+    }
+  }
+
   async function drive(programUrl) {
     const screen = screenView.forProgram(programUrl, context);
     const [pkg, name] = String(screen.entity).split('/');
@@ -287,25 +420,126 @@ async function runLive() {
 
       return { outcome: 'ok', id };
     } catch (err) {
-      const message = String(err.message).split('\n')[0];
+      const verdict = classify(err);
+      const removed = await cleanUp(pkg, name, id);
+      return { ...verdict, id: removed ? null : id };
+    }
+  }
 
-      if (message.startsWith('NOPARENT')) {
-        return { outcome: 'skipped', why: 'nothing to reference', id };
+  /**
+   * A document screen's lines, through the whole cycle.
+   *
+   * `update` used to ignore children entirely -- it validated a payload allowed
+   * to carry them and handed it to a repository that builds its SET from the
+   * entity's own columns, so every line a user changed was discarded while the
+   * save reported success. This drives the three cases the diff has to tell
+   * apart: a line that stays and is edited, a line that is added, and a line
+   * that is removed.
+   */
+  async function driveDocument(programUrl) {
+    const screen = screenView.forProgram(programUrl, context);
+    if (!screen || !screen.lines || screen.lines.length === 0) {
+      return { outcome: 'skipped', why: 'no lines' };
+    }
+
+    const [pkg, name] = String(screen.entity).split('/');
+    const line = screen.lines[0];
+    let id = null;
+
+    /** One line's worth of values, from what the line's own metadata says. */
+    const lineRow = async (pass) => {
+      const row = {};
+      for (const field of line.fields) {
+        if (field.name === line.primaryKey || field.name === line.foreignKey) {
+          continue;
+        }
+        if ((pass === 1 && field.noInsert) || (pass === 2 && field.noUpdate)) {
+          continue;
+        }
+
+        if (field.lookup || field.input === 'autocomplete') {
+          const ref = await anExistingId(field.lookup || '');
+          if (ref !== null) {
+            row[field.name] = ref;
+          } else if (field.required) {
+            throw new Error(`NOPARENT ${field.name}`);
+          } else {
+            row[field.name] = field.defaultValue !== undefined ? field.defaultValue : 0;
+          }
+          continue;
+        }
+
+        switch (field.input) {
+          case 'number': row[field.name] = pass; break;
+          case 'date': row[field.name] = pass === 1 ? '2026-01-01' : '2026-02-02'; break;
+          case 'datetime': row[field.name] = pass === 1 ? '2026-01-01 08:30:00' : '2026-02-02 09:45:00'; break;
+          case 'time': row[field.name] = pass === 1 ? '08:30:00' : '09:45:00'; break;
+          default: row[field.name] = `${MARK}${pass}`;
+        }
       }
-      if (/ORA-00942|does not exist|doesn't exist/i.test(message)) {
-        return { outcome: 'skipped', why: 'the table is not in this copy', id };
-      }
-      if (/ORA-02291|foreign key/i.test(message)) {
-        return { outcome: 'skipped', why: 'a guessed reference does not exist', id };
-      }
-      if (/ORA-00001|unique constraint|duplicate/i.test(message)) {
-        return { outcome: 'skipped', why: 'collides with a row already there', id };
+      return row;
+    };
+
+    try {
+      // Two lines to start with, so one can later be kept and one removed.
+      const body = await payloadFor(screen, 1);
+      body[line.childKey] = [await lineRow(1), await lineRow(1)];
+
+      const created = await UnifiedService.create(pkg, name, body, context);
+      id = created[screen.primaryKey] ?? created.id;
+      assert.ok(id !== undefined && id !== null, 'create returned no key');
+
+      const read = await UnifiedService.get(pkg, name, id, context);
+      const saved = read[line.childKey] || [];
+      assert.strictEqual(saved.length, 2,
+        `expected two lines back, got ${saved.length}`);
+      for (const row of saved) {
+        assert.strictEqual(String(row[line.foreignKey]), String(id),
+          `a line came back attached to ${row[line.foreignKey]}, not ${id}`);
       }
 
-      const detail = Array.isArray(err.details) && err.details.length > 0
-        ? `${message} -- ${err.details.join('; ')}`
-        : message;
-      return { outcome: 'failed', why: detail, id };
+      // Keep the first and edit it, drop the second, add a third.
+      // Only the key is carried over, not the whole row. Echoing a read row
+      // back re-sends the columns the server marks un-updatable, which a
+      // renderer that honours `noUpdate` does not do either.
+      const kept = { [line.primaryKey]: saved[0][line.primaryKey], ...(await lineRow(2)) };
+      const added = await lineRow(1);
+
+      const changes = await payloadFor(screen, 2);
+      changes[line.childKey] = [kept, added];
+      await UnifiedService.update(pkg, name, id, changes, context);
+
+      const again = await UnifiedService.get(pkg, name, id, context);
+      const now = again[line.childKey] || [];
+
+      assert.strictEqual(now.length, 2,
+        `after keeping one, dropping one and adding one: expected two lines, got ${now.length}`);
+
+      // The kept line kept its identity rather than being deleted and remade.
+      const survivor = now.find(row => String(row[line.primaryKey]) === String(saved[0][line.primaryKey]));
+      assert.ok(survivor, 'the kept line was renumbered; it should keep its key');
+
+      // And the dropped one is gone.
+      const dropped = now.find(row => String(row[line.primaryKey]) === String(saved[1][line.primaryKey]));
+      assert.ok(!dropped, 'the removed line is still there');
+
+      await UnifiedService.delete(pkg, name, id, context);
+      const gone = await UnifiedService.get(pkg, name, id, context);
+      assert.ok(!gone, `delete left row ${id}`);
+
+      // The cascade took the lines with it.
+      const orphans = await repository.find(
+        mainApp.getEntity(...String(line.entity).split('/')),
+        { filters: { [line.foreignKey]: id } },
+        context
+      );
+      assert.strictEqual(orphans.length, 0, `${orphans.length} line(s) outlived their document`);
+
+      return { outcome: 'ok', id };
+    } catch (err) {
+      const verdict = classify(err);
+      const removed = await cleanUp(pkg, name, id);
+      return { ...verdict, id: removed ? null : id };
     }
   }
 
@@ -333,7 +567,28 @@ async function runLive() {
       failures.map(f => `${f.target}: ${f.why}`).join(' | '));
   });
 
-  const leftover = results.filter(r => r.outcome !== 'ok' && r.id);
+  // --- documents, with their lines ---------------------------------------
+
+  const documents = await safeDocuments();
+
+  console.log(`\n--- Documents with lines, on ${documents.length} screen(s) ---`);
+
+  const docResults = [];
+  for (const target of documents) {
+    const result = await driveDocument(target);
+    docResults.push({ target, ...result });
+    const tick = result.outcome === 'ok' ? 'ok  ' : result.outcome === 'skipped' ? 'skip' : 'FAIL';
+    console.log(`  ${tick} ${target.padEnd(34)} ${result.outcome === 'ok' ? `document ${result.id}, two lines, one edited, one replaced, cascaded` : result.why}`);
+  }
+
+  const docFailures = docResults.filter(r => r.outcome === 'failed');
+
+  await test('a document saves, edits and removes its lines', async () => {
+    assert.strictEqual(docFailures.length, 0,
+      docFailures.map(f => `${f.target}: ${f.why}`).join(' | '));
+  });
+
+  const leftover = [...results, ...docResults].filter(r => r.outcome !== 'ok' && r.id);
   await test('nothing was left behind', async () => {
     assert.strictEqual(leftover.length, 0,
       `remove by hand: ${leftover.map(r => `${r.target} id=${r.id}`).join(', ')}`);

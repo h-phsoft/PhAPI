@@ -85,8 +85,37 @@ class UnifiedService {
         errors.push(`Field '${fieldName}' is read-only on update`);
       }
 
-      // Required fields check (isNull === false, not autonumber, not primaryKey on create)
-      if (!isUpdate && !fieldMeta.isNull && !fieldMeta.isAutonumber && fieldName !== entity.primaryKey) {
+      // Required: NOT NULL, not autonumber, not the key on a create -- and
+      // only where the caller could actually supply it.
+      //
+      // Two exemptions, both of which used to make a payload unsatisfiable:
+      //
+      //   A column the server refuses in this mode cannot be required in it.
+      //   Ten columns are NOT NULL with no default and `insert: false`, so a
+      //   create was rejected for omitting a value it would also have been
+      //   rejected for sending. pur/Purchase, pur/Returns and sales/Sales could
+      //   not be saved at all.
+      //
+      //   A column with a database default does not need one from the client.
+      //   366 columns are NOT NULL with a default, and demanding a value for
+      //   them is asking for something the database already knows -- which is
+      //   why PhApp carries a `blankValue` on every such field to send the
+      //   default back by hand.
+      //
+      // Neither weakens the constraint: NOT NULL with a DEFAULT is always
+      // populated, and a column the server will not write is not the client's
+      // to fill.
+      const refusedHere = isUpdate ? fieldMeta.update === false : fieldMeta.insert === false;
+      const hasDatabaseDefault = fieldMeta.Default !== undefined
+        && fieldMeta.Default !== null
+        && String(fieldMeta.Default) !== '';
+
+      if (!isUpdate
+        && !fieldMeta.isNull
+        && !fieldMeta.isAutonumber
+        && fieldName !== entity.primaryKey
+        && !refusedHere
+        && !hasDatabaseDefault) {
         if (!isPresent || val === null || val === undefined || val === '') {
           errors.push(`Field '${fieldName}' is required`);
         }
@@ -281,8 +310,134 @@ class UnifiedService {
     this.validatePayload(entity, data, true);
     this.injectAuditFields(entity, data, context, true);
 
-    const result = await repository.update(entity, id, data, context);
-    return result;
+    const childKeys = (entity.children || [])
+      .map((child) => child.childKey)
+      .filter((key) => Array.isArray(data[key]));
+
+    // Nothing nested: one statement, no transaction to open.
+    if (childKeys.length === 0) {
+      return repository.update(entity, id, data, context);
+    }
+
+    const tenantId = context.tenantId || 'default';
+    const poolWrapper = await connectionPool.getPool(tenantId);
+    const conn = await poolWrapper.getConnection();
+
+    try {
+      await conn.beginTransaction();
+      const txContext = { ...context, dbType: poolWrapper.dbType };
+
+      const result = await repository.update(entity, id, data, txContext, conn);
+
+      for (const childConfig of (entity.children || [])) {
+        if (!Array.isArray(data[childConfig.childKey])) {
+          continue;
+        }
+        await this.replaceChildren(packageName, entity, childConfig, id, data[childConfig.childKey], txContext, conn);
+      }
+
+      await conn.commit();
+      return result;
+    } catch (err) {
+      await conn.rollback();
+      throw err;
+    } finally {
+      conn.release();
+    }
+  }
+
+  /**
+   * Brings one child collection into line with what the client sent.
+   *
+   * `update` used to ignore children entirely: it validated a payload that was
+   * allowed to carry them, then handed it to a repository that builds its SET
+   * from the entity's own columns -- so a child array was silently dropped and
+   * every line a user changed on a document screen was discarded while the save
+   * reported success. `create` handled children, `get` returned them and
+   * `delete` cascaded them; only the middle of the four did not.
+   *
+   * The whole collection arrives, because that is what a line grid holds, so
+   * this is a replacement rather than a patch. It is diffed by key rather than
+   * emptied and refilled:
+   *
+   *   a row carrying a real key is updated, keeping its identity;
+   *   a row with no key, or 0, is inserted and autonumbered;
+   *   a row the payload no longer mentions is deleted.
+   *
+   * Emptying and refilling would be shorter and would renumber every line on
+   * every save, which loses anything referencing them and churns the sequence.
+   * The Java grid carries `id` and `mstId` as hidden columns for exactly this
+   * reason -- so the server can tell the three cases apart.
+   *
+   * The foreign key is set from the master's own key, never from the row: a
+   * client cannot reassign a line to another document by editing a field it was
+   * not asked for.
+   *
+   * @param {string} packageName
+   * @param {Object} entity The master entity
+   * @param {Object} childConfig One entry of entity.children
+   * @param {*} masterId
+   * @param {Object[]} rows What the client sent for this collection
+   * @param {Object} context Carries dbType, inside the caller's transaction
+   * @param {Object} conn The active connection
+   */
+  async replaceChildren(packageName, entity, childConfig, masterId, rows, context, conn) {
+    const childEntity = mainApp.getEntity(packageName, childConfig.table)
+      || mainApp.getEntityBySynonym(childConfig.synonym)
+      || mainApp.getEntityByTable(childConfig.table);
+
+    if (!childEntity) {
+      throw new Error(`Child entity metadata not found for ${childConfig.table}`);
+    }
+
+    const key = childEntity.primaryKey;
+
+    const existing = await repository.find(
+      childEntity, { filters: { [childConfig.foreignKey]: masterId } }, context
+    );
+    const existingIds = new Set(existing.map((row) => String(row[key])));
+
+    const keep = new Set();
+
+    for (const row of rows) {
+      const data = { ...row };
+      data[childConfig.foreignKey] = masterId;
+
+      const sent = data[key];
+      const isExisting = sent !== undefined && sent !== null && String(sent) !== '0'
+        && existingIds.has(String(sent));
+
+      if (isExisting) {
+        keep.add(String(sent));
+        this.validatePayload(childEntity, data, true);
+        this.injectAuditFields(childEntity, data, context, true);
+        await repository.update(childEntity, sent, data, context, conn);
+        continue;
+      }
+
+      // A new line. Whatever key came with it is not its key.
+      delete data[key];
+      this.validatePayload(childEntity, data, false);
+
+      for (const fieldMeta of childEntity.fields) {
+        if (fieldMeta.isAutonumber && fieldMeta.Autonumber) {
+          const generated = await AutoNumberHelper.generate(conn, context.dbType, fieldMeta, context);
+          if (generated !== null) {
+            data[fieldMeta.Field] = generated;
+          }
+        }
+      }
+
+      this.injectAuditFields(childEntity, data, context, false);
+      await repository.insert(childEntity, data, context, conn);
+    }
+
+    for (const row of existing) {
+      const rowKey = String(row[key]);
+      if (!keep.has(rowKey)) {
+        await repository.delete(childEntity, row[key], context, conn);
+      }
+    }
   }
 
   /**
