@@ -2,7 +2,8 @@
   "version": "1.0",
   "kind": "query",
   "program": "hr/pay/qry/EmployeeDeduction",
-  "entity": "Emp/EmployeeDeduction",
+  "entity": "Emp/EmployeeDeductionView",
+  "report": "Emp/EmployeeDeduction",
   "search": {
     "fields": [
       {
@@ -24,8 +25,132 @@
         ]
       },
       {
+        "name": "startDate",
+        "labelKey": "S.date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "endDate",
+        "labelKey": "E.date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
         "name": "statusId",
         "labelKey": "Status",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "amttypeId",
+        "labelKey": "Amount.Type",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dedAmt",
+        "labelKey": "Amount",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobId",
+        "labelKey": "Job",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "sectId",
+        "labelKey": "Section",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "deptId",
+        "labelKey": "Department",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "levelId",
+        "labelKey": "Emp.Level",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc1Id",
+        "labelKey": "Specification.1",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc2Id",
+        "labelKey": "Specification.2",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc3Id",
+        "labelKey": "Specification.3",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc4Id",
+        "labelKey": "Specification.4",
+        "input": "select",
         "operators": [
           "=",
           "!="

@@ -1,0 +1,509 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "sales/qry/s/Returns",
+  "entity": "Sales/ReturnView",
+  "report": "Sales/ReturnView",
+  "search": {
+    "fields": [
+      {
+        "name": "contId",
+        "labelKey": "Sal.contId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Contact/Autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "accId",
+        "labelKey": "Sal.accId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Acc/GrantedAccount/Autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "curnName",
+        "labelKey": "Sal.curnId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnRate",
+        "labelKey": "Sal.curnRate",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "regnId",
+        "labelKey": "Sal.regnId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Regions/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "reprName",
+        "labelKey": "Sal.reprId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Crm/Representatives/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "cmtId",
+        "labelKey": "Sal.cmtId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "cmv",
+        "labelKey": "Sal.cmv",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "com",
+        "labelKey": "Sal.com",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ccom",
+        "labelKey": "Sal.ccom",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "bcom",
+        "labelKey": "Sal.bcom",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "mstDdate",
+        "labelKey": "Sal.mstDdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "mstDocn",
+        "labelKey": "Sal.mstDocn",
+        "input": "number",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "mstDocd",
+        "labelKey": "Sal.mstDocd",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "mstRem",
+        "labelKey": "Sal.mstRem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "trnOrd",
+        "labelKey": "Sal.trnOrd",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "trnQnt",
+        "labelKey": "Sal.trnQnt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnWqnt",
+        "labelKey": "Sal.trnWqnt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnSwqnt",
+        "labelKey": "Sal.trnSwqnt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnPrice",
+        "labelKey": "Sal.trnPrice",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnCamt",
+        "labelKey": "Sal.trnCamt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnAmt",
+        "labelKey": "Sal.trnAmt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnBamt",
+        "labelKey": "Sal.trnBamt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "itemNum",
+        "labelKey": "Sal.itemNum",
+        "input": "number",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "itemPart",
+        "labelKey": "Sal.itemPart",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "itemLname",
+        "labelKey": "itemLname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "itemIname",
+        "labelKey": "itemIname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "itemFname",
+        "labelKey": "itemFname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "catName",
+        "labelKey": "Stor.catId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/ItemCategory/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "trnNlength",
+        "labelKey": "Sal.trnNlength",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnNwidth",
+        "labelKey": "Sal.trnNwidth",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnNheight",
+        "labelKey": "Sal.trnNheight",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnBarcode",
+        "labelKey": "Sal.trnBarcode",
+        "input": "number",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "trnLotser",
+        "labelKey": "Sal.trnLotser",
+        "input": "number",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "trnSdate",
+        "labelKey": "Sal.trnSdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnEdate",
+        "labelKey": "Sal.trnEdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnRem",
+        "labelKey": "Sal.trnRem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

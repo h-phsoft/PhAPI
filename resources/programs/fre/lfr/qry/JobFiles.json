@@ -1,0 +1,1016 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "fre/lfr/qry/JobFiles",
+  "entity": "Fre/LfrJobFreightView",
+  "report": "Fre/LfrJobFreightView",
+  "search": {
+    "fields": [
+      {
+        "name": "deptId",
+        "labelKey": "Fre.deptId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Fre.unitId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "operId",
+        "labelKey": "Fre.operId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "oferId",
+        "labelKey": "Fre.oferId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/Moffers/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "contId",
+        "labelKey": "Fre.contId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Crm/Contact/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "drivId",
+        "labelKey": "Fre.drivId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/Drivers/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "trukId",
+        "labelKey": "Fre.trackId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/Trucks/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "empId",
+        "labelKey": "Employee",
+        "input": "autocomplete",
+        "endpoint": "/UC/Emp/Employee/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "jobNum",
+        "labelKey": "Fre.Num",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobDate",
+        "labelKey": "Fre.dDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobDescr",
+        "labelKey": "Fre.Descr",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "itermId",
+        "labelKey": "Fre.itermId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ptermId",
+        "labelKey": "Fre.ptermId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ocntryId",
+        "labelKey": "Fre.ocntryId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/CodeCountry/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ocityId",
+        "labelKey": "Fre.ocityId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/CodeCity/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "oportId",
+        "labelKey": "Fre.oportId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/CodeCity/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "osportId",
+        "labelKey": "Fre.osportId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/CodeSeaports/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "oaportId",
+        "labelKey": "Fre.oaportId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/CodeAirports/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "jobOname",
+        "labelKey": "Fre.Oname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "jobOaddress",
+        "labelKey": "Fre.Oaddress",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "dcntryId",
+        "labelKey": "Fre.dcntryId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/CodeCountry/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dcityId",
+        "labelKey": "Fre.dcityId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/CodeCity/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dportId",
+        "labelKey": "Fre.dportId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/CodeCity/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dsportId",
+        "labelKey": "Fre.dsportId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/CodeSeaports/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "daportId",
+        "labelKey": "Fre.daportId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/CodeAirports/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "jobDname",
+        "labelKey": "Fre.Dname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "jobDaddress",
+        "labelKey": "Fre.Daddress",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "userId",
+        "labelKey": "Fre.userId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Users/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Fre.statusId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "delStatusId",
+        "labelKey": "Fre.dStatusId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "delNum",
+        "labelKey": "fre.delnum",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "delDate",
+        "labelKey": "Fre.deldate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "delName",
+        "labelKey": "Fre.delname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "jobShip",
+        "labelKey": "Fre.Ship",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "jobCons",
+        "labelKey": "Fre.Cons",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "jobDist",
+        "labelKey": "Fre.Dist",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobOdist",
+        "labelKey": "Fre.Odist",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobWnet",
+        "labelKey": "Fre.Wnet",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobWgros",
+        "labelKey": "Fre.Wgros",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobWchrg",
+        "labelKey": "Fre.Wchrg",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobVolume",
+        "labelKey": "Fre.Volume",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobEtd",
+        "labelKey": "Fre.Etd",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobEta",
+        "labelKey": "Fre.Eta",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobAtd",
+        "labelKey": "Fre.Atd",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobAta",
+        "labelKey": "Fre.Ata",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobMnum",
+        "labelKey": "Fre.Mnum",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "jobMdate",
+        "labelKey": "Fre.Mdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobHnum",
+        "labelKey": "Fre.Hnum",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "jobHdate",
+        "labelKey": "Fre.Hdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobNref",
+        "labelKey": "Fre.Nref",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "jobPorder",
+        "labelKey": "Fre.Porder",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "jobSdm",
+        "labelKey": "Fre.Sdm",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobLdm",
+        "labelKey": "Fre.Ldm",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobCbm",
+        "labelKey": "Fre.Cbm",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobOplace",
+        "labelKey": "Fre.Oplace",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "packId",
+        "labelKey": "Fre.packId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "kdoctypeId",
+        "labelKey": "Fre.kdoctypeId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "jobKdocnum",
+        "labelKey": "Fre.Kdocnum",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "jobKdocdate",
+        "labelKey": "Fre.Kdocdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobWaybill",
+        "labelKey": "Fre.Waybill",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "jobTruck",
+        "labelKey": "Fre.Truck",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "jobDriver",
+        "labelKey": "Fre.Driver",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "opstatusId",
+        "labelKey": "Fre.opstatusId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "jobOpsrem",
+        "labelKey": "Fre.Opsrem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "ttypeId",
+        "labelKey": "Fre.ttypeId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "jobOdmrge",
+        "labelKey": "Fre.Odmrge",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobDdmrge",
+        "labelKey": "Fre.Ddmrge",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobOverqnt",
+        "labelKey": "Fre.Overqnt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobArrodate",
+        "labelKey": "Fre.Arrodate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobLoaddate",
+        "labelKey": "Fre.Loaddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobDispdate",
+        "labelKey": "Fre.Dispdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobArrddate",
+        "labelKey": "Fre.Arrddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobUdate",
+        "labelKey": "Fre.Udate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobDocdate",
+        "labelKey": "Fre.Docdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobOrigrem",
+        "labelKey": "Fre.Origrem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "jobDestrem",
+        "labelKey": "Fre.Destrem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "coolingId",
+        "labelKey": "Fre.coolingId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "cancelId",
+        "labelKey": "Fre.cancelId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "jobRem",
+        "labelKey": "Fre.Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "jobVpath",
+        "labelKey": "Fre.Vpath",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "jobOverdist",
+        "labelKey": "Fre.Overdist",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "fix/qry/ResponsibilityStatistics",
+  "entity": "Fix/ResponsibilityView",
+  "report": "Fix/ResponsibilityStatistics",
+  "search": {
+    "fields": [
+      {
+        "name": "mstDate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "mstNum",
+        "labelKey": "Number",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnId",
+        "labelKey": "Serial",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "fixdFname",
+        "labelKey": "Asset",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Fix.Status",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "fixdSpc1Id",
+        "labelKey": "Fix.Spec.1",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "fixdSpc2Id",
+        "labelKey": "Fix.Spec.2",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "fixdSpc3Id",
+        "labelKey": "Fix.Spec.3",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "fixdSpc4Id",
+        "labelKey": "Fix.Spec.4",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "fixdSpc5Id",
+        "labelKey": "Fix.Spec.5",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc1Id",
+        "labelKey": "Spec.1",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc2Id",
+        "labelKey": "Spec.2",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc3Id",
+        "labelKey": "Spec.3",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc4Id",
+        "labelKey": "Spec.4",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc5Id",
+        "labelKey": "Spec.5",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loc1Id",
+        "labelKey": "Location.1",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loc2Id",
+        "labelKey": "Location.2",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loc3Id",
+        "labelKey": "Location.3",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      }
+    ]
+  }
+}

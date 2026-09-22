@@ -1,0 +1,97 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "por/qry/PurchaseRequest",
+  "entity": "Por/PurchaseMst",
+  "search": {
+    "fields": [
+      {
+        "name": "contId",
+        "labelKey": "Por.contId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Por.statusId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Por.curnId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "rate",
+        "labelKey": "Por.rate",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "Por.num",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Por.ddate",
+        "input": "autocomplete",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Por.rem",
+        "input": "autocomplete",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

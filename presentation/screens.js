@@ -249,6 +249,31 @@ function forProgram(programUrl, context = {}) {
     composed.order = screen.order;
   }
 
+  // The query definition this screen drives, where it drives one. The condition
+  // card says what may be asked; the definition says what comes back -- which
+  // columns are shown, in what order, which may be grouped and what may be
+  // aggregated over them. Neither source has the other's half, so a query
+  // screen needs both and is given both here rather than fetching twice.
+  if (screen.report) {
+    const [reportPkg, reportName] = String(screen.report).split('/');
+    const report = forReport(reportPkg, reportName, context);
+    if (report) {
+      composed.report = screen.report;
+      composed.reportEndpoint = report.endpoint;
+      composed.columns = report.fields.filter(field => field.display);
+      composed.groupable = report.fields.filter(field => field.group).map(field => field.name);
+      composed.aggregable = report.fields
+        .filter(field => Array.isArray(field.aggregate) && field.aggregate.length > 0)
+        .map(field => ({ name: field.name, label: field.label, aggregate: field.aggregate }));
+      composed.sortable = report.fields.filter(field => field.sort).map(field => field.name);
+
+      if (!composed.order && report.order) {
+        composed.order = report.order;
+      }
+      composed.dropped.push(...report.dropped);
+    }
+  }
+
   return composed;
 }
 

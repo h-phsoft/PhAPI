@@ -3,11 +3,13 @@
   "kind": "query",
   "program": "lrg/qry/risk/Statistics",
   "entity": "Lrg/Instrument",
+  "report": "Lrg/Instrument",
   "search": {
     "fields": [
       {
         "name": "dnum",
         "labelKey": "Dnum",
+        "input": "text",
         "operators": [
           "<>"
         ]

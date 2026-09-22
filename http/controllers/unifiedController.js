@@ -6,6 +6,7 @@ const requestOrigin = require('../requestOrigin');
 const ResultManager = require('../responseManager');
 const sendResult = require('../sendResult');
 const { localize } = require('../../presentation/labels');
+const screenView = require('../../presentation/screens');
 const i18nHelper = require('../../utils/i18nHelper');
 const { coercePage, coercePageSize } = require('../../utils/pagination');
 const accessPolicy = require('../../services/accessPolicy');
@@ -394,7 +395,14 @@ class UnifiedController {
     try {
       const { pkgName, reportName } = req.params;
 
-      const result = await reportService.init(pkgName, reportName);
+      // The query definition where there is one: field order, labels in the
+      // caller's language, which columns may be filtered and with which
+      // operators. `reportService.init` answers from the entity alone, which
+      // offers every column as a filter with no operator at all -- usable, but
+      // not the screen anyone designed.
+      const described = screenView.forReport(pkgName, reportName, req.context || {});
+      const result = described || await reportService.init(pkgName, reportName);
+
       res.status(200).json(ResultManager.ok(result));
     } catch (err) {
       next(err);

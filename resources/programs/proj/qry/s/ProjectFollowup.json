@@ -3,6 +3,7 @@
   "kind": "query",
   "program": "proj/qry/s/ProjectFollowup",
   "entity": "Proj/FollowupView",
+  "report": "Proj/FollowupView",
   "search": {
     "fields": [
       {

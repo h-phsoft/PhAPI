@@ -1,0 +1,913 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "pur/qry/Purchase",
+  "entity": "Pur/PurchaseView",
+  "report": "Pur/PurchaseView",
+  "search": {
+    "fields": [
+      {
+        "name": "mstId",
+        "labelKey": "Pur.mstId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "periodName",
+        "labelKey": "Pur.periodName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "contName",
+        "labelKey": "Pur.contName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "accName",
+        "labelKey": "Pur.accName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "docName",
+        "labelKey": "Pur.docName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "curnName",
+        "labelKey": "Pur.curnName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "curnRate",
+        "labelKey": "Pur.curnRate",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "bcurnName",
+        "labelKey": "Pur.bcurnName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "bcurnRate",
+        "labelKey": "Pur.bcurnRate",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "mstNum",
+        "labelKey": "Pur.mstNum",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "mstDdate",
+        "labelKey": "Pur.mstDdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "mstDocn",
+        "labelKey": "Pur.mstDocn",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "mstDocd",
+        "labelKey": "Pur.mstDocd",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "mstRem",
+        "labelKey": "Pur.mstRem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "dYear",
+        "labelKey": "Pur.dYear",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dMonth",
+        "labelKey": "Pur.dMonth",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dDayofmonth",
+        "labelKey": "Pur.dDayofmonth",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dDayofyear",
+        "labelKey": "Pur.dDayofyear",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dDayofweek",
+        "labelKey": "Pur.dDayofweek",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dYearmonth",
+        "labelKey": "Pur.dYearmonth",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "trnOrd",
+        "labelKey": "Pur.trnOrd",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "trnQnt",
+        "labelKey": "Pur.trnQnt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnWqnt",
+        "labelKey": "Pur.trnWqnt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnSwqnt",
+        "labelKey": "Pur.trnSwqnt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnPrice",
+        "labelKey": "Pur.trnPrice",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnCamt",
+        "labelKey": "Pur.trnCamt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnAmt",
+        "labelKey": "Pur.trnAmt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnBamt",
+        "labelKey": "Pur.trnBamt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "itemNum",
+        "labelKey": "Pur.itemNum",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "itemPart",
+        "labelKey": "Pur.itemPart",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "itemLname",
+        "labelKey": "Pur.itemLname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "itemIname",
+        "labelKey": "Pur.itemIname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "itemFname",
+        "labelKey": "Pur.itemFname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "statusName",
+        "labelKey": "Pur.statusName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "typeName",
+        "labelKey": "Pur.typeName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "mcostName",
+        "labelKey": "Pur.mcostName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "itemUnitName",
+        "labelKey": "Pur.itemUnitName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "catName",
+        "labelKey": "Pur.catName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "insaleName",
+        "labelKey": "Pur.insaleName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "seasonName",
+        "labelKey": "Pur.seasonName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "itemDwarnty",
+        "labelKey": "Pur.itemDwarnty",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "itemNofp",
+        "labelKey": "Pur.itemNofp",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "itemMinUnit",
+        "labelKey": "Pur.itemMinUnit",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "itemBox",
+        "labelKey": "Pur.itemBox",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "itemCprice",
+        "labelKey": "Pur.itemCprice",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "itemNprice",
+        "labelKey": "Pur.itemNprice",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "itemDprice",
+        "labelKey": "Pur.itemDprice",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "itemSprice",
+        "labelKey": "Pur.itemSprice",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "itemWprice",
+        "labelKey": "Pur.itemWprice",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "itemRprice",
+        "labelKey": "Pur.itemRprice",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "itemHprice",
+        "labelKey": "Pur.itemHprice",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "itemMprice",
+        "labelKey": "Pur.itemMprice",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "itemImage",
+        "labelKey": "Pur.itemImage",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "methodName",
+        "labelKey": "Pur.methodName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "unitName",
+        "labelKey": "Pur.unitName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "modelName",
+        "labelKey": "Pur.modelName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "colorName",
+        "labelKey": "Pur.colorName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "sizeName",
+        "labelKey": "Pur.sizeName",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "trnNlength",
+        "labelKey": "Pur.trnNlength",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnNwidth",
+        "labelKey": "Pur.trnNwidth",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnNheight",
+        "labelKey": "Pur.trnNheight",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnBarcode",
+        "labelKey": "Pur.trnBarcode",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "trnLotser",
+        "labelKey": "Pur.trnLotser",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "trnSdate",
+        "labelKey": "Pur.trnSdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnEdate",
+        "labelKey": "Pur.trnEdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "trnRem",
+        "labelKey": "Pur.trnRem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

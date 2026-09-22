@@ -1,0 +1,451 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "hr/hr/qry/EmployeeCard",
+  "entity": "Emp/EmployeeView",
+  "report": "Emp/Employee",
+  "search": {
+    "fields": [
+      {
+        "name": "empNum",
+        "labelKey": "Number",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "empNnum",
+        "labelKey": "ID.Number",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "empInum",
+        "labelKey": "Insurance.Number",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "empName",
+        "labelKey": "Name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "empFather",
+        "labelKey": "Father",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "empMother",
+        "labelKey": "Mother",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "empDbirth",
+        "labelKey": "Date.of.birth",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "genderId",
+        "labelKey": "Gender",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "militaryId",
+        "labelKey": "Military",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "natId",
+        "labelKey": "Nationality",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "maritalId",
+        "labelKey": "Martial",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "eduId",
+        "labelKey": "Education",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "langId",
+        "labelKey": "Language",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Employee.Status",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "managerId",
+        "labelKey": "Manager",
+        "input": "autocomplete",
+        "endpoint": "/UC/Emp/Employee/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "directorId",
+        "labelKey": "Director",
+        "input": "autocomplete",
+        "endpoint": "/UC/Emp/Employee/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "csdate",
+        "labelKey": "Coun.Start.Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "cedate",
+        "labelKey": "Coun.End.Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "userId",
+        "labelKey": "username",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Users/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "sdate",
+        "labelKey": "Work.Start.Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "edate",
+        "labelKey": "Work.End.Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "workshiftId",
+        "labelKey": "Working.Shift",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "deptId",
+        "labelKey": "Department",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "secId",
+        "labelKey": "Section",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "levelId",
+        "labelKey": "Emp.Level",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "jobId",
+        "labelKey": "Job",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spec1Id",
+        "labelKey": "Specification.1",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spec2Id",
+        "labelKey": "Specification.2",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spec3Id",
+        "labelKey": "Specification.3",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spec4Id",
+        "labelKey": "Specification.4",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "gradGrpId",
+        "labelKey": "Tgrad",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "gradsdate",
+        "labelKey": "Grad.Start.Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "graddays",
+        "labelKey": "Grad.Days",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "gradcons",
+        "labelKey": "Grad.Cons",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "gradpuns",
+        "labelKey": "Grad.Puns",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "vacdays",
+        "labelKey": "vacation.days",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "vachours",
+        "labelKey": "vacation.hours",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

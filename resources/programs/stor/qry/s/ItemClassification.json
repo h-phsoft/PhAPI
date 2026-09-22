@@ -1,0 +1,34 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "stor/qry/s/ItemClassification",
+  "entity": "Stor/ItemClassificationView",
+  "report": "Stor/ItemClassification",
+  "search": {
+    "fields": [
+      {
+        "name": "itemLName",
+        "labelKey": "Item",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Unit",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      }
+    ]
+  }
+}

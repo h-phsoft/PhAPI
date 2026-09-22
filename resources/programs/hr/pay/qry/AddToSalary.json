@@ -1,0 +1,297 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "hr/pay/qry/AddToSalary",
+  "entity": "Emp/AddonSalaryView",
+  "report": "Emp/AddonSalary",
+  "search": {
+    "fields": [
+      {
+        "name": "aosalNum",
+        "labelKey": "Num",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "aosalDdate",
+        "labelKey": "Ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "aosalDocn",
+        "labelKey": "aosalDocn",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "aosalDocd",
+        "labelKey": "aosalDocd",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "empId",
+        "labelKey": "Employee",
+        "input": "autocomplete",
+        "endpoint": "/UC/Emp/Employee/Autocomplete",
+        "operators": [
+          "="
+        ]
+      },
+      {
+        "name": "aosalempSal",
+        "labelKey": "aosalempSal",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "aosalempAmt",
+        "labelKey": "aosalempAmt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "codChngtypeId",
+        "labelKey": "codChngtypeName",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "codAffsalId",
+        "labelKey": "codAffsalName",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "taxbrktId",
+        "labelKey": "taxbrktName",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "aosalNyear",
+        "labelKey": "aosalNyear",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "aosalNmonth",
+        "labelKey": "aosalNmonth",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "aosalPerc",
+        "labelKey": "aosalPerc",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "aosalAmt",
+        "labelKey": "aosalAmt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "aosalNmin",
+        "labelKey": "aosalNmin",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "aosalNmax",
+        "labelKey": "aosalNmax",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobId",
+        "labelKey": "Job",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "sectId",
+        "labelKey": "Section",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "deptId",
+        "labelKey": "Department",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "levelId",
+        "labelKey": "Level",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc1Id",
+        "labelKey": "Specification.1",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc2Id",
+        "labelKey": "Specification.2",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc3Id",
+        "labelKey": "Specification.3",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc4Id",
+        "labelKey": "Specification.4",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "aosalempRem",
+        "labelKey": "aosalempRem",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "aosalRem",
+        "labelKey": "aosalRem",
+        "operators": [
+          "=",
+          "!="
+        ]
+      }
+    ]
+  }
+}

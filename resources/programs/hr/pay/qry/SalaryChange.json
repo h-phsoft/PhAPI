@@ -1,0 +1,206 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "hr/pay/qry/SalaryChange",
+  "entity": "Emp/ChangeSalaryView",
+  "report": "Emp/ChangeSalary",
+  "search": {
+    "fields": [
+      {
+        "name": "csalNum",
+        "labelKey": "Num",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "csalDdate",
+        "labelKey": "Ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "csalDocn",
+        "labelKey": "csalDocn",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "csalDocd",
+        "labelKey": "csalDocd",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "empId",
+        "labelKey": "Employee",
+        "input": "autocomplete",
+        "endpoint": "/UC/Emp/Employee/Autocomplete",
+        "operators": [
+          "="
+        ]
+      },
+      {
+        "name": "csalPerc",
+        "labelKey": "csalPerc",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "csalAmt",
+        "labelKey": "csalAmt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "csalNmin",
+        "labelKey": "csalNmin",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "csalNmax",
+        "labelKey": "csalNmax",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobId",
+        "labelKey": "Job",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "sectId",
+        "labelKey": "Section",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "deptId",
+        "labelKey": "Department",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "levelId",
+        "labelKey": "Level",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc1Id",
+        "labelKey": "Specification.1",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc2Id",
+        "labelKey": "Specification.2",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc3Id",
+        "labelKey": "Specification.3",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc4Id",
+        "labelKey": "Specification.4",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "csalRem",
+        "labelKey": "csalRem",
+        "operators": [
+          "=",
+          "!="
+        ]
+      }
+    ]
+  }
+}

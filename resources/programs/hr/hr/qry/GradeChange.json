@@ -2,9 +2,31 @@
   "version": "1.0",
   "kind": "query",
   "program": "hr/hr/qry/GradeChange",
-  "entity": "Emp/GradeChange",
+  "entity": "Emp/GradeChangeView",
+  "report": "Emp/GradeChange",
   "search": {
     "fields": [
+      {
+        "name": "cgradDdate",
+        "labelKey": "Date",
+        "operators": [
+          "<>"
+        ]
+      },
+      {
+        "name": "cgradNum",
+        "labelKey": "Number",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
       {
         "name": "empId",
         "labelKey": "Employee",
@@ -18,6 +40,7 @@
       {
         "name": "tgradOid",
         "labelKey": "Old.Grade",
+        "input": "select",
         "operators": [
           "=",
           "!="
@@ -26,6 +49,107 @@
       {
         "name": "tgradNid",
         "labelKey": "New.Grade",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "cgradDays",
+        "labelKey": "Days",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "cgradSdate",
+        "labelKey": "S.Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobId",
+        "labelKey": "Job",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "deptId",
+        "labelKey": "Department",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "sectId",
+        "labelKey": "Section",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "levelId",
+        "labelKey": "Level",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc1Id",
+        "labelKey": "Specification.1",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc2Id",
+        "labelKey": "Specification.2",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc3Id",
+        "labelKey": "Specification.3",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc4Id",
+        "labelKey": "Specification.4",
+        "input": "select",
         "operators": [
           "=",
           "!="

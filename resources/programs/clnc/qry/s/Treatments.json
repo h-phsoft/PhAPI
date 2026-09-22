@@ -1,0 +1,123 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "clnc/qry/s/Treatments",
+  "entity": "Clnc/TreatmentView",
+  "report": "Clnc/TreatmentView",
+  "search": {
+    "fields": [
+      {
+        "name": "clinicId",
+        "labelKey": "Clinic",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "doctorId",
+        "labelKey": "Doctor",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "patientId",
+        "labelKey": "Patient",
+        "input": "autocomplete",
+        "endpoint": "/UC/Clnc/Patient/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "patientGenderId",
+        "labelKey": "Patient.Gender",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "treatDate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "catId",
+        "labelKey": "Clnc.catId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "procId",
+        "labelKey": "Clnc.procId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Clnc/Procedures/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "procCode",
+        "labelKey": "Clnc.procCode",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "treatProcDdate",
+        "labelKey": "Clnc.treatProcDdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "treatProcDescr",
+        "labelKey": "Clnc.treatProcDescr",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

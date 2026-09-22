@@ -1,0 +1,1143 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "lrg/qry/grnt/Requests",
+  "entity": "Lrg/RequestView",
+  "report": "Lrg/ReqBeforeInstrument",
+  "search": {
+    "fields": [
+      {
+        "name": "reqId",
+        "labelKey": "ReqId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "lenderId",
+        "labelKey": "LenderName",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "lendbranId",
+        "labelKey": "LendbranName",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "prodId",
+        "labelKey": "ProdId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "borrowerId",
+        "labelKey": "BorrowerId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Lrg/Borrowers/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "userId",
+        "labelKey": "UserId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Users/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "projtypeId",
+        "labelKey": "ProjtypeId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "mpointerId",
+        "labelKey": "MpointerId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "cityId",
+        "labelKey": "CityId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "deptId",
+        "labelKey": "DeptId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitId",
+        "labelKey": "UnitId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "operId",
+        "labelKey": "OperId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "areaId",
+        "labelKey": "Area",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "concentId",
+        "labelKey": "Concent",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loantypeId",
+        "labelKey": "LoantypeId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "reqStatusDate",
+        "labelKey": "ReqStatusDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "reqStatusRemark",
+        "labelKey": "ReqStatusRemark",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dnum",
+        "labelKey": "Dnum",
+        "input": "text",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rdate",
+        "labelKey": "Rdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "lnum",
+        "labelKey": "Lnum",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ldate",
+        "labelKey": "Ldate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "reqLamt",
+        "labelKey": "ReqLamt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "reqGamt",
+        "labelKey": "ReqGamt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "reqGperc",
+        "labelKey": "ReqGperc",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "gamt",
+        "labelKey": "Gamt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "gperc",
+        "labelKey": "Gperc",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanNum",
+        "labelKey": "LoanNum",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanDate",
+        "labelKey": "LoanDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "loanLamt",
+        "labelKey": "LoanLamt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanGamt",
+        "labelKey": "LoanGamt",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanGperc",
+        "labelKey": "LoanGperc",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanPeriodId",
+        "labelKey": "LoanPeriodId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanPurposeId",
+        "labelKey": "LoanPurposeId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanAge",
+        "labelKey": "LoanAge",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanAgeId",
+        "labelKey": "LoanAgeId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "brwrNnum",
+        "labelKey": "BrwrNnum",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "sizeId",
+        "labelKey": "SizeId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanIspartialyId",
+        "labelKey": "LoanIspartialyId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "minperiod",
+        "labelKey": "Minperiod",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanPayments",
+        "labelKey": "LoanPayments",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "prodcapacity",
+        "labelKey": "Prodcapacity",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "target",
+        "labelKey": "Target",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "evalBank",
+        "labelKey": "EvalBank",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "evalVendor",
+        "labelKey": "EvalVendor",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "evalCustomer",
+        "labelKey": "EvalCustomer",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "evalOper",
+        "labelKey": "EvalOper",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "evalTax",
+        "labelKey": "EvalTax",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "evalIntrnal",
+        "labelKey": "EvalIntrnal",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "evalOther",
+        "labelKey": "EvalOther",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "evalExperience",
+        "labelKey": "EvalExperience",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "evalRem",
+        "labelKey": "EvalRem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "actvType",
+        "labelKey": "ActvType",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "actvPlace",
+        "labelKey": "ActvPlace",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "actvYincome",
+        "labelKey": "ActvYincome",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "actvMincome",
+        "labelKey": "ActvMincome",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "actvRem",
+        "labelKey": "ActvRem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "mainaddress",
+        "labelKey": "Mainaddress",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "subaddress",
+        "labelKey": "Subaddress",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "desMainactivity",
+        "labelKey": "DesMainactivity",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "desUnderfundactv",
+        "labelKey": "DesUnderfundactv",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "desLocalcategory",
+        "labelKey": "DesLocalcategory",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "desIndprospect",
+        "labelKey": "DesIndprospect",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "desIndorgs",
+        "labelKey": "DesIndorgs",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "desImppentration",
+        "labelKey": "DesImppentration",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "desIndbarries",
+        "labelKey": "DesIndbarries",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "desIndprofit",
+        "labelKey": "DesIndprofit",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "desIndsenscond",
+        "labelKey": "DesIndsenscond",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "desIndsenstechfact",
+        "labelKey": "DesIndsenstechfact",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "desIndsenstech",
+        "labelKey": "DesIndsenstech",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "desAge",
+        "labelKey": "DesAge",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "desAgeunderfinance",
+        "labelKey": "DesAgeunderfinance",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "desOutletproducts",
+        "labelKey": "DesOutletproducts",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "desRawmaterialsrc",
+        "labelKey": "DesRawmaterialsrc",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "desCompeposition",
+        "labelKey": "DesCompeposition",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "desProdactvunderfund",
+        "labelKey": "DesProdactvunderfund",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "desProdactvotherunderfund",
+        "labelKey": "DesProdactvotherunderfund",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "desFlexactvdemand",
+        "labelKey": "DesFlexactvdemand",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "desCompeposactvprods",
+        "labelKey": "DesCompeposactvprods",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "desRem",
+        "labelKey": "DesRem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "admOccupation",
+        "labelKey": "AdmOccupation",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "admActualemps",
+        "labelKey": "AdmActualemps",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "admPlanemps",
+        "labelKey": "AdmPlanemps",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "admAcademic",
+        "labelKey": "AdmAcademic",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "admTechexper",
+        "labelKey": "AdmTechexper",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "admAdmtechexper",
+        "labelKey": "AdmAdmtechexper",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "admJobspec",
+        "labelKey": "AdmJobspec",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "admCarrer",
+        "labelKey": "AdmCarrer",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "admAuthresp",
+        "labelKey": "AdmAuthresp",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "admMngrole",
+        "labelKey": "AdmMngrole",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "admSystems",
+        "labelKey": "AdmSystems",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "admVisitoutput",
+        "labelKey": "AdmVisitoutput",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "admRem",
+        "labelKey": "AdmRem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "reqRem",
+        "labelKey": "ReqRem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

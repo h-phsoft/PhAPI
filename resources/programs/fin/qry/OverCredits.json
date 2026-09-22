@@ -1,0 +1,281 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "fin/qry/OverCredits",
+  "entity": "Fin/InvoiceMst",
+  "report": "Fin/InvoiceMst",
+  "search": {
+    "fields": [
+      {
+        "name": "deptId",
+        "labelKey": "Fin.deptId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Fin.unitId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "operId",
+        "labelKey": "Fin.operId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "periodId",
+        "labelKey": "Fin.periodId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "deptRid",
+        "labelKey": "Fin.deptRid",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitRid",
+        "labelKey": "Fin.unitRid",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "operRid",
+        "labelKey": "Fin.operRid",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "srcId",
+        "labelKey": "Fin.srcId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "trtId",
+        "labelKey": "Fin.trtId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Fin.statusId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "methodId",
+        "labelKey": "Fin.methodId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "contId",
+        "labelKey": "Fin.contId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "vhrId",
+        "labelKey": "Fin.vhrId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "bankId",
+        "labelKey": "Fin.bankId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ordId",
+        "labelKey": "Fin.ordId",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "num",
+        "labelKey": "Fin.num",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Fin.ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "refnum",
+        "labelKey": "Fin.refnum",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "contractId",
+        "labelKey": "Fin.contractId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "keytypeId",
+        "labelKey": "Fin.keytypeId",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "keynum",
+        "labelKey": "Fin.keynum",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "keydate",
+        "labelKey": "Fin.keydate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "duedate",
+        "labelKey": "Fin.duedate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Fin.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "note",
+        "labelKey": "Fin.note",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

@@ -3,6 +3,7 @@
   "kind": "query",
   "program": "proj/qry/s/Invoice",
   "entity": "Proj/InvoiceView",
+  "report": "Proj/InvoiceView",
   "search": {
     "fields": [
       {

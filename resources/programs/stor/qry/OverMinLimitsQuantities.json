@@ -1,0 +1,35 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "stor/qry/OverMinLimitsQuantities",
+  "entity": "Stor/StoresMaterialesView",
+  "report": "Stor/OverMinLimit",
+  "search": {
+    "fields": [
+      {
+        "name": "storId",
+        "labelKey": "Store",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/Stores/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "itemFname",
+        "labelKey": "Item",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

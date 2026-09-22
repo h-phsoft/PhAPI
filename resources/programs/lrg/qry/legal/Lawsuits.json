@@ -3,11 +3,13 @@
   "kind": "query",
   "program": "lrg/qry/legal/Lawsuits",
   "entity": "Lrg/RequestSuitsView",
+  "report": "Lrg/RequestSuitsView",
   "search": {
     "fields": [
       {
         "name": "lenderId",
         "labelKey": "lender",
+        "input": "select",
         "operators": [
           "=",
           "!="
@@ -15,11 +17,13 @@
       },
       {
         "name": "borrowerId",
-        "labelKey": "BorrowerName"
+        "labelKey": "BorrowerName",
+        "input": "text"
       },
       {
         "name": "dnum",
         "labelKey": "Dnum",
+        "input": "text",
         "operators": [
           "<>"
         ]
@@ -27,6 +31,7 @@
       {
         "name": "loantypeId",
         "labelKey": "loantypeName",
+        "input": "select",
         "operators": [
           "=",
           "!="
@@ -35,6 +40,7 @@
       {
         "name": "areaId",
         "labelKey": "Area",
+        "input": "select",
         "operators": [
           "=",
           "!="
@@ -43,6 +49,7 @@
       {
         "name": "cityId",
         "labelKey": "CityId",
+        "input": "select",
         "operators": [
           "=",
           "!="
@@ -51,6 +58,7 @@
       {
         "name": "loantypeId",
         "labelKey": "Loantype",
+        "input": "select",
         "operators": [
           "=",
           "!="
@@ -59,6 +67,7 @@
       {
         "name": "loanPeriodId",
         "labelKey": "LoanPeriodInstall",
+        "input": "select",
         "operators": [
           "=",
           "!="
@@ -67,6 +76,7 @@
       {
         "name": "loanPurposeId",
         "labelKey": "LoanPurpose",
+        "input": "select",
         "operators": [
           "=",
           "!="
@@ -75,6 +85,7 @@
       {
         "name": "loanIspartialyId",
         "labelKey": "AgeName",
+        "input": "select",
         "operators": [
           "=",
           "!="
@@ -83,6 +94,7 @@
       {
         "name": "loanIspartialyId",
         "labelKey": "LoanIspartialyId",
+        "input": "select",
         "operators": [
           "=",
           "!="
@@ -91,6 +103,7 @@
       {
         "name": "loanIspaymentsId",
         "labelKey": "LoanisPaymentsId",
+        "input": "select",
         "operators": [
           "=",
           "!="

@@ -2,15 +2,58 @@
   "version": "1.0",
   "kind": "query",
   "program": "hr/pay/qry/CompensationTypes",
-  "entity": "Emp/Compensation",
+  "entity": "Emp/CompensationView",
+  "report": "Emp/Compensation",
   "search": {
     "fields": [
       {
+        "name": "compId",
+        "labelKey": "compName",
+        "input": "autocomplete",
+        "endpoint": "/UC/Emp/Compensation/Autocomplete",
+        "operators": [
+          "="
+        ]
+      },
+      {
         "name": "comtypeId",
         "labelKey": "comtypeName",
+        "input": "select",
         "operators": [
           "=",
           "!="
+        ]
+      },
+      {
+        "name": "taxbrktId",
+        "labelKey": "taxbrktName",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "amttypeId",
+        "labelKey": "Amount.Type",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "compPamt",
+        "labelKey": "compPamt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
         ]
       }
     ]

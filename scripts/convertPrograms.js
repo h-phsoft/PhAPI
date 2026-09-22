@@ -37,6 +37,7 @@ const ROOT = path.join(__dirname, '..');
 const PROGRAMS = path.join(ROOT, 'resources', 'programs');
 
 const mainApp = require('../metadata/registry');
+const screens = require('../metadata/screens');
 const { operatorsFor } = require('../core/query/conditions');
 // The same derivation the renderer uses, so "the entity already implies this"
 // means the same thing at conversion time as it does at render time. Two copies
@@ -102,20 +103,58 @@ function operatorTokens(constantsPath) {
 // Conversion
 // ---------------------------------------------------------------------------
 
-/** The entity a page's `/UC/Pkg/Name` endpoint names, as this project has it. */
-function resolveEntity(api) {
+/**
+ * The entity a page's `/UC/Pkg/Name` endpoint names, as this project has it.
+ *
+ * For a query page the name is not always a table. `/UC/Fix/Inbound` is the
+ * query definition `Fix/Inbound`, whose entity is the view `Fix/InboundView`,
+ * and reading only the entity registry dropped every query page whose
+ * definition is named after the screen rather than the view.
+ *
+ * For a form page it is always the table, and the definitions must NOT be
+ * consulted: `/UC/Emp/Deduction` is both the table `Emp_Deduction` and a
+ * definition whose entity is the view `Emp_Deduction_View`, and resolving the
+ * form to the view would point an entry screen at something it cannot write to.
+ * That cost 190 form fields when the lookup was shared.
+ *
+ * @param {string} api The page's endpoint
+ * @param {string} kind 'form' or 'query'
+ * @returns {{key: string, entity: Object, report: string|null}|null}
+ */
+function resolveEntity(api, kind = 'query') {
   const parts = String(api || '').split('/').filter(Boolean);
   const at = parts.findIndex((p) => p === 'UC' || p === 'CC');
   if (at === -1 || parts.length < at + 3) {
     return null;
   }
 
-  const entity = mainApp.getEntity(parts[at + 1], parts[at + 2]);
+  const pkg = parts[at + 1];
+  const name = parts[at + 2];
+  const definition = kind === 'query' ? screens.getReport(pkg, name) : null;
+
+  let entity = null;
+  let report = null;
+
+  if (definition && definition.entity) {
+    const [dpkg, dname] = String(definition.entity).split('/');
+    entity = mainApp.getEntity(dpkg, dname);
+    if (entity) {
+      report = `${pkg}/${name}`;
+    }
+  }
+
+  if (!entity) {
+    entity = mainApp.getEntity(pkg, name);
+    if (entity && kind === 'query' && screens.getReport(pkg, name)) {
+      report = `${pkg}/${name}`;
+    }
+  }
+
   if (!entity) {
     return null;
   }
 
-  return { key: `${entity.package}/${path.basename(entity.sourcePath || '', '.json')}`, entity };
+  return { key: `${entity.package}/${path.basename(entity.sourcePath || '', '.json')}`, entity, report };
 }
 
 /**
@@ -194,7 +233,13 @@ function inputFor(field, meta) {
     return 'autocomplete';
   }
 
-  const stated = COMPONENT_INPUT[field.component];
+  // `aQFields` spells it `component`; a PhsQuery or PhQForm condition card
+  // spells the same thing `componentType`. Reading only the first left every
+  // card field to be derived from its column, so a select over a view's
+  // reference column -- which has no relation to derive from -- came out as a
+  // plain number input.
+  const declared = field.component !== undefined ? field.component : field.componentType;
+  const stated = COMPONENT_INPUT[declared];
   if (stated && meta && stated !== derivedInput(meta)) {
     return stated;
   }
@@ -336,7 +381,7 @@ function conditionCards(options) {
  * @returns {{screen: Object, dropped: string[]}|null}
  */
 function convert(page, tokens) {
-  const resolved = resolveEntity(page.api);
+  const resolved = resolveEntity(page.api, page.kind === 'form' ? 'form' : 'query');
   if (!resolved) {
     return null;
   }
@@ -388,6 +433,13 @@ function convert(page, tokens) {
     program: page.program,
     entity: key
   };
+
+  // The query definition this screen drives, where it drives one. It carries
+  // what the condition card cannot: which columns are shown, which may be
+  // grouped, and what may be aggregated over them.
+  if (resolved.report) {
+    screen.report = resolved.report;
+  }
 
   if (form.length > 0) {
     screen.form = { fields: form };
@@ -443,6 +495,8 @@ function main() {
 
   const tokens = operatorTokens(constantsPath);
   mainApp.loadMetadata([path.join(ROOT, 'resources', 'modules')]);
+  // The query definitions, so a page addressing one by name resolves.
+  screens.load({ reports: path.join(ROOT, 'resources', 'screens') });
 
   const only = typeof args.only === 'string' ? args.only.toLowerCase() : null;
 
@@ -473,7 +527,7 @@ function main() {
 
     const result = convert({ ...raw, api, program }, tokens);
     if (!result) {
-      if (!resolveEntity(api)) {
+      if (!resolveEntity(api, raw.kind === 'form' ? 'form' : 'query')) {
         noEntity++;
         unresolved.push(`${program} -> ${api || '(no endpoint)'}`);
       } else {

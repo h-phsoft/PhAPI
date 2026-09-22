@@ -1,4 +1,5 @@
 const mainApp = require('../metadata/registry');
+const screens = require('../metadata/screens');
 const repository = require('../repository/unifiedRepository');
 const Report = require('../models/report');
 const { coercePage, coercePageSize } = require('../utils/pagination');
@@ -59,31 +60,80 @@ class ReportService {
    * @throws {Error} When no metadata is registered for the report
    */
   resolve(pkgName, reportName) {
-    const entity = mainApp.getEntity(pkgName, reportName);
+    // A report name is not always an entity name. `/UC/Acc/Budget/Query` names
+    // the query definition `Acc/Budget`, whose entity is `Acc/BudgetView`, and
+    // looking only in the entity registry made 60 of the 548 definitions
+    // unreachable -- every one of them answering "Report metadata not found"
+    // for a report that is right there on disk.
+    //
+    // The definition is asked first because it is the specific answer, and the
+    // entity registry still answers for the 488 whose name is a table.
+    const definition = screens.getReport(pkgName, reportName);
+
+    let entity = null;
+    if (definition && definition.entity) {
+      const [pkg, name] = String(definition.entity).split('/');
+      entity = mainApp.getEntity(pkg, name);
+    }
+    if (!entity) {
+      entity = mainApp.getEntity(pkgName, reportName);
+    }
+
     if (!entity) {
       throw new Error(`Report metadata not found for ${pkgName}/${reportName}`);
     }
-    return { entity, report: this.toReport(entity, reportName) };
+
+    return { entity, definition, report: this.toReport(entity, reportName, definition) };
   }
 
   /**
-   * Projects entity metadata onto the Report shape the client expects.
+   * Projects a report onto the shape the client expects.
+   *
+   * With a query definition, its field list decides: the columns it marks for
+   * display are the report's columns, and the ones it marks filterable are its
+   * parameters. Without one, every column of the entity is both -- which is
+   * what this always did, and is why the definitions mattered: an entity
+   * flattened this way offers a hundred filters, none of them with an operator,
+   * where the screen offered twelve.
+   *
+   * @param {Object} entity Entity metadata
+   * @param {string} reportName
+   * @param {Object} [definition] The query definition, when one exists
    * @returns {Report}
    */
-  toReport(entity, reportName) {
-    const fields = (entity.fields || []).map((field) => ({
-      name: field.Field,
-      label: field.Name,
-      type: field.Type || 'String'
-    }));
+  toReport(entity, reportName, definition = null) {
+    const declared = definition && Array.isArray(definition.fields) ? definition.fields : null;
+    const byName = new Map((entity.fields || []).map(f => [String(f.Field).toLowerCase(), f]));
 
-    return new Report({
-      name: entity.tableName || reportName,
-      title: entity.synonym || entity.tableName || reportName,
-      description: entity.module || entity.package || '',
-      fields,
-      // Any queryable field can be supplied as a filter.
-      parameters: (entity.fields || [])
+    /** A declared field, paired with the column it names. */
+    const paired = (declared || [])
+      .map(field => ({ field, meta: byName.get(String(field.name).toLowerCase()) }))
+      .filter(pair => pair.meta);
+
+    const asColumn = ({ field, meta }) => ({
+      name: meta.Field,
+      label: meta.Name,
+      type: meta.Type || 'String'
+    });
+
+    const fields = declared
+      ? paired.filter(pair => pair.field.display !== false).map(asColumn)
+      : (entity.fields || []).map(field => ({
+        name: field.Field,
+        label: field.Name,
+        type: field.Type || 'String'
+      }));
+
+    const parameters = declared
+      ? paired.filter(pair => pair.field.filter).map(({ field, meta }) => ({
+        name: meta.Field,
+        label: meta.Name,
+        type: meta.Type || 'String',
+        required: false,
+        defaultValue: meta.Default !== '' ? meta.Default : null,
+        operators: field.operators || []
+      }))
+      : (entity.fields || [])
         .filter((field) => field.query !== false)
         .map((field) => ({
           name: field.Field,
@@ -91,7 +141,14 @@ class ReportService {
           type: field.Type || 'String',
           required: false,
           defaultValue: field.Default !== '' ? field.Default : null
-        })),
+        }));
+
+    return new Report({
+      name: entity.tableName || reportName,
+      title: entity.synonym || entity.tableName || reportName,
+      description: entity.module || entity.package || '',
+      fields,
+      parameters,
       chartConfig: null,
       dashboard: false
     });

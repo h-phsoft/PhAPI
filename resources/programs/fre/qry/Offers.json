@@ -1,0 +1,524 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "fre/qry/Offers",
+  "entity": "Fre/OfferView",
+  "report": "Fre/OfferView",
+  "search": {
+    "fields": [
+      {
+        "name": "deptId",
+        "labelKey": "Fre.deptId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Departments/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Fre.unitId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/DepartmentUnit/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "operId",
+        "labelKey": "Fre.operId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/UnitOperations/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "inqryId",
+        "labelKey": "Fre.inqryId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/Minqueries/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "userId",
+        "labelKey": "Fre.userId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cpy/Users/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "contId",
+        "labelKey": "Fre.contId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Crm/Contact/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "clearanceId",
+        "labelKey": "Fre.Clearance",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "offerNum",
+        "labelKey": "Fre.Num",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "offerDate",
+        "labelKey": "Fre.dDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "offerVdate",
+        "labelKey": "Fre.Vdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "offerFolowdate",
+        "labelKey": "Fre.Folowdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "itermId",
+        "labelKey": "Fre.itermId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ptermId",
+        "labelKey": "Fre.ptermId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ocntryId",
+        "labelKey": "Fre.ocntryId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/CodeCountry/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ocityId",
+        "labelKey": "Fre.ocityId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/CodeCity/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "oportId",
+        "labelKey": "Fre.oportId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/CodeCity/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "osportId",
+        "labelKey": "Fre.osportId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/CodeSeaports/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "oaportId",
+        "labelKey": "Fre.oaportId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/CodeAirports/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "offerOaddress",
+        "labelKey": "fre.Oaddress",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "dcntryId",
+        "labelKey": "Fre.dcntryId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/CodeCountry/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dcityId",
+        "labelKey": "Fre.dcityId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/CodeCity/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dportId",
+        "labelKey": "Fre.dportId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/CodeCity/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dsportId",
+        "labelKey": "Fre.dsportId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/CodeSeaports/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "daportId",
+        "labelKey": "Fre.daportId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/CodeAirports/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "offerDaddress",
+        "labelKey": "Fre.Daddress",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "offerQnt",
+        "labelKey": "Fre.Qnt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "offerWnet",
+        "labelKey": "Fre.Wnet",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "offerWgros",
+        "labelKey": "Fre.Wgros",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "offerWchrg",
+        "labelKey": "Fre.Wchrg",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "offerLdm",
+        "labelKey": "Fre.Ldm",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "offerCbm",
+        "labelKey": "Fre.Cbm",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "offerEtd",
+        "labelKey": "Fre.Etd",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "offerEta",
+        "labelKey": "Fre.Eta",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "offerVcomod",
+        "labelKey": "Fre.Vcomod",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "offerShip",
+        "labelKey": "Fre.Ship",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "offerCons",
+        "labelKey": "Fre.Cons",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "offerOffer",
+        "labelKey": "Fre.Offer",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Fre.statusId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statustypeId",
+        "labelKey": "Fre.statustypeId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "offerTerms",
+        "labelKey": "Fre.Terms",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "offerCust",
+        "labelKey": "Fre.Cust",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "offerCperson",
+        "labelKey": "Fre.Cperson",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "offerRem",
+        "labelKey": "Fre.Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

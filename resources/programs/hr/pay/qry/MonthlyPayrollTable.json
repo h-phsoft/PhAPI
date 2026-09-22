@@ -1,0 +1,122 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "hr/pay/qry/MonthlyPayrollTable",
+  "entity": "Emp/SalariesCalculationView",
+  "report": "Emp/SalariesCalculation",
+  "search": {
+    "fields": [
+      {
+        "name": "empId",
+        "labelKey": "Employee",
+        "input": "text",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "salYear",
+        "labelKey": "Year",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "salMonth",
+        "labelKey": "Month",
+        "operators": [
+          "<>"
+        ]
+      },
+      {
+        "name": "bankstatusId",
+        "labelKey": "Bank.Status",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "deptId",
+        "labelKey": "Department",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "sectId",
+        "labelKey": "Section",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "levelId",
+        "labelKey": "Emp.Level",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "jobId",
+        "labelKey": "Job",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc1Id",
+        "labelKey": "Specification.1",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc2Id",
+        "labelKey": "Specification.2",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc3Id",
+        "labelKey": "Specification.3",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc4Id",
+        "labelKey": "Specification.4",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      }
+    ]
+  }
+}

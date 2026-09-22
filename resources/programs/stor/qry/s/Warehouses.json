@@ -1,0 +1,30 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "stor/qry/s/Warehouses",
+  "entity": "Stor/StoresView",
+  "report": "Stor/Stores",
+  "search": {
+    "fields": [
+      {
+        "name": "storId",
+        "labelKey": "Store",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/Stores/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      }
+    ]
+  }
+}

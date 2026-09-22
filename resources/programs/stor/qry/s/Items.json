@@ -1,0 +1,43 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "stor/qry/s/Items",
+  "entity": "Stor/ItemView",
+  "report": "Stor/Items",
+  "search": {
+    "fields": [
+      {
+        "name": "itemLName",
+        "labelKey": "Item",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Unit",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      }
+    ]
+  }
+}

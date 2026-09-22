@@ -1,0 +1,94 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "fund/qry/s/Statistics",
+  "entity": "Fund/DiaryView",
+  "report": "Fund/DiaryView",
+  "search": {
+    "fields": [
+      {
+        "name": "boxId",
+        "labelKey": "Fund.Fund",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Fund.Date",
+        "operators": [
+          "<>",
+          "><",
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<="
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Type",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Fund.Currency",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "camt",
+        "labelKey": "Currency.Amount",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "amt",
+        "labelKey": "fund.Local.Amount",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "rem",
+        "labelKey": "Remarks",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

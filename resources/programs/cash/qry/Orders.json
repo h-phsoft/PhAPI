@@ -1,0 +1,337 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "cash/qry/Orders",
+  "entity": "Cash/OrderView",
+  "report": "Cash/OrderView",
+  "search": {
+    "fields": [
+      {
+        "name": "deptId",
+        "labelKey": "Cash.deptId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Cash.unitId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "operId",
+        "labelKey": "Cash.operId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "contId",
+        "labelKey": "Cash.contId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Crm/Contact/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "servId",
+        "labelKey": "Cash.servId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Services/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "cboxId",
+        "labelKey": "Cash.cboxId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Cash/Boxes/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ordInsdate",
+        "labelKey": "Cash.Insdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ordNum",
+        "labelKey": "Cash.Num",
+        "input": "autocomplete",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ordDdate",
+        "labelKey": "Cash.Ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ordEdate",
+        "labelKey": "Cash.Edate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ordExecdate",
+        "labelKey": "Cash.Execdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ordRnum",
+        "labelKey": "Cash.Rnum",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Cash.curnId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnRate",
+        "labelKey": "Cash.curnRate",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ordCurnRate",
+        "labelKey": "Cash.CurnRate",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ordCamt",
+        "labelKey": "Cash.Camt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ordAmt",
+        "labelKey": "Cash.Amt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "bExcamt",
+        "labelKey": "Excamt",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "bExamt",
+        "labelKey": "ExAmt",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Cash.statusId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ordStatusDate",
+        "labelKey": "Cash.StatusDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "ordStatusDescr",
+        "labelKey": "Cash.StatusDescr",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "dstatusId",
+        "labelKey": "Cash.dstatusId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ordDcamt",
+        "labelKey": "Cash.Dcamt",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ordDamt",
+        "labelKey": "Cash.Damt",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ordBankId",
+        "labelKey": "Cash.BankId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Bank/Accounts/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ordCityId",
+        "labelKey": "Cash.CityId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ordReason",
+        "labelKey": "Cash.Reason",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "ordRem",
+        "labelKey": "Cash.Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

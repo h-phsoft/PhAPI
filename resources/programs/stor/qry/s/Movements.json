@@ -1,0 +1,35 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "stor/qry/s/Movements",
+  "entity": "Stor/TransactionsView",
+  "report": "Stor/Transactions",
+  "search": {
+    "fields": [
+      {
+        "name": "storId",
+        "labelKey": "Store",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/Stores/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "mstNum",
+        "labelKey": "Number",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      }
+    ]
+  }
+}

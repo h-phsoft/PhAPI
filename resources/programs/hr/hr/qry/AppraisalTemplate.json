@@ -1,0 +1,66 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "hr/hr/qry/AppraisalTemplate",
+  "entity": "Emp/AppraisalTemplatesView",
+  "report": "Emp/AppraisalTemplates",
+  "search": {
+    "fields": [
+      {
+        "name": "tmpltNum",
+        "labelKey": "Number",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "tmpltmId",
+        "labelKey": "Templet",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "agrpId",
+        "labelKey": "Appraisal.Group",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "aitmId",
+        "labelKey": "Appraisal.Item",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "tmpltPoint",
+        "labelKey": "Points",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "clnc/qry/LaboratoryReceive",
+  "entity": "Clnc/TreatmentView",
+  "report": "Clnc/TreatmentView",
+  "search": {
+    "fields": [
+      {
+        "name": "clinicId",
+        "labelKey": "Clinic",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "doctorId",
+        "labelKey": "Doctor",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "patientId",
+        "labelKey": "Patient",
+        "input": "autocomplete",
+        "endpoint": "/UC/Clnc/Patient/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "treatDate",
+        "labelKey": "Date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      }
+    ]
+  }
+}

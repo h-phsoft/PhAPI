@@ -3,6 +3,7 @@
   "kind": "query",
   "program": "proj/qry/s/ProjectExpenses",
   "entity": "Proj/ExpenseView",
+  "report": "Proj/ExpenseView",
   "search": {
     "fields": [
       {

@@ -1,0 +1,209 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "proj/qry/s/Projects",
+  "entity": "Proj/ProjectView",
+  "report": "Proj/ProjectView",
+  "search": {
+    "fields": [
+      {
+        "name": "projCustId",
+        "labelKey": "Proj.custId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/Customers/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "projTypeId",
+        "labelKey": "Proj.typeId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "projStatusId",
+        "labelKey": "Proj.statusId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "projPriorityId",
+        "labelKey": "Proj.priorityId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "projMemberId",
+        "labelKey": "Proj.memberId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/Members/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "projClass1Id",
+        "labelKey": "Proj.class1Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/CodeProjectClass1/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "projClass2Id",
+        "labelKey": "Proj.class2Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/CodeProjectClass2/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "projClass3Id",
+        "labelKey": "Proj.class3Id",
+        "input": "autocomplete",
+        "endpoint": "/UC/Proj/CodeProjectClass3/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "projCurnId",
+        "labelKey": "Proj.curnId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "projProgress",
+        "labelKey": "Proj.progress",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "projName",
+        "labelKey": "Proj.name",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "projSdate",
+        "labelKey": "Proj.sdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "projEdate",
+        "labelKey": "Proj.edate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "projAsdate",
+        "labelKey": "Proj.asdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "projAedate",
+        "labelKey": "Proj.aedate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "projRem",
+        "labelKey": "Proj.rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "projDescr",
+        "labelKey": "Proj.descr",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

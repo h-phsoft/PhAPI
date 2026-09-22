@@ -50,7 +50,9 @@ class I18nHelper {
    * before.
    *
    * Lookups are case-insensitive and ignore surrounding whitespace, because the
-   * seed data pads names for column alignment.
+   * seed data pads names for column alignment. Two sections are searched:
+   * `labels`, which is the Java bundle's hand-written vocabulary, then
+   * `fields`, which is one readable default per column name.
    *
    * @param {string} label Text as stored in the database
    * @param {string} lang Language code, e.g. 'en' or 'ar'
@@ -67,24 +69,47 @@ class I18nHelper {
     }
 
     const localeMap = this.locales[lang] || this.locales[this.defaultLanguage] || {};
-    const labels = localeMap.labels;
-    if (!labels || typeof labels !== 'object') {
+
+    // Two sections, in this order.
+    //
+    // `labels` is the vocabulary imported from the Java application's own
+    // .properties bundle -- translated by hand, and what a menu name or a
+    // screen's label key resolves through.
+    //
+    // `fields` is one entry per column name, seeded from the column itself:
+    // `borrowerFname` becomes "Borrower Fname". A readable placeholder, so a
+    // screen shows "Clinic Name" rather than `clinicName` while nobody has
+    // written anything better. Only these 2386 keys were ever seeded and
+    // nothing read them, because this method looked in `labels` alone -- which
+    // is why a converted query screen's columns came back as their own names.
+    //
+    // `labels` first so a real translation always beats a generated one.
+    const sections = [localeMap.labels, localeMap.fields].filter(
+      (section) => section && typeof section === 'object'
+    );
+
+    if (sections.length === 0) {
       return text;
     }
 
-    if (labels[text] !== undefined) {
-      return labels[text];
+    for (const section of sections) {
+      if (section[text] !== undefined) {
+        return section[text];
+      }
     }
 
-    // Build a lower-cased index once per locale so repeated menu lookups do not
-    // rescan the table on every entry.
+    // Built once per locale so repeated lookups do not rescan the tables.
     if (!this._labelIndex) {
       this._labelIndex = {};
     }
     if (!this._labelIndex[lang]) {
       const index = {};
-      for (const [key, value] of Object.entries(labels)) {
-        index[String(key).trim().toLowerCase()] = value;
+      // Reverse order, so an earlier section overwrites a later one and the
+      // precedence above still holds for a case-insensitive hit.
+      for (const section of [...sections].reverse()) {
+        for (const [key, value] of Object.entries(section)) {
+          index[String(key).trim().toLowerCase()] = value;
+        }
       }
       this._labelIndex[lang] = index;
     }

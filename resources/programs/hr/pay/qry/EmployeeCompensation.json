@@ -2,9 +2,19 @@
   "version": "1.0",
   "kind": "query",
   "program": "hr/pay/qry/EmployeeCompensation",
-  "entity": "Emp/EmployeeCompensation",
+  "entity": "Emp/EmployeeCompensationView",
+  "report": "Emp/EmployeeCompensation",
   "search": {
     "fields": [
+      {
+        "name": "compId",
+        "labelKey": "compName",
+        "input": "autocomplete",
+        "endpoint": "/UC/Emp/Compensation/Autocomplete",
+        "operators": [
+          "="
+        ]
+      },
       {
         "name": "empId",
         "labelKey": "Employee",
@@ -15,8 +25,141 @@
         ]
       },
       {
+        "name": "endDate",
+        "labelKey": "E.date",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
         "name": "statusId",
         "labelKey": "Status",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "ecompPamt",
+        "labelKey": "ecompPamt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "comtypeName",
+        "labelKey": "comtypeName",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "taxbrktId",
+        "labelKey": "taxbrktName",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "amttypeId",
+        "labelKey": "Amount.Type",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "compPamt",
+        "labelKey": "compPamt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobId",
+        "labelKey": "Job",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "sectId",
+        "labelKey": "Section",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "deptId",
+        "labelKey": "Department",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "levelId",
+        "labelKey": "Level",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc1Id",
+        "labelKey": "Specification.1",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc3Id",
+        "labelKey": "Specification.3",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc4Id",
+        "labelKey": "Specification.4",
+        "input": "select",
         "operators": [
           "=",
           "!="

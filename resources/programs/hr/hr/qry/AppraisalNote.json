@@ -2,9 +2,31 @@
   "version": "1.0",
   "kind": "query",
   "program": "hr/hr/qry/AppraisalNote",
-  "entity": "Emp/AppraisalNotes",
+  "entity": "Emp/AppraisalNotesView",
+  "report": "Emp/AppraisalNotes",
   "search": {
     "fields": [
+      {
+        "name": "noteDdate",
+        "labelKey": "Date",
+        "operators": [
+          "<>"
+        ]
+      },
+      {
+        "name": "noteNum",
+        "labelKey": "Number",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
       {
         "name": "empId",
         "labelKey": "Employee",
@@ -16,8 +38,127 @@
         ]
       },
       {
+        "name": "noteRem",
+        "labelKey": "Appraisal.Note",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "grpId",
+        "labelKey": "Appraisal.Group",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "itmId",
+        "labelKey": "Appraisal.Item",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
         "name": "typeId",
         "labelKey": "type",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "notePoints",
+        "labelKey": "Points",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobId",
+        "labelKey": "Job",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "deptId",
+        "labelKey": "Department",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "sectId",
+        "labelKey": "Section",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "levelId",
+        "labelKey": "Level",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc1Id",
+        "labelKey": "Specification.1",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc2Id",
+        "labelKey": "Specification.2",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc3Id",
+        "labelKey": "Specification.3",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc4Id",
+        "labelKey": "Specification.4",
+        "input": "select",
         "operators": [
           "=",
           "!="

@@ -1,0 +1,274 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "hr/pay/qry/DeductFromSalary",
+  "entity": "Emp/SubfromSalaryView",
+  "report": "Emp/SubfromSalary",
+  "search": {
+    "fields": [
+      {
+        "name": "sfsalNum",
+        "labelKey": "sfsalNum",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "sfsalDdate",
+        "labelKey": "sfsalDdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "sfsalDocn",
+        "labelKey": "sfsalDocn",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "sfsalDocd",
+        "labelKey": "sfsalDocd",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "empId",
+        "labelKey": "Employee",
+        "input": "autocomplete",
+        "endpoint": "/UC/Emp/Employee/Autocomplete",
+        "operators": [
+          "="
+        ]
+      },
+      {
+        "name": "sfsalempSal",
+        "labelKey": "sfsalempSal",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "sfsalNmonth",
+        "labelKey": "sfsalNmonth",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "sfsalNyear",
+        "labelKey": "sfsalNyear",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "codChngtypeId",
+        "labelKey": "codChngtypeName",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "codAffsalId",
+        "labelKey": "codAffsalName",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "sfsalPerc",
+        "labelKey": "sfsalPerc",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "sfsalAmt",
+        "labelKey": "sfsalAmt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "sfsalNmin",
+        "labelKey": "sfsalNmin",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "sfsalNmax",
+        "labelKey": "sfsalNmax",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "jobId",
+        "labelKey": "Job",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "sectId",
+        "labelKey": "Section",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "deptId",
+        "labelKey": "Department",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "levelId",
+        "labelKey": "Level",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc1Id",
+        "labelKey": "Specification.1",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc2Id",
+        "labelKey": "Specification.2",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc3Id",
+        "labelKey": "Specification.3",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "spc4Id",
+        "labelKey": "Specification.4",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "sfsalRem",
+        "labelKey": "sfsalRem",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "sfsalempRem",
+        "labelKey": "sfsalempRem",
+        "operators": [
+          "=",
+          "!="
+        ]
+      }
+    ]
+  }
+}

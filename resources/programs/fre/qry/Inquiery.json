@@ -1,0 +1,95 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "fre/qry/Inquiery",
+  "entity": "Fre/InqueriesView",
+  "report": "Fre/InqueriesView",
+  "search": {
+    "fields": [
+      {
+        "name": "inqryNum",
+        "labelKey": "Fre.Num",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "inqryDdate",
+        "labelKey": "Fre.Ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "inqryRef",
+        "labelKey": "Fre.Ref",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "inqryCust",
+        "labelKey": "Fre.Cust",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "inqryNote",
+        "labelKey": "Fre.Note",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "inqryRem",
+        "labelKey": "Fre.Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "clnc/qry/Appointments",
+  "entity": "Clnc/AppointmentView",
+  "report": "Clnc/AppointmentView",
+  "search": {
+    "fields": [
+      {
+        "name": "clinicId",
+        "labelKey": "Clinic",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "doctorId",
+        "labelKey": "Doctor",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "doctorGenderId",
+        "labelKey": "Doctor.Gender",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "appTypeId",
+        "labelKey": "Appointment.Type",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "patientGenderId",
+        "labelKey": "Patient.Gender",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "appStatusId",
+        "labelKey": "Appointment.Status",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "appMinutes",
+        "labelKey": "Appointment.Minutes",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "appNhour",
+        "labelKey": "Appointment.Hour",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "appNminute",
+        "labelKey": "Appointment.Minute",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "appAmt",
+        "labelKey": "Amt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      }
+    ]
+  }
+}

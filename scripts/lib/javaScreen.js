@@ -28,6 +28,7 @@
  */
 
 const fs = require('fs');
+const path = require('path');
 const vm = require('vm');
 
 /** The widget constructors worth capturing, and what each one draws. */
@@ -117,6 +118,39 @@ function jqueryStub(ready) {
   return $;
 }
 
+/**
+ * Evaluates the leading constant declarations of the other framework files.
+ *
+ * Each is read up to its first `class` declaration, which for these files is
+ * where the constants stop. A file that cannot be read or does not parse is
+ * skipped: it is worth what its constants are worth and no more.
+ *
+ * @param {Object} context The page's vm context
+ * @param {string} pluginDir Where PhsQuery.js and friends live
+ */
+function seedConstants(context, pluginDir) {
+  // PhsQuery.js only. Its head is nineteen lines of card-type constants above
+  // the class, and those are the only framework constants a page compares by
+  // value -- everything else it merely names, which the stub global covers.
+  //
+  // Widening this was a mistake worth recording: seeding PhForm.js defined the
+  // real PhForm over the stub that records what a page declares, so every form
+  // page ran the actual widget against a stubbed DOM and yielded nothing. 320
+  // screens became 63.
+  const file = path.join(pluginDir, 'PhsQuery.js');
+  if (!fs.existsSync(file)) {
+    return;
+  }
+
+  try {
+    const source = fs.readFileSync(file, 'utf8');
+    const at = source.search(/^\s*class\s+\w/m);
+    vm.runInContext(at === -1 ? source : source.slice(0, at), context, { timeout: 5000 });
+  } catch {
+    // Worth what its constants are worth and no more.
+  }
+}
+
 /** Everything a page calls that has no bearing on what it declares. */
 const NOOPS = [
   '_ajax', 'select', 'showHeaderSpinner', 'isValidForm', 'swal', 'Swal', 'Toast',
@@ -190,7 +224,19 @@ function makeContext(constantsPath) {
   // gives them rather than undefined.
   vm.runInContext(fs.readFileSync(constantsPath, 'utf8'), context, { timeout: 5000 });
 
-  // The widget constructors record and return; nothing renders.
+  // Not every constant is in PhConst.js. The card types a PhsQuery screen
+  // identifies its cards by -- PHS_QRY_CARD_CONDITIONS and the rest -- are
+  // declared at the top of PhsQuery.js, and PhDataTable.js carries its own
+  // width constants. Without them a card's `cardType === 1` compared a stub
+  // against a number and every condition card read as empty, which is why
+  // clnc/qry/Appointments converted to nothing despite declaring two cards.
+  //
+  // Only the text before the first class declaration is evaluated: that part is
+  // constants, and the class bodies below it are not worth running.
+  seedConstants(context, path.dirname(constantsPath));
+
+  // The widget constructors record and return; nothing renders. Installed after
+  // the constants, so no seeded declaration can shadow a recorder.
   for (const [name, kind] of Object.entries(WIDGETS)) {
     context[name] = function (...args) {
       captured.push({ widget: name, kind, args });

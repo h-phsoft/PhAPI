@@ -1,0 +1,258 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "fre/lfr/qry/JobFileServices",
+  "entity": "Fre/LfrDbcrDocumentsView",
+  "report": "Fre/LfrDbcrDocumentsView",
+  "search": {
+    "fields": [
+      {
+        "name": "jobId",
+        "labelKey": "Fre.IfrJobFreight",
+        "input": "autocomplete",
+        "endpoint": "/UC/Fre/IfrJobFreight/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dbcrNum",
+        "labelKey": "Fre.Num",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "dbcrDdate",
+        "labelKey": "Fre.Ddate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "locId",
+        "labelKey": "Fre.locId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "trtId",
+        "labelKey": "Fre.trtId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "contId",
+        "labelKey": "Fre.contId",
+        "input": "autocomplete",
+        "endpoint": "/UC/Crm/Contact/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "servId",
+        "labelKey": "Fre.service",
+        "input": "autocomplete",
+        "endpoint": "/UC/Mng/Services/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitId",
+        "labelKey": "Fre.Unit",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "curnId",
+        "labelKey": "Fre.curnId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Fre.statusId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dbcrCurnRate",
+        "labelKey": "Fre.CurnRate",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "dbcrQnt",
+        "labelKey": "Fre.Qnt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "dbcrPrice",
+        "labelKey": "Fre.Price",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "dbcrCamt",
+        "labelKey": "Fre.Camt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "dbcrAmt",
+        "labelKey": "Fre.Amt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "dbcrNref",
+        "labelKey": "Fre.Nref",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "dbcrDref",
+        "labelKey": "Fre.Dref",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "dbcrRem",
+        "labelKey": "Fre.Rem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "deptRid",
+        "labelKey": "Fre.deptRid",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "unitRid",
+        "labelKey": "Fre.unitRid",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dbcrWaybill",
+        "labelKey": "Fre.Waybill",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

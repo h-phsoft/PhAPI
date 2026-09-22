@@ -1,0 +1,188 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "crm/qry/SalesRepresentativesReports",
+  "entity": "Crm/ReportMasterView",
+  "report": "Crm/ReportMasterView",
+  "search": {
+    "fields": [
+      {
+        "name": "repName",
+        "labelKey": "Crm.reprId",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "contactLname",
+        "labelKey": "Crm.lname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "contactIname",
+        "labelKey": "Crm.iname",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "ddate",
+        "labelKey": "Crm.ddate",
+        "operators": [
+          "<>"
+        ]
+      },
+      {
+        "name": "typeId",
+        "labelKey": "Crm.typeId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "statusName",
+        "labelKey": "Crm.statusId",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "kindName",
+        "labelKey": "Crm.kindId",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "ownerName",
+        "labelKey": "Crm.ownerId",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "person",
+        "labelKey": "Crm.person",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "comp",
+        "labelKey": "Crm.comp",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "fdate",
+        "labelKey": "Crm.fdate",
+        "operators": [
+          "="
+        ]
+      },
+      {
+        "name": "frem",
+        "labelKey": "Crm.frem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "report",
+        "labelKey": "Crm.report",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "descr",
+        "labelKey": "Crm.descr",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

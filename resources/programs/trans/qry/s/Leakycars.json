@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "trans/qry/s/Leakycars",
+  "entity": "Trn/LeakyCarsView",
+  "report": "Trn/LeakyCarsStatistics",
+  "search": {
+    "fields": [
+      {
+        "name": "blnId",
+        "labelKey": "Trn.Balan",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      }
+    ]
+  }
+}

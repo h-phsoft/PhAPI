@@ -1,0 +1,103 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "hr/hr/qry/GradeGroups",
+  "entity": "Emp/GradeTemplatesView",
+  "report": "Emp/GradeTemplates",
+  "search": {
+    "fields": [
+      {
+        "name": "grdNum",
+        "labelKey": "Number",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "grdmId",
+        "labelKey": "Templet",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "grpId",
+        "labelKey": "Work.group",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "degreeId",
+        "labelKey": "Grad.Degree",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "isdefaultId",
+        "labelKey": "isdefaultName",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "grdDays",
+        "labelKey": "Days",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "grdMinsal",
+        "labelKey": "Min.Salary",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "grdMaxsal",
+        "labelKey": "Max.Salary",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      }
+    ]
+  }
+}

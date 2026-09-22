@@ -1,0 +1,153 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "lrg/qry/grnt/LoanBalances",
+  "entity": "Lrg/RequestInstallmentView",
+  "report": "Lrg/LoanBalances",
+  "search": {
+    "fields": [
+      {
+        "name": "lenderId",
+        "labelKey": "lender",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "borrowerId",
+        "labelKey": "BorrowerName",
+        "input": "autocomplete",
+        "endpoint": "/UC/Lrg/Borrowers/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "Size",
+        "labelKey": "Size",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loantypeId",
+        "labelKey": "loantypeName",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loantypeId",
+        "labelKey": "Loantype",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanPeriodId",
+        "labelKey": "LoanPeriodInstall",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanIspaymentsId",
+        "labelKey": "LoanisPaymentsId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "LoanNumIns",
+        "labelKey": "LoanNumIns",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanLamt",
+        "labelKey": "LoanLAmt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "loanGperc",
+        "labelKey": "LoanGperc",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "loanGamt",
+        "labelKey": "LoanGamt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "loanDate",
+        "labelKey": "LoanDate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "DueDateIns",
+        "labelKey": "DueDateIns",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      }
+    ]
+  }
+}

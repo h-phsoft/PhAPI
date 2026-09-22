@@ -1,0 +1,118 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "trans/qry/s/FeesPanalties",
+  "entity": "Trn/BalancingPayView",
+  "report": "Trn/BalancingPayStatistics",
+  "search": {
+    "fields": [
+      {
+        "name": "mstBdate",
+        "labelKey": "MstBdate",
+        "operators": [
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "=",
+          "!=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "mstNum",
+        "labelKey": "MstNum",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      },
+      {
+        "name": "mstPnum",
+        "labelKey": "MstPnum",
+        "input": "number",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "mstDriver",
+        "labelKey": "MstDriver",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "mstSrc",
+        "labelKey": "MstSrc",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "mstDest",
+        "labelKey": "MstDest",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "mstCommodity",
+        "labelKey": "MstCommodity",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "mstRem",
+        "labelKey": "MstRem",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      }
+    ]
+  }
+}

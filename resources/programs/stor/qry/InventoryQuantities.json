@@ -1,0 +1,71 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "stor/qry/InventoryQuantities",
+  "entity": "Stor/StoresMaterialesView",
+  "report": "Stor/InventoryQuantities",
+  "search": {
+    "fields": [
+      {
+        "name": "storId",
+        "labelKey": "Store",
+        "input": "autocomplete",
+        "endpoint": "/UC/Stor/Stores/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "itemLname",
+        "labelKey": "Item",
+        "operators": [
+          "%",
+          "!%",
+          "=",
+          "!=",
+          "[%",
+          "![%",
+          "%]",
+          "!%]"
+        ]
+      },
+      {
+        "name": "statusId",
+        "labelKey": "Status",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loc1Id",
+        "labelKey": "Location.1",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loc2Id",
+        "labelKey": "Location.2",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loc3Id",
+        "labelKey": "Location.3",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      }
+    ]
+  }
+}

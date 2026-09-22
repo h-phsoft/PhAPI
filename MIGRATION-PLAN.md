@@ -259,8 +259,25 @@ and deletes against the real database.
 |---|---|---|---|
 | Table | 143 | 93 | 93 |
 | Daily | 153 | 103 | 103 |
-| Query | 146 | 19 | 3 |
-| Statistic | 73 | 5 | 0 |
+| Query + Statistic | 219 | 121 | — |
+
+Query and Statistic were 24 until three things were fixed, and each was costing
+most of the rest:
+
+- A query page addresses a **query definition**, not a table. `/UC/Fix/Inbound`
+  is the definition `Fix/Inbound`, whose entity is the view `Fix/InboundView`.
+  Both the converter and `reportService.resolve` looked only in the entity
+  registry, so 60 of the 548 definitions were unreachable and answered "Report
+  metadata not found" for a file that is on disk. A form page must NOT resolve
+  this way: `/UC/Emp/Deduction` is both a table and a definition over its view,
+  and pointing an entry screen at the view costs it 190 fields.
+- `PHS_QRY_CARD_CONDITIONS` is declared at the top of **PhsQuery.js**, not
+  PhConst.js, so in the extraction sandbox a card's `cardType === 1` compared a
+  stub against a number and every condition card read as empty.
+- A condition card spells its component `componentType`; `aQFields` spells the
+  same thing `component`. Reading one left the other to be derived, and a select
+  over a view's reference column — which has no relation to derive from — came
+  out as a plain number input.
 
 **One correction to the order.** The report path has to be wired to the
 condition engine between Table and Query. `reportService.query` reads
@@ -342,6 +359,19 @@ Recorded so the rules above are traceable to evidence rather than taste.
 | Form fields / search fields carried | 2663 / 2356 |
 | Fields dropped — column not on the entity | 600 |
 | Fields stating an input the schema cannot imply | 927 of 5019 (18%) |
+
+**Labels, before the lookup read both sections**
+
+Step 2 seeded 2386 keys into `locales/*.json` under `fields`, one per column
+name with a readable default — `clinicName` becomes "Clinic Name".
+`translateLabel` looked in `labels` alone, so none of them was ever read and a
+converted query screen's columns came back as their own names. It now searches
+`labels` first, so a hand-written translation always beats a generated one, then
+`fields`.
+
+841 of those 2386 keys (35%) have an Arabic translation in the Java bundle. The
+`fields` section is still seeded with English in both locales, so an Arabic
+screen reads English column headings until that import is run.
 
 **Saving, before the key was assigned**
 

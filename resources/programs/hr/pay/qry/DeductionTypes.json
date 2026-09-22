@@ -1,0 +1,43 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "hr/pay/qry/DeductionTypes",
+  "entity": "Emp/DeductionView",
+  "report": "Emp/Deduction",
+  "search": {
+    "fields": [
+      {
+        "name": "dedId",
+        "labelKey": "dedName",
+        "input": "autocomplete",
+        "endpoint": "/UC/Emp/Deduction/Autocomplete",
+        "operators": [
+          "="
+        ]
+      },
+      {
+        "name": "amttypeId",
+        "labelKey": "Amount.Type",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "dedAmt",
+        "labelKey": "dedAmt",
+        "operators": [
+          "=",
+          "!=",
+          ">",
+          ">=",
+          "<",
+          "<=",
+          "<>",
+          "><"
+        ]
+      }
+    ]
+  }
+}

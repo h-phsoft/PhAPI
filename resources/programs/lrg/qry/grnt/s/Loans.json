@@ -1,0 +1,66 @@
+{
+  "version": "1.0",
+  "kind": "query",
+  "program": "lrg/qry/grnt/s/Loans",
+  "entity": "Lrg/RequestInstallmentView",
+  "report": "Lrg/PastDueLoans",
+  "search": {
+    "fields": [
+      {
+        "name": "lenderId",
+        "labelKey": "lender",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "borrowerId",
+        "labelKey": "BorrowerName",
+        "input": "autocomplete",
+        "endpoint": "/UC/Lrg/Borrowers/Autocomplete",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loantypeId",
+        "labelKey": "loantypeName",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loantypeId",
+        "labelKey": "Loantype",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanPeriodId",
+        "labelKey": "LoanPeriodInstall",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      },
+      {
+        "name": "loanIspaymentsId",
+        "labelKey": "LoanisPaymentsId",
+        "input": "select",
+        "operators": [
+          "=",
+          "!="
+        ]
+      }
+    ]
+  }
+}
