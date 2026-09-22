@@ -645,6 +645,33 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Verified_Id",
+      "Field": "verifiedId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Verified_Id",
+        "Synonym": "Cpy_Vuser",
+        "Sequence": "",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": false,
+      "relation": null
     }
   ]
 }

@@ -205,6 +205,34 @@
       "isNull": true,
       "isLabel": false,
       "relation": null
+    },
+    {
+      "Name": "Acc_Fname",
+      "Field": "accFname",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Acc_Fname",
+        "Synonym": "Acc_Vgrant",
+        "Sequence": "",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "isLabel": false,
+      "relation": null
     }
   ]
 }

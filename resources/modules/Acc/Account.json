@@ -92,7 +92,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "isLabel": false,
       "relation": null
     },

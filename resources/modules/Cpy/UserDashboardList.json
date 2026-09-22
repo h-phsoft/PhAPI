@@ -73,7 +73,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": {
         "refTable": "Copy_Users",
         "refSynonym": "Cpy_User",
@@ -107,7 +107,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": {
         "refTable": "Phs_Code_Status",
         "refSynonym": "Phs_Cod_Status",

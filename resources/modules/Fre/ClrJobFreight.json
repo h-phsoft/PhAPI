@@ -240,7 +240,7 @@
       "Short": "Long",
       "Scale": "0",
       "Precision": "5",
-      "Default": "",
+      "Default": "0",
       "query": true,
       "insert": true,
       "update": true,
@@ -256,7 +256,7 @@
         "PeriodCondition": "Period_Id={periodId}"
       },
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "relation": {
         "refTable": "Fre_MOffers",
         "refSynonym": "Fre_MOffer",

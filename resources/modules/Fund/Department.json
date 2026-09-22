@@ -60,7 +60,7 @@
       "insert": true,
       "update": true,
       "hasRelation": false,
-      "isNull": false,
+      "isNull": true,
       "isLabel": false
     },
     {

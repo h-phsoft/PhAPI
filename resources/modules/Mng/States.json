@@ -110,7 +110,7 @@
       "Short": "Short",
       "Scale": "0",
       "Precision": "5",
-      "Default": "",
+      "Default": "1",
       "query": true,
       "insert": true,
       "update": true,

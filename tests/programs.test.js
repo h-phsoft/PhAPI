@@ -468,17 +468,17 @@ function handWrittenFields() {
  * Columns whose generated `required` is known to differ from the hand-written
  * screen, with why.
  *
- * Not a tolerance: each one is a measured defect in the entity model, and the
- * test fails if a name leaves this list still differing OR if a name on it
- * stops differing -- the second because that means the model was fixed and the
- * exception should go with it.
+ * Empty, and that is the point. It held `statusId` while
+ * resources/modules/Clnc/Doctors.json recorded `isNull: true` for a column the
+ * database declares NOT NULL -- one of 133 such disagreements. Reconciling the
+ * models against the live schema fixed it, and this test failed with "statusId
+ * now agrees" until the entry was removed, which is what the second assertion
+ * below exists to make happen.
+ *
+ * Not a tolerance: the test fails if a name leaves this list still differing OR
+ * if a name on it stops differing.
  */
-const KNOWN_REQUIRED_DRIFT = {
-  // CLNC_DOCTORS.STATUS_ID is NULLABLE = 'N' with DEFAULT 1 in the live schema;
-  // resources/modules/Clnc/Doctors.json records isNull: true. One of 62 columns
-  // the models call optional that the database requires.
-  statusId: 'model says optional, database says NOT NULL'
-};
+const KNOWN_REQUIRED_DRIFT = {};
 
 test('the generated Doctors screen offers exactly the same fields', () => {
   const hand = handWrittenFields();

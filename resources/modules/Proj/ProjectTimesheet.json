@@ -579,7 +579,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": {
         "refTable": "Mng_Currency",
         "refSynonym": "Mng_Curn",

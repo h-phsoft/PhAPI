@@ -840,6 +840,60 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Vat_Perc",
+      "Field": "vatPerc",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "2",
+      "Precision": "6",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Vat_Perc",
+        "Synonym": "Pur_Tret",
+        "Sequence": "Pur_Tret_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": null
+    },
+    {
+      "Name": "Vat_Value",
+      "Field": "vatValue",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "2",
+      "Precision": "25",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Vat_Value",
+        "Synonym": "Pur_Tret",
+        "Sequence": "Pur_Tret_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": null
     }
   ]
 }

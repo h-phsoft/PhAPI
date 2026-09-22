@@ -64,7 +64,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": {
         "refTable": "Phs_User_List",
         "refSynonym": "Phs_Usr_List",
@@ -98,7 +98,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": {
         "refTable": "Phs_Dashboard_Blocks",
         "refSynonym": "Phs_Dash_Blocks",
@@ -132,7 +132,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": {
         "refTable": "Phs_Code_Status",
         "refSynonym": "Phs_Cod_Status",

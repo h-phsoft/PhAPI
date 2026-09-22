@@ -81,7 +81,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": null
     },
     {

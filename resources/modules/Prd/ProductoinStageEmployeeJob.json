@@ -297,6 +297,33 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Ftime",
+      "Field": "ftime",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Ftime",
+        "Synonym": "Prd_Prod_Stage_Emp_Job",
+        "Sequence": "Prd_Prod_Stage_Emp_Job_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": null
     }
   ]
 }

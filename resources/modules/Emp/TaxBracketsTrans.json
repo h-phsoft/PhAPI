@@ -283,6 +283,40 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Type_Id",
+        "Synonym": "Emp_Ttaxbrkt",
+        "Sequence": "Emp_Ttaxbrkt_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Phs_Code_Amount_Type",
+        "refSynonym": "Phs_Cod_Amttype",
+        "primaryKey": "Id",
+        "foreignKey": "Type_Id",
+        "displayField": "Name",
+        "apiDisplayField": "typeName"
+      }
     }
   ]
 }

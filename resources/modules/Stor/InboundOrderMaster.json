@@ -653,6 +653,67 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Bcurn_Id",
+      "Field": "bcurnId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Bcurn_Id",
+        "Synonym": "Stor_Inordmst",
+        "Sequence": "Stor_Inordmst_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Mng_Currency",
+        "refSynonym": "Mng_Curn",
+        "primaryKey": "Id",
+        "foreignKey": "Bcurn_Id",
+        "displayField": "Name",
+        "apiDisplayField": "bcurnName"
+      }
+    },
+    {
+      "Name": "Bcurn_Rate",
+      "Field": "bcurnRate",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "8",
+      "Precision": "25",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Bcurn_Rate",
+        "Synonym": "Stor_Inordmst",
+        "Sequence": "Stor_Inordmst_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": null
     }
   ]
 }

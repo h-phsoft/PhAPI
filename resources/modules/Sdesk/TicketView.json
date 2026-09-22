@@ -91,7 +91,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "isLabel": false,
       "relation": null
     },
@@ -394,7 +394,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "relation": null
     },
     {
@@ -421,7 +421,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "isLabel": false,
       "relation": null
     },
@@ -449,7 +449,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "relation": null
     },
     {
@@ -476,7 +476,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "isLabel": false,
       "relation": null
     },
@@ -887,7 +887,34 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
+      "relation": null
+    },
+    {
+      "Name": "Status_Ndays",
+      "Field": "statusNdays",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "3",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Status_Ndays",
+        "Synonym": "Sdesk_Vtckt",
+        "Sequence": "",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
       "relation": null
     }
   ]

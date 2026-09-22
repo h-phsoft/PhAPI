@@ -81,7 +81,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "relation": {
         "refTable": "Copy_Task",
         "refSynonym": "Cpy_Task",
@@ -115,7 +115,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "relation": {
         "refTable": "Proj_Project",
         "refSynonym": "Proj_Proj",
@@ -407,7 +407,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": null
     },
     {
@@ -680,6 +680,33 @@
         "Mode": "1",
         "Aggr": "Max",
         "Column": "Upd_Date",
+        "Synonym": "Cpy_Task",
+        "Sequence": "Cpy_Task_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": null
+    },
+    {
+      "Name": "Reminddate",
+      "Field": "reminddate",
+      "DBType": "DATE",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Reminddate",
         "Synonym": "Cpy_Task",
         "Sequence": "Cpy_Task_Seq",
         "Condition": "",

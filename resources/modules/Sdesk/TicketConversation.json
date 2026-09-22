@@ -213,7 +213,7 @@
       "Short": "Short",
       "Scale": "0",
       "Precision": "2",
-      "Default": "",
+      "Default": "0",
       "query": true,
       "insert": false,
       "update": false,
@@ -229,7 +229,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "relation": {
         "primaryKey": "id",
         "foreignKey": "Type_Id"

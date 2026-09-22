@@ -265,6 +265,40 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Cntry_Id",
+      "Field": "cntryId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Cntry_Id",
+        "Synonym": "Fre_Cod_Lang",
+        "Sequence": "Fre_Cod_Lang_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Copy_Users",
+        "refSynonym": "Cpy_User",
+        "primaryKey": "Id",
+        "foreignKey": "Cntry_Id",
+        "displayField": "Name",
+        "apiDisplayField": "cntryName"
+      }
     }
   ]
 }

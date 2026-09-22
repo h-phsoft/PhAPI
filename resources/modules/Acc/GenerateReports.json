@@ -474,6 +474,62 @@
       "isNull": true,
       "isLabel": false,
       "relation": null
+    },
+    {
+      "Name": "Labeld",
+      "Field": "labeld",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Labeld",
+        "Synonym": "Acc_Genrep",
+        "Sequence": "",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "isLabel": false,
+      "relation": null
+    },
+    {
+      "Name": "Labelc",
+      "Field": "labelc",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Labelc",
+        "Synonym": "Acc_Genrep",
+        "Sequence": "",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "isLabel": false,
+      "relation": null
     }
   ]
 }

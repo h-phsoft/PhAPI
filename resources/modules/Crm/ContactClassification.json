@@ -64,7 +64,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": {
         "refTable": "Crm_Contact",
         "refSynonym": "Crm_Cont",
@@ -98,7 +98,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": {
         "refTable": "Crm_Code_Group",
         "refSynonym": "Crm_Cod_Grp",
@@ -130,7 +130,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": {
         "refTable": "Crm_Code_Item",
         "refSynonym": "Crm_Cod_Itm",

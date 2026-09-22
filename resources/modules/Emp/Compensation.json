@@ -460,6 +460,40 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Taxpay_Id",
+      "Field": "taxpayId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Taxpay_Id",
+        "Synonym": "Emp_Com",
+        "Sequence": "Emp_Com_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Emp_Code_Taxpay",
+        "refSynonym": "Emp_Cod_Taxpay",
+        "primaryKey": "Id",
+        "foreignKey": "Taxpay_Id",
+        "displayField": "Name",
+        "apiDisplayField": "taxpayName"
+      }
     }
   ]
 }

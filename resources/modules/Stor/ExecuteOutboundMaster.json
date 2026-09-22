@@ -626,6 +626,101 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Trntyp_Id",
+      "Field": "trntypId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "3",
+      "Default": "205",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Trntyp_Id",
+        "Synonym": "Stor_Eomst",
+        "Sequence": "Stor_Eomst_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Stor_Code_Transaction_Type",
+        "refSynonym": "Stor_Cod_Trntyp",
+        "primaryKey": "Id",
+        "foreignKey": "Trntyp_Id",
+        "displayField": "Name",
+        "apiDisplayField": "trntypName"
+      }
+    },
+    {
+      "Name": "Bcurn_Id",
+      "Field": "bcurnId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Bcurn_Id",
+        "Synonym": "Stor_Eomst",
+        "Sequence": "Stor_Eomst_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Mng_Currency",
+        "refSynonym": "Mng_Curn",
+        "primaryKey": "Id",
+        "foreignKey": "Bcurn_Id",
+        "displayField": "Name",
+        "apiDisplayField": "bcurnName"
+      }
+    },
+    {
+      "Name": "Bcurn_Rate",
+      "Field": "bcurnRate",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "8",
+      "Precision": "25",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Bcurn_Rate",
+        "Synonym": "Stor_Eomst",
+        "Sequence": "Stor_Eomst_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": null
     }
   ]
 }

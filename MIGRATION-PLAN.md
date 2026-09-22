@@ -475,22 +475,45 @@ This changes what 74% of fields are keyed by in every response. PhApp was
 already reading case-insensitively and documented why; the Java client reads the
 camelCase name and had been finding nothing.
 
-**Metadata measured against the live schema** — `Demo`, 935 tables
+**Metadata against the live schema** — `Demo`, 935 tables, before and after
+`scripts/reconcileSchema.js`
+
+| | Before | After |
+|---|---|---|
+| Models describing **fewer** columns than the table has | 133 (1579 columns) | **0** |
+| Columns whose nullability disagrees | 133 | **0** |
+| Columns with no `Default` where the database has one | 367 | **0** |
+| Models describing **more** columns than the table has | 33 | 33 |
+
+A column no model describes is never read or written: every SELECT and INSERT
+is built from the model's field list. The worst were
+`Fre_Lfr_Dbcr_Documents_View` (43 of 249), `Ped_Appointments` (25 of 103) and
+`Emp_Employee` (15 of 87).
+
+Repaired as a merge, never a regeneration — M2 stands. 295 files changed: 1672
+columns added, 133 nullability corrections, 367 defaults filled. Nothing
+existing was overwritten, and a `Default` already written was left alone: 130
+fields carry one the database does not have and 29 carry a different one, and a
+schema cannot tell a deliberate default from a gap.
+
+Two columns were **declined**: `Jf_Contr_Id` and `Jf_Contr_Num` on
+`Fre_Lfr_Dbcr_Documents_View` both reduce to an API name the view already uses,
+and a row is keyed by that name, so adding them would have shadowed a working
+column. Case collisions stayed at 28.
+
+**Still open — 32 models name 124 columns their table does not have.** Every
+SELECT over those entities fails with ORA-00904, which breaks reading, writing
+and deleting alike; `acc/BankJournal` is the visible case. Nothing was removed,
+because the models are shared by 21 copies. Checked against a second copy:
 
 | | |
 |---|---|
-| Models whose column count matches the table | 793 |
-| Models describing **fewer** columns than the table has | 133 (1579 columns undescribed) |
-| Models describing more | 9 |
-| Columns whose nullability agrees | 18595 of 18728 (99.3%) |
-| Model says optional, database says NOT NULL | 62 |
-| Model says required, database says nullable | 71 |
+| Present in `NSCC` too — a real per-copy difference, keep | 10 |
+| In neither copy — almost certainly stale | 69 |
+| `NSCC` lacks the table, so cannot tell | 45 |
 
-A column no model describes is never read or written: every SELECT and INSERT
-is built from the model's field list. Worst cases are
-`Fre_Lfr_Dbcr_Documents_View` (43 of 249), `Ped_Appointments` (25 of 103) and
-`Emp_Employee` (15 of 87). Repairing this is a merge, never a regeneration —
-M2 stands.
+Whether those 69 leave the models or join the tables is a decision about the
+schema, not one a reconciliation can make.
 
 **Recovered query definitions**
 

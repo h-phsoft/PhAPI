@@ -491,6 +491,40 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Customize_Id",
+      "Field": "customizeId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "2",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Customize_Id",
+        "Synonym": "Phs_Dash_Blocks",
+        "Sequence": "Phs_Dash_Blocks_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Phs_Code_Yesno",
+        "refSynonym": "Phs_Cod_Yesno",
+        "primaryKey": "Id",
+        "foreignKey": "Customize_Id",
+        "displayField": "Name",
+        "apiDisplayField": "customizeName"
+      }
     }
   ]
 }

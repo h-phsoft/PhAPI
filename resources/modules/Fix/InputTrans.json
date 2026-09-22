@@ -975,6 +975,67 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Curn_Id",
+      "Field": "curnId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Curn_Id",
+        "Synonym": "Fix_Intrn",
+        "Sequence": "Fix_Intrn_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Mng_Currency",
+        "refSynonym": "Mng_Curn",
+        "primaryKey": "Id",
+        "foreignKey": "Curn_Id",
+        "displayField": "Name",
+        "apiDisplayField": "curnName"
+      }
+    },
+    {
+      "Name": "Curn_Rate",
+      "Field": "curnRate",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "9",
+      "Precision": "25",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Curn_Rate",
+        "Synonym": "Fix_Intrn",
+        "Sequence": "Fix_Intrn_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": null
     }
   ]
 }

@@ -236,7 +236,7 @@
         "PeriodCondition": "Period_Id={periodId}"
       },
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "relation": {
         "refTable": "Fre_Minqueries",
         "refSynonym": "Fre_Minqueries",

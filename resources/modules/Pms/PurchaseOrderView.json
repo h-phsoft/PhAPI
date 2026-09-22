@@ -173,7 +173,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "isLabel": false,
       "relation": null
     },

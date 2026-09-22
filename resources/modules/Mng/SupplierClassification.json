@@ -64,7 +64,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": {
         "refTable": "Mng_Supplier",
         "refSynonym": "Mng_Supp",
@@ -98,7 +98,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": {
         "refTable": "Mng_Code_Group",
         "refSynonym": "Mng_Cod_Grp",
@@ -130,7 +130,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": {
         "refTable": "Mng_Code_Item",
         "refSynonym": "Mng_Cod_Itm",

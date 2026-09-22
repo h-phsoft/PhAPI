@@ -64,7 +64,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": null
     },
     {
@@ -91,7 +91,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": {
         "refTable": "Emp_Deduction",
         "refSynonym": "Emp_Ded",

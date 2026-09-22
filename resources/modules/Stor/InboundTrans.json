@@ -671,7 +671,7 @@
       "Short": "String",
       "Scale": "0",
       "Precision": "0",
-      "Default": "",
+      "Default": "_",
       "query": true,
       "insert": true,
       "update": true,
@@ -715,7 +715,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": null
     },
     {
@@ -742,7 +742,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": null
     },
     {
@@ -880,6 +880,108 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Ics_Id",
+      "Field": "icsId",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "30",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Ics_Id",
+        "Synonym": "Stor_Intrn",
+        "Sequence": "Stor_Intrn_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Stor_Item_Classification",
+        "refSynonym": "Stor_Ics",
+        "primaryKey": "Id",
+        "foreignKey": "Ics_Id",
+        "displayField": "Barcode",
+        "apiDisplayField": "icsName"
+      }
+    },
+    {
+      "Name": "Sics_Id",
+      "Field": "sicsId",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "30",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Sics_Id",
+        "Synonym": "Stor_Intrn",
+        "Sequence": "Stor_Intrn_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Stor_Stor_Item_Classification",
+        "refSynonym": "Stor_Sics",
+        "primaryKey": "Id",
+        "foreignKey": "Sics_Id",
+        "displayField": "Id",
+        "apiDisplayField": "sicsName"
+      }
+    },
+    {
+      "Name": "Model_Id",
+      "Field": "modelId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Model_Id",
+        "Synonym": "Stor_Intrn",
+        "Sequence": "Stor_Intrn_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Stor_Code_Model",
+        "refSynonym": "Stor_Cod_Model",
+        "primaryKey": "Id",
+        "foreignKey": "Model_Id",
+        "displayField": "Name",
+        "apiDisplayField": "modelName"
+      }
     }
   ]
 }

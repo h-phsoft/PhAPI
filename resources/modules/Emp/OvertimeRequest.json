@@ -166,7 +166,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "relation": null
     },
     {

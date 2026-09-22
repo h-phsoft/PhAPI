@@ -699,6 +699,61 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Net",
+      "Field": "net",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Int",
+      "Scale": "0",
+      "Precision": "7",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Net",
+        "Synonym": "Trn_Bln_Mst",
+        "Sequence": "Trn_Bln_Mst_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": null
+    },
+    {
+      "Name": "Receipt",
+      "Field": "receipt",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Receipt",
+        "Synonym": "Trn_Bln_Mst",
+        "Sequence": "Trn_Bln_Mst_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "isLabel": false,
+      "relation": null
     }
   ]
 }

@@ -116,7 +116,7 @@
       "Short": "Long",
       "Scale": "0",
       "Precision": "9",
-      "Default": "",
+      "Default": "0",
       "query": true,
       "insert": true,
       "update": true,
@@ -132,7 +132,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "relation": {
         "refTable": "Acc_Account",
         "refSynonym": "Acc_Acc",
@@ -508,6 +508,74 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Item_Id",
+      "Field": "itemId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Item_Id",
+        "Synonym": "Fund_Diary",
+        "Sequence": "Fund_Diary_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Fund_Items",
+        "refSynonym": "Fund_Item",
+        "primaryKey": "Id",
+        "foreignKey": "Item_Id",
+        "displayField": "Name",
+        "apiDisplayField": "itemName"
+      }
+    },
+    {
+      "Name": "Dept_Id",
+      "Field": "deptId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Dept_Id",
+        "Synonym": "Fund_Diary",
+        "Sequence": "Fund_Diary_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Fund_Department",
+        "refSynonym": "Fund_Dept",
+        "primaryKey": "Id",
+        "foreignKey": "Dept_Id",
+        "displayField": "Name",
+        "apiDisplayField": "deptName"
+      }
     }
   ]
 }

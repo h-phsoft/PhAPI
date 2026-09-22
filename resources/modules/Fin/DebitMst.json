@@ -1034,6 +1034,40 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Acc_Id",
+      "Field": "accId",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Int",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Acc_Id",
+        "Synonym": "Fin_Mdbt",
+        "Sequence": "Fin_Mdbt_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Acc_Account",
+        "refSynonym": "Acc_Acc",
+        "primaryKey": "Id",
+        "foreignKey": "Acc_Id",
+        "displayField": "Name",
+        "apiDisplayField": "accName"
+      }
     }
   ]
 }

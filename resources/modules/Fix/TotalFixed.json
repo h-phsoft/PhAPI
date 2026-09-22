@@ -505,6 +505,128 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Vhr_Id",
+      "Field": "vhrId",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "10",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Vhr_Id",
+        "Synonym": "Fix_Tot",
+        "Sequence": "Fix_Tot_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Acc_Master",
+        "refSynonym": "Acc_Mst",
+        "primaryKey": "Id",
+        "foreignKey": "Vhr_Id",
+        "displayField": "Docn",
+        "apiDisplayField": "vhrName"
+      }
+    },
+    {
+      "Name": "Curn_Id",
+      "Field": "curnId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Curn_Id",
+        "Synonym": "Fix_Tot",
+        "Sequence": "Fix_Tot_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Mng_Currency",
+        "refSynonym": "Mng_Curn",
+        "primaryKey": "Id",
+        "foreignKey": "Curn_Id",
+        "displayField": "Name",
+        "apiDisplayField": "curnName"
+      }
+    },
+    {
+      "Name": "Curn_Rate",
+      "Field": "curnRate",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "9",
+      "Precision": "25",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Curn_Rate",
+        "Synonym": "Fix_Tot",
+        "Sequence": "Fix_Tot_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": null
+    },
+    {
+      "Name": "Camt",
+      "Field": "camt",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "3",
+      "Precision": "25",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Camt",
+        "Synonym": "Fix_Tot",
+        "Sequence": "Fix_Tot_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": null
     }
   ]
 }

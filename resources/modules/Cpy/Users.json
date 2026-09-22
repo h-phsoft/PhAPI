@@ -423,6 +423,74 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Bran_Id",
+      "Field": "branId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "3",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Bran_Id",
+        "Synonym": "Cpy_User",
+        "Sequence": "Cpy_User_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Copy_Branches",
+        "refSynonym": "Cpy_Bran",
+        "primaryKey": "Id",
+        "foreignKey": "Bran_Id",
+        "displayField": "Name",
+        "apiDisplayField": "branName"
+      }
+    },
+    {
+      "Name": "Verified_Id",
+      "Field": "verifiedId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "2",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Verified_Id",
+        "Synonym": "Cpy_User",
+        "Sequence": "Cpy_User_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": false,
+      "relation": {
+        "refTable": "Phs_Code_Yesno",
+        "refSynonym": "Phs_Cod_Yesno",
+        "primaryKey": "Id",
+        "foreignKey": "Verified_Id",
+        "displayField": "Name",
+        "apiDisplayField": "verifiedName"
+      }
     }
   ]
 }

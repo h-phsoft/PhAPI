@@ -263,6 +263,74 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Brkt_Id",
+      "Field": "brktId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Brkt_Id",
+        "Synonym": "Emp_Ded",
+        "Sequence": "Emp_Ded_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Emp_Tax_Brackets_Master",
+        "refSynonym": "Emp_Taxbrkt",
+        "primaryKey": "Id",
+        "foreignKey": "Brkt_Id",
+        "displayField": "Name",
+        "apiDisplayField": "brktName"
+      }
+    },
+    {
+      "Name": "Taxpay_Id",
+      "Field": "taxpayId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Taxpay_Id",
+        "Synonym": "Emp_Ded",
+        "Sequence": "Emp_Ded_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Emp_Code_Taxpay",
+        "refSynonym": "Emp_Cod_Taxpay",
+        "primaryKey": "Id",
+        "foreignKey": "Taxpay_Id",
+        "displayField": "Name",
+        "apiDisplayField": "taxpayName"
+      }
     }
   ]
 }

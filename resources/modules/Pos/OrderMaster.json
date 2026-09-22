@@ -179,7 +179,7 @@
       "Short": "Double",
       "Scale": "2",
       "Precision": "10",
-      "Default": "",
+      "Default": "0",
       "query": true,
       "insert": true,
       "update": true,

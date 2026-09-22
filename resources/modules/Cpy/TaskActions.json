@@ -143,7 +143,7 @@
       "Short": "Short",
       "Scale": "0",
       "Precision": "3",
-      "Default": "",
+      "Default": "0",
       "query": true,
       "insert": true,
       "update": true,
@@ -159,7 +159,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": null
     },
     {
@@ -325,6 +325,40 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Status_Id",
+        "Synonym": "Cpy_Task_Action",
+        "Sequence": "Cpy_Task_Action_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": false,
+      "relation": {
+        "refTable": "Copy_Code_Task_Status",
+        "refSynonym": "Cpy_Cod_Task_Status",
+        "primaryKey": "Id",
+        "foreignKey": "Status_Id",
+        "displayField": "Name",
+        "apiDisplayField": "statusName"
+      }
     }
   ]
 }

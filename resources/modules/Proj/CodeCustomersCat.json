@@ -64,7 +64,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "relation": {
         "refTable": "Phs_Code_Status",
         "refSynonym": "Phs_Cod_Status",

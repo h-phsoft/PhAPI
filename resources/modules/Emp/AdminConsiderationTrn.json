@@ -125,7 +125,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": {
         "refTable": "Emp_Code_Appraisal_Grp",
         "refSynonym": "Emp_Cod_Appraisal_Grp",
@@ -159,7 +159,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": {
         "refTable": "Emp_Code_Appraisal_Item",
         "refSynonym": "Emp_Cod_Appraisal_Item",

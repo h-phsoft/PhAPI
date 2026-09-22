@@ -479,6 +479,142 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Salstatus_Id",
+      "Field": "salstatusId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "2",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Salstatus_Id",
+        "Synonym": "Emp_Salgrp",
+        "Sequence": "Emp_Salgrp_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Phs_Code_Yesno",
+        "refSynonym": "Phs_Cod_Yesno",
+        "primaryKey": "Id",
+        "foreignKey": "Salstatus_Id",
+        "displayField": "Name",
+        "apiDisplayField": "salstatusName"
+      }
+    },
+    {
+      "Name": "Addstatus_Id",
+      "Field": "addstatusId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Addstatus_Id",
+        "Synonym": "Emp_Salgrp",
+        "Sequence": "Emp_Salgrp_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Phs_Code_Yesno",
+        "refSynonym": "Phs_Cod_Yesno",
+        "primaryKey": "Id",
+        "foreignKey": "Addstatus_Id",
+        "displayField": "Name",
+        "apiDisplayField": "addstatusName"
+      }
+    },
+    {
+      "Name": "Gtaxpay_Id",
+      "Field": "gtaxpayId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Gtaxpay_Id",
+        "Synonym": "Emp_Salgrp",
+        "Sequence": "Emp_Salgrp_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Emp_Code_Taxpay",
+        "refSynonym": "Emp_Cod_Taxpay",
+        "primaryKey": "Id",
+        "foreignKey": "Gtaxpay_Id",
+        "displayField": "Name",
+        "apiDisplayField": "gtaxpayName"
+      }
+    },
+    {
+      "Name": "Gtampay_Id",
+      "Field": "gtampayId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Gtampay_Id",
+        "Synonym": "Emp_Salgrp",
+        "Sequence": "Emp_Salgrp_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Emp_Code_Taxpay",
+        "refSynonym": "Emp_Cod_Taxpay",
+        "primaryKey": "Id",
+        "foreignKey": "Gtampay_Id",
+        "displayField": "Name",
+        "apiDisplayField": "gtampayName"
+      }
     }
   ]
 }

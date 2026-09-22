@@ -314,6 +314,40 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "List_Id",
+      "Field": "listId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "List_Id",
+        "Synonym": "Fre_Truk",
+        "Sequence": "Fre_Truk_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Fre_Code_List",
+        "refSynonym": "Fre_Cod_List",
+        "primaryKey": "Id",
+        "foreignKey": "List_Id",
+        "displayField": "Name",
+        "apiDisplayField": "listName"
+      }
     }
   ]
 }

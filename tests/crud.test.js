@@ -382,10 +382,33 @@ async function runLive() {
     }
   }
 
+  /**
+   * Whether this entity can be read at all in this copy.
+   *
+   * 32 models declare a column their table does not have -- Acc_Bank_Transaction
+   * names `Rid` and `Srem` -- so every SELECT over them fails with ORA-00904.
+   * That breaks the delete as much as the insert, because deleting a document
+   * reads its children first, and a harness that creates what it cannot remove
+   * leaves rows in someone else's database. It left one every run until this
+   * check went in.
+   */
+  async function readable(pkg, name) {
+    try {
+      await UnifiedService.list(pkg, name, { page: 1, pageSize: 1 }, context);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
   async function drive(programUrl) {
     const screen = screenView.forProgram(programUrl, context);
     const [pkg, name] = String(screen.entity).split('/');
     let id = null;
+
+    if (!await readable(pkg, name)) {
+      return { outcome: 'skipped', why: 'the entity cannot be read in this copy' };
+    }
 
     try {
       const created = await UnifiedService.create(pkg, name, await payloadFor(screen, 1), context);
@@ -445,6 +468,11 @@ async function runLive() {
     const [pkg, name] = String(screen.entity).split('/');
     const line = screen.lines[0];
     let id = null;
+
+    const [linePkg, lineName] = String(line.entity).split('/');
+    if (!await readable(pkg, name) || !await readable(linePkg, lineName)) {
+      return { outcome: 'skipped', why: 'the entity or its lines cannot be read in this copy' };
+    }
 
     /** One line's worth of values, from what the line's own metadata says. */
     const lineRow = async (pass) => {

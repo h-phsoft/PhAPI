@@ -116,7 +116,7 @@
       "Short": "Short",
       "Scale": "0",
       "Precision": "1",
-      "Default": "",
+      "Default": "0",
       "query": true,
       "insert": true,
       "update": true,
@@ -132,7 +132,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "relation": null
     },
     {

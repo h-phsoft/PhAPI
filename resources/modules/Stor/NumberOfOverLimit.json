@@ -29,7 +29,7 @@
       "isAutonumber": false,
       "Autonumber": null,
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "relation": null
     },
     {
@@ -48,7 +48,7 @@
       "isAutonumber": false,
       "Autonumber": null,
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "relation": null
     },
     {
@@ -67,7 +67,7 @@
       "isAutonumber": false,
       "Autonumber": null,
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "relation": null
     }
   ]

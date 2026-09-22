@@ -90,6 +90,50 @@ const describedRoot = path.join(__dirname, '..', 'resources', 'modules');
  * Oracle hands back SCREAMING keys, PostgreSQL lower-cases them and MySQL
  * returns them as the query spelled them, so nothing downstream can assume.
  */
+/**
+ * A column's database default, as a value rather than as SQL.
+ *
+ * What the engines hand over is a fragment of DDL -- Oracle gives `1 `,
+ * `'N' ` or `SYSDATE`, PostgreSQL adds a cast as `'N'::character varying`, and
+ * all three pad or newline it. What a model wants is the value, so a literal is
+ * unwrapped and anything that is not one is dropped: `SYSDATE` is not a default
+ * a client can send, and recording it would have the validator accept a screen
+ * that then fails.
+ *
+ * An absent default is the empty string, which is what every model already uses
+ * for "none" and what `validatePayload` reads.
+ *
+ * @param {*} raw Whatever the catalogue returned
+ * @returns {string}
+ */
+function readDefault(raw) {
+  if (raw === null || raw === undefined) {
+    return '';
+  }
+
+  let text = String(raw).trim();
+  if (text === '' || /^null$/i.test(text)) {
+    return '';
+  }
+
+  // PostgreSQL writes the type on: 'N'::character varying
+  text = text.replace(/::[a-z_ ]+$/i, '').trim();
+
+  // A quoted literal, with doubled quotes inside it as SQL writes them.
+  const quoted = /^'((?:[^']|'')*)'$/.exec(text);
+  if (quoted) {
+    return quoted[1].replace(/''/g, "'");
+  }
+
+  // A plain number.
+  if (/^-?\d+(\.\d+)?$/.test(text)) {
+    return text;
+  }
+
+  // An expression -- SYSDATE, nextval(...), a function call. Not a value.
+  return '';
+}
+
 function lower(row) {
   const out = {};
   for (const [k, v] of Object.entries(row || {})) {
@@ -115,7 +159,7 @@ const READERS = {
   async oracle(pool) {
     const columns = await rows(pool, `
       SELECT table_name, column_name, data_type, data_precision, data_scale,
-             nullable, column_id
+             nullable, column_id, data_default
         FROM user_tab_columns
        ORDER BY table_name, column_id`);
 
@@ -150,7 +194,8 @@ const READERS = {
              DATA_TYPE AS data_type, NUMERIC_PRECISION AS data_precision,
              NUMERIC_SCALE AS data_scale,
              CASE WHEN IS_NULLABLE = 'YES' THEN 'Y' ELSE 'N' END AS nullable,
-             ORDINAL_POSITION AS column_id, EXTRA AS extra
+             ORDINAL_POSITION AS column_id, EXTRA AS extra,
+             COLUMN_DEFAULT AS data_default
         FROM information_schema.COLUMNS
        WHERE TABLE_SCHEMA = DATABASE()
        ORDER BY TABLE_NAME, ORDINAL_POSITION`);
@@ -181,7 +226,7 @@ const READERS = {
              numeric_precision AS data_precision, numeric_scale AS data_scale,
              CASE WHEN is_nullable = 'YES' THEN 'Y' ELSE 'N' END AS nullable,
              ordinal_position AS column_id,
-             is_identity, column_default
+             is_identity, column_default AS data_default
         FROM information_schema.columns
        WHERE table_schema = current_schema()
        ORDER BY table_name, ordinal_position`);
@@ -377,7 +422,11 @@ function buildModel(table, ctx) {
       Short: shape.Short,
       Scale: shape.Scale,
       Precision: shape.Precision,
-      Default: '',
+      // The database's own, where it is a value a client could send. Left empty
+      // for an expression: `validatePayload` reads this to decide whether a
+      // NOT NULL column still has to be supplied, and `SYSDATE` would have it
+      // accept a payload the insert then rejects.
+      Default: col.defaultValue || '',
       query: true,
       insert: true,
       update: true,
@@ -426,11 +475,19 @@ function buildModel(table, ctx) {
 // Main
 // ---------------------------------------------------------------------------
 
-async function main() {
-  console.log('--- Generating entity models from the database schema ---');
-  console.log(`  tenant: ${tenant}${dryRun ? '   (dry run)' : ''}`);
-
-  const poolWrapper = await connectionPool.getPool(tenant);
+/**
+ * Everything read off one copy's schema, in the shape `buildModel` wants.
+ *
+ * Split out of `main` so that a tool which is not generating models can still
+ * have the schema: `reconcileSchema.js` needs exactly this and would otherwise
+ * be a second copy of two hundred lines of reading, keyed on the same
+ * assumptions and free to drift from them.
+ *
+ * @param {string} copy The tenant to read
+ * @returns {Promise<Object>} The context, with `tableByName` on it
+ */
+async function readSchemaContext(copy) {
+  const poolWrapper = await connectionPool.getPool(copy);
   const dbType = String(poolWrapper.dbType || '').toLowerCase();
   const read = READERS[dbType] || (dbType === 'postgresql' || dbType === 'pg' ? READERS.postgres : null);
 
@@ -438,13 +495,10 @@ async function main() {
     throw new Error(`No schema reader for dbType '${poolWrapper.dbType}'`);
   }
 
-  console.log(`  engine: ${dbType}`);
-
   const schema = await read(poolWrapper);
 
   if (!schema.columns.length) {
-    console.error('\n  The schema came back empty. Is --tenant pointing at the copy that holds the tables?');
-    return;
+    throw new Error(`The schema of '${copy}' came back empty. Is it the copy that holds the tables?`);
   }
 
   // Gather columns per table.
@@ -460,7 +514,8 @@ async function main() {
       dataType: c.data_type,
       precision: c.data_precision === null || c.data_precision === undefined ? null : Number(c.data_precision),
       scale: c.data_scale === null || c.data_scale === undefined ? null : Number(c.data_scale),
-      nullable: String(c.nullable).toUpperCase() !== 'N'
+      nullable: String(c.nullable).toUpperCase() !== 'N',
+      defaultValue: readDefault(c.data_default)
     });
   }
 
@@ -573,6 +628,18 @@ async function main() {
       return out;
     }
   };
+
+  ctx.dbType = dbType;
+  return ctx;
+}
+
+async function main() {
+  console.log('--- Generating entity models from the database schema ---');
+  console.log(`  tenant: ${tenant}${dryRun ? '   (dry run)' : ''}`);
+
+  const ctx = await readSchemaContext(tenant);
+  const { tableByName, learned } = ctx;
+  console.log(`  engine: ${ctx.dbType}`);
 
   let written = 0;
   let skipped = 0;
@@ -687,11 +754,15 @@ async function main() {
   }
 }
 
-main()
-  .then(() => connectionPool.closeAll ? connectionPool.closeAll() : null)
-  .then(() => process.exit(0))
-  .catch((err) => {
-    console.error(`\n  Failed: ${err.message}`);
-    console.error(err.stack);
-    process.exit(1);
-  });
+if (require.main === module) {
+  main()
+    .then(() => connectionPool.closeAll ? connectionPool.closeAll() : null)
+    .then(() => process.exit(0))
+    .catch((err) => {
+      console.error(`\n  Failed: ${err.message}`);
+      console.error(err.stack);
+      process.exit(1);
+    });
+}
+
+module.exports = { readSchemaContext, buildModel };

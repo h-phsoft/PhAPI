@@ -762,7 +762,7 @@
       "Short": "String",
       "Scale": "0",
       "Precision": "0",
-      "Default": "",
+      "Default": "_",
       "query": true,
       "insert": true,
       "update": true,
@@ -806,7 +806,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": null
     },
     {
@@ -833,7 +833,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": null
     },
     {
@@ -935,6 +935,60 @@
         "Mode": "1",
         "Aggr": "Max",
         "Column": "Upd_Date",
+        "Synonym": "Stor_Ics",
+        "Sequence": "Stor_Ics_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": null
+    },
+    {
+      "Name": "Ccst",
+      "Field": "ccst",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "3",
+      "Precision": "25",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Ccst",
+        "Synonym": "Stor_Ics",
+        "Sequence": "Stor_Ics_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": null
+    },
+    {
+      "Name": "Cbcst",
+      "Field": "cbcst",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "3",
+      "Precision": "25",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Cbcst",
         "Synonym": "Stor_Ics",
         "Sequence": "Stor_Ics_Seq",
         "Condition": "",

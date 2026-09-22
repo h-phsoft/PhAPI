@@ -1684,6 +1684,74 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Trt_Iid",
+      "Field": "trtIid",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "30",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Trt_Iid",
+        "Synonym": "Bank_Tord",
+        "Sequence": "Bank_Tord_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Bank_Code_Trt",
+        "refSynonym": "Bank_Cod_Trt",
+        "primaryKey": "Id",
+        "foreignKey": "Trt_Iid",
+        "displayField": "Name",
+        "apiDisplayField": "trtIidName"
+      }
+    },
+    {
+      "Name": "Trt_Oid",
+      "Field": "trtOid",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "40",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Trt_Oid",
+        "Synonym": "Bank_Tord",
+        "Sequence": "Bank_Tord_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Bank_Code_Trt",
+        "refSynonym": "Bank_Cod_Trt",
+        "primaryKey": "Id",
+        "foreignKey": "Trt_Oid",
+        "displayField": "Name",
+        "apiDisplayField": "trtOidName"
+      }
     }
   ]
 }

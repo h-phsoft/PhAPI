@@ -137,7 +137,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "isLabel": false,
       "relation": null
     },
@@ -1175,6 +1175,94 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Cust_Id",
+      "Field": "custId",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Int",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Cust_Id",
+        "Synonym": "Mng_Cont",
+        "Sequence": "Mng_Cont_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": null
+    },
+    {
+      "Name": "Vend_Id",
+      "Field": "vendId",
+      "DBType": "NUMBER",
+      "Type": "Integer",
+      "Short": "Int",
+      "Scale": "0",
+      "Precision": "9",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Vend_Id",
+        "Synonym": "Mng_Cont",
+        "Sequence": "Mng_Cont_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": null
+    },
+    {
+      "Name": "Blnmod_Id",
+      "Field": "blnmodId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Blnmod_Id",
+        "Synonym": "Mng_Cont",
+        "Sequence": "Mng_Cont_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Mng_Code_Balance_Mode",
+        "refSynonym": "Mng_Cod_Blncmode",
+        "primaryKey": "Id",
+        "foreignKey": "Blnmod_Id",
+        "displayField": "Name",
+        "apiDisplayField": "blnmodName"
+      }
     }
   ]
 }

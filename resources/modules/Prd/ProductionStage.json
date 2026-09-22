@@ -477,6 +477,108 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "List_Id",
+      "Field": "listId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "0",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "List_Id",
+        "Synonym": "Prd_Stage",
+        "Sequence": "Prd_Stage_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Prd_Quality_Assurance_Checklist",
+        "refSynonym": "Prd_Qa_Checklist",
+        "primaryKey": "Id",
+        "foreignKey": "List_Id",
+        "displayField": "Name",
+        "apiDisplayField": "listName"
+      }
+    },
+    {
+      "Name": "Exectime_Id",
+      "Field": "exectimeId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Exectime_Id",
+        "Synonym": "Prd_Stage",
+        "Sequence": "Prd_Stage_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Prd_Code_Execition_Time",
+        "refSynonym": "Prd_Cod_Exec_Time",
+        "primaryKey": "Id",
+        "foreignKey": "Exectime_Id",
+        "displayField": "Name",
+        "apiDisplayField": "exectimeName"
+      }
+    },
+    {
+      "Name": "Required_Id",
+      "Field": "requiredId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Required_Id",
+        "Synonym": "Prd_Stage",
+        "Sequence": "Prd_Stage_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Phs_Code_Yesno",
+        "refSynonym": "Phs_Cod_Yesno",
+        "primaryKey": "Id",
+        "foreignKey": "Required_Id",
+        "displayField": "Name",
+        "apiDisplayField": "requiredName"
+      }
     }
   ]
 }

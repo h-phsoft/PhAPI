@@ -243,6 +243,40 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Status_Id",
+      "Field": "statusId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "1",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Status_Id",
+        "Synonym": "Sdesk_Staff_Serv",
+        "Sequence": "Sdesk_Staff_Serv_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Phs_Code_Status",
+        "refSynonym": "Phs_Cod_Status",
+        "primaryKey": "Id",
+        "foreignKey": "Status_Id",
+        "displayField": "Name",
+        "apiDisplayField": "statusName"
+      }
     }
   ]
 }

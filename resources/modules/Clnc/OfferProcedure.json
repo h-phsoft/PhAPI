@@ -116,7 +116,7 @@
       "Short": "Double",
       "Scale": "3",
       "Precision": "25",
-      "Default": "",
+      "Default": "0",
       "query": true,
       "insert": true,
       "update": true,

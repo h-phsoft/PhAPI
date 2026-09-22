@@ -64,7 +64,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": {
         "refTable": "Mng_Supplier",
         "refSynonym": "Mng_Supp",
@@ -404,6 +404,62 @@
       },
       "isFile": false,
       "isNull": true,
+      "relation": null
+    },
+    {
+      "Name": "Pobox",
+      "Field": "pobox",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Pobox",
+        "Synonym": "Mng_Supp_Bran",
+        "Sequence": "Mng_Supp_Bran_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "isLabel": false,
+      "relation": null
+    },
+    {
+      "Name": "Pcode",
+      "Field": "pcode",
+      "DBType": "VARCHAR2",
+      "Type": "String",
+      "Short": "String",
+      "Scale": "0",
+      "Precision": "0",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Pcode",
+        "Synonym": "Mng_Supp_Bran",
+        "Sequence": "Mng_Supp_Bran_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "isLabel": false,
       "relation": null
     }
   ]

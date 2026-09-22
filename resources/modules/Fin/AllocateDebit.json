@@ -272,7 +272,7 @@
       "Short": "Short",
       "Scale": "0",
       "Precision": "4",
-      "Default": "",
+      "Default": "0",
       "query": true,
       "insert": true,
       "update": true,
@@ -541,6 +541,40 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Type_Id",
+      "Field": "typeId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "1",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": true,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Type_Id",
+        "Synonym": "Fin_Alcdbt",
+        "Sequence": "Fin_Alcdbt_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": {
+        "refTable": "Fin_Code_Type",
+        "refSynonym": "Fin_Cod_Type",
+        "primaryKey": "Id",
+        "foreignKey": "Type_Id",
+        "displayField": "Name",
+        "apiDisplayField": "typeName"
+      }
     }
   ]
 }

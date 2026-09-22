@@ -110,7 +110,7 @@
       "Short": "String",
       "Scale": "0",
       "Precision": "0",
-      "Default": "",
+      "Default": "#FFFFFF00",
       "query": true,
       "insert": true,
       "update": true,

@@ -399,7 +399,7 @@
         "PeriodCondition": "Period_Id={periodId}"
       },
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "relation": null
     },
     {
@@ -426,7 +426,7 @@
         "PeriodCondition": "Period_Id={periodId}"
       },
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "relation": null
     },
     {
@@ -453,7 +453,7 @@
         "PeriodCondition": "Period_Id={periodId}"
       },
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "relation": null
     },
     {
@@ -480,7 +480,7 @@
         "PeriodCondition": "Period_Id={periodId}"
       },
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "relation": null
     },
     {
@@ -507,7 +507,7 @@
         "PeriodCondition": "Period_Id={periodId}"
       },
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "relation": null
     },
     {
@@ -534,7 +534,7 @@
         "PeriodCondition": "Period_Id={periodId}"
       },
       "isFile": false,
-      "isNull": false,
+      "isNull": true,
       "relation": null
     },
     {
@@ -804,6 +804,33 @@
         "Sequence": "Sal_MSal_Seq",
         "Condition": "",
         "PeriodCondition": "Period_Id={periodId}"
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": null
+    },
+    {
+      "Name": "Bcom",
+      "Field": "bcom",
+      "DBType": "NUMBER",
+      "Type": "Double",
+      "Short": "Double",
+      "Scale": "3",
+      "Precision": "17",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Bcom",
+        "Synonym": "Sal_Msal",
+        "Sequence": "Sal_Msal_Seq",
+        "Condition": "",
+        "PeriodCondition": ""
       },
       "isFile": false,
       "isNull": true,

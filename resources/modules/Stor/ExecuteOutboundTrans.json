@@ -807,7 +807,7 @@
       "Short": "String",
       "Scale": "0",
       "Precision": "0",
-      "Default": "",
+      "Default": "_",
       "query": true,
       "insert": true,
       "update": true,
@@ -851,7 +851,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": null
     },
     {
@@ -878,7 +878,7 @@
         "PeriodCondition": ""
       },
       "isFile": false,
-      "isNull": true,
+      "isNull": false,
       "relation": null
     },
     {

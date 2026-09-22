@@ -76,7 +76,7 @@
       "Short": "Short",
       "Scale": "0",
       "Precision": "3",
-      "Default": "",
+      "Default": "2",
       "query": true,
       "insert": true,
       "update": true,

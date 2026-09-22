@@ -82,7 +82,7 @@
       "Short": "Long",
       "Scale": "0",
       "Precision": "10",
-      "Default": "",
+      "Default": "1",
       "query": true,
       "insert": true,
       "update": true,

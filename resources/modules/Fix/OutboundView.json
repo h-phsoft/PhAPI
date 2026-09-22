@@ -2673,6 +2673,33 @@
       "isNull": false,
       "isLabel": false,
       "relation": null
+    },
+    {
+      "Name": "Vhr_Id",
+      "Field": "vhrId",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "10",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Vhr_Id",
+        "Synonym": "Fix_Voudocs",
+        "Sequence": "",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": null
     }
   ]
 }
