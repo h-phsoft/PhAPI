@@ -1646,7 +1646,7 @@
       ]
     },
     {
-      "name": "loanTypeId",
+      "name": "loanTypeRefId",
       "labelKey": "loanTypeId",
       "filter": true,
       "display": true,

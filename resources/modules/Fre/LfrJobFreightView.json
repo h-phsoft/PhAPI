@@ -890,7 +890,7 @@
     },
     {
       "Name": "Cont_Rid",
-      "Field": "contRid",
+      "Field": "contRecvId",
       "DBType": "NUMBER",
       "Type": "Long",
       "Short": "Long",
@@ -917,7 +917,7 @@
     },
     {
       "Name": "Cont_Rnum",
-      "Field": "contRnum",
+      "Field": "contRecvNum",
       "DBType": "VARCHAR2",
       "Type": "String",
       "Short": "String",

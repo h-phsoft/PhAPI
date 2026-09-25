@@ -409,7 +409,7 @@
     },
     {
       "Name": "Cont_Rid",
-      "Field": "contRid",
+      "Field": "contRecvId",
       "DBType": "NUMBER",
       "Type": "Long",
       "Short": "Long",
@@ -438,7 +438,7 @@
         "primaryKey": "Id",
         "foreignKey": "Cont_Rid",
         "displayField": "Name",
-        "apiDisplayField": "contName"
+        "apiDisplayField": "contRecvName"
       }
     },
     {

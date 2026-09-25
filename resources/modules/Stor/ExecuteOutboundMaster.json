@@ -349,40 +349,6 @@
       }
     },
     {
-      "Name": "Cont_Id",
-      "Field": "contId",
-      "DBType": "NUMBER",
-      "Type": "Short",
-      "Short": "Short",
-      "Scale": "0",
-      "Precision": "4",
-      "Default": "",
-      "query": true,
-      "insert": true,
-      "update": true,
-      "hasRelation": true,
-      "isAutonumber": false,
-      "Autonumber": {
-        "Mode": "11",
-        "Aggr": "Max",
-        "Column": "Cont_Id",
-        "Synonym": "Stor_Eomst",
-        "Sequence": "Stor_Eomst_Seq",
-        "Condition": "",
-        "PeriodCondition": "Period_Id={periodId}"
-      },
-      "isFile": false,
-      "isNull": false,
-      "relation": {
-        "refTable": "Mng_Contact",
-        "refSynonym": "Mng_Cont",
-        "primaryKey": "Id",
-        "foreignKey": "Cont_Id",
-        "displayField": "Name",
-        "apiDisplayField": "contName"
-      }
-    },
-    {
       "Name": "Num",
       "Field": "num",
       "DBType": "NUMBER",

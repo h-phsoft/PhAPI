@@ -37,6 +37,11 @@
  *   node scripts/reconcileSchema.js --tenant Demo
  *   node scripts/reconcileSchema.js --tenant Demo --apply
  *   node scripts/reconcileSchema.js --tenant Demo --only Emp_Employee
+ *
+ * Listing the columns a model names and its table does not have, checked
+ * against a second copy, written to reconcile-missing-<tenant>.csv:
+ *
+ *   node scripts/reconcileSchema.js --tenant Demo --missing --compare NSCC
  */
 
 const fs = require('fs');
@@ -70,6 +75,8 @@ function readArg(name, fallback) {
 const tenant = readArg('tenant', process.env.TEST_TENANT || 'Demo');
 const only = (readArg('only', '') || '').toLowerCase();
 const apply = process.argv.includes('--apply');
+const missing = process.argv.includes('--missing');
+const compare = readArg('compare', '');
 
 // ---------------------------------------------------------------------------
 // The files
@@ -345,6 +352,79 @@ function caseCollisions(models) {
 }
 
 // ---------------------------------------------------------------------------
+// The columns a model names and its table does not have
+// ---------------------------------------------------------------------------
+
+/**
+ * Every column a model names that its table in this copy lacks. Counted apart
+ * from `reconcile`, which reports a model only when it has something to write,
+ * and so leaves out a model whose only fault is a column too many.
+ *
+ * @returns {{model: string, table: string, column: string, field: string}[]}
+ */
+function missingColumns(entries, ctx) {
+  const out = [];
+
+  for (const entry of entries) {
+    const tableName = entry.model.tableName || entry.model.Name || entry.model.Table || entry.model.Synonym;
+    const table = ctx.tableByName.get(String(tableName || '').toLowerCase());
+    if (!table) {
+      continue;
+    }
+
+    const has = new Set(table.columns.map((c) => String(c.name).toLowerCase()));
+    for (const field of (entry.model.fields || entry.model.Columns || [])) {
+      if (!has.has(columnNameOf(field).toLowerCase())) {
+        out.push({ model: entry.rel, table: tableName, column: columnNameOf(field), field: fieldNameOf(field) });
+      }
+    }
+  }
+
+  return out;
+}
+
+/**
+ * What a second copy says about a column the first lacks: present there (a
+ * real per-copy difference), absent there too (almost certainly stale), or
+ * no table to tell by.
+ */
+function verdictIn(ctx, row) {
+  const table = ctx.tableByName.get(String(row.table).toLowerCase());
+  if (!table) {
+    return 'no table';
+  }
+  const present = table.columns.some((c) => String(c.name).toLowerCase() === row.column.toLowerCase());
+  return present ? 'present' : 'absent';
+}
+
+async function reportMissing(entries, ctx) {
+  const rows = missingColumns(entries, ctx);
+  const other = compare ? await readSchemaContext(compare) : null;
+
+  for (const row of rows) {
+    row.other = other ? verdictIn(other, row) : '';
+  }
+
+  const header = ['model', 'table', 'column', 'field', ...(compare ? [`in ${compare}`] : [])];
+  const csv = [header, ...rows.map((r) => [r.model, r.table, r.column, r.field, ...(compare ? [r.other] : [])])]
+    .map((line) => line.join(','))
+    .join('\n');
+  const file = path.join(process.cwd(), `reconcile-missing-${tenant}.csv`);
+  fs.writeFileSync(file, `${csv}\n`, 'utf8');
+
+  console.log(`\n  columns a model names and the table lacks: ${rows.length}, across ${new Set(rows.map((r) => r.model)).size} models`);
+  if (compare) {
+    for (const verdict of ['present', 'absent', 'no table']) {
+      console.log(`    ${compare} ${verdict.padEnd(9)}: ${rows.filter((r) => r.other === verdict).length}`);
+    }
+  }
+  for (const r of rows) {
+    console.log(`    ${r.model.padEnd(42)} ${r.column.padEnd(28)} ${r.other}`);
+  }
+  console.log(`\n  written to ${file}`);
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 
@@ -357,6 +437,11 @@ async function main() {
 
   console.log(`  model files            : ${before.length}`);
   console.log(`  tables in this copy    : ${ctx.tableByName.size}`);
+
+  if (missing) {
+    await reportMissing(before, ctx);
+    return;
+  }
 
   const collisionsBefore = caseCollisions(before);
   const duplicatesBefore = duplicateColumns(before);

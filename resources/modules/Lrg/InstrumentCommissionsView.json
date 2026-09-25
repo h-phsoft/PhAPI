@@ -1820,7 +1820,7 @@
     },
     {
       "Name": "Loan_Type_Id",
-      "Field": "loanTypeId",
+      "Field": "loanTypeRefId",
       "DBType": "NUMBER",
       "Type": "Short",
       "Short": "Short",

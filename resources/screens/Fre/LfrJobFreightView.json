@@ -512,7 +512,7 @@
       ]
     },
     {
-      "name": "contRid",
+      "name": "contRecvId",
       "labelKey": "contRid",
       "filter": true,
       "display": true,
@@ -530,7 +530,7 @@
       ]
     },
     {
-      "name": "contRnum",
+      "name": "contRecvNum",
       "labelKey": "contRnum",
       "filter": true,
       "display": true,

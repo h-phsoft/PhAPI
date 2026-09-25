@@ -204,10 +204,19 @@ threads, hot metadata reload.
 
 ## Part 5 — Known defects, recorded and not fixed
 
-- **18 entities expose two columns whose API names differ only in case**
-  (`Loantype_Id` beside `Loan_Type_Id` in 15 Lrg views, `Cont_Rid` beside
-  `Contr_Id` in Fre, a doubled `Cont_Id` in `Stor/ExecuteOutboundMaster`). One of
-  each pair is silently lost on every read.
+- **No two columns of an entity share an API name any more**, ignoring case.
+  The 18 left after the audit change were settled by renaming, never dropping:
+  `Loan_Type_Id` is `loanTypeRefId` in the 15 Lrg views, `Cont_Rid` /
+  `Cont_Rnum` are `contRecvId` / `contRecvNum` in Fre, and the second `Cont_Id`
+  entry (precision 4) left `Stor/ExecuteOutboundMaster`.
+- **56 joined display names still clash, across 30 entities.** A relation's
+  `apiDisplayField` collides with a column or with another relation's display:
+  `Curn_Fid` and `Curn_Tid` both show as `curnName`, `Contr_Id` and `Contr_Rid`
+  both as `contrName`, a view's `Status_Id` display beside its own
+  `Status_Name`. One of each is lost on every read.
+- **The columns a model names and its table lacks are listed by**
+  `node scripts/reconcileSchema.js --tenant Demo --missing --compare NSCC`,
+  which writes `reconcile-missing-Demo.csv`. Needs the database.
 - **Audit columns are always `insUser`, `insDate`, `updUser`, `updDate`**,
   however the table spells them (`toFieldName`). The 10 Bank/Cash order tables
   that had both `Insdate` and `Ins_Date` now expose `Insdate` as `insDate`;
