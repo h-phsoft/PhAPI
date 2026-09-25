@@ -88,6 +88,38 @@ function restoreCase(identifier) {
 }
 
 /**
+ * The audit stamps' API names, keyed by the column name with its underscores
+ * and case taken out.
+ */
+const AUDIT_FIELD_NAMES = {
+  insuser: 'insUser',
+  insdate: 'insDate',
+  upduser: 'updUser',
+  upddate: 'updDate'
+};
+
+/**
+ * A column name with its underscores and case taken out: Ins_Date and
+ * Insdate are both `insdate`.
+ *
+ * @param {string} columnName
+ * @returns {string}
+ */
+function auditKeyOf(columnName) {
+  return String(columnName).replace(/_/g, '').toLowerCase();
+}
+
+/**
+ * True when the column is one of the four audit stamps, however it is spelt.
+ *
+ * @param {string} columnName
+ * @returns {boolean}
+ */
+function isAuditColumn(columnName) {
+  return Object.prototype.hasOwnProperty.call(AUDIT_FIELD_NAMES, auditKeyOf(columnName));
+}
+
+/**
  * The API name of a column: Status_Id -> statusId, Ins_User -> insUser.
  *
  * Reproduces 19064 of the 19204 existing columns. The 140 that differ are
@@ -95,10 +127,19 @@ function restoreCase(identifier) {
  * LName left capitalised -- and they survive because nothing regenerates a
  * file that already exists.
  *
+ * The four audit stamps are the exception: however a table spells them --
+ * Ins_Date, Insdate, INSDATE -- they are exposed as insUser, insDate, updUser
+ * and updDate, because that is what `auditFields` names.
+ *
  * @param {string} columnName As the database spells it
  * @returns {string}
  */
 function toFieldName(columnName) {
+  const audit = AUDIT_FIELD_NAMES[auditKeyOf(columnName)];
+  if (audit) {
+    return audit;
+  }
+
   const parts = String(columnName).split('_').filter(Boolean);
   if (!parts.length) {
     return '';
@@ -247,6 +288,7 @@ module.exports = {
   modelFileName,
   restoreCase,
   toFieldName,
+  isAuditColumn,
   toDisplayFieldName,
   mapColumnType
 };

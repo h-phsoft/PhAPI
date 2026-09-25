@@ -204,8 +204,14 @@ threads, hot metadata reload.
 
 ## Part 5 — Known defects, recorded and not fixed
 
-- **27 entities expose two columns whose API names differ only in case**
-  (`Insdate` beside `Ins_Date`). One of each pair is silently lost on every read.
+- **18 entities expose two columns whose API names differ only in case**
+  (`Loantype_Id` beside `Loan_Type_Id` in 15 Lrg views, `Cont_Rid` beside
+  `Contr_Id` in Fre, a doubled `Cont_Id` in `Stor/ExecuteOutboundMaster`). One of
+  each pair is silently lost on every read.
+- **Audit columns are always `insUser`, `insDate`, `updUser`, `updDate`**,
+  however the table spells them (`toFieldName`). The 10 Bank/Cash order tables
+  that had both `Insdate` and `Ins_Date` now expose `Insdate` as `insDate`;
+  `Ins_Date` left those models and their screens (Haytham's decision).
 - **`AuthError` collapses every status to 401.** The per-case codes were
   provably dead and were removed; restoring the distinction is deferred.
 - **The Java client's report table shape is not built.** Its `renderTable` reads

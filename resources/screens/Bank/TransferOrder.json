@@ -193,8 +193,8 @@
       "autocomplete": "Acc_Mst"
     },
     {
-      "name": "insdate",
-      "labelKey": "insdate",
+      "name": "insDate",
+      "labelKey": "insDate",
       "filter": true,
       "display": true,
       "group": true,
@@ -652,25 +652,6 @@
         "<>",
         "><"
       ]
-    },
-    {
-      "name": "insDate",
-      "labelKey": "insDate",
-      "filter": true,
-      "display": true,
-      "group": true,
-      "sort": true,
-      "operators": [
-        "=",
-        "!=",
-        ">",
-        ">=",
-        "<",
-        "<=",
-        "<>",
-        "><"
-      ],
-      "expression": "To_Char(Ins_Date, 'DD-MM-YYYY')"
     },
     {
       "name": "updUser",

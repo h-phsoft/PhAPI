@@ -114,7 +114,7 @@
         "labelKey": "Bank.ddate"
       },
       {
-        "name": "insdate",
+        "name": "insDate",
         "labelKey": "Bank.insdate"
       },
       {

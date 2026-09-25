@@ -31,6 +31,7 @@ const {
   modelFileName,
   restoreCase,
   toFieldName,
+  isAuditColumn,
   toDisplayFieldName,
   mapColumnType
 } = require('./lib/modelNaming');
@@ -334,18 +335,6 @@ function packageFor(tableName, learned) {
 }
 
 /**
- * Columns that carry a foreign key in the database but are not modelled as a
- * relation.
- *
- * Almost every table constrains Ins_User and Upd_User against Copy_Users, so
- * reading constraints alone would add a relation to 1595 columns and expose an
- * insUserName on every entity. The convention says otherwise: of those 1595,
- * exactly 3 declare one. Who touched a row is audit, not a lookup a screen
- * displays.
- */
-const AUDIT_COLUMNS = new Set(['ins_user', 'upd_user', 'ins_date', 'upd_date']);
-
-/**
  * The audit stamps, as `auditFields` names them, which are kept to the second.
  */
 const AUDIT_TIMESTAMPS = new Set(['insdate', 'upddate']);
@@ -377,7 +366,7 @@ function buildModel(table, ctx) {
 
   const identity = ctx.identityOf.get(table.name.toLowerCase()) || new Set();
 
-  const fields = table.columns.map((col) => {
+  const built = table.columns.map((col) => {
     const shape = mapColumnType(col.dataType, col.precision, col.scale);
     const fieldName = toFieldName(col.name);
 
@@ -391,7 +380,12 @@ function buildModel(table, ctx) {
     const fk = fkByColumn.get(String(col.name).toLowerCase());
 
     let relation = null;
-    if (fk && !AUDIT_COLUMNS.has(String(col.name).toLowerCase())) {
+    // Almost every table constrains Ins_User and Upd_User against Copy_Users,
+    // so reading constraints alone would add a relation to 1595 columns and
+    // expose an insUserName on every entity. The convention says otherwise: of
+    // those 1595, exactly 3 declare one. Who touched a row is audit, not a
+    // lookup a screen displays.
+    if (fk && !isAuditColumn(col.name)) {
       const refTable = ctx.tableByName.get(String(fk.refTable).toLowerCase());
       relation = {
         refTable: refTable ? refTable.name : fk.refTable,
@@ -449,6 +443,18 @@ function buildModel(table, ctx) {
       ...(shape.DBType === 'VARCHAR2' ? { isLabel: false } : {}),
       relation
     };
+  });
+
+  // A table can carry an audit stamp twice -- Insdate beside Ins_Date -- and
+  // both become insDate. A row is keyed by the API name, so one would shadow
+  // the other; the one spelt without an underscore keeps the name and the
+  // other is left out of the model.
+  const fields = built.filter((field) => {
+    if (!isAuditColumn(field.Name) || !field.Name.includes('_')) {
+      return true;
+    }
+    return !built.some((other) => other !== field
+      && other.Field === field.Field && !other.Name.includes('_'));
   });
 
   const children = ctx.childrenOf(table);
