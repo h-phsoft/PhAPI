@@ -1,0 +1,56 @@
+model,table,column,field,in NSCC
+Cpy/SpeciallistsView.json,Copy_Speciallists_View,Sprv_Lovid,sprvLovid,present
+Cpy/SpeciallistsView.json,Copy_Speciallists_View,Sprv_Lovnum,sprvLovnum,present
+Cpy/SpeciallistsView.json,Copy_Speciallists_View,Sprv_Lovname,sprvLovname,present
+Cpy/SpeciallistsView.json,Copy_Speciallists_View,Sprv_Lovtable,sprvLovtable,present
+Cpy/SpeciallistsView.json,Copy_Speciallists_View,Sprv_Lovwhere,sprvLovwhere,present
+Fre/LfrDbcrDocumentsView.json,Fre_Lfr_Dbcr_Documents_View,Job_Id,jobId,no table
+Fre/LfrDbcrDocumentsView.json,Fre_Lfr_Dbcr_Documents_View,Job_Num,jobNum,no table
+Fre/LfrDbcrDocumentsView.json,Fre_Lfr_Dbcr_Documents_View,Job_Date,jobDate,no table
+Ped/LecturerProgram.json,Ped_Lecturer_Program,Is_Day_Sat,isDaySat,no table
+Ped/LecturerProgram.json,Ped_Lecturer_Program,Is_Day_Sun,isDaySun,no table
+Ped/LecturerProgram.json,Ped_Lecturer_Program,Is_Day_Mon,isDayMon,no table
+Ped/LecturerProgram.json,Ped_Lecturer_Program,Is_Day_Tue,isDayTue,no table
+Ped/LecturerProgram.json,Ped_Lecturer_Program,Is_Day_Wed,isDayWed,no table
+Ped/LecturerProgram.json,Ped_Lecturer_Program,Is_Day_Thu,isDayThu,no table
+Ped/LecturerProgram.json,Ped_Lecturer_Program,Sdate,sdate,no table
+Ped/LecturerProgram.json,Ped_Lecturer_Program,Edate,edate,no table
+Ped/LecturerProgram.json,Ped_Lecturer_Program,Shour,shour,no table
+Ped/LecturerProgram.json,Ped_Lecturer_Program,Ehour,ehour,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Acat_Perc_From,acatPercFrom,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Acat_Perc_To,acatPercTo,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Bcat_Perc_From,bcatPercFrom,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Bcat_Perc_To,bcatPercTo,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Ccat_Perc_From,ccatPercFrom,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Ccat_Perc_To,ccatPercTo,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Dcat_Perc_From,dcatPercFrom,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Dcat_Perc_To,dcatPercTo,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Ecat_Perc_From,ecatPercFrom,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Ecat_Perc_To,ecatPercTo,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Fcat_Perc_From,fcatPercFrom,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Fcat_Perc_To,fcatPercTo,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Gcat_Perc_From,gcatPercFrom,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Gcat_Perc_To,gcatPercTo,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Hcat_Perc_From,hcatPercFrom,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Hcat_Perc_To,hcatPercTo,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Icat_Perc_From,icatPercFrom,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Icat_Perc_To,icatPercTo,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Jcat_Perc_From,jcatPercFrom,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Jcat_Perc_To,jcatPercTo,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Kcat_Perc_From,kcatPercFrom,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Kcat_Perc_To,kcatPercTo,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Lcat_Perc_From,lcatPercFrom,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Lcat_Perc_To,lcatPercTo,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Mcat_Perc_From,mcatPercFrom,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Mcat_Perc_To,mcatPercTo,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Ncat_Perc_From,ncatPercFrom,no table
+Ped/TestKeyView.json,Ped_Test_Key_View,Ncat_Perc_To,ncatPercTo,no table
+Phs/SpecialPrivileges.json,Phs_Special_Privileges,Lovid,lovid,present
+Phs/SpecialPrivileges.json,Phs_Special_Privileges,Lovnum,lovnum,present
+Phs/SpecialPrivileges.json,Phs_Special_Privileges,Lovname,lovname,present
+Phs/SpecialPrivileges.json,Phs_Special_Privileges,Lovtable,lovtable,present
+Phs/SpecialPrivileges.json,Phs_Special_Privileges,Lovwhere,lovwhere,present
+Prd/OrderExecutionStage.json,Prd_Order_Execution_Stage,Duration,duration,no table
+Proj/FollowupView.json,Proj_Followup_View,Tsheet_Curn_Id,tsheetCurnId,no table
+Proj/FollowupView.json,Proj_Followup_View,Curn_Name,curnName,no table
+Proj/FollowupView.json,Proj_Followup_View,Tsheet_Curn_Rate,tsheetCurnRate,no table

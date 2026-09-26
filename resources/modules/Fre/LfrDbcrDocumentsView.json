@@ -6870,6 +6870,60 @@
       "isFile": false,
       "isNull": true,
       "relation": null
+    },
+    {
+      "Name": "Jf_Contr_Id",
+      "Field": "jfContrId",
+      "DBType": "NUMBER",
+      "Type": "Short",
+      "Short": "Short",
+      "Scale": "0",
+      "Precision": "5",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Jf_Contr_Id",
+        "Synonym": "Fre_Vlfr_Dbcr",
+        "Sequence": "",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": false,
+      "relation": null
+    },
+    {
+      "Name": "Jf_Contr_Num",
+      "Field": "jfContrNum",
+      "DBType": "NUMBER",
+      "Type": "Long",
+      "Short": "Long",
+      "Scale": "0",
+      "Precision": "10",
+      "Default": "",
+      "query": true,
+      "insert": true,
+      "update": true,
+      "hasRelation": false,
+      "isAutonumber": false,
+      "Autonumber": {
+        "Mode": "1",
+        "Aggr": "Max",
+        "Column": "Jf_Contr_Num",
+        "Synonym": "Fre_Vlfr_Dbcr",
+        "Sequence": "",
+        "Condition": "",
+        "PeriodCondition": ""
+      },
+      "isFile": false,
+      "isNull": true,
+      "relation": null
     }
   ]
 }
