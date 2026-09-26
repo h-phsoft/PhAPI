@@ -202,7 +202,7 @@ English is replaced only while it is still the generated default.
 | Fre | 250 | `jobEdate` / `jobEnum`, `jobFdate` / `jobFnum`, `jobSdm`, `modeId` / `modeName`, `pshareStatusId` / `pshareStatusName` |
 | Emp | 117 | 26, mostly `Emp_Salaries_Calculation_View` (`Sal_Gbtam1`..., `Sal_Cons` / `Sal_Pun`), `codAffId`, `taxpayId`, `tsalId`, `empComputer`. The overtime columns are N = night, D = day, W = weekend, H = holiday (owner) |
 | Lrg | 122 | `bstatusId`, `claimCommitId`, `settCommitId`, `settCondId`, `collInterId`, `collRespId`, `mpointerId` / `mpointerName` |
-| Stor | 112 | 18: the B / W / BW / CW quantities and `cbamt`, `comaccId`, `itemInsaleId`, `itemMethodId`, `saleName`. The item prices are the owner's: C = current market, N = normal, D = discount, S = sale, W = wholesale, R = retail, H = half-wholesale, M = media (taken as the average price) |
+| Stor | 112 | 18: the B / W / BW / CW quantities and `cbamt`, `comaccId`, `itemInsaleId`, `itemMethodId`, `saleName`. The item prices are the owner's: C = current market, N = normal, D = discount, S = sale, W = wholesale, R = retail, H = half-wholesale, M = social media |
 | Clnc | 111 | none |
 | Proj | 110 | none |
 | Fix | 69 | 17: the R account (`Acc_Rid`, beside the D = depreciation expense and F = accumulated depreciation accounts), `Rtot` / `Ramt`, `Sqnt` / `Scqnt` |
