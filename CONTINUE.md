@@ -112,7 +112,7 @@ PhApp has 19 hand-written screens. They still take precedence (P4).
 resources/modules/     1215 entity models, generated from the live schema
 resources/screens/      548 query definitions   (Pkg/Name)
 resources/programs/     383 program screens     (the program's own path)
-locales/{en,ar}.json    2385 column labels, 1448 with Arabic
+locales/{en,ar}.json    2385 column labels, 1738 with Arabic
 ```
 
 - 85 document screens carry 106 line grids and 984 line fields.
@@ -190,7 +190,7 @@ field entry was modified.
 API side, because they sit behind a sign-in. This is the gap to close before
 trusting any of it. PhApp dev runs on 3030 and talks to PhAPI on 3000.
 
-### 3. Arabic for the remaining 937 labels
+### 3. Arabic for the remaining 647 labels
 
 872 of 2,385 came from the Java bundle. The rest are drafted a package at a
 time, by the screens that show them: a key goes to the package whose screens
@@ -203,8 +203,15 @@ English is replaced only while it is still the generated default.
 | Emp | 105 | 38, mostly `Emp_Salaries_Calculation_View` (`Sal_Gbtam1`..., the N/D/W/H overtime columns, `Sal_Cons` / `Sal_Pun`), `codAffId`, `taxpayId`, `tsalId`, `empComputer` |
 | Lrg | 122 | `bstatusId`, `claimCommitId`, `settCommitId`, `settCondId`, `collInterId`, `collRespId`, `mpointerId` / `mpointerName` |
 | Stor | 100 | 30: the N / D / H / M item prices, the B / W / BW / CW quantities and `cbamt`, `comaccId`, `itemInsaleId`, `itemMethodId`, `saleName` |
+| Clnc | 111 | none |
+| Proj | 110 | none |
+| Fix | 69 | 17: the R account (`Acc_Rid`, beside the D = depreciation expense and F = accumulated depreciation accounts), `Rtot` / `Ramt`, `Sqnt` / `Scqnt` |
 
-Next by size: Clnc 111, Proj 110, Fix 86, Cash 81, Ped 70.
+`accFname` is the one flat-namespace clash met so far: most Fix views mean the
+account's full name by `Acc_Fname`, but `Fix_Fixeds_Items_View` means the F
+(accumulated depreciation) account's name. The label follows the majority.
+
+Next by size: Cash 81, Ped 70, Cpy 66, Bank 62, Acc 47.
 
 ### 4. Step 5 — Node's advantages
 
