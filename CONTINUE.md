@@ -325,7 +325,7 @@ The flat namespace clashes twice, and the label follows the majority:
   flight, the limit, same result either way, connections always returned.
   Three of them fail on the old code.
 - Measure with `node scripts/measureParallel.js --copy=NSCC --user=1
-  --record=Fre/JobFreight:<id> --codes=Lrg`: median of one-by-one against
+  --record=Fre/JobFreight --codes=Lrg`: median of one-by-one against
   side-by-side, alternating in one process. On a stand-in pool at 20 ms a
   statement: profile 102 -> 41 ms, 4 code tables 81 -> 21 ms. **Not yet run
   against Oracle.**

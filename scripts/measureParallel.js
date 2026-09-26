@@ -10,10 +10,11 @@
  * reported.
  *
  *   node scripts/measureParallel.js --copy=Demo --user=1
- *   node scripts/measureParallel.js --copy=NSCC --user=1 --record=Stor/OutboundMaster:25 --codes=Acc
+ *   node scripts/measureParallel.js --copy=NSCC --user=1 --record=Fre/JobFreight --codes=Acc
  *
  * --user     a user id: times the profile the client loads after signing in
- * --record   Package/Entity:id of a master with child grids: times opening it
+ * --record   Package/Entity[:id] of a master with child grids: times opening
+ *            it; without an id, its first record
  * --codes    a package: times its code tables
  * --runs     how many of each (default 15)
  * --width    the side-by-side width (default PARALLEL_READS, else 4)
@@ -41,6 +42,7 @@ async function main() {
   const connectionPool = require('../core/connectionPool');
   const { UnifiedService } = require('../services/unifiedService');
   const { AuthService } = require('../services/authService');
+  const repository = require('../repository/unifiedRepository');
   mainApp.loadMetadata([path.join(__dirname, '..', 'resources', 'modules')]);
 
   const width = parseInt(args.width || env.parallelReads || '4', 10);
@@ -54,8 +56,21 @@ async function main() {
     });
   }
   if (args.record) {
-    const [entity, id] = String(args.record).split(':');
+    const [entity, given] = String(args.record).split(':');
     const [pkg, table] = entity.split('/');
+    let id = given;
+    if (!id) {
+      // No id given: the first record there is.
+      const meta = mainApp.getEntity(pkg, table);
+      if (!meta) {
+        throw new Error(`No entity ${entity}`);
+      }
+      const [first] = await repository.find(meta, { page: 1, pageSize: 1 }, context);
+      if (!first) {
+        throw new Error(`${entity} has no records on ${copy}`);
+      }
+      id = first[meta.primaryKey];
+    }
     cases.push({
       name: `${entity} ${id} with its grids`,
       run: () => UnifiedService.get(pkg, table, id, context)
