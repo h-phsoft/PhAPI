@@ -2089,7 +2089,7 @@
     },
     {
       "Name": "Jf_Cont_Rid",
-      "Field": "jfContRid",
+      "Field": "jfContRecvId",
       "DBType": "NUMBER",
       "Type": "Integer",
       "Short": "Int",
@@ -2116,7 +2116,7 @@
     },
     {
       "Name": "Jf_Cont_Rnum",
-      "Field": "jfContRnum",
+      "Field": "jfContRecvNum",
       "DBType": "VARCHAR2",
       "Type": "String",
       "Short": "String",
