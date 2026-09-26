@@ -32,7 +32,7 @@
       ]
     },
     {
-      "name": "jobId",
+      "name": "jfJobId",
       "labelKey": "jobId",
       "filter": true,
       "display": true,
@@ -50,7 +50,7 @@
       ]
     },
     {
-      "name": "jobNum",
+      "name": "jfJobNum",
       "labelKey": "jobNum",
       "filter": true,
       "display": true,
@@ -68,7 +68,7 @@
       ]
     },
     {
-      "name": "jobDate",
+      "name": "jfJobDate",
       "labelKey": "jobDate",
       "filter": true,
       "display": true,

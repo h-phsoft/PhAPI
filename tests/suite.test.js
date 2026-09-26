@@ -1327,6 +1327,47 @@ async function runAllTests() {
     );
   });
 
+  await testIntegration('No query screen names a column its view does not have', async () => {
+    // A report is selected from every column its model names, so one stale
+    // column fails the whole screen with ORA-00904. The test above skips a
+    // report that errors, which is how Fre/LfrDbcrDocumentsView failed on
+    // Job_Date for every caller while the suite stayed green.
+    //
+    // These models name columns this copy lacks and were kept by decision,
+    // because another copy may have them. A missing table (ORA-00942) is a
+    // copy that does not have the module at all, and is not this test's
+    // business.
+    const KEPT = new Set([
+      'Cpy/SpeciallistsView', 'Phs/SpecialPrivileges',
+      'Ped/TestKeyView', 'Ped/LecturerProgram', 'Proj/FollowupView',
+      'Prd/OrderExecutionStage'
+    ]);
+    const screens = require('../metadata/screens');
+    const screenView = require('../presentation/screens');
+
+    const seen = new Set();
+    const broken = [];
+
+    for (const programUrl of screens.programs()) {
+      const screen = screenView.forProgram(programUrl, {});
+      if (!screen || screen.kind !== 'query' || !screen.reportEndpoint) {
+        continue;
+      }
+      if (seen.has(screen.reportEndpoint) || KEPT.has(screen.entity)) {
+        continue;
+      }
+      seen.add(screen.reportEndpoint);
+
+      const res = await postAuthed(`${screen.reportEndpoint}/Query`, { size: 1 });
+      if (res.body.status !== true && /ORA-00904/.test(String(res.body.message))) {
+        broken.push(`${screen.entity}: ${res.body.message.split('\n')[0]}`);
+      }
+    }
+
+    assert.ok(seen.size > 0, 'no query screen was reached');
+    assert.deepStrictEqual(broken, [], broken.join(' | '));
+  });
+
   await testIntegration('The periodid header reaches the request context', async () => {
     // tenantResolver reads it off the request and every service reads it off
     // the context. Proven through a live endpoint rather than by unit-testing
