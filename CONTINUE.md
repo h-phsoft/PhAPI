@@ -345,7 +345,7 @@ The flat namespace clashes twice, and the label follows the majority:
 - `authService.js` and `unifiedService.js` had their brace-less `if`s braced
   (CLAUDE.md); nothing else in them changed.
 
-**4. Worker threads -- done; measure on the database.**
+**4. Worker threads -- done and measured.**
 
 - Laying out the export PDF is pure CPU: about 55 ms for every 500 rows of
   twenty columns, and up to 190 ms at a stretch, in which the server answers
@@ -374,8 +374,16 @@ The flat namespace clashes twice, and the label follows the majority:
 - `tests/workers.test.js` (7): the thread stays free (fails at 142 ms on the
   old path), the same document either way, the cap, and the worker given back
   in each way an export can end.
-- Measure with `node scripts/measureExport.js --copy=NSCC
-  --report=Acc/VoucherView --exports=2`. **Not yet run against Oracle.**
+- **Measured on NSCC** (`node scripts/measureExport.js --copy=NSCC
+  --report=Acc/VoucherView --exports=2`), two exports of 50000 rows at once:
+
+  | | total | PDF | thread held: longest | 99 % |
+  |---|---|---|---|---|
+  | this thread | 31.9 s | 12.7 MB | 512 ms | 395 ms |
+  | 2 workers | 15.2 s | 12.7 MB | 33 ms | 12 ms |
+
+  Half the time, and the server's thread held 33 ms at most instead of half a
+  second -- other users' requests wait no longer than that while exports run.
 
 **2.** Shared types between the two projects -- not started.
 

@@ -323,9 +323,9 @@ it stays third.
    trip, so it grows with the distance to the database.*
 4. Move export generation and report aggregation to worker threads. *Done
    for the PDF export, the one export: laid out on a worker thread, at most
-   `EXPORT_WORKERS` at once. On a stand-in pool the server's thread is held at
-   most 25 ms at a stretch instead of 170-310, and two exports at once take
-   5.2 s instead of 8.8. Report aggregation reads at most 500 rows and stays
+   `EXPORT_WORKERS` at once. Measured on NSCC's Acc/VoucherView, two
+   50000-row exports at once: 31.9 s -> 15.2 s, and the server's thread held
+   at most 33 ms at a stretch instead of 512. Report aggregation reads at most 500 rows and stays
    where it is.*
 5. Reload metadata without a restart. *Done: `services/metadataReload.js`
    watches the metadata trees and reloads in 150-250 ms, keeping any part
