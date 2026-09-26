@@ -515,6 +515,15 @@ because the models are shared by 21 copies. Checked against a second copy:
 Whether those 69 leave the models or join the tables is a decision about the
 schema, not one a reconciliation can make.
 
+**The 69 left the models.** 26 models and 17 screens changed. Twelve of them
+were not stale but renamed: `Mng_Contact_View` now spells its own columns
+`Cont_Id`, `Cont_Name` and so on, so its screen and primary key moved to those
+rather than losing them. `Phs/Menus` and `Phs/SpecialPrivileges` have no
+`Ins_User` / `Ins_Date`, so those two drop `createdBy` / `createdAt` from
+`auditFields`. The 10 present in `NSCC` stay. The 45 whose table `NSCC` lacks
+-- `Ped/TestKeyView` (28), `Ped/LecturerProgram` (10), `Fre/LfrDbcrDocumentsView`
+(3), `Proj/FollowupView` (3), `Prd/OrderExecutionStage` (1) -- are still open.
+
 **Recovered query definitions**
 
 | | |

@@ -131,24 +131,6 @@
       ]
     },
     {
-      "name": "menuStatus",
-      "labelKey": "menuStatus",
-      "filter": true,
-      "display": true,
-      "group": true,
-      "sort": true,
-      "operators": [
-        "=",
-        "!=",
-        "[%",
-        "%]",
-        "%",
-        "![%",
-        "!%]",
-        "!%"
-      ]
-    },
-    {
       "name": "mprgId",
       "labelKey": "mprgId",
       "filter": true,
@@ -236,24 +218,6 @@
         "<=",
         "<>",
         "><"
-      ]
-    },
-    {
-      "name": "mprgStatus",
-      "labelKey": "mprgStatus",
-      "filter": true,
-      "display": true,
-      "group": true,
-      "sort": true,
-      "operators": [
-        "=",
-        "!=",
-        "[%",
-        "%]",
-        "%",
-        "![%",
-        "!%]",
-        "!%"
       ]
     },
     {

@@ -219,7 +219,11 @@ threads, hot metadata reload.
   row carries. Both rules are now tests in `tests/screens.test.js`.
 - **The columns a model names and its table lacks are listed by**
   `node scripts/reconcileSchema.js --tenant Demo --missing --compare NSCC`,
-  which writes `reconcile-missing-Demo.csv`. Needs the database.
+  which writes `reconcile-missing-Demo.csv`. Needs the database. Measured on
+  Demo: 124 across 32 models. The 69 neither copy has are gone from the models
+  and their screens; 10 NSCC has are kept; **45 in models whose table NSCC
+  lacks are still open** (`Ped/TestKeyView`, `Ped/LecturerProgram`,
+  `Fre/LfrDbcrDocumentsView`, `Proj/FollowupView`, `Prd/OrderExecutionStage`).
 - **Audit columns are always `insUser`, `insDate`, `updUser`, `updDate`**,
   however the table spells them (`toFieldName`). The 10 Bank/Cash order tables
   that had both `Insdate` and `Ins_Date` now expose `Insdate` as `insDate`;

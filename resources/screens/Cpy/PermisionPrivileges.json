@@ -185,24 +185,6 @@
       ]
     },
     {
-      "name": "mprgStatus",
-      "labelKey": "mprgStatus",
-      "filter": true,
-      "display": true,
-      "group": true,
-      "sort": true,
-      "operators": [
-        "=",
-        "!=",
-        "[%",
-        "%]",
-        "%",
-        "![%",
-        "!%]",
-        "!%"
-      ]
-    },
-    {
       "name": "permId",
       "labelKey": "permId",
       "filter": true,

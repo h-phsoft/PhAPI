@@ -7,8 +7,6 @@
   "hasChilds": false,
   "children": [],
   "auditFields": {
-    "createdBy": "insUser",
-    "createdAt": "insDate",
     "updatedBy": "updUser",
     "updatedAt": "updDate"
   },
@@ -268,60 +266,6 @@
       "isFile": false,
       "isNull": true,
       "isLabel": false,
-      "relation": null
-    },
-    {
-      "Name": "Ins_User",
-      "Field": "insUser",
-      "DBType": "NUMBER",
-      "Type": "Short",
-      "Short": "Short",
-      "Scale": "0",
-      "Precision": "5",
-      "Default": "",
-      "query": true,
-      "insert": true,
-      "update": true,
-      "hasRelation": false,
-      "isAutonumber": false,
-      "Autonumber": {
-        "Mode": "1",
-        "Aggr": "Max",
-        "Column": "Ins_User",
-        "Synonym": "Phs_Specpriv",
-        "Sequence": "Phs_Specpriv_Seq",
-        "Condition": "",
-        "PeriodCondition": ""
-      },
-      "isFile": false,
-      "isNull": true,
-      "relation": null
-    },
-    {
-      "Name": "Ins_Date",
-      "Field": "insDate",
-      "DBType": "DATETIME",
-      "Type": "String",
-      "Short": "String",
-      "Scale": "0",
-      "Precision": "0",
-      "Default": "",
-      "query": true,
-      "insert": true,
-      "update": true,
-      "hasRelation": false,
-      "isAutonumber": false,
-      "Autonumber": {
-        "Mode": "1",
-        "Aggr": "Max",
-        "Column": "Ins_Date",
-        "Synonym": "Phs_Specpriv",
-        "Sequence": "Phs_Specpriv_Seq",
-        "Condition": "",
-        "PeriodCondition": ""
-      },
-      "isFile": false,
-      "isNull": true,
       "relation": null
     },
     {

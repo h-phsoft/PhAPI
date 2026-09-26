@@ -289,34 +289,6 @@
       "relation": null
     },
     {
-      "Name": "Mprg_Status",
-      "Field": "mprgStatus",
-      "DBType": "VARCHAR2",
-      "Type": "String",
-      "Short": "String",
-      "Scale": "0",
-      "Precision": "0",
-      "Default": "",
-      "query": true,
-      "insert": true,
-      "update": true,
-      "hasRelation": false,
-      "isAutonumber": false,
-      "Autonumber": {
-        "Mode": "1",
-        "Aggr": "Max",
-        "Column": "Mprg_Status",
-        "Synonym": "Cpy_Vgpspriv",
-        "Sequence": "Cpy_Vgpspriv_Seq",
-        "Condition": "",
-        "PeriodCondition": ""
-      },
-      "isFile": false,
-      "isNull": false,
-      "isLabel": false,
-      "relation": null
-    },
-    {
       "Name": "Perm_Id",
       "Field": "permId",
       "DBType": "NUMBER",

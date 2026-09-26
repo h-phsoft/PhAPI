@@ -177,40 +177,6 @@
       }
     },
     {
-      "Name": "Trt_Id",
-      "Field": "trtId",
-      "DBType": "NUMBER",
-      "Type": "Short",
-      "Short": "Short",
-      "Scale": "0",
-      "Precision": "5",
-      "Default": "1",
-      "query": true,
-      "insert": true,
-      "update": true,
-      "hasRelation": true,
-      "isAutonumber": false,
-      "Autonumber": {
-        "Mode": "1",
-        "Aggr": "Max",
-        "Column": "Trt_Id",
-        "Synonym": "Fin_Talccrd",
-        "Sequence": "Fin_Talccrd_Seq",
-        "Condition": "",
-        "PeriodCondition": ""
-      },
-      "isFile": false,
-      "isNull": true,
-      "relation": {
-        "refTable": "Fin_Code_Trt",
-        "refSynonym": "Fin_Cod_Trt",
-        "primaryKey": "Id",
-        "foreignKey": "Trt_Id",
-        "displayField": "Name",
-        "apiDisplayField": "trtName"
-      }
-    },
-    {
       "Name": "Trt_Rid",
       "Field": "trtRid",
       "DBType": "NUMBER",

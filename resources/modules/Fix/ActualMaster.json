@@ -111,33 +111,6 @@
       }
     },
     {
-      "Name": "Emp_Id",
-      "Field": "empId",
-      "DBType": "NUMBER",
-      "Type": "Integer",
-      "Short": "Integer",
-      "Scale": "0",
-      "Precision": "9",
-      "Default": "",
-      "query": false,
-      "insert": false,
-      "update": false,
-      "hasRelation": false,
-      "isAutonumber": false,
-      "Autonumber": {
-        "Mode": "1",
-        "Aggr": "Max",
-        "Column": "Emp_Id",
-        "Synonym": "Fix_Actmst",
-        "Sequence": "Fix_Actmst_Seq",
-        "Condition": "",
-        "PeriodCondition": ""
-      },
-      "isFile": false,
-      "isNull": true,
-      "relation": null
-    },
-    {
       "Name": "Status_Id",
       "Field": "statusId",
       "DBType": "NUMBER",

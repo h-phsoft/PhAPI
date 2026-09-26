@@ -99,43 +99,6 @@
       "autocomplete": "Cpy_Oper"
     },
     {
-      "name": "trtId",
-      "labelKey": "trtId",
-      "filter": true,
-      "display": true,
-      "group": true,
-      "sort": true,
-      "operators": [
-        "=",
-        "!=",
-        ">",
-        ">=",
-        "<",
-        "<=",
-        "<>",
-        "><"
-      ],
-      "autocomplete": "Fin_Cod_Trt"
-    },
-    {
-      "name": "trtRid",
-      "labelKey": "trtRid",
-      "filter": true,
-      "display": true,
-      "group": true,
-      "sort": true,
-      "operators": [
-        "=",
-        "!=",
-        ">",
-        ">=",
-        "<",
-        "<=",
-        "<>",
-        "><"
-      ]
-    },
-    {
       "name": "relId",
       "labelKey": "relId",
       "filter": true,

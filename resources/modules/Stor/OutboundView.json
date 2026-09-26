@@ -479,33 +479,6 @@
       "relation": null
     },
     {
-      "Name": "Mst_Ddate",
-      "Field": "mstDdate",
-      "DBType": "DATE",
-      "Type": "String",
-      "Short": "String",
-      "Scale": "0",
-      "Precision": "0",
-      "Default": "",
-      "query": true,
-      "insert": true,
-      "update": true,
-      "hasRelation": false,
-      "isAutonumber": false,
-      "Autonumber": {
-        "Mode": "1",
-        "Aggr": "Max",
-        "Column": "Mst_Ddate",
-        "Synonym": "Stor_Voutbound",
-        "Sequence": "Stor_Voutbound_Seq",
-        "Condition": "",
-        "PeriodCondition": ""
-      },
-      "isFile": false,
-      "isNull": false,
-      "relation": null
-    },
-    {
       "Name": "Mst_Docn",
       "Field": "mstDocn",
       "DBType": "VARCHAR2",

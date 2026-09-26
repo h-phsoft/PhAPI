@@ -230,34 +230,6 @@
       }
     },
     {
-      "Name": "Menu_Status",
-      "Field": "menuStatus",
-      "DBType": "VARCHAR2",
-      "Type": "String",
-      "Short": "String",
-      "Scale": "0",
-      "Precision": "0",
-      "Default": "",
-      "query": true,
-      "insert": true,
-      "update": true,
-      "hasRelation": false,
-      "isAutonumber": false,
-      "Autonumber": {
-        "Mode": "1",
-        "Aggr": "Max",
-        "Column": "Menu_Status",
-        "Synonym": "Cpy_Vgperm",
-        "Sequence": "Cpy_Vgperm_Seq",
-        "Condition": "",
-        "PeriodCondition": ""
-      },
-      "isFile": false,
-      "isNull": false,
-      "isLabel": false,
-      "relation": null
-    },
-    {
       "Name": "Mprg_Id",
       "Field": "mprgId",
       "DBType": "NUMBER",
@@ -399,34 +371,6 @@
         "displayField": "Name",
         "apiDisplayField": "mprgStatusIdName"
       }
-    },
-    {
-      "Name": "Mprg_Status",
-      "Field": "mprgStatus",
-      "DBType": "VARCHAR2",
-      "Type": "String",
-      "Short": "String",
-      "Scale": "0",
-      "Precision": "0",
-      "Default": "",
-      "query": true,
-      "insert": true,
-      "update": true,
-      "hasRelation": false,
-      "isAutonumber": false,
-      "Autonumber": {
-        "Mode": "1",
-        "Aggr": "Max",
-        "Column": "Mprg_Status",
-        "Synonym": "Cpy_Vgperm",
-        "Sequence": "Cpy_Vgperm_Seq",
-        "Condition": "",
-        "PeriodCondition": ""
-      },
-      "isFile": false,
-      "isNull": false,
-      "isLabel": false,
-      "relation": null
     },
     {
       "Name": "Mprg_Url",

@@ -821,43 +821,6 @@
       ]
     },
     {
-      "name": "ordMnum",
-      "labelKey": "ordMnum",
-      "filter": true,
-      "display": true,
-      "group": true,
-      "sort": true,
-      "operators": [
-        "=",
-        "!=",
-        "[%",
-        "%]",
-        "%",
-        "![%",
-        "!%]",
-        "!%"
-      ]
-    },
-    {
-      "name": "ordMdate",
-      "labelKey": "ordMdate",
-      "filter": true,
-      "display": true,
-      "group": true,
-      "sort": true,
-      "operators": [
-        "=",
-        "!=",
-        ">",
-        ">=",
-        "<",
-        "<=",
-        "<>",
-        "><"
-      ],
-      "expression": "To_Char(Ord_Mdate, 'DD-MM-YYYY')"
-    },
-    {
       "name": "ordBankId",
       "labelKey": "ordBankId",
       "filter": true,
@@ -894,24 +857,6 @@
       ]
     },
     {
-      "name": "ordPhnby",
-      "labelKey": "ordPhnby",
-      "filter": true,
-      "display": true,
-      "group": true,
-      "sort": true,
-      "operators": [
-        "=",
-        "!=",
-        ">",
-        ">=",
-        "<",
-        "<=",
-        "<>",
-        "><"
-      ]
-    },
-    {
       "name": "ordCorrespondent",
       "labelKey": "ordCorrespondent",
       "filter": true,
@@ -932,61 +877,6 @@
     {
       "name": "ordRecipient",
       "labelKey": "ordRecipient",
-      "filter": true,
-      "display": true,
-      "group": true,
-      "sort": true,
-      "operators": [
-        "=",
-        "!=",
-        "[%",
-        "%]",
-        "%",
-        "![%",
-        "!%]",
-        "!%"
-      ]
-    },
-    {
-      "name": "ordTstatusId",
-      "labelKey": "ordTstatusId",
-      "filter": true,
-      "display": true,
-      "group": true,
-      "sort": true,
-      "operators": [
-        "=",
-        "!=",
-        ">",
-        ">=",
-        "<",
-        "<=",
-        "<>",
-        "><"
-      ]
-    },
-    {
-      "name": "ordTdate",
-      "labelKey": "ordTdate",
-      "filter": true,
-      "display": true,
-      "group": true,
-      "sort": true,
-      "operators": [
-        "=",
-        "!=",
-        ">",
-        ">=",
-        "<",
-        "<=",
-        "<>",
-        "><"
-      ],
-      "expression": "To_Char(Ord_Tdate, 'DD-MM-YYYY')"
-    },
-    {
-      "name": "ordTnote",
-      "labelKey": "ordTnote",
       "filter": true,
       "display": true,
       "group": true,

@@ -401,25 +401,6 @@
       ]
     },
     {
-      "name": "mstDdate",
-      "labelKey": "mstDdate",
-      "filter": true,
-      "display": true,
-      "group": true,
-      "sort": true,
-      "operators": [
-        "=",
-        "!=",
-        ">",
-        ">=",
-        "<",
-        "<=",
-        "<>",
-        "><"
-      ],
-      "expression": "To_Char(Mst_Ddate, 'DD-MM-YYYY')"
-    },
-    {
       "name": "mstDocn",
       "labelKey": "mstDocn",
       "filter": true,

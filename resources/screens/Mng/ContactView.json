@@ -2,10 +2,10 @@
   "version": "1.0",
   "kind": "query",
   "entity": "Mng/ContactView",
-  "order": "Id",
+  "order": "Cont_Id",
   "fields": [
     {
-      "name": "id",
+      "name": "contId",
       "labelKey": "id",
       "filter": true,
       "display": true,
@@ -23,7 +23,7 @@
       ]
     },
     {
-      "name": "num",
+      "name": "contNum",
       "labelKey": "num",
       "filter": true,
       "display": true,
@@ -41,7 +41,7 @@
       ]
     },
     {
-      "name": "title",
+      "name": "contTitle",
       "labelKey": "title",
       "filter": true,
       "display": true,
@@ -59,7 +59,7 @@
       ]
     },
     {
-      "name": "name",
+      "name": "contName",
       "labelKey": "name",
       "filter": true,
       "display": true,
@@ -77,7 +77,7 @@
       ]
     },
     {
-      "name": "lname",
+      "name": "contLname",
       "labelKey": "lname",
       "filter": true,
       "display": true,
@@ -95,7 +95,7 @@
       ]
     },
     {
-      "name": "owner",
+      "name": "contOwner",
       "labelKey": "owner",
       "filter": true,
       "display": true,
@@ -113,7 +113,7 @@
       ]
     },
     {
-      "name": "contact",
+      "name": "contContact",
       "labelKey": "contact",
       "filter": true,
       "display": true,
@@ -164,24 +164,6 @@
         "<=",
         "<>",
         "><"
-      ]
-    },
-    {
-      "name": "rem",
-      "labelKey": "rem",
-      "filter": true,
-      "display": true,
-      "group": true,
-      "sort": true,
-      "operators": [
-        "=",
-        "!=",
-        "[%",
-        "%]",
-        "%",
-        "![%",
-        "!%]",
-        "!%"
       ]
     },
     {
@@ -239,24 +221,6 @@
       ]
     },
     {
-      "name": "reprName",
-      "labelKey": "reprName",
-      "filter": true,
-      "display": true,
-      "group": true,
-      "sort": true,
-      "operators": [
-        "=",
-        "!=",
-        "[%",
-        "%]",
-        "%",
-        "![%",
-        "!%]",
-        "!%"
-      ]
-    },
-    {
       "name": "costId",
       "labelKey": "costId",
       "filter": true,
@@ -272,24 +236,6 @@
         "<=",
         "<>",
         "><"
-      ]
-    },
-    {
-      "name": "costName",
-      "labelKey": "costName",
-      "filter": true,
-      "display": true,
-      "group": true,
-      "sort": true,
-      "operators": [
-        "=",
-        "!=",
-        "[%",
-        "%]",
-        "%",
-        "![%",
-        "!%]",
-        "!%"
       ]
     },
     {
@@ -311,24 +257,6 @@
       ]
     },
     {
-      "name": "accdbtName",
-      "labelKey": "accdbtName",
-      "filter": true,
-      "display": true,
-      "group": true,
-      "sort": true,
-      "operators": [
-        "=",
-        "!=",
-        "[%",
-        "%]",
-        "%",
-        "![%",
-        "!%]",
-        "!%"
-      ]
-    },
-    {
       "name": "acccrdId",
       "labelKey": "acccrdId",
       "filter": true,
@@ -344,24 +272,6 @@
         "<=",
         "<>",
         "><"
-      ]
-    },
-    {
-      "name": "acccrdName",
-      "labelKey": "acccrdName",
-      "filter": true,
-      "display": true,
-      "group": true,
-      "sort": true,
-      "operators": [
-        "=",
-        "!=",
-        "[%",
-        "%]",
-        "%",
-        "![%",
-        "!%]",
-        "!%"
       ]
     },
     {
