@@ -13,6 +13,17 @@ let oracledb = null;
  */
 const STREAM_BATCH = 500;
 
+/*
+ * Every wrapper's stream(sql, params, onBatch) reads a statement's rows
+ * STREAM_BATCH at a time and hands each batch to `onBatch`, waiting for it
+ * before reading on. `onBatch` returns false to stop early. However the read
+ * ends -- to the last row, stopped, or failed -- the cursor and the connection
+ * are released before stream() settles.
+ *
+ * It is a callback rather than an async generator because the IDE this
+ * project is edited in cannot parse `async *` yet.
+ */
+
 class ConnectionPoolManager {
   constructor() {
     if (ConnectionPoolManager.instance) {
@@ -84,29 +95,59 @@ class ConnectionPoolManager {
           return rows;
         },
         /**
-         * The rows of a statement, STREAM_BATCH at a time, never all at once.
+         * A MySQL row stream, paused while each batch is handled.
          *
-         * A consumer that stops early leaves the connection mid-result, which
-         * cannot be handed back to the pool, so it is destroyed instead.
+         * A read that stops early leaves the connection mid-result, which
+         * cannot go back to the pool, so it is destroyed instead.
          */
-        async *stream(sql, params) {
+        async stream(sql, params, onBatch) {
           const q = adaptSql(sql, params, dialects.mysql);
           const connection = await pool.getConnection();
           const rows = connection.connection.query(q.text, q.values).stream();
           let finished = false;
           try {
-            let batch = [];
-            for await (const row of rows) {
-              batch.push(row);
-              if (batch.length >= STREAM_BATCH) {
-                yield batch;
+            finished = await new Promise((resolve, reject) => {
+              let batch = [];
+              let settled = false;
+              const settle = (fn, value) => {
+                if (!settled) {
+                  settled = true;
+                  fn(value);
+                }
+              };
+              const hand = async (last) => {
+                rows.pause();
+                const handed = batch;
                 batch = [];
-              }
-            }
-            if (batch.length > 0) {
-              yield batch;
-            }
-            finished = true;
+                try {
+                  if ((await onBatch(handed)) === false) {
+                    settle(resolve, false);
+                    return;
+                  }
+                  if (last) {
+                    settle(resolve, true);
+                  } else {
+                    rows.resume();
+                  }
+                } catch (err) {
+                  settle(reject, err);
+                }
+              };
+              rows.on('data', (row) => {
+                batch.push(row);
+                if (batch.length >= STREAM_BATCH) {
+                  hand(false);
+                }
+              });
+              rows.on('end', () => {
+                if (batch.length > 0) {
+                  hand(true);
+                } else {
+                  settle(resolve, true);
+                }
+              });
+              rows.on('error', (err) => settle(reject, err));
+            });
           } finally {
             if (finished) {
               connection.release();
@@ -157,14 +198,14 @@ class ConnectionPoolManager {
         },
         /**
          * Not streamed: `pg` reads a whole result unless pg-cursor is added,
-         * and no tenant runs on PostgreSQL today. The result arrives as one
-         * batch, so a caller written against stream() still works here.
+         * and no tenant runs on PostgreSQL today. The result is handed over
+         * as one batch, so a caller written against stream() still works.
          */
-        async *stream(sql, params) {
+        async stream(sql, params, onBatch) {
           const q = adaptSql(sql, params, dialects.postgres);
           const res = await pool.query(q.text, q.values);
           if (res.rows.length > 0) {
-            yield res.rows;
+            await onBatch(res.rows);
           }
         }
       };
@@ -221,13 +262,10 @@ class ConnectionPoolManager {
         },
 
         /**
-         * The rows of a statement, STREAM_BATCH at a time, read through a
-         * result set so the driver never holds more than one batch.
-         *
-         * The result set and the connection are closed however the consumer
-         * leaves -- to the end, on an error, or by stopping early.
+         * An Oracle result set, read STREAM_BATCH rows per round trip, so the
+         * driver never holds more than one batch.
          */
-        async *stream(sql, params) {
+        async stream(sql, params, onBatch) {
           const connection = await pool.getConnection();
           let resultSet = null;
           try {
@@ -237,7 +275,9 @@ class ConnectionPoolManager {
             resultSet = res.resultSet;
             let rows = await resultSet.getRows(STREAM_BATCH);
             while (rows.length > 0) {
-              yield rows;
+              if ((await onBatch(rows)) === false) {
+                break;
+              }
               rows = await resultSet.getRows(STREAM_BATCH);
             }
           } finally {

@@ -233,26 +233,28 @@ class ReportService {
    * Every row a report selects, a batch at a time, up to `max` (D5).
    *
    * An export wants the whole result, not the page a screen shows, so page and
-   * size are not read. One row past the ceiling is asked for, which is how the
-   * caller learns the result was cut rather than exactly that long.
+   * size are not read. One row past the ceiling is asked for, which is how a
+   * result that was cut is told apart from one exactly that long.
    *
    * @param {Object} entity
    * @param {Object} params The parsed vParams
    * @param {Object} context
-   * @param {number} [max] The most rows to yield
-   * @returns {AsyncGenerator<{rows: Array<Object>, truncated: boolean}>}
+   * @param {number} max The most rows to hand over
+   * @param {function({rows: Array<Object>, truncated: boolean}): (boolean|void|Promise<boolean|void>)} onBatch
+   *   Called with each batch, and waited for; false stops the read
+   * @returns {Promise<void>}
    */
-  async *streamRows(entity, params, context, max = env.exportMaxRows) {
+  async streamRows(entity, params, context, max, onBatch) {
     let sent = 0;
-    for await (const batch of repository.stream(entity, ReportService.queryOptions(params), context, max + 1)) {
+    await repository.stream(entity, ReportService.queryOptions(params), context, max + 1, async (batch) => {
       const room = max - sent;
       if (batch.length > room) {
-        yield { rows: batch.slice(0, room), truncated: true };
-        return;
+        await onBatch({ rows: batch.slice(0, room), truncated: true });
+        return false;
       }
       sent += batch.length;
-      yield { rows: batch, truncated: false };
-    }
+      return onBatch({ rows: batch, truncated: false });
+    });
   }
 
   /**
@@ -466,35 +468,38 @@ class ReportService {
     const { entity, report } = this.resolve(pkgName, reportName);
     const title = report.getTitle();
 
-    // The first batch is read before a byte is written, so a query that fails
-    // -- a column the view lacks, a bad condition -- still fails as an error
-    // the caller can answer, not as a truncated document.
-    const batches = this.streamRows(entity, params, context);
-    const first = await batches.next();
-
-    const doc = new PDFDocument({ size: 'A4', layout: 'landscape', margin: 36 });
-    // 'close' as well as 'finish': a reader that leaves mid-document never lets
-    // it finish, and waiting for that would hold the request forever.
-    const finished = new Promise((resolve, reject) => {
-      stream.on('finish', resolve);
-      stream.on('close', resolve);
-      doc.on('error', reject);
-    });
-
-    doc.pipe(stream);
-
-    doc.fontSize(16).text(title, { align: 'left' });
-    doc.fontSize(9).fillColor('#666').text(`Generated ${new Date().toISOString()}`);
-    doc.moveDown(0.8);
-    doc.fillColor('#000');
-
     const rowHeight = 16;
-    const bottomLimit = doc.page.height - doc.page.margins.bottom - rowHeight;
+    let doc = null;
+    let finished = null;
+    let bottomLimit = 0;
     let columns = null;
     let columnWidth = 0;
-    let y = doc.y;
+    let y = 0;
     let rowCount = 0;
     let truncated = false;
+    let aborted = false;
+
+    // The document is started by the first batch, not before the query: a
+    // query that fails -- a column the view lacks, a bad condition -- then
+    // fails before a byte is written, as an error the caller can answer, not
+    // as a truncated download.
+    const start = () => {
+      doc = new PDFDocument({ size: 'A4', layout: 'landscape', margin: 36 });
+      // 'close' as well as 'finish': a reader that leaves mid-document never
+      // lets it finish, and waiting for that would hold the request forever.
+      finished = new Promise((resolve, reject) => {
+        stream.on('finish', resolve);
+        stream.on('close', resolve);
+        doc.on('error', reject);
+      });
+      doc.pipe(stream);
+      doc.fontSize(16).text(title, { align: 'left' });
+      doc.fontSize(9).fillColor('#666').text(`Generated ${new Date().toISOString()}`);
+      doc.moveDown(0.8);
+      doc.fillColor('#000');
+      bottomLimit = doc.page.height - doc.page.margins.bottom - rowHeight;
+      y = doc.y;
+    };
 
     const drawRow = (values, top, bold) => {
       doc.fontSize(8).font(bold ? 'Helvetica-Bold' : 'Helvetica');
@@ -509,8 +514,10 @@ class ReportService {
       });
     };
 
-    for (let next = first; !next.done; next = await batches.next()) {
-      const batch = next.value;
+    await this.streamRows(entity, params, context, env.exportMaxRows, async (batch) => {
+      if (!doc) {
+        start();
+      }
       for (const row of batch.rows) {
         if (!columns) {
           // A grouped query projects its own columns, so they are read from
@@ -533,12 +540,20 @@ class ReportService {
       }
       truncated = truncated || batch.truncated;
 
-      // A reader that went away stops the query too: leaving the loop closes
+      // A reader that went away stops the query too: returning false closes
       // the cursor and returns the connection.
       if (!(await roomIn(stream))) {
-        await batches.return();
-        return { rowCount, title, truncated, aborted: true };
+        aborted = true;
+        return false;
       }
+      return true;
+    });
+
+    if (aborted) {
+      return { rowCount, title, truncated, aborted: true };
+    }
+    if (!doc) {
+      start();
     }
 
     doc.font('Helvetica').fontSize(9).fillColor('#666');

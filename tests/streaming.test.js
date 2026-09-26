@@ -52,7 +52,7 @@ function fakePool(total, batch = 500) {
     async query() {
       throw new Error('an export must not read through query()');
     },
-    async *stream(sql, params) {
+    async stream(sql, params, onBatch) {
       seen.sql = sql;
       seen.params = params;
       try {
@@ -65,7 +65,10 @@ function fakePool(total, batch = 500) {
           await new Promise((resolve) => setImmediate(resolve));
           seen.batches++;
           const size = Math.min(batch, rows - start);
-          yield Array.from({ length: size }, (_, i) => ({ AIRPORTID: start + i + 1, airportName: `Airport ${start + i + 1}` }));
+          const handed = Array.from({ length: size }, (_, i) => ({ AIRPORTID: start + i + 1, airportName: `Airport ${start + i + 1}` }));
+          if ((await onBatch(handed)) === false) {
+            break;
+          }
         }
       } finally {
         seen.closed = true;
@@ -104,9 +107,9 @@ const entity = {
   await test('a batch is shaped as find() shapes a page', async () => {
     fakePool(3);
     const batches = [];
-    for await (const rows of repository.stream(entity, {}, { tenantId: TENANT }, 10)) {
+    await repository.stream(entity, {}, { tenantId: TENANT }, 10, (rows) => {
       batches.push(rows);
-    }
+    });
     assert.strictEqual(batches.length, 1);
     // AIRPORTID is the declared field in another casing, so it takes the
     // entity's own spelling, as find() does.
@@ -115,9 +118,7 @@ const entity = {
 
   await test('the ceiling is in the statement, not applied after reading', async () => {
     const pool = fakePool(5);
-    for await (const rows of repository.stream(entity, { page: 7, pageSize: 3 }, { tenantId: TENANT }, 42)) {
-      void rows;
-    }
+    await repository.stream(entity, { page: 7, pageSize: 3 }, { tenantId: TENANT }, 42, () => {});
     // A screen's page and size are not what an export reads; its limit is.
     assert.match(pool.seen.sql, /OFFSET :p_\d+ ROWS FETCH NEXT :p_\d+ ROWS ONLY$/);
     assert.deepStrictEqual(Object.values(pool.seen.params), [0, 42]);
@@ -125,11 +126,7 @@ const entity = {
 
   await test('a stream with no ceiling is refused, not cut to a default page', async () => {
     fakePool(3);
-    await assert.rejects(async () => {
-      for await (const rows of repository.stream(entity, {}, { tenantId: TENANT })) {
-        void rows;
-      }
-    }, /positive row limit/);
+    await assert.rejects(repository.stream(entity, {}, { tenantId: TENANT }, undefined, () => {}), /positive row limit/);
   });
 
   await test('a result under the ceiling arrives whole, in batches', async () => {
@@ -137,10 +134,10 @@ const entity = {
     const { entity: report } = reportService.resolve('Fre', 'CodeAirports');
     let rows = 0;
     let truncated = false;
-    for await (const batch of reportService.streamRows(report, {}, { tenantId: TENANT }, 5000)) {
+    await reportService.streamRows(report, {}, { tenantId: TENANT }, 5000, (batch) => {
       rows += batch.rows.length;
       truncated = truncated || batch.truncated;
-    }
+    });
     assert.strictEqual(rows, 1234);
     assert.strictEqual(truncated, false);
     assert.strictEqual(pool.seen.batches, 3);
@@ -151,10 +148,10 @@ const entity = {
     const { entity: report } = reportService.resolve('Fre', 'CodeAirports');
     let rows = 0;
     let truncated = false;
-    for await (const batch of reportService.streamRows(report, {}, { tenantId: TENANT }, 1200)) {
+    await reportService.streamRows(report, {}, { tenantId: TENANT }, 1200, (batch) => {
       rows += batch.rows.length;
       truncated = truncated || batch.truncated;
-    }
+    });
     assert.strictEqual(rows, 1200);
     assert.strictEqual(truncated, true);
     // One row past the ceiling is asked for -- that is how "cut" is told
@@ -167,18 +164,15 @@ const entity = {
     fakePool(1200);
     const { entity: report } = reportService.resolve('Fre', 'CodeAirports');
     let truncated = false;
-    for await (const batch of reportService.streamRows(report, {}, { tenantId: TENANT }, 1200)) {
+    await reportService.streamRows(report, {}, { tenantId: TENANT }, 1200, (batch) => {
       truncated = truncated || batch.truncated;
-    }
+    });
     assert.strictEqual(truncated, false);
   });
 
   await test('a consumer that stops early closes the cursor', async () => {
     const pool = fakePool(5000);
-    for await (const rows of repository.stream(entity, {}, { tenantId: TENANT }, 5000)) {
-      void rows;
-      break;
-    }
+    await repository.stream(entity, {}, { tenantId: TENANT }, 5000, () => false);
     assert.strictEqual(pool.seen.batches, 1);
     assert.strictEqual(pool.seen.closed, true);
   });
@@ -196,18 +190,10 @@ const entity = {
 
   await test('a query that fails, fails before the document starts', async () => {
     const pool = fakePool(10);
-    // Fails on the first read, as the driver does when it executes.
-    pool.stream = () => ({
-      [Symbol.asyncIterator]() {
-        return this;
-      },
-      next() {
-        return Promise.reject(new Error('ORA-00904: "JOB_DATE": invalid identifier'));
-      },
-      return() {
-        return Promise.resolve({ done: true });
-      }
-    });
+    // Fails on execute, before any batch, as the driver does.
+    pool.stream = async () => {
+      throw new Error('ORA-00904: "JOB_DATE": invalid identifier');
+    };
     const out = sink();
     await assert.rejects(
       reportService.renderPDF('Fre', 'CodeAirports', {}, { tenantId: TENANT }, out),

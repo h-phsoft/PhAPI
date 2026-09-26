@@ -68,12 +68,12 @@ async function measure(mode) {
     firstRow = process.hrtime.bigint();
     count = all.length;
   } else {
-    for await (const batch of repository.stream(entity, {}, context, rows)) {
+    await repository.stream(entity, {}, context, rows, (batch) => {
       if (firstRow === null) {
         firstRow = process.hrtime.bigint();
       }
       count += batch.length;
-    }
+    });
   }
 
   const ended = process.hrtime.bigint();

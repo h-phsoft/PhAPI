@@ -233,7 +233,8 @@ The flat namespace clashes twice, and the label follows the majority:
 **1. Streaming (D5) -- built; the before/after measurement needs the database.**
 
 - `repository.stream()` runs the statement `find()` runs, without its page, and
-  yields it 500 rows at a time: an Oracle result set (`resultSet: true`,
+  hands it to a callback 500 rows at a time (a callback, not an async
+  generator: NetBeans 31 cannot parse `async *`): an Oracle result set (`resultSet: true`,
   `getRows`), a MySQL row stream. PostgreSQL still reads whole -- `pg` needs
   `pg-cursor` for a cursor, and no tenant runs on it. The ceiling is in the
   statement (`FETCH NEXT`), and one row past it is asked for so a cut result
