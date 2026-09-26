@@ -7,7 +7,7 @@
   "search": {
     "fields": [
       {
-        "name": "jobId",
+        "name": "jfJobId",
         "labelKey": "Fre.IfrJobFreight",
         "input": "autocomplete",
         "endpoint": "/UC/Fre/IfrJobFreight/Autocomplete",

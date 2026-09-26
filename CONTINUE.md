@@ -220,10 +220,16 @@ threads, hot metadata reload.
 - **The columns a model names and its table lacks are listed by**
   `node scripts/reconcileSchema.js --tenant Demo --missing --compare NSCC`,
   which writes `reconcile-missing-Demo.csv`. Needs the database. Measured on
-  Demo: 124 across 32 models. The 69 neither copy has are gone from the models
-  and their screens; 10 NSCC has are kept; **45 in models whose table NSCC
-  lacks are still open** (`Ped/TestKeyView`, `Ped/LecturerProgram`,
-  `Fre/LfrDbcrDocumentsView`, `Proj/FollowupView`, `Prd/OrderExecutionStage`).
+  Demo: 124 across 32 models. The 69 neither copy has are gone. After that run
+  55 remained: 10 NSCC has, and 45 in models whose table NSCC lacks. Of those,
+  `Fre/LfrDbcrDocumentsView`'s `Job_Id` / `Job_Num` / `Job_Date` were renames
+  (the view spells them `Jf_Job_*`) and moved; **the other 42 are kept by
+  Haytham's decision** (`Ped/TestKeyView`, `Ped/LecturerProgram`,
+  `Proj/FollowupView`, `Prd/OrderExecutionStage`) -- another copy may have
+  them. Reading those four in Demo still fails with ORA-00904.
+- **A query screen whose model names a missing column now fails the suite**
+  (`No query screen names a column its view does not have`), apart from the
+  six models kept by decision, listed in the test.
 - **Audit columns are always `insUser`, `insDate`, `updUser`, `updDate`**,
   however the table spells them (`toFieldName`). The 10 Bank/Cash order tables
   that had both `Insdate` and `Ins_Date` now expose `Insdate` as `insDate`;
