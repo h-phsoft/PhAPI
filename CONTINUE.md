@@ -253,6 +253,19 @@ The flat namespace clashes twice, and the label follows the majority:
   --report=Fre/CodeAirports` reads the same rows whole and streamed, each in
   its own process, and prints time to first row, total time and peak memory.
 
+  Measured on Demo, Fre/CodeAirports (9168 rows, the whole table):
+
+  | | first row | total | peak RSS | peak heap |
+  |---|---|---|---|---|
+  | whole | 54 ms | 54 ms | 109 MB | 33 MB |
+  | streamed | 6 ms | 34 ms | 111 MB | 34 MB |
+
+  The first row arrives 9x sooner and the whole read is faster. Memory is the
+  same, because 9168 narrow rows are a few MB against a process that holds
+  2430 entity models; the memory difference needs a result large enough to
+  show above that. The next measurement is a big view, e.g.
+  `--report=Acc/VoucherView --rows=200000`.
+
 **2-5.** Shared types between the two projects, parallel reads, worker
 threads, hot metadata reload -- not started.
 
