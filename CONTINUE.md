@@ -260,11 +260,18 @@ The flat namespace clashes twice, and the label follows the majority:
   | whole | 54 ms | 54 ms | 109 MB | 33 MB |
   | streamed | 6 ms | 34 ms | 111 MB | 34 MB |
 
-  The first row arrives 9x sooner and the whole read is faster. Memory is the
-  same, because 9168 narrow rows are a few MB against a process that holds
-  2430 entity models; the memory difference needs a result large enough to
-  show above that. The next measurement is a big view, e.g.
-  `--report=Acc/VoucherView --rows=200000`.
+  And Acc/VoucherView, which on Demo is 1892 rows:
+
+  | | first row | total | peak RSS | peak heap |
+  |---|---|---|---|---|
+  | whole | 67 ms | 67 ms | 124 MB | 46 MB |
+  | streamed | 33 ms | 67 ms | 119 MB | 36 MB |
+
+  The first row arrives 2-9x sooner. Memory barely moves, and cannot on Demo:
+  its largest results are a few thousand rows, a few MB against a process
+  that holds 2430 entity models. What streaming buys in memory needs a result
+  in the tens of thousands of rows -- NSCC's, e.g.
+  `--copy=NSCC --report=Acc/VoucherView --rows=200000`.
 
 **2-5.** Shared types between the two projects, parallel reads, worker
 threads, hot metadata reload -- not started.
