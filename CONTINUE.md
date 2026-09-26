@@ -112,7 +112,7 @@ PhApp has 19 hand-written screens. They still take precedence (P4).
 resources/modules/     1215 entity models, generated from the live schema
 resources/screens/      548 query definitions   (Pkg/Name)
 resources/programs/     383 program screens     (the program's own path)
-locales/{en,ar}.json    2386 column labels, 872 with Arabic
+locales/{en,ar}.json    2385 column labels, 1121 with Arabic
 ```
 
 - 85 document screens carry 106 line grids and 984 line fields.
@@ -190,10 +190,18 @@ field entry was modified.
 API side, because they sit behind a sign-in. This is the gap to close before
 trusting any of it. PhApp dev runs on 3030 and talks to PhAPI on 3000.
 
-### 3. Arabic for the remaining 1,514 labels
+### 3. Arabic for the remaining 1,264 labels
 
-872 of 2,386 came from the Java bundle. The rest keep an English default in both
-locales.
+872 of 2,385 came from the Java bundle. The rest are drafted a package at a
+time, by the screens that show them: a key goes to the package whose screens
+use it most, and is read from the column it maps to and the lookup behind it.
+English is replaced only while it is still the generated default.
+
+| Package | Drafted | Left for the owner to confirm |
+|---|---|---|
+| Fre | 250 | `jobEdate` / `jobEnum`, `jobFdate` / `jobFnum`, `jobSdm`, `modeId` / `modeName`, `pshareStatusId` / `pshareStatusName` |
+
+Next by size: Emp 143, Lrg 130, Stor 130, Clnc 111, Proj 110.
 
 ### 4. Step 5 — Node's advantages
 
