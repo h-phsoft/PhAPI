@@ -112,7 +112,7 @@ PhApp has 19 hand-written screens. They still take precedence (P4).
 resources/modules/     1215 entity models, generated from the live schema
 resources/screens/      548 query definitions   (Pkg/Name)
 resources/programs/     383 program screens     (the program's own path)
-locales/{en,ar}.json    2385 column labels, 1121 with Arabic
+locales/{en,ar}.json    2385 column labels, 1448 with Arabic
 ```
 
 - 85 document screens carry 106 line grids and 984 line fields.
@@ -190,7 +190,7 @@ field entry was modified.
 API side, because they sit behind a sign-in. This is the gap to close before
 trusting any of it. PhApp dev runs on 3030 and talks to PhAPI on 3000.
 
-### 3. Arabic for the remaining 1,264 labels
+### 3. Arabic for the remaining 937 labels
 
 872 of 2,385 came from the Java bundle. The rest are drafted a package at a
 time, by the screens that show them: a key goes to the package whose screens
@@ -200,8 +200,11 @@ English is replaced only while it is still the generated default.
 | Package | Drafted | Left for the owner to confirm |
 |---|---|---|
 | Fre | 250 | `jobEdate` / `jobEnum`, `jobFdate` / `jobFnum`, `jobSdm`, `modeId` / `modeName`, `pshareStatusId` / `pshareStatusName` |
+| Emp | 105 | 38, mostly `Emp_Salaries_Calculation_View` (`Sal_Gbtam1`..., the N/D/W/H overtime columns, `Sal_Cons` / `Sal_Pun`), `codAffId`, `taxpayId`, `tsalId`, `empComputer` |
+| Lrg | 122 | `bstatusId`, `claimCommitId`, `settCommitId`, `settCondId`, `collInterId`, `collRespId`, `mpointerId` / `mpointerName` |
+| Stor | 100 | 30: the N / D / H / M item prices, the B / W / BW / CW quantities and `cbamt`, `comaccId`, `itemInsaleId`, `itemMethodId`, `saleName` |
 
-Next by size: Emp 143, Lrg 130, Stor 130, Clnc 111, Proj 110.
+Next by size: Clnc 111, Proj 110, Fix 86, Cash 81, Ped 70.
 
 ### 4. Step 5 — Node's advantages
 
