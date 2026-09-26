@@ -451,6 +451,10 @@ class UnifiedController {
         res.end();
         return;
       }
+      // Set but not sent: a query that fails does so before the first byte,
+      // and the error goes out as JSON, not as a download named .pdf.
+      res.removeHeader('Content-Type');
+      res.removeHeader('Content-Disposition');
       next(err);
     }
   }

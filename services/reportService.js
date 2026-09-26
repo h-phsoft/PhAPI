@@ -2,6 +2,7 @@ const mainApp = require('../metadata/registry');
 const screens = require('../metadata/screens');
 const repository = require('../repository/unifiedRepository');
 const Report = require('../models/report');
+const env = require('../config/env');
 const { coercePage, coercePageSize } = require('../utils/pagination');
 
 /**
@@ -45,6 +46,37 @@ function parseParams(vParams) {
   } catch (err) {
     return { data: vParams };
   }
+}
+
+/**
+ * Waits until `stream` can take more, or has gone away.
+ *
+ * pdfkit writes whatever it is given and queues what the destination has not
+ * taken yet, so a slow reader would let a streamed document pile up in memory
+ * after all. Pausing between batches until the destination drains keeps that
+ * queue to about one batch.
+ *
+ * @param {WritableStream} stream
+ * @returns {Promise<boolean>} False when the destination closed instead
+ */
+function roomIn(stream) {
+  if (stream.destroyed || stream.writableEnded) {
+    return Promise.resolve(false);
+  }
+  if (!stream.writableNeedDrain) {
+    return Promise.resolve(true);
+  }
+  return new Promise((resolve) => {
+    const done = (open) => {
+      stream.off('drain', onDrain);
+      stream.off('close', onClose);
+      resolve(open);
+    };
+    const onDrain = () => done(true);
+    const onClose = () => done(false);
+    stream.on('drain', onDrain);
+    stream.on('close', onClose);
+  });
 }
 
 /** @returns {boolean} True when the value can take part in numeric aggregation. */
@@ -195,6 +227,32 @@ class ReportService {
    */
   async fetchRows(entity, params, context, defaultRows = DEFAULT_REPORT_ROWS) {
     return repository.find(entity, ReportService.queryOptions(params, defaultRows), context);
+  }
+
+  /**
+   * Every row a report selects, a batch at a time, up to `max` (D5).
+   *
+   * An export wants the whole result, not the page a screen shows, so page and
+   * size are not read. One row past the ceiling is asked for, which is how the
+   * caller learns the result was cut rather than exactly that long.
+   *
+   * @param {Object} entity
+   * @param {Object} params The parsed vParams
+   * @param {Object} context
+   * @param {number} [max] The most rows to yield
+   * @returns {AsyncGenerator<{rows: Array<Object>, truncated: boolean}>}
+   */
+  async *streamRows(entity, params, context, max = env.exportMaxRows) {
+    let sent = 0;
+    for await (const batch of repository.stream(entity, ReportService.queryOptions(params), context, max + 1)) {
+      const room = max - sent;
+      if (batch.length > room) {
+        yield { rows: batch.slice(0, room), truncated: true };
+        return;
+      }
+      sent += batch.length;
+      yield { rows: batch, truncated: false };
+    }
   }
 
   /**
@@ -385,57 +443,64 @@ class ReportService {
   /**
    * Renders the report as a landscape PDF table and pipes it to `stream`.
    *
-   * Writes directly to the response rather than buffering, so a large report
-   * does not sit in memory, and resolves once the document is flushed.
+   * The rows stream in from the database and out to the document a batch at a
+   * time (D5), so neither end ever holds the report. That is also what lets it
+   * be the whole report: it used to print the first page of the query -- 500
+   * rows by default, 1000 at most -- whatever the query matched. The page and
+   * size a screen sends are not read; EXPORT_MAX_ROWS is the ceiling, and a
+   * document that reaches it says so.
+   *
+   * The row count is only known at the end, so it is printed there.
    *
    * @param {string} pkgName
    * @param {string} reportName
    * @param {*} vParams
    * @param {Object} context
    * @param {WritableStream} stream Destination, normally the HTTP response
-   * @returns {Promise<{rowCount: number, title: string}>}
+   * @returns {Promise<{rowCount: number, title: string, truncated: boolean}>}
    */
   async renderPDF(pkgName, reportName, vParams, context, stream) {
     const PDFDocument = require('pdfkit');
 
     const params = parseParams(vParams);
     const { entity, report } = this.resolve(pkgName, reportName);
-    const rows = await this.fetchRows(entity, params, context);
-
     const title = report.getTitle();
-    const columns = Object.keys(rows[0] || {});
+
+    // The first batch is read before a byte is written, so a query that fails
+    // -- a column the view lacks, a bad condition -- still fails as an error
+    // the caller can answer, not as a truncated document.
+    const batches = this.streamRows(entity, params, context);
+    const first = await batches.next();
 
     const doc = new PDFDocument({ size: 'A4', layout: 'landscape', margin: 36 });
+    // 'close' as well as 'finish': a reader that leaves mid-document never lets
+    // it finish, and waiting for that would hold the request forever.
     const finished = new Promise((resolve, reject) => {
       stream.on('finish', resolve);
+      stream.on('close', resolve);
       doc.on('error', reject);
     });
 
     doc.pipe(stream);
 
     doc.fontSize(16).text(title, { align: 'left' });
-    doc.fontSize(9).fillColor('#666')
-      .text(`${rows.length} row(s) — generated ${new Date().toISOString()}`);
+    doc.fontSize(9).fillColor('#666').text(`Generated ${new Date().toISOString()}`);
     doc.moveDown(0.8);
     doc.fillColor('#000');
 
-    if (columns.length === 0) {
-      doc.fontSize(11).text('No data for the selected parameters.');
-      doc.end();
-      await finished;
-      return { rowCount: 0, title };
-    }
-
-    const usableWidth = doc.page.width - doc.page.margins.left - doc.page.margins.right;
-    const columnWidth = usableWidth / columns.length;
     const rowHeight = 16;
     const bottomLimit = doc.page.height - doc.page.margins.bottom - rowHeight;
+    let columns = null;
+    let columnWidth = 0;
+    let y = doc.y;
+    let rowCount = 0;
+    let truncated = false;
 
-    const drawRow = (values, y, bold) => {
+    const drawRow = (values, top, bold) => {
       doc.fontSize(8).font(bold ? 'Helvetica-Bold' : 'Helvetica');
       values.forEach((value, index) => {
         const text = value === null || value === undefined ? '' : String(value);
-        doc.text(text, doc.page.margins.left + index * columnWidth, y, {
+        doc.text(text, doc.page.margins.left + index * columnWidth, top, {
           width: columnWidth - 4,
           height: rowHeight,
           ellipsis: true,
@@ -444,25 +509,56 @@ class ReportService {
       });
     };
 
-    let y = doc.y;
-    drawRow(columns, y, true);
-    y += rowHeight;
+    for (let next = first; !next.done; next = await batches.next()) {
+      const batch = next.value;
+      for (const row of batch.rows) {
+        if (!columns) {
+          // A grouped query projects its own columns, so they are read from
+          // the first row rather than the entity.
+          columns = Object.keys(row);
+          const usableWidth = doc.page.width - doc.page.margins.left - doc.page.margins.right;
+          columnWidth = usableWidth / Math.max(columns.length, 1);
+          drawRow(columns, y, true);
+          y += rowHeight;
+        }
+        if (y > bottomLimit) {
+          doc.addPage();
+          y = doc.page.margins.top;
+          drawRow(columns, y, true);
+          y += rowHeight;
+        }
+        drawRow(columns.map((column) => row[column]), y, false);
+        y += rowHeight;
+        rowCount++;
+      }
+      truncated = truncated || batch.truncated;
 
-    for (const row of rows) {
+      // A reader that went away stops the query too: leaving the loop closes
+      // the cursor and returns the connection.
+      if (!(await roomIn(stream))) {
+        await batches.return();
+        return { rowCount, title, truncated, aborted: true };
+      }
+    }
+
+    doc.font('Helvetica').fontSize(9).fillColor('#666');
+    if (rowCount === 0) {
+      doc.fontSize(11).fillColor('#000').text('No data for the selected parameters.', doc.page.margins.left, y);
+    } else {
       if (y > bottomLimit) {
         doc.addPage();
         y = doc.page.margins.top;
-        drawRow(columns, y, true);
-        y += rowHeight;
       }
-      drawRow(columns.map((column) => row[column]), y, false);
-      y += rowHeight;
+      const note = truncated
+        ? `${rowCount} row(s) -- stopped at the export limit of ${env.exportMaxRows}; narrow the query for the rest.`
+        : `${rowCount} row(s)`;
+      doc.text(note, doc.page.margins.left, y + 4);
     }
 
     doc.end();
     await finished;
 
-    return { rowCount: rows.length, title };
+    return { rowCount, title, truncated };
   }
 
   /**

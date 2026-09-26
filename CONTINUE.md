@@ -59,7 +59,7 @@ Order of layers: `http/routes` → `http/middleware` → `http/controllers` →
 - **D3** Operators come from a closed list. `$$` is never accepted from a client.
 - **D4** Dates state their format at both boundaries. The column's declared type
   decides. A date leaves with no timezone attached.
-- **D5** A large result streams. *(Not yet done — Step 5.)*
+- **D5** A large result streams. *(Done for the report PDF, the one export; measuring it on Oracle is open -- see Step 5.)*
 
 ### Porting
 
@@ -230,8 +230,30 @@ The flat namespace clashes twice, and the label follows the majority:
 
 ### 4. Step 5 — Node's advantages
 
-Streaming (D5), shared types between the two projects, parallel reads, worker
-threads, hot metadata reload.
+**1. Streaming (D5) -- built; the before/after measurement needs the database.**
+
+- `repository.stream()` runs the statement `find()` runs, without its page, and
+  yields it 500 rows at a time: an Oracle result set (`resultSet: true`,
+  `getRows`), a MySQL row stream. PostgreSQL still reads whole -- `pg` needs
+  `pg-cursor` for a cursor, and no tenant runs on it. The ceiling is in the
+  statement (`FETCH NEXT`), and one row past it is asked for so a cut result
+  is told apart from one exactly that long.
+- The report PDF reads through it. It used to print the first page of the
+  query -- 500 rows by default, 1000 at most -- whatever the query matched; it
+  now prints the whole result up to `EXPORT_MAX_ROWS` (default 50000) and says
+  so when it stops there. It waits on a slow client instead of queueing the
+  document in memory, and a client that disconnects stops the query. The first
+  batch is read before a byte is sent, so a failing query (an ORA-00904) still
+  answers as a JSON error rather than a broken download.
+- `tests/streaming.test.js` pins that down against a stand-in pool: 11 tests,
+  and the slow-client one fails with the wait removed (40 of 40 batches read
+  for a client that took none, against 2).
+- **To measure** (V1): `node scripts/measureStreaming.js --copy=Demo
+  --report=Fre/CodeAirports` reads the same rows whole and streamed, each in
+  its own process, and prints time to first row, total time and peak memory.
+
+**2-5.** Shared types between the two projects, parallel reads, worker
+threads, hot metadata reload -- not started.
 
 ---
 

@@ -309,7 +309,9 @@ it stays third.
 
 ### Step 5 — Node's advantages
 
-1. Stream report and export responses.
+1. Stream report and export responses. *Built for the report PDF -- the one
+   export -- through `repository.stream()`; the before/after figures come from
+   `scripts/measureStreaming.js` on a tenant's database.*
 2. Share entity types between PhAPI and PhApp instead of hand-writing them
    twice.
 3. Parallelise independent reads that are sequential today.

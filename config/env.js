@@ -194,6 +194,10 @@ module.exports = {
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || '24h',
   autocompleteSize: parseInt(process.env.AUTOCOMPLETE_SIZE || '50', 10),
 
+  // The most rows one export may carry. Exports stream (D5), so this bounds
+  // how long one runs rather than how much memory it takes.
+  exportMaxRows: parseInt(process.env.EXPORT_MAX_ROWS || '50000', 10),
+
   // null means "any origin" — permitted in development only.
   corsOrigins,
 

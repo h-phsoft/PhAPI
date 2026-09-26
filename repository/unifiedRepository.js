@@ -141,6 +141,37 @@ class UnifiedRepository {
   }
 
   /**
+   * Selects records a batch at a time (D5).
+   *
+   * The same statement find() runs, minus its page: the whole result, up to
+   * `limit` rows, is read through the driver in batches and each batch is
+   * shaped as find() shapes a page. Memory holds one batch, whatever the
+   * result's size. The caller decides the ceiling, because only it knows what
+   * the rows are for.
+   *
+   * @param {Object} entity
+   * @param {Object} options As find(); page and pageSize are ignored
+   * @param {Object} context
+   * @param {number} limit The most rows the statement may return
+   * @returns {AsyncGenerator<Array<Object>>} Batches of rows
+   */
+  async *stream(entity, options = {}, context = {}, limit) {
+    // Without one the builder falls back to its default page of 20 rows, which
+    // would be an export silently cut to 20.
+    if (!Number.isInteger(limit) || limit <= 0) {
+      throw new Error(`stream() needs a positive row limit, not ${limit}`);
+    }
+    const tenantId = context.tenantId || 'default';
+    const poolWrapper = await connectionPool.getPool(tenantId);
+    const dbType = poolWrapper.dbType;
+
+    const { sql, params } = sqlBuilder.buildSelect(dbType, entity, { ...options, page: 1, pageSize: limit });
+    for await (const rows of poolWrapper.stream(sql, params)) {
+      yield shapeDates(entity, this.mapToCamelCase(rows, entity));
+    }
+  }
+
+  /**
    * Finds single record by Primary Key.
    */
   async findById(entity, id, context = {}) {

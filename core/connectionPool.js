@@ -6,6 +6,13 @@ let mysql = null;
 let pg = null;
 let oracledb = null;
 
+/**
+ * Rows fetched per round trip when a result is streamed (D5). Big enough that
+ * the round trips do not dominate, small enough that a batch is never the
+ * memory problem streaming exists to avoid.
+ */
+const STREAM_BATCH = 500;
+
 class ConnectionPoolManager {
   constructor() {
     if (ConnectionPoolManager.instance) {
@@ -73,6 +80,39 @@ class ConnectionPoolManager {
           const q = adaptSql(sql, params, dialects.mysql);
           const [rows] = await pool.query(q.text, q.values);
           return rows;
+        },
+        /**
+         * The rows of a statement, STREAM_BATCH at a time, never all at once.
+         *
+         * A consumer that stops early leaves the connection mid-result, which
+         * cannot be handed back to the pool, so it is destroyed instead.
+         */
+        async *stream(sql, params) {
+          const q = adaptSql(sql, params, dialects.mysql);
+          const connection = await pool.getConnection();
+          const rows = connection.connection.query(q.text, q.values).stream();
+          let finished = false;
+          try {
+            let batch = [];
+            for await (const row of rows) {
+              batch.push(row);
+              if (batch.length >= STREAM_BATCH) {
+                yield batch;
+                batch = [];
+              }
+            }
+            if (batch.length > 0) {
+              yield batch;
+            }
+            finished = true;
+          } finally {
+            if (finished) {
+              connection.release();
+            } else {
+              rows.destroy();
+              connection.destroy();
+            }
+          }
         }
       };
     } else if (dbType === 'postgres' || dbType === 'postgresql' || dbType === 'pg') {
@@ -110,6 +150,18 @@ class ConnectionPoolManager {
           const q = adaptSql(sql, params, dialects.postgres);
           const res = await pool.query(q.text, q.values);
           return res.rows;
+        },
+        /**
+         * Not streamed: `pg` reads a whole result unless pg-cursor is added,
+         * and no tenant runs on PostgreSQL today. The result arrives as one
+         * batch, so a caller written against stream() still works here.
+         */
+        async *stream(sql, params) {
+          const q = adaptSql(sql, params, dialects.postgres);
+          const res = await pool.query(q.text, q.values);
+          if (res.rows.length > 0) {
+            yield res.rows;
+          }
         }
       };
     } else if (dbType === 'oracle') {
@@ -160,6 +212,34 @@ class ConnectionPoolManager {
             const res = await connection.execute(sql, params || {});
             return res.rows;
           } finally {
+            await connection.close();
+          }
+        },
+
+        /**
+         * The rows of a statement, STREAM_BATCH at a time, read through a
+         * result set so the driver never holds more than one batch.
+         *
+         * The result set and the connection are closed however the consumer
+         * leaves -- to the end, on an error, or by stopping early.
+         */
+        async *stream(sql, params) {
+          const connection = await pool.getConnection();
+          let resultSet = null;
+          try {
+            console.log(`[SQL Stream] [copy: '${tenantId}', user: '${config.user}'] SQL: ${sql} | Params: ${JSON.stringify(params || {})}`);
+            logger.info(`[SQL Stream] [copy: '${tenantId}', user: '${config.user}'] SQL: ${sql} | Params: ${JSON.stringify(params || {})}`);
+            const res = await connection.execute(sql, params || {}, { resultSet: true, fetchArraySize: STREAM_BATCH });
+            resultSet = res.resultSet;
+            let rows = await resultSet.getRows(STREAM_BATCH);
+            while (rows.length > 0) {
+              yield rows;
+              rows = await resultSet.getRows(STREAM_BATCH);
+            }
+          } finally {
+            if (resultSet) {
+              await resultSet.close();
+            }
             await connection.close();
           }
         }
