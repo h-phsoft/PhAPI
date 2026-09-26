@@ -112,7 +112,7 @@ PhApp has 19 hand-written screens. They still take precedence (P4).
 resources/modules/     1215 entity models, generated from the live schema
 resources/screens/      548 query definitions   (Pkg/Name)
 resources/programs/     383 program screens     (the program's own path)
-locales/{en,ar}.json    2385 column labels, 2040 with Arabic
+locales/{en,ar}.json    2385 column labels, 2237 with Arabic
 ```
 
 - 85 document screens carry 106 line grids and 984 line fields.
@@ -190,7 +190,7 @@ field entry was modified.
 API side, because they sit behind a sign-in. This is the gap to close before
 trusting any of it. PhApp dev runs on 3030 and talks to PhAPI on 3000.
 
-### 3. Arabic for the remaining 345 labels
+### 3. Arabic for the last 148 labels -- waiting on their meaning
 
 872 of 2,385 came from the Java bundle. The rest are drafted a package at a
 time, by the screens that show them: a key goes to the package whose screens
@@ -211,12 +211,21 @@ English is replaced only while it is still the generated default.
 | Ped | 70 | none |
 | Cpy | 60 | 6: `Copy_Tokens` (`Adate`, `Cfront_Id`, `Gid`), `Grp_Wper`, `Iperiod` / `Vperiod` |
 | Acc | 47 | none |
+| Crm | 32 | `comp`, `frem`, `trepNcomd` |
+| Pur | 26 | `insaleId` / `insaleName`, the W quantities (as Stor) |
+| Trn | 27 | `forId`, `resId` |
+| Sdesk | 17 | `cuserId` / `ruserId` / `suserId`: which roles are C, R and S |
+| Sales | 4 | `bcom`, `cmtId`, `cmv` |
+| (no screen) | 4 | `ordMdate` / `ordMnum`, `ordTdate` / `ordTnote` / `ordTstatusId` (as Bank) |
+| Mng 25, Phs 24, Prd 10, Fund 9, Notif 9, Fin 5, Pms 5 | 87 | none |
 
-`accFname` is the one flat-namespace clash met so far: most Fix views mean the
-account's full name by `Acc_Fname`, but `Fix_Fixeds_Items_View` means the F
-(accumulated depreciation) account's name. The label follows the majority.
+Every key with a readable meaning has Arabic now. The 148 left are
+abbreviations only the owner can read; each gets its words once answered.
 
-Next by size: Crm 35, Pur 32, Trn 29, Mng 25, Phs 24, then eight small packages.
+The flat namespace clashes twice, and the label follows the majority:
+`accFname` is the account's full name in most Fix views but the F
+(accumulated depreciation) account's name in `Fix_Fixeds_Items_View`, and
+`pnum` is a plate number in Trn but `Acc_Account.pNum` elsewhere.
 
 ### 4. Step 5 — Node's advantages
 

@@ -400,7 +400,8 @@ The flat namespace has one cost worth knowing: a word means whatever the screen
 that first used it meant, so `App_Id` carries the bundle's English "Count" and
 is now the label for every `appId` column. The remaining 1514 keys kept their
 generated readable default in both languages; they are being drafted a package
-at a time (12 packages so far: 1169 keys, both languages), and 345 are left.
+at a time, 1366 keys in both languages; the 148 left are abbreviations waiting
+on the owner's reading.
 
 **Saving a document, before `update` knew about children**
 
