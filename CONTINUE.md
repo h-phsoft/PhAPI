@@ -112,7 +112,7 @@ PhApp has 19 hand-written screens. They still take precedence (P4).
 resources/modules/     1215 entity models, generated from the live schema
 resources/screens/      548 query definitions   (Pkg/Name)
 resources/programs/     383 program screens     (the program's own path)
-locales/{en,ar}.json    2385 column labels, 1738 with Arabic
+locales/{en,ar}.json    2385 column labels, 2040 with Arabic
 ```
 
 - 85 document screens carry 106 line grids and 984 line fields.
@@ -190,7 +190,7 @@ field entry was modified.
 API side, because they sit behind a sign-in. This is the gap to close before
 trusting any of it. PhApp dev runs on 3030 and talks to PhAPI on 3000.
 
-### 3. Arabic for the remaining 647 labels
+### 3. Arabic for the remaining 345 labels
 
 872 of 2,385 came from the Java bundle. The rest are drafted a package at a
 time, by the screens that show them: a key goes to the package whose screens
@@ -206,12 +206,17 @@ English is replaced only while it is still the generated default.
 | Clnc | 111 | none |
 | Proj | 110 | none |
 | Fix | 69 | 17: the R account (`Acc_Rid`, beside the D = depreciation expense and F = accumulated depreciation accounts), `Rtot` / `Ramt`, `Sqnt` / `Scqnt` |
+| Cash | 70 | 11: the C / O accounts of `Cash_Boxes`, `Dcust`, `Dstatus`, `Ord_Damt` / `Ord_Dcamt`, `Phnby`, `Vhr_Did` |
+| Bank | 55 | 7: `Acc_Cid`, `B_Examt` / `B_Excamt`, `Mnum`, `Phnby`, `Tnote` / `Tstatus_Id` |
+| Ped | 70 | none |
+| Cpy | 60 | 6: `Copy_Tokens` (`Adate`, `Cfront_Id`, `Gid`), `Grp_Wper`, `Iperiod` / `Vperiod` |
+| Acc | 47 | none |
 
 `accFname` is the one flat-namespace clash met so far: most Fix views mean the
 account's full name by `Acc_Fname`, but `Fix_Fixeds_Items_View` means the F
 (accumulated depreciation) account's name. The label follows the majority.
 
-Next by size: Cash 81, Ped 70, Cpy 66, Bank 62, Acc 47.
+Next by size: Crm 35, Pur 32, Trn 29, Mng 25, Phs 24, then eight small packages.
 
 ### 4. Step 5 — Node's advantages
 
