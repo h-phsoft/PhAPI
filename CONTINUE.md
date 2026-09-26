@@ -304,8 +304,36 @@ The flat namespace clashes twice, and the label follows the majority:
   each tree, a broken locale beside a good model, and one reload for a burst
   of writes.
 
-**2-4.** Shared types between the two projects, parallel reads, worker
-threads -- not started.
+**3. Parallel reads -- done; measure on the database.**
+
+- Three places read things none of which needs another, and waited for each
+  before asking for the next. They now run side by side, each on its own
+  pooled connection, through `utils/parallel.js` `mapLimit()`: at most
+  `PARALLEL_READS` at once (default 4, well under `DB_POOL_LIMIT` 10), results
+  in the original order, the first failure fails the whole.
+  - **Opening a record** (`UnifiedService.get`): its child grids. 35 masters
+    have 3 or more -- `Fre/JobFreight` 10, `Lrg/Products` 13.
+  - **A package's code tables** (`getCodes`): `Lrg` has 80.
+  - **The user profile** (`getUserProfile`, loaded after sign-in): the user
+    row, the menus and the periods together, then the group and its
+    programs. Five statements one after another become two rounds. It used
+    one connection for all five; one connection runs one statement at a time,
+    so each read now takes its own.
+- `PARALLEL_READS=1` reads exactly as before -- the way back if a database
+  objects.
+- `tests/parallel.test.js` (12), on a stand-in pool: how many reads are in
+  flight, the limit, same result either way, connections always returned.
+  Three of them fail on the old code.
+- Measure with `node scripts/measureParallel.js --copy=NSCC --user=1
+  --record=Fre/JobFreight:<id> --codes=Lrg`: median of one-by-one against
+  side-by-side, alternating in one process. On a stand-in pool at 20 ms a
+  statement: profile 102 -> 41 ms, 4 code tables 81 -> 21 ms. **Not yet run
+  against Oracle.**
+- `authService.js` and `unifiedService.js` had their brace-less `if`s braced
+  (CLAUDE.md); nothing else in them changed.
+
+**2, 4.** Shared types between the two projects, worker threads -- not
+started.
 
 ---
 

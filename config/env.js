@@ -204,6 +204,11 @@ module.exports = {
   // how long one runs rather than how much memory it takes.
   exportMaxRows: parseInt(process.env.EXPORT_MAX_ROWS || '50000', 10),
 
+  // How many independent reads one request may run at once, each on its own
+  // pooled connection. Keep it well under DB_POOL_LIMIT (10), so one request
+  // cannot hold the whole pool. 1 reads them one after another, as before.
+  parallelReads: Math.max(1, parseInt(process.env.PARALLEL_READS || '4', 10) || 1),
+
   // null means "any origin" — permitted in development only.
   corsOrigins,
 

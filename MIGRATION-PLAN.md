@@ -315,7 +315,10 @@ it stays third.
    first row; streamed, 91 MB and 65 ms, same total time.*
 2. Share entity types between PhAPI and PhApp instead of hand-writing them
    twice.
-3. Parallelise independent reads that are sequential today.
+3. Parallelise independent reads that are sequential today. *Done: a
+   record's child grids, a package's code tables and the user profile read
+   side by side through `utils/parallel.js`, at most `PARALLEL_READS` (4) at
+   once; `scripts/measureParallel.js` measures it against the database.*
 4. Move export generation and report aggregation to worker threads.
 5. Reload metadata without a restart. *Done: `services/metadataReload.js`
    watches the metadata trees and reloads in 150-250 ms, keeping any part

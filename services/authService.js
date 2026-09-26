@@ -4,6 +4,7 @@ const mainApp = require('../metadata/registry');
 const repository = require('../repository/unifiedRepository');
 const i18nHelper = require('../utils/i18nHelper');
 const passwordUtil = require('../utils/password');
+const { mapLimit } = require('../utils/parallel');
 
 /**
  * Tables a copy may keep its account rows in. Older copies name it Copy_Users;
@@ -21,10 +22,16 @@ const USER_TABLES = ['Cpy_User', 'Copy_Users'];
  * @param {string} name Column name as written in the schema, e.g. 'Status_Id'
  */
 function readColumn(row, name) {
-  if (row[name.toUpperCase()] !== undefined) return row[name.toUpperCase()];
-  if (row[name] !== undefined) return row[name];
+  if (row[name.toUpperCase()] !== undefined) {
+    return row[name.toUpperCase()];
+  }
+  if (row[name] !== undefined) {
+    return row[name];
+  }
   const lower = name.toLowerCase();
-  if (row[lower] !== undefined) return row[lower];
+  if (row[lower] !== undefined) {
+    return row[lower];
+  }
   const key = Object.keys(row).find((k) => k.toLowerCase() === lower);
   return key ? row[key] : undefined;
 }
@@ -99,7 +106,9 @@ class AuthService {
         copyVal = parts[0];
         userVal = parts[1];
         passVal = parts[2];
-        if (parts.length >= 4) periodVal = parts[3];
+        if (parts.length >= 4) {
+          periodVal = parts[3];
+        }
       }
     } else if (credentials && typeof credentials === 'object') {
       // Support string vParameters property "MKM:admin:admin"
@@ -109,7 +118,9 @@ class AuthService {
           copyVal = parts[0];
           userVal = parts[1];
           passVal = parts[2];
-          if (parts.length >= 4) periodVal = parts[3];
+          if (parts.length >= 4) {
+            periodVal = parts[3];
+          }
         }
       } else if (typeof credentials.params === 'string' && credentials.params.includes(':')) {
         const parts = credentials.params.trim().split(':');
@@ -117,7 +128,9 @@ class AuthService {
           copyVal = parts[0];
           userVal = parts[1];
           passVal = parts[2];
-          if (parts.length >= 4) periodVal = parts[3];
+          if (parts.length >= 4) {
+            periodVal = parts[3];
+          }
         }
       }
 
@@ -131,7 +144,9 @@ class AuthService {
           copyVal = parts[0];
           userVal = parts[1];
           passVal = parts[2];
-          if (parts.length >= 4) periodVal = parts[3];
+          if (parts.length >= 4) {
+            periodVal = parts[3];
+          }
         }
       }
       
@@ -513,7 +528,9 @@ class AuthService {
     const col = readColumn;
     try {
       const rows = await authRepository.getPhsMenus(conn);
-      if (!rows || rows.length === 0) return [];
+      if (!rows || rows.length === 0) {
+        return [];
+      }
       const menus = [];
       for (const row of rows) {
         menus.push({
@@ -603,7 +620,9 @@ class AuthService {
           if (hParamsStr) {
             hParamsStr.split('&').forEach(param => {
               let parts = param.split('=');
-              if (parts.length === 2) hParamsObj[parts[0]] = parts[1];
+              if (parts.length === 2) {
+                hParamsObj[parts[0]] = parts[1];
+              }
             });
           }
 
@@ -808,55 +827,68 @@ class AuthService {
     }
 
     const pool = await connectionPoolManager.getPool(tenantId);
-    const conn = await pool.getConnection();
 
-    try {
-      const formatKeys = (obj, omitKeys = []) => {
-        const result = {};
-        const lowerOmitKeys = omitKeys.map(k => k.toLowerCase());
-        for (const key in obj) {
-          if (lowerOmitKeys.includes(key.toLowerCase())) continue;
-          
-          // CamelCase: convert entire key to lower, then remove _ and uppercase following char
-          let newKey = key.toLowerCase().replace(/_([a-z0-9])/g, (g) => g[1].toUpperCase());
-          
-          result[newKey] = obj[key];
-        }
-        return result;
-      };
-
-      let profile = {};
-      let pgrpId = 0;
-      
-      const userRows = await authRepository.getFullUserById(conn, userId);
-      if (userRows && userRows.length > 0) {
-        const rawProfile = userRows[0];
-        pgrpId = rawProfile.PGRP_ID || rawProfile.PGrp_Id || rawProfile.pgrp_id || 0;
-        profile = formatKeys(rawProfile, ['pass', 'password']);
+    // Each read takes its own connection, so reads that do not need each other
+    // run side by side (Step 5.3). One connection runs one statement at a time.
+    const withConnection = async (read) => {
+      const conn = await pool.getConnection();
+      try {
+        return await read(conn);
+      } finally {
+        await conn.release();
       }
+    };
+    const together = (reads) => mapLimit(reads, env.parallelReads, withConnection);
+    const lang = context.lang || 'en';
 
-      let permissions = {};
-      if (pgrpId > 0) {
-        const pgrpRows = await authRepository.getPGrpById(conn, pgrpId);
-        if (pgrpRows && pgrpRows.length > 0) {
-          permissions = formatKeys(pgrpRows[0], []);
+    const formatKeys = (obj, omitKeys = []) => {
+      const result = {};
+      const lowerOmitKeys = omitKeys.map(k => k.toLowerCase());
+      for (const key in obj) {
+        if (lowerOmitKeys.includes(key.toLowerCase())) {
+          continue;
         }
+
+        // CamelCase: convert entire key to lower, then remove _ and uppercase following char
+        let newKey = key.toLowerCase().replace(/_([a-z0-9])/g, (g) => g[1].toUpperCase());
+
+        result[newKey] = obj[key];
       }
+      return result;
+    };
 
-      let programs = await this.getMenuPrograms(conn, pgrpId, context.lang || 'en');
-      let menus = await this.getPhsMenus(conn, context.lang || 'en');
-      let periods = await this.getPeriods(conn);
+    let profile = {};
+    let pgrpId = 0;
 
-      return {
-        profile,
-        permissions,
-        programs,
-        menus,
-        periods
-      };
-    } finally {
-      await conn.release();
+    // The menus and periods are the same whoever asks; only the programs and
+    // the group need the user's row first.
+    const [userRows, menus, periods] = await together([
+      (conn) => authRepository.getFullUserById(conn, userId),
+      (conn) => this.getPhsMenus(conn, lang),
+      (conn) => this.getPeriods(conn)
+    ]);
+    if (userRows && userRows.length > 0) {
+      const rawProfile = userRows[0];
+      pgrpId = rawProfile.PGRP_ID || rawProfile.PGrp_Id || rawProfile.pgrp_id || 0;
+      profile = formatKeys(rawProfile, ['pass', 'password']);
     }
+
+    const [programs, pgrpRows] = await together([
+      (conn) => this.getMenuPrograms(conn, pgrpId, lang),
+      ...(pgrpId > 0 ? [(conn) => authRepository.getPGrpById(conn, pgrpId)] : [])
+    ]);
+    let permissions = {};
+    if (pgrpRows && pgrpRows.length > 0) {
+      permissions = formatKeys(pgrpRows[0], []);
+    }
+
+    return {
+      profile,
+      permissions,
+      programs,
+      menus,
+      periods
+    };
   }
 
 }

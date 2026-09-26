@@ -2,6 +2,8 @@ const mainApp = require('../metadata/registry');
 const connectionPool = require('../core/connectionPool');
 const repository = require('../repository/unifiedRepository');
 const AutoNumberHelper = require('../repository/autoNumber');
+const env = require('../config/env');
+const { mapLimit } = require('../utils/parallel');
 
 /**
  * A payload the caller got wrong.
@@ -145,19 +147,29 @@ class UnifiedService {
    * Injects audit fields into data object.
    */
   injectAuditFields(entity, data, context, isUpdate = false) {
-    if (!entity.auditFields) return;
+    if (!entity.auditFields) {
+      return;
+    }
 
     const { createdBy, createdAt, updatedAt, updatedBy } = entity.auditFields;
     const now = new Date();
     const userId = context.userId || 'system';
 
     if (!isUpdate) {
-      if (createdBy) data[createdBy] = userId;
-      if (createdAt) data[createdAt] = now;
+      if (createdBy) {
+        data[createdBy] = userId;
+      }
+      if (createdAt) {
+        data[createdAt] = now;
+      }
     }
 
-    if (updatedBy) data[updatedBy] = userId;
-    if (updatedAt) data[updatedAt] = now;
+    if (updatedBy) {
+      data[updatedBy] = userId;
+    }
+    if (updatedAt) {
+      data[updatedAt] = now;
+    }
   }
 
   /**
@@ -276,23 +288,31 @@ class UnifiedService {
     }
 
     const masterRecord = await repository.findById(entity, id, context);
-    if (!masterRecord) return null;
+    if (!masterRecord) {
+      return null;
+    }
 
-    // Retrieve nested children
+    // Retrieve nested children. Each grid is read by the master's id alone, so
+    // none waits on another: they are read side by side (Step 5.3).
     if (entity.hasChilds && entity.children && Array.isArray(entity.children)) {
-      for (const childConfig of entity.children) {
-        const childEntity = mainApp.getEntity(packageName, childConfig.table) ||
-                            mainApp.getEntityBySynonym(childConfig.synonym) ||
-                            mainApp.getEntityByTable(childConfig.table);
+      const grids = entity.children
+        .map((childConfig) => ({
+          childConfig,
+          childEntity: mainApp.getEntity(packageName, childConfig.table) ||
+                       mainApp.getEntityBySynonym(childConfig.synonym) ||
+                       mainApp.getEntityByTable(childConfig.table)
+        }))
+        .filter(({ childEntity }) => childEntity);
 
-        if (childEntity) {
-          const filters = {};
-          filters[childConfig.foreignKey] = id;
-          const childrenRows = await repository.find(childEntity, { filters }, context);
-          // Localised against the child's own metadata, not the master's.
-          masterRecord[childConfig.childKey] = childrenRows;
-        }
-      }
+      const rows = await mapLimit(grids, env.parallelReads, ({ childConfig, childEntity }) => {
+        const filters = {};
+        filters[childConfig.foreignKey] = id;
+        return repository.find(childEntity, { filters }, context);
+      });
+      grids.forEach(({ childConfig }, index) => {
+        // Localised against the child's own metadata, not the master's.
+        masterRecord[childConfig.childKey] = rows[index];
+      });
     }
 
     return masterRecord;
@@ -616,14 +636,17 @@ class UnifiedService {
     const tables = mainApp.getTablesInPackage(packageName);
     const codeTables = tables.filter(t => t.toLowerCase().endsWith('_code') || t.toLowerCase().includes('code'));
 
+    // Each table is read on its own, so they are read side by side (Step 5.3).
+    const found = codeTables
+      .map((table) => ({ table, entity: mainApp.getEntity(packageName, table) }))
+      .filter(({ entity }) => entity);
+    const rows = await mapLimit(found, env.parallelReads,
+      ({ entity }) => repository.find(entity, { pageSize: 100 }, context));
+
     const result = {};
-    for (const table of codeTables) {
-      const entity = mainApp.getEntity(packageName, table);
-      if (entity) {
-        const rows = await repository.find(entity, { pageSize: 100 }, context);
-        result[packageName + table] = rows;
-      }
-    }
+    found.forEach(({ table }, index) => {
+      result[packageName + table] = rows[index];
+    });
 
     return result;
   }
