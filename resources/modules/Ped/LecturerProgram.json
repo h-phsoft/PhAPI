@@ -207,7 +207,7 @@
         "primaryKey": "Id",
         "foreignKey": "Is_Day_Sun",
         "displayField": "Name",
-        "apiDisplayField": "isDayName"
+        "apiDisplayField": "isDaySunName"
       }
     },
     {
@@ -241,7 +241,7 @@
         "primaryKey": "Id",
         "foreignKey": "Is_Day_Mon",
         "displayField": "Name",
-        "apiDisplayField": "isDayName"
+        "apiDisplayField": "isDayMonName"
       }
     },
     {
@@ -275,7 +275,7 @@
         "primaryKey": "Id",
         "foreignKey": "Is_Day_Tue",
         "displayField": "Name",
-        "apiDisplayField": "isDayName"
+        "apiDisplayField": "isDayTueName"
       }
     },
     {
@@ -309,7 +309,7 @@
         "primaryKey": "Id",
         "foreignKey": "Is_Day_Wed",
         "displayField": "Name",
-        "apiDisplayField": "isDayName"
+        "apiDisplayField": "isDayWedName"
       }
     },
     {
@@ -343,7 +343,7 @@
         "primaryKey": "Id",
         "foreignKey": "Is_Day_Thu",
         "displayField": "Name",
-        "apiDisplayField": "isDayName"
+        "apiDisplayField": "isDayThuName"
       }
     },
     {

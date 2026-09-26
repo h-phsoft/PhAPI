@@ -1304,7 +1304,7 @@
         "primaryKey": "Id",
         "foreignKey": "Curn_Tid",
         "displayField": "Name",
-        "apiDisplayField": "curnName"
+        "apiDisplayField": "curnTidName"
       }
     },
     {

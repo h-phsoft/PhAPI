@@ -209,11 +209,14 @@ threads, hot metadata reload.
   `Loan_Type_Id` is `loanTypeRefId` in the 15 Lrg views, `Cont_Rid` /
   `Cont_Rnum` are `contRecvId` / `contRecvNum` in Fre, and the second `Cont_Id`
   entry (precision 4) left `Stor/ExecuteOutboundMaster`.
-- **56 joined display names still clash, across 30 entities.** A relation's
-  `apiDisplayField` collides with a column or with another relation's display:
-  `Curn_Fid` and `Curn_Tid` both show as `curnName`, `Contr_Id` and `Contr_Rid`
-  both as `contrName`, a view's `Status_Id` display beside its own
-  `Status_Name`. One of each is lost on every read.
+- **No two lookups of an entity share a display name.** 42 did -- `Curn_Fid`
+  and `Curn_Tid` both said `curnName`, so a screen drew one currency name for
+  both. The first keeps the name; the others take their own
+  (`curnTidName`, `deptRidName`, `isDaySunName`). A display name that is the
+  view's own column (`Status_Id` beside `Status_Name`) is how a view shows its
+  lookup and is left alone. Nothing selects a display name in SQL today -- no
+  service passes joins -- so this is what a client is told to draw, not what a
+  row carries. Both rules are now tests in `tests/screens.test.js`.
 - **The columns a model names and its table lacks are listed by**
   `node scripts/reconcileSchema.js --tenant Demo --missing --compare NSCC`,
   which writes `reconcile-missing-Demo.csv`. Needs the database.

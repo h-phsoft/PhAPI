@@ -184,6 +184,67 @@ test('a searchable field offers at least one operator', () => {
   assert.strictEqual(broken.length, 0, `filterable with no operators: ${broken.slice(0, 5).join(', ')}`);
 });
 
+// ---------------------------------------------------------------------------
+// The entity models every screen overlays
+// ---------------------------------------------------------------------------
+
+/** Every entity model, parsed. */
+function models() {
+  const root = path.join(__dirname, '..', 'resources', 'modules');
+  const out = [];
+  for (const pkg of fs.readdirSync(root)) {
+    const dir = path.join(root, pkg);
+    if (!fs.statSync(dir).isDirectory()) {
+      continue;
+    }
+    for (const file of fs.readdirSync(dir)) {
+      if (file.endsWith('.json')) {
+        out.push({ rel: `${pkg}/${file}`, model: JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8')) });
+      }
+    }
+  }
+  return out;
+}
+
+const MODELS = models();
+
+test('no two columns of an entity share an API name, in any case', () => {
+  const broken = [];
+  for (const { rel, model } of MODELS) {
+    const seen = new Set();
+    for (const field of (model.fields || [])) {
+      const name = String(field.Field).toLowerCase();
+      if (seen.has(name)) {
+        broken.push(`${rel}.${field.Field}`);
+      }
+      seen.add(name);
+    }
+  }
+  assert.strictEqual(broken.length, 0, `a row keyed by these loses one of each: ${broken.slice(0, 5).join(', ')}`);
+});
+
+test('no two lookups of an entity share a display name', () => {
+  // A display name that is one of the entity's own columns is how a view shows
+  // its lookup -- Status_Id beside Status_Name -- and is allowed. Two lookups
+  // naming the same display is not: both would show one value.
+  const broken = [];
+  for (const { rel, model } of MODELS) {
+    const columns = new Set((model.fields || []).map((f) => String(f.Field).toLowerCase()));
+    const seen = new Set();
+    for (const field of (model.fields || [])) {
+      const display = field.relation && field.relation.apiDisplayField;
+      if (!display || columns.has(display.toLowerCase())) {
+        continue;
+      }
+      if (seen.has(display.toLowerCase())) {
+        broken.push(`${rel}.${field.Name} -> ${display}`);
+      }
+      seen.add(display.toLowerCase());
+    }
+  }
+  assert.strictEqual(broken.length, 0, `shared display names: ${broken.slice(0, 5).join(', ')}`);
+});
+
 console.log(`\n  screens: ${passed} passed, ${failed} failed\n`);
 
 if (failed > 0) {

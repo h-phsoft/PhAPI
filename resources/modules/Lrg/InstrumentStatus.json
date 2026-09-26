@@ -71,7 +71,7 @@
         "primaryKey": "Id",
         "foreignKey": "Id",
         "displayField": "Name",
-        "apiDisplayField": "instName"
+        "apiDisplayField": "reqName"
       }
     },
     {

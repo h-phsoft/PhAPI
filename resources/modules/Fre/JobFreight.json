@@ -506,7 +506,7 @@
         "primaryKey": "Id",
         "foreignKey": "Contr_Rid",
         "displayField": "Name",
-        "apiDisplayField": "contrName"
+        "apiDisplayField": "contrRidName"
       }
     },
     {

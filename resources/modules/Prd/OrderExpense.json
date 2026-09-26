@@ -525,7 +525,7 @@
         "primaryKey": "Id",
         "foreignKey": "Cost_Tid",
         "displayField": "Name",
-        "apiDisplayField": "costName"
+        "apiDisplayField": "costTidName"
       }
     },
     {
@@ -559,7 +559,7 @@
         "primaryKey": "Id",
         "foreignKey": "Acc_Tid",
         "displayField": "Name",
-        "apiDisplayField": "accName"
+        "apiDisplayField": "accTidName"
       }
     },
     {

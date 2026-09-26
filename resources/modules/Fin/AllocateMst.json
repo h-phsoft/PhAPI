@@ -207,7 +207,7 @@
         "primaryKey": "Id",
         "foreignKey": "Dept_Rid",
         "displayField": "Name",
-        "apiDisplayField": "deptName"
+        "apiDisplayField": "deptRidName"
       }
     },
     {
@@ -241,7 +241,7 @@
         "primaryKey": "Id",
         "foreignKey": "Unit_Rid",
         "displayField": "Name",
-        "apiDisplayField": "unitName"
+        "apiDisplayField": "unitRidName"
       }
     },
     {
@@ -275,7 +275,7 @@
         "primaryKey": "Id",
         "foreignKey": "Oper_Rid",
         "displayField": "Name",
-        "apiDisplayField": "operName"
+        "apiDisplayField": "operRidName"
       }
     },
     {
@@ -377,7 +377,7 @@
         "primaryKey": "Id",
         "foreignKey": "Trt_Rid",
         "displayField": "Name",
-        "apiDisplayField": "trtName"
+        "apiDisplayField": "trtRidName"
       }
     },
     {
@@ -499,7 +499,7 @@
         "primaryKey": "Id",
         "foreignKey": "Cont_Rid",
         "displayField": "Name",
-        "apiDisplayField": "contName"
+        "apiDisplayField": "contRidName"
       }
     },
     {

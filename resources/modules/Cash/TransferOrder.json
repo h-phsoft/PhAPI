@@ -105,7 +105,7 @@
         "primaryKey": "Id",
         "foreignKey": "Trt_Tid",
         "displayField": "Name",
-        "apiDisplayField": "trtName"
+        "apiDisplayField": "trtTidName"
       }
     },
     {
@@ -411,7 +411,7 @@
         "primaryKey": "Id",
         "foreignKey": "Cbox_Tid",
         "displayField": "Name",
-        "apiDisplayField": "cboxName"
+        "apiDisplayField": "cboxTidName"
       }
     },
     {
@@ -479,7 +479,7 @@
         "primaryKey": "Id",
         "foreignKey": "Cash_Tid",
         "displayField": "Name",
-        "apiDisplayField": "cashName"
+        "apiDisplayField": "cashTidName"
       }
     },
     {
@@ -581,7 +581,7 @@
         "primaryKey": "Id",
         "foreignKey": "Vhr_Did",
         "displayField": "Name",
-        "apiDisplayField": "vhrName"
+        "apiDisplayField": "vhrDidName"
       }
     },
     {
@@ -973,7 +973,7 @@
         "primaryKey": "Id",
         "foreignKey": "Curn_Tid",
         "displayField": "Name",
-        "apiDisplayField": "curnName"
+        "apiDisplayField": "curnTidName"
       }
     },
     {

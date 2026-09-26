@@ -166,7 +166,7 @@
         "primaryKey": "Id",
         "foreignKey": "Acc_Rid",
         "displayField": "Name",
-        "apiDisplayField": "accName"
+        "apiDisplayField": "accRidName"
       }
     },
     {

@@ -397,7 +397,7 @@
         "primaryKey": "Id",
         "foreignKey": "Mprg_Status_Id",
         "displayField": "Name",
-        "apiDisplayField": "statusName"
+        "apiDisplayField": "mprgStatusIdName"
       }
     },
     {

@@ -216,7 +216,7 @@
         "primaryKey": "Id",
         "foreignKey": "Dept_Rid",
         "displayField": "Name",
-        "apiDisplayField": "deptName"
+        "apiDisplayField": "deptRidName"
       }
     },
     {
@@ -250,7 +250,7 @@
         "primaryKey": "Id",
         "foreignKey": "Unit_Rid",
         "displayField": "Name",
-        "apiDisplayField": "unitName"
+        "apiDisplayField": "unitRidName"
       }
     },
     {
@@ -284,7 +284,7 @@
         "primaryKey": "Id",
         "foreignKey": "Oper_Rid",
         "displayField": "Name",
-        "apiDisplayField": "operName"
+        "apiDisplayField": "operRidName"
       }
     },
     {

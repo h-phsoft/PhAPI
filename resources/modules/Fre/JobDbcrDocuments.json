@@ -805,7 +805,7 @@
         "primaryKey": "Id",
         "foreignKey": "Unit_Rid",
         "displayField": "Name",
-        "apiDisplayField": "unitName"
+        "apiDisplayField": "unitRidName"
       }
     },
     {

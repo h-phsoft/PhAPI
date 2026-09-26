@@ -201,7 +201,7 @@
         "primaryKey": "Id",
         "foreignKey": "Acc_Cid",
         "displayField": "Name",
-        "apiDisplayField": "accName"
+        "apiDisplayField": "accCidName"
       }
     },
     {
