@@ -112,7 +112,7 @@ PhApp has 19 hand-written screens. They still take precedence (P4).
 resources/modules/     1215 entity models, generated from the live schema
 resources/screens/      548 query definitions   (Pkg/Name)
 resources/programs/     383 program screens     (the program's own path)
-locales/{en,ar}.json    2385 column labels, 2237 with Arabic
+locales/{en,ar}.json    2385 column labels, 2261 with Arabic
 ```
 
 - 85 document screens carry 106 line grids and 984 line fields.
@@ -190,7 +190,7 @@ field entry was modified.
 API side, because they sit behind a sign-in. This is the gap to close before
 trusting any of it. PhApp dev runs on 3030 and talks to PhAPI on 3000.
 
-### 3. Arabic for the last 148 labels -- waiting on their meaning
+### 3. Arabic for the last 124 labels -- waiting on their meaning
 
 872 of 2,385 came from the Java bundle. The rest are drafted a package at a
 time, by the screens that show them: a key goes to the package whose screens
@@ -200,9 +200,9 @@ English is replaced only while it is still the generated default.
 | Package | Drafted | Left for the owner to confirm |
 |---|---|---|
 | Fre | 250 | `jobEdate` / `jobEnum`, `jobFdate` / `jobFnum`, `jobSdm`, `modeId` / `modeName`, `pshareStatusId` / `pshareStatusName` |
-| Emp | 105 | 38, mostly `Emp_Salaries_Calculation_View` (`Sal_Gbtam1`..., the N/D/W/H overtime columns, `Sal_Cons` / `Sal_Pun`), `codAffId`, `taxpayId`, `tsalId`, `empComputer` |
+| Emp | 117 | 26, mostly `Emp_Salaries_Calculation_View` (`Sal_Gbtam1`..., `Sal_Cons` / `Sal_Pun`), `codAffId`, `taxpayId`, `tsalId`, `empComputer`. The overtime columns are N = night, D = day, W = weekend, H = holiday (owner) |
 | Lrg | 122 | `bstatusId`, `claimCommitId`, `settCommitId`, `settCondId`, `collInterId`, `collRespId`, `mpointerId` / `mpointerName` |
-| Stor | 100 | 30: the N / D / H / M item prices, the B / W / BW / CW quantities and `cbamt`, `comaccId`, `itemInsaleId`, `itemMethodId`, `saleName` |
+| Stor | 112 | 18: the B / W / BW / CW quantities and `cbamt`, `comaccId`, `itemInsaleId`, `itemMethodId`, `saleName`. The item prices are the owner's: C = current market, N = normal, D = discount, S = sale, W = wholesale, R = retail, H = half-wholesale, M = media (taken as the average price) |
 | Clnc | 111 | none |
 | Proj | 110 | none |
 | Fix | 69 | 17: the R account (`Acc_Rid`, beside the D = depreciation expense and F = accumulated depreciation accounts), `Rtot` / `Ramt`, `Sqnt` / `Scqnt` |
@@ -219,8 +219,9 @@ English is replaced only while it is still the generated default.
 | (no screen) | 4 | `ordMdate` / `ordMnum`, `ordTdate` / `ordTnote` / `ordTstatusId` (as Bank) |
 | Mng 25, Phs 24, Prd 10, Fund 9, Notif 9, Fin 5, Pms 5 | 87 | none |
 
-Every key with a readable meaning has Arabic now. The 148 left are
+Every key with a readable meaning has Arabic now. The 124 left are
 abbreviations only the owner can read; each gets its words once answered.
+`Proj`'s own `cprice` is the timesheet's cost price, not the item price above.
 
 The flat namespace clashes twice, and the label follows the majority:
 `accFname` is the account's full name in most Fix views but the F
