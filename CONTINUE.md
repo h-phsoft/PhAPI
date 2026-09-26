@@ -281,8 +281,31 @@ The flat namespace clashes twice, and the label follows the majority:
   the first rows arrive in 65 ms, for the same total. That is the before and
   after Step 5.1's exit asks for, so **5.1 is done** (V1).
 
-**2-5.** Shared types between the two projects, parallel reads, worker
-threads, hot metadata reload -- not started.
+**5. Hot metadata reload -- done.**
+
+- A running server picks up edits to `resources/modules`, `resources/screens`,
+  `resources/programs`, `locales/` and `resources/autocomplete` without a
+  restart. `services/metadataReload.js` watches those trees
+  (`METADATA_WATCH`, on by default outside production) and reloads once the
+  changes have been quiet for 500 ms, so a script rewriting 500 files costs
+  one reload. Where the watcher cannot see changes (some Docker bind mounts),
+  `kill -HUP <pid>` reloads.
+- Each of the four -- entities, screens, labels, autocomplete -- is rebuilt
+  beside the one in use and swapped in whole. A file that cannot be read (a
+  save caught half-written, a stray comma) keeps that part as it was and is
+  logged; the others still reload. Entities are new objects after a reload,
+  and what is cached per entity sits in WeakMaps keyed on the object, so
+  nothing stale survives.
+- Measured: a full reload of the 2430 models and 931 screens takes 150-250 ms,
+  and the heap is flat across five in a row (105 MB). Against the running
+  server, a model dropped into a new package folder appeared in `/health`
+  within two seconds and was gone two seconds after it was deleted -- no
+  restart. `tests/reload.test.js` (6) covers edit, half-written file, delete,
+  each tree, a broken locale beside a good model, and one reload for a burst
+  of writes.
+
+**2-4.** Shared types between the two projects, parallel reads, worker
+threads -- not started.
 
 ---
 

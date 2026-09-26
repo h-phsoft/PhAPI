@@ -194,6 +194,12 @@ module.exports = {
   jwtExpiresIn: process.env.JWT_EXPIRES_IN || '24h',
   autocompleteSize: parseInt(process.env.AUTOCOMPLETE_SIZE || '50', 10),
 
+  // Reload entities, screens, labels and autocomplete templates when their
+  // files change, instead of on a restart. On by default outside production.
+  metadataWatch: process.env.METADATA_WATCH !== undefined
+    ? String(process.env.METADATA_WATCH).toLowerCase() === 'true'
+    : !isProduction,
+
   // The most rows one export may carry. Exports stream (D5), so this bounds
   // how long one runs rather than how much memory it takes.
   exportMaxRows: parseInt(process.env.EXPORT_MAX_ROWS || '50000', 10),

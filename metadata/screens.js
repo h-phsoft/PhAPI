@@ -48,6 +48,8 @@ class ScreenRegistry {
     this.byProgram = new Map();
     /** key: `pkg/name`, lower case -> query definition */
     this.byReport = new Map();
+    /** Files the last load could not read. */
+    this.errors = [];
     this.isLoaded = false;
 
     ScreenRegistry.instance = this;
@@ -58,13 +60,20 @@ class ScreenRegistry {
    *
    * Replacing rather than merging is what makes a reload safe to call at any
    * time: a screen deleted from disk disappears from the registry instead of
-   * lingering until a restart.
+   * lingering until a restart. The new indexes are built beside the old and
+   * swapped in at the end; with `keepOnError`, a load that met a file it could
+   * not read keeps the old ones, so a half-saved file never costs a running
+   * server its screen.
    *
    * @param {{programs: string, reports: string}} dirs Directories to read
+   * @param {{keepOnError?: boolean}} [options]
+   * @returns {{programs: number, reports: number, errors: Array<{file: string, message: string}>, kept: boolean}}
    */
-  load(dirs = {}) {
-    this.byProgram.clear();
-    this.byReport.clear();
+  load(dirs = {}, options = {}) {
+    const previous = { byProgram: this.byProgram, byReport: this.byReport };
+    this.byProgram = new Map();
+    this.byReport = new Map();
+    this.errors = [];
 
     if (dirs.programs) {
       this.loadPrograms(dirs.programs);
@@ -73,8 +82,17 @@ class ScreenRegistry {
       this.loadReports(dirs.reports);
     }
 
+    const errors = this.errors;
+    if (options.keepOnError && errors.length > 0) {
+      Object.assign(this, previous);
+      console.error(`[Screens] Reload abandoned: ${errors.length} file(s) could not be read; the loaded screens are unchanged.`);
+      return { programs: this.byProgram.size, reports: this.byReport.size, errors, kept: true };
+    }
+
+    this.dirs = dirs;
     this.isLoaded = true;
     console.log(`[Screens] Loaded ${this.byProgram.size} program screen(s) and ${this.byReport.size} query definition(s).`);
+    return { programs: this.byProgram.size, reports: this.byReport.size, errors, kept: false };
   }
 
   /**
@@ -82,8 +100,9 @@ class ScreenRegistry {
    *
    * @param {string} dir
    * @param {Function} onFile Called with (parsed, relativePathWithoutExtension)
+   * @param {Array} [errors] Collects the files that could not be read
    */
-  static walk(dir, onFile) {
+  static walk(dir, onFile, errors = []) {
     if (!fs.existsSync(dir)) {
       console.warn(`[Screens] Directory does not exist: ${dir}`);
       return;
@@ -103,6 +122,7 @@ class ScreenRegistry {
         try {
           onFile(JSON.parse(fs.readFileSync(full, 'utf8')), rel, full);
         } catch (err) {
+          errors.push({ file: full, message: err.message });
           console.error(`[Screens] Error loading ${full}: ${err.message}`);
         }
       }
@@ -127,7 +147,7 @@ class ScreenRegistry {
       if (declared && declared !== key(rel)) {
         this.byProgram.set(declared, screen);
       }
-    });
+    }, this.errors);
   }
 
   /** One file per query definition, indexed `pkg/name`. */
@@ -135,7 +155,7 @@ class ScreenRegistry {
     ScreenRegistry.walk(dir, (screen, rel, full) => {
       screen.sourcePath = full;
       this.byReport.set(key(rel), screen);
-    });
+    }, this.errors);
   }
 
   /**

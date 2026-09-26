@@ -145,15 +145,36 @@ class MainApp {
 
   /**
    * Recursively loads all JSON metadata files from given directory or directories.
+   *
+   * The registry is built beside the one in use and swapped in at the end, so
+   * a reload is all-or-nothing from a request's point of view: loading is
+   * synchronous, and nothing else runs until the swap is made.
+   *
+   * With `keepOnError`, a load that met a file it could not read keeps the
+   * registry it had instead. That is what a reload wants: an editor saving a
+   * file half-written, or a stray comma, must not take that entity out of a
+   * running server. At startup there is nothing to keep, so the default loads
+   * what it can, as it always did.
+   *
    * @param {string|string[]} modulesDirs Directory path(s)
+   * @param {{keepOnError?: boolean}} [options]
+   * @returns {{entities: number, errors: Array<{file: string, message: string}>, kept: boolean}}
    */
-  loadMetadata(modulesDirs) {
+  loadMetadata(modulesDirs, options = {}) {
     const dirs = Array.isArray(modulesDirs) ? modulesDirs : [modulesDirs];
+    const errors = [];
 
-    this.metadataByPackageAndTable.clear();
-    this.metadataBySynonym.clear();
-    this.metadataByTable.clear();
-    this.packages.clear();
+    const previous = {
+      metadataByPackageAndTable: this.metadataByPackageAndTable,
+      metadataBySynonym: this.metadataBySynonym,
+      metadataByTable: this.metadataByTable,
+      packages: this.packages
+    };
+
+    this.metadataByPackageAndTable = new Map();
+    this.metadataBySynonym = new Map();
+    this.metadataByTable = new Map();
+    this.packages = new Map();
 
     for (const [index, modulesDir] of dirs.entries()) {
       if (!fs.existsSync(modulesDir)) {
@@ -182,6 +203,7 @@ class MainApp {
               const normalized = this.normalizeMetadata(rawMetadata, currentPkg, filename);
               this.registerEntity(normalized, fullPath, treeRank);
             } catch (err) {
+              errors.push({ file: fullPath, message: err.message });
               console.error(`[MainApp] Error loading metadata from ${fullPath}:`, err.message);
             }
           }
@@ -191,8 +213,16 @@ class MainApp {
       readDirRecursive(modulesDir);
     }
 
+    if (options.keepOnError && errors.length > 0) {
+      Object.assign(this, previous);
+      console.error(`[MainApp] Reload abandoned: ${errors.length} file(s) could not be read; the ${this.metadataByPackageAndTable.size} registered entries are unchanged.`);
+      return { entities: this.metadataByPackageAndTable.size, errors, kept: true };
+    }
+
+    this.sourceDirs = dirs;
     this.isLoaded = true;
     console.log(`[MainApp] Metadata loaded successfully. Registered ${this.metadataByPackageAndTable.size} entities across ${this.packages.size} packages.`);
+    return { entities: this.metadataByPackageAndTable.size, errors, kept: false };
   }
 
   /**
@@ -291,7 +321,9 @@ class MainApp {
   }
 
   getEntity(packageName, tableName) {
-    if (!packageName || !tableName) return null;
+    if (!packageName || !tableName) {
+      return null;
+    }
     const pkgLower = packageName.toLowerCase();
     const tableLower = tableName.toLowerCase();
 
@@ -309,22 +341,30 @@ class MainApp {
 
     // 3. Lookup by Synonym (e.g. Acc_Mst)
     const bySynonym = this.getEntityBySynonym(tableName);
-    if (bySynonym) return bySynonym;
+    if (bySynonym) {
+      return bySynonym;
+    }
 
     // 4. Lookup by Table Name or package-prefixed Table Name
     const byTable = this.getEntityByTable(tableName) || this.getEntityByTable(`${pkgLower}_${tableLower}`);
-    if (byTable) return byTable;
+    if (byTable) {
+      return byTable;
+    }
 
     return null;
   }
 
   getEntityBySynonym(synonym) {
-    if (!synonym) return null;
+    if (!synonym) {
+      return null;
+    }
     return this.metadataBySynonym.get(synonym.toLowerCase()) || null;
   }
 
   getEntityByTable(tableName) {
-    if (!tableName) return null;
+    if (!tableName) {
+      return null;
+    }
     return this.metadataByTable.get(tableName.toLowerCase()) || null;
   }
 

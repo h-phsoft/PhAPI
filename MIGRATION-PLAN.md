@@ -317,7 +317,9 @@ it stays third.
    twice.
 3. Parallelise independent reads that are sequential today.
 4. Move export generation and report aggregation to worker threads.
-5. Reload metadata without a restart.
+5. Reload metadata without a restart. *Done: `services/metadataReload.js`
+   watches the metadata trees and reloads in 150-250 ms, keeping any part
+   whose files do not read cleanly; SIGHUP reloads where watching cannot.*
 
 **Entry:** the feature the improvement applies to works. **Exit:** measured
 before and after.

@@ -5,21 +5,46 @@ class I18nHelper {
   constructor() {
     this.locales = {};
     this.defaultLanguage = 'en';
+    this.localesDir = path.join(__dirname, '../locales');
     this.loadLocales();
   }
 
-  loadLocales() {
-    const localesDir = path.join(__dirname, '../locales');
-    if (fs.existsSync(localesDir)) {
-      const files = fs.readdirSync(localesDir);
+  /**
+   * Reads every locale file, replacing the ones in use.
+   *
+   * The new set is built beside the old and swapped in whole. At startup a
+   * file that cannot be read stops the process, as it always did -- a server
+   * with no labels is not one to start. With `keepOnError`, as a reload asks,
+   * the labels in use are kept instead and the failure is reported.
+   *
+   * @param {{keepOnError?: boolean}} [options]
+   * @returns {{languages: number, errors: Array<{file: string, message: string}>, kept: boolean}}
+   */
+  loadLocales(options = {}) {
+    const loaded = {};
+    const errors = [];
+    if (fs.existsSync(this.localesDir)) {
+      const files = fs.readdirSync(this.localesDir);
       for (const file of files) {
         if (file.endsWith('.json')) {
           const lang = path.basename(file, '.json');
-          const content = fs.readFileSync(path.join(localesDir, file), 'utf8');
-          this.locales[lang] = JSON.parse(content);
+          const full = path.join(this.localesDir, file);
+          try {
+            loaded[lang] = JSON.parse(fs.readFileSync(full, 'utf8'));
+          } catch (err) {
+            if (!options.keepOnError) {
+              throw err;
+            }
+            errors.push({ file: full, message: err.message });
+          }
         }
       }
     }
+    if (errors.length > 0) {
+      return { languages: Object.keys(this.locales).length, errors, kept: true };
+    }
+    this.locales = loaded;
+    return { languages: Object.keys(loaded).length, errors, kept: false };
   }
 
   /**

@@ -22,45 +22,65 @@ const MAX_LIMIT = 500;
 class AutocompleteService {
   constructor() {
     this.autocompleteCache = new Map(); // key: "pkg:name"
+    this.rootDir = path.join(__dirname, '..', 'resources', 'autocomplete');
     this.loadAllAutocompleteMetadata();
   }
 
   /**
-   * Pre-loads all autocomplete JSON files from resources/autocomplete/
+   * Loads every autocomplete template from resources/autocomplete/, replacing
+   * the ones in use.
+   *
+   * Built beside the old set and swapped in whole; with `keepOnError`, as a
+   * reload asks, a template that cannot be read keeps the set in use rather
+   * than dropping that lookup from a running server.
+   *
+   * @param {{keepOnError?: boolean}} [options]
+   * @returns {{templates: number, errors: Array<{file: string, message: string}>, kept: boolean}}
    */
-  loadAllAutocompleteMetadata() {
-    const autocompleteRootDir = path.join(__dirname, '..', 'resources', 'autocomplete');
-    if (!fs.existsSync(autocompleteRootDir)) return;
+  loadAllAutocompleteMetadata(options = {}) {
+    const loaded = new Map();
+    const errors = [];
 
-    const packages = fs.readdirSync(autocompleteRootDir);
-    for (const pkg of packages) {
-      const pkgDir = path.join(autocompleteRootDir, pkg);
-      if (fs.statSync(pkgDir).isDirectory()) {
-        const files = fs.readdirSync(pkgDir);
-        for (const file of files) {
-          if (file.endsWith('.json')) {
-            const name = path.basename(file, '.json');
-            const fullPath = path.join(pkgDir, file);
-            try {
-              const rawData = fs.readFileSync(fullPath, 'utf8');
-              const jsonMeta = JSON.parse(rawData);
-              const key = `${pkg.toLowerCase()}:${name.toLowerCase()}`;
-              this.autocompleteCache.set(key, jsonMeta);
-            } catch (err) {
-              console.error(`[AutocompleteService] Error reading ${fullPath}:`, err.message);
+    if (fs.existsSync(this.rootDir)) {
+      const packages = fs.readdirSync(this.rootDir);
+      for (const pkg of packages) {
+        const pkgDir = path.join(this.rootDir, pkg);
+        if (fs.statSync(pkgDir).isDirectory()) {
+          const files = fs.readdirSync(pkgDir);
+          for (const file of files) {
+            if (file.endsWith('.json')) {
+              const name = path.basename(file, '.json');
+              const fullPath = path.join(pkgDir, file);
+              try {
+                const rawData = fs.readFileSync(fullPath, 'utf8');
+                const jsonMeta = JSON.parse(rawData);
+                const key = `${pkg.toLowerCase()}:${name.toLowerCase()}`;
+                loaded.set(key, jsonMeta);
+              } catch (err) {
+                errors.push({ file: fullPath, message: err.message });
+                console.error(`[AutocompleteService] Error reading ${fullPath}:`, err.message);
+              }
             }
           }
         }
       }
     }
+
+    if (options.keepOnError && errors.length > 0) {
+      return { templates: this.autocompleteCache.size, errors, kept: true };
+    }
+    this.autocompleteCache = loaded;
     console.log(`[AutocompleteService] Loaded ${this.autocompleteCache.size} autocomplete templates from resources/autocomplete.`);
+    return { templates: loaded.size, errors, kept: false };
   }
 
   /**
    * Retrieves autocomplete metadata by package and name/table
    */
   getMetadata(packageName, name) {
-    if (!packageName || !name) return null;
+    if (!packageName || !name) {
+      return null;
+    }
 
     // 1. Direct cache lookup by package and name (e.g. Acc:Account)
     const key = `${packageName.toLowerCase()}:${name.toLowerCase()}`;
@@ -96,10 +116,14 @@ class AutocompleteService {
    */
   resolveValue(name, lookup) {
     const raw = lookup[name];
-    if (raw === undefined || raw === null) return null;
+    if (raw === undefined || raw === null) {
+      return null;
+    }
 
     const val = String(raw).trim();
-    if (val === '') return null;
+    if (val === '') {
+      return null;
+    }
 
     return name === 'term' ? val.toLowerCase() : val;
   }
@@ -126,7 +150,9 @@ class AutocompleteService {
     let unresolved = false;
 
     const slotted = template.replace(QUOTED_OR_BARE, (match, quoted, bare) => {
-      if (unresolved) return match;
+      if (unresolved) {
+        return match;
+      }
 
       // Quoted literal: substitute inside it, then bind the whole string.
       if (quoted !== undefined) {
@@ -160,7 +186,9 @@ class AutocompleteService {
       return SLOT;
     });
 
-    if (unresolved) return null;
+    if (unresolved) {
+      return null;
+    }
 
     const parts = slotted.split(SLOT);
     let sql = parts[0];
@@ -191,10 +219,15 @@ class AutocompleteService {
         inString = !inString;
         continue;
       }
-      if (inString) continue;
+      if (inString) {
+        continue;
+      }
 
-      if (ch === '(') depth++;
-      else if (ch === ')') depth--;
+      if (ch === '(') {
+        depth++;
+      } else if (ch === ')') {
+        depth--;
+      }
       else if (depth === 0 && (ch === 'w' || ch === 'W') && /^where\b/i.test(sql.slice(i))) {
         return true;
       }
@@ -210,13 +243,19 @@ class AutocompleteService {
     const raw = queryParams.pageSize !== undefined ? queryParams.pageSize : queryParams.limit;
     const parsed = parseInt(raw, 10);
 
-    if (!Number.isFinite(parsed) || parsed < 1) return DEFAULT_LIMIT;
+    if (!Number.isFinite(parsed) || parsed < 1) {
+      return DEFAULT_LIMIT;
+    }
     return Math.min(parsed, MAX_LIMIT);
   }
 
   mapToCamelCase(data) {
-    if (!data) return data;
-    if (Array.isArray(data)) return data.map(item => this.mapToCamelCase(item));
+    if (!data) {
+      return data;
+    }
+    if (Array.isArray(data)) {
+      return data.map(item => this.mapToCamelCase(item));
+    }
     if (typeof data === 'object') {
       const result = {};
       for (const key in data) {
@@ -263,7 +302,9 @@ class AutocompleteService {
 
       for (const [paramKey, template] of Object.entries(Conds)) {
         // A clause applies only when its own parameter was supplied.
-        if (this.resolveValue(paramKey, lookup) === null) continue;
+        if (this.resolveValue(paramKey, lookup) === null) {
+          continue;
+        }
 
         const resolved = this.resolveCondition(template, lookup, binder);
         if (resolved !== null) {

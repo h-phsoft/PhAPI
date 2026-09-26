@@ -19,6 +19,7 @@ try {
 
 const mainApp = require('./metadata/registry');
 const screens = require('./metadata/screens');
+const metadataReload = require('./services/metadataReload');
 const routes = require('./http/routes');
 const legacyRoutes = require('./http/middleware/legacyRoutes');
 const errorHandler = require('./http/middleware/errorHandling');
@@ -96,6 +97,19 @@ screens.load({
   programs: path.join(__dirname, 'resources', 'programs'),
   reports: path.join(__dirname, 'resources', 'screens')
 });
+
+// A running server picks up edits to those trees, the labels and the
+// autocomplete templates without a restart: on its own when METADATA_WATCH is
+// on (the default outside production), and on SIGHUP where there is one.
+if (env.metadataWatch) {
+  metadataReload.watch();
+}
+if (process.platform !== 'win32') {
+  process.on('SIGHUP', () => {
+    const result = metadataReload.reload();
+    console.log(`[MetadataReload] SIGHUP: reloaded in ${result.ms} ms${result.ok ? '' : ', with files it could not read -- see above'}.`);
+  });
+}
 
 // Serve the static HTML documentation portal at /docs. This mount sits ahead of
 // authentication, so everything under docs/ is public wherever it is enabled --
