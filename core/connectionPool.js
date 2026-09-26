@@ -45,7 +45,9 @@ class ConnectionPoolManager {
 
 
     if (dbType === 'mysql') {
-      if (!mysql) mysql = require('mysql2/promise');
+      if (!mysql) {
+        mysql = require('mysql2/promise');
+      }
       const pool = mysql.createPool({
         host: config.host,
         port: config.port || 3306,
@@ -116,7 +118,9 @@ class ConnectionPoolManager {
         }
       };
     } else if (dbType === 'postgres' || dbType === 'postgresql' || dbType === 'pg') {
-      if (!pg) pg = require('pg');
+      if (!pg) {
+        pg = require('pg');
+      }
       const { Pool } = pg;
       const pool = new Pool({
         host: config.host,
@@ -255,9 +259,13 @@ class ConnectionPoolManager {
   async closeAll() {
     for (const [tenantId, poolWrapper] of this.pools.entries()) {
       try {
-        if (poolWrapper.dbType === 'mysql') await poolWrapper.pool.end();
-        else if (poolWrapper.dbType === 'postgres') await poolWrapper.pool.end();
-        else if (poolWrapper.dbType === 'oracle') await poolWrapper.pool.close(0);
+        if (poolWrapper.dbType === 'mysql') {
+          await poolWrapper.pool.end();
+        } else if (poolWrapper.dbType === 'postgres') {
+          await poolWrapper.pool.end();
+        } else if (poolWrapper.dbType === 'oracle') {
+          await poolWrapper.pool.close(0);
+        }
       } catch (err) {
         console.error(`[ConnectionPoolManager] Error closing pool for tenant ${tenantId}:`, err);
       }

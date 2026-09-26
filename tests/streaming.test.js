@@ -196,9 +196,18 @@ const entity = {
 
   await test('a query that fails, fails before the document starts', async () => {
     const pool = fakePool(10);
-    pool.stream = async function* () {
-      throw new Error('ORA-00904: "JOB_DATE": invalid identifier');
-    };
+    // Fails on the first read, as the driver does when it executes.
+    pool.stream = () => ({
+      [Symbol.asyncIterator]() {
+        return this;
+      },
+      next() {
+        return Promise.reject(new Error('ORA-00904: "JOB_DATE": invalid identifier'));
+      },
+      return() {
+        return Promise.resolve({ done: true });
+      }
+    });
     const out = sink();
     await assert.rejects(
       reportService.renderPDF('Fre', 'CodeAirports', {}, { tenantId: TENANT }, out),
