@@ -9,13 +9,15 @@
  * cache or a busy moment cannot favour one side, and the median of each is
  * reported.
  *
- *   node scripts/measureParallel.js --copy=Demo --user=1
- *   node scripts/measureParallel.js --copy=NSCC --user=1 --record=Fre/JobFreight --codes=Acc
+ *   node scripts/measureParallel.js --copy=NSCC --user=1 --record --codes
+ *   node scripts/measureParallel.js --copy=Demo --user=1 --record=Stor/Items:25 --codes=Stor
  *
  * --user     a user id: times the profile the client loads after signing in
  * --record   Package/Entity[:id] of a master with child grids: times opening
- *            it; without an id, its first record
- * --codes    a package: times its code tables
+ *            it; without an id, its first record; alone, the master with the
+ *            most grids this copy has a record of
+ * --codes    a package: times its code tables; alone, the package with the
+ *            most code tables this copy can read
  * --runs     how many of each (default 15)
  * --width    the side-by-side width (default PARALLEL_READS, else 4)
  *
@@ -36,6 +38,9 @@ async function main() {
   // Quiet: the pool logs every statement, which would swamp the numbers.
   const log = console.log;
   console.log = () => {};
+  const logger = require('../utils/logger');
+  logger.silent = true;
+  const say = (line) => log(line);
 
   const env = require('../config/env');
   const mainApp = require('../metadata/registry');
@@ -48,43 +53,88 @@ async function main() {
   const width = parseInt(args.width || env.parallelReads || '4', 10);
   const context = { tenantId: copy, lang: 'en' };
   const cases = [];
+  const short = (err) => String(err.message || err).split('\n')[0];
 
-  if (args.user) {
-    cases.push({
-      name: `profile of user ${args.user}`,
-      run: () => AuthService.getUserProfile({ ...context, userId: args.user })
-    });
-  }
-  if (args.record) {
-    const [entity, given] = String(args.record).split(':');
-    const [pkg, table] = entity.split('/');
+  /** The first record of an entity, and that it opens with its grids. */
+  const openable = async (pkg, table, given) => {
+    const meta = mainApp.getEntity(pkg, table);
+    if (!meta) {
+      throw new Error('no such entity');
+    }
     let id = given;
     if (!id) {
-      // No id given: the first record there is.
-      const meta = mainApp.getEntity(pkg, table);
-      if (!meta) {
-        throw new Error(`No entity ${entity}`);
-      }
       const [first] = await repository.find(meta, { page: 1, pageSize: 1 }, context);
       if (!first) {
-        throw new Error(`${entity} has no records on ${copy}`);
+        throw new Error('no records');
       }
       id = first[meta.primaryKey];
     }
-    cases.push({
-      name: `${entity} ${id} with its grids`,
-      run: () => UnifiedService.get(pkg, table, id, context)
-    });
+    await UnifiedService.get(pkg, table, id, context);
+    return id;
+  };
+
+  if (args.user) {
+    try {
+      await AuthService.getUserProfile({ ...context, userId: args.user });
+      cases.push({
+        name: `profile of user ${args.user}`,
+        run: () => AuthService.getUserProfile({ ...context, userId: args.user })
+      });
+    } catch (err) {
+      say(`  skipped the profile of user ${args.user}: ${short(err)}`);
+    }
   }
+
+  if (args.record) {
+    // A name, or none: then the masters with the most grids, most first,
+    // until one is there in this copy.
+    const candidates = args.record === true
+      ? mainApp.getAllPackages()
+        .flatMap((pkg) => mainApp.getTablesInPackage(pkg).map((table) => ({ pkg, table, entity: mainApp.getEntity(pkg, table) })))
+        .filter(({ entity }) => entity && entity.hasChilds && Array.isArray(entity.children) && entity.children.length >= 3)
+        .sort((x, y) => y.entity.children.length - x.entity.children.length)
+        .map(({ pkg, table }) => `${pkg}/${table}`)
+      : [String(args.record)];
+    for (const candidate of candidates) {
+      const [name, given] = candidate.split(':');
+      const [pkg, table] = name.split('/');
+      try {
+        const id = await openable(pkg, table, given);
+        const grids = mainApp.getEntity(pkg, table).children.length;
+        cases.push({
+          name: `${name} ${id}, ${grids} grids`,
+          run: () => UnifiedService.get(pkg, table, id, context)
+        });
+        break;
+      } catch (err) {
+        say(`  skipped ${name}: ${short(err)}`);
+      }
+    }
+  }
+
   if (args.codes) {
-    cases.push({
-      name: `${args.codes} code tables`,
-      run: () => UnifiedService.getCodes(String(args.codes), context)
-    });
+    // A package, or none: then the packages with the most code tables.
+    const codeTables = (pkg) => mainApp.getTablesInPackage(pkg).filter((t) => t.toLowerCase().includes('code')).length;
+    const candidates = args.codes === true
+      ? mainApp.getAllPackages().filter((pkg) => codeTables(pkg) >= 3).sort((x, y) => codeTables(y) - codeTables(x))
+      : [String(args.codes)];
+    for (const pkg of candidates) {
+      try {
+        await UnifiedService.getCodes(pkg, context);
+        cases.push({
+          name: `${pkg}, ${codeTables(pkg)} code tables`,
+          run: () => UnifiedService.getCodes(pkg, context)
+        });
+        break;
+      } catch (err) {
+        say(`  skipped ${pkg} code tables: ${short(err)}`);
+      }
+    }
   }
+
   if (cases.length === 0) {
-    console.log = log;
-    log('Nothing to measure: give --user, --record or --codes. See the top of this file.');
+    say('Nothing to measure: give --user, --record or --codes. See the top of this file.');
+    await connectionPool.closeAll();
     return;
   }
 
