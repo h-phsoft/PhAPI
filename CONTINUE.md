@@ -59,7 +59,7 @@ Order of layers: `http/routes` → `http/middleware` → `http/controllers` →
 - **D3** Operators come from a closed list. `$$` is never accepted from a client.
 - **D4** Dates state their format at both boundaries. The column's declared type
   decides. A date leaves with no timezone attached.
-- **D5** A large result streams. *(Done for the report PDF, the one export; measuring it on Oracle is open -- see Step 5.)*
+- **D5** A large result streams. *(Done for the report PDF, the one export; measured on NSCC -- see Step 5.)*
 
 ### Porting
 
@@ -230,7 +230,7 @@ The flat namespace clashes twice, and the label follows the majority:
 
 ### 4. Step 5 — Node's advantages
 
-**1. Streaming (D5) -- built; the before/after measurement needs the database.**
+**1. Streaming (D5) -- done and measured.**
 
 - `repository.stream()` runs the statement `find()` runs, without its page, and
   hands it to a callback 500 rows at a time (a callback, not an async
@@ -267,11 +267,19 @@ The flat namespace clashes twice, and the label follows the majority:
   | whole | 67 ms | 67 ms | 124 MB | 46 MB |
   | streamed | 33 ms | 67 ms | 119 MB | 36 MB |
 
-  The first row arrives 2-9x sooner. Memory barely moves, and cannot on Demo:
-  its largest results are a few thousand rows, a few MB against a process
-  that holds 2430 entity models. What streaming buys in memory needs a result
-  in the tens of thousands of rows -- NSCC's, e.g.
-  `--copy=NSCC --report=Acc/VoucherView --rows=200000`.
+  Demo's results are too small to show memory: a few thousand rows are a few
+  MB against a process that holds 2430 entity models. NSCC's voucher view is
+  not -- 100524 rows:
+
+  | | first row | total | peak RSS | peak heap |
+  |---|---|---|---|---|
+  | whole | 2453 ms | 2453 ms | 887 MB | 723 MB |
+  | streamed | 65 ms | 2393 ms | 214 MB | 91 MB |
+
+  Reading it whole takes 723 MB of heap and nothing arrives for 2.5 s;
+  streamed, the heap stays at 91 MB -- about the process's own size -- and
+  the first rows arrive in 65 ms, for the same total. That is the before and
+  after Step 5.1's exit asks for, so **5.1 is done** (V1).
 
 **2-5.** Shared types between the two projects, parallel reads, worker
 threads, hot metadata reload -- not started.

@@ -309,9 +309,10 @@ it stays third.
 
 ### Step 5 — Node's advantages
 
-1. Stream report and export responses. *Built for the report PDF -- the one
-   export -- through `repository.stream()`; the before/after figures come from
-   `scripts/measureStreaming.js` on a tenant's database.*
+1. Stream report and export responses. *Done for the report PDF -- the one
+   export -- through `repository.stream()`. Measured on NSCC's
+   Acc/VoucherView, 100524 rows: whole, 723 MB of heap and 2453 ms to the
+   first row; streamed, 91 MB and 65 ms, same total time.*
 2. Share entity types between PhAPI and PhApp instead of hand-writing them
    twice.
 3. Parallelise independent reads that are sequential today.
