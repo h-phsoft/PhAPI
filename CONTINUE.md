@@ -345,8 +345,39 @@ The flat namespace clashes twice, and the label follows the majority:
 - `authService.js` and `unifiedService.js` had their brace-less `if`s braced
   (CLAUDE.md); nothing else in them changed.
 
-**2, 4.** Shared types between the two projects, worker threads -- not
-started.
+**4. Worker threads -- done; measure on the database.**
+
+- Laying out the export PDF is pure CPU: about 55 ms for every 500 rows of
+  twenty columns, and up to 190 ms at a stretch, in which the server answers
+  no other request of any user. A 50000-row export held it that way for ten
+  seconds; two at once held it longer, and took 8.8 s for 2 x 20000 rows.
+- The layout moved to `services/pdfTable.js` and runs on a worker thread
+  (`services/pdfWorker.js`). The request's thread still reads the rows -- the
+  pool is its -- posts each batch to the worker, and writes the bytes the
+  worker posts back to the response. One batch may be drawn while the next
+  is read; no more than two are held. `services/pdfRenderer.js` chooses
+  worker or thread and caps the workers at `EXPORT_WORKERS` (default CPUs - 1,
+  1 to 4); an export past the cap waits for one. `EXPORT_WORKERS=0` draws on
+  the request's thread, as before.
+- A worker is always given back: after the export, when the reader leaves,
+  when a row cannot be sent, and when the worker itself fails -- which also
+  ends the wait on a stalled reader rather than hanging the export.
+- Measured on a stand-in pool (20 ms a batch, 20 columns):
+
+  | | total | thread held: mean | longest |
+  |---|---|---|---|
+  | 50000 rows, this thread | 12.6 s | 6.9 ms | 170 ms |
+  | 50000 rows, worker | 12.3 s | 1.1 ms | 11 ms |
+  | 2 x 20000 at once, this thread | 8.8 s | 94 ms | 312 ms |
+  | 2 x 20000 at once, 2 workers | 5.2 s | 1.2 ms | 25 ms |
+
+- `tests/workers.test.js` (7): the thread stays free (fails at 142 ms on the
+  old path), the same document either way, the cap, and the worker given back
+  in each way an export can end.
+- Measure with `node scripts/measureExport.js --copy=NSCC
+  --report=Acc/VoucherView --exports=2`. **Not yet run against Oracle.**
+
+**2.** Shared types between the two projects -- not started.
 
 ---
 

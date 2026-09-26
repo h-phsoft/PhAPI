@@ -3,6 +3,7 @@ const screens = require('../metadata/screens');
 const repository = require('../repository/unifiedRepository');
 const Report = require('../models/report');
 const env = require('../config/env');
+const pdfRenderer = require('./pdfRenderer');
 const { coercePage, coercePageSize } = require('../utils/pagination');
 
 /**
@@ -462,117 +463,54 @@ class ReportService {
    * @returns {Promise<{rowCount: number, title: string, truncated: boolean}>}
    */
   async renderPDF(pkgName, reportName, vParams, context, stream) {
-    const PDFDocument = require('pdfkit');
-
     const params = parseParams(vParams);
     const { entity, report } = this.resolve(pkgName, reportName);
     const title = report.getTitle();
 
-    const rowHeight = 16;
-    let doc = null;
-    let finished = null;
-    let bottomLimit = 0;
-    let columns = null;
-    let columnWidth = 0;
-    let y = 0;
-    let rowCount = 0;
+    let renderer = null;
     let truncated = false;
     let aborted = false;
+    let sent = 0;
 
-    // The document is started by the first batch, not before the query: a
-    // query that fails -- a column the view lacks, a bad condition -- then
-    // fails before a byte is written, as an error the caller can answer, not
-    // as a truncated download.
-    const start = () => {
-      doc = new PDFDocument({ size: 'A4', layout: 'landscape', margin: 36 });
-      // 'close' as well as 'finish': a reader that leaves mid-document never
-      // lets it finish, and waiting for that would hold the request forever.
-      finished = new Promise((resolve, reject) => {
-        stream.on('finish', resolve);
-        stream.on('close', resolve);
-        doc.on('error', reject);
-      });
-      doc.pipe(stream);
-      doc.fontSize(16).text(title, { align: 'left' });
-      doc.fontSize(9).fillColor('#666').text(`Generated ${new Date().toISOString()}`);
-      doc.moveDown(0.8);
-      doc.fillColor('#000');
-      bottomLimit = doc.page.height - doc.page.margins.bottom - rowHeight;
-      y = doc.y;
-    };
-
-    const drawRow = (values, top, bold) => {
-      doc.fontSize(8).font(bold ? 'Helvetica-Bold' : 'Helvetica');
-      values.forEach((value, index) => {
-        const text = value === null || value === undefined ? '' : String(value);
-        doc.text(text, doc.page.margins.left + index * columnWidth, top, {
-          width: columnWidth - 4,
-          height: rowHeight,
-          ellipsis: true,
-          lineBreak: false
-        });
-      });
-    };
-
-    await this.streamRows(entity, params, context, env.exportMaxRows, async (batch) => {
-      if (!doc) {
-        start();
-      }
-      for (const row of batch.rows) {
-        if (!columns) {
-          // A grouped query projects its own columns, so they are read from
-          // the first row rather than the entity.
-          columns = Object.keys(row);
-          const usableWidth = doc.page.width - doc.page.margins.left - doc.page.margins.right;
-          columnWidth = usableWidth / Math.max(columns.length, 1);
-          drawRow(columns, y, true);
-          y += rowHeight;
+    try {
+      await this.streamRows(entity, params, context, env.exportMaxRows, async (batch) => {
+        // The document is started by the first batch, not before the query: a
+        // query that fails -- a column the view lacks, a bad condition -- then
+        // fails before a byte is written, as an error the caller can answer,
+        // not as a truncated download.
+        if (!renderer) {
+          renderer = await pdfRenderer.open(title, stream);
         }
-        if (y > bottomLimit) {
-          doc.addPage();
-          y = doc.page.margins.top;
-          drawRow(columns, y, true);
-          y += rowHeight;
-        }
-        drawRow(columns.map((column) => row[column]), y, false);
-        y += rowHeight;
-        rowCount++;
-      }
-      truncated = truncated || batch.truncated;
+        // Drawn on a worker thread (Step 5.4); this thread waits, free to
+        // answer other requests meanwhile.
+        await renderer.addRows(batch.rows);
+        sent += batch.rows.length;
+        truncated = truncated || batch.truncated;
 
-      // A reader that went away stops the query too: returning false closes
-      // the cursor and returns the connection.
-      if (!(await roomIn(stream))) {
-        aborted = true;
-        return false;
+        // A reader that went away stops the query too: returning false closes
+        // the cursor and returns the connection.
+        if (!(await Promise.race([roomIn(stream), renderer.failed]))) {
+          aborted = true;
+          return false;
+        }
+        return true;
+      });
+    } catch (err) {
+      if (renderer) {
+        renderer.abort();
       }
-      return true;
-    });
+      throw err;
+    }
 
     if (aborted) {
-      return { rowCount, title, truncated, aborted: true };
+      renderer.abort();
+      return { rowCount: sent, title, truncated, aborted: true };
     }
-    if (!doc) {
-      start();
-    }
-
-    doc.font('Helvetica').fontSize(9).fillColor('#666');
-    if (rowCount === 0) {
-      doc.fontSize(11).fillColor('#000').text('No data for the selected parameters.', doc.page.margins.left, y);
-    } else {
-      if (y > bottomLimit) {
-        doc.addPage();
-        y = doc.page.margins.top;
-      }
-      const note = truncated
-        ? `${rowCount} row(s) -- stopped at the export limit of ${env.exportMaxRows}; narrow the query for the rest.`
-        : `${rowCount} row(s)`;
-      doc.text(note, doc.page.margins.left, y + 4);
+    if (!renderer) {
+      renderer = await pdfRenderer.open(title, stream);
     }
 
-    doc.end();
-    await finished;
-
+    const rowCount = await renderer.finish({ truncated, limit: env.exportMaxRows });
     return { rowCount, title, truncated };
   }
 

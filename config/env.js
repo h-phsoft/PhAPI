@@ -204,6 +204,13 @@ module.exports = {
   // how long one runs rather than how much memory it takes.
   exportMaxRows: parseInt(process.env.EXPORT_MAX_ROWS || '50000', 10),
 
+  // How many exports may lay their PDF out on worker threads at once (Step
+  // 5.4); one past that waits for a worker. 0 lays them out on the request's
+  // own thread, as before. Defaults to one less than the CPUs, 1 to 4.
+  exportWorkers: process.env.EXPORT_WORKERS !== undefined
+    ? Math.max(0, parseInt(process.env.EXPORT_WORKERS, 10) || 0)
+    : Math.max(1, Math.min(4, require('os').cpus().length - 1)),
+
   // How many independent reads one request may run at once, each on its own
   // pooled connection. Keep it well under DB_POOL_LIMIT (10), so one request
   // cannot hold the whole pool. 1 reads them one after another, as before.

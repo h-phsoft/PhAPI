@@ -321,7 +321,12 @@ it stays third.
    once. Measured on NSCC with the database on the same machine: 37 code
    tables 8.3 -> 4.2 ms, the profile 3.8 -> 3.5 ms; the saving is the round
    trip, so it grows with the distance to the database.*
-4. Move export generation and report aggregation to worker threads.
+4. Move export generation and report aggregation to worker threads. *Done
+   for the PDF export, the one export: laid out on a worker thread, at most
+   `EXPORT_WORKERS` at once. On a stand-in pool the server's thread is held at
+   most 25 ms at a stretch instead of 170-310, and two exports at once take
+   5.2 s instead of 8.8. Report aggregation reads at most 500 rows and stays
+   where it is.*
 5. Reload metadata without a restart. *Done: `services/metadataReload.js`
    watches the metadata trees and reloads in 150-250 ms, keeping any part
    whose files do not read cleanly; SIGHUP reloads where watching cannot.*
