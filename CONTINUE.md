@@ -327,8 +327,21 @@ The flat namespace clashes twice, and the label follows the majority:
 - Measure with `node scripts/measureParallel.js --copy=NSCC --user=1
   --record --codes`: median of one-by-one against
   side-by-side, alternating in one process. On a stand-in pool at 20 ms a
-  statement: profile 102 -> 41 ms, 4 code tables 81 -> 21 ms. **Not yet run
-  against Oracle.**
+  statement: profile 102 -> 41 ms, 4 code tables 81 -> 21 ms.
+- **Measured on NSCC** (Oracle XE on the same machine, median of 15):
+
+  | read | one by one | side by side | saved |
+  |---|---|---|---|
+  | profile of user 1 | 3.8 ms | 3.5 ms | 8 % |
+  | Crm/Contact, 3 grids | 0.8 ms | 0.6 ms | 31 % |
+  | Emp, 37 code tables | 8.3 ms | 4.2 ms | 50 % |
+
+  A database on the same machine answers in well under a millisecond, so
+  there is little wait to overlap: a few milliseconds saved, and nothing made
+  slower. What is saved is the round trip, so it grows with the distance to
+  the database -- at 20 ms a statement the profile went 102 -> 41 ms. NSCC
+  has none of the masters with the most grids (Fre, Lrg, Prd) and no records
+  in Emp's and Stor's, so its largest was Crm/Contact.
 - `authService.js` and `unifiedService.js` had their brace-less `if`s braced
   (CLAUDE.md); nothing else in them changed.
 

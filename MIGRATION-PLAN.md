@@ -318,7 +318,9 @@ it stays third.
 3. Parallelise independent reads that are sequential today. *Done: a
    record's child grids, a package's code tables and the user profile read
    side by side through `utils/parallel.js`, at most `PARALLEL_READS` (4) at
-   once; `scripts/measureParallel.js` measures it against the database.*
+   once. Measured on NSCC with the database on the same machine: 37 code
+   tables 8.3 -> 4.2 ms, the profile 3.8 -> 3.5 ms; the saving is the round
+   trip, so it grows with the distance to the database.*
 4. Move export generation and report aggregation to worker threads.
 5. Reload metadata without a restart. *Done: `services/metadataReload.js`
    watches the metadata trees and reloads in 150-250 ms, keeping any part
